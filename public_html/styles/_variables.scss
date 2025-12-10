@@ -1,0 +1,49 @@
+@use 'helpers' as *;
+
+:root {
+  /* Основные цвета */
+  --color-light: #FFFFFF;
+  --color-dark: #141414;
+  
+  /* Серые оттенки */
+  --color-gray-50: #a0a0a0;
+  --color-gray-60: #666666; /* Более темный серый */
+  
+  /* Акцентные цвета */
+  --color-accent-dark: #8b1a1a;
+  
+  /* Основные цвета бренда */
+  --color-primary: #D9B382;
+  --color-primary-hover: #b89a6b;
+  --color-primary-light: #f5f5f5;
+  
+  /* Новый зелёный цвет */
+  --color-green: #88A593;
+  --color-dark-green: #445950;
+  
+  /* Фоновые цвета секций */
+  --color-bg-section-gray: #E5E5E5; /* Более серый фон */
+  --color-bg-section-beige: #092037; /* Темно-синий фон */
+  
+  /* Шрифты */
+  --font-family-base: 'Montserrat', sans-serif;
+  --font-family-accent: 'Kumbh Sans', sans-serif;
+  
+  /* Размеры */
+  --container-width: 1300px;
+  --container-padding-x: 32px;
+  
+  /* Переходы */
+  --transition-duration: 0.3s;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --container-padding-x: 20px;
+  }
+}
+@media (max-width: 599px) {
+  :root {
+    --container-padding-x: 12px;
+  }
+} 

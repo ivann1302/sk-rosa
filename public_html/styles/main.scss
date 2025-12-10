@@ -1,0 +1,47 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+@use 'blocks/header';
+@use 'blocks/about';
+@use 'blocks/about-turnkey';
+@use 'blocks/about-turnkey-2';
+@use 'blocks/advantages-turnkey';
+@use 'blocks/company-description-turnkey';
+@use 'blocks/full-width-image';
+@use 'blocks/work-stages-turnkey';
+@use 'blocks/portfolio-turnkey';
+@use 'blocks/portfolio-grid';
+@use 'blocks/company-description';
+@use 'blocks/advantages';
+@use 'blocks/advantages-service';
+@use 'blocks/services';
+@use 'blocks/contact-form';
+@use 'blocks/contact-request';
+@use 'blocks/contact-request-turnkey';
+@use 'blocks/contacts';
+@use 'blocks/footer';
+@use 'blocks/useful-links';
+@use 'blocks/about-service';
+@use 'blocks/portfolio-service';
+@use 'blocks/work-stages-service';
+@use 'blocks/what-we-paint-list';
+@use 'blocks/price-calc';
+@use 'blocks/faq-common';
+@use 'blocks/reviews';
+@use 'blocks/social-reviews';
+@use 'blocks/contact-request-overlay';
+@use 'blocks/legal-pages';
+@use 'blocks/calculator';
+@use 'blocks/calculator-info';
+@use 'blocks/calculator-request';
+@use 'blocks/portfolio-filter';
+@use 'blocks/portfolio-gallery';
+ 
+body {
+  background: #fff;
+}
+ 
+// Оставляю только базовые сбросы и нужные блоки для index.html

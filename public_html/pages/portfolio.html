@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Ремонт квартир в Москве и МО</title>
+    <meta name="description" content="Портфолио выполненных работ по ремонту квартир в Москве и Московской области. Качественный ремонт под ключ.">
+    <link rel="stylesheet" href="../main.css?v=1.0.13">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" data-js-header>
+        <div class="header__body">
+          <div class="header__body-inner">
+            <a
+              class="header__logo logo"
+              href="../index.html"
+              aria-label="Home"
+              title="Home"
+            >
+              <img
+                class="logo__image"
+                src="../images/123.png"
+                alt=""
+                width="140" height="40"
+              />
+            </a>
+            <nav class="header__menu">
+              <div class="header__menu-slider"></div>
+              <ul class="header__menu-list">
+                <li class="header__menu-item">
+                  <a class="header__menu-link" href="turnkey-repair.html">Ремонт под ключ</a>
+                </li>
+                <li class="header__menu-item header__menu-item--has-arrow header__menu-item--has-submenu">
+                  <a class="header__menu-link" href="#services">
+                    Другие услуги
+                    <span class="header__menu-arrow">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="2,2 10,2 6,6" stroke="#222" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </a>
+                  <button class="header__menu-toggle" type="button" aria-expanded="false">
+                    Другие услуги
+                    <span class="header__menu-arrow">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="2,2 10,2 6,6" stroke="#222" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <ul class="header__submenu">
+                    <li><a href="airless-painting.html" class="header__submenu-link">Безвоздушная покраска</a></li>
+                    <li><a href="floor-screed.html" class="header__submenu-link">Стяжка пола</a></li>
+                    <li><a href="plastering.html" class="header__submenu-link">Штукатурные работы</a></li>
+                  </ul>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link" href="calculator.html">
+                    Калькулятор
+                  </a>
+                </li>
+                <li class="header__menu-item">
+                  <a class="header__menu-link" href="portfolio.html">Портфолио</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__contacts">
+              <a class="header__phone-link" href="tel:+79851354991">+7 (985) 135 49-91</a>
+              <a class="header__social-link" href="https://t.me/oorosa" target="_blank" rel="noopener" aria-label="Telegram">
+                <img src="../images/telegram_icon.png" alt="Telegram" width="40" height="40" />
+              </a>
+              <a class="header__social-link" href="https://wa.me/79851354991" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="../images/whatsapp_icon.png" alt="WhatsApp" width="40" height="40" />
+              </a>
+            </div>
+            <button
+              class="header__burger-button burger-button visible-mobile"
+              type="button"
+              aria-label="Open menu"
+              title="Open menu"
+              data-js-header-burger-button
+            >
+              <img src="../icons/burger-button/icons8-hamburger-button-50.png" alt="Меню" class="burger-icon burger-icon--menu">
+              <img src="../icons/burger-button/icons8-close-window-50.png" alt="Закрыть" class="burger-icon burger-icon--close">
+            </button>
+            
+            <!-- Мобильная плашка с контактами -->
+            <div class="header__mobile-contacts" data-js-mobile-contacts>
+              <div class="header__mobile-contacts-phone">+7 (985) 135 49-91</div>
+              <div class="header__mobile-contacts-social">
+                <span class="header__mobile-contacts-social-label">Соц.сети:</span>
+                <a class="header__mobile-contacts-social-link" href="https://wa.me/79851354991" target="_blank" rel="noopener" aria-label="WhatsApp">
+                  <img src="../images/whatsapp_icon.png" alt="WhatsApp" width="24" height="24" />
+                </a>
+                <a class="header__mobile-contacts-social-link" href="https://t.me/oorosa" target="_blank" rel="noopener" aria-label="Telegram">
+                  <img src="../images/telegram_icon.png" alt="Telegram" width="24" height="24" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    <!-- Portfolio Filter -->
+    <section class="portfolio-filter">
+      <div class="portfolio-filter__container">
+        <div class="portfolio-filter__card">
+          <div class="portfolio-filter__header">
+            <h1 class="portfolio-filter__title">Портфолио ремонтных работ</h1>
+            <p class="portfolio-filter__subtitle">Найдите подходящие проекты по вашим критериям</p>
+          </div>
+          
+          <div class="portfolio-filter__filters">
+            <div class="portfolio-filter__filter-group">
+              <label class="portfolio-filter__filter-label">Тип помещения</label>
+              <select class="portfolio-filter__filter-select" data-filter="type">
+                <option value="">Любое помещение</option>
+                <option value="apartment">Квартира</option>
+                <option value="house">Дом</option>
+                <option value="office">Офис</option>
+                <option value="commercial">Коммерческое</option>
+              </select>
+            </div>
+            
+            <div class="portfolio-filter__filter-group">
+              <label class="portfolio-filter__filter-label">Площадь (м²)</label>
+              <input type="number" class="portfolio-filter__filter-input" placeholder="От 30 до 200" min="30" max="200">
+            </div>
+            
+            <div class="portfolio-filter__filter-group">
+              <label class="portfolio-filter__filter-label">Стоимость (₽)</label>
+              <select class="portfolio-filter__filter-select" data-filter="price">
+                <option value="">Любая стоимость</option>
+                <option value="0-1000000">До 1 млн ₽</option>
+                <option value="1000000-2000000">1-2 млн ₽</option>
+                <option value="2000000-3000000">2-3 млн ₽</option>
+                <option value="3000000-5000000">3-5 млн ₽</option>
+                <option value="5000000+">Более 5 млн ₽</option>
+              </select>
+            </div>
+            
+
+            
+            <button class="portfolio-filter__button portfolio-filter__button--primary">Найти работы</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="portfolio-gallery">
+      <div class="portfolio-gallery__container">
+        <div class="portfolio-gallery__grid">
+          <!-- Ремонт под ключ -->
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="32" data-price="885443">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/1.png" alt="Ремонт однокомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Однокомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">32 м²</span>
+                    <span class="portfolio-gallery__detail">885 443 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт однокомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Современный ремонт в стиле минимализм с качественными материалами</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">32 м²</span>
+                <span class="portfolio-gallery__price">885 443 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="58" data-price="1245800">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/2.png" alt="Ремонт двухкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Двухкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">58 м²</span>
+                    <span class="portfolio-gallery__detail">1 245 800 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт двухкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Классический стиль с современными элементами и продуманной планировкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">58 м²</span>
+                <span class="portfolio-gallery__price">1 245 800 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="89" data-price="2156900">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/3.png" alt="Ремонт трехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Трехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">89 м²</span>
+                    <span class="portfolio-gallery__detail">2 156 900 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт трехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Просторная квартира с элегантным дизайном и функциональной планировкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">89 м²</span>
+                <span class="portfolio-gallery__price">2 156 900 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="28" data-price="756300">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/4.png" alt="Ремонт квартиры-студии" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Квартира-студия</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">28 м²</span>
+                    <span class="portfolio-gallery__detail">756 300 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт квартиры-студии</h3>
+              <p class="portfolio-gallery__description">Компактная студия с многофункциональной мебелью и светлым дизайном</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">28 м²</span>
+                <span class="portfolio-gallery__price">756 300 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="124" data-price="3245600">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/5.png" alt="Ремонт четырехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Четырехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">124 м²</span>
+                    <span class="portfolio-gallery__detail">3 245 600 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт четырехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Просторная квартира в стиле лофт с индустриальными элементами</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">124 м²</span>
+                <span class="portfolio-gallery__price">3 245 600 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ремонт под ключ -->
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="45" data-price="1250000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/6.png" alt="Ремонт однокомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Однокомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">45 м²</span>
+                    <span class="portfolio-gallery__detail">1 250 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт однокомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Современный ремонт в стиле скандинавский минимализм с натуральными материалами</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">45 м²</span>
+                <span class="portfolio-gallery__price">1 250 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="67" data-price="1890000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/7.png" alt="Ремонт двухкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Двухкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">67 м²</span>
+                    <span class="portfolio-gallery__detail">1 890 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт двухкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Элегантный ремонт в классическом стиле с современными технологиями</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">67 м²</span>
+                <span class="portfolio-gallery__price">1 890 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="38" data-price="980000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/8.png" alt="Ремонт квартиры-студии" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Квартира-студия</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">38 м²</span>
+                    <span class="portfolio-gallery__detail">980 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт квартиры-студии</h3>
+              <p class="portfolio-gallery__description">Стильный ремонт студии в урбанистическом стиле с функциональной мебелью</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">38 м²</span>
+                <span class="portfolio-gallery__price">980 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ремонт под ключ -->
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="52" data-price="1560000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/9.png" alt="Ремонт двухкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Двухкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">52 м²</span>
+                    <span class="portfolio-gallery__detail">1 560 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт двухкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Капитальный ремонт с заменой всех коммуникаций и современной отделкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">52 м²</span>
+                <span class="portfolio-gallery__price">1 560 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="41" data-price="1230000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/10.png" alt="Ремонт однокомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Однокомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">41 м²</span>
+                    <span class="portfolio-gallery__detail">1 230 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт однокомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Современный ремонт в стиле хай-тек с умными системами и LED-подсветкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">41 м²</span>
+                <span class="portfolio-gallery__price">1 230 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="plastering" data-area="73" data-price="219000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/11.png" alt="Декоративная штукатурка" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Штукатурные работы</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Декоративная штукатурка</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">73 м²</span>
+                    <span class="portfolio-gallery__detail">219 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Декоративная штукатурка</h3>
+              <p class="portfolio-gallery__description">Создание уникальных текстур и рельефов на стенах</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">73 м²</span>
+                <span class="portfolio-gallery__price">219 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ремонт под ключ -->
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="89" data-price="2670000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/9.png" alt="Ремонт трехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Трехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">89 м²</span>
+                    <span class="portfolio-gallery__detail">2 670 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт трехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Премиальный ремонт в стиле ар-деко с роскошными материалами и деталями</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">89 м²</span>
+                <span class="portfolio-gallery__price">2 670 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="156" data-price="4680000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/13.png" alt="Ремонт четырехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Четырехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">156 м²</span>
+                    <span class="portfolio-gallery__detail">4 680 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт четырехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Эксклюзивный ремонт в стиле неоклассицизм с авторским дизайном</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">156 м²</span>
+                <span class="portfolio-gallery__price">4 680 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="67" data-price="2010000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/14.png" alt="Ремонт двухкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Двухкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">67 м²</span>
+                    <span class="portfolio-gallery__detail">2 010 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт двухкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Современный ремонт в стиле лофт с индустриальными элементами и открытой планировкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">67 м²</span>
+                <span class="portfolio-gallery__price">2 010 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Дополнительные работы -->
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="95" data-price="2850000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/15.png" alt="Ремонт офиса" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Офисное помещение</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">95 м²</span>
+                    <span class="portfolio-gallery__detail">2 850 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт офиса</h3>
+              <p class="portfolio-gallery__description">Современный дизайн офиса с функциональной планировкой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">95 м²</span>
+                <span class="portfolio-gallery__price">2 850 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="78" data-price="2340000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/16.png" alt="Ремонт коттеджа" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Частный дом</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">78 м²</span>
+                    <span class="portfolio-gallery__detail">2 340 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт коттеджа</h3>
+              <p class="portfolio-gallery__description">Капитальный ремонт частного дома с современными материалами</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">78 м²</span>
+                <span class="portfolio-gallery__price">2 340 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="92" data-price="2760000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/17.png" alt="Ремонт трехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Трехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">92 м²</span>
+                    <span class="portfolio-gallery__detail">2 760 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт трехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Современный ремонт в стиле контемпорари с открытой кухней и гостиной</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">92 м²</span>
+                <span class="portfolio-gallery__price">2 760 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="61" data-price="1830000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/18.png" alt="Ремонт двухкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Двухкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">61 м²</span>
+                    <span class="portfolio-gallery__detail">1 830 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт двухкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Уютный ремонт в стиле прованс с французским шармом и пастельными тонами</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">61 м²</span>
+                <span class="portfolio-gallery__price">1 830 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="134" data-price="4020000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/19.png" alt="Ремонт четырехкомнатной квартиры" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Четырехкомнатная квартира</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">134 м²</span>
+                    <span class="portfolio-gallery__detail">4 020 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт четырехкомнатной квартиры</h3>
+              <p class="portfolio-gallery__description">Роскошный ремонт в стиле модерн с премиальными материалами и дизайнерской мебелью</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">134 м²</span>
+                <span class="portfolio-gallery__price">4 020 000 ₽</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-gallery__item" data-category="turnkey" data-area="112" data-price="3360000">
+            <div class="portfolio-gallery__image-wrap">
+              <img src="../images/portfolio/20.png" alt="Ремонт пентхауса" class="portfolio-gallery__image">
+              <div class="portfolio-gallery__overlay">
+                <div class="portfolio-gallery__overlay-content">
+                  <h3 class="portfolio-gallery__overlay-title">Ремонт под ключ</h3>
+                  <p class="portfolio-gallery__overlay-subtitle">Пентхаус</p>
+                  <div class="portfolio-gallery__overlay-details">
+                    <span class="portfolio-gallery__detail">112 м²</span>
+                    <span class="portfolio-gallery__detail">3 360 000 ₽</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-gallery__info">
+              <h3 class="portfolio-gallery__title">Ремонт пентхауса</h3>
+              <p class="portfolio-gallery__description">Эксклюзивный ремонт пентхауса в стиле ар-нуво с панорамными окнами и террасой</p>
+              <div class="portfolio-gallery__meta">
+                <span class="portfolio-gallery__area">112 м²</span>
+                <span class="portfolio-gallery__price">3 360 000 ₽</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+          <div class="footer__grid">
+                      <div class="footer__brand">
+                <h1>OOO.ROSA</h1>
+                <p>Профессиональные отделочные работы под ключ с гарантией качества</p>
+                <div class="footer__contacts">
+                  <div class="footer__contact-item">
+                    <div class="footer__contact-icon">
+                      <img src="../icons/footer/phone-call-svgrepo-com.svg" alt="Телефон" />
+                    </div>
+                    <span>+7 (985) 135 49-91</span>
+                  </div>
+                  <div class="footer__contact-item">
+                    <div class="footer__contact-icon">
+                      <img src="../icons/footer/mail-alt-svgrepo-com.svg" alt="Email" />
+                    </div>
+                    <span>ooo.rosa2019@yandex.ru</span>
+                  </div>
+                  <div class="footer__contact-item">
+                    <div class="footer__contact-icon">
+                      <img src="../icons/footer/clock-three-svgrepo-com.svg" alt="Часы работы" />
+                    </div>
+                    <span>Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</span>
+                  </div>
+                </div>
+              </div>
+            <div class="footer__section">
+              <h3>Услуги</h3>
+                          <ul>
+                            <li><a href="turnkey-repair.html">Ремонт под ключ</a></li>
+                            <li><a href="airless-painting.html">Безвоздушная покраска</a></li>
+                            <li><a href="floor-screed.html">Стяжка пола</a></li>
+                            <li><a href="plastering.html">Штукатурные работы</a></li>
+                </ul>
+            </div>
+                      <div class="footer__section">
+                <h3>Информация</h3>
+                <ul>
+                  <li><a href="portfolio.html">Наши работы</a></li>
+                  <li><a href="calculator.html">Калькулятор стоимости</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer__social">
+              <div class="footer__social-links">
+                <a href="https://wa.me/79851354991?text=Hello%2C%20I%27d%20like%20a%20consultation" class="footer__social-link whatsapp" target="_blank" rel="noopener noreferrer">
+                  <img src="../images/whatsapp_icon.png" alt="WhatsApp" width="24" height="24">
+                </a>
+                            <a href="https://t.me/oorosa" class="footer__social-link telegram" target="_blank" rel="noopener noreferrer">
+              <img src="../images/telegram_icon.png" alt="Telegram" width="24" height="24">
+            </a>
+            <a href="https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile?src=sharing" class="footer__social-link avito" target="_blank" rel="noopener noreferrer">
+              <img src="../images/free-png.ru-835.png" alt="Авито" width="24" height="24">
+            </a>
+              </div>
+            </div>
+          <div class="footer__bottom">
+            <p class="footer__copyright">© 2019 ROSA. Все права защищены.</p>
+                      <div class="footer__links">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <span class="footer__separator">|</span>
+                <a href="terms.html">Пользовательское соглашение</a>
+              </div>
+          </div>
+        </div>
+      </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/portfolio-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+@use '../helpers/mixins' as *;
+
+.reviews {
+  background: #fff;
+  padding: 40px 0 48px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      margin-left: 12px;
+    }
+  }
+
+  &__desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 24px;
+    text-align: left;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0 !important;
+      margin-left: 12px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &__desc-extra {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+      flex-direction: row !important;
+      gap: 12px !important;
+      flex-wrap: nowrap !important;
+      margin-top: 24px !important;
+
+      a {
+        flex: 0 0 calc((100vw - 48px) / 3) !important;
+        width: calc((100vw - 48px) / 3) !important;
+        max-width: calc((100vw - 48px) / 3) !important;
+        min-width: calc((100vw - 48px) / 3) !important;
+        justify-content: center !important;
+        padding: 10px 12px !important;
+
+        &:first-child {
+          margin-left: 12px !important;
+        }
+
+        &:last-child {
+          margin-right: 12px !important;
+        }
+
+        span {
+          display: none !important;
+          padding-left: 0 !important;
+        }
+
+        img {
+          margin-left: 0 !important;
+        }
+      }
+    }
+  }
+
+  &__carousel-outer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.reviews-carousel {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #333;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(0,0,0,0.15);
+    }
+
+    &--left {
+      left: calc(50% - 660px);
+    }
+
+    &--right {
+      right: calc(50% - 660px);
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      width: 100vw;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 24px;
+    box-sizing: border-box;
+    width: calc(4 * (100% - 72px) / 4 + 72px);
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+
+    @media (max-width: 768px) {
+      display: flex;
+      width: max-content;
+      gap: 12px !important;
+      padding-left: 24px;
+      padding-right: 24px;
+      transition: none;
+      transform: none;
+
+      & > div {
+        flex: 0 0 calc(100vw - 48px) !important;
+        width: calc(100vw - 48px) !important;
+        max-width: calc(100vw - 48px) !important;
+        min-width: calc(100vw - 48px) !important;
+        margin: 0 !important;
+        scroll-snap-align: center;
+      }
+    }
+  }
+}
+
+.reviews-card {
+  position: relative;
+  flex: 0 0 calc((100% - 72px) / 4);
+  max-width: calc((100% - 72px) / 4);
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1.5px solid #e0e0e0 !important;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+    }
+
+    .reviews-card-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #222;
+    }
+  }
+
+  &-text {
+    color: #444;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    background-color: #A9CBB3 !important;
+    border: 1px solid #e0e0e0 !important;
+    
+    /* Выравниваем только текст отзыва по левому краю */
+    & > div:nth-child(2) {
+      text-align: left !important;
+    }
+  }
+}
+
