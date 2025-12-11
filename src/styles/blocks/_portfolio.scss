@@ -1,0 +1,109 @@
+.portfolio-grid {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 24px;
+    column-gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 0 0 0;
+  }
+
+  &__button {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 48px;
+
+    button {
+      background: var(--color-green);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #2d5a2d;
+      }
+    }
+  }
+}
+
+.portfolio-card {
+  position: relative;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border-radius: 12px;
+  padding: 16px 0;
+
+  &__title {
+    padding: 0 0 6px 0;
+    color: #222;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  &__info {
+    padding: 0 0 10px 0;
+    color: #222;
+    font-size: 0.9rem;
+    text-align: left;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-tag {
+      color: #666;
+      background: #f0f0f0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: calc(100% - 150px);
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  }
+
+  &__price {
+    padding: 10px 0 0 0;
+    color: #222;
+    font-size: 0.9rem;
+    text-align: left;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-label {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    &-value {
+      font-weight: 700;
+      color: #222;
+      font-size: 1.2rem;
+    }
+  }
+}

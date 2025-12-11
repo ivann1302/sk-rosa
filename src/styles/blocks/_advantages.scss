@@ -1,0 +1,139 @@
+@use "../helpers" as *;
+
+.advantages {
+  position: relative;
+  background: #fff;
+  padding: 24px 0 48px 0;
+
+  @include mobile {
+    padding: 16px 0 32px 0;
+  }
+
+  &__container {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mobile {
+      width: calc(100% - 2rem);
+      max-width: 100vw;
+    }
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: #222;
+    text-align: center;
+  }
+
+  &__list {
+    width: 1200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
+    @include mobile {
+      width: 100%;
+      max-width: 100vw;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    min-height: unset;
+    transition: none;
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: -20px;
+      width: 1px;
+      height: calc(100% - 16px);
+      background: #e0e0e0;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    @include mobile {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      max-width: 100vw;
+      text-align: left;
+    }
+  }
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0;
+    margin-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @include mobile {
+      margin-right: 16px;
+      margin-bottom: 0;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.7rem;
+
+    @include mobile {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+    text-align: left;
+
+    @include mobile {
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  }
+}

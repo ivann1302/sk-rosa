@@ -1,0 +1,97 @@
+// Стили для блока полезных ссылок
+.useful-links {
+  background: #fff;
+  padding: 40px 0;
+
+  @media (width <= 768px) {
+    display: none;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+
+    @media (width <= 768px) {
+      overflow: hidden;
+    }
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 48px;
+    padding: 0;
+
+    @media (width <= 768px) {
+      margin-left: 12px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (width <= 768px) {
+      flex-wrap: nowrap;
+      gap: 12px;
+      justify-content: flex-start;
+
+      /* было overflow-x:auto; теперь скрываем, используем transform */
+      overflow: visible;
+      padding: 0 12px;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+  }
+
+  &__item {
+    background: #fff;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    padding: 32px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    height: 220px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (width <= 768px) {
+      width: calc((100vw - 60px) / 2) !important;
+      min-width: calc((100vw - 60px) / 2) !important;
+      max-width: calc((100vw - 60px) / 2) !important;
+      flex: 0 0 calc((100vw - 60px) / 2) !important;
+      height: calc((100vw - 60px) / 2) !important;
+      min-height: calc((100vw - 60px) / 2) !important;
+      max-height: calc((100vw - 60px) / 2) !important;
+    }
+
+    &-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: auto;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-top: auto;
+    }
+  }
+
+  &__item:first-child {
+    @media (width <= 768px) {
+      margin-left: 24px !important;
+    }
+  }
+}

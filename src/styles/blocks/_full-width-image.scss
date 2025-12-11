@@ -1,0 +1,33 @@
+@use "../helpers" as *;
+
+.full-width-image {
+  width: 100%;
+  padding: 48px 0;
+  box-shadow: none !important;
+
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-shadow: none !important;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-shadow: none !important;
+      filter: none !important;
+    }
+  }
+
+  @include mobile {
+    padding: 30px 0;
+
+    &__container {
+      padding: 0 15px;
+    }
+  }
+}

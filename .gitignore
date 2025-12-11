@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build output
+public_html/*
+!public_html/.gitkeep
+
+# Compiled files
+*.css.map
+src/styles/main.css
+src/styles/main.css.map
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+# VS Code настройки сохраняем в репозитории
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+.cache/
+
+# Linters
+.eslintcache
+.stylelintcache
+
+# IDE
+.vscode/
+.idea/
+

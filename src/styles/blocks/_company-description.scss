@@ -1,0 +1,59 @@
+// Стили для блока 'О компании'
+
+.company-description {
+  background: #fafafa;
+  padding: 24px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4px 0 0 0;
+    margin-bottom: 0; // уменьшенный отступ после описания
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.7;
+
+    p {
+      margin-bottom: 1.2em;
+    }
+  }
+
+  @media (width <= 900px) {
+    padding: 32px 0;
+
+    &__container {
+      padding: 0;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (width <= 768px) {
+    &__container {
+      width: calc(100% - 24px);
+      max-width: calc(100% - 24px);
+      margin: 0 auto;
+    }
+
+    &__text {
+      font-size: 0.85rem;
+      line-height: 1.6;
+
+      p:nth-child(3) {
+        display: none;
+      }
+    }
+  }
+}

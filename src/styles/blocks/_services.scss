@@ -1,0 +1,135 @@
+@use "../helpers" as *;
+
+// Стили для блока услуг
+.services {
+  margin-bottom: 48px;
+  background: #fff;
+  padding: 48px 0 0 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+
+    @media (width <= 768px) {
+      width: calc(100% - 24px);
+      max-width: calc(100% - 24px);
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+
+  &__item {
+    box-sizing: border-box;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    background: #ececec;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgb(0 0 0 / 7%);
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    @media (width <= 768px) {
+      height: auto !important;
+      min-height: 280px;
+      max-height: none;
+      flex-direction: column !important;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 16px;
+
+      > div:first-child {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      > div:first-child > a {
+        align-self: center !important;
+      }
+    }
+
+    &:first-child {
+      @include laptop {
+        height: 260px;
+        min-height: 260px;
+        max-height: 260px;
+      }
+    }
+
+    & .services__img {
+      max-height: 100%;
+      height: auto;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+      margin: 0;
+
+      @media (width <= 768px) {
+        width: 100% !important;
+        height: auto;
+        max-width: 100%;
+        margin-bottom: 16px;
+        order: -1;
+      }
+    }
+
+    & .services__name {
+      font-size: 2rem;
+
+      @media (width <= 768px) {
+        text-align: center;
+        margin-bottom: 8px;
+        width: 100%;
+      }
+    }
+
+    & .services__desc {
+      font-size: 1rem;
+
+      @media (width <= 768px) {
+        text-align: center;
+        margin-bottom: 16px;
+        width: 100%;
+      }
+    }
+
+    & .services__more {
+      margin-top: auto;
+      align-self: flex-start;
+      padding: 8px 20px;
+      border-radius: 6px;
+      border: 1px solid #000;
+      background: transparent;
+      color: #000;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+
+      @media (width <= 768px) {
+        margin-top: 0;
+        align-self: center;
+      }
+    }
+  }
+}
+
+// Отступ справа для первой картинки в первой карточке
+.services__item .services__img--first {
+  margin-right: 70px;
+}
+
+// Убираем лишние переопределения padding для .services__container

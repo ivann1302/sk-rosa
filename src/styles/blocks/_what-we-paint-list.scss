@@ -1,0 +1,156 @@
+.what-we-paint-list {
+  background: transparent;
+  padding: 48px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &__content {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  &__left {
+    flex: 1;
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: var(--color-dark-green);
+  }
+
+  &__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-dark-green);
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  &__desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+    margin-left: auto;
+  }
+
+  @media (width <= 900px) {
+    &__content {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+      margin-bottom: 32px;
+    }
+
+    &__image {
+      max-width: 250px;
+      aspect-ratio: 1;
+    }
+  }
+
+  @media (width <= 480px) {
+    padding: 48px 0;
+
+    &__title {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+    }
+
+    &__items {
+      gap: 20px;
+    }
+
+    &__item {
+      gap: 12px;
+    }
+
+    &__image {
+      max-width: 200px;
+      aspect-ratio: 1;
+    }
+  }
+
+  @media (width <= 768px) {
+    padding: 48px 12px; /* отступы слева и справа 12px */
+
+    &__container {
+      padding: 0;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__left {
+      order: 2; /* пункты под картинкой */
+    }
+
+    &__right {
+      order: 1; /* картинка сверху */
+    }
+
+    &__image {
+      width: calc(100vw - 24px); /* на всю ширину с отступами */
+      max-width: none;
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+  }
+}
