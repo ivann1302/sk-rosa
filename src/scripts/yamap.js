@@ -1,15 +1,23 @@
 // Инициализация Яндекс Карты
 function initMap() {
+  // Используем константы из constants.js
+  const office = window.CONFIG?.office || {
+    latitude: 55.950398,
+    longitude: 37.533535,
+    address: 'г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3',
+    mapZoom: 16,
+  };
+
   ymaps.ready(function () {
     var myMap = new ymaps.Map("map", {
-      center: [55.950398, 37.533535],
-      zoom: 16,
+      center: [office.latitude, office.longitude],
+      zoom: office.mapZoom,
       controls: ["zoomControl", "fullscreenControl"],
     });
     var myPlacemark = new ymaps.Placemark(
-      [55.950398, 37.533535],
+      [office.latitude, office.longitude],
       {
-        balloonContent: "г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3",
+        balloonContent: office.address,
       },
       {
         preset: "islands#redDotIcon",

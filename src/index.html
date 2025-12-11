@@ -92,7 +92,7 @@
             </ul>
           </nav>
           <div class="header__contacts">
-            <a class="header__phone-link" href="tel:+79851354991">+7 (985) 135 49-91</a>
+            <a class="header__phone-link" id="header-phone-link" href="tel:+79851354991">+7 (985) 135 49-91</a>
             <a
               class="header__social-link"
               href="https://t.me/oorosa"
@@ -1350,6 +1350,11 @@
       </div>
     </footer>
 
+    <!-- Константы проекта - должен быть загружен первым -->
+    <script src="scripts/constants.js"></script>
+    <!-- Инициализация контактных данных из констант -->
+    <script src="scripts/init-contacts.js"></script>
+    <!-- Yandex Maps API -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="scripts/yamap.js"></script>
     <script src="scripts/carousel.js"></script>

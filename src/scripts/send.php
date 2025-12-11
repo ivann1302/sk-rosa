@@ -1,6 +1,31 @@
 <?php 
-  // формируем URL, на который будем отправлять запрос в битрикс24
-	$queryURL = "https://b24-p3zgrx.bitrix24.ru/rest/1/vu8c00l6ruvrjc05/crm.lead.add.json";
+  // Загружаем переменные окружения из .env файла
+  // Файл .env должен находиться в корне проекта (sk-rosa/.env)
+  // См. .env.example для примера структуры
+  require_once __DIR__ . '/load-env.php';
+
+  // Получаем конфигурацию Bitrix24 из переменных окружения (.env)
+  // Все значения должны быть указаны в файле .env
+  // См. документацию: DEPLOY.md
+  
+  $bitrixDomain = $_ENV['BITRIX24_DOMAIN'] ?? getenv('BITRIX24_DOMAIN');
+  $bitrixUserId = $_ENV['BITRIX24_REST_USER_ID'] ?? getenv('BITRIX24_REST_USER_ID') ?? '1';
+  $bitrixToken = $_ENV['BITRIX24_WEBHOOK_TOKEN'] ?? getenv('BITRIX24_WEBHOOK_TOKEN');
+  
+  // Проверяем наличие обязательных переменных
+  if (empty($bitrixDomain)) {
+    error_log('Ошибка конфигурации: BITRIX24_DOMAIN не установлен в .env файле');
+    http_response_code(500);
+    die('Configuration error: BITRIX24_DOMAIN is not set');
+  }
+  
+  if (empty($bitrixToken)) {
+    error_log('Ошибка конфигурации: BITRIX24_WEBHOOK_TOKEN не установлен в .env файле');
+    http_response_code(500);
+    die('Configuration error: BITRIX24_WEBHOOK_TOKEN is not set');
+  }
+  
+  $queryURL = "https://{$bitrixDomain}/rest/{$bitrixUserId}/{$bitrixToken}/crm.lead.add.json";
 
   //собираем данные из формы
 	$sPhone = htmlspecialchars($_POST["PHONE"] ?? '');
