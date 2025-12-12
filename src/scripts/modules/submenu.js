@@ -5,7 +5,7 @@
 export function initSubmenu() {
   const submenuItems = document.querySelectorAll(".header__menu-item--has-submenu");
 
-  submenuItems.forEach((item) => {
+  submenuItems.forEach(item => {
     const toggleButton = item.querySelector(".header__menu-toggle");
     const submenu = item.querySelector(".header__submenu");
 
@@ -106,4 +106,3 @@ export function initSubmenu() {
   // Вызываем инициализацию после загрузки DOM
   initializeSubmenu();
 }
-

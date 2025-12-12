@@ -364,6 +364,7 @@ body {
       border-radius: rem(8);
       position: relative;
       cursor: pointer;
+      gap: 6px;
 
       @include laptop {
         padding: rem(6) rem(10);
@@ -381,13 +382,14 @@ body {
         font-weight: 400;
       }
 
-      /*
       &:hover {
-        color: var(--color-primary);
-        background: rgba(217, 179, 130, 0.1);
+        color: var(--color-green);
       }
-      */
     }
+  }
+
+  &__menu-arrow {
+    transition: transform 0.3s ease;
   }
 
   &__menu-toggle {
@@ -524,6 +526,12 @@ body {
     font-weight: 400;
     font-size: 16px;
     color: #000 !important;
+    margin-right: 4px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-green) !important;
+    }
   }
 }
 
@@ -628,10 +636,6 @@ body {
 .header__center {
   /* больше не используется */
   display: none;
-}
-
-.header__menu-arrow {
-  transition: transform 0.3s ease;
 }
 
 .header__submenu {
@@ -859,6 +863,13 @@ body {
   }
 }
 
+/* Скрываем ссылку "Другие услуги" на мобильной версии (оставляем кнопку toggle) */
+@media (width <= 768px) {
+  .header__menu-item--has-submenu .header__menu-link {
+    display: none !important;
+  }
+}
+
 /* === Two-panels mobile layout (full radii + dynamic gap) === */
 @media (width <= 768px) {
   /* 3) Зазор между плашками */
@@ -942,9 +953,4 @@ body {
   .header__menu.is-active {
     transform: translateX(-50%) translateY(0) !important;
   }
-}
-
-
-.header__menu-link {
-  gap: 6px;
 }

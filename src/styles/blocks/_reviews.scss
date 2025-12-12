@@ -1,8 +1,85 @@
 @use "helpers/mixins" as *;
 
+.reviews-card {
+  position: relative;
+  flex: 0 0 calc((100% - 72px) / 4);
+  max-width: calc((100% - 72px) / 4);
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  border: 1.5px solid #e0e0e0 !important;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #222;
+  }
+
+  &__text {
+    color: #444;
+    font-size: 1rem;
+  }
+
+  // Обратная совместимость со старыми классами
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+    }
+
+    .reviews-card-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #222;
+    }
+  }
+
+  &-text {
+    color: #444;
+    font-size: 1rem;
+  }
+
+  @media (width <= 768px) {
+    background-color: #a9cbb3 !important;
+    border: 1px solid #e0e0e0 !important;
+
+    /* Выравниваем только текст отзыва по левому краю */
+    & > div:nth-child(2) {
+      text-align: left !important;
+    }
+  }
+}
+
 .reviews {
   background: #fff;
-  padding: 40px 0 48px 0;
+  padding: 40px 0;
 
   &__container {
     max-width: 1200px;
@@ -10,9 +87,24 @@
     padding: 0;
   }
 
+  &__header {
+    // Начальное состояние - скрыт справа
+    opacity: 0;
+    transform: translateX(100px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+
+    // Состояние при появлении
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   &__title {
     text-align: left;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #333;
     margin-bottom: 24px;
@@ -58,7 +150,7 @@
       flex-wrap: nowrap !important;
       margin-top: 24px !important;
 
-      a {
+      .reviews__social-link {
         flex: 0 0 calc((100vw - 48px) / 3) !important;
         width: calc((100vw - 48px) / 3) !important;
         max-width: calc((100vw - 48px) / 3) !important;
@@ -83,6 +175,50 @@
           margin-left: 0 !important;
         }
       }
+    }
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #222;
+    font-size: 1.08rem;
+    font-weight: 500;
+    min-width: 170px;
+    justify-content: space-between;
+    transition:
+      box-shadow 0.2s,
+      border-color 0.2s;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 3%);
+
+    &:hover {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+      border-color: #ccc;
+    }
+
+    span {
+      padding-left: 8px;
+    }
+
+    img {
+      width: 36px;
+      height: 36px;
+      display: block;
+      border-radius: 50%;
+      border: none;
+      margin-left: 12px;
+    }
+
+    // Специальные стили для Avito (некруглая иконка)
+    &[href*="avito"] img {
+      background: #fff;
+      border-radius: 0%;
+      transform: scaleX(-1);
     }
   }
 
@@ -122,9 +258,11 @@
     cursor: pointer;
     font-size: 2rem;
     color: #333;
-    transition: background 0.2s;
+    transition:
+      background 0.2s,
+      opacity 0.2s;
 
-    &:hover {
+    &:hover:not(&--disabled) {
       background: rgb(0 0 0 / 15%);
     }
 
@@ -134,6 +272,12 @@
 
     &--right {
       right: calc(50% - 660px);
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     @media (width <= 768px) {
@@ -185,56 +329,6 @@
         margin: 0 !important;
         scroll-snap-align: center;
       }
-    }
-  }
-}
-
-.reviews-card {
-  position: relative;
-  flex: 0 0 calc((100% - 72px) / 4);
-  max-width: calc((100% - 72px) / 4);
-  height: 240px;
-  display: flex;
-  flex-direction: column;
-  background: #f8f9fa;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
-  border: 1.5px solid #e0e0e0 !important;
-
-  &-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-
-    img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #fff;
-      border: 2px solid #e0e0e0;
-    }
-
-    .reviews-card-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #222;
-    }
-  }
-
-  &-text {
-    color: #444;
-    font-size: 1rem;
-  }
-
-  @media (width <= 768px) {
-    background-color: #a9cbb3 !important;
-    border: 1px solid #e0e0e0 !important;
-
-    /* Выравниваем только текст отзыва по левому краю */
-    & > div:nth-child(2) {
-      text-align: left !important;
     }
   }
 }

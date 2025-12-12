@@ -137,3 +137,17 @@
     }
   }
 }
+
+// Стили для advantages внутри секции about
+.about .advantages {
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+  &__container {
+    padding-left: 30px;
+
+    @include mobile {
+      padding-left: 0;
+    }
+  }
+}

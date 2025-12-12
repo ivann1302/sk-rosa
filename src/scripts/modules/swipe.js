@@ -3,11 +3,7 @@
  Используется для каруселей отзывов и полезных ссылок
  */
 export function createSwipeHandler(config) {
-  const {
-    trackSelector,
-    wrapperSelector,
-    isMobile = () => window.innerWidth <= 768,
-  } = config;
+  const { trackSelector, wrapperSelector, isMobile = () => window.innerWidth <= 768 } = config;
 
   function setupSwipe() {
     const track = document.querySelector(trackSelector);
@@ -115,4 +111,3 @@ export function createSwipeHandler(config) {
 
   return { setupSwipe };
 }
-

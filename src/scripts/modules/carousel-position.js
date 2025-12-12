@@ -22,4 +22,3 @@ export function initCarouselPosition() {
   // Также устанавливаем позицию при изменении размера окна
   window.addEventListener("resize", setInitialReviewsPosition);
 }
-

@@ -9,7 +9,7 @@
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0;
     width: 100%;
     box-sizing: border-box;
     position: static !important;
@@ -52,12 +52,12 @@
       justify-content: flex-start;
       padding: 16px;
 
-      > div:first-child {
+      .services__item-content {
         width: 100% !important;
         max-width: 100% !important;
       }
 
-      > div:first-child > a {
+      .services__item-content > a {
         align-self: center !important;
       }
     }
@@ -99,6 +99,7 @@
 
     & .services__desc {
       font-size: 1rem;
+      margin-top: 16px;
 
       @media (width <= 768px) {
         text-align: center;
@@ -118,10 +119,33 @@
       font-size: 1rem;
       font-family: inherit;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgb(0 0 0 / 5%);
+      }
 
       @media (width <= 768px) {
         margin-top: 0;
         align-self: center;
+      }
+    }
+
+    &-content {
+      max-width: 60%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 24px;
+      text-align: left;
+
+      @media (width <= 768px) {
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
       }
     }
   }
@@ -130,6 +154,7 @@
 // Отступ справа для первой картинки в первой карточке
 .services__item .services__img--first {
   margin-right: 70px;
+  margin-left: auto;
 }
 
 // Убираем лишние переопределения padding для .services__container

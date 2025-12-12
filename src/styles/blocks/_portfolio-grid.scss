@@ -22,7 +22,6 @@
       margin: 0 auto;
     }
   }
-
 }
 
 .portfolio-card {
@@ -70,12 +69,26 @@
     }
   }
 
-  &__image {
+  &__image-wrapper {
     width: 100%;
     height: calc(100% - 150px);
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    transform-origin: center;
+    display: block;
+  }
+
+  // Зум изображения при наведении на карточку
+  &:hover &__image {
+    transform: scale(1.1);
   }
 
   &__price {
@@ -126,6 +139,6 @@
   }
 
   &:hover {
-    background: #2d5a2d;
+    background: #6e8c7a;
   }
 }

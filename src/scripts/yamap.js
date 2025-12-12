@@ -4,7 +4,7 @@ function initMap() {
   const office = window.CONFIG?.office || {
     latitude: 55.950398,
     longitude: 37.533535,
-    address: 'г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3',
+    address: "г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3",
     mapZoom: 16,
   };
 

@@ -11,7 +11,7 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body id="top">
     <header class="header" data-js-header>
       <div class="header__body">
         <div class="header__body-inner">
@@ -92,7 +92,9 @@
             </ul>
           </nav>
           <div class="header__contacts">
-            <a class="header__phone-link" id="header-phone-link" href="tel:+79851354991">+7 (985) 135 49-91</a>
+            <a class="header__phone-link" id="header-phone-link" href="tel:+79851354991"
+              >+7 (985) 135 49-91</a
+            >
             <a
               class="header__social-link"
               href="https://t.me/oorosa"
@@ -172,15 +174,13 @@
         </div>
         <div class="about__bottom">
           <div class="about__row">
-            <a href="#contact-form" class="about__btn">
-              Вызвать замерщика
-            </a>
+            <a href="#contact-form" class="about__btn"> Вызвать замерщика </a>
           </div>
         </div>
       </div>
 
-      <section class="advantages" style="margin-bottom: 0; padding-bottom: 0">
-        <div class="advantages__container" style="padding-left: 30px">
+      <div class="advantages">
+        <div class="advantages__container">
           <div class="advantages__list">
             <div class="advantages__item">
               <div class="advantages__icon">
@@ -223,85 +223,30 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="services">
-        <div class="services__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
-          <div
-            class="services__item"
-            style="
-              height: 200px;
-              margin: 0 0 24px 0;
-              display: flex;
-              flex-direction: row;
-              align-items: stretch;
-              border-radius: 8px;
-              box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-              padding: 0;
-              box-sizing: border-box;
-              width: 100%;
-            "
-          >
-            <div
-              style="
-                max-width: 60%;
-                min-width: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 24px;
-                text-align: left;
-              "
-            >
-              <div class="services__name" style="font-size: 2rem">
-                Стильный ремонт вашей квартиры
-              </div>
-              <div class="services__desc" style="margin-top: 16px">
+      <div class="services">
+        <div class="services__container">
+          <div class="services__item">
+            <div class="services__item-content">
+              <div class="services__name">Стильный ремонт вашей квартиры</div>
+              <div class="services__desc">
                 Ремонт квартир «под ключ»: от демонтажа и черновых работ до чистовой отделки.
                 Прозрачная смета, сертифицированные материалы и точные сроки. Оставьте заявку на
                 бесплатный замер и консультацию!
               </div>
-              <a
-                href="pages/turnkey-repair.html"
-                style="text-decoration: none; color: inherit; align-self: flex-start"
-              >
-                <button
-                  class="services__more"
-                  style="
-                    margin-top: 24px;
-                    align-self: flex-start;
-                    padding: 8px 20px;
-                    border-radius: 6px;
-                    border: 1px solid #000;
-                    background: transparent;
-                    color: #000;
-                    font-size: 1rem;
-                    font-family: inherit;
-                    cursor: pointer;
-                  "
-                >
-                  Подробнее
-                </button>
-              </a>
+              <a href="pages/turnkey-repair.html" class="services__more"> Подробнее </a>
             </div>
             <img
               class="services__img services__img--first"
               src="icons/Electrician-bro.svg"
               alt="Квартира под ключ"
-              style="
-                max-height: 100%;
-                height: auto;
-                width: auto;
-                object-fit: contain;
-                flex-shrink: 0;
-                margin-left: auto;
-              "
             />
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="company-description">
+      <div class="company-description">
         <div class="company-description__container">
           <h2 class="company-description__title">О компании</h2>
           <div class="company-description__text">
@@ -324,9 +269,9 @@
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="portfolio-grid">
+      <div class="portfolio-grid">
         <div class="portfolio-grid__container">
           <!-- Карточка 1 -->
           <div class="portfolio-card">
@@ -338,11 +283,13 @@
                 <span class="portfolio-card__info-tag">72 м²</span>
               </div>
             </div>
-            <img
-              src="images/portfolio/19.png"
-              alt="Белая Дача парк"
-              class="portfolio-card__image"
-            />
+            <div class="portfolio-card__image-wrapper">
+              <img
+                src="images/portfolio/19.png"
+                alt="Белая Дача парк"
+                class="portfolio-card__image"
+              />
+            </div>
             <div class="portfolio-card__price">
               <div class="portfolio-card__price-container">
                 <span class="portfolio-card__price-label">Итого:</span>
@@ -361,7 +308,9 @@
                 <span class="portfolio-card__info-tag">85 м²</span>
               </div>
             </div>
-            <img src="images/portfolio/9.png" alt="ЖК Митино" class="portfolio-card__image" />
+            <div class="portfolio-card__image-wrapper">
+              <img src="images/portfolio/9.png" alt="ЖК Митино" class="portfolio-card__image" />
+            </div>
             <div class="portfolio-card__price">
               <div class="portfolio-card__price-container">
                 <span class="portfolio-card__price-label">Итого:</span>
@@ -380,7 +329,9 @@
                 <span class="portfolio-card__info-tag">45 м²</span>
               </div>
             </div>
-            <img src="images/portfolio/8.png" alt="ЖК Покровский" class="portfolio-card__image" />
+            <div class="portfolio-card__image-wrapper">
+              <img src="images/portfolio/8.png" alt="ЖК Покровский" class="portfolio-card__image" />
+            </div>
             <div class="portfolio-card__price">
               <div class="portfolio-card__price-container">
                 <span class="portfolio-card__price-label">Итого:</span>
@@ -399,7 +350,9 @@
                 <span class="portfolio-card__info-tag">32 м²</span>
               </div>
             </div>
-            <img src="images/portfolio/17.png" alt="ЖК Сколково" class="portfolio-card__image" />
+            <div class="portfolio-card__image-wrapper">
+              <img src="images/portfolio/17.png" alt="ЖК Сколково" class="portfolio-card__image" />
+            </div>
             <div class="portfolio-card__price">
               <div class="portfolio-card__price-container">
                 <span class="portfolio-card__price-label">Итого:</span>
@@ -407,773 +360,169 @@
               </div>
             </div>
           </div>
-
         </div>
-      </section>
-      <a href="pages/portfolio.html" class="portfolio-grid__button" style="text-decoration: none; color: inherit">
-      Больше наших работ
-      </a>
-    </section
+      </div>
+      <a href="pages/portfolio.html" class="portfolio-grid__button"> Больше наших работ </a>
+    </section>
 
-    <section id="reviews" class="reviews" style="background: #fff; padding: 40px 0">
-      <div class="reviews__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
-        <h2
-          class="reviews__title"
-          style="
-            text-align: left;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 24px;
-          "
-        >
-          Отзывы
-        </h2>
-        <div
-          class="reviews__desc"
-          style="font-size: 1.1rem; color: #555; margin-bottom: 24px; text-align: left"
-        >
-          Мы всегда стремимся к совершенству и ценим каждого клиента. Ваши отзывы — важная часть
-          нашей работы, ведь именно благодаря вашей обратной связи мы можем становиться лучше,
-          совершенствовать сервис и поддерживать высокий уровень качества.<br /><br />
-          <span class="reviews__desc-extra"
-            >Если вы уже воспользовались нашими услугами, расскажите о своём опыте! Нам важно знать,
-            что вам понравилось, а что можно улучшить. Оставить отзыв можно прямо здесь, а также в
-            наших официальных аккаунтах на Avito, WhatsApp, Telegram и других удобных для вас
-            площадках.</span
-          ><br /><br />
-          <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
+    <section id="reviews" class="reviews">
+      <div class="reviews__container">
+        <div class="reviews__header">
+          <h2 class="reviews__title">Отзывы</h2>
+          <div class="reviews__desc">
+            Мы всегда стремимся к совершенству и ценим каждого клиента. Ваши отзывы — важная часть
+            нашей работы, ведь именно благодаря вашей обратной связи мы можем становиться лучше,
+            совершенствовать сервис и поддерживать высокий уровень качества.<br /><br />
+            <span class="reviews__desc-extra"
+              >Если вы уже воспользовались нашими услугами, расскажите о своём опыте! Нам важно
+              знать, что вам понравилось, а что можно улучшить. Оставить отзыв можно прямо здесь, а
+              также в наших официальных аккаунтах на Avito, WhatsApp, Telegram и других удобных для
+              вас площадках.</span
+            ><br /><br />
+            <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
+          </div>
         </div>
-        <div class="reviews__links" style="display: flex; gap: 24px; margin-bottom: 40px">
-          <a
-            href="https://wa.me/79851354991"
-            target="_blank"
-            style="
-              display: flex;
-              align-items: center;
-              padding: 10px 20px 10px 20px;
-              background: #fff;
-              border: 1.5px solid #e0e0e0;
-              border-radius: 12px;
-              text-decoration: none;
-              color: #222;
-              font-size: 1.08rem;
-              font-weight: 500;
-              min-width: 170px;
-              justify-content: space-between;
-              transition:
-                box-shadow 0.2s,
-                border-color 0.2s;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            "
-          >
-            <span style="padding-left: 8px">WhatsApp</span>
-            <img
-              src="images/whatsapp_icon.png"
-              alt="WhatsApp"
-              style="
-                width: 36px;
-                height: 36px;
-                display: block;
-                border-radius: 50%;
-                border: none;
-                margin-left: 12px;
-              "
-            />
+        <div class="reviews__links">
+          <a href="https://wa.me/79851354991" target="_blank" class="reviews__social-link">
+            <span>WhatsApp</span>
+            <img src="images/whatsapp_icon.png" alt="WhatsApp" />
           </a>
-          <a
-            href="https://t.me/oorosa"
-            target="_blank"
-            style="
-              display: flex;
-              align-items: center;
-              padding: 10px 20px 10px 20px;
-              background: #fff;
-              border: 1.5px solid #e0e0e0;
-              border-radius: 12px;
-              text-decoration: none;
-              color: #222;
-              font-size: 1.08rem;
-              font-weight: 500;
-              min-width: 170px;
-              justify-content: space-between;
-              transition:
-                box-shadow 0.2s,
-                border-color 0.2s;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            "
-          >
-            <span style="padding-left: 8px">Telegram</span>
-            <img
-              src="images/telegram_icon.png"
-              alt="Telegram"
-              style="
-                width: 36px;
-                height: 36px;
-                display: block;
-                border-radius: 50%;
-                border: none;
-                margin-left: 12px;
-              "
-            />
+          <a href="https://t.me/oorosa" target="_blank" class="reviews__social-link">
+            <span>Telegram</span>
+            <img src="images/telegram_icon.png" alt="Telegram" />
           </a>
           <a
             href="https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile?src=sharing"
             target="_blank"
-            style="
-              display: flex;
-              align-items: center;
-              padding: 10px 20px 10px 20px;
-              background: #fff;
-              border: 1.5px solid #e0e0e0;
-              border-radius: 12px;
-              text-decoration: none;
-              color: #222;
-              font-size: 1.08rem;
-              font-weight: 500;
-              min-width: 170px;
-              justify-content: space-between;
-              transition:
-                box-shadow 0.2s,
-                border-color 0.2s;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            "
+            class="reviews__social-link"
           >
-            <span style="padding-left: 8px">Avito</span>
-            <img
-              src="images/free-png.ru-835.png"
-              alt="Avito"
-              style="
-                width: 36px;
-                height: 36px;
-                display: block;
-                background: #fff;
-                border-radius: 0%;
-                border: none;
-                transform: scaleX(-1);
-                margin-left: 12px;
-              "
-            />
+            <span>Avito</span>
+            <img src="images/free-png.ru-835.png" alt="Avito" />
           </a>
         </div>
-        <div
-          class="reviews__carousel-outer"
-          style="
-            position: relative;
-            width: 100vw;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          "
-        >
-          <button
-            class="reviews-carousel__arrow reviews-carousel__arrow--left"
-            style="
-              position: absolute;
-              left: calc(50% - 660px);
-              top: 50%;
-              transform: translateY(-50%);
-              z-index: 2;
-              width: 44px;
-              height: 44px;
-              border-radius: 50%;
-              background: rgba(0, 0, 0, 0.08);
-              border: none;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              cursor: pointer;
-              font-size: 2rem;
-              color: #333;
-              transition: background 0.2s;
-            "
-          >
-            &#8592;
-          </button>
-          <section
-            class="reviews-carousel"
-            style="
-              max-width: 1200px;
-              width: 100%;
-              margin: 0 auto;
-              overflow: hidden;
-              position: relative;
-            "
-          >
-            <div class="reviews-carousel__wrapper" style="width: 100%; overflow: hidden">
-              <div
-                class="reviews-carousel__track"
-                style="
-                  display: flex;
-                  gap: 24px;
-                  box-sizing: border-box;
-                  width: calc(4 * (100% - 72px) / 4 + 72px);
-                  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                  will-change: transform;
-                "
-              >
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">Анна, Москва</div>
+        <div class="reviews__carousel-outer">
+          <button class="reviews-carousel__arrow reviews-carousel__arrow--left">&#8592;</button>
+          <div class="reviews-carousel">
+            <div class="reviews-carousel__wrapper">
+              <div class="reviews-carousel__track">
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="user" />
+                    <div class="reviews-card__name">Анна, Москва</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Очень довольна ремонтом! Всё сделали в срок, аккуратно и качественно. Спасибо
                     вашей команде!
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">Игорь, Химки</div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="user" />
+                    <div class="reviews-card__name">Игорь, Химки</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Понравился подход и прозрачность. Все этапы согласовывали, материалы
                     качественные. Рекомендую!
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Мария, Одинцово
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="user" />
+                    <div class="reviews-card__name">Мария, Одинцово</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Спасибо за ремонт кухни! Всё очень понравилось, мастера вежливые, результат
                     отличный.
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Владимир, Балашиха
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="user" />
+                    <div class="reviews-card__name">Владимир, Балашиха</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Работа выполнена на отлично! Буду обращаться ещё и советовать друзьям. Спасибо!
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Екатерина, Реутов
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="user" />
+                    <div class="reviews-card__name">Екатерина, Реутов</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Всё понравилось, особенно отношение к деталям. Буду рекомендовать знакомым!
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Сергей, Москва
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="user" />
+                    <div class="reviews-card__name">Сергей, Москва</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Спасибо за профессионализм и аккуратность. Всё устроило, результат отличный!
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Ольга, Люберцы
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" alt="user" />
+                    <div class="reviews-card__name">Ольга, Люберцы</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Очень приятное общение, всё объяснили, сделали быстро и качественно.
                   </div>
                 </div>
-                <div
-                  class="reviews-card"
-                  style="
-                    position: relative;
-                    flex: 0 0 calc((100% - 72px) / 4);
-                    max-width: calc((100% - 72px) / 4);
-                    height: 240px;
-                    display: flex;
-                    flex-direction: column;
-                    background: #f8f9fa;
-                    border-radius: 12px;
-                    padding: 24px;
-                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                  "
-                >
-                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                      alt="user"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #fff;
-                        border: 2px solid #e0e0e0;
-                      "
-                    />
-                    <div style="font-weight: 600; font-size: 1.1rem; color: #222">
-                      Дмитрий, Балашиха
-                    </div>
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="user" />
+                    <div class="reviews-card__name">Дмитрий, Балашиха</div>
                   </div>
-                  <div style="color: #444; font-size: 1rem">
+                  <div class="reviews-card__text">
                     Ремонт прошёл без стресса, всё чётко по срокам. Спасибо за работу!
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <button
-            class="reviews-carousel__arrow reviews-carousel__arrow--right"
-            style="
-              position: absolute;
-              right: calc(50% - 660px);
-              top: 50%;
-              transform: translateY(-50%);
-              z-index: 2;
-              width: 44px;
-              height: 44px;
-              border-radius: 50%;
-              background: rgba(0, 0, 0, 0.08);
-              border: none;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              cursor: pointer;
-              font-size: 2rem;
-              color: #333;
-              transition: background 0.2s;
-            "
-          >
-            &#8594;
-          </button>
+          </div>
+          <button class="reviews-carousel__arrow reviews-carousel__arrow--right">&#8594;</button>
         </div>
       </div>
     </section>
 
-    <section class="useful-links" style="background: #fff; padding: 40px 0">
-      <div class="useful-links__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
+    <section class="useful-links">
+      <div class="useful-links__container">
         <h2 class="useful-links__title">Собрали для вас все самые полезные ссылки</h2>
 
         <div class="useful-links__grid">
-          <a
-            href="pages/calculator.html"
-            class="useful-links__item"
-            style="
-              background: #fff;
-              border-radius: 12px;
-              border: 2px solid #e0e0e0;
-              padding: 32px;
-              transition: transform 0.2s;
-              cursor: pointer;
-              height: 220px;
-              width: 220px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-decoration: none;
-            "
-          >
-            <h3
-              class="useful-links__item-title"
-              style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000;
-                margin-bottom: auto;
-                text-align: left;
-              "
-            >
-              Калькулятор ремонта
-            </h3>
-            <img
-              src="images/ab008167-9d84-4358-9630-d4ceaeea4a40.jpg"
-              alt="Калькулятор"
-              style="
-                width: 200px;
-                height: 200px;
-                display: block;
-                margin: 0;
-                border-radius: 12px;
-                object-fit: cover;
-                align-self: flex-end;
-                margin-top: auto;
-              "
-            />
+          <a href="pages/calculator.html" class="useful-links__item">
+            <h3 class="useful-links__item-title">Калькулятор ремонта</h3>
+            <img src="images/ab008167-9d84-4358-9630-d4ceaeea4a40.jpg" alt="Калькулятор" />
           </a>
 
-          <div
-            class="useful-links__item"
-            style="
-              background: #fff;
-              border-radius: 12px;
-              border: 2px solid #e0e0e0;
-              padding: 32px;
-              transition: transform 0.2s;
-              cursor: pointer;
-              height: 220px;
-              width: 220px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            "
-          >
-            <h3
-              class="useful-links__item-title"
-              style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000;
-                margin-bottom: auto;
-                text-align: center;
-              "
-            >
-              Блог о ремонте
-            </h3>
-            <img
-              src="images/4880440.jpg"
-              alt="Блог"
-              style="
-                width: 150px;
-                height: 150px;
-                display: block;
-                border-radius: 12px;
-                object-fit: cover;
-                align-self: flex-end;
-                margin-top: auto;
-              "
-            />
+          <div class="useful-links__item">
+            <h3 class="useful-links__item-title">Блог о ремонте</h3>
+            <img src="images/4880440.jpg" alt="Блог" />
           </div>
 
-          <div
-            class="useful-links__item"
-            style="
-              background: #fff;
-              border-radius: 12px;
-              border: 2px solid #e0e0e0;
-              padding: 32px;
-              transition: transform 0.2s;
-              cursor: pointer;
-              height: 220px;
-              width: 220px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            "
-          >
-            <h3
-              class="useful-links__item-title"
-              style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000;
-                margin-bottom: auto;
-                text-align: center;
-              "
-            >
-              Консультация
-            </h3>
-            <img
-              src="images/2922762.jpg"
-              alt="Консультация"
-              style="
-                width: 130px;
-                height: 130px;
-                display: block;
-                border-radius: 12px;
-                object-fit: cover;
-                align-self: center;
-                margin-top: auto;
-              "
-            />
+          <div class="useful-links__item">
+            <h3 class="useful-links__item-title">Консультация</h3>
+            <img src="images/2922762.jpg" alt="Консультация" />
           </div>
 
-          <div
-            class="useful-links__item"
-            style="
-              background: #fff;
-              border-radius: 12px;
-              border: 2px solid #e0e0e0;
-              padding: 32px;
-              transition: transform 0.2s;
-              cursor: pointer;
-              height: 220px;
-              width: 220px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            "
-          >
-            <h3
-              class="useful-links__item-title"
-              style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000;
-                margin-bottom: auto;
-                text-align: center;
-              "
-            >
-              Сертификаты и лицензии
-            </h3>
-            <img
-              src="images/3992085.jpg"
-              alt="Сертификаты"
-              style="
-                width: 130px;
-                height: 130px;
-                display: block;
-                border-radius: 12px;
-                object-fit: cover;
-                align-self: center;
-                margin-top: auto;
-              "
-            />
+          <div class="useful-links__item">
+            <h3 class="useful-links__item-title">Сертификаты и лицензии</h3>
+            <img src="images/3992085.jpg" alt="Сертификаты" />
           </div>
 
-          <div
-            class="useful-links__item"
-            style="
-              background: #fff;
-              border-radius: 12px;
-              border: 2px solid #e0e0e0;
-              padding: 32px;
-              transition: transform 0.2s;
-              cursor: pointer;
-              height: 220px;
-              width: 220px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            "
-          >
-            <h3
-              class="useful-links__item-title"
-              style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000;
-                margin-bottom: auto;
-                text-align: center;
-              "
-            >
-              Работа по договору
-            </h3>
-            <img
-              src="images/Wavy_Bus-06_Single-06.jpg"
-              alt="Работа по договору"
-              style="
-                width: 100px;
-                height: 100px;
-                display: block;
-                border-radius: 12px;
-                object-fit: cover;
-                align-self: center;
-                margin-top: auto;
-              "
-            />
+          <div class="useful-links__item">
+            <h3 class="useful-links__item-title">Работа по договору</h3>
+            <img src="images/Wavy_Bus-06_Single-06.jpg" alt="Работа по договору" />
           </div>
         </div>
       </div>
     </section>
 
-    <section
-      id="contact-form"
-      class="contact-form"
-      style="
-        background: url(&quot;images/alexandra-gorn-JIUjvqe2ZHg-unsplash.jpg&quot;) center
-          center/cover no-repeat;
-        position: relative;
-        overflow: hidden;
-      "
-    >
-      <div
-        class="contact-form__overlay"
-        style="
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.4);
-        "
-      ></div>
+    <section id="contact-form" class="contact-form">
+      <div class="contact-form__overlay"></div>
       <div class="contact-form__container">
         <div class="contact-form__content">
           <h2 class="contact-form__title">Оставьте заявку</h2>
@@ -1201,19 +550,15 @@
             <div id="map" class="contacts__map"></div>
           </div>
           <div class="contacts__info">
-            <h3 class="contacts__info-title" style="font-size: 1.6rem; margin-bottom: 16px">
-              Наши контакты
-            </h3>
+            <h3 class="contacts__info-title">Наши контакты</h3>
             <div class="contacts__contact-list">
               <div class="contacts__contact-item">
                 <div class="contacts__contact-icon">
                   <img src="icons/map-pin.svg" alt="Адрес" width="24" height="24" />
                 </div>
                 <div class="contacts__contact-content">
-                  <h4 style="font-size: 1.1rem; margin-bottom: 8px">Адрес</h4>
-                  <p style="font-size: 1rem; line-height: 1.5">
-                    г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3
-                  </p>
+                  <h4>Адрес</h4>
+                  <p>г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3</p>
                 </div>
               </div>
               <div class="contacts__contact-item">
@@ -1226,8 +571,8 @@
                   />
                 </div>
                 <div class="contacts__contact-content">
-                  <h4 style="font-size: 1.1rem; margin-bottom: 8px">Телефон</h4>
-                  <p style="font-size: 1rem; line-height: 1.5">+7 (985) 135-49-91</p>
+                  <h4>Телефон</h4>
+                  <p>+7 (985) 135-49-91</p>
                 </div>
               </div>
               <div class="contacts__contact-item">
@@ -1240,8 +585,8 @@
                   />
                 </div>
                 <div class="contacts__contact-content">
-                  <h4 style="font-size: 1.1rem; margin-bottom: 8px">Email</h4>
-                  <p style="font-size: 1rem; line-height: 1.5">ooo.rosa2019@yandex.ru</p>
+                  <h4>Email</h4>
+                  <p>ooo.rosa2019@yandex.ru</p>
                 </div>
               </div>
               <div class="contacts__contact-item">
@@ -1254,10 +599,10 @@
                   />
                 </div>
                 <div class="contacts__contact-content">
-                  <h4 style="font-size: 1.1rem; margin-bottom: 8px">Режим работы</h4>
-                  <p style="font-size: 1rem; line-height: 1.5">Пн-Пт: 9:00 – 20:00</p>
-                  <p style="font-size: 1rem; line-height: 1.5">Сб: 10:00 – 18:00</p>
-                  <p style="font-size: 1rem; line-height: 1.5">Вс: выходной</p>
+                  <h4>Режим работы</h4>
+                  <p>Пн-Пт: 9:00 – 20:00</p>
+                  <p>Сб: 10:00 – 18:00</p>
+                  <p>Вс: выходной</p>
                 </div>
               </div>
             </div>
@@ -1270,7 +615,15 @@
       <div class="footer__container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <h1>OOO.ROSA</h1>
+            <a href="#top" class="footer__brand-link">
+              <img
+                class="logo__image"
+                src="images/123.png"
+                alt="OOO.ROSA"
+                width="140"
+                height="40"
+              />
+            </a>
             <p>Профессиональные отделочные работы под ключ с гарантией качества</p>
             <div class="footer__contacts">
               <div class="footer__contact-item">
@@ -1354,7 +707,7 @@
     <!-- Инициализация контактных данных из констант -->
     <script src="scripts/init-contacts.js"></script>
     <!-- Yandex Maps API -->
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
     <script src="scripts/yamap.js"></script>
     <script src="scripts/carousel.js"></script>
     <script src="scripts/main.js"></script>

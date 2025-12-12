@@ -103,6 +103,10 @@ h6,
 
 p {
   --paragraphMarginBottom: #{rem(24)};
+
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 a,

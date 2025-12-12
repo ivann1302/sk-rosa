@@ -36,7 +36,7 @@ export function initMobileMenu() {
   // Закрываем меню при клике на ссылку (кроме "Другие услуги")
   const menuLinks = headerMenu.querySelectorAll("a");
   menuLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
+    link.addEventListener("click", function (_e) {
       // Проверяем, не является ли это ссылкой "Другие услуги"
       const isSubmenuLink =
         link.closest(".header__menu-item--has-submenu") &&
@@ -61,4 +61,3 @@ export function initMobileMenu() {
     }
   });
 }
-

@@ -380,3 +380,73 @@ document.addEventListener("DOMContentLoaded", function () {
   // Также устанавливаем позицию при изменении размера окна
   window.addEventListener("resize", setInitialReviewsPosition);
 })();
+
+// Анимация появления блока "О компании" при скролле
+(function () {
+  function initCompanyDescriptionReveal() {
+    const container = document.querySelector(".company-description__container");
+
+    if (!container) return;
+
+    // Настройки Intersection Observer
+    const observerOptions = {
+      threshold: 0.1, // Срабатывает, когда 10% элемента видно
+      rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Добавляем класс для анимации появления
+          entry.target.classList.add("company-description__container--revealed");
+          // Отключаем наблюдение после первого появления
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Начинаем наблюдение за элементом
+    observer.observe(container);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCompanyDescriptionReveal);
+  } else {
+    initCompanyDescriptionReveal();
+  }
+})();
+
+// Анимация появления блока "Отзывы" при скролле (справа)
+(function () {
+  function initReviewsReveal() {
+    const header = document.querySelector(".reviews__header");
+
+    if (!header) return;
+
+    // Настройки Intersection Observer
+    const observerOptions = {
+      threshold: 0.1, // Срабатывает, когда 10% элемента видно
+      rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Добавляем класс для анимации появления
+          entry.target.classList.add("reviews__header--revealed");
+          // Отключаем наблюдение после первого появления
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Начинаем наблюдение за элементом
+    observer.observe(header);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initReviewsReveal);
+  } else {
+    initReviewsReveal();
+  }
+})();

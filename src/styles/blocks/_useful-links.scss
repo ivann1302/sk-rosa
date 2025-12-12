@@ -63,6 +63,11 @@
     align-items: center;
     justify-content: center;
 
+    // Для ссылок убираем подчеркивание
+    &[href] {
+      text-decoration: none;
+    }
+
     @media (width <= 768px) {
       width: calc((100vw - 60px) / 2) !important;
       min-width: calc((100vw - 60px) / 2) !important;
@@ -81,11 +86,46 @@
       text-align: center;
     }
 
+    // Первый элемент (ссылка) - заголовок слева
+    &:first-child &-title {
+      text-align: left;
+    }
+
     img {
       display: block;
       border-radius: 12px;
       object-fit: cover;
       margin-top: auto;
+    }
+
+    // Первое изображение (в первой ссылке) - 200x200px, справа
+    &:first-child img {
+      width: 200px;
+      height: 200px;
+      margin: 0;
+      align-self: flex-end;
+    }
+
+    // Второе изображение - 150x150px, справа
+    &:nth-child(2) img {
+      width: 150px;
+      height: 150px;
+      align-self: flex-end;
+    }
+
+    // Третье и четвертое изображения - 130x130px, по центру
+    &:nth-child(3) img,
+    &:nth-child(4) img {
+      width: 130px;
+      height: 130px;
+      align-self: center;
+    }
+
+    // Пятое изображение - 100x100px, по центру
+    &:nth-child(5) img {
+      width: 100px;
+      height: 100px;
+      align-self: center;
     }
   }
 

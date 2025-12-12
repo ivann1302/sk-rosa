@@ -34,17 +34,38 @@ document.addEventListener("DOMContentLoaded", function () {
   const reviewsTrack = document.querySelector(".reviews-carousel__track");
   const reviewsLeftBtn = document.querySelector(".reviews-carousel__arrow--left");
   const reviewsRightBtn = document.querySelector(".reviews-carousel__arrow--right");
+
   let reviewsCurrent = 0;
-  const reviewsCards = reviewsTrack
-    ? reviewsTrack.querySelectorAll('div[style*="position:relative"]')
-    : [];
+  const reviewsCards = reviewsTrack ? reviewsTrack.querySelectorAll(".reviews-card") : [];
   const reviewsVisible = 4;
+
+  function updateArrowsState() {
+    if (reviewsLeftBtn && reviewsRightBtn) {
+      // Левая стрелка неактивна, если мы в начале
+      if (reviewsCurrent === 0) {
+        reviewsLeftBtn.classList.add("reviews-carousel__arrow--disabled");
+      } else {
+        reviewsLeftBtn.classList.remove("reviews-carousel__arrow--disabled");
+      }
+
+      // Правая стрелка неактивна, если мы в конце
+      if (reviewsCurrent >= reviewsCards.length - reviewsVisible) {
+        reviewsRightBtn.classList.add("reviews-carousel__arrow--disabled");
+      } else {
+        reviewsRightBtn.classList.remove("reviews-carousel__arrow--disabled");
+      }
+    }
+  }
+
   function reviewsUpdate() {
     const card = reviewsCards[0];
     let cardWidth = card ? card.offsetWidth : 0;
-    if (reviewsTrack)
+    if (reviewsTrack) {
       reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + 24)}px)`;
+    }
+    updateArrowsState();
   }
+
   if (reviewsCarousel && reviewsTrack && reviewsLeftBtn && reviewsRightBtn) {
     reviewsLeftBtn.addEventListener("click", function () {
       if (reviewsCurrent > 0) {
@@ -52,12 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
         reviewsUpdate();
       }
     });
+
     reviewsRightBtn.addEventListener("click", function () {
       if (reviewsCurrent < reviewsCards.length - reviewsVisible) {
         reviewsCurrent++;
         reviewsUpdate();
       }
     });
+
     window.addEventListener("resize", reviewsUpdate);
     reviewsUpdate();
   }
