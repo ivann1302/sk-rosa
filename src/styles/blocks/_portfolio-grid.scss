@@ -7,7 +7,6 @@
   &__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 24px;
     column-gap: 48px;
     max-width: 1200px;
     margin: 0 auto;
@@ -24,35 +23,6 @@
     }
   }
 
-  &__button {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 48px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    grid-column: 1 / -1; // Занимает все колонки grid
-
-    @media (width <= 768px) {
-      display: block;
-    }
-
-    button {
-      background: var(--color-green);
-      color: white;
-      border: none;
-      padding: 12px 32px;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-
-      &:hover {
-        background: #2d5a2d;
-      }
-    }
-  }
 }
 
 .portfolio-card {
@@ -130,5 +100,32 @@
       color: #222;
       font-size: 1.2rem;
     }
+  }
+}
+
+// Стили для кнопки "Больше наших работ"
+.portfolio-grid__button {
+  display: block;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 12px 32px;
+  background: var(--color-green);
+  color: white !important;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+
+  @media (width <= 768px) {
+    margin-bottom: 24px;
+    padding: 12px 24px;
+  }
+
+  &:hover {
+    background: #2d5a2d;
   }
 }
