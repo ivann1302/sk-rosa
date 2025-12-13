@@ -656,6 +656,21 @@ body {
   z-index: 100;
   display: block;
 
+  @media (width >= 769px) {
+    left: 160px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: -160px;
+      right: 0;
+      height: 15px;
+      background: transparent;
+      pointer-events: auto;
+    }
+  }
+
   @media (width <= 768px) {
     position: static;
     opacity: 0;

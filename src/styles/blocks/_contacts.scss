@@ -133,6 +133,16 @@
     margin-bottom: 1px;
   }
 
+  &__contact-content a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #333;
+    }
+  }
+
   &__social {
     margin-top: auto;
     padding-top: 12px;

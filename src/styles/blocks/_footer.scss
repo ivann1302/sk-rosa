@@ -242,14 +242,24 @@
       transform: scale(1.1);
     }
 
-    span {
+    span,
+    a {
       color: #d1d5db;
       line-height: 1.5;
       font-size: 1rem;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
-    &:hover span {
+    a {
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    &:hover span,
+    &:hover a {
       color: #fff;
     }
   }

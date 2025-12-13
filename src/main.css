@@ -1162,6 +1162,21 @@ body {
   z-index: 100;
   display: block;
 }
+@media (width >= 769px) {
+  .header__submenu {
+    left: 160px;
+  }
+  .header__submenu::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -160px;
+    right: 0;
+    height: 15px;
+    background: transparent;
+    pointer-events: auto;
+  }
+}
 @media (width <= 768px) {
   .header__submenu {
     position: static;
@@ -3587,6 +3602,16 @@ body {
   gap: 16px;
   align-items: center;
 }
+.contact-form__form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
 .contact-form__field {
   width: 100%;
   max-width: 300px;
@@ -4305,6 +4330,14 @@ body {
   font-size: 1rem;
   margin-bottom: 1px;
 }
+.contacts__contact-content a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.contacts__contact-content a:hover {
+  color: #333;
+}
 .contacts__social {
   margin-top: auto;
   padding-top: 12px;
@@ -4559,13 +4592,19 @@ body {
   background: rgba(136, 165, 147, 0.2);
   transform: scale(1.1);
 }
-.footer__contact-item span {
+.footer__contact-item span,
+.footer__contact-item a {
   color: #d1d5db;
   line-height: 1.5;
   font-size: 1rem;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
-.footer__contact-item:hover span {
+.footer__contact-item a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.footer__contact-item:hover span, .footer__contact-item:hover a {
   color: #fff;
 }
 .footer__contacts {
@@ -6052,6 +6091,14 @@ body {
   padding: 0;
 }
 .reviews__header {
+  background: #fafafa;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 24px 0;
   opacity: 0;
   transform: translateX(100px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -6066,10 +6113,15 @@ body {
   font-weight: 600;
   color: #333;
   margin-bottom: 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 12px;
 }
 @media (width <= 768px) {
   .reviews__title {
     margin-left: 12px;
+    padding: 0;
   }
 }
 .reviews__desc {
@@ -6077,11 +6129,16 @@ body {
   color: #555;
   margin-bottom: 24px;
   text-align: left;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 12px;
 }
 @media (width <= 768px) {
   .reviews__desc {
     margin-bottom: 0 !important;
     margin-left: 12px;
+    padding: 0;
   }
   .reviews__desc br {
     display: none;
@@ -6095,6 +6152,7 @@ body {
 .reviews__links {
   display: flex;
   gap: 24px;
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 @media (width <= 768px) {
