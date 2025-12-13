@@ -9,8 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const visible = 3;
   function update() {
     const card = cards[0];
+    // eslint-disable-next-line prefer-const
     let cardWidth = card ? card.offsetWidth : 0;
-    if (track) track.style.transform = `translateX(${-current * (cardWidth + 24)}px)`;
+    if (track) {
+      track.style.transform = `translateX(${-current * (cardWidth + 24)}px)`;
+    }
   }
   if (carousel && track && leftBtn && rightBtn) {
     leftBtn.addEventListener("click", function () {
@@ -59,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function reviewsUpdate() {
     const card = reviewsCards[0];
-    let cardWidth = card ? card.offsetWidth : 0;
+    const cardWidth = card ? card.offsetWidth : 0;
     if (reviewsTrack) {
       reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + 24)}px)`;
     }

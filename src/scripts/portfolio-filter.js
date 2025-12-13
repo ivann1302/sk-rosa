@@ -71,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         item.style.display = "none";
       }
     });
-
-    console.log(`Фильтрация завершена. Показано работ: ${visibleCount}`);
   }
 
   // Функция сброса фильтров
@@ -85,30 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
     portfolioItems.forEach(item => {
       item.style.display = "block";
     });
-
-    console.log("Фильтры сброшены. Показаны все работы.");
   }
 
   // Добавляем обработчики событий
   if (findButton) {
     findButton.addEventListener("click", filterPortfolio);
-    console.log('Кнопка "Найти работы" подключена');
   }
 
   // Автоматическая фильтрация при изменении значений
   if (typeFilter) {
     typeFilter.addEventListener("change", filterPortfolio);
-    console.log('Фильтр "Тип помещения" подключен');
   }
 
   if (areaFilter) {
     areaFilter.addEventListener("input", filterPortfolio);
-    console.log('Фильтр "Площадь" подключен');
   }
 
   if (priceFilter) {
     priceFilter.addEventListener("change", filterPortfolio);
-    console.log('Фильтр "Стоимость" подключен');
   }
 
   // Добавляем анимацию появления элементов (начиная с 3-й карточки)
@@ -139,6 +131,4 @@ document.addEventListener("DOMContentLoaded", function () {
       item.style.transform = "translateY(0)";
     }
   });
-
-  console.log(`Портфолио инициализировано. Всего работ: ${portfolioItems.length}`);
 });

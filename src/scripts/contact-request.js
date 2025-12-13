@@ -72,9 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Очищаем форму
     form.reset();
-
-    // Здесь можно добавить отправку данных на сервер
-    console.log("Данные формы:", data);
   });
 
   // Функция для показа сообщений

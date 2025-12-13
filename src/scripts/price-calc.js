@@ -33,10 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Отправка данных (заглушка)
-      console.log("Отправка сметы:", {
-        phone: phone,
-        messenger: activeMessenger,
-      });
+      // Данные отправляются через выбранный мессенджер
 
       let messengerName = "";
       switch (activeMessenger) {
