@@ -1,10 +1,9 @@
 // Основной JS-файл. Использует модули для организации кода.
-
-// Импортируем модули
-import { initMobileMenu } from "./modules/menu.js";
-import { initSubmenu } from "./modules/submenu.js";
-import { createSwipeHandler } from "./modules/swipe.js";
-import { initCarouselPosition } from "./modules/carousel-position.js";
+import IntersectionObserver from "intersection-observer";
+import { initMobileMenu } from "../modules/menu.js";
+import { initSubmenu } from "../modules/submenu.js";
+import { createSwipeHandler } from "../modules/swipe.js";
+import { initCarouselPosition } from "../modules/carousel-position.js";
 
 // Инициализация при загрузке DOM
 document.addEventListener("DOMContentLoaded", function () {
@@ -42,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
 function initCompanyDescriptionReveal() {
   const container = document.querySelector(".company-description__container");
 
-  if (!container) return;
+  if (!container) {
+    return;
+  }
 
   // Настройки Intersection Observer
   const observerOptions = {
@@ -69,7 +70,9 @@ function initCompanyDescriptionReveal() {
 function initReviewsReveal() {
   const header = document.querySelector(".reviews__header");
 
-  if (!header) return;
+  if (!header) {
+    return;
+  }
 
   // Настройки Intersection Observer
   const observerOptions = {

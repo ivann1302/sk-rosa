@@ -1,13 +1,17 @@
 @use "helpers/mixins" as *;
 
 // Блок "Оставить заявку / Связаться с нами"
-.contact-request-turnkey {
-  background: url("../images/turnkey/u2928876119_Scandinavian_minimalist_living_room_soft_gray_walls_604f4427-039e-46a3-a1b6-a51312b51bb3.png")
-    center center/cover no-repeat;
+.contact-request {
+  background: url("../../assets/images/common/fabula-ai.png") center center/cover no-repeat;
   padding: 80px 0;
-  margin-top: 48px;
-  margin-bottom: 72px;
   position: relative;
+
+  @media (width <= 768px) {
+    background: none;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+  }
 
   &::before {
     content: "";
@@ -16,16 +20,26 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(0 0 0 / 60%);
+    background: rgb(0 0 0 / 50%);
     z-index: 1;
+
+    @media (width <= 768px) {
+      display: none;
+    }
   }
 
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     position: relative;
     z-index: 2;
+
+    @media (width <= 768px) {
+      max-width: none;
+      width: 100%;
+      padding: 0;
+    }
   }
 
   &__content {
@@ -35,14 +49,15 @@
     align-items: center;
 
     @media (width <= 768px) {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
   }
 
   &__info {
-    // Стили перенесены в media query
+    @media (width <= 768px) {
+      order: 2;
+    }
   }
 
   &__title {
@@ -51,6 +66,10 @@
     color: #fff;
     margin-bottom: 32px;
     line-height: 1.2;
+
+    @media (width <= 768px) {
+      color: #000;
+    }
   }
 
   &__subtitle {
@@ -58,6 +77,10 @@
     color: rgb(255 255 255 / 90%);
     margin-bottom: 32px;
     line-height: 1.6;
+
+    @media (width <= 768px) {
+      color: #555;
+    }
   }
 
   &__features {
@@ -93,6 +116,10 @@
       font-size: 1rem;
       color: #fff;
       font-weight: 500;
+
+      @media (width <= 768px) {
+        color: #333;
+      }
     }
   }
 
@@ -135,6 +162,11 @@
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
+
+    @media (width <= 768px) {
+      padding: 32px 24px;
+      order: 1;
+    }
   }
 
   &__form-title {
@@ -230,70 +262,37 @@
     }
   }
 
-  // Мобильные стили
   @media (width <= 768px) {
-    background: none;
-    padding: 0 0 20px 0;
-
-    &::before {
-      display: none;
-    }
-
-    &__container {
-      padding: 0;
-      max-width: 100%;
-    }
-
-    &__content {
-      position: relative;
-
-      &::before {
-        content: "";
-        display: block;
-        width: 100vw;
-        height: 280px;
-        background: url("../images/turnkey/u2928876119_Scandinavian_minimalist_living_room_soft_gray_walls_604f4427-039e-46a3-a1b6-a51312b51bb3.png")
-          center center/cover no-repeat;
-        border-radius: 0;
-        margin-bottom: 20px;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-      }
-    }
-
-    &__info {
-      order: 2;
-      margin: 0 12px;
-
-      h2,
-      p {
-        color: #333 !important;
-      }
-    }
-
-    &__title {
-      color: #333 !important;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-
-    &__subtitle {
-      color: #666 !important;
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-
-    &__feature-text {
-      color: #333 !important;
-    }
-
-    &__form {
+    &::after {
+      content: "";
+      width: calc(100% + 24px);
+      height: 250px;
+      background: url("../../assets/images/portfolio/15.png") center center/cover no-repeat;
       order: 1;
-      margin: 0 12px;
+      margin-bottom: 16px;
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    .contact-request__container {
+      order: 2;
+    }
+
+    .contact-request__info {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      background: #fff;
       padding: 24px;
-      width: calc(100% - 24px);
-      box-sizing: border-box;
-      border: 1px solid #ddd;
+      order: 2;
+    }
+
+    .contact-request__form {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      background: #fff;
+      padding: 24px;
+      order: 1;
+      box-shadow: none;
     }
   }
 }

@@ -7,8 +7,14 @@ public_html/*
 
 # Compiled files
 *.css.map
+src/main.css
+src/main.css.map
 src/styles/main.css
 src/styles/main.css.map
+
+# Old/backup files
+src/**/*.old
+**/*.old
 
 # IDE
 .idea/

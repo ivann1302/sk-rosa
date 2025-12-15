@@ -45,7 +45,7 @@ function loadEnv($envFile) {
 }
 
 // Загружаем .env из корня проекта
-// Путь: sk-rosa/.env (на 2 уровня выше scripts)
-$envPath = dirname(dirname(__DIR__)) . '/.env';
+// Путь: sk-rosa/.env (на 3 уровня выше api/)
+$envPath = dirname(dirname(dirname(__DIR__))) . '/.env';
 loadEnv($envPath);
 

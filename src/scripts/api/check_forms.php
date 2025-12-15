@@ -3,13 +3,14 @@
 echo "=== ПРОВЕРКА СТАНДАРТИЗАЦИИ ФОРМ ===\n\n";
 
 // Список всех HTML файлов с формами
+// Пути относительно корня src/
 $htmlFiles = [
-    'pages/index.html' => 'Главная страница',
-    'pages/calculator.html' => 'Калькулятор',
-    'pages/turnkey-repair.html' => 'Ремонт под ключ',
-    'pages/airless-painting.html' => 'Безвоздушная покраска',
-    'pages/floor-screed.html' => 'Стяжка пола',
-    'pages/plastering.html' => 'Штукатурные работы'
+    '../index.html' => 'Главная страница',
+    '../pages/calculator.html' => 'Калькулятор',
+    '../pages/turnkey-repair.html' => 'Ремонт под ключ',
+    '../pages/airless-painting.html' => 'Безвоздушная покраска',
+    '../pages/floor-screed.html' => 'Стяжка пола',
+    '../pages/plastering.html' => 'Штукатурные работы'
 ];
 
 // Обязательные поля для всех форм
@@ -59,7 +60,9 @@ foreach ($htmlFiles as $file => $description) {
     }
     
     // Проверяем action и method
-    if (strpos($content, 'action="../scripts/send.php"') !== false) {
+    // Проверяем оба варианта: для index.html (scripts/api/send.php) и для pages/*.html (../scripts/api/send.php)
+    if (strpos($content, 'action="scripts/api/send.php"') !== false || 
+        strpos($content, 'action="../scripts/api/send.php"') !== false) {
         echo "   ✅ Action указан правильно\n";
     } else {
         echo "   ❌ Action не указан или указан неправильно\n";
@@ -76,7 +79,7 @@ foreach ($htmlFiles as $file => $description) {
 
 echo "=== ПРОВЕРКА ЗАВЕРШЕНА ===\n";
 echo "\nРекомендации:\n";
-echo "1. Убедитесь, что все формы имеют action='../scripts/send.php'\n";
+echo "1. Убедитесь, что все формы имеют action='scripts/api/send.php' (для index.html) или action='../scripts/api/send.php' (для pages/*.html)\n";
 echo "2. Убедитесь, что все формы имеют method='POST'\n";
 echo "3. Проверьте, что все обязательные поля присутствуют\n";
 echo "4. Для калькулятора проверьте дополнительные поля\n";
