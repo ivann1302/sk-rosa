@@ -7,7 +7,8 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   // 5.1: Настройка base URL для корректных путей в production
-  base: './',
+  // Для GitHub Pages используем имя репозитория как base path
+  base: process.env.NODE_ENV === 'production' ? '/sk-rosa/' : './',
   root: 'src',
   build: {
     outDir: '../public_html',
@@ -95,6 +96,11 @@ export default defineConfig({
         {
           src: 'scripts/features/contact/init-contacts.js',
           dest: 'scripts/features/contact',
+        },
+        // Копируем .nojekyll для GitHub Pages
+        {
+          src: '.nojekyll',
+          dest: '.',
         },
         // УДАЛЕНО: Копирование assets - Vite обрабатывает их автоматически
         // при сборке, копирование всей папки приводит к дублированию
