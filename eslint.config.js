@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import globals from 'globals';
 
 export default [
   js.configs.recommended,
@@ -24,6 +25,7 @@ export default [
         parseFloat: 'readonly',
         parseInt: 'readonly',
         isNaN: 'readonly',
+        IntersectionObserver: 'readonly',
       },
     },
     rules: {
@@ -33,6 +35,15 @@ export default [
       'prefer-const': 'warn',
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'all'],
+    },
+  },
+  {
+    // Конфигурация для Node.js файлов (vite.config.js и другие конфигурационные файлы)
+    files: ['*.config.js', '*.config.mjs', '*.config.ts', '*.config.cjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
   {

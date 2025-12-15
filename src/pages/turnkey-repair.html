@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Rosa</title>
-    <link rel="stylesheet" href="../main.css?v=1.0.13" />
+    <!-- Стили подключаются напрямую для немедленной загрузки (Vite обработает SCSS) -->
+    <link rel="stylesheet" href="../styles/main.scss" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -262,7 +263,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="../assets/icons/turnkey/1.svg"
+                  src="../assets/icons/features/turnkey/1.svg"
                   alt="Официальный договор"
                   width="48"
                   height="48"
@@ -278,7 +279,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="../assets/icons/turnkey/2.svg"
+                  src="../assets/icons/features/turnkey/2.svg"
                   alt="Поэтапная оплата"
                   width="48"
                   height="48"
@@ -294,7 +295,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="../assets/icons/turnkey/3.svg"
+                  src="../assets/icons/features/turnkey/3.svg"
                   alt="Технический надзор"
                   width="48"
                   height="48"
@@ -309,7 +310,12 @@
             </div>
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
-                <img src="../assets/icons/turnkey/4.svg" alt="Гарантия" width="48" height="48" />
+                <img
+                  src="../assets/icons/features/turnkey/4.svg"
+                  alt="Гарантия"
+                  width="48"
+                  height="48"
+                />
               </div>
               <div class="advantages-turnkey__content">
                 <h3 class="advantages-turnkey__title">Официальный договор</h3>
@@ -351,7 +357,7 @@
               <div class="work-stages-turnkey__horizontal-line-2"></div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--salesman">
                 <img
-                  src="../assets/icons/turnkey/salesman-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/salesman-svgrepo-com.svg"
                   alt="Консультация"
                   width="60"
                   height="60"
@@ -359,7 +365,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--record">
                 <img
-                  src="../assets/icons/turnkey/data-report-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/data-report-svgrepo-com.svg"
                   alt="Составление сметы"
                   width="60"
                   height="60"
@@ -379,7 +385,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--like">
                 <img
-                  src="../assets/icons/turnkey/like-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/like-svgrepo-com.svg"
                   alt="Одобрение"
                   width="60"
                   height="60"
@@ -387,7 +393,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--idea">
                 <img
-                  src="../assets/icons/turnkey/idea-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/idea-svgrepo-com.svg"
                   alt="Идея"
                   width="60"
                   height="60"
@@ -395,7 +401,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--record-second">
                 <img
-                  src="../assets/icons/turnkey/record-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/record-svgrepo-com.svg"
                   alt="Запись"
                   width="60"
                   height="60"
@@ -496,7 +502,7 @@
                     id="prev-btn"
                   >
                     <img
-                      src="../assets/icons/turnkey/right-arrow-svgrepo-com.svg"
+                      src="../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
                       alt="Предыдущий"
                       width="30"
                       height="30"
@@ -507,7 +513,7 @@
                     id="next-btn"
                   >
                     <img
-                      src="../assets/icons/turnkey/right-arrow-svgrepo-com.svg"
+                      src="../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
                       alt="Следующий"
                       width="30"
                       height="30"
@@ -1105,12 +1111,8 @@
     <script src="../scripts/core/constants.js"></script>
     <!-- Инициализация контактных данных из констант -->
     <script src="../scripts/features/contact/init-contacts.js"></script>
-    <!-- Yandex Maps API -->
-    <script
-      src="https://api-maps.yandex.ru/2.1/?apikey=your-api-key&lang=ru_RU"
-      type="text/javascript"
-    ></script>
-    <script src="../scripts/features/contact/yamap.js"></script>
+    <!-- Lazy loading Yandex Maps (загружается только при приближении к секции) -->
+    <script type="module" src="../scripts/features/contact/lazy-yandex-maps.js"></script>
     <script src="../scripts/core/carousel.js"></script>
     <script src="../scripts/features/faq/faq.js"></script>
     <script src="../scripts/features/portfolio/portfolio-turnkey.js"></script>

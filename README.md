@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-Сервер откроется на `http://localhost:3000/src/index.html`
+Сервер откроется на `http://localhost:3000/index.html`
 
 ### Отдельные команды:
 
@@ -61,7 +61,13 @@ npm run deploy
 npm run preview
 ```
 
-Сервер откроется на `http://localhost:3000/public_html/index.html`
+Сервер откроется на `http://localhost:4173/index.html` (стандартный порт Vite preview)
+
+**Важно:** Перед запуском preview необходимо выполнить сборку проекта:
+```bash
+npm run build
+npm run preview
+```
 
 ## Рабочий процесс
 

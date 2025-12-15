@@ -7,7 +7,8 @@
     <link rel="icon" href="assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="assets/icons/ui/favIcons/r-180.png" />
-    <link rel="stylesheet" href="main.css?v=1.0.13" />
+    <!-- Стили подключаются напрямую для немедленной загрузки (Vite обработает SCSS) -->
+    <link rel="stylesheet" href="./styles/main.scss" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -823,9 +824,8 @@
     <script src="scripts/core/constants.js"></script>
     <!-- Инициализация контактных данных из констант -->
     <script src="scripts/features/contact/init-contacts.js"></script>
-    <!-- Yandex Maps API -->
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-    <script src="scripts/features/contact/yamap.js"></script>
+    <!-- Lazy loading Yandex Maps (загружается только при приближении к секции) -->
+    <script type="module" src="scripts/features/contact/lazy-yandex-maps.js"></script>
     <script src="scripts/core/carousel.js"></script>
     <script type="module" src="scripts/core/main.js"></script>
   </body>

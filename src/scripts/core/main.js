@@ -1,9 +1,40 @@
 // Основной JS-файл. Использует модули для организации кода.
-import IntersectionObserver from "intersection-observer";
+// Стили подключаются напрямую в HTML для немедленной загрузки
+
 import { initMobileMenu } from "../modules/menu.js";
 import { initSubmenu } from "../modules/submenu.js";
 import { createSwipeHandler } from "../modules/swipe.js";
 import { initCarouselPosition } from "../modules/carousel-position.js";
+
+// 6.1: Динамические импорты для редко используемых модулей
+async function loadFeatureModules() {
+  // Загружаем calculator только если есть соответствующий элемент
+  if (document.querySelector(".calculator") || document.querySelector(".price-calc")) {
+    try {
+      await import("../features/calculator/calculator.js");
+    } catch (error) {
+      console.warn("Не удалось загрузить модуль calculator:", error);
+    }
+  }
+
+  // Загружаем portfolio только если есть соответствующий элемент
+  if (document.querySelector(".portfolio") || document.querySelector(".portfolio-filter")) {
+    try {
+      await import("../features/portfolio/portfolio-filter.js");
+    } catch (error) {
+      console.warn("Не удалось загрузить модуль portfolio:", error);
+    }
+  }
+
+  // Загружаем FAQ только если есть соответствующий элемент
+  if (document.querySelector(".faq") || document.querySelector("[data-faq]")) {
+    try {
+      await import("../features/faq/faq.js");
+    } catch (error) {
+      console.warn("Не удалось загрузить модуль FAQ:", error);
+    }
+  }
+}
 
 // Инициализация при загрузке DOM
 document.addEventListener("DOMContentLoaded", function () {
@@ -35,6 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Анимация появления блока "Отзывы" при скролле
   initReviewsReveal();
+
+  // Загружаем редко используемые модули динамически
+  loadFeatureModules();
 });
 
 // Анимация появления блока "О компании" при скролле

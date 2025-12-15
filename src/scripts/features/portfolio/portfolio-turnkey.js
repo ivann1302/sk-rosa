@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "885 443 ₽",
       description:
         "Модернизм выделяется утончённым дизайном и оригинальной архитектурой. Гармония базовых тонов с яркими акцентами подчёркивает стиль, а удобная мебель делает пространство комфортным для жизни.",
-      image: "../images/portfolio/10.png",
+      image: "/assets/images/portfolio/10.png",
     },
     {
       location: 'г. Москва, ЖК "Покровский"',
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "1 245 800 ₽",
       description:
         "Современный минимализм с акцентом на функциональность. Светлые тона создают ощущение простора, а продуманная планировка максимально использует каждый квадратный метр.",
-      image: "../images/portfolio/3.png",
+      image: "/assets/images/portfolio/3.png",
     },
     {
       location: 'г. Москва, ЖК "Сколково"',
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "2 156 900 ₽",
       description:
         "Классический стиль с современными элементами. Элегантная отделка, качественные материалы и внимание к деталям создают роскошный интерьер для комфортной жизни и приема гостей.",
-      image: "../images/portfolio/16.png",
+      image: "/assets/images/portfolio/16.png",
     },
     {
       location: 'г. Москва, ЖК "Митино"',
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "756 300 ₽",
       description:
         "Компактная студия с продуманным дизайном. Многофункциональная мебель и светлые тона создают уютное пространство для одного человека или пары, с продуманной системой хранения.",
-      image: "../images/portfolio/18.png",
+      image: "/assets/images/portfolio/18.png",
     },
     {
       location: 'г. Москва, ЖК "Бутово"',
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       price: "3 245 600 ₽",
       description:
         "Просторная квартира в стиле лофт. Индустриальные элементы сочетаются с современной мебелью, создавая уникальный интерьер для большой семьи с зоной отдыха и рабочей зоной.",
-      image: "../images/portfolio/5.png",
+      image: "/assets/images/portfolio/5.png",
     },
   ];
 

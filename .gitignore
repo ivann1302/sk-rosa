@@ -2,8 +2,11 @@
 node_modules/
 
 # Build output
-public_html/*
+public_html/
 !public_html/.gitkeep
+
+# Vite cache
+.vite/
 
 # Compiled files
 *.css.map
