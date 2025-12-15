@@ -662,10 +662,10 @@ body {
     &::before {
       content: "";
       position: absolute;
-      top: -15px;
-      left: -160px;
+      top: -10px;
+      left: 0;
       right: 0;
-      height: 15px;
+      height: 10px;
       background: transparent;
       pointer-events: auto;
     }

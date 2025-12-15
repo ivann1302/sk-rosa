@@ -1,16 +1,264 @@
 /**
- Модуль подменю "Другие услуги"
- Обрабатывает открытие/закрытие подменю на мобильных и hover на десктопе
+ * Модуль подменю "Другие услуги"
+ * Обрабатывает открытие/закрытие подменю на мобильных и hover на десктопе
+ */
+
+// Константы
+const MOBILE_BREAKPOINT = 768;
+const RESIZE_DEBOUNCE_DELAY = 150; // Задержка для debounce resize
+
+// Хранилище обработчиков для очистки
+const submenuHandlers = new Map();
+
+/**
+ * Debounce функция для оптимизации обработки событий
+ */
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+/**
+ * Получить все элементы сабменю
+ */
+function getSubmenuItems() {
+  return document.querySelectorAll(".header__menu-item--has-submenu");
+}
+
+/**
+ * Проверка, является ли устройство мобильным
+ */
+function isMobile() {
+  return window.innerWidth <= MOBILE_BREAKPOINT;
+}
+
+/**
+ * Показать сабменю
+ */
+function showSubmenu(item, submenu) {
+  submenu.classList.add("is-active");
+  item.classList.add("is-active");
+}
+
+/**
+ * Скрыть сабменю
+ */
+function hideSubmenu(item, submenu, toggleButton = null) {
+  submenu.classList.remove("is-active");
+  item.classList.remove("is-active");
+  if (toggleButton) {
+    toggleButton.setAttribute("aria-expanded", "false");
+  }
+}
+
+/**
+ * Очистка обработчиков для элемента
+ */
+function cleanupItemHandlers(item) {
+  const handlers = submenuHandlers.get(item);
+  if (handlers) {
+    const {
+      itemEnterHandler,
+      itemLeaveHandler,
+      submenuEnterHandler,
+      submenuLeaveHandler,
+      keydownHandler,
+    } = handlers;
+
+    if (itemEnterHandler) {
+      item.removeEventListener("mouseenter", itemEnterHandler);
+    }
+    if (itemLeaveHandler) {
+      item.removeEventListener("mouseleave", itemLeaveHandler);
+    }
+    if (submenuEnterHandler && handlers.submenu) {
+      handlers.submenu.removeEventListener("mouseenter", submenuEnterHandler);
+    }
+    if (submenuLeaveHandler && handlers.submenu) {
+      handlers.submenu.removeEventListener("mouseleave", submenuLeaveHandler);
+    }
+    if (keydownHandler) {
+      item.removeEventListener("keydown", keydownHandler);
+    }
+
+    submenuHandlers.delete(item);
+  }
+
+  // Удаляем флаг инициализации
+  delete item.dataset.hoverSetup;
+}
+
+/**
+ * Настройка hover эффектов для десктопа
+ */
+function setupDesktopHover() {
+  const submenuItems = getSubmenuItems();
+
+  if (isMobile()) {
+    return;
+  }
+
+  submenuItems.forEach(item => {
+    const submenu = item.querySelector(".header__submenu");
+
+    if (!submenu) {
+      return;
+    }
+
+    // Если обработчики уже установлены, сначала очищаем старые
+    if (item.dataset.hoverSetup === "true") {
+      cleanupItemHandlers(item);
+    }
+
+    // Помечаем, что обработчики установлены
+    item.dataset.hoverSetup = "true";
+
+    // Убираем активное состояние на десктопе при инициализации
+    hideSubmenu(item, submenu);
+
+    // Обработчик входа на пункт меню
+    const itemEnterHandler = () => {
+      showSubmenu(item, submenu);
+    };
+
+    // Обработчик выхода с пункта меню
+    const itemLeaveHandler = e => {
+      const relatedTarget = e.relatedTarget;
+
+      // Если мышь переходит на сабменю или остается внутри элемента - не скрываем
+      if (relatedTarget && (submenu.contains(relatedTarget) || item.contains(relatedTarget))) {
+        return;
+      }
+
+      // Иначе скрываем сабменю
+      hideSubmenu(item, submenu);
+    };
+
+    // Обработчик входа на сабменю
+    const submenuEnterHandler = () => {
+      showSubmenu(item, submenu);
+    };
+
+    // Обработчик выхода с сабменю
+    const submenuLeaveHandler = e => {
+      const relatedTarget = e.relatedTarget;
+
+      // Если мышь переходит обратно на пункт меню или остается внутри сабменю - не скрываем
+      if (relatedTarget && (item.contains(relatedTarget) || submenu.contains(relatedTarget))) {
+        return;
+      }
+
+      // Иначе скрываем сабменю
+      hideSubmenu(item, submenu);
+    };
+
+    // Обработчик клавиатуры для доступности
+    const keydownHandler = e => {
+      if (e.key === "Escape") {
+        hideSubmenu(item, submenu);
+        const link = item.querySelector(".header__menu-link");
+        if (link) {
+          link.focus();
+        }
+      }
+    };
+
+    // Сохраняем ссылки на обработчики для последующей очистки
+    submenuHandlers.set(item, {
+      submenu,
+      itemEnterHandler,
+      itemLeaveHandler,
+      submenuEnterHandler,
+      submenuLeaveHandler,
+      keydownHandler,
+    });
+
+    // Добавляем обработчики событий
+    item.addEventListener("mouseenter", itemEnterHandler);
+    item.addEventListener("mouseleave", itemLeaveHandler);
+    submenu.addEventListener("mouseenter", submenuEnterHandler);
+    submenu.addEventListener("mouseleave", submenuLeaveHandler);
+    item.addEventListener("keydown", keydownHandler);
+  });
+}
+
+/**
+ * Очистка всех hover обработчиков
+ */
+function cleanupDesktopHover() {
+  const submenuItems = getSubmenuItems();
+
+  submenuItems.forEach(item => {
+    cleanupItemHandlers(item);
+  });
+}
+
+/**
+ * Обработка изменения размера окна с debounce
+ */
+const handleResize = debounce(() => {
+  const isMobileDevice = isMobile();
+  const submenuItems = getSubmenuItems();
+
+  submenuItems.forEach(item => {
+    const submenu = item.querySelector(".header__submenu");
+    const toggleButton = item.querySelector(".header__menu-toggle");
+
+    if (submenu && toggleButton) {
+      if (isMobileDevice) {
+        // На мобильных убираем активное состояние при изменении размера
+        hideSubmenu(item, submenu, toggleButton);
+        // Очищаем hover обработчики
+        cleanupItemHandlers(item);
+      } else {
+        // На десктопе настраиваем hover эффекты
+        setupDesktopHover();
+      }
+    }
+  });
+}, RESIZE_DEBOUNCE_DELAY);
+
+/**
+ * Инициализация подменю
+ */
+function initializeSubmenu() {
+  const isMobileDevice = isMobile();
+  const submenuItems = getSubmenuItems();
+
+  if (isMobileDevice) {
+    submenuItems.forEach(item => {
+      const submenu = item.querySelector(".header__submenu");
+      const toggleButton = item.querySelector(".header__menu-toggle");
+
+      if (submenu && toggleButton) {
+        hideSubmenu(item, submenu, toggleButton);
+      }
+    });
+  } else {
+    // На десктопе настраиваем hover эффекты
+    setupDesktopHover();
+  }
+}
+
+/**
+ * Главная функция инициализации модуля
  */
 export function initSubmenu() {
-  const submenuItems = document.querySelectorAll(".header__menu-item--has-submenu");
+  const submenuItems = getSubmenuItems();
 
+  // Обработка клика на кнопку переключения (мобильные устройства)
   submenuItems.forEach(item => {
     const toggleButton = item.querySelector(".header__menu-toggle");
     const submenu = item.querySelector(".header__submenu");
 
     if (toggleButton && submenu) {
-      // Обработка клика на кнопку переключения (мобильные устройства)
       toggleButton.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -20,183 +268,24 @@ export function initSubmenu() {
 
         if (isActive) {
           // Закрываем подменю
-          submenu.classList.remove("is-active");
-          item.classList.remove("is-active");
-          toggleButton.setAttribute("aria-expanded", "false");
+          hideSubmenu(item, submenu, toggleButton);
         } else {
           // Открываем подменю
-          submenu.classList.add("is-active");
-          item.classList.add("is-active");
+          showSubmenu(item, submenu);
           toggleButton.setAttribute("aria-expanded", "true");
         }
       });
     }
   });
 
-  // Обработка hover для десктопа
-  function setupDesktopHover() {
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) {
-      submenuItems.forEach(item => {
-        const submenu = item.querySelector(".header__submenu");
-
-        if (submenu && !item.dataset.hoverSetup) {
-          // Помечаем, что обработчики уже установлены
-          item.dataset.hoverSetup = "true";
-
-          // Убираем активное состояние на десктопе
-          submenu.classList.remove("is-active");
-          item.classList.remove("is-active");
-
-          let hideTimeout = null;
-
-          // Функция для проверки, находится ли мышь в области элемента или сабменю
-          const isMouseInArea = (x, y) => {
-            const itemRect = item.getBoundingClientRect();
-            const submenuRect = submenu.getBoundingClientRect();
-
-            // Расширяем область проверки, включая промежуток между элементами
-            const minX = Math.min(itemRect.left, submenuRect.left) - 10;
-            const maxX = Math.max(itemRect.right, submenuRect.right) + 10;
-            const minY = Math.min(itemRect.top, submenuRect.top) - 10;
-            const maxY = Math.max(itemRect.bottom, submenuRect.bottom) + 10;
-
-            return x >= minX && x <= maxX && y >= minY && y <= maxY;
-          };
-
-          // Функция для показа сабменю
-          const showSubmenu = () => {
-            // Отменяем таймер закрытия, если он был установлен
-            if (hideTimeout) {
-              clearTimeout(hideTimeout);
-              hideTimeout = null;
-            }
-            submenu.classList.add("is-active");
-          };
-
-          // Функция для скрытия сабменю с задержкой
-          const hideSubmenu = e => {
-            // Отменяем предыдущий таймер, если он был
-            if (hideTimeout) {
-              clearTimeout(hideTimeout);
-            }
-
-            // Устанавливаем задержку перед закрытием
-            hideTimeout = setTimeout(() => {
-              // Проверяем позицию мыши перед закрытием
-              if (e && e.clientX !== undefined && e.clientY !== undefined) {
-                if (isMouseInArea(e.clientX, e.clientY)) {
-                  // Мышь все еще в области - не закрываем
-                  hideTimeout = null;
-                  return;
-                }
-              }
-
-              // Дополнительная проверка через :hover
-              const isHovered = item.matches(":hover") || submenu.matches(":hover");
-              if (!isHovered) {
-                submenu.classList.remove("is-active");
-              }
-              hideTimeout = null;
-            }, 300); // Увеличена задержка до 300ms
-          };
-
-          // Показываем сабменю при наведении на пункт меню
-          item.addEventListener("mouseenter", showSubmenu);
-
-          // Скрываем сабменю при уходе с пункта меню
-          item.addEventListener("mouseleave", function (e) {
-            // Проверяем, не переходим ли мы на сабменю
-            const relatedTarget = e.relatedTarget;
-            if (
-              relatedTarget &&
-              (submenu.contains(relatedTarget) || item.contains(relatedTarget))
-            ) {
-              // Мышь переходит на сабменю или остается в элементе - не закрываем
-              return;
-            }
-            // Иначе закрываем с задержкой
-            hideSubmenu(e);
-          });
-
-          // Показываем сабменю при наведении на само сабменю
-          submenu.addEventListener("mouseenter", showSubmenu);
-
-          // Скрываем сабменю при уходе с сабменю
-          submenu.addEventListener("mouseleave", function (e) {
-            // Проверяем, не переходим ли мы обратно на пункт меню
-            const relatedTarget = e.relatedTarget;
-            if (
-              relatedTarget &&
-              (item.contains(relatedTarget) || submenu.contains(relatedTarget))
-            ) {
-              // Мышь переходит обратно на пункт меню или остается в сабменю - не закрываем
-              return;
-            }
-            // Иначе закрываем с задержкой
-            hideSubmenu(e);
-          });
-
-          // Дополнительная проверка при движении мыши - если мышь в области, отменяем закрытие
-          document.addEventListener("mousemove", function (e) {
-            if (submenu.classList.contains("is-active") && hideTimeout) {
-              if (isMouseInArea(e.clientX, e.clientY)) {
-                // Мышь в области - отменяем закрытие
-                clearTimeout(hideTimeout);
-                hideTimeout = null;
-              }
-            }
-          });
-        }
-      });
-    }
-  }
-
   // Обработка изменения размера окна
-  window.addEventListener("resize", function () {
-    const isMobile = window.innerWidth <= 768;
-    const submenuItems = document.querySelectorAll(".header__menu-item--has-submenu");
+  window.addEventListener("resize", handleResize, { passive: true });
 
-    submenuItems.forEach(item => {
-      const submenu = item.querySelector(".header__submenu");
-      const toggleButton = item.querySelector(".header__menu-toggle");
-
-      if (submenu && toggleButton) {
-        if (isMobile) {
-          // На мобильных убираем активное состояние при изменении размера
-          submenu.classList.remove("is-active");
-          item.classList.remove("is-active");
-          toggleButton.setAttribute("aria-expanded", "false");
-        } else {
-          // На десктопе настраиваем hover эффекты
-          setupDesktopHover();
-        }
-      }
-    });
-  });
-
-  // Инициализация: закрываем все подменю при загрузке на мобильных
-  function initializeSubmenu() {
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      const submenuItems = document.querySelectorAll(".header__menu-item--has-submenu");
-      submenuItems.forEach(item => {
-        const submenu = item.querySelector(".header__submenu");
-        const toggleButton = item.querySelector(".header__menu-toggle");
-
-        if (submenu && toggleButton) {
-          submenu.classList.remove("is-active");
-          item.classList.remove("is-active");
-          toggleButton.setAttribute("aria-expanded", "false");
-        }
-      });
-    } else {
-      // На десктопе настраиваем hover эффекты
-      setupDesktopHover();
-    }
-  }
-
-  // Вызываем инициализацию после загрузки DOM
+  // Инициализация при загрузке
   initializeSubmenu();
+
+  // Очистка при выгрузке страницы
+  window.addEventListener("beforeunload", () => {
+    cleanupDesktopHover();
+  });
 }

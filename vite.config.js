@@ -131,10 +131,17 @@ export default defineConfig({
       },
     },
   },
-  // Настройка путей для импортов
+  // Настройка путей для импортов (алиасы)
   resolve: {
     alias: {
-      '@': '/src',
+      '@': resolve(__dirname, 'src'),
+      '@scripts': resolve(__dirname, 'src/scripts'),
+      '@core': resolve(__dirname, 'src/scripts/core'),
+      '@modules': resolve(__dirname, 'src/scripts/modules'),
+      '@features': resolve(__dirname, 'src/scripts/features'),
+      '@utils': resolve(__dirname, 'src/scripts/utils'),
+      '@styles': resolve(__dirname, 'src/styles'),
+      '@assets': resolve(__dirname, 'src/assets'),
     },
   },
   // 4.2: Настройка обработки статических ресурсов
