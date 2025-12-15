@@ -191,14 +191,10 @@
   }
 }
 
-.portfolio-service__more-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-  margin-bottom: 32px;
-}
-
 .portfolio-service__more-btn {
+  display: block;
+  text-align: center;
+  margin: 32px auto;
   background: var(--color-green);
   color: white;
   border: none;
@@ -207,10 +203,17 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
+  text-decoration: none;
+  width: fit-content;
 
-  &:hover {
-    background: #1a5f3a;
+  &:hover,
+  &:focus {
+    background: #6e8c7a;
+    box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
   }
 }
 

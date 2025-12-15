@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 48px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     padding: 48px 0 0 0;
 
     @media (width <= 768px) {
@@ -75,6 +75,7 @@
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+    position: relative;
   }
 
   &__image {
@@ -86,8 +87,8 @@
     display: block;
   }
 
-  // Зум изображения при наведении на карточку
-  &:hover &__image {
+  // Зум изображения при наведении на image-wrapper
+  &__image-wrapper:hover &__image {
     transform: scale(1.1);
   }
 
@@ -120,7 +121,7 @@
 .portfolio-grid__button {
   display: block;
   text-align: center;
-  max-width: 1200px;
+  max-width: 240px;
   margin: 0 auto 48px;
   padding: 12px 32px;
   background: var(--color-green);
@@ -130,7 +131,10 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
   text-decoration: none;
 
   @media (width <= 768px) {
@@ -138,7 +142,9 @@
     padding: 12px 24px;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: #6e8c7a;
+    box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
   }
 }

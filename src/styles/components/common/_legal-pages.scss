@@ -11,6 +11,7 @@
 
   &__title {
     color: #1f2937;
+    margin-top: 30px;
     margin-bottom: 30px;
   }
 
@@ -36,19 +37,25 @@
     text-align: center;
 
     a {
-      color: #000;
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
-      background: rgb(0 0 0 / 10%);
-      padding: 12px 24px;
+      font-weight: 600;
+      background: var(--color-green);
+      padding: 0.8em 1.5em;
       border-radius: 8px;
-      border: 2px solid #000;
+      border: none;
       display: inline-block;
-      transition: all 0.3s ease;
+      font-size: 1rem;
+      cursor: pointer;
+      transition:
+        background 0.2s,
+        box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
 
-      &:hover {
-        background: rgb(0 0 0 / 20%);
-        transform: translateY(-2px);
+      &:hover,
+      &:focus {
+        background: #6e8c7a;
+        box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
       }
     }
   }

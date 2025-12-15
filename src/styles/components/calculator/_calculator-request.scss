@@ -54,7 +54,10 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition:
+      background 0.2s,
+      box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
     height: 56px;
     white-space: nowrap;
     width: 200px;
@@ -63,8 +66,10 @@
     right: 48px;
     bottom: 48px;
 
-    &:hover {
-      background: #2d5a2d;
+    &:hover,
+    &:focus {
+      background: #6e8c7a;
+      box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
     }
   }
 

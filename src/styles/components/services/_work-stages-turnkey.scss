@@ -54,16 +54,6 @@
     top: 50%;
     transform: translateY(-50%);
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 70px;
-      height: 1px;
-      background: white;
-      z-index: 2;
-    }
   }
 
   &__quarter-circle {

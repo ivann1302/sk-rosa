@@ -156,10 +156,12 @@
     &--primary {
       background: var(--color-green);
       color: white;
+      box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
 
-      &:hover {
-        background: #22c55e;
-        box-shadow: 0 8px 25px rgb(34 197 94 / 30%);
+      &:hover,
+      &:focus {
+        background: #6e8c7a;
+        box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
       }
     }
 
