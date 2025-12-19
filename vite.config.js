@@ -23,24 +23,173 @@ const fixHtmlPaths = () => {
       const files = readdirSync(pagesDir);
       const htmlFiles = files.filter(file => file.endsWith(".html"));
 
+      // Находим скомпилированный CSS файл
+      const cssDir = join(outDir, "assets/css");
+      let cssFileName = "./assets/css/main.css"; // fallback
+      try {
+        if (statSync(cssDir, { throwIfNoEntry: false })) {
+          const cssFiles = readdirSync(cssDir).filter(
+            file => file.startsWith("main-") && file.endsWith(".css")
+          );
+          if (cssFiles.length > 0) {
+            cssFileName = `./assets/css/${cssFiles[0]}`;
+          }
+        }
+      } catch (e) {
+        console.warn("Could not find CSS directory, using fallback:", e.message);
+      }
+
+      // Создаем маппинг файлов: оригинальное имя -> имя с хешем
+      const imagesDir = join(outDir, "assets/images");
+      const imageMap = new Map();
+      try {
+        if (statSync(imagesDir, { throwIfNoEntry: false })) {
+          const imageFiles = readdirSync(imagesDir);
+          console.log(`📁 Found ${imageFiles.length} image files in ${imagesDir}`);
+          imageFiles.forEach(file => {
+            // Извлекаем оригинальное имя (до хеша)
+            // Формат: filename-hash.ext
+            const match = file.match(/^(.+?)-([A-Za-z0-9]{8,})\.(png|jpg|jpeg|gif|svg|webp|ico)$/);
+            if (match) {
+              const [, baseName, , ext] = match;
+              const originalName = `${baseName}.${ext}`;
+              imageMap.set(originalName, file);
+              // Также добавляем варианты с путями
+              imageMap.set(`common/${originalName}`, file);
+              imageMap.set(`portfolio/${originalName}`, file);
+              imageMap.set(`turnkey/${originalName}`, file);
+            } else {
+              // Если файл без хеша, добавляем его как есть
+              imageMap.set(file, file);
+              imageMap.set(`common/${file}`, file);
+              imageMap.set(`portfolio/${file}`, file);
+              imageMap.set(`turnkey/${file}`, file);
+            }
+          });
+          // Выводим информацию о маппинге для отладки
+          console.log(`📋 Image map created with ${imageMap.size} entries`);
+          if (imageMap.has("common/whatsapp_icon.png")) {
+            console.log(
+              `✓ WhatsApp icon mapped: common/whatsapp_icon.png -> ${imageMap.get("common/whatsapp_icon.png")}`
+            );
+          } else {
+            console.warn("⚠ WhatsApp icon not found in image map");
+            console.warn(
+              `Available common/* keys: ${Array.from(imageMap.keys())
+                .filter(k => k.startsWith("common/"))
+                .slice(0, 5)
+                .join(", ")}`
+            );
+          }
+        } else {
+          console.warn(`⚠ Images directory does not exist: ${imagesDir}`);
+        }
+      } catch (e) {
+        console.warn("Could not read images directory:", e.message);
+      }
+
+      console.log(`📄 Processing ${htmlFiles.length} HTML files from ${pagesDir}`);
       htmlFiles.forEach(file => {
         const sourceFile = join(pagesDir, file);
         const targetFile = join(outDir, file);
 
         // Читаем содержимое файла
         let content = readFileSync(sourceFile, "utf-8");
+        const originalContent = content;
 
-        // Заменяем ../scripts/ на scripts/
-        content = content.replace(/\.\.\/scripts\//g, "scripts/");
-        // Заменяем ../styles/ на styles/
-        content = content.replace(/\.\.\/styles\//g, "styles/");
-        // Заменяем ../assets/ на assets/
-        content = content.replace(/\.\.\/assets\//g, "assets/");
+        // Заменяем ../styles/main.scss на путь к скомпилированному CSS
+        content = content.replace(/\.\.\/styles\/main\.scss/g, cssFileName);
+        // Исправляем неправильный путь .././ на ./
+        content = content.replace(/\.\.\/\.\//g, "./");
+        // Заменяем ../scripts/ на ./scripts/
+        content = content.replace(/\.\.\/scripts\//g, "./scripts/");
+        // Заменяем ../assets/ на ./assets/
+        content = content.replace(/\.\.\/assets\//g, "./assets/");
         // Заменяем ../index.html на index.html
         content = content.replace(/\.\.\/index\.html/g, "index.html");
 
+        // Заменяем пути к изображениям с учетом хешей
+        // Обрабатываем все варианты: ./assets/images/common/..., assets/images/common/..., "assets/images/common/..."
+        // Паттерн: ./assets/images/common/123.png -> ./assets/images/123-CjT05Y4O.png
+        // Сначала обрабатываем пути в атрибутах src и href
+        let replacementCount = 0;
+        content = content.replace(
+          /(src|href)=(["'])(\.\/)?assets\/images\/(common|portfolio|turnkey)\/([^"'\s>]+\.(png|jpg|jpeg|gif|svg|webp|ico))\2/g,
+          (match, attr, quote, dot, folder, filename) => {
+            // Для common - ищем в маппинге (файлы обрабатываются Vite и получают хеши)
+            if (folder === "common") {
+              let mappedFile = imageMap.get(`${folder}/${filename}`);
+              if (!mappedFile) {
+                mappedFile = imageMap.get(filename);
+              }
+              if (mappedFile) {
+                replacementCount++;
+                return `${attr}=${quote}./assets/images/${mappedFile}${quote}`;
+              }
+              // Если не найдено, выводим предупреждение
+              console.warn(
+                `[${file}] Image not found in map: ${folder}/${filename}, available keys: ${Array.from(
+                  imageMap.keys()
+                )
+                  .filter(k => k.includes(filename.split(".")[0]))
+                  .slice(0, 5)
+                  .join(", ")}`
+              );
+              // Если не найдено, оставляем путь но добавляем ./
+              return `${attr}=${quote}./assets/images/${folder}/${filename}${quote}`;
+            }
+            // Для portfolio и turnkey - добавляем ./ если его нет
+            return `${attr}=${quote}./assets/images/${folder}/${filename}${quote}`;
+          }
+        );
+
+        if (replacementCount > 0) {
+          console.log(`  ✓ Replaced ${replacementCount} image paths in ${file}`);
+        }
+
+        // Также обрабатываем пути без атрибутов (на случай, если они используются в других контекстах)
+        content = content.replace(
+          /(["'])(\.\/)?assets\/images\/(common|portfolio|turnkey)\/([^"'\s>]+\.(png|jpg|jpeg|gif|svg|webp|ico))\1/g,
+          (match, quote, dot, folder, filename) => {
+            // Для common - ищем в маппинге
+            if (folder === "common") {
+              let mappedFile = imageMap.get(`${folder}/${filename}`);
+              if (!mappedFile) {
+                mappedFile = imageMap.get(filename);
+              }
+              if (mappedFile) {
+                return `${quote}./assets/images/${mappedFile}${quote}`;
+              }
+              return `${quote}./assets/images/${folder}/${filename}${quote}`;
+            }
+            return `${quote}./assets/images/${folder}/${filename}${quote}`;
+          }
+        );
+
+        // Исправляем пути к assets без ./ в начале (но не внешние ссылки)
+        content = content.replace(
+          /(href|src)=["'](?!https?:\/\/|\.\/|#|mailto:|tel:)(assets\/)/g,
+          '$1="./$2'
+        );
+        // Исправляем пути к scripts без ./ в начале
+        content = content.replace(
+          /(href|src)=["'](?!https?:\/\/|\.\/|#|mailto:|tel:)(scripts\/)/g,
+          '$1="./$2'
+        );
+
         // Записываем исправленный файл в корень
         writeFileSync(targetFile, content, "utf-8");
+
+        // Проверяем, были ли заменены пути к изображениям
+        const imageReplacements = (originalContent.match(/assets\/images\/common\//g) || []).length;
+        const remainingCommonPaths = (content.match(/assets\/images\/common\//g) || []).length;
+        if (imageReplacements > 0 && remainingCommonPaths > 0) {
+          console.warn(
+            `⚠ ${file}: ${remainingCommonPaths} paths to common/ images were not replaced (out of ${imageReplacements} total)`
+          );
+        } else if (imageReplacements > 0) {
+          console.log(`✓ ${file}: All ${imageReplacements} paths to common/ images were replaced`);
+        }
 
         // Удаляем исходный файл из папки pages
         unlinkSync(sourceFile);
@@ -52,14 +201,28 @@ const fixHtmlPaths = () => {
       } catch (e) {
         // Игнорируем ошибку, если папка не пуста
       }
+
+      // Обрабатываем index.html - заменяем pages/ на пустую строку в ссылках на HTML файлы
+      const indexFile = join(outDir, "index.html");
+      if (statSync(indexFile, { throwIfNoEntry: false })) {
+        let indexContent = readFileSync(indexFile, "utf-8");
+        // Заменяем pages/ на пустую строку в ссылках на HTML файлы
+        // Паттерн: href="pages/turnkey-repair.html" -> href="./turnkey-repair.html"
+        indexContent = indexContent.replace(/href=["']pages\/([^"']+\.html)/g, 'href="./$1');
+        writeFileSync(indexFile, indexContent, "utf-8");
+        console.log("✓ Processed index.html: replaced pages/ paths");
+      }
     },
   };
 };
 
 export default defineConfig({
   // 5.1: Настройка base URL для корректных путей в production
-  // Для GitHub Pages используем имя репозитория как base path
-  base: process.env.NODE_ENV === "production" ? "/sk-rosa/" : "./",
+  // BASE_PATH можно задать через переменную окружения:
+  // - Для хостинга (корень домена): BASE_PATH=./ npm run build:hosting
+  // - Для GitHub Pages: BASE_PATH=/sk-rosa/ npm run build:github
+  // По умолчанию: для production используется /sk-rosa/ (GitHub Pages), для dev - ./
+  base: process.env.BASE_PATH || (process.env.NODE_ENV === "production" ? "/sk-rosa/" : "./"),
   root: "src",
   build: {
     outDir: "../public_html",
@@ -135,6 +298,11 @@ export default defineConfig({
           src: "scripts/api/*.php",
           dest: "scripts/api",
         },
+        // Копируем тестовые PHP файлы для диагностики на хостинге
+        {
+          src: "test-*.php",
+          dest: ".",
+        },
         // Копируем JS файлы, которые подключены через <script src> в HTML
         // Эти файлы не являются ES модулями и должны быть доступны как статические
         {
@@ -148,6 +316,50 @@ export default defineConfig({
         {
           src: "scripts/features/contact/init-contacts.js",
           dest: "scripts/features/contact",
+        },
+        // Копируем иконки с сохранением структуры (важно!)
+        {
+          src: "assets/icons/**/*",
+          dest: "assets/icons",
+        },
+        // Копируем скрипты features (они подключены через <script src>)
+        {
+          src: "scripts/features/faq/faq.js",
+          dest: "scripts/features/faq",
+        },
+        {
+          src: "scripts/features/portfolio/portfolio-filter.js",
+          dest: "scripts/features/portfolio",
+        },
+        {
+          src: "scripts/features/portfolio/portfolio-turnkey.js",
+          dest: "scripts/features/portfolio",
+        },
+        {
+          src: "scripts/features/calculator/calculator.js",
+          dest: "scripts/features/calculator",
+        },
+        {
+          src: "scripts/features/calculator/price-calc.js",
+          dest: "scripts/features/calculator",
+        },
+        {
+          src: "scripts/features/contact/contact-request.js",
+          dest: "scripts/features/contact",
+        },
+        // Копируем видео файлы
+        {
+          src: "assets/videos/**/*",
+          dest: "assets/videos",
+        },
+        // Копируем изображения из portfolio и turnkey (они не обрабатываются Vite)
+        {
+          src: "assets/images/portfolio/**/*",
+          dest: "assets/images/portfolio",
+        },
+        {
+          src: "assets/images/turnkey/**/*",
+          dest: "assets/images/turnkey",
         },
         // Копируем .nojekyll для GitHub Pages
         {

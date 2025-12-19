@@ -35,11 +35,13 @@
   }
 
   &__list {
-    columns: 2;
-    column-gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
 
     @media (width <= 768px) {
-      columns: 1;
+      grid-template-columns: 1fr;
       padding: 0 12px;
     }
   }
@@ -52,8 +54,13 @@
     border: 1px solid #e0e0e0;
     cursor: pointer;
     transition: all 0.3s ease;
-    break-inside: avoid;
-    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+
+    // Открытые элементы всегда имеют автоматическую высоту
+    &.active {
+      height: auto !important;
+    }
 
     &:hover {
       transform: translateY(-2px);
@@ -94,13 +101,16 @@
     max-height: 0;
     overflow: hidden;
     transition:
-      max-height 0.3s ease,
-      margin-top 0.3s ease;
+      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease;
     margin-top: 0;
+    opacity: 0;
   }
 
   &__item.active &__answer {
-    max-height: 200px;
+    max-height: 1000px;
     margin-top: 16px;
+    opacity: 1;
   }
 }

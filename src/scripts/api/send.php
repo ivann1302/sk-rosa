@@ -1,6 +1,6 @@
 <?php 
   // Загружаем переменные окружения из .env файла
-  // Файл .env должен находиться в корне проекта (sk-rosa/.env)
+  // Файл .env должен находиться в корне сайта (public_html/.env)
   // См. .env.example для примера структуры
   require_once __DIR__ . '/load-env.php';
 
@@ -88,4 +88,28 @@
 	$result = curl_exec($curl);
 	curl_close($curl);
 	$result = json_decode($result,1); 
+
+	// Проверяем результат и возвращаем ответ
+header('Content-Type: application/json; charset=utf-8');
+
+if (isset($result['result'])) {
+    // Успешное создание лида
+    http_response_code(200);
+    echo json_encode([
+        'success' => true,
+        'lead_id' => $result['result'],
+        'message' => 'Заявка успешно отправлена'
+    ], JSON_UNESCAPED_UNICODE);
+} else {
+    // Ошибка
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'error' => $result['error_description'] ?? 'Неизвестная ошибка',
+        'error_code' => $result['error'] ?? 'UNKNOWN'
+    ], JSON_UNESCAPED_UNICODE);
+    
+    // Логируем ошибку
+    error_log('Bitrix24 Error: ' . json_encode($result, JSON_UNESCAPED_UNICODE));
+}
 ?>

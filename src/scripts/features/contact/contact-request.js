@@ -43,35 +43,61 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Обработка отправки формы
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     // Получаем данные формы
     const formData = new FormData(form);
-    const data = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-    };
+    const name = formData.get("NAME");
+    const phone = formData.get("PHONE");
 
     // Валидация
-    if (!data.name || !data.phone) {
+    if (!name || !phone) {
       showMessage("Пожалуйста, заполните обязательные поля", "error");
       return;
     }
 
-    if (data.phone.replace(/\D/g, "").length < 10) {
+    if (phone.replace(/\D/g, "").length < 10) {
       showMessage("Пожалуйста, введите корректный номер телефона", "error");
       return;
     }
 
-    // Показываем сообщение об успешной отправке
-    showMessage(
-      "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.",
-      "success"
-    );
+    // Показываем индикатор загрузки
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton ? submitButton.textContent : "";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Отправка...";
+    }
 
-    // Очищаем форму
-    form.reset();
+    try {
+      // Отправка на сервер
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        showMessage(
+          "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.",
+          "success"
+        );
+        form.reset();
+      } else {
+        showMessage(result.error || "Ошибка при отправке. Попробуйте позже.", "error");
+      }
+    } catch (error) {
+      console.error("Ошибка отправки формы:", error);
+      showMessage("Ошибка при отправке. Попробуйте позже.", "error");
+    } finally {
+      // Восстанавливаем кнопку
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
   });
 
   // Функция для показа сообщений
@@ -100,9 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     `;
 
-    // Вставляем сообщение перед формой
+    // Вставляем сообщение в начало формы
     const formTitle = form.querySelector(".contact-request__form-title");
-    formTitle.parentNode.insertBefore(message, formTitle.nextSibling);
+    if (formTitle && formTitle.parentNode) {
+      // Если есть заголовок формы, вставляем после него
+      formTitle.parentNode.insertBefore(message, formTitle.nextSibling);
+    } else {
+      // Если заголовка нет, вставляем в начало формы
+      form.insertBefore(message, form.firstChild);
+    }
 
     // Удаляем сообщение через 5 секунд
     setTimeout(() => {

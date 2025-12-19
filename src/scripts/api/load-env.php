@@ -3,7 +3,7 @@
  * Простая загрузка переменных окружения из .env файла
  * Работает без composer и дополнительных зависимостей
  * 
- * Файл .env должен находиться в корне проекта (sk-rosa/.env)
+ * Файл .env должен находиться в корне сайта (public_html/.env)
  * См. .env.example для примера структуры
  * См. DEPLOY.md для инструкций по настройке
  */
@@ -44,8 +44,39 @@ function loadEnv($envFile) {
   return true;
 }
 
-// Загружаем .env из корня проекта
-// Путь: sk-rosa/.env (на 3 уровня выше api/)
-$envPath = dirname(dirname(dirname(__DIR__))) . '/.env';
-loadEnv($envPath);
+// Загружаем .env из корня сайта (public_html/.env)
+// Пробуем несколько возможных путей для надежности
+$possiblePaths = [
+  dirname(dirname(__DIR__)) . '/.env',  // public_html/.env (на 2 уровня выше api/)
+  __DIR__ . '/../../.env',              // альтернативный путь
+  $_SERVER['DOCUMENT_ROOT'] . '/.env',  // DOCUMENT_ROOT/.env (для разных конфигураций хостинга)
+];
+
+$envLoaded = false;
+$lastError = '';
+foreach ($possiblePaths as $envPath) {
+  if (file_exists($envPath)) {
+    if (is_readable($envPath)) {
+      if (loadEnv($envPath)) {
+        $envLoaded = true;
+        error_log("load-env: Successfully loaded .env from: $envPath");
+        break;
+      } else {
+        $lastError = "Failed to parse .env file: $envPath";
+      }
+    } else {
+      $lastError = "File exists but not readable: $envPath (check permissions)";
+    }
+  } else {
+    $lastError = "File not found: $envPath";
+  }
+}
+
+// Если не удалось загрузить, логируем предупреждение с проверенными путями
+if (!$envLoaded) {
+  error_log('load-env: Warning: .env file not found. Checked paths: ' . implode(', ', $possiblePaths));
+  error_log('load-env: Last error: ' . $lastError);
+  error_log('load-env: __DIR__ = ' . __DIR__);
+  error_log('load-env: DOCUMENT_ROOT = ' . ($_SERVER['DOCUMENT_ROOT'] ?? 'not set'));
+}
 

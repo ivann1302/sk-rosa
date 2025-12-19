@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Rosa</title>
-    <!-- Стили подключаются напрямую для немедленной загрузки (Vite обработает SCSS) -->
+    <link rel="icon" href="../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="../assets/icons/ui/favIcons/r-32.png" />
+    <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
     <link rel="stylesheet" href="../../styles/main.scss" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -25,10 +27,10 @@
     <header class="header" data-js-header>
       <div class="header__body">
         <div class="header__body-inner">
-          <a class="header__logo logo" href="index.html" aria-label="Home" title="Home">
+          <a class="header__logo logo" href="../index.html" aria-label="Home" title="Home">
             <img
               class="logo__image"
-              src="assets/images/common/123.png"
+              src="../assets/images/common/123.png"
               alt=""
               width="140"
               height="40"
@@ -113,7 +115,7 @@
               aria-label="Telegram"
             >
               <img
-                src="assets/images/common/telegram_icon.png"
+                src="../assets/images/common/telegram_icon.png"
                 alt="Telegram"
                 width="40"
                 height="40"
@@ -127,7 +129,7 @@
               aria-label="WhatsApp"
             >
               <img
-                src="assets/images/common/whatsapp_icon.png"
+                src="../assets/images/common/whatsapp_icon.png"
                 alt="WhatsApp"
                 width="40"
                 height="40"
@@ -142,12 +144,12 @@
             data-js-header-burger-button
           >
             <img
-              src="assets/icons/ui/burger-button/icons8-hamburger-button-50.png"
+              src="../assets/icons/ui/burger-button/icons8-hamburger-button-50.png"
               alt="Меню"
               class="burger-icon burger-icon--menu"
             />
             <img
-              src="assets/icons/ui/burger-button/icons8-close-window-50.png"
+              src="../assets/icons/ui/burger-button/icons8-close-window-50.png"
               alt="Закрыть"
               class="burger-icon burger-icon--close"
             />
@@ -166,7 +168,7 @@
                 aria-label="WhatsApp"
               >
                 <img
-                  src="assets/images/common/whatsapp_icon.png"
+                  src="../assets/images/common/whatsapp_icon.png"
                   alt="WhatsApp"
                   width="24"
                   height="24"
@@ -180,7 +182,7 @@
                 aria-label="Telegram"
               >
                 <img
-                  src="assets/images/common/telegram_icon.png"
+                  src="../assets/images/common/telegram_icon.png"
                   alt="Telegram"
                   width="24"
                   height="24"
@@ -196,7 +198,7 @@
       <div class="about-turnkey__container">
         <img
           class="about-turnkey__image"
-          src="assets/images/turnkey/u2928876119_A_modern_minimalist_room._Most_of_the_room_is_empty_a18d0b54-c19b-4d1a-b80b-1d4379f6a300.png"
+          src="../assets/images/turnkey/u2928876119_A_modern_minimalist_room._Most_of_the_room_is_empty_a18d0b54-c19b-4d1a-b80b-1d4379f6a300.png"
           alt="Ремонт под ключ"
         />
         <div class="about-turnkey__content">
@@ -204,8 +206,12 @@
           <h2 class="about-turnkey__title">ПРОФЕССИОНАЛЬНЫЙ РЕМОНТ</h2>
           <div class="about-turnkey__subtitle">КВАРТИР И ДОМОВ ПОД КЛЮЧ</div>
           <div class="about-turnkey__row">
-            <a href="portfolio.html" style="text-decoration: none; color: inherit">
-              <button class="about-turnkey__btn about-turnkey__btn--secondary">Портфолио</button>
+            <a
+              href="portfolio.html"
+              class="about-turnkey__btn about-turnkey__btn--secondary"
+              style="text-decoration: none; display: inline-block"
+            >
+              Портфолио
             </a>
           </div>
         </div>
@@ -263,7 +269,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="assets/icons/features/turnkey/1.svg"
+                  src="../assets/icons/features/turnkey/1.svg"
                   alt="Официальный договор"
                   width="48"
                   height="48"
@@ -279,7 +285,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="assets/icons/features/turnkey/2.svg"
+                  src="../assets/icons/features/turnkey/2.svg"
                   alt="Поэтапная оплата"
                   width="48"
                   height="48"
@@ -295,7 +301,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="assets/icons/features/turnkey/3.svg"
+                  src="../assets/icons/features/turnkey/3.svg"
                   alt="Технический надзор"
                   width="48"
                   height="48"
@@ -311,7 +317,7 @@
             <div class="advantages-turnkey__item">
               <div class="advantages-turnkey__icon">
                 <img
-                  src="assets/icons/features/turnkey/4.svg"
+                  src="../assets/icons/features/turnkey/4.svg"
                   alt="Гарантия"
                   width="48"
                   height="48"
@@ -330,6 +336,7 @@
 
       <section class="company-description-turnkey">
         <div class="company-description-turnkey__container">
+          <h2 class="visually-hidden">О компании</h2>
           <div class="company-description-turnkey__content">
             <div class="company-description-turnkey__text">
               <p>
@@ -357,7 +364,7 @@
               <div class="work-stages-turnkey__horizontal-line-2"></div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--salesman">
                 <img
-                  src="assets/icons/features/turnkey/salesman-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/salesman-svgrepo-com.svg"
                   alt="Консультация"
                   width="60"
                   height="60"
@@ -365,7 +372,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--record">
                 <img
-                  src="assets/icons/features/turnkey/data-report-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/data-report-svgrepo-com.svg"
                   alt="Составление сметы"
                   width="60"
                   height="60"
@@ -385,7 +392,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--like">
                 <img
-                  src="assets/icons/features/turnkey/like-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/like-svgrepo-com.svg"
                   alt="Одобрение"
                   width="60"
                   height="60"
@@ -393,7 +400,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--idea">
                 <img
-                  src="assets/icons/features/turnkey/idea-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/idea-svgrepo-com.svg"
                   alt="Идея"
                   width="60"
                   height="60"
@@ -401,7 +408,7 @@
               </div>
               <div class="work-stages-turnkey__icon work-stages-turnkey__icon--record-second">
                 <img
-                  src="assets/icons/features/turnkey/record-svgrepo-com.svg"
+                  src="../assets/icons/features/turnkey/record-svgrepo-com.svg"
                   alt="Запись"
                   width="60"
                   height="60"
@@ -445,7 +452,7 @@
             <a href="calculator.html" class="portfolio-description__button">
               Рассчитать стоимость
               <img
-                src="assets/icons/common/share-alt-svgrepo-com.svg"
+                src="../assets/icons/common/share-alt-svgrepo-com.svg"
                 alt="Поделиться"
                 width="16"
                 height="16"
@@ -460,7 +467,7 @@
           <div class="portfolio-turnkey__project">
             <div class="portfolio-turnkey__project-image">
               <img
-                src="assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png"
+                src="../assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png"
                 alt="Интерьер квартиры"
                 id="project-image"
               />
@@ -502,7 +509,7 @@
                     id="prev-btn"
                   >
                     <img
-                      src="assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                      src="../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
                       alt="Предыдущий"
                       width="30"
                       height="30"
@@ -513,7 +520,7 @@
                     id="next-btn"
                   >
                     <img
-                      src="assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                      src="../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
                       alt="Следующий"
                       width="30"
                       height="30"
@@ -546,11 +553,11 @@
               <div class="social-reviews__buttons-row">
                 <a href="https://wa.me/79851354991" target="_blank" class="social-reviews__btn">
                   <span>WhatsApp</span>
-                  <img src="assets/images/common/whatsapp_icon.png" alt="WhatsApp" />
+                  <img src="../assets/images/common/whatsapp_icon.png" alt="WhatsApp" />
                 </a>
                 <a href="https://t.me/oorosa" target="_blank" class="social-reviews__btn">
                   <span>Telegram</span>
-                  <img src="assets/images/common/telegram_icon.png" alt="Telegram" />
+                  <img src="../assets/images/common/telegram_icon.png" alt="Telegram" />
                 </a>
               </div>
               <a
@@ -559,7 +566,7 @@
                 class="social-reviews__btn"
               >
                 <span>Отзывы на платформе Avito</span>
-                <img src="assets/images/common/free-png.ru-835.png" alt="Avito" />
+                <img src="../assets/images/common/free-png.ru-835.png" alt="Avito" />
               </a>
             </div>
           </div>
@@ -568,6 +575,7 @@
 
       <section class="reviews">
         <div class="reviews__container">
+          <h2 class="reviews__title">Отзывы наших клиентов</h2>
           <div class="reviews__grid">
             <div class="review-card">
               <div class="quote-mark">"</div>
@@ -652,7 +660,7 @@
                 Калькулятор ремонта
               </h3>
               <img
-                src="assets/images/common/ab008167-9d84-4358-9630-d4ceaeea4a40.jpg"
+                src="../assets/images/common/ab008167-9d84-4358-9630-d4ceaeea4a40.jpg"
                 alt="Калькулятор"
                 style="
                   width: 200px;
@@ -696,7 +704,7 @@
                 Блог о ремонте
               </h3>
               <img
-                src="assets/images/common/4880440.jpg"
+                src="../assets/images/common/4880440.jpg"
                 alt="Блог"
                 style="
                   width: 150px;
@@ -739,7 +747,7 @@
                 Консультация
               </h3>
               <img
-                src="assets/images/common/2922762.jpg"
+                src="../assets/images/common/2922762.jpg"
                 alt="Консультация"
                 style="
                   width: 130px;
@@ -782,7 +790,7 @@
                 Сертификаты и лицензии
               </h3>
               <img
-                src="assets/images/common/3992085.jpg"
+                src="../assets/images/common/3992085.jpg"
                 alt="Сертификаты"
                 style="
                   width: 130px;
@@ -825,7 +833,7 @@
                 Работа по договору
               </h3>
               <img
-                src="assets/images/common/Wavy_Bus-06_Single-06.jpg"
+                src="../assets/images/common/Wavy_Bus-06_Single-06.jpg"
                 alt="Работа по договору"
                 style="
                   width: 100px;
@@ -1002,7 +1010,7 @@
             <a href="../index.html#top" class="footer__brand-link">
               <img
                 class="logo__image"
-                src="assets/images/common/123.png"
+                src="../assets/images/common/123.png"
                 alt="OOO.ROSA"
                 width="140"
                 height="40"
@@ -1013,7 +1021,7 @@
               <div class="footer__contact-item">
                 <div class="footer__contact-icon">
                   <img
-                    src="assets/icons/features/footer/phone-call-svgrepo-com.svg"
+                    src="../assets/icons/features/footer/phone-call-svgrepo-com.svg"
                     alt="Телефон"
                   />
                 </div>
@@ -1021,14 +1029,14 @@
               </div>
               <div class="footer__contact-item">
                 <div class="footer__contact-icon">
-                  <img src="assets/icons/features/footer/mail-alt-svgrepo-com.svg" alt="Email" />
+                  <img src="../assets/icons/features/footer/mail-alt-svgrepo-com.svg" alt="Email" />
                 </div>
                 <a href="mailto:ooo.rosa2019@yandex.ru">ooo.rosa2019@yandex.ru</a>
               </div>
               <div class="footer__contact-item">
                 <div class="footer__contact-icon">
                   <img
-                    src="assets/icons/features/footer/clock-three-svgrepo-com.svg"
+                    src="../assets/icons/features/footer/clock-three-svgrepo-com.svg"
                     alt="Часы работы"
                   />
                 </div>
@@ -1062,7 +1070,7 @@
               rel="noopener noreferrer"
             >
               <img
-                src="assets/images/common/whatsapp_icon.png"
+                src="../assets/images/common/whatsapp_icon.png"
                 alt="WhatsApp"
                 width="24"
                 height="24"
@@ -1075,7 +1083,7 @@
               rel="noopener noreferrer"
             >
               <img
-                src="assets/images/common/telegram_icon.png"
+                src="../assets/images/common/telegram_icon.png"
                 alt="Telegram"
                 width="24"
                 height="24"
@@ -1088,7 +1096,7 @@
               rel="noopener noreferrer"
             >
               <img
-                src="assets/images/common/free-png.ru-835.png"
+                src="../assets/images/common/free-png.ru-835.png"
                 alt="Авито"
                 width="24"
                 height="24"
