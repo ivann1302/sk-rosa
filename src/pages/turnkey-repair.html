@@ -229,11 +229,55 @@
             <form class="about-turnkey-2__form" action="../scripts/api/send.php" method="POST">
               <div class="about-turnkey-2__field">
                 <label class="about-turnkey-2__label">Объект</label>
-                <select class="about-turnkey-2__select" name="property_type">
-                  <option value="apartment">Квартира</option>
-                  <option value="office">Дом</option>
-                  <option value="house">Офис</option>
-                </select>
+                <div class="custom-select about-turnkey-2__select-wrapper">
+                  <input type="hidden" name="property_type" value="apartment" />
+                  <button
+                    type="button"
+                    class="custom-select__button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span class="custom-select__text">Квартира</span>
+                    <svg
+                      class="custom-select__icon"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="m6 8 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+                  <ul class="custom-select__dropdown" role="listbox" aria-hidden="true">
+                    <li
+                      class="custom-select__option custom-select__option--selected"
+                      role="option"
+                      data-value="apartment"
+                      tabindex="0"
+                      aria-selected="true"
+                    >
+                      Квартира
+                    </li>
+                    <li
+                      class="custom-select__option"
+                      role="option"
+                      data-value="office"
+                      tabindex="0"
+                    >
+                      Дом
+                    </li>
+                    <li class="custom-select__option" role="option" data-value="house" tabindex="0">
+                      Офис
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div class="about-turnkey-2__field">
                 <label class="about-turnkey-2__label">Имя</label>
@@ -1124,6 +1168,7 @@
     <script src="../scripts/core/carousel.js"></script>
     <script src="../scripts/features/faq/faq.js"></script>
     <script src="../scripts/features/portfolio/portfolio-turnkey.js"></script>
+    <script type="module" src="../scripts/features/portfolio/custom-select.js"></script>
     <script type="module" src="../scripts/core/main.js"></script>
   </body>
 </html>

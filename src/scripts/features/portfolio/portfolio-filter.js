@@ -1,12 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Функция для получения значения фильтра (поддерживает и select, и custom-select)
+  function getFilterValue(filterType) {
+    const customSelect = document.querySelector(`.custom-select[data-filter="${filterType}"]`);
+    if (customSelect) {
+      const hiddenInput = customSelect.querySelector('input[type="hidden"]');
+      return hiddenInput ? hiddenInput.value : "";
+    }
+    const select = document.querySelector(`select[data-filter="${filterType}"]`);
+    return select ? select.value : "";
+  }
+
   // Получаем элементы фильтров
   const typeFilter =
-    document.querySelector('select[data-filter="type"]') ||
-    document.querySelector("select:first-of-type");
+    document.querySelector('.custom-select[data-filter="type"]') ||
+    document.querySelector('select[data-filter="type"]');
   const areaFilter = document.querySelector('input[type="number"]');
   const priceFilter =
-    document.querySelector('select[data-filter="price"]') ||
-    document.querySelector("select:nth-of-type(2)");
+    document.querySelector('.custom-select[data-filter="price"]') ||
+    document.querySelector('select[data-filter="price"]');
   const findButton = document.querySelector(".portfolio-filter__button--primary");
 
   // Получаем все элементы портфолио
@@ -14,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Функция фильтрации
   function filterPortfolio() {
-    const selectedType = typeFilter ? typeFilter.value : "";
+    const selectedType = getFilterValue("type");
     const selectedArea = areaFilter ? parseInt(areaFilter.value) : 0;
-    const selectedPrice = priceFilter ? priceFilter.value : "";
+    const selectedPrice = getFilterValue("price");
 
     let visibleCount = 0;
 
@@ -75,9 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Функция сброса фильтров
   function resetFilters() {
-    if (typeFilter) typeFilter.value = "";
+    // Сброс кастомных select'ов
+    const customSelects = document.querySelectorAll(".custom-select");
+    customSelects.forEach(select => {
+      const firstOption = select.querySelector('.custom-select__option[data-value=""]');
+      if (firstOption) {
+        firstOption.click();
+      }
+    });
+
+    // Сброс обычных select'ов
+    const selects = document.querySelectorAll("select[data-filter]");
+    selects.forEach(select => {
+      select.value = "";
+    });
+
     if (areaFilter) areaFilter.value = "";
-    if (priceFilter) priceFilter.value = "";
 
     // Показываем все элементы
     portfolioItems.forEach(item => {
@@ -91,7 +115,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Автоматическая фильтрация при изменении значений
-  if (typeFilter) {
+  // Слушаем изменения в кастомных select'ах
+  document.addEventListener("change", function (e) {
+    if (e.target.closest(".custom-select")) {
+      filterPortfolio();
+    }
+  });
+
+  // Слушаем изменения в обычных select'ах (для обратной совместимости)
+  if (typeFilter && typeFilter.tagName === "SELECT") {
     typeFilter.addEventListener("change", filterPortfolio);
   }
 
@@ -99,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     areaFilter.addEventListener("input", filterPortfolio);
   }
 
-  if (priceFilter) {
+  if (priceFilter && priceFilter.tagName === "SELECT") {
     priceFilter.addEventListener("change", filterPortfolio);
   }
 

@@ -198,13 +198,60 @@
           <div class="portfolio-filter__filters">
             <div class="portfolio-filter__filter-group">
               <label class="portfolio-filter__filter-label">Тип помещения</label>
-              <select class="portfolio-filter__filter-select" data-filter="type">
-                <option value="">Любое помещение</option>
-                <option value="apartment">Квартира</option>
-                <option value="house">Дом</option>
-                <option value="office">Офис</option>
-                <option value="commercial">Коммерческое</option>
-              </select>
+              <div class="custom-select" data-filter="type">
+                <input type="hidden" name="type" value="" />
+                <button
+                  type="button"
+                  class="custom-select__button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="custom-select__text">Любое помещение</span>
+                  <svg
+                    class="custom-select__icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="#6b7280"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="m6 8 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <ul class="custom-select__dropdown" role="listbox" aria-hidden="true">
+                  <li class="custom-select__option" role="option" data-value="" tabindex="0">
+                    Любое помещение
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="apartment"
+                    tabindex="0"
+                  >
+                    Квартира
+                  </li>
+                  <li class="custom-select__option" role="option" data-value="house" tabindex="0">
+                    Дом
+                  </li>
+                  <li class="custom-select__option" role="option" data-value="office" tabindex="0">
+                    Офис
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="commercial"
+                    tabindex="0"
+                  >
+                    Коммерческое
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <div class="portfolio-filter__filter-group">
@@ -220,14 +267,78 @@
 
             <div class="portfolio-filter__filter-group">
               <label class="portfolio-filter__filter-label">Стоимость (₽)</label>
-              <select class="portfolio-filter__filter-select" data-filter="price">
-                <option value="">Любая стоимость</option>
-                <option value="0-1000000">До 1 млн ₽</option>
-                <option value="1000000-2000000">1-2 млн ₽</option>
-                <option value="2000000-3000000">2-3 млн ₽</option>
-                <option value="3000000-5000000">3-5 млн ₽</option>
-                <option value="5000000+">Более 5 млн ₽</option>
-              </select>
+              <div class="custom-select" data-filter="price">
+                <input type="hidden" name="price" value="" />
+                <button
+                  type="button"
+                  class="custom-select__button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="custom-select__text">Любая стоимость</span>
+                  <svg
+                    class="custom-select__icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="#6b7280"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="m6 8 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+                <ul class="custom-select__dropdown" role="listbox" aria-hidden="true">
+                  <li class="custom-select__option" role="option" data-value="" tabindex="0">
+                    Любая стоимость
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="0-1000000"
+                    tabindex="0"
+                  >
+                    До 1 млн ₽
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="1000000-2000000"
+                    tabindex="0"
+                  >
+                    1-2 млн ₽
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="2000000-3000000"
+                    tabindex="0"
+                  >
+                    2-3 млн ₽
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="3000000-5000000"
+                    tabindex="0"
+                  >
+                    3-5 млн ₽
+                  </li>
+                  <li
+                    class="custom-select__option"
+                    role="option"
+                    data-value="5000000+"
+                    tabindex="0"
+                  >
+                    Более 5 млн ₽
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <button class="portfolio-filter__button portfolio-filter__button--primary">
@@ -1068,6 +1179,8 @@
     <!-- Инициализация контактных данных из констант -->
     <script src="../scripts/features/contact/init-contacts.js"></script>
     <script type="module" src="../scripts/core/main.js"></script>
+    <!-- Кастомный select dropdown -->
+    <script type="module" src="../scripts/features/portfolio/custom-select.js"></script>
     <script src="../scripts/features/portfolio/portfolio-filter.js"></script>
   </body>
 </html>
