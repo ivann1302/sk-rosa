@@ -45,7 +45,7 @@ const fixHtmlPaths = () => {
       try {
         if (statSync(imagesDir, { throwIfNoEntry: false })) {
           const imageFiles = readdirSync(imagesDir);
-          console.log(`📁 Found ${imageFiles.length} image files in ${imagesDir}`);
+          console.warn(`📁 Found ${imageFiles.length} image files in ${imagesDir}`);
           imageFiles.forEach(file => {
             // Извлекаем оригинальное имя (до хеша)
             // Формат: filename-hash.ext
@@ -67,9 +67,9 @@ const fixHtmlPaths = () => {
             }
           });
           // Выводим информацию о маппинге для отладки
-          console.log(`📋 Image map created with ${imageMap.size} entries`);
+          console.warn(`📋 Image map created with ${imageMap.size} entries`);
           if (imageMap.has("common/whatsapp_icon.png")) {
-            console.log(
+            console.warn(
               `✓ WhatsApp icon mapped: common/whatsapp_icon.png -> ${imageMap.get("common/whatsapp_icon.png")}`
             );
           } else {
@@ -88,7 +88,7 @@ const fixHtmlPaths = () => {
         console.warn("Could not read images directory:", e.message);
       }
 
-      console.log(`📄 Processing ${htmlFiles.length} HTML files from ${pagesDir}`);
+      console.warn(`📄 Processing ${htmlFiles.length} HTML files from ${pagesDir}`);
       htmlFiles.forEach(file => {
         const sourceFile = join(pagesDir, file);
         const targetFile = join(outDir, file);
@@ -105,8 +105,27 @@ const fixHtmlPaths = () => {
         content = content.replace(/\.\.\/scripts\//g, "./scripts/");
         // Заменяем ../assets/ на ./assets/
         content = content.replace(/\.\.\/assets\//g, "./assets/");
-        // Заменяем ../index.html на index.html
-        content = content.replace(/\.\.\/index\.html/g, "index.html");
+        // Заменяем ../index.html на / (главная страница)
+        content = content.replace(/\.\.\/index\.html/g, "/");
+        // Заменяем action="../scripts/ на action="./scripts/ (для форм)
+        content = content.replace(/action=["']\.\.\/scripts\//g, 'action="./scripts/');
+
+        // Убираем .html из ссылок на другие страницы
+        // Обрабатываем href="./page.html" -> href="./page"
+        content = content.replace(/href=["']\.\/([^"']+)\.html/g, 'href="./$1');
+        // Обрабатываем href="page.html" -> href="./page" (если нет ./ в начале)
+        content = content.replace(/href=["']([^"']+)\.html/g, (match, page) => {
+          // Пропускаем внешние ссылки и якоря
+          if (
+            page.startsWith("http") ||
+            page.startsWith("#") ||
+            page.startsWith("mailto:") ||
+            page.startsWith("tel:")
+          ) {
+            return match;
+          }
+          return `href="./${page}"`;
+        });
 
         // Заменяем пути к изображениям с учетом хешей
         // Обрабатываем все варианты: ./assets/images/common/..., assets/images/common/..., "assets/images/common/..."
@@ -144,7 +163,7 @@ const fixHtmlPaths = () => {
         );
 
         if (replacementCount > 0) {
-          console.log(`  ✓ Replaced ${replacementCount} image paths in ${file}`);
+          console.warn(`  ✓ Replaced ${replacementCount} image paths in ${file}`);
         }
 
         // Также обрабатываем пути без атрибутов (на случай, если они используются в других контекстах)
@@ -188,7 +207,7 @@ const fixHtmlPaths = () => {
             `⚠ ${file}: ${remainingCommonPaths} paths to common/ images were not replaced (out of ${imageReplacements} total)`
           );
         } else if (imageReplacements > 0) {
-          console.log(`✓ ${file}: All ${imageReplacements} paths to common/ images were replaced`);
+          console.warn(`✓ ${file}: All ${imageReplacements} paths to common/ images were replaced`);
         }
 
         // Удаляем исходный файл из папки pages
@@ -198,20 +217,75 @@ const fixHtmlPaths = () => {
       // Удаляем пустую папку pages
       try {
         rmdirSync(pagesDir);
-      } catch (e) {
+      } catch {
         // Игнорируем ошибку, если папка не пуста
       }
 
-      // Обрабатываем index.html - заменяем pages/ на пустую строку в ссылках на HTML файлы
+      // Обрабатываем index.html - заменяем pages/ на пустую строку и убираем .html из ссылок
       const indexFile = join(outDir, "index.html");
       if (statSync(indexFile, { throwIfNoEntry: false })) {
         let indexContent = readFileSync(indexFile, "utf-8");
-        // Заменяем pages/ на пустую строку в ссылках на HTML файлы
-        // Паттерн: href="pages/turnkey-repair.html" -> href="./turnkey-repair.html"
-        indexContent = indexContent.replace(/href=["']pages\/([^"']+\.html)/g, 'href="./$1');
+        // Заменяем pages/ на пустую строку в ссылках на HTML файлы и убираем .html
+        // Паттерн: href="pages/turnkey-repair.html" -> href="./turnkey-repair"
+        indexContent = indexContent.replace(/href=["']pages\/([^"']+)\.html/g, 'href="./$1');
+
+        // Убираем .html из всех остальных ссылок (кроме внешних)
+        indexContent = indexContent.replace(/href=["']\.\/([^"']+)\.html/g, 'href="./$1');
+        indexContent = indexContent.replace(/href=["']([^"']+)\.html/g, (match, page) => {
+          // Пропускаем внешние ссылки и якоря
+          if (
+            page.startsWith("http") ||
+            page.startsWith("#") ||
+            page.startsWith("mailto:") ||
+            page.startsWith("tel:")
+          ) {
+            return match;
+          }
+          return `href="./${page}"`;
+        });
+
+        // Главная страница должна быть /
+        indexContent = indexContent.replace(/href=["']\.\/index["']/g, 'href="/"');
+        indexContent = indexContent.replace(/href=["']index["']/g, 'href="/"');
+
         writeFileSync(indexFile, indexContent, "utf-8");
-        console.log("✓ Processed index.html: replaced pages/ paths");
+        console.warn("✓ Processed index.html: replaced pages/ paths and removed .html");
       }
+
+      // Обрабатываем все HTML файлы в корне - убираем .html из ссылок между страницами
+      const allHtmlFiles = readdirSync(outDir).filter(
+        file => file.endsWith(".html") && file !== "index.html" && file !== "404.html"
+      );
+      allHtmlFiles.forEach(file => {
+        const filePath = join(outDir, file);
+        let content = readFileSync(filePath, "utf-8");
+        const originalContent = content;
+
+        // Убираем .html из ссылок на другие страницы
+        content = content.replace(/href=["']\.\/([^"']+)\.html/g, 'href="./$1');
+        content = content.replace(/href=["']([^"']+)\.html/g, (match, page) => {
+          // Пропускаем внешние ссылки, якоря, и index
+          if (
+            page.startsWith("http") ||
+            page.startsWith("#") ||
+            page.startsWith("mailto:") ||
+            page.startsWith("tel:") ||
+            page === "index"
+          ) {
+            return match;
+          }
+          return `href="./${page}"`;
+        });
+
+        // Главная страница должна быть /
+        content = content.replace(/href=["']\.\/index\.html/g, 'href="/"');
+        content = content.replace(/href=["']index\.html/g, 'href="/"');
+
+        if (content !== originalContent) {
+          writeFileSync(filePath, content, "utf-8");
+          console.warn(`✓ Processed ${file}: removed .html from links`);
+        }
+      });
     },
   };
 };
@@ -364,6 +438,11 @@ export default defineConfig({
         // Копируем .nojekyll для GitHub Pages
         {
           src: ".nojekyll",
+          dest: ".",
+        },
+        // Копируем 404.html для GitHub Pages (если существует)
+        {
+          src: "404.html",
           dest: ".",
         },
         // УДАЛЕНО: Копирование assets - Vite обрабатывает их автоматически
