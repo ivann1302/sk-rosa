@@ -45,13 +45,23 @@
 
   &__line {
     width: 800px;
-    height: 1px;
+    height: 0;
     background: #ccc;
     margin: 0;
     margin-left: -20px;
     margin-top: 40px;
     position: relative;
     top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__line-inner {
+    width: 90%;
+    height: 1px;
+    background: #ccc;
+    position: absolute;
+    top: 50%;
+    left: 0;
     transform: translateY(-50%);
   }
 
@@ -104,6 +114,18 @@
     top: 219px;
     width: 800px;
     height: 1px;
+  }
+
+  // Горизонтальная линия от второй дуги к шагу 5
+  // Идет от left: calc(45% - 120px) (конец второй дуги) до шага 5 (0%)
+  &__horizontal-line-to-step5 {
+    position: absolute;
+    left: calc(45% - 120px);
+    top: 259px;
+    width: calc(45% - 120px);
+    min-width: 0;
+    height: 1px;
+    background: #ccc;
   }
 
   &__icon {
@@ -244,19 +266,6 @@
       height: 1px;
       background: #ccc;
       transform: translateY(-50%);
-    }
-
-    // Линия под углом 45 градусов вниз вправо
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 20%;
-      width: 1px;
-      height: 60px;
-      background: #ccc;
-      transform: rotate(-45deg);
-      transform-origin: top center;
     }
 
     // Третья линия - дуга
