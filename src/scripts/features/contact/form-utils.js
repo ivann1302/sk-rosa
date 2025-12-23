@@ -1,0 +1,124 @@
+// Общие утилиты для работы с формами
+
+/**
+ * Определение режима разработки
+ */
+const isDevelopment =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname === "" ||
+  window.location.port === "3000" ||
+  window.location.port === "4173";
+
+/**
+ * Мок-функция для симуляции отправки формы в режиме разработки
+ * @param {string} action - URL для отправки формы
+ * @param {FormData} formData - Данные формы
+ * @returns {Promise<Object>} - Результат отправки
+ */
+async function mockSubmitForm(action, formData) {
+  console.log("🧪 Тестовый режим: симулируем отправку формы");
+  console.log("📋 Данные формы:", {
+    NAME: formData.get("NAME"),
+    PHONE: formData.get("PHONE"),
+    COMMENTS: formData.get("COMMENTS"),
+    form_source: formData.get("form_source"),
+  });
+
+  // Симулируем задержку сети (1-2 секунды)
+  const delay = 1000 + Math.random() * 1000;
+  await new Promise(resolve => setTimeout(resolve, delay));
+
+  // Можно раскомментировать для тестирования ошибок:
+  // if (Math.random() > 0.7) {
+  //   throw new Error("HTTP error! status: 500");
+  // }
+
+  // Симулируем успешный ответ
+  return {
+    success: true,
+    lead_id: Math.floor(Math.random() * 10000),
+    message: "Заявка успешно отправлена (тестовый режим)",
+  };
+}
+
+/**
+ * Валидация данных формы
+ * @param {FormData} formData - Данные формы
+ * @returns {{valid: boolean, error?: string}} - Результат валидации
+ */
+export function validateForm(formData) {
+  const name = formData.get("NAME");
+  const phone = formData.get("PHONE");
+
+  if (!name || !phone) {
+    return { valid: false, error: "Пожалуйста, заполните обязательные поля" };
+  }
+
+  if (phone.replace(/\D/g, "").length < 10) {
+    return { valid: false, error: "Пожалуйста, введите корректный номер телефона" };
+  }
+
+  return { valid: true };
+}
+
+/**
+ * Отправка формы на сервер с обработкой ошибок
+ * @param {string} action - URL для отправки формы
+ * @param {FormData} formData - Данные формы
+ * @returns {Promise<Object>} - Результат отправки
+ * @throws {Error} - Ошибка при отправке
+ */
+export async function submitForm(action, formData) {
+  // Мок-режим для локального тестирования
+  if (isDevelopment && action.includes("send.php")) {
+    return await mockSubmitForm(action, formData);
+  }
+
+  // Реальная отправка на сервер
+  const response = await fetch(action, {
+    method: "POST",
+    body: formData,
+  });
+
+  // Проверяем статус ответа перед парсингом JSON
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  // Проверяем, что ответ - JSON
+  const contentType = response.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    throw new Error("Ответ сервера не является JSON");
+  }
+
+  try {
+    return await response.json();
+  } catch (parseError) {
+    // Если не удалось распарсить JSON
+    if (parseError instanceof SyntaxError) {
+      console.error("Сервер вернул не JSON:", response);
+      throw new Error("Ошибка формата ответа сервера");
+    }
+    throw parseError;
+  }
+}
+
+/**
+ * Управление состоянием кнопки отправки
+ * @param {HTMLButtonElement|null} submitButton - Кнопка отправки
+ * @param {boolean} isLoading - Состояние загрузки
+ * @param {string} loadingText - Текст при загрузке
+ */
+export function setSubmitButtonState(submitButton, isLoading, loadingText = "Отправка...") {
+  if (!submitButton) return;
+
+  if (isLoading) {
+    submitButton.disabled = true;
+    submitButton.dataset.originalText = submitButton.textContent;
+    submitButton.textContent = loadingText;
+  } else {
+    submitButton.disabled = false;
+    submitButton.textContent = submitButton.dataset.originalText || submitButton.textContent;
+  }
+}

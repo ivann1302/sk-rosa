@@ -1,8 +1,12 @@
 // Обработка формы заявки
+import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-request__form-fields");
 
-  if (!form) return;
+  if (!form) {
+    return;
+  }
 
   // Маска для телефона
   const phoneInput = form.querySelector("#phone");
@@ -48,55 +52,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Получаем данные формы
     const formData = new FormData(form);
-    const name = formData.get("NAME");
-    const phone = formData.get("PHONE");
 
     // Валидация
-    if (!name || !phone) {
-      showMessage("Пожалуйста, заполните обязательные поля", "error");
-      return;
-    }
-
-    if (phone.replace(/\D/g, "").length < 10) {
-      showMessage("Пожалуйста, введите корректный номер телефона", "error");
+    const validation = validateForm(formData);
+    if (!validation.valid) {
+      showMessage(validation.error, "error");
       return;
     }
 
     // Показываем индикатор загрузки
     const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton ? submitButton.textContent : "";
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Отправка...";
-    }
+    setSubmitButtonState(submitButton, true, "Отправка...");
 
     try {
-      // Отправка на сервер
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: formData,
-      });
-
-      const result = await response.json();
+      // Отправка на сервер с проверкой статуса
+      const result = await submitForm(form.action, formData);
 
       if (result.success) {
-        showMessage(
-          "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.",
-          "success"
-        );
+        // Показываем модальное окно успеха, передавая кнопку для фокуса
+        if (window.openSuccessModal) {
+          window.openSuccessModal(submitButton);
+        } else {
+          // Fallback на старое сообщение, если модальное окно не загружено
+          showMessage(
+            "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.",
+            "success"
+          );
+        }
         form.reset();
       } else {
         showMessage(result.error || "Ошибка при отправке. Попробуйте позже.", "error");
       }
     } catch (error) {
       console.error("Ошибка отправки формы:", error);
-      showMessage("Ошибка при отправке. Попробуйте позже.", "error");
+
+      // Более информативное сообщение об ошибке
+      let errorMessage = "Ошибка при отправке. Попробуйте позже.";
+      if (error.message.includes("HTTP error")) {
+        errorMessage = "Ошибка сервера. Пожалуйста, попробуйте позже.";
+      } else if (error.message.includes("JSON") || error.message.includes("формата")) {
+        errorMessage = "Ошибка обработки ответа сервера. Пожалуйста, попробуйте позже.";
+      } else if (error.message.includes("Failed to fetch")) {
+        errorMessage = "Ошибка подключения. Проверьте интернет-соединение и попробуйте позже.";
+      }
+
+      showMessage(errorMessage, "error");
     } finally {
       // Восстанавливаем кнопку
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
+      setSubmitButtonState(submitButton, false);
     }
   });
 

@@ -1,0 +1,193 @@
+@use "helpers" as *;
+
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+  padding: 20px;
+
+  &[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 60%);
+    backdrop-filter: blur(4px);
+  }
+
+  &__content {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+    transform: scale(0.9);
+    transition: transform 0.3s;
+    text-align: center;
+
+    .success-modal[aria-hidden="false"] & {
+      transform: scale(1);
+    }
+  }
+
+  &__close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 16px !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray-50);
+    transition: color 0.2s;
+    z-index: 10;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    clear: none !important;
+
+    &:hover {
+      color: var(--color-dark);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__icon {
+    margin: 0 auto 24px;
+    animation: success-icon 0.6s ease-out;
+
+    // Переопределяем normalize.scss, чтобы stroke не был currentcolor
+    svg * {
+      stroke: inherit;
+    }
+
+    // Переопределяем normalize.scss, чтобы fill не был currentcolor для circle
+    svg circle {
+      fill: #88a593 !important;
+    }
+
+    // Явно задаем цвет для path (галочки)
+    svg path {
+      stroke: #fff !important;
+      fill: none !important;
+    }
+  }
+
+  &__title {
+    @include fluid-text(32, 24);
+
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 16px;
+    line-height: 1.3;
+  }
+
+  &__text {
+    @include fluid-text(18, 16);
+
+    color: var(--color-gray-50);
+    margin: 0 0 32px;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &--primary {
+      background: var(--color-green);
+      color: var(--color-light);
+
+      &:hover {
+        background: var(--color-dark-green);
+        box-shadow: 0 4px 16px rgb(136 165 147 / 30%);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: var(--color-green);
+      border: 2px solid var(--color-green);
+
+      &:hover {
+        background: var(--color-green);
+        color: var(--color-light);
+      }
+    }
+  }
+
+  @include mobile {
+    padding: 12px;
+
+    &__content {
+      padding: 32px 24px;
+    }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes success-icon {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

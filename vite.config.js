@@ -307,6 +307,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
+        404: resolve(__dirname, "src/404.html"),
         "airless-painting": resolve(__dirname, "src/pages/airless-painting.html"),
         calculator: resolve(__dirname, "src/pages/calculator.html"),
         "floor-screed": resolve(__dirname, "src/pages/floor-screed.html"),
@@ -421,6 +422,18 @@ export default defineConfig({
           src: "scripts/features/contact/contact-request.js",
           dest: "scripts/features/contact",
         },
+        {
+          src: "scripts/features/contact/success-modal.js",
+          dest: "scripts/features/contact",
+        },
+        {
+          src: "scripts/features/contact/form-handler.js",
+          dest: "scripts/features/contact",
+        },
+        {
+          src: "scripts/features/contact/form-utils.js",
+          dest: "scripts/features/contact",
+        },
         // Копируем видео файлы
         {
           src: "assets/videos/**/*",
@@ -440,14 +453,11 @@ export default defineConfig({
           src: ".nojekyll",
           dest: ".",
         },
-        // Копируем 404.html для GitHub Pages (если существует)
+        // Копируем .htaccess для Apache (работа URL без .html)
         {
-          src: "404.html",
+          src: ".htaccess",
           dest: ".",
         },
-        // УДАЛЕНО: Копирование assets - Vite обрабатывает их автоматически
-        // при сборке, копирование всей папки приводит к дублированию
-        // и увеличению размера (включая неиспользуемые файлы)
       ],
     }),
   ],

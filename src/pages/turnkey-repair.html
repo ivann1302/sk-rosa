@@ -1162,15 +1162,71 @@
       </div>
     </footer>
 
-    <!-- Константы проекта - должен быть загружен первым -->
+    <!-- Модальное окно успешной отправки -->
+    <div class="success-modal" id="success-modal" aria-hidden="true">
+      <div class="success-modal__overlay"></div>
+      <div class="success-modal__content">
+        <button class="success-modal__close" aria-label="Закрыть" type="button">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="success-modal__icon">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="32" cy="32" r="32" fill="#88a593" />
+            <path
+              d="M18 32L26 40L46 20"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
+        <h2 class="success-modal__title">Спасибо за вашу заявку!</h2>
+        <p class="success-modal__text">
+          Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
+        </p>
+        <div class="success-modal__actions">
+          <a href="../index.html" class="success-modal__button success-modal__button--primary"
+            >На главную</a
+          >
+          <button class="success-modal__button success-modal__button--secondary" data-close-modal>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="../scripts/core/constants.js"></script>
-    <!-- Инициализация контактных данных из констант -->
     <script src="../scripts/features/contact/init-contacts.js"></script>
-    <!-- Lazy loading Yandex Maps (загружается только при приближении к секции) -->
     <script type="module" src="../scripts/features/contact/lazy-yandex-maps.js"></script>
     <script src="../scripts/core/carousel.js"></script>
     <script src="../scripts/features/faq/faq.js"></script>
     <script src="../scripts/features/portfolio/portfolio-turnkey.js"></script>
+    <!-- Модальное окно успешной отправки -->
+    <script src="../scripts/features/contact/success-modal.js"></script>
+    <!-- Универсальный обработчик форм -->
+    <script type="module" src="../scripts/features/contact/form-handler.js"></script>
     <script type="module" src="../scripts/features/portfolio/custom-select.js"></script>
     <script type="module" src="../scripts/core/main.js"></script>
   </body>
