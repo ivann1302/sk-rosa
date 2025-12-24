@@ -3,6 +3,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import { resolve, join } from "path";
 import { fileURLToPath } from "url";
 import { readFileSync, writeFileSync, readdirSync, statSync, unlinkSync, rmdirSync } from "fs";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -350,6 +351,15 @@ export default defineConfig({
           if (assetInfo.name && assetInfo.name.endsWith(".css")) {
             return "assets/css/[name]-[hash][extname]";
           }
+          // Исключаем изображения для Open Graph из хеширования
+          if (
+            assetInfo.name &&
+            /^(about-hero|rosa-logo|service-hero|floor-screed-hero|airless-painting-hero|plastering-hero|calculator-hero)\.(png|jpg|jpeg)$/.test(
+              assetInfo.name
+            )
+          ) {
+            return "assets/images/common/[name][extname]";
+          }
           if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(assetInfo.name || "")) {
             return "assets/images/[name]-[hash][extname]";
           }
@@ -459,6 +469,12 @@ export default defineConfig({
           dest: ".",
         },
       ],
+    }),
+    visualizer({
+      open: true,
+      filename: "public_html/stats.html",
+      gzipSize: true,
+      brotliSize: true,
     }),
   ],
   server: {

@@ -25,6 +25,12 @@ body {
   background: #fff;
   margin: 0;
   padding: 0;
+  padding-top: 56px; // Отступ для фиксированного header (48px height + 8px margin-top)
+  overflow-x: hidden;
+
+  @include mobile {
+    padding-top: 56px; // Отступ на мобильных (48px height + 8px margin-top)
+  }
 }
 
 main {
@@ -163,11 +169,8 @@ button {
   background: #fff;
 }
 
-.container {
-  max-width: 1264px;
-  margin-inline: auto;
-  padding-inline: 32px;
-}
+// .container удален отсюда, так как он определен в _utils.scss с !important
+// и будет переопределять этот стиль в любом случае
 
 .header__container {
   max-width: 1440px;
