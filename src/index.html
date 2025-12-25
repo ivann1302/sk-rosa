@@ -46,6 +46,149 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://sk-rosa.ru",
+        "name": "ROSA - Ремонт под ключ",
+        "alternateName": "OOO.ROSA",
+        "image": [
+          "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
+          "https://sk-rosa.ru/assets/images/common/about-hero.png"
+        ],
+        "logo": "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
+        "url": "https://sk-rosa.ru",
+        "telephone": "+79851354991",
+        "email": "ooo.rosa2019@yandex.ru",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "д. Грибки, ш. Дмитровское, 31а/3",
+          "addressLocality": "Мытищи",
+          "addressRegion": "Московская область",
+          "postalCode": "141000",
+          "addressCountry": "RU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 55.9,
+          "longitude": 37.7
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        ],
+        "priceRange": "$$",
+        "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
+        "currenciesAccepted": "RUB",
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Москва"
+          },
+          {
+            "@type": "City",
+            "name": "Мытищи"
+          },
+          {
+            "@type": "City",
+            "name": "Химки"
+          },
+          {
+            "@type": "City",
+            "name": "Балашиха"
+          },
+          {
+            "@type": "City",
+            "name": "Одинцово"
+          },
+          {
+            "@type": "City",
+            "name": "Реутов"
+          },
+          {
+            "@type": "City",
+            "name": "Люберцы"
+          },
+          {
+            "@type": "State",
+            "name": "Московская область"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Услуги ремонта и отделки",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Ремонт под ключ",
+                "description": "Комплексный ремонт квартир и домов под ключ",
+                "url": "https://sk-rosa.ru/turnkey-repair"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Безвоздушная покраска",
+                "description": "Профессиональная покраска стен и потолков",
+                "url": "https://sk-rosa.ru/airless-painting"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Стяжка пола",
+                "description": "Выравнивание пола, цементная и сухая стяжка",
+                "url": "https://sk-rosa.ru/floor-screed"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Штукатурные работы",
+                "description": "Штукатурка стен и потолков",
+                "url": "https://sk-rosa.ru/plastering"
+              }
+            }
+          ]
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "25",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "sameAs": [
+          "https://t.me/oorosa",
+          "https://wa.me/79851354991",
+          "https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile"
+        ],
+        "foundingDate": "2019",
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "value": "10-50"
+        },
+        "description": "Профессиональный ремонт квартир и домов под ключ в Москве и Московской области. Более 6 лет опыта, официальный договор, гарантия качества."
+      }
+    </script>
   </head>
   <body id="top">
     <header class="header" data-js-header>
@@ -901,9 +1044,7 @@
     <script src="scripts/features/contact/init-contacts.js"></script>
     <script type="module" src="scripts/features/contact/lazy-yandex-maps.js"></script>
     <script src="scripts/core/carousel.js"></script>
-    <!-- Модальное окно успешной отправки -->
     <script src="scripts/features/contact/success-modal.js"></script>
-    <!-- Универсальный обработчик форм -->
     <script type="module" src="scripts/features/contact/form-handler.js"></script>
     <script type="module" src="scripts/core/main.js"></script>
   </body>

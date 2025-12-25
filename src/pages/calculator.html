@@ -49,6 +49,49 @@
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Калькулятор стоимости ремонта",
+        "description": "Онлайн калькулятор для расчета стоимости ремонта квартиры в Москве и МО. Рассчитайте стоимость ремонта под ключ онлайн. Бесплатный расчет сметы, прозрачные цены.",
+        "url": "https://sk-rosa.ru/calculator",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB"
+        },
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "ROSA - Ремонт под ключ",
+          "@id": "https://sk-rosa.ru"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sk-rosa.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Калькулятор стоимости",
+            "item": "https://sk-rosa.ru/calculator"
+          }
+        ]
+      }
+    </script>
   </head>
   <body id="top">
     <header class="header" data-js-header>

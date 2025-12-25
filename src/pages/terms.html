@@ -33,6 +33,46 @@
     <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
     <!-- Стили подключаются напрямую для немедленной загрузки (Vite обработает SCSS) -->
     <link rel="stylesheet" href="../../styles/main.scss" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "OOO.ROSA",
+        "legalName": "OOO.ROSA",
+        "url": "https://sk-rosa.ru",
+        "logo": "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+79851354991",
+          "contactType": "customer service",
+          "areaServed": "RU",
+          "availableLanguage": ["Russian"]
+        },
+        "sameAs": ["https://t.me/oorosa", "https://wa.me/79851354991"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sk-rosa.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Пользовательское соглашение",
+            "item": "https://sk-rosa.ru/terms"
+          }
+        ]
+      }
+    </script>
   </head>
   <body id="top">
     <header class="header" data-js-header>

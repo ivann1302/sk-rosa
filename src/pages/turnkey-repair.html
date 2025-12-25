@@ -55,6 +55,65 @@
         overflow: hidden !important;
       }
     </style>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Ремонт под ключ",
+        "name": "Ремонт квартир и домов под ключ",
+        "description": "Ремонт квартир и домов под ключ в Москве и Московской области. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены.",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "ROSA - Ремонт под ключ",
+          "@id": "https://sk-rosa.ru"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Москва"
+          },
+          {
+            "@type": "State",
+            "name": "Московская область"
+          }
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://sk-rosa.ru/turnkey-repair",
+          "servicePhone": "+79851354991",
+          "serviceSmsNumber": "+79851354991",
+          "availableLanguage": "Russian"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock",
+          "url": "https://sk-rosa.ru/turnkey-repair"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sk-rosa.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Ремонт под ключ",
+            "item": "https://sk-rosa.ru/turnkey-repair"
+          }
+        ]
+      }
+    </script>
   </head>
   <body id="top">
     <header class="header" data-js-header>

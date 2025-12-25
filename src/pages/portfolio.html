@@ -42,6 +42,82 @@
     <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
     <!-- Стили подключаются напрямую для немедленной загрузки (Vite обработает SCSS) -->
     <link rel="stylesheet" href="../../styles/main.scss" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Портфолио работ ROSA",
+        "description": "Примеры выполненных работ по ремонту квартир в Москве и МО. Примеры ремонта под ключ, стяжки пола, покраски и штукатурных работ. Более 6 лет опыта, десятки успешных проектов.",
+        "url": "https://sk-rosa.ru/portfolio",
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "CreativeWork",
+                "name": "Ремонт квартиры в ЖК Белая Дача парк",
+                "description": "Ремонт 2-х комнатной квартиры 72 м² в м. Котельники",
+                "image": "https://sk-rosa.ru/assets/images/portfolio/19.png"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "CreativeWork",
+                "name": "Ремонт квартиры в ЖК Митино",
+                "description": "Ремонт 3-х комнатной квартиры 85 м² в м. Митино",
+                "image": "https://sk-rosa.ru/assets/images/portfolio/9.png"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "CreativeWork",
+                "name": "Ремонт квартиры в ЖК Покровский",
+                "description": "Ремонт 1-комнатной квартиры 45 м² в м. Покровское-Стрешнево",
+                "image": "https://sk-rosa.ru/assets/images/portfolio/8.png"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "CreativeWork",
+                "name": "Ремонт квартиры в ЖК Сколково",
+                "description": "Ремонт студии 32 м² в м. Сколково",
+                "image": "https://sk-rosa.ru/assets/images/portfolio/17.png"
+              }
+            }
+          ]
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://sk-rosa.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Портфолио",
+            "item": "https://sk-rosa.ru/portfolio"
+          }
+        ]
+      }
+    </script>
   </head>
   <body id="top">
     <!-- Header -->
