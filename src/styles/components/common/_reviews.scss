@@ -96,6 +96,7 @@
     margin-left: -50vw;
     margin-right: -50vw;
     padding: 24px 0;
+    text-align: justify;
 
     // Начальное состояние - скрыт справа
     opacity: 0;
@@ -108,6 +109,30 @@
     &--revealed {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 12px;
+    text-align: justify;
+
+    // Начальное состояние - скрыт справа
+    opacity: 0;
+    transform: translateX(100px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+
+    // Состояние при появлении
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (width <= 768px) {
+      padding: 0 12px;
     }
   }
 
@@ -132,7 +157,7 @@
     font-size: 1.1rem;
     color: #555;
     margin-bottom: 24px;
-    text-align: left;
+    text-align: justify;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;

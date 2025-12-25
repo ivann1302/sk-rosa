@@ -259,7 +259,20 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 0 0 0;
-    text-align: left;
+    text-align: justify;
+
+    // Начальное состояние - скрыт справа
+    opacity: 0;
+    transform: translateX(100px);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+
+    // Состояние при появлении
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
     @media (width <= 768px) {
       padding: 20px 12px 0 12px;
@@ -279,7 +292,7 @@
   }
 
   &__text {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     color: #666;
     line-height: 1.6;
     margin-bottom: 10px;

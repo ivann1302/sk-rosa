@@ -163,6 +163,7 @@
   &__large-text {
     flex: 1;
     padding: 20px 40px 40px 40px;
+    text-align: justify;
 
     h3 {
       font-size: 1.1rem;
@@ -507,6 +508,7 @@
       width: 100%;
       min-width: 0;
       max-width: none;
+      font-size: 0.8rem;
     }
 
     &__submit-btn {

@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Функция для выравнивания высоты элементов в парах (только для закрытых)
   function syncClosedItemsHeights() {
-    if (!faqList) return;
+    if (!faqList) {
+      return;
+    }
 
     // Сбрасываем высоту всех закрытых элементов
     faqItems.forEach(item => {

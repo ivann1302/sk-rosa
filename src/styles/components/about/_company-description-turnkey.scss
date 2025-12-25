@@ -14,13 +14,14 @@
   &__text {
     max-width: 1200px;
     margin: 0 auto;
+    text-align: justify;
 
     p {
       font-size: 0.8rem;
       line-height: 1.5;
       color: #666;
       margin-bottom: 16px;
-      text-align: left;
+      text-align: justify;
 
       &:last-child {
         margin-bottom: 0;
@@ -65,5 +66,28 @@
       display: block;
       margin: 0 auto;
     }
+  }
+}
+
+.company-description-turnkey__text .portfolio-description__text {
+  font-size: 1.2rem !important;
+  color: #666 !important;
+  line-height: 1.6 !important;
+
+  // Начальное состояние - скрыт слева
+  opacity: 0;
+  transform: translateX(-100px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+
+  // Состояние при появлении
+  &--revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (width <= 768px) {
+    font-size: 0.95rem !important;
   }
 }

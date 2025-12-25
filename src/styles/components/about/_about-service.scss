@@ -51,7 +51,7 @@
     font-weight: 400;
     line-height: 1.6;
     margin-bottom: 32px;
-    text-align: left;
+    text-align: justify;
     max-width: 520px;
   }
 
@@ -102,7 +102,7 @@
   }
 
   @media (width <= 768px) {
-    padding: 16px 0 0 0;
+    padding: 0 0 0 0;
 
     &__container {
       flex-direction: column;
@@ -145,6 +145,10 @@
       border: 1px solid #e0e0e0;
       margin: 0 12px 0 12px;
       width: calc(100% - 24px);
+    }
+
+    .about-service__btn {
+      align-self: center;
     }
   }
 

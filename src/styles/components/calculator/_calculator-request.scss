@@ -1,7 +1,7 @@
 @use "helpers/mixins" as *;
 
 .calculator-request {
-  padding: 80px 0;
+  padding: 0 0 80px 0;
   background: white;
 
   &__container {
@@ -259,7 +259,11 @@
   }
 
   @include mobile {
-    padding: 60px 0;
+    padding: 0 0 60px 0;
+
+    &__container {
+      padding: 0 12px;
+    }
 
     &__content {
       height: auto;
@@ -269,6 +273,12 @@
     &__form {
       flex-direction: column;
       gap: 20px;
+      align-items: center;
+    }
+
+    &__fields {
+      flex-direction: column;
+      width: 100%;
     }
 
     &__field {
@@ -277,6 +287,11 @@
 
     &__button {
       width: 100%;
+      position: static;
+      right: auto;
+      bottom: auto;
+      margin-top: 20px;
+      align-self: center;
     }
   }
 }
