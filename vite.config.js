@@ -444,20 +444,10 @@ export default defineConfig({
           src: "scripts/features/contact/form-utils.js",
           dest: "scripts/features/contact",
         },
-        // Копируем видео файлы
-        {
-          src: "assets/videos/**/*",
-          dest: "assets/videos",
-        },
-        // Копируем изображения из portfolio и turnkey (они не обрабатываются Vite)
-        {
-          src: "assets/images/portfolio/**/*",
-          dest: "assets/images/portfolio",
-        },
-        {
-          src: "assets/images/turnkey/**/*",
-          dest: "assets/images/turnkey",
-        },
+        // Видео файлы обрабатываются Vite из HTML, поэтому не копируем их отдельно
+        // Это предотвращает дублирование файлов (с хешем и без)
+        // portfolio и turnkey изображения обрабатываются Vite из HTML/CSS, поэтому не копируем их отдельно
+        // Это предотвращает дублирование файлов (с хешем и без)
         // Копируем .nojekyll для GitHub Pages
         {
           src: ".nojekyll",

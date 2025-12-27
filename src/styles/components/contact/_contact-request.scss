@@ -2,7 +2,12 @@
 
 // Блок "Оставить заявку / Связаться с нами"
 .contact-request {
-  background: url("/assets/images/common/fabula-ai.png") center center/cover no-repeat;
+  // Используем WebP для оптимизации (937KB вместо 42MB)
+  // Используем @/ алиас для корня src (Vite обработает это правильно)
+  background-image: url("@/assets/images/common/fabula-ai.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 80px 0;
   position: relative;
 
@@ -267,7 +272,7 @@
       content: "";
       width: calc(100% + 24px);
       height: 250px;
-      background: url("/assets/images/portfolio/15.png") center center/cover no-repeat;
+      background: url("@/assets/images/portfolio/15.png") center center/cover no-repeat;
       order: 1;
       margin-bottom: 16px;
       margin-left: -12px;

@@ -52,6 +52,4 @@ npm-debug.log*
 .idea/
 
 DEPLOY.md
-QUICK_START.md
-BUILD.md
 TODO.md
