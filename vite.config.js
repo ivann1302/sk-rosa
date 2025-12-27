@@ -354,7 +354,7 @@ export default defineConfig({
           // Исключаем изображения для Open Graph из хеширования
           if (
             assetInfo.name &&
-            /^(about-hero|rosa-logo|service-hero|floor-screed-hero|airless-painting-hero|plastering-hero|calculator-hero)\.(png|jpg|jpeg)$/.test(
+            /^(about-hero|rosa-logo|service-hero|floor-screed-hero|airless-painting-hero|plastering-hero|calculator-hero|turnkey-og-image)\.(png|jpg|jpeg|webp)$/.test(
               assetInfo.name
             )
           ) {
@@ -406,6 +406,16 @@ export default defineConfig({
         {
           src: "assets/icons/**/*",
           dest: "assets/icons",
+        },
+        // Копируем иконки flaticon
+        {
+          src: "assets/images/icons/flaticon/**/*",
+          dest: "assets/images/icons/flaticon",
+        },
+        // Копируем изображение для Open Graph turnkey-repair
+        {
+          src: "assets/images/common/turnkey-og-image.webp",
+          dest: "assets/images/common",
         },
         // Копируем скрипты features (они подключены через <script src>)
         {
