@@ -4,6 +4,7 @@ import { resolve, join } from "path";
 import { fileURLToPath } from "url";
 import { readFileSync, writeFileSync, readdirSync, statSync, unlinkSync, rmdirSync } from "fs";
 import { visualizer } from "rollup-plugin-visualizer";
+import purgecss from "@fullhuman/postcss-purgecss";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -37,7 +38,7 @@ const fixHtmlPaths = () => {
           }
         }
       } catch (e) {
-        console.warn("Could not find CSS directory, using fallback:", e.message);
+        // CSS directory not found, using fallback
       }
 
       // Создаем маппинг файлов: оригинальное имя -> имя с хешем
@@ -46,7 +47,6 @@ const fixHtmlPaths = () => {
       try {
         if (statSync(imagesDir, { throwIfNoEntry: false })) {
           const imageFiles = readdirSync(imagesDir);
-          console.warn(`📁 Found ${imageFiles.length} image files in ${imagesDir}`);
           imageFiles.forEach(file => {
             // Извлекаем оригинальное имя (до хеша)
             // Формат: filename-hash.ext
@@ -67,29 +67,10 @@ const fixHtmlPaths = () => {
               imageMap.set(`turnkey/${file}`, file);
             }
           });
-          // Выводим информацию о маппинге для отладки
-          console.warn(`📋 Image map created with ${imageMap.size} entries`);
-          if (imageMap.has("common/whatsapp_icon.png")) {
-            console.warn(
-              `✓ WhatsApp icon mapped: common/whatsapp_icon.png -> ${imageMap.get("common/whatsapp_icon.png")}`
-            );
-          } else {
-            console.warn("⚠ WhatsApp icon not found in image map");
-            console.warn(
-              `Available common/* keys: ${Array.from(imageMap.keys())
-                .filter(k => k.startsWith("common/"))
-                .slice(0, 5)
-                .join(", ")}`
-            );
-          }
-        } else {
-          console.warn(`⚠ Images directory does not exist: ${imagesDir}`);
         }
       } catch (e) {
-        console.warn("Could not read images directory:", e.message);
+        // Could not read images directory
       }
-
-      console.warn(`📄 Processing ${htmlFiles.length} HTML files from ${pagesDir}`);
       htmlFiles.forEach(file => {
         const sourceFile = join(pagesDir, file);
         const targetFile = join(outDir, file);
@@ -146,15 +127,6 @@ const fixHtmlPaths = () => {
                 replacementCount++;
                 return `${attr}=${quote}./assets/images/${mappedFile}${quote}`;
               }
-              // Если не найдено, выводим предупреждение
-              console.warn(
-                `[${file}] Image not found in map: ${folder}/${filename}, available keys: ${Array.from(
-                  imageMap.keys()
-                )
-                  .filter(k => k.includes(filename.split(".")[0]))
-                  .slice(0, 5)
-                  .join(", ")}`
-              );
               // Если не найдено, оставляем путь но добавляем ./
               return `${attr}=${quote}./assets/images/${folder}/${filename}${quote}`;
             }
@@ -162,10 +134,6 @@ const fixHtmlPaths = () => {
             return `${attr}=${quote}./assets/images/${folder}/${filename}${quote}`;
           }
         );
-
-        if (replacementCount > 0) {
-          console.warn(`  ✓ Replaced ${replacementCount} image paths in ${file}`);
-        }
 
         // Также обрабатываем пути без атрибутов (на случай, если они используются в других контекстах)
         content = content.replace(
@@ -199,17 +167,6 @@ const fixHtmlPaths = () => {
 
         // Записываем исправленный файл в корень
         writeFileSync(targetFile, content, "utf-8");
-
-        // Проверяем, были ли заменены пути к изображениям
-        const imageReplacements = (originalContent.match(/assets\/images\/common\//g) || []).length;
-        const remainingCommonPaths = (content.match(/assets\/images\/common\//g) || []).length;
-        if (imageReplacements > 0 && remainingCommonPaths > 0) {
-          console.warn(
-            `⚠ ${file}: ${remainingCommonPaths} paths to common/ images were not replaced (out of ${imageReplacements} total)`
-          );
-        } else if (imageReplacements > 0) {
-          console.warn(`✓ ${file}: All ${imageReplacements} paths to common/ images were replaced`);
-        }
 
         // Удаляем исходный файл из папки pages
         unlinkSync(sourceFile);
@@ -250,7 +207,6 @@ const fixHtmlPaths = () => {
         indexContent = indexContent.replace(/href=["']index["']/g, 'href="/"');
 
         writeFileSync(indexFile, indexContent, "utf-8");
-        console.warn("✓ Processed index.html: replaced pages/ paths and removed .html");
       }
 
       // Обрабатываем все HTML файлы в корне - убираем .html из ссылок между страницами
@@ -284,7 +240,6 @@ const fixHtmlPaths = () => {
 
         if (content !== originalContent) {
           writeFileSync(filePath, content, "utf-8");
-          console.warn(`✓ Processed ${file}: removed .html from links`);
         }
       });
     },

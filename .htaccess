@@ -11,10 +11,21 @@
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^(.*)$ $1.html [L]
 
+    # Если файл или директория не существует - перенаправляем на 404
+    # Проверяем, что это не статические ресурсы (assets, scripts и т.д.)
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html !-f
+    RewriteRule ^(.*)$ /404.html [L]
+
     # Редирект с .html на без .html (опционально, для чистых URL)
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
     RewriteRule ^ /%1 [NC,L,R=301]
 </IfModule>
+
+# Обработка 404 ошибок
+ErrorDocument 404 /404.html
 
 # Защита .env файла
 <Files ".env">
