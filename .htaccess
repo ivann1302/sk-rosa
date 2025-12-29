@@ -33,6 +33,55 @@ ErrorDocument 404 /404.html
     Deny from all
 </Files>
 
+# Блокировка тестовых файлов
+<FilesMatch "^(test-.*\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# === SECURITY HEADERS ===
+# Заголовки безопасности для защиты от различных атак
+<IfModule mod_headers.c>
+    # X-XSS-Protection: Защита от XSS атак
+    # "1; mode=block" - включает встроенную защиту браузера и блокирует страницу при обнаружении XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # X-Frame-Options: Защита от clickjacking (встраивание страницы в iframe)
+    # "SAMEORIGIN" - разрешает встраивание только с того же домена
+    # Можно использовать "DENY" для полного запрета встраивания
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # X-Content-Type-Options: Запрещает браузеру "угадывать" тип контента
+    # "nosniff" - браузер будет использовать только указанный Content-Type
+    # Защищает от MIME-sniffing атак (например, загрузка JS как изображения)
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Referrer-Policy: Контролирует, какую информацию о реферере отправлять
+    # "strict-origin-when-cross-origin" - полный URL только для того же домена,
+    # для других доменов только origin (без пути)
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content-Security-Policy: Политика безопасности контента
+    # Ограничивает источники, откуда можно загружать ресурсы
+    # 'self' - только с текущего домена
+    # 'unsafe-inline' - разрешает inline скрипты/стили (нужно для вашего проекта)
+    # data: - разрешает data: URI (для изображений)
+    # https: - разрешает загрузку с любых HTTPS источников (для изображений, шрифтов)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"
+    
+    # Strict-Transport-Security (HSTS): Принудительное использование HTTPS
+    # Работает только для HTTPS соединений
+    # "max-age=31536000" - 1 год
+    # "includeSubDomains" - применяется ко всем поддоменам
+    # "preload" - можно добавить в список предзагрузки HSTS
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    
+    # Permissions-Policy: Контролирует доступ к API браузера
+    # Отключает неиспользуемые функции для повышения безопасности
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+# === КОНЕЦ SECURITY HEADERS ===
+
 # Кеширование статических файлов
 <IfModule mod_expires.c>
     ExpiresActive On

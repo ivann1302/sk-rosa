@@ -33,6 +33,40 @@ ErrorDocument 404 /404.html
     Deny from all
 </Files>
 
+# === SECURITY HEADERS ===
+# Заголовки безопасности для защиты от различных атак
+<IfModule mod_headers.c>
+    # X-XSS-Protection: Защита от XSS атак
+    # "1; mode=block" - включает встроенную защиту браузера и блокирует страницу при обнаружении XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # X-Frame-Options: Защита от clickjacking (встраивание страницы в iframe)
+    # "SAMEORIGIN" - разрешает встраивание только с того же домена
+    # Можно использовать "DENY" для полного запрета встраивания
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # X-Content-Type-Options: Запрещает браузеру "угадывать" тип контента
+    # "nosniff" - браузер будет использовать только указанный Content-Type
+    # Защищает от MIME-sniffing атак (например, загрузка JS как изображения)
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Referrer-Policy: Контролирует, какую информацию о реферере отправлять
+    # "strict-origin-when-cross-origin" - полный URL только для того же домена,
+    # для других доменов только origin (без пути)
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Работает только для HTTPS соединений
+    # "max-age=31536000" - 1 год
+    # "includeSubDomains" - применяется ко всем поддоменам
+    # "preload" - можно добавить в список предзагрузки HSTS
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    
+    # Permissions-Policy: Контролирует доступ к API браузера
+    # Отключает неиспользуемые функции для повышения безопасности
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+# === КОНЕЦ SECURITY HEADERS ===
+
 # Кеширование статических файлов
 <IfModule mod_expires.c>
     ExpiresActive On

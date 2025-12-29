@@ -33,8 +33,10 @@
       bottom: 0;
       background-image: url("@/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp");
       background-image: image-set(
-        url("@/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp") type("image/webp"),
-        url("@/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png") type("image/png")
+        url("@/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp")
+          type("image/webp"),
+        url("@/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png")
+          type("image/png")
       );
       background-position: center center;
       background-size: cover;

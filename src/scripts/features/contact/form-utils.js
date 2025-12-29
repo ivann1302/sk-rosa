@@ -63,6 +63,43 @@ export function validateForm(formData) {
 }
 
 /**
+ * Получение CSRF токена с сервера
+ * @param {string} actionPath - Путь к send.php из action формы (для определения относительного пути)
+ * @returns {Promise<string>} - CSRF токен
+ */
+async function getCsrfToken(actionPath = "scripts/api/send.php") {
+  try {
+    // Определяем путь к get-csrf-token.php относительно пути к send.php
+    // Если action = "../scripts/api/send.php", то токен = "../scripts/api/get-csrf-token.php"
+    // Если action = "scripts/api/send.php", то токен = "scripts/api/get-csrf-token.php"
+    const apiPath = actionPath.replace("send.php", "get-csrf-token.php");
+
+    const response = await fetch(apiPath, {
+      method: "GET",
+      credentials: "same-origin", // Важно для работы с сессиями
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to get CSRF token: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!data.token) {
+      throw new Error("CSRF token not found in response");
+    }
+
+    return data.token;
+  } catch (error) {
+    console.error("Ошибка получения CSRF токена:", error);
+    // Всегда выбрасываем ошибку - токен обязателен для безопасности
+    const errorMessage = isDevelopment
+      ? "Не удалось получить CSRF токен. Убедитесь, что PHP сервер запущен и доступен."
+      : "Не удалось получить CSRF токен. Пожалуйста, обновите страницу.";
+    throw new Error(errorMessage);
+  }
+}
+
+/**
  * Отправка формы на сервер с обработкой ошибок
  * @param {string} action - URL для отправки формы
  * @param {FormData} formData - Данные формы
@@ -75,33 +112,50 @@ export async function submitForm(action, formData) {
     return await mockSubmitForm(action, formData);
   }
 
+  // Получаем CSRF токен и добавляем в форму
+  // Используем action для определения правильного пути к токену
+  const csrfToken = await getCsrfToken(action);
+  if (!csrfToken) {
+    throw new Error("Не удалось получить CSRF токен");
+  }
+  formData.append("csrf_token", csrfToken);
+
   // Реальная отправка на сервер
   const response = await fetch(action, {
     method: "POST",
     body: formData,
+    credentials: "same-origin", // Важно для работы с сессиями
   });
 
-  // Проверяем статус ответа перед парсингом JSON
+  // Проверяем, что ответ - JSON (даже для ошибок)
+  const contentType = response.headers.get("content-type");
+  const isJson = contentType && contentType.includes("application/json");
+
+  // Пытаемся распарсить JSON (даже для ошибок, чтобы получить сообщение)
+  let jsonData = null;
+  if (isJson) {
+    try {
+      jsonData = await response.json();
+    } catch (parseError) {
+      if (parseError instanceof SyntaxError) {
+        console.error("Сервер вернул невалидный JSON:", response);
+        throw new Error("Ошибка формата ответа сервера");
+      }
+      throw parseError;
+    }
+  }
+
+  // Если статус не OK, возвращаем ошибку с сообщением из JSON (если есть)
   if (!response.ok) {
+    // Для rate limiting (429) и других ошибок возвращаем структуру с success: false
+    if (jsonData && typeof jsonData === "object") {
+      return jsonData; // Возвращаем объект с success: false и error
+    }
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  // Проверяем, что ответ - JSON
-  const contentType = response.headers.get("content-type");
-  if (!contentType || !contentType.includes("application/json")) {
-    throw new Error("Ответ сервера не является JSON");
-  }
-
-  try {
-    return await response.json();
-  } catch (parseError) {
-    // Если не удалось распарсить JSON
-    if (parseError instanceof SyntaxError) {
-      console.error("Сервер вернул не JSON:", response);
-      throw new Error("Ошибка формата ответа сервера");
-    }
-    throw parseError;
-  }
+  // Успешный ответ
+  return jsonData;
 }
 
 /**

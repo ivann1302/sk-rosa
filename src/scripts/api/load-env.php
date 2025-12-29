@@ -44,12 +44,15 @@ function loadEnv($envFile) {
   return true;
 }
 
-// Загружаем .env из корня сайта (public_html/.env)
+// Загружаем .env из корня проекта или public_html
 // Пробуем несколько возможных путей для надежности
 $possiblePaths = [
-  dirname(dirname(__DIR__)) . '/.env',  // public_html/.env (на 2 уровня выше api/)
-  __DIR__ . '/../../.env',              // альтернативный путь
-  $_SERVER['DOCUMENT_ROOT'] . '/.env',  // DOCUMENT_ROOT/.env (для разных конфигураций хостинга)
+  dirname(dirname(dirname(__DIR__))) . '/.env',  // корень проекта (на 3 уровня выше api/)
+  __DIR__ . '/../../../.env',                    // корень проекта (альтернативный путь)
+  dirname(dirname(__DIR__)) . '/.env',            // public_html/.env (на 2 уровня выше api/)
+  __DIR__ . '/../../.env',                        // public_html/.env (альтернативный путь)
+  $_SERVER['DOCUMENT_ROOT'] . '/.env',            // DOCUMENT_ROOT/.env
+  dirname($_SERVER['DOCUMENT_ROOT']) . '/.env',   // родительская директория DOCUMENT_ROOT (корень проекта)
 ];
 
 $envLoaded = false;

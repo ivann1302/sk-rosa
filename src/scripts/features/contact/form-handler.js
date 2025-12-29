@@ -52,11 +52,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Более информативное сообщение об ошибке
         let errorMessage = "Ошибка при отправке. Попробуйте позже.";
-        if (error.message.includes("HTTP error")) {
-          errorMessage = "Ошибка сервера. Пожалуйста, попробуйте позже.";
+        if (error.message.includes("CSRF токен") || error.message.includes("CSRF")) {
+          errorMessage = "Ошибка безопасности. Пожалуйста, обновите страницу и попробуйте снова.";
+        } else if (error.message.includes("HTTP error")) {
+          const statusMatch = error.message.match(/status: (\d+)/);
+          if (statusMatch && statusMatch[1] === "403") {
+            errorMessage = "Ошибка безопасности. Пожалуйста, обновите страницу и попробуйте снова.";
+          } else {
+            errorMessage = "Ошибка сервера. Пожалуйста, попробуйте позже.";
+          }
         } else if (error.message.includes("JSON") || error.message.includes("формата")) {
           errorMessage = "Ошибка обработки ответа сервера. Пожалуйста, попробуйте позже.";
-        } else if (error.message.includes("Failed to fetch")) {
+        } else if (error.message.includes("Failed to fetch") || error.message.includes("fetch")) {
           errorMessage = "Ошибка подключения. Проверьте интернет-соединение и попробуйте позже.";
         }
 

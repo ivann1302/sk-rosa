@@ -338,11 +338,6 @@ export default defineConfig({
           src: "scripts/api/*.php",
           dest: "scripts/api",
         },
-        // Копируем тестовые PHP файлы для диагностики на хостинге
-        {
-          src: "test-*.php",
-          dest: ".",
-        },
         // Копируем JS файлы, которые подключены через <script src> в HTML
         // Эти файлы не являются ES модулями и должны быть доступны как статические
         {
@@ -421,6 +416,20 @@ export default defineConfig({
         // Копируем .htaccess для Apache (работа URL без .html)
         {
           src: ".htaccess",
+          dest: ".",
+        },
+        // Копируем файлы верификации (Яндекс Вебмастер, Google Search Console)
+        {
+          src: "yandex_*.html",
+          dest: ".",
+        },
+        // Копируем robots.txt и sitemap.xml для SEO
+        {
+          src: "robots.txt",
+          dest: ".",
+        },
+        {
+          src: "sitemap.xml",
           dest: ".",
         },
       ],
