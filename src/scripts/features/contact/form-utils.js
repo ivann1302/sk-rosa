@@ -1,4 +1,5 @@
 // Общие утилиты для работы с формами
+import { validateFormFields } from './form-validation.js';
 
 /**
  * Определение режима разработки
@@ -45,21 +46,18 @@ async function mockSubmitForm(action, formData) {
 /**
  * Валидация данных формы
  * @param {FormData} formData - Данные формы
- * @returns {{valid: boolean, error?: string}} - Результат валидации
+ * @returns {{valid: boolean, error?: string, errors?: object}} - Результат валидации
  */
 export function validateForm(formData) {
-  const name = formData.get("NAME");
-  const phone = formData.get("PHONE");
-
-  if (!name || !phone) {
-    return { valid: false, error: "Пожалуйста, заполните обязательные поля" };
+  const validation = validateFormFields(formData);
+  
+  if (!validation.valid) {
+    // Возвращаем первую ошибку для обратной совместимости с alert()
+    const firstError = Object.values(validation.errors)[0];
+    return { valid: false, error: firstError, errors: validation.errors };
   }
-
-  if (phone.replace(/\D/g, "").length < 10) {
-    return { valid: false, error: "Пожалуйста, введите корректный номер телефона" };
-  }
-
-  return { valid: true };
+  
+  return { valid: true, errors: {} };
 }
 
 /**

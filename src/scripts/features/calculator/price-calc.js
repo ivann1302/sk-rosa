@@ -1,3 +1,12 @@
+// Импорт функций валидации
+import { 
+  validatePhone, 
+  setupFieldValidation, 
+  showFieldError, 
+  hideFieldError,
+  applyPhoneMask 
+} from "../contact/form-validation.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   // Переключение между мессенджерами
   const messengerBtns = document.querySelectorAll(".price-calc__messenger-btn");
@@ -11,24 +20,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Обработка отправки формы
+  // Обработка отправки формы с валидацией
   const submitBtn = document.querySelector(".price-calc__submit-btn");
   const phoneField = document.querySelector(".price-calc__phone-field");
 
   if (submitBtn && phoneField) {
-    submitBtn.addEventListener("click", function () {
-      const phone = phoneField.value.trim();
-      const activeMessenger = document.querySelector(".price-calc__messenger-btn--active").dataset
-        .messenger;
+    // Настройка валидации в реальном времени
+    setupFieldValidation(phoneField, validatePhone);
+    applyPhoneMask(phoneField);
 
-      if (!phone) {
-        alert("Пожалуйста, введите номер телефона");
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Скрываем предыдущие ошибки
+      hideFieldError(phoneField);
+
+      const phone = phoneField.value.trim();
+      const activeMessengerBtn = document.querySelector(".price-calc__messenger-btn--active");
+      
+      if (!activeMessengerBtn) {
+        alert("Пожалуйста, выберите способ связи");
         return;
       }
 
-      // Здесь можно добавить валидацию номера телефона
-      if (phone.length < 10) {
-        alert("Пожалуйста, введите корректный номер телефона");
+      const activeMessenger = activeMessengerBtn.dataset.messenger;
+
+      // Валидация телефона
+      const validation = validatePhone(phone);
+      if (!validation.valid) {
+        showFieldError(phoneField, validation.error);
+        phoneField.focus();
         return;
       }
 

@@ -1,5 +1,13 @@
 // Универсальный обработчик форм для показа модального окна
 import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
+import { 
+  validateName, 
+  validatePhone, 
+  setupFieldValidation, 
+  showFieldError, 
+  hideFieldError,
+  applyPhoneMask 
+} from "./form-validation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Список селекторов форм, которые нужно обработать
@@ -14,9 +22,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(selector);
     if (!form) return;
 
+    // Настройка валидации в реальном времени для каждого поля
+    const nameField = form.querySelector('input[name="NAME"]');
+    if (nameField) {
+      setupFieldValidation(nameField, validateName);
+    }
+
+    const phoneField = form.querySelector('input[name="PHONE"]');
+    if (phoneField) {
+      setupFieldValidation(phoneField, validatePhone);
+      applyPhoneMask(phoneField);
+    }
+
     // Предотвращаем стандартную отправку
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
+
+      // Скрываем все предыдущие ошибки
+      form.querySelectorAll('.field--error').forEach(field => {
+        hideFieldError(field);
+      });
 
       // Получаем данные формы
       const formData = new FormData(form);
@@ -24,7 +49,23 @@ document.addEventListener("DOMContentLoaded", function () {
       // Валидация
       const validation = validateForm(formData);
       if (!validation.valid) {
-        alert(validation.error);
+        // Показываем ошибки для всех полей
+        const errors = validation.errors || {};
+        
+        if (errors.NAME && nameField) {
+          showFieldError(nameField, errors.NAME);
+        }
+        
+        if (errors.PHONE && phoneField) {
+          showFieldError(phoneField, errors.PHONE);
+        }
+        
+        // Фокус на первое поле с ошибкой
+        const firstErrorField = nameField?.classList.contains('field--error') ? nameField : phoneField;
+        if (firstErrorField) {
+          firstErrorField.focus();
+        }
+        
         return;
       }
 

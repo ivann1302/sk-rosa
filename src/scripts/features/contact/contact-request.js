@@ -1,5 +1,13 @@
 // Обработка формы заявки
 import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
+import { 
+  validateName, 
+  validatePhone, 
+  setupFieldValidation, 
+  showFieldError, 
+  hideFieldError,
+  applyPhoneMask 
+} from "./form-validation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-request__form-fields");
@@ -8,47 +16,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Маска для телефона
-  const phoneInput = form.querySelector("#phone");
-  if (phoneInput) {
-    phoneInput.addEventListener("input", function (e) {
-      let value = e.target.value.replace(/\D/g, "");
+  // Настройка валидации в реальном времени для каждого поля
+  const nameField = form.querySelector('input[name="NAME"]');
+  if (nameField) {
+    setupFieldValidation(nameField, validateName);
+  }
 
-      if (value.length > 0) {
-        if (value.length <= 1) {
-          value = "+7 (" + value;
-        } else if (value.length <= 4) {
-          value = "+7 (" + value.substring(1, 4);
-        } else if (value.length <= 7) {
-          value = "+7 (" + value.substring(1, 4) + ") " + value.substring(4, 7);
-        } else if (value.length <= 9) {
-          value =
-            "+7 (" +
-            value.substring(1, 4) +
-            ") " +
-            value.substring(4, 7) +
-            "-" +
-            value.substring(7, 9);
-        } else {
-          value =
-            "+7 (" +
-            value.substring(1, 4) +
-            ") " +
-            value.substring(4, 7) +
-            "-" +
-            value.substring(7, 9) +
-            "-" +
-            value.substring(9, 11);
-        }
-      }
-
-      e.target.value = value;
-    });
+  const phoneField = form.querySelector('input[name="PHONE"]');
+  if (phoneField) {
+    setupFieldValidation(phoneField, validatePhone);
+    applyPhoneMask(phoneField);
   }
 
   // Обработка отправки формы
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    // Скрываем все предыдущие ошибки
+    form.querySelectorAll('.field--error').forEach(field => {
+      hideFieldError(field);
+    });
 
     // Получаем данные формы
     const formData = new FormData(form);
@@ -56,7 +43,26 @@ document.addEventListener("DOMContentLoaded", function () {
     // Валидация
     const validation = validateForm(formData);
     if (!validation.valid) {
+      // Показываем ошибки для всех полей
+      const errors = validation.errors || {};
+      
+      if (errors.NAME && nameField) {
+        showFieldError(nameField, errors.NAME);
+      }
+      
+      if (errors.PHONE && phoneField) {
+        showFieldError(phoneField, errors.PHONE);
+      }
+      
+      // Показываем общее сообщение для обратной совместимости
       showMessage(validation.error, "error");
+      
+      // Фокус на первое поле с ошибкой
+      const firstErrorField = nameField?.classList.contains('field--error') ? nameField : phoneField;
+      if (firstErrorField) {
+        firstErrorField.focus();
+      }
+      
       return;
     }
 

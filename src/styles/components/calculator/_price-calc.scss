@@ -260,8 +260,8 @@
     display: flex;
     align-items: stretch;
     justify-content: stretch;
-    height: 200px;
-    overflow: hidden;
+    min-height: 200px;
+    overflow: visible;
   }
 
   &__top-large-card {
@@ -343,7 +343,7 @@
   &__form-image-content {
     display: flex;
     align-items: stretch;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
   }
 

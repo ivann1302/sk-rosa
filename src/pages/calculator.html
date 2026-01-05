@@ -665,7 +665,7 @@
             <div class="calculator-request__fields">
               <div class="calculator-request__field">
                 <label for="name">Ваше имя *</label>
-                <input type="text" id="name" name="NAME" placeholder="Введите ваше имя" required />
+                <input type="text" id="name" name="NAME" autocomplete="name" placeholder="Введите ваше имя" required />
               </div>
               <div class="calculator-request__field">
                 <label for="phone">Номер телефона *</label>
@@ -673,6 +673,7 @@
                   type="tel"
                   id="phone"
                   name="PHONE"
+                  autocomplete="tel"
                   placeholder="+7 (___) ___-__-__"
                   required
                 />
