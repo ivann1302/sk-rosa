@@ -20,7 +20,7 @@
 
   &__header {
     margin-bottom: 40px;
-    text-align: center;
+    text-align: left;
   }
 
   &__title {
@@ -28,11 +28,81 @@
     font-weight: 700;
     color: #333;
     margin-bottom: 16px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__intro-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__why-title {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+
+    &--revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: #555;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--color-green);
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    }
   }
 
   &__subtitle {
     font-size: 1.1rem;
-    color: #666;
+    font-weight: 700;
+    color: #333;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -232,6 +302,11 @@
 
     &__title {
       font-size: 2rem;
+      text-align: center;
+    }
+
+    &__why-title {
+      text-align: center;
     }
 
     &__filters {
@@ -241,6 +316,10 @@
     }
 
     &__header {
+      text-align: left;
+    }
+
+    &__subtitle {
       text-align: center;
     }
 

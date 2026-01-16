@@ -82,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Анимация появления блока calculator-info__section при скролле (слева)
   initCalculatorInfoSectionReveal();
 
+  // Анимация появления элементов портфолио при скролле (слева)
+  initPortfolioFilterReveal();
+
   // Загружаем редко используемые модули динамически
   loadFeatureModules();
 });
@@ -289,4 +292,56 @@ function initCalculatorInfoSectionReveal() {
   sections.forEach(section => {
     observer.observe(section);
   });
+}
+
+// Анимация появления элементов портфолио при скролле (слева)
+function initPortfolioFilterReveal() {
+  const title = document.querySelector(".portfolio-filter__title");
+  const introText = document.querySelector(".portfolio-filter__intro-text");
+  const whyTitle = document.querySelector(".portfolio-filter__why-title");
+  const whyList = document.querySelector(".portfolio-filter__why-list");
+
+  if (!title && !introText && !whyTitle && !whyList) {
+    return;
+  }
+
+  // Настройки Intersection Observer
+  const observerOptions = {
+    threshold: 0.1, // Срабатывает, когда 10% элемента видно
+    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        // Добавляем класс для анимации появления в зависимости от класса элемента
+        if (target.classList.contains("portfolio-filter__title")) {
+          target.classList.add("portfolio-filter__title--revealed");
+        } else if (target.classList.contains("portfolio-filter__intro-text")) {
+          target.classList.add("portfolio-filter__intro-text--revealed");
+        } else if (target.classList.contains("portfolio-filter__why-title")) {
+          target.classList.add("portfolio-filter__why-title--revealed");
+        } else if (target.classList.contains("portfolio-filter__why-list")) {
+          target.classList.add("portfolio-filter__why-list--revealed");
+        }
+        // Отключаем наблюдение после первого появления
+        observer.unobserve(target);
+      }
+    });
+  }, observerOptions);
+
+  // Начинаем наблюдение за каждым элементом
+  if (title) {
+    observer.observe(title);
+  }
+  if (introText) {
+    observer.observe(introText);
+  }
+  if (whyTitle) {
+    observer.observe(whyTitle);
+  }
+  if (whyList) {
+    observer.observe(whyList);
+  }
 }

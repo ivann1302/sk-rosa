@@ -26,7 +26,8 @@
     "lint:css:fix": "stylelint \"src/styles/**/*.scss\" --fix",
     "format": "prettier --write \"src/**/*.{js,html,json,scss}\"",
     "fix": "npm run lint && npm run lint:fix && npm run format",
-    "format:check": "prettier --check \"src/**/*.{js,html,json,scss}\""
+    "format:check": "prettier --check \"src/**/*.{js,html,json,scss}\"",
+    "analyze:css": "node analyze-css.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
