@@ -28,7 +28,6 @@
 
       ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph -->
@@ -136,6 +135,7 @@
     </script>
   </head>
   <body id="top">
+    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- Header -->
     <header class="header" data-js-header>
       <div class="header__body">
@@ -321,7 +321,7 @@
               <li>Гарантия на работы — официальные обязательства по договору</li>
               <li>Строгое соблюдение сроков — сдаем объекты день в день</li>
               <li>Работаем для частных лиц — индивидуальный подход к каждому клиенту</li>
-              <li>Более 20 реализованных объектов — стабильное качество в каждом проекте</li>
+              <li>Более 150 реализованных объектов — стабильное качество в каждом проекте</li>
               <li>Полный цикл «под ключ» — от демонтажа до финальной уборки</li>
             </ul>
             <h2 class="portfolio-filter__subtitle">Найдите подходящие проекты по вашим критериям</h2>
@@ -1300,7 +1300,7 @@
               />
             </a>
             <a
-              href="https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile?src=sharing"
+              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
               class="footer__social-link avito"
               target="_blank"
               rel="noopener noreferrer"
@@ -1328,10 +1328,10 @@
     <!-- Константы проекта - должен быть загружен первым -->
     <script src="../scripts/core/constants.js"></script>
     <!-- Инициализация контактных данных из констант -->
-    <script src="../scripts/features/contact/init-contacts.js"></script>
-    <script type="module" src="../scripts/core/main.js"></script>
+    <script src="../scripts/features/contact/init-contacts.js" defer></script>
+    <script type="module" src="../scripts/core/main.js" defer></script>
     <!-- Кастомный select dropdown -->
-    <script type="module" src="../scripts/features/portfolio/custom-select.js"></script>
-    <script src="../scripts/features/portfolio/portfolio-filter.js"></script>
+    <script type="module" src="../scripts/features/portfolio/custom-select.js" defer></script>
+    <script src="../scripts/features/portfolio/portfolio-filter.js" defer></script>
   </body>
 </html>

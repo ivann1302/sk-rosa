@@ -3,4 +3,7 @@ Allow: /
 Disallow: /scripts/api/
 Disallow: /test-*.php
 
+# Страница 404 доступна для индексации
+Allow: /404.html
+
 Sitemap: https://sk-rosa.ru/sitemap.xml

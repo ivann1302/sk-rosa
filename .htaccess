@@ -3,6 +3,10 @@
     RewriteEngine On
     RewriteBase /
 
+    # Редирект с www.sk-rosa.ru на sk-rosa.ru (301 - постоянный редирект)
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
     # Если запрашивается файл или директория - отдаем как есть
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

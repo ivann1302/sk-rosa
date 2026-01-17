@@ -78,6 +78,26 @@
     padding: 0;
   }
 
+  &__image-mobile {
+    display: none;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0 8px 8px 0;
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+
+  &__image-desktop {
+    display: block;
+  }
+
   .about-service__btn {
     padding: 8px 24px;
     background: var(--color-green);
@@ -128,13 +148,28 @@
       transform: none;
     }
 
-    &__image {
+    &__image-mobile {
+      display: block;
       width: calc(100vw - 24px);
       height: auto;
       border-radius: 8px;
       margin: 48px 12px 8px 12px;
-      display: block;
       max-width: none;
+      
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+      }
+    }
+
+    &__image-desktop {
+      display: none !important;
+    }
+
+    &__image {
+      display: none;
     }
 
     &__info {

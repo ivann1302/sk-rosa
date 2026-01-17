@@ -28,7 +28,6 @@
 
       ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph -->
@@ -56,12 +55,27 @@
     <link rel="icon" href="../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
-    <link rel="stylesheet" href="../../styles/main.scss" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" as="image" href="../assets/images/common/plastering-hero.webp" type="image/webp" fetchpriority="high" />
+    
+    <!-- Асинхронная загрузка CSS -->
+    <link rel="preload" href="../../styles/main.scss" as="style" />
+    <link href="../../styles/main.scss" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="../../styles/main.scss" rel="stylesheet" /></noscript>
+    
+    <!-- Preload шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" /></noscript>
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -123,6 +137,7 @@
     </script>
   </head>
   <body id="top">
+    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <header class="header" data-js-header>
       <div class="header__body">
         <div class="header__body-inner">
@@ -296,7 +311,7 @@
       <section class="about-service">
         <div class="about-service__container">
           <div class="about-service__info">
-            <h1 class="about-service__title">Штукатурные работы</h1>
+            <h1 class="about-service__title">Штукатурные работы в Москве и МО</h1>
             <div class="about-service__subtitle">
               Технология нанесения выравнивающих и декоративных составов на стены и потолки для
               создания гладкой или фактурной поверхности. Используется для внутренней и внешней
@@ -312,13 +327,31 @@
             </button>
           </div>
           <div class="about-service__image-wrap">
+            <!-- Изображение для мобильной версии -->
+            <picture class="about-service__image-mobile">
+              <source srcset="../assets/images/common/plastering-hero.webp" type="image/webp" />
+              <img
+                src="../assets/images/common/plastering-hero.png"
+                alt="Штукатурные работы"
+                width="500"
+                height="500"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
+                style="content-visibility: auto;"
+              />
+            </picture>
+            
+            <!-- Видео для десктопной версии -->
             <video
-              class="about-service__image"
+              class="about-service__image about-service__image-desktop"
               src="../assets/videos/social_u2928876119_Realistic_close-up._A_male_hand_in_a_work_glove_a_d7ad7413-90d7-499d-9b47-d5efe2543202_1.mp4"
               autoplay
               loop
               muted
               playsinline
+              preload="none"
+              poster="../assets/images/common/plastering-hero.webp"
             ></video>
           </div>
         </div>
@@ -406,286 +439,566 @@
         <div class="portfolio-service__grid">
           <div class="portfolio-service__row top-row">
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/1.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/1.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/1.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/2.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/2.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/2.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/3.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/3.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/3.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/4.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/4.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/4.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/5.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/5.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/5.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/6.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/6.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/6.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/7.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/7.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/7.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/8.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/8.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/8.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/9.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/9.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/9.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/10.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/10.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/10.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/11.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/11.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/11.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/9.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/9.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/9.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/13.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/13.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/13.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/14.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/14.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/14.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/15.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/15.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/15.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/16.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/16.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/16.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/17.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/17.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/17.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/18.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/18.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/18.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/19.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/19.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/19.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/20.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/20.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/20.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
           <div class="portfolio-service__row bottom-row">
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/1.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/1.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/1.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/2.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/2.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/2.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/3.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/3.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/3.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/4.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/4.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/4.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/5.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/5.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/5.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/6.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/6.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/6.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/7.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/7.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/7.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/8.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/8.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/8.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/9.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/9.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/9.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/10.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/10.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/10.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/11.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/11.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/11.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/9.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/9.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/9.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/13.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/13.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/13.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/14.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/14.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/14.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/15.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/15.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/15.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/16.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/16.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/16.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/17.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/17.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/17.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/18.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/18.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/18.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/19.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/19.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/19.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="portfolio-service__item">
-              <img
-                src="../assets/images/portfolio/20.png"
-                alt="Пример штукатурных работ в квартире"
-                class="portfolio-service__image"
-              />
+              <picture>
+                <source srcset="../assets/images/portfolio/20.webp" type="image/webp" />
+                <img
+                  src="../assets/images/portfolio/20.png"
+                  alt="Пример штукатурных работ в квартире"
+                  class="portfolio-service__image"
+                  width="200"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -826,8 +1139,13 @@
                 <source srcset="../assets/images/common/plastering-hero.webp" type="image/webp" />
                 <img
                   src="../assets/images/common/plastering-hero.png"
-                  alt="Безвоздушная покраска"
+                  alt="Штукатурные работы"
                   class="what-we-paint-list__image"
+                  width="500"
+                  height="500"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </picture>
             </div>
@@ -1079,7 +1397,7 @@
               />
             </a>
             <a
-              href="https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile?src=sharing"
+              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
               target="_blank"
               style="
                 display: flex;
@@ -1731,7 +2049,7 @@
               />
             </a>
             <a
-              href="https://www.avito.ru/user/f5413a321421f7212b12a43a42e44a89/profile?src=sharing"
+              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
               class="footer__social-link avito"
               target="_blank"
               rel="noopener noreferrer"
@@ -1811,14 +2129,14 @@
       </div>
     </div>
 
-    <script type="module" src="../scripts/features/calculator/price-calc.js"></script>
-    <script src="../scripts/core/constants.js"></script>
-    <script src="../scripts/features/contact/init-contacts.js"></script>
-    <script src="../scripts/core/carousel.js"></script>
-    <script src="../scripts/features/faq/faq.js"></script>
+    <script type="module" src="../scripts/features/calculator/price-calc.js" defer></script>
+    <script src="../scripts/core/constants.js" defer></script>
+    <script src="../scripts/features/contact/init-contacts.js" defer></script>
+    <script src="../scripts/core/carousel.js" defer></script>
+    <script src="../scripts/features/faq/faq.js" defer></script>
     <!-- Модальное окно успешной отправки -->
-    <script src="../scripts/features/contact/success-modal.js"></script>
-    <script type="module" src="../scripts/features/contact/contact-request.js"></script>
-    <script type="module" src="../scripts/core/main.js"></script>
+    <script src="../scripts/features/contact/success-modal.js" defer></script>
+    <script type="module" src="../scripts/features/contact/contact-request.js" defer></script>
+    <script type="module" src="../scripts/core/main.js" defer></script>
   </body>
 </html>

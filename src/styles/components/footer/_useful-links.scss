@@ -91,41 +91,58 @@
       text-align: left;
     }
 
-    img {
+    img,
+    picture img {
       display: block;
       border-radius: 12px;
-      object-fit: cover;
+      object-fit: contain;
       margin-top: auto;
+      max-width: 100%;
+      height: auto;
     }
 
-    // Первое изображение (в первой ссылке) - 200x200px, справа
-    &:first-child img {
-      width: 200px;
-      height: 200px;
+    picture {
+      display: block;
+      max-width: 100%;
+    }
+
+    // Первое изображение (в первой ссылке) - 150x150px, справа
+    &:first-child img,
+    &:first-child picture img {
+      width: 150px;
+      height: 150px;
       margin: 0;
       align-self: flex-end;
+      max-width: 150px;
     }
 
     // Второе изображение - 150x150px, справа
-    &:nth-child(2) img {
+    &:nth-child(2) img,
+    &:nth-child(2) picture img {
       width: 150px;
       height: 150px;
       align-self: flex-end;
+      max-width: 150px;
     }
 
     // Третье и четвертое изображения - 130x130px, по центру
     &:nth-child(3) img,
-    &:nth-child(4) img {
+    &:nth-child(3) picture img,
+    &:nth-child(4) img,
+    &:nth-child(4) picture img {
       width: 130px;
       height: 130px;
       align-self: center;
+      max-width: 130px;
     }
 
     // Пятое изображение - 100x100px, по центру
-    &:nth-child(5) img {
+    &:nth-child(5) img,
+    &:nth-child(5) picture img {
       width: 100px;
       height: 100px;
       align-self: center;
+      max-width: 100px;
     }
   }
 
