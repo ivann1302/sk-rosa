@@ -1,0 +1,70 @@
+@use "helpers/mixins" as *;
+
+.blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+  justify-content: center;
+
+  @media (width <= 768px) {
+    gap: 8px;
+    margin-bottom: 32px;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-green);
+      border-radius: 2px;
+    }
+  }
+
+  &__button {
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    border-radius: 24px;
+    background: white;
+    color: #666;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    @media (width <= 768px) {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+
+    &:hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+      background: #f8f9fa;
+    }
+
+    &--active {
+      background: var(--color-green);
+      border-color: var(--color-green);
+      color: white;
+      box-shadow: 0 2px 8px rgb(136 165 147 / 20%);
+
+      &:hover {
+        background: #6e8c7a;
+        border-color: #6e8c7a;
+        color: white;
+      }
+    }
+  }
+}

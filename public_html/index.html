@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rosa | Профессиональный ремонт под ключ в Москве и МО</title>
+    <title>Роса - профессиональный ремонт под ключ в Москве и МО</title>
     <meta
       name="description"
       content="Ремонт квартир и домов под ключ в Москве и Московской области. Более 6 лет опыта, официальный договор, гарантия качества. Бесплатный замер и консультация. Звоните: +7 (985) 135-49-91"
@@ -16,6 +16,16 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sk-rosa.ru/" />
     <meta name="google-site-verification" content="q_ca390-sEWN2T_dYBv8wp4saaJKQQNVc6q_kfTWojc" />
+
+    <!-- Preconnect для внешних доменов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://mc.yandex.ru" />
+
+    <!-- Preload для LCP изображения -->
+    <link rel="preload" as="image" href="./assets/images/common/about-hero.webp" type="image/webp" />
+    <link rel="preload" as="image" href="./assets/images/common/about-hero.jpg" type="image/jpeg" />
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -54,11 +64,25 @@
     <link rel="icon" href="./assets/images/favicon-0QYmXPtt.ico" sizes="any" />
     <link rel="icon" type="image/png" href="./assets/images/r-32-BsgFgYCL.png" />
     <link rel="apple-touch-icon" href="./assets/images/r-180-LZqMh4I-.png" />
+    <!-- Асинхронная загрузка внешних CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" /></noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" /></noscript>
+    <!-- Скрипт для поддержки асинхронной загрузки CSS в старых браузерах -->
+    <script>
+      !function(e){"use strict";var t=function(t,n,o){var i,r=e.document,a=r.createElement("link");if(n)i=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;i=l[l.length-1]}var d=r.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(r.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+    </script>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -192,7 +216,7 @@
         "sameAs": [
           "https://t.me/oorosa",
           "https://wa.me/79851354991",
-          "https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile/all/predlozheniya_uslug?src=sharing&sellerId=50424d9d0243d8558fec368a8f2057e3"
+          "https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
         ],
         "foundingDate": "2019",
         "numberOfEmployees": {
@@ -205,7 +229,7 @@
     <script type="module" crossorigin src="./assets/js/modulepreload-polyfill-B5Qt9EMX.js"></script>
     <script type="module" crossorigin src="./assets/js/feature-contact-CkrVof8I.js"></script>
     <script type="module" crossorigin src="./assets/js/core-D4ZrYf2P.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/css/main-Ca47V7TN.css">
+    <link rel="stylesheet" crossorigin href="./assets/css/main-1FDxSKzE.css">
   </head>
   <body id="top">
     <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -310,6 +334,8 @@
                 alt="Telegram"
                 width="40"
                 height="40"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -324,6 +350,8 @@
                 alt="WhatsApp"
                 width="40"
                 height="40"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -338,11 +366,15 @@
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9UlEQVR4nO2ZMQ6CQBBF/zEUT6R4HrGVeCyxgAsZsKH6hmQoJDFZKHYH/C+Zbib5z8VMMYAQYilnABWANwAmrs6y5HMl7g7C80eVc15iGOgBXABkSE8GoLBMQ7ZTyNDTmodBbxSW7RHS3FnzHv7YWbY2pHn8Fr3C0HwSiQQl4gxKZEITYXs32IhIHUMkNZSIMygRZ1AizuCa9kizFZE6hkhqKBFnUCLOoEScwTXtkWYrInUMkdRQIs6gRJzBvxNprdHDyW3KwbK9EEDl+PR2nXN6y625NxmPx9Bj6GAZYXsvrdvcX+FkTzj+Z1JWa1mCX0IIgS8+vrPJx+6hwt0AAAAASUVORK5CYII="
               alt="Меню"
               class="burger-icon burger-icon--menu"
+              width="50"
+              height="50"
             />
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABZ0lEQVR4nO2aS27CQAyG/0s0AnqkcJF23ccB6LXgEGXRcxS6oCtXQX+kKEphXvEY4U+KxMIT+dM8PJEBHMdJZQ1gC+AHgFR+jsyljZX4MJC8/PNsYmaiG3AC8AJgifosAbwyJwmdmR2DOwlrvDG3bpld5cjgBeyxYG6HkOB+LVpFQvNzESXERYwhLnKFJwAN0mn4jlBmEXlm7D5RpuFY4buqiTwA+GT8V+R1Zjw2tADPtrRSZFIlZt/sMTI5EiqnVohMroTa8XtJpoSEah2ZkikloV4Qh8fqfvQ7p+ZUqezDWSgxE6ZESnw2iy+tSKY2ds4NwMTxO9wTpWREuyBObewSMqJ5Rbl0OuXKiNalMeSIzZERjWt8TJ1IlRH/sLqHT90aiIsYQ1zEGHJ3IgcGWmi5jXlkbt8IYMvgrmdnjfeY1lvL4BN7divUZ0WJX+YW3KbeDNbizbane1pOYd8cvck/DDiOgzN/y6mTEbxodPIAAAAASUVORK5CYII="
               alt="Закрыть"
               class="burger-icon burger-icon--close"
+              width="50"
+              height="50"
             />
           </button>
 
@@ -363,6 +395,8 @@
                   alt="WhatsApp"
                   width="24"
                   height="24"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
               <a
@@ -377,6 +411,8 @@
                   alt="Telegram"
                   width="24"
                   height="24"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -397,12 +433,15 @@
               alt="О нас"
               width="320"
               height="220"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </picture>
           <div class="about__content">
             <h1 class="about__title">Профессиональный ремонт под ключ</h1>
             <p class="about__subtitle">
-              Квартиры и дома «под ключ» — быстро, качественно, с гарантией<br />и заботой о вашем
+              Квартиры и дома «под ключ» — быстро, качественно, с гарантией <br />и заботой о вашем
               комфорте
             </p>
           </div>
@@ -426,7 +465,7 @@
                   />
                 </div>
                 <p class="advantages__desc">
-                  <strong>Более 6 лет</strong> успешной работы в сфере ремонта и отделки
+                  <strong>Более 6 лет</strong> успешной работы в сфере ремонта и отделки на территории Москвы и Подмосковья
                 </p>
               </div>
               <div class="advantages__item">
@@ -475,6 +514,8 @@
                 class="services__img services__img--first"
                 src="./assets/images/Electrician-bro-jh8d34g8.svg"
                 alt="Квартира под ключ"
+                width="400"
+                height="300"
               />
             </div>
           </div>
@@ -524,6 +565,10 @@
                     src="./assets/images/19-D6fZXjqt.png"
                     alt="Белая Дача парк"
                     class="portfolio-card__image"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="350"
                   />
                 </picture>
               </div>
@@ -546,11 +591,18 @@
                 </div>
               </div>
               <div class="portfolio-card__image-wrapper">
-                <img
-                  src="./assets/images/9-UHj4eZmD.png"
-                  alt="ЖК Митино"
-                  class="portfolio-card__image"
-                />
+                <picture>
+                  <source srcset="./assets/images/9-DSadGNbc.webp" type="image/webp" />
+                  <img
+                    src="./assets/images/9-UHj4eZmD.png"
+                    alt="ЖК Митино"
+                    class="portfolio-card__image"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="350"
+                  />
+                </picture>
               </div>
               <div class="portfolio-card__price">
                 <div class="portfolio-card__price-container">
@@ -571,11 +623,18 @@
                 </div>
               </div>
               <div class="portfolio-card__image-wrapper">
-                <img
-                  src="./assets/images/8-BXhfxghW.png"
-                  alt="ЖК Покровский"
-                  class="portfolio-card__image"
-                />
+                <picture>
+                  <source srcset="./assets/images/8-BTRbKvu1.webp" type="image/webp" />
+                  <img
+                    src="./assets/images/8-BXhfxghW.png"
+                    alt="ЖК Покровский"
+                    class="portfolio-card__image"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="350"
+                  />
+                </picture>
               </div>
               <div class="portfolio-card__price">
                 <div class="portfolio-card__price-container">
@@ -602,6 +661,10 @@
                     src="./assets/images/17-Bc5XpaRy.png"
                     alt="ЖК Сколково"
                     class="portfolio-card__image"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="350"
                   />
                 </picture>
               </div>
@@ -637,19 +700,19 @@
           <div class="reviews__links">
             <a href="https://wa.me/79851354991" target="_blank" class="reviews__social-link">
               <span>WhatsApp</span>
-              <img src="./assets/images/whatsapp_icon-DCBSXRC_.png" alt="WhatsApp" />
+              <img src="./assets/images/whatsapp_icon-DCBSXRC_.png" alt="WhatsApp" loading="lazy" decoding="async" width="40" height="40" />
             </a>
             <a href="https://t.me/oorosa" target="_blank" class="reviews__social-link">
               <span>Telegram</span>
-              <img src="./assets/images/telegram_icon-DBtjI4PB.png" alt="Telegram" />
+              <img src="./assets/images/telegram_icon-DBtjI4PB.png" alt="Telegram" loading="lazy" decoding="async" width="40" height="40" />
             </a>
             <a
-              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile/all/predlozheniya_uslug?src=sharing&sellerId=50424d9d0243d8558fec368a8f2057e3"
+              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
               target="_blank"
               class="reviews__social-link"
             >
               <span>Avito</span>
-              <img src="./assets/images/avito-icon-DiFdUxKR.png" alt="Avito" />
+              <img src="./assets/images/avito-icon-DiFdUxKR.png" alt="Avito" loading="lazy" decoding="async" width="40" height="40" />
             </a>
           </div>
           <div class="reviews__carousel-outer">
@@ -664,7 +727,7 @@
                 <div class="reviews-carousel__track">
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" />
+                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <p class="reviews-card__name">Анна, Москва</p>
                     </div>
                     <p class="reviews-card__text">
@@ -674,7 +737,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" />
+                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <p class="reviews-card__name">Игорь, Химки</p>
                     </div>
                     <p class="reviews-card__text">
@@ -684,7 +747,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" />
+                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <div class="reviews-card__name">Мария, Одинцово</div>
                     </div>
                     <div class="reviews-card__text">
@@ -694,7 +757,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" />
+                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <p class="reviews-card__name">Владимир, Балашиха</p>
                     </div>
                     <p class="reviews-card__text">
@@ -704,7 +767,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" />
+                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <p class="reviews-card__name">Екатерина, Реутов</p>
                     </div>
                     <p class="reviews-card__text">
@@ -713,7 +776,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" />
+                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <div class="reviews-card__name">Сергей, Москва</div>
                     </div>
                     <div class="reviews-card__text">
@@ -722,7 +785,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" />
+                      <img src="./assets/images/3135823-B4ZcSQBR.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <div class="reviews-card__name">Ольга, Люберцы</div>
                     </div>
                     <div class="reviews-card__text">
@@ -731,7 +794,7 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" />
+                      <img src="./assets/images/3135768-Bz0eA-Ko.png" alt="user" loading="lazy" decoding="async" width="50" height="50" />
                       <div class="reviews-card__name">Дмитрий, Балашиха</div>
                     </div>
                     <div class="reviews-card__text">
@@ -758,27 +821,42 @@
           <div class="useful-links__grid">
             <a href="./calculator" class="useful-links__item">
               <h3 class="useful-links__item-title">Калькулятор ремонта</h3>
-              <img src="./assets/images/calculator-DOKhLvVP.jpg" alt="Калькулятор" />
+              <picture>
+                <source srcset="./assets/images/calculator-0lcqdUxP.webp" type="image/webp" />
+                <img src="./assets/images/calculator-DOKhLvVP.jpg" alt="Калькулятор" loading="lazy" decoding="async" width="150" height="150" />
+              </picture>
             </a>
 
             <a href="#" class="useful-links__item" rel="nofollow">
               <h3 class="useful-links__item-title">Блог о ремонте</h3>
-              <img src="./assets/images/blog-CtbC6aSh.jpg" alt="Блог" />
+              <picture>
+                <source srcset="./assets/images/blog-C1zZR4cv.webp" type="image/webp" />
+                <img src="./assets/images/blog-CtbC6aSh.jpg" alt="Блог" loading="lazy" decoding="async" width="150" height="150" />
+              </picture>
             </a>
 
             <a href="#" class="useful-links__item" rel="nofollow">
               <h3 class="useful-links__item-title">Консультация</h3>
-              <img src="./assets/images/consultation-DrwxxWzW.jpg" alt="Консультация" />
+              <picture>
+                <source srcset="./assets/images/consultation-buV-GaUc.webp" type="image/webp" />
+                <img src="./assets/images/consultation-DrwxxWzW.jpg" alt="Консультация" loading="lazy" decoding="async" width="130" height="130" />
+              </picture>
             </a>
 
             <a href="#" class="useful-links__item" rel="nofollow">
               <h3 class="useful-links__item-title">Сертификаты и лицензии</h3>
-              <img src="./assets/images/certificates-BOXlSTGs.jpg" alt="Сертификаты" />
+              <picture>
+                <source srcset="./assets/images/certificates-Bha4KfUB.webp" type="image/webp" />
+                <img src="./assets/images/certificates-BOXlSTGs.jpg" alt="Сертификаты" loading="lazy" decoding="async" width="130" height="130" />
+              </picture>
             </a>
 
             <a href="#" class="useful-links__item" rel="nofollow">
               <h3 class="useful-links__item-title">Работа по договору</h3>
-              <img src="./assets/images/contract-DnCVFO84.jpg" alt="Работа по договору" />
+              <picture>
+                <source srcset="./assets/images/contract-CBVG7pGM.webp" type="image/webp" />
+                <img src="./assets/images/contract-DnCVFO84.jpg" alt="Работа по договору" loading="lazy" decoding="async" width="100" height="100" />
+              </picture>
             </a>
           </div>
         </div>
@@ -896,6 +974,8 @@
                 alt="OOO.ROSA"
                 width="140"
                 height="40"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <p>Профессиональные отделочные работы под ключ с гарантией качества</p>
@@ -905,13 +985,15 @@
                   <img
                     src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M14.05%206C15.0268%206.19057%2015.9244%206.66826%2016.6281%207.37194C17.3318%208.07561%2017.8095%208.97326%2018%209.95M14.05%202C16.0793%202.22544%2017.9716%203.13417%2019.4163%204.57701C20.8609%206.01984%2021.7721%207.91101%2022%209.94M18.5%2021C9.93959%2021%203%2014.0604%203%205.5C3%205.11378%203.01413%204.73086%203.04189%204.35173C3.07375%203.91662%203.08968%203.69907%203.2037%203.50103C3.29814%203.33701%203.4655%203.18146%203.63598%203.09925C3.84181%203%204.08188%203%204.56201%203H7.37932C7.78308%203%207.98496%203%208.15802%203.06645C8.31089%203.12515%208.44701%203.22049%208.55442%203.3441C8.67601%203.48403%208.745%203.67376%208.88299%204.05321L10.0491%207.26005C10.2096%207.70153%2010.2899%207.92227%2010.2763%208.1317C10.2643%208.31637%2010.2012%208.49408%2010.0942%208.64506C9.97286%208.81628%209.77145%208.93713%209.36863%209.17882L8%2010C9.2019%2012.6489%2011.3501%2014.7999%2014%2016L14.8212%2014.6314C15.0629%2014.2285%2015.1837%2014.0271%2015.3549%2013.9058C15.5059%2013.7988%2015.6836%2013.7357%2015.8683%2013.7237C16.0777%2013.7101%2016.2985%2013.7904%2016.74%2013.9509L19.9468%2015.117C20.3262%2015.255%2020.516%2015.324%2020.6559%2015.4456C20.7795%2015.553%2020.8749%2015.6891%2020.9335%2015.842C21%2016.015%2021%2016.2169%2021%2016.6207V19.438C21%2019.9181%2021%2020.1582%2020.9007%2020.364C20.8185%2020.5345%2020.663%2020.7019%2020.499%2020.7963C20.3009%2020.9103%2020.0834%2020.9262%2019.6483%2020.9581C19.2691%2020.9859%2018.8862%2021%2018.5%2021Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
                     alt="Телефон"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <a href="tel:+79851354991">+7 (985) 135 49-91</a>
               </div>
               <div class="footer__contact-item">
                 <div class="footer__contact-icon">
-                  <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%2018L9%2012M20%2018L15%2012M3%208L10.225%2012.8166C10.8665%2013.2443%2011.1872%2013.4582%2011.5339%2013.5412C11.8403%2013.6147%2012.1597%2013.6147%2012.4661%2013.5412C12.8128%2013.4582%2013.1335%2013.2443%2013.775%2012.8166L21%208M6.2%2019H17.8C18.9201%2019%2019.4802%2019%2019.908%2018.782C20.2843%2018.5903%2020.5903%2018.2843%2020.782%2017.908C21%2017.4802%2021%2016.9201%2021%2015.8V8.2C21%207.0799%2021%206.51984%2020.782%206.09202C20.5903%205.71569%2020.2843%205.40973%2019.908%205.21799C19.4802%205%2018.9201%205%2017.8%205H6.2C5.0799%205%204.51984%205%204.09202%205.21799C3.71569%205.40973%203.40973%205.71569%203.21799%206.09202C3%206.51984%203%207.07989%203%208.2V15.8C3%2016.9201%203%2017.4802%203.21799%2017.908C3.40973%2018.2843%203.71569%2018.5903%204.09202%2018.782C4.51984%2019%205.07989%2019%206.2%2019Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Email" />
+                  <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%2018L9%2012M20%2018L15%2012M3%208L10.225%2012.8166C10.8665%2013.2443%2011.1872%2013.4582%2011.5339%2013.5412C11.8403%2013.6147%2012.1597%2013.6147%2012.4661%2013.5412C12.8128%2013.4582%2013.1335%2013.2443%2013.775%2012.8166L21%208M6.2%2019H17.8C18.9201%2019%2019.4802%2019%2019.908%2018.782C20.2843%2018.5903%2020.5903%2018.2843%2020.782%2017.908C21%2017.4802%2021%2016.9201%2021%2015.8V8.2C21%207.0799%2021%206.51984%2020.782%206.09202C20.5903%205.71569%2020.2843%205.40973%2019.908%205.21799C19.4802%205%2018.9201%205%2017.8%205H6.2C5.0799%205%204.51984%205%204.09202%205.21799C3.71569%205.40973%203.40973%205.71569%203.21799%206.09202C3%206.51984%203%207.07989%203%208.2V15.8C3%2016.9201%203%2017.4802%203.21799%2017.908C3.40973%2018.2843%203.71569%2018.5903%204.09202%2018.782C4.51984%2019%205.07989%2019%206.2%2019Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Email" loading="lazy" decoding="async" />
                 </div>
                 <a href="mailto:ooo.rosa2019@yandex.ru">ooo.rosa2019@yandex.ru</a>
               </div>
@@ -920,6 +1002,8 @@
                   <img
                     src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%207V12H15M21%2012C21%2016.9706%2016.9706%2021%2012%2021C7.02944%2021%203%2016.9706%203%2012C3%207.02944%207.02944%203%2012%203C16.9706%203%2021%207.02944%2021%2012Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
                     alt="Часы работы"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <span>Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</span>
@@ -956,6 +1040,8 @@
                 alt="WhatsApp"
                 width="24"
                 height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -969,15 +1055,17 @@
                 alt="Telegram"
                 width="24"
                 height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
-              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile/all/predlozheniya_uslug?src=sharing&sellerId=50424d9d0243d8558fec368a8f2057e3"
+              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
               class="footer__social-link avito"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="./assets/images/avito-icon-DiFdUxKR.png" alt="Авито" width="24" height="24" />
+              <img src="./assets/images/avito-icon-DiFdUxKR.png" alt="Авито" width="24" height="24" loading="lazy" decoding="async" />
             </a>
           </div>
         </div>
@@ -1045,9 +1133,9 @@
       </div>
     </div>
 
-    <script src="scripts/core/constants.js"></script>
-    <script src="scripts/features/contact/init-contacts.js"></script>
-    <script src="scripts/core/carousel.js"></script>
-    <script src="scripts/features/contact/success-modal.js"></script>
+    <script src="scripts/core/constants.js" defer></script>
+    <script src="scripts/features/contact/init-contacts.js" defer></script>
+    <script src="scripts/core/carousel.js" defer></script>
+    <script src="scripts/features/contact/success-modal.js" defer></script>
   </body>
 </html>

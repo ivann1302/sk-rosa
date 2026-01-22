@@ -106,8 +106,43 @@
       max-width: 100%;
     }
 
+    // Сначала все селекторы с img (низкая специфичность)
     // Первое изображение (в первой ссылке) - 150x150px, справа
-    &:first-child img,
+    &:first-child img {
+      width: 150px;
+      height: 150px;
+      margin: 0;
+      align-self: flex-end;
+      max-width: 150px;
+    }
+
+    // Второе изображение - 150x150px, справа
+    &:nth-child(2) img {
+      width: 150px;
+      height: 150px;
+      align-self: flex-end;
+      max-width: 150px;
+    }
+
+    // Третье и четвертое изображения - 130x130px, по центру
+    &:nth-child(3) img,
+    &:nth-child(4) img {
+      width: 130px;
+      height: 130px;
+      align-self: center;
+      max-width: 130px;
+    }
+
+    // Пятое изображение - 100x100px, по центру
+    &:nth-child(5) img {
+      width: 100px;
+      height: 100px;
+      align-self: center;
+      max-width: 100px;
+    }
+
+    // Теперь все селекторы с picture img (высокая специфичность)
+    // Первое изображение (в первой ссылке) - 150x150px, справа
     &:first-child picture img {
       width: 150px;
       height: 150px;
@@ -117,7 +152,6 @@
     }
 
     // Второе изображение - 150x150px, справа
-    &:nth-child(2) img,
     &:nth-child(2) picture img {
       width: 150px;
       height: 150px;
@@ -126,9 +160,7 @@
     }
 
     // Третье и четвертое изображения - 130x130px, по центру
-    &:nth-child(3) img,
     &:nth-child(3) picture img,
-    &:nth-child(4) img,
     &:nth-child(4) picture img {
       width: 130px;
       height: 130px;
@@ -137,7 +169,6 @@
     }
 
     // Пятое изображение - 100x100px, по центру
-    &:nth-child(5) img,
     &:nth-child(5) picture img {
       width: 100px;
       height: 100px;

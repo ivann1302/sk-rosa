@@ -1,0 +1,93 @@
+@use "helpers/mixins" as *;
+
+.blog-articles {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 40px 0 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(136 165 147 / 20%)
+  );
+
+  @media (width <= 768px) {
+    padding: 24px 0 60px;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+  }
+
+  &__load-more {
+    text-align: center;
+    margin-top: 48px;
+
+    @media (width <= 768px) {
+      margin-top: 32px;
+    }
+  }
+
+  &__load-more-button {
+    padding: 14px 32px;
+    background: var(--color-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgb(136 165 147 / 8%);
+
+    @media (width <= 768px) {
+      padding: 12px 24px;
+      font-size: 0.95rem;
+    }
+
+    &:hover,
+    &:focus {
+      background: #6e8c7a;
+      box-shadow: 0 4px 16px rgb(136 165 147 / 18%);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+
+  @media (width <= 900px) {
+    gap: 24px;
+  }
+
+  @media (width <= 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  // Анимация появления карточек
+  .blog-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &[hidden] {
+      display: none;
+    }
+
+    &.blog-card--hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+  }
+}

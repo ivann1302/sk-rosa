@@ -1,0 +1,170 @@
+@use "helpers/mixins" as *;
+
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    transform: translateY(-4px);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    background: #f0f0f0;
+
+    @media (width <= 768px) {
+      height: 200px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    transform-origin: center;
+    display: block;
+  }
+
+  &__link:hover &__image {
+    transform: scale(1.1);
+  }
+
+  &__content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @media (width <= 768px) {
+      padding: 20px;
+    }
+  }
+
+  &__category {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f0f0f0;
+    color: #666;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @media (width <= 768px) {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @media (width <= 768px) {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 16px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @media (width <= 768px) {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 0.875rem;
+    color: #999;
+
+    @media (width <= 768px) {
+      font-size: 0.8rem;
+      gap: 12px;
+      padding-top: 12px;
+    }
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &::before {
+      content: "📅";
+      font-size: 0.9em;
+    }
+  }
+
+  &__read-time {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &::before {
+      content: "⏱";
+      font-size: 0.9em;
+    }
+  }
+
+  // Стили для разных категорий
+  &[data-category="remont"] &__category {
+    background: #e8f5e9;
+    color: var(--color-dark-green);
+  }
+
+  &[data-category="materials"] &__category {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+
+  &[data-category="tips"] &__category {
+    background: #fff3e0;
+    color: #e65100;
+  }
+}
