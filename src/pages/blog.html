@@ -300,30 +300,49 @@
                     aria-label="Поиск статей"
                     name="q"
                   />
-                  <button type="submit" class="blog-search__button" aria-label="Найти">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16z"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="m19 19-4.35-4.35"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </button>
+                  <div class="blog-search__controls">
+                    <button type="button" class="blog-search__clear" aria-label="Очистить поиск">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13.5 4.5l-9 9M4.5 4.5l9 9"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <button type="submit" class="blog-search__button" aria-label="Найти">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16z"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="m19 19-4.35-4.35"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -659,7 +678,8 @@
     <!-- Инициализация контактных данных из констант -->
     <script src="../scripts/features/contact/init-contacts.js" defer></script>
     <script type="module" src="../scripts/core/main.js" defer></script>
-    <!-- Блог фильтрация -->
+    <!-- Блог фильтрация и поиск -->
     <script src="../scripts/features/blog/blog-filter.js" defer></script>
+    <script src="../scripts/features/blog/blog-search.js" defer></script>
   </body>
 </html>

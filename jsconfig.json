@@ -8,15 +8,14 @@
       "@modules/*": ["src/scripts/modules/*"],
       "@features/*": ["src/scripts/features/*"],
       "@utils/*": ["src/scripts/utils/*"],
+      "@api/*": ["src/scripts/api/*"],
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/assets/*"]
     },
     "module": "ESNext",
     "target": "ES2020",
-    "jsx": "preserve",
     "moduleResolution": "node"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public_html"]
 }
-

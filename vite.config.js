@@ -318,6 +318,7 @@ export default defineConfig({
         { src: "scripts/features/contact/form-handler.js", dest: "scripts/features/contact" },
         { src: "scripts/features/contact/form-utils.js", dest: "scripts/features/contact" },
         { src: "scripts/features/blog/blog-filter.js", dest: "scripts/features/blog" },
+        { src: "scripts/features/blog/blog-search.js", dest: "scripts/features/blog" },
         { src: "scripts/features/blog/blog-copy-link.js", dest: "scripts/features/blog" },
         { src: ".nojekyll", dest: "." },
         { src: ".htaccess", dest: "." },

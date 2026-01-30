@@ -258,36 +258,99 @@
 
   &__input {
     flex: 1;
-    padding: 16px 20px;
+    padding: 16px 56px 16px 20px; // Увеличен padding справа для кнопок
     border: none;
     background: transparent;
     font-size: 1rem;
-    color: #222;
+    color: var(--color-dark);
     outline: none;
 
     &::placeholder {
-      color: #999;
+      color: var(--color-gray-50);
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+  }
+
+  &__clear {
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--color-gray-50);
+    cursor: pointer;
+    display: none; // Скрыт по умолчанию
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    &.active {
+      display: flex; // Показываем когда есть текст
+    }
+
+    &:hover {
+      background-color: var(--color-bg-section-gray);
+      color: var(--color-gray-60);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 
   &__button {
-    padding: 16px 20px;
+    padding: 8px;
     border: none;
     background: transparent;
-    color: var(--color-green);
+    color: var(--color-gray-50);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 
     &:hover {
-      color: var(--color-dark-green);
+      background-color: var(--color-bg-section-gray);
+      color: var(--color-gray-60);
     }
 
     svg {
       width: 20px;
       height: 20px;
     }
+  }
+
+  // Сообщение "ничего не найдено"
+  &__no-results {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-gray-60);
+    background-color: var(--color-bg-section-gray);
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+}
+
+// Анимация появления статей (используется в JS)
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
