@@ -330,6 +330,18 @@ const htaccessMiddleware = () => {
         const originalUrl = req.url;
         const url = req.url.split('?')[0];
 
+        // Пропускаем Vite-специфичные пути и ресурсы
+        if (
+          url.startsWith('/@') ||           // Vite internal paths
+          url.startsWith('/__') ||          // Vite internal paths
+          url.startsWith('/node_modules') ||
+          url.startsWith('/assets') ||      // Static assets
+          url.startsWith('/scripts') ||     // Scripts
+          url.includes('.')                 // Files with extensions
+        ) {
+          return next();
+        }
+
         console.log('🔍 [Middleware] Incoming:', originalUrl);
 
         // Городские страницы: /service/city → /pages/service/city.html
@@ -363,14 +375,9 @@ const htaccessMiddleware = () => {
         }
 
         // Обычные страницы: /page → /pages/page.html
-        if (!url.includes('.') && url !== '/') {
-          const cleanUrl = url.replace(/\/$/, '');
-          // Проверяем, не является ли это путём к ресурсам
-          if (!cleanUrl.startsWith('/assets') && !cleanUrl.startsWith('/scripts')) {
-            req.url = `/pages${cleanUrl}.html`;
-            console.log('✅ [Regular Page]', originalUrl, '→', req.url);
-          }
-        }
+        const cleanUrl = url.replace(/\/$/, '');
+        req.url = `/pages${cleanUrl}.html`;
+        console.log('✅ [Regular Page]', originalUrl, '→', req.url);
 
         next();
       });
