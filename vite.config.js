@@ -43,6 +43,29 @@ function getBlogArticles() {
   return articles;
 }
 
+// Городские страницы услуг
+function getCityPages() {
+  const pagesDir = resolve(__dirname, "src/pages");
+  const cityPages = {};
+  const services = ['turnkey-repair', 'plastering', 'airless-painting', 'floor-screed'];
+
+  services.forEach(service => {
+    const serviceDir = resolve(pagesDir, service);
+    try {
+      if (statSync(serviceDir, { throwIfNoEntry: false })) {
+        const htmlFiles = findHtmlFiles(serviceDir, serviceDir);
+        htmlFiles.forEach(({ path, relative }) => {
+          const citySlug = relative.replace(".html", "");
+          // Ключ service-city для каждой городской страницы
+          cityPages[`${service}-${citySlug}`] = path;
+        });
+      }
+    } catch (e) {}
+  });
+
+  return cityPages;
+}
+
 // Плагин перемещения файлов
 const fixHtmlPaths = () => {
   return {
@@ -138,6 +161,10 @@ const fixHtmlPaths = () => {
             // blog.html остается в корне
             targetFile = sourceFile;
             depth = 0;
+          } else if (relative.match(/^pages\/(turnkey-repair|plastering|airless-painting|floor-screed)\//)) {
+            // Городские страницы услуг остаются в pages/service/
+            targetFile = sourceFile;
+            depth = 2; // pages/service/city.html
           } else if (relative.startsWith("pages/")) {
             // Страницы из pages/ перемещаем в корень
             const fileName = relative.replace("pages/", "");
@@ -149,11 +176,13 @@ const fixHtmlPaths = () => {
           }
 
           const pathPrefix = depth > 0 ? "../".repeat(depth) : "./";
+          const cssPath = depth > 0 ? `${pathPrefix}${cssFileName.replace('./', '')}` : cssFileName;
 
           // ЗАМЕНЫ ПУТЕЙ
-          // Сначала заменяем полные пути к стилям (../../styles/main.scss и ../styles/main.scss)
-          content = content.replace(/\.\.\/\.\.\/styles\/main\.scss/g, cssFileName);
-          content = content.replace(/\.\.\/styles\/main\.scss/g, cssFileName);
+          // Сначала заменяем полные пути к стилям (../../../, ../../, ../styles/main.scss)
+          content = content.replace(/\.\.\/\.\.\/\.\.\/styles\/main\.scss/g, cssPath);
+          content = content.replace(/\.\.\/\.\.\/styles\/main\.scss/g, cssPath);
+          content = content.replace(/\.\.\/styles\/main\.scss/g, cssPath);
           // Потом общие замены путей
           content = content.replace(/\.\.\/\.\.\//g, "../"); // ../../ → ../ (для файлов из blog/)
           content = content.replace(/..\/\.\//g, "./");
@@ -179,6 +208,42 @@ const fixHtmlPaths = () => {
             // Ссылки на статьи (legacy): href="blog/article.html" → href="/blog/article"
             content = content.replace(/href=["']pages\/blog\/([^"']+)\.html["']/g, 'href="/blog/$1"');
             content = content.replace(/href=["']blog\/([^"']+)\.html["']/g, 'href="/blog/$1"');
+          }
+
+          // СПЕЦИФИЧНЫЕ ЗАМЕНЫ ДЛЯ ГОРОДСКИХ СТРАНИЦ
+          const isCityPage = relative.match(/^pages\/(turnkey-repair|plastering|airless-painting|floor-screed)\//);
+          if (isCityPage) {
+            // Добавляем <base href="/"> для правильной работы абсолютных путей
+            if (!content.includes('<base href="/"')) {
+              content = content.replace(
+                /<head>/,
+                '<head>\n    <base href="/">'
+              );
+            }
+
+            // Список основных страниц сайта
+            const mainPages = [
+              'turnkey-repair', 'plastering', 'airless-painting', 'floor-screed',
+              'calculator', 'portfolio', 'blog', 'privacy', 'terms', 'where-we-work'
+            ];
+
+            // Заменяем ссылки на АБСОЛЮТНЫЕ пути: href="page.html" → href="/page"
+            // Это необходимо, т.к. URL не совпадает с физическим расположением файла
+            mainPages.forEach(page => {
+              // Заменяем относительные ссылки на абсолютные
+              const patterns = [
+                new RegExp(`href=(["'])(?!\\.\\./|/|https?://)${page}\\.html\\1`, 'g'),
+                new RegExp(`href=(["'])\\.\\./${page}\\.html\\1`, 'g'),
+                new RegExp(`href=(["'])\\.\\.\/\\.\\./${page}\\.html\\1`, 'g')
+              ];
+
+              patterns.forEach(pattern => {
+                content = content.replace(pattern, `href=$1/${page}$1`);
+              });
+            });
+
+            // Ссылка на главную: href="../index.html" → href="/"
+            content = content.replace(/href=(["'])\.\.\/index\.html\1/g, 'href=$1/$1');
           }
 
           // СПЕЦИФИЧНЫЕ ЗАМЕНЫ ДЛЯ СТАТЕЙ БЛОГА
@@ -256,8 +321,65 @@ const fixHtmlPaths = () => {
   };
 };
 
+// Плагин для эмуляции .htaccess в dev режиме
+const htaccessMiddleware = () => {
+  return {
+    name: 'htaccess-middleware',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const originalUrl = req.url;
+        const url = req.url.split('?')[0];
+
+        console.log('🔍 [Middleware] Incoming:', originalUrl);
+
+        // Городские страницы: /service/city → /pages/service/city.html
+        const cityMatch = url.match(/^\/(turnkey-repair|plastering|airless-painting|floor-screed)\/([^/]+)$/);
+        if (cityMatch) {
+          req.url = `/pages/${cityMatch[1]}/${cityMatch[2]}.html`;
+          console.log('✅ [City Page]', originalUrl, '→', req.url);
+          return next();
+        }
+
+        // Блог: /blog/article → /pages/articles/article.html
+        const blogMatch = url.match(/^\/blog\/([^/]+)$/);
+        if (blogMatch) {
+          req.url = `/pages/articles/${blogMatch[1]}.html`;
+          console.log('✅ [Blog Article]', originalUrl, '→', req.url);
+          return next();
+        }
+
+        // /blog → /pages/blog.html
+        if (url === '/blog' || url === '/blog/') {
+          req.url = '/pages/blog.html';
+          console.log('✅ [Blog]', originalUrl, '→', req.url);
+          return next();
+        }
+
+        // Главная страница
+        if (url === '/') {
+          req.url = '/index.html';
+          console.log('✅ [Home]', originalUrl, '→', req.url);
+          return next();
+        }
+
+        // Обычные страницы: /page → /pages/page.html
+        if (!url.includes('.') && url !== '/') {
+          const cleanUrl = url.replace(/\/$/, '');
+          // Проверяем, не является ли это путём к ресурсам
+          if (!cleanUrl.startsWith('/assets') && !cleanUrl.startsWith('/scripts')) {
+            req.url = `/pages${cleanUrl}.html`;
+            console.log('✅ [Regular Page]', originalUrl, '→', req.url);
+          }
+        }
+
+        next();
+      });
+    }
+  };
+};
+
 export default defineConfig({
-  base: process.env.BASE_PATH || (process.env.NODE_ENV === "production" ? "/sk-rosa/" : "./"),
+  base: process.env.BASE_PATH || "/",
   root: "src",
   build: {
     outDir: "../public_html",
@@ -276,6 +398,8 @@ export default defineConfig({
         privacy: resolve(__dirname, "src/pages/privacy.html"),
         terms: resolve(__dirname, "src/pages/terms.html"),
         "turnkey-repair": resolve(__dirname, "src/pages/turnkey-repair.html"),
+        "where-we-work": resolve(__dirname, "src/pages/where-we-work.html"),
+        ...getCityPages(),
         ...getBlogArticles()
       },
       output: {
@@ -298,6 +422,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    htaccessMiddleware(),
     fixHtmlPaths(),
     viteStaticCopy({
       targets: [
@@ -334,8 +459,8 @@ export default defineConfig({
       brotliSize: true
     })
   ],
-  server: { port: 3000, open: "/index.html" },
-  preview: { port: 4173, open: "/index.html", cors: true },
+  server: { port: 3000, open: "/" },
+  preview: { port: 4173, open: "/", cors: true },
   css: {
     preprocessorOptions: {
       scss: {

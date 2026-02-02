@@ -29,14 +29,20 @@
     RewriteCond %{DOCUMENT_ROOT}%1.html -f
     RewriteRule ^(.+)/$ /$1 [R=301,L]
 
-    # 5. Если файл/папка НЕ существует → ищем .html
+    # 5. Городские страницы услуг: /service/city → /pages/service/city.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/pages/$1/$2.html -f
+    RewriteRule ^(turnkey-repair|plastering|airless-painting|floor-screed)/([^/]+)$ /pages/$1/$2.html [L]
+
+    # 6. Если файл/папка НЕ существует → ищем .html
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^(.*)$ $1.html [L]
 
-    # 6. Всё остальное → 404
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
+    # 7. Всё остальное → 404
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles|pages)/ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html !-f
