@@ -1,0 +1,73 @@
+# .htaccess для SK-ROSA - БЕЗОПАСНАЯ ВЕРСИЯ
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # БЛОГ РЕДИРЕКТЫ
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/articles/$1.html -f
+    RewriteRule ^blog/([^/]+)$ /articles/$1.html [L]
+
+    RewriteRule ^blog/?$ /blog.html [L]
+
+    # www → non-www
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
+    # Убираем .html из URL
+    RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Слеш → без слеша
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_URI} ^(.+)/$
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
+    RewriteCond %{DOCUMENT_ROOT}%1.html -f
+    RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+    # Если файл не существует → ищем .html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+
+    # Всё остальное → 404
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html !-f
+    RewriteRule ^(.*)$ /404.html [L]
+</IfModule>
+
+# Безопасность
+Options -Indexes
+ErrorDocument 404 /404.html
+
+# Защита файлов
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<FilesMatch "^(test-.*\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Базовые заголовки безопасности
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Кеширование
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

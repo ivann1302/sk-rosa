@@ -1,0 +1,37 @@
+# Минимальный .htaccess для диагностики
+Options -Indexes
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # www → non-www
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
+    # Убираем .html из URL
+    RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # Если файл существует без .html, показываем его
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# GZIP Сжатие
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript
+</IfModule>
+
+# Кеширование
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

@@ -18,6 +18,7 @@
     "deploy:hosting": "npm run build:hosting",
     "preview": "vite preview",
     "preview:old": "live-server --port=3000 --open=/public_html/index.html --watch=public_html",
+    "serve": "cd public_html && php -S localhost:8080 router.php",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint src/scripts/**/*.js",
     "lint:css": "stylelint \"src/styles/**/*.scss\"",
