@@ -33,10 +33,10 @@
     <meta property="og:description" content="Профессиональная безвоздушная покраска в Мытищах. Покраска стен, потолков, фасадов. Качественное нанесение краски, ровное покрытие. Гарантия качества. Звоните: +7 (985) 135-49-91"
     />
     <meta property="og:url" content="https://sk-rosa.ru/airless-painting/mytishchi" />
-    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.jpg" />
+    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.png" />
     <meta
       property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/about-hero.jpg"
+      content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.png"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="645" />
@@ -311,13 +311,30 @@
             </button>
           </div>
           <div class="about-service__image-wrap">
+            <!-- Изображение для мобильной версии -->
+            <picture class="about-service__image-mobile">
+              <source srcset="../../assets/images/common/airless_painting.webp" type="image/webp" />
+              <img
+                src="../../assets/images/common/airless-painting-hero.png"
+                alt="Безвоздушная покраска"
+                width="500"
+                height="500"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
+                style="content-visibility: auto;"
+              />
+            </picture>
+
+            <!-- Видео для десктопной версии -->
             <video
-              class="about-service__image"
+              class="about-service__image about-service__image-desktop"
               src="../../assets/videos/social_u2928876119_httpss.mj.run-aAoKFu-tEs_--ar_256193_--video_1_b358b51d-3887-4849-a7b1-2c9179cef1b8_0.mp4"
               autoplay
               loop
               muted
               playsinline
+              preload="none"
             ></video>
           </div>
         </div>

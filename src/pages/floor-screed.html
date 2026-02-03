@@ -314,13 +314,30 @@
             </button>
           </div>
           <div class="about-service__image-wrap">
+            <!-- Изображение для мобильной версии -->
+            <picture class="about-service__image-mobile">
+              <source srcset="../assets/images/common/floor-screed-hero.webp" type="image/webp" />
+              <img
+                src="../assets/images/common/floor-screed-hero.png"
+                alt="Стяжка пола"
+                width="500"
+                height="500"
+                loading="eager"
+                fetchpriority="high"
+                decoding="sync"
+                style="content-visibility: auto;"
+              />
+            </picture>
+
+            <!-- Видео для десктопной версии -->
             <video
-              class="about-service__image"
+              class="about-service__image about-service__image-desktop"
               src="../assets/videos/social_u2928876119_construction_worker_pouring_self-leveling_concret_a7951e8f-ce27-419f-b84c-27c769aff107_3.mp4"
               autoplay
               loop
               muted
               playsinline
+              preload="none"
             ></video>
           </div>
         </div>

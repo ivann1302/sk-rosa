@@ -49,6 +49,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://sk-rosa.ru/where-we-work</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://sk-rosa.ru/privacy</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>yearly</changefreq>
@@ -60,4 +66,96 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Ремонт под ключ — города -->
+  <url><loc>https://sk-rosa.ru/turnkey-repair/balashikha</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/vidnoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/dolgoprudny</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/domodedovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/istra</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/korolev</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/krasnogorsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/lobnya</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/lyubertsy</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/mytishchi</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/naro-fominsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/noginsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/odintsovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/podolsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/pushkino</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/ramenskoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/reutov</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/sergiev-posad</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/khimki</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/shchelkovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/turnkey-repair/elektrostal</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Штукатурные работы — города -->
+  <url><loc>https://sk-rosa.ru/plastering/balashikha</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/vidnoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/dolgoprudny</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/domodedovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/istra</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/korolev</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/krasnogorsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/lobnya</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/lyubertsy</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/mytishchi</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/naro-fominsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/noginsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/odintsovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/podolsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/pushkino</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/ramenskoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/reutov</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/sergiev-posad</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/khimki</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/shchelkovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/plastering/elektrostal</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Безвоздушная покраска — города -->
+  <url><loc>https://sk-rosa.ru/airless-painting/balashikha</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/vidnoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/dolgoprudny</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/domodedovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/istra</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/korolev</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/krasnogorsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/lobnya</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/lyubertsy</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/mytishchi</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/naro-fominsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/noginsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/odintsovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/podolsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/pushkino</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/ramenskoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/reutov</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/sergiev-posad</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/khimki</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/shchelkovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/airless-painting/elektrostal</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Стяжка пола — города -->
+  <url><loc>https://sk-rosa.ru/floor-screed/balashikha</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/vidnoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/dolgoprudny</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/domodedovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/istra</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/korolev</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/krasnogorsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/lobnya</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/lyubertsy</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/mytishchi</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/naro-fominsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/noginsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/odintsovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/podolsk</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/pushkino</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/ramenskoe</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/reutov</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/sergiev-posad</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/khimki</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/shchelkovo</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sk-rosa.ru/floor-screed/elektrostal</loc><lastmod>2026-02-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
