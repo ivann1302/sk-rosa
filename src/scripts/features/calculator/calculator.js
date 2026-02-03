@@ -293,5 +293,7 @@ class Calculator {
 
 // Инициализация калькулятора при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
-  new Calculator();
+  if (document.querySelector(".calculator-form")) {
+    new Calculator();
+  }
 });
