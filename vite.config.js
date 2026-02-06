@@ -363,6 +363,8 @@ export default defineConfig({
         { src: "scripts/features/blog/blog-copy-link.js", dest: "scripts/features/blog" },
         { src: ".nojekyll", dest: "." },
         { src: ".htaccess", dest: "." },
+        { src: "404.php", dest: "." },
+        { src: "router.php", dest: "." },
         { src: "yandex_*.html", dest: "." },
         { src: "robots.txt", dest: "." },
         { src: "sitemap.xml", dest: "." }
