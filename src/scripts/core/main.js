@@ -1,17 +1,17 @@
 // Основной JS-файл. Использует модули для организации кода.
 // Стили подключаются напрямую в HTML для немедленной загрузки
 
-import { initMobileMenu } from "@modules/menu.js";
-import { initSubmenu } from "@modules/submenu.js";
-import { createSwipeHandler } from "@modules/swipe.js";
-import { initCarouselPosition } from "@modules/carousel-position.js";
+import { initMobileMenu } from "../modules/menu.js";
+import { initSubmenu } from "../modules/submenu.js";
+import { createSwipeHandler } from "../modules/swipe.js";
+import { initCarouselPosition } from "../modules/carousel-position.js";
 
 // 6.1: Динамические импорты для редко используемых модулей
 async function loadFeatureModules() {
   // Загружаем calculator только если есть соответствующий элемент
   if (document.querySelector(".calculator") || document.querySelector(".price-calc")) {
     try {
-      await import("@features/calculator/calculator.js");
+      await import("../features/calculator/calculator.js");
     } catch (error) {
       console.warn("Не удалось загрузить модуль calculator:", error);
     }
@@ -20,7 +20,7 @@ async function loadFeatureModules() {
   // Загружаем portfolio только если есть соответствующий элемент
   if (document.querySelector(".portfolio") || document.querySelector(".portfolio-filter")) {
     try {
-      await import("@features/portfolio/portfolio-filter.js");
+      await import("../features/portfolio/portfolio-filter.js");
     } catch (error) {
       console.warn("Не удалось загрузить модуль portfolio:", error);
     }
@@ -29,7 +29,7 @@ async function loadFeatureModules() {
   // Загружаем FAQ только если есть соответствующий элемент
   if (document.querySelector(".faq") || document.querySelector("[data-faq]")) {
     try {
-      await import("@features/faq/faq.js");
+      const faqModule = await import("../features/faq/faq.js");
     } catch (error) {
       console.warn("Не удалось загрузить модуль FAQ:", error);
     }

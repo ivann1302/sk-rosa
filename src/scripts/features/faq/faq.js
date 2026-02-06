@@ -1,5 +1,5 @@
 // Аккордеон для FAQ с независимым открытием элементов
-document.addEventListener("DOMContentLoaded", function () {
+function initFAQ() {
   const faqItems = document.querySelectorAll(".faq__item");
   const faqList = document.querySelector(".faq__list");
 
@@ -90,4 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 450); // Увеличиваем время ожидания для завершения CSS transition
     });
   });
-});
+}
+
+// Инициализация FAQ
+// Проверяем готовность DOM для поддержки динамической и статической загрузки
+if (document.readyState === 'loading') {
+  // DOM еще не готов, ждем события
+  document.addEventListener('DOMContentLoaded', initFAQ);
+} else {
+  // DOM уже готов (динамическая загрузка), инициализируем сразу
+  initFAQ();
+}

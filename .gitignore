@@ -52,7 +52,5 @@ css-analysis-report.txt
 .vscode/
 .idea/
 
-DEPLOY.md
-TODO.md
-PROMPT.md
+CLOUDE.md
 PROJECT.md
