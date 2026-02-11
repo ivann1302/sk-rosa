@@ -2,9 +2,9 @@
 
 // Блок "Оставить заявку / Связаться с нами"
 .contact-request {
-  // Используем WebP для оптимизации (937KB вместо 42MB)
+  // Используем WebP для оптимизации (319KB)
   // Используем @/ алиас для корня src (Vite обработает это правильно)
-  background-image: url("@/assets/images/common/fabula-ai.webp");
+  background-image: url("@/assets/images/common/plastering-form.webp");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

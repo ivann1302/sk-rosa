@@ -397,4 +397,18 @@
       margin-right: 104px;
     }
   }
+
+  &__disclaimer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #374151;
+    text-align: center;
+
+    p {
+      color: #9ca3af;
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
 }
