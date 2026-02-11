@@ -1,6 +1,6 @@
 .social-fixed {
   position: fixed;
-  right: 20px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
@@ -8,13 +8,13 @@
   flex-direction: column;
   gap: 8px;
   padding: 8px;
-  background: rgb(255 255 255 / 30%);
-  border-radius: 10px;
+  background: rgb(255 255 255 / 33%);
+  border-radius: 10px 0 0 10px;
   box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
   transition: background 0.3s ease;
 
   &:hover {
-    background: rgb(255 255 255 / 80%);
+    background: rgb(255 255 255 / 50%);
   }
 }
 
@@ -24,10 +24,10 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  transition: transform 0.3s ease;
+  transition: filter 0.3s ease;
 
   &:hover {
-    transform: scale(1.15);
+    filter: brightness(0.7);
   }
 
   img {
