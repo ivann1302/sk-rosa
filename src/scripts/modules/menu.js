@@ -33,11 +33,11 @@ export function initMobileMenu() {
     }
   });
 
-  // Закрываем меню при клике на ссылку (кроме "Другие услуги")
+  // Закрываем меню при клике на ссылку (кроме "Наши услуги")
   const menuLinks = headerMenu.querySelectorAll("a");
   menuLinks.forEach(link => {
     link.addEventListener("click", function (_e) {
-      // Проверяем, не является ли это ссылкой "Другие услуги"
+      // Проверяем, не является ли это ссылкой "Наши услуги"
       const isSubmenuLink =
         link.closest(".header__menu-item--has-submenu") &&
         link.getAttribute("href") === "#services";
