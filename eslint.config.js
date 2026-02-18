@@ -27,6 +27,9 @@ export default [
         isNaN: "readonly",
         IntersectionObserver: "readonly",
         fetch: "readonly",
+        requestAnimationFrame: "readonly",
+        cancelAnimationFrame: "readonly",
+        Map: "readonly",
       },
     },
     rules: {

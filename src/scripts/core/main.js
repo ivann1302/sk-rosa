@@ -29,7 +29,7 @@ async function loadFeatureModules() {
   // Загружаем FAQ только если есть соответствующий элемент
   if (document.querySelector(".faq") || document.querySelector("[data-faq]")) {
     try {
-      const faqModule = await import("../features/faq/faq.js");
+      await import("../features/faq/faq.js");
     } catch (error) {
       console.warn("Не удалось загрузить модуль FAQ:", error);
     }
@@ -85,9 +85,59 @@ document.addEventListener("DOMContentLoaded", function () {
   // Анимация появления элементов портфолио при скролле (слева)
   initPortfolioFilterReveal();
 
+  // Параллакс-эффект для изображения услуг
+  initServiceImageParallax();
+
+  // Круговая карусель статей
+  initArticlesCarousel();
+
+  // Фиксированный блок соцсетей: клик — раскрыть, скролл — свернуть
+  initSocialFixed();
+
   // Загружаем редко используемые модули динамически
   loadFeatureModules();
 });
+
+// Параллакс-эффект для services__img--first при движении курсора
+function initServiceImageParallax() {
+  const img = document.querySelector(".services__img--first");
+
+  if (!img || window.innerWidth <= 768) {
+    return;
+  }
+
+  const container = img.closest(".services__item");
+
+  if (!container) {
+    return;
+  }
+
+  const maxOffset = 12;
+  let rafId = null;
+
+  container.addEventListener("mousemove", e => {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+    }
+
+    rafId = requestAnimationFrame(() => {
+      const rect = container.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+      img.style.transform = `translate(${x * maxOffset}px, ${y * maxOffset}px)`;
+      rafId = null;
+    });
+  });
+
+  container.addEventListener("mouseleave", () => {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    img.style.transform = "translate(0, 0)";
+  });
+}
 
 // Анимация появления блока "О компании" при скролле
 function initCompanyDescriptionReveal() {
@@ -344,4 +394,102 @@ function initPortfolioFilterReveal() {
   if (whyList) {
     observer.observe(whyList);
   }
+}
+
+// Фиксированный блок соцсетей: toggle по клику, скрытие при скролле
+function initSocialFixed() {
+  const panel = document.querySelector("[data-js-social-fixed]");
+  const toggle = document.querySelector("[data-js-social-toggle]");
+
+  if (!panel || !toggle || window.innerWidth <= 768) {
+    return;
+  }
+
+  toggle.addEventListener("click", () => {
+    panel.classList.toggle("social-fixed--open");
+  });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (panel.classList.contains("social-fixed--open")) {
+        panel.classList.remove("social-fixed--open");
+      }
+    },
+    { passive: true }
+  );
+}
+
+// Круговая карусель статей
+function initArticlesCarousel() {
+  const track = document.querySelector(".articles-carousel__track");
+
+  if (!track) {
+    return;
+  }
+
+  const cards = Array.from(track.querySelectorAll(".articles-carousel__card"));
+  const total = cards.length;
+  let current = 0;
+  let isAnimating = false;
+
+  function updatePositions() {
+    const prev = (current - 1 + total) % total;
+    const next = (current + 1) % total;
+
+    cards.forEach((card, i) => {
+      if (i === current) {
+        card.setAttribute("data-pos", "active");
+      } else if (i === prev) {
+        card.setAttribute("data-pos", "prev");
+      } else if (i === next) {
+        card.setAttribute("data-pos", "next");
+      } else {
+        card.setAttribute("data-pos", "hidden");
+      }
+    });
+  }
+
+  function navigate(direction) {
+    if (isAnimating) {
+      return;
+    }
+
+    isAnimating = true;
+
+    const prevIdx = (current - 1 + total) % total;
+    const nextIdx = (current + 1) % total;
+
+    // Задержки зависят от направления: карточки движутся волной
+    const delays = new Map();
+
+    if (direction === 1) {
+      delays.set(prevIdx, 0);
+      delays.set(current, 90);
+      delays.set(nextIdx, 180);
+    } else {
+      delays.set(nextIdx, 0);
+      delays.set(current, 90);
+      delays.set(prevIdx, 180);
+    }
+
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = `${delays.get(i) ?? 270}ms`;
+    });
+
+    current = (current + direction + total) % total;
+    updatePositions();
+
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.style.transitionDelay = "";
+      });
+      isAnimating = false;
+    }, 850);
+  }
+
+  updatePositions();
+
+  document.querySelector(".articles-carousel__arrow--prev").addEventListener("click", () => navigate(-1));
+  document.querySelector(".articles-carousel__arrow--next").addEventListener("click", () => navigate(1));
 }

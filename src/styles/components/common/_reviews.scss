@@ -110,6 +110,11 @@
       opacity: 1;
       transform: translateX(0);
     }
+
+    @media (width <= 768px) {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__content {
@@ -177,6 +182,17 @@
   &__desc-extra {
     @media (width <= 768px) {
       display: none !important;
+    }
+  }
+
+  &__account-link {
+    color: var(--color-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
     }
   }
 
