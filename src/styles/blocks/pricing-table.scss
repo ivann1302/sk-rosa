@@ -206,3 +206,34 @@
   font-weight: 400;
 }
 
+// Бесплатные услуги — десктоп
+.pricing-table__row--free {
+  // фон строки остаётся стандартным
+}
+
+.pricing-table__free {
+  display: inline-block;
+  background: #88a593;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+// Бесплатные услуги — мобильные карточки
+.pricing-card--free {
+  // фон карточки остаётся стандартным
+}
+
+.pricing-card__price--free {
+  display: inline-block;
+  background: #88a593;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
