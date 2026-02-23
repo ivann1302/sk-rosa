@@ -42,16 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const reviewsCards = reviewsTrack ? reviewsTrack.querySelectorAll(".reviews-card") : [];
   const reviewsVisible = 4;
 
+  const isMobileReviews = () => window.innerWidth <= 768;
+
   function updateArrowsState() {
-    if (reviewsLeftBtn && reviewsRightBtn) {
-      // Левая стрелка неактивна, если мы в начале
+    if (!reviewsLeftBtn || !reviewsRightBtn) {
+      return;
+    }
+    if (isMobileReviews()) {
+      const atStart = reviewsCarousel.scrollLeft <= 0;
+      const atEnd =
+        reviewsCarousel.scrollLeft >= reviewsCarousel.scrollWidth - reviewsCarousel.offsetWidth - 1;
+      if (atStart) {
+        reviewsLeftBtn.classList.add("reviews-carousel__arrow--disabled");
+      } else {
+        reviewsLeftBtn.classList.remove("reviews-carousel__arrow--disabled");
+      }
+      if (atEnd) {
+        reviewsRightBtn.classList.add("reviews-carousel__arrow--disabled");
+      } else {
+        reviewsRightBtn.classList.remove("reviews-carousel__arrow--disabled");
+      }
+    } else {
       if (reviewsCurrent === 0) {
         reviewsLeftBtn.classList.add("reviews-carousel__arrow--disabled");
       } else {
         reviewsLeftBtn.classList.remove("reviews-carousel__arrow--disabled");
       }
-
-      // Правая стрелка неактивна, если мы в конце
       if (reviewsCurrent >= reviewsCards.length - reviewsVisible) {
         reviewsRightBtn.classList.add("reviews-carousel__arrow--disabled");
       } else {
@@ -61,29 +77,42 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function reviewsUpdate() {
-    const card = reviewsCards[0];
-    const cardWidth = card ? card.offsetWidth : 0;
-    if (reviewsTrack) {
-      reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + 24)}px)`;
+    if (!isMobileReviews()) {
+      const card = reviewsCards[0];
+      const cardWidth = card ? card.offsetWidth : 0;
+      if (reviewsTrack) {
+        reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + 24)}px)`;
+      }
     }
     updateArrowsState();
   }
 
   if (reviewsCarousel && reviewsTrack && reviewsLeftBtn && reviewsRightBtn) {
     reviewsLeftBtn.addEventListener("click", function () {
-      if (reviewsCurrent > 0) {
-        reviewsCurrent--;
-        reviewsUpdate();
+      if (isMobileReviews()) {
+        const cardWidth = reviewsCards[0] ? reviewsCards[0].offsetWidth + 12 : 0;
+        reviewsCarousel.scrollBy({ left: -cardWidth, behavior: "smooth" });
+      } else {
+        if (reviewsCurrent > 0) {
+          reviewsCurrent--;
+          reviewsUpdate();
+        }
       }
     });
 
     reviewsRightBtn.addEventListener("click", function () {
-      if (reviewsCurrent < reviewsCards.length - reviewsVisible) {
-        reviewsCurrent++;
-        reviewsUpdate();
+      if (isMobileReviews()) {
+        const cardWidth = reviewsCards[0] ? reviewsCards[0].offsetWidth + 12 : 0;
+        reviewsCarousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+      } else {
+        if (reviewsCurrent < reviewsCards.length - reviewsVisible) {
+          reviewsCurrent++;
+          reviewsUpdate();
+        }
       }
     });
 
+    reviewsCarousel.addEventListener("scroll", updateArrowsState);
     window.addEventListener("resize", reviewsUpdate);
     reviewsUpdate();
   }

@@ -44,13 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Инициализация подменю
   initSubmenu();
 
-  // Инициализация свайпа для карусели отзывов
-  const reviewsSwipe = createSwipeHandler({
-    trackSelector: ".reviews-carousel__track",
-    wrapperSelector: ".reviews-carousel__wrapper",
-  });
-  reviewsSwipe.setupSwipe();
-
   // Инициализация свайпа для полезных ссылок
   const usefulLinksSwipe = createSwipeHandler({
     trackSelector: ".useful-links__grid",

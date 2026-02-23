@@ -67,13 +67,14 @@
   }
 
   @media (width <= 768px) {
-    background-color: #a9cbb3 !important;
+    flex: 0 0 calc(100vw - 80px);
+    width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
+    min-width: calc(100vw - 80px);
+    height: auto;
+    background: #f8f9fa;
     border: 1px solid #e0e0e0 !important;
-
-    /* Выравниваем только текст отзыва по левому краю */
-    & > div:nth-child(2) {
-      text-align: left !important;
-    }
+    scroll-snap-align: center;
   }
 }
 
@@ -171,6 +172,7 @@
     @media (width <= 768px) {
       margin-bottom: 0 !important;
       margin-left: 12px;
+      margin-right: 12px;
       padding: 0;
 
       br {
@@ -303,6 +305,10 @@
   overflow: hidden;
   position: relative;
 
+  @media (width <= 768px) {
+    overflow: visible;
+  }
+
   &__arrow {
     position: absolute;
     top: 50%;
@@ -342,7 +348,18 @@
     }
 
     @media (width <= 768px) {
-      display: none;
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+      background: rgb(0 0 0 / 20%);
+
+      &--left {
+        left: 2px;
+      }
+
+      &--right {
+        right: 2px;
+      }
     }
   }
 
@@ -377,16 +394,17 @@
       display: flex;
       width: max-content;
       gap: 12px !important;
-      padding-left: 24px;
-      padding-right: 24px;
+      padding-left: 40px;
+      padding-right: 40px;
       transition: none;
       transform: none;
 
-      & > div {
-        flex: 0 0 calc(100vw - 48px) !important;
-        width: calc(100vw - 48px) !important;
-        max-width: calc(100vw - 48px) !important;
-        min-width: calc(100vw - 48px) !important;
+      & > * {
+        flex: 0 0 calc(100vw - 80px) !important;
+        width: calc(100vw - 80px) !important;
+        max-width: calc(100vw - 80px) !important;
+        min-width: calc(100vw - 80px) !important;
+        height: auto !important;
         margin: 0 !important;
         scroll-snap-align: center;
       }
