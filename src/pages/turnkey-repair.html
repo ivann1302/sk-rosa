@@ -790,7 +790,9 @@
       <section class="reviews">
         <div class="reviews__container">
           <h2 class="reviews__title">Отзывы наших клиентов</h2>
-          <div class="reviews__grid">
+          <div class="reviews__grid-outer">
+            <button class="review-grid-arrow review-grid-arrow--left" aria-label="Предыдущий отзыв">&#8592;</button>
+            <div class="reviews__grid">
             <div class="review-card">
               <div class="quote-mark">"</div>
               <p class="review-text">
@@ -830,6 +832,8 @@
                 <div class="reviewer-name">Татьяна</div>
               </div>
             </div>
+          </div>
+            <button class="review-grid-arrow review-grid-arrow--right" aria-label="Следующий отзыв">&#8594;</button>
           </div>
         </div>
       </section>
@@ -1700,5 +1704,47 @@
     <script type="module" src="../scripts/features/contact/form-handler.js" defer></script>
     <script type="module" src="../scripts/features/portfolio/custom-select.js" defer></script>
     <script type="module" src="../scripts/core/main.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const grid = document.querySelector(".reviews__grid");
+        const leftBtn = document.querySelector(".review-grid-arrow--left");
+        const rightBtn = document.querySelector(".review-grid-arrow--right");
+
+        if (!grid || !leftBtn || !rightBtn) {
+          return;
+        }
+
+        function updateArrows() {
+          const atStart = grid.scrollLeft <= 0;
+          const atEnd = grid.scrollLeft >= grid.scrollWidth - grid.offsetWidth - 1;
+          if (atStart) {
+            leftBtn.classList.add("review-grid-arrow--disabled");
+          } else {
+            leftBtn.classList.remove("review-grid-arrow--disabled");
+          }
+          if (atEnd) {
+            rightBtn.classList.add("review-grid-arrow--disabled");
+          } else {
+            rightBtn.classList.remove("review-grid-arrow--disabled");
+          }
+        }
+
+        function getCardWidth() {
+          const card = grid.querySelector(".review-card");
+          return card ? card.offsetWidth + 12 : 0;
+        }
+
+        leftBtn.addEventListener("click", function () {
+          grid.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
+        });
+
+        rightBtn.addEventListener("click", function () {
+          grid.scrollBy({ left: getCardWidth(), behavior: "smooth" });
+        });
+
+        grid.addEventListener("scroll", updateArrows);
+        updateArrows();
+      });
+    </script>
   </body>
 </html>
