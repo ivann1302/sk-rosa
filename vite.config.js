@@ -7,42 +7,6 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
-// Поиск HTML файлов
-function findHtmlFiles(dir, baseDir = dir, fileList = []) {
-  const files = readdirSync(dir);
-  files.forEach(file => {
-    const filePath = join(dir, file);
-    const stat = statSync(filePath);
-    if (stat.isDirectory()) {
-      findHtmlFiles(filePath, baseDir, fileList);
-    } else if (file.endsWith(".html")) {
-      const relativePath = filePath
-        .replace(baseDir, "")
-        .replace(/^[\/\\]+/, "")
-        .replace(/\\+/g, "/");
-      fileList.push({ path: filePath, relative: relativePath });
-    }
-  });
-  return fileList;
-}
-
-// Статьи блога (физически в articles/, но URL будет /blog/*)
-function getBlogArticles() {
-  const articlesDir = resolve(__dirname, "src/pages/articles");
-  const articles = {};
-  try {
-    if (statSync(articlesDir, { throwIfNoEntry: false })) {
-      const htmlFiles = findHtmlFiles(articlesDir, articlesDir);
-      htmlFiles.forEach(({ path, relative }) => {
-        const name = relative.replace(".html", "").replace(/\//g, "-");
-        // Ключ blog/* для URL /blog/*, но файлы из articles/
-        articles[`blog/${name}`] = path;
-      });
-    }
-  } catch (e) {}
-  return articles;
-}
-
 // Городские страницы (172+) теперь генерируются отдельным скриптом:
 // npm run generate:build
 // Это решает проблему OOM при сборке через Vite
@@ -71,15 +35,10 @@ const fixHtmlPaths = () => {
         } catch (e) {}
       }
 
-      // Собираем из pages/ и articles/
+      // Собираем из pages/
       const pagesDir = join(outDir, "pages");
       if (statSync(pagesDir, { throwIfNoEntry: false })) {
         collectHtmlFiles(pagesDir, "pages");
-      }
-
-      const articlesDir = join(outDir, "articles");
-      if (statSync(articlesDir, { throwIfNoEntry: false })) {
-        collectHtmlFiles(articlesDir, "articles");
       }
 
       // Собираем HTML файлы из корня
@@ -116,13 +75,6 @@ const fixHtmlPaths = () => {
           if (relative === "pages/blog.html") {
             targetFile = join(outDir, "blog.html");
             depth = 0;
-          } else if (relative.startsWith("pages/articles/")) {
-            mkdirSync(join(outDir, "articles"), { recursive: true });
-            targetFile = join(outDir, "articles", relative.replace("pages/articles/", ""));
-            depth = 1;
-          } else if (relative.startsWith("articles/")) {
-            targetFile = sourceFile;
-            depth = 1;
           } else if (relative.startsWith("pages/")) {
             targetFile = join(outDir, relative.replace("pages/", ""));
             depth = 0;
@@ -154,18 +106,9 @@ const fixHtmlPaths = () => {
             content = content.replace(/src="\.\/assets\//g, 'src="/assets/');
           }
 
-          // Замены для блога
+          // Замены для блога: все .html ссылки → абсолютные пути
           if (relative === "pages/blog.html" || relative === "blog.html") {
-            content = content.replace(/href=["']blog\.html["']/g, 'href="/blog"');
-            content = content.replace(/href=["']articles\/([^"']+)\.html["']/g, 'href="/blog/$1"');
-          }
-
-          // Замены для статей
-          const isArticle = relative.startsWith("pages/articles/") || relative.startsWith("articles/");
-          if (isArticle) {
-            content = content.replace(/href=["']blog\.html["']/g, 'href="/blog"');
-            content = content.replace(/href=["']\.\.\/blog\.html["']/g, 'href="/blog"');
-            content = content.replace(/href=["']\.\.\/([^"']+)\.html["']/g, 'href="/$1"');
+            content = content.replace(/href=["']([a-z][a-z0-9-]+)\.html["']/g, 'href="/$1"');
           }
 
           writeFileSync(targetFile, content, "utf-8");
@@ -229,29 +172,12 @@ const htaccessMiddleware = () => {
       url.startsWith('/assets') ||      // Static assets
       url.startsWith('/scripts') ||     // Scripts
       url.startsWith('/pages') ||       // Pages directory
-      url.startsWith('/articles') ||    // Articles directory
       url.includes('.')                 // Files with extensions
     ) {
       return next();
     }
 
     console.log('🔍 [Middleware] Incoming:', originalUrl);
-
-    // Городские страницы: /service/city → /pages/service/city.html
-    const cityMatch = url.match(/^\/(turnkey-repair|plastering|airless-painting|floor-screed)\/([^/]+)$/);
-    if (cityMatch) {
-      req.url = `/pages/${cityMatch[1]}/${cityMatch[2]}.html`;
-      console.log('✅ [City Page]', originalUrl, '→', req.url);
-      return next();
-    }
-
-    // Блог: /blog/article → /articles/article.html (в preview) или /pages/articles/article.html (в dev)
-    const blogMatch = url.match(/^\/blog\/([^/]+)$/);
-    if (blogMatch) {
-      req.url = isPreview ? `/articles/${blogMatch[1]}.html` : `/pages/articles/${blogMatch[1]}.html`;
-      console.log('✅ [Blog Article]', originalUrl, '→', req.url);
-      return next();
-    }
 
     // /blog → /blog.html (в preview) или /pages/blog.html (в dev)
     if (url === '/blog' || url === '/blog/') {
@@ -307,8 +233,14 @@ export default defineConfig({
         terms: resolve(__dirname, "src/pages/terms.html"),
         "turnkey-repair": resolve(__dirname, "src/pages/turnkey-repair.html"),
         "where-we-work": resolve(__dirname, "src/pages/where-we-work.html"),
+        // Статьи блога (URL: /article-name — 2й уровень вложенности)
+        "preimushestva-bezvozdushnoj-pokraski": resolve(__dirname, "src/pages/preimushestva-bezvozdushnoj-pokraski.html"),
+        "shtukaturka-sten-v-novostrojke": resolve(__dirname, "src/pages/shtukaturka-sten-v-novostrojke.html"),
+        "shtukaturka-guide": resolve(__dirname, "src/pages/shtukaturka-guide.html"),
+        "mashinnaya-ili-ruchnaya-shtukaturka": resolve(__dirname, "src/pages/mashinnaya-ili-ruchnaya-shtukaturka.html"),
+        "vybor-kraski-airless-painting": resolve(__dirname, "src/pages/vybor-kraski-airless-painting.html"),
+        "vybor-shtukaturki": resolve(__dirname, "src/pages/vybor-shtukaturki.html"),
         // Городские страницы генерируются отдельно: npm run generate:build
-        ...getBlogArticles()
       },
       output: {
         manualChunks: id => {

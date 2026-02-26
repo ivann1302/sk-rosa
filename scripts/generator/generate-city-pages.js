@@ -10,13 +10,13 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'fs';
-import { resolve, dirname, join } from 'path';
+import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '../..');
 const SRC_PAGES = resolve(ROOT, 'src/pages');
-const PUBLIC_PAGES = resolve(ROOT, 'public_html/pages');
+const PUBLIC_HTML = resolve(ROOT, 'public_html');
 
 // Загружаем данные
 const cities = JSON.parse(readFileSync(resolve(__dirname, 'cities.json'), 'utf-8')).cities;
@@ -44,19 +44,14 @@ function replaceCity(html, fromCity, toCity) {
   // Заменяем "в Городе" (предложный падеж)
   result = result.replace(new RegExp(`в ${fromCity.nameIn}`, 'g'), `в ${toCity.nameIn}`);
 
-  // Заменяем canonical URL
-  result = result.replace(
-    new RegExp(`sk-rosa\\.ru/([^/]+)/${fromCity.slug}`, 'g'),
-    `sk-rosa.ru/$1/${toCity.slug}`
-  );
-
   return result;
 }
 
 /**
  * Генерирует страницы для одной услуги
+ * Файлы выводятся в src/pages/service-city.html (плоская структура, 2-й уровень URL)
  */
-function generateServicePages(service, outputDir = 'src') {
+function generateServicePages(service) {
   const templatePath = resolve(SRC_PAGES, service.slug, `${TEMPLATE_CITY.slug}.html`);
 
   if (!existsSync(templatePath)) {
@@ -65,20 +60,11 @@ function generateServicePages(service, outputDir = 'src') {
   }
 
   const template = readFileSync(templatePath, 'utf-8');
-  const outDir = outputDir === 'public'
-    ? resolve(PUBLIC_PAGES, service.slug)
-    : resolve(SRC_PAGES, service.slug);
-
-  mkdirSync(outDir, { recursive: true });
-
   let generated = 0;
 
   cities.forEach(city => {
-    // Пропускаем базовый город - его не нужно перегенерировать
-    if (city.slug === TEMPLATE_CITY.slug) return;
-
     const html = replaceCity(template, TEMPLATE_CITY, city);
-    const outPath = resolve(outDir, `${city.slug}.html`);
+    const outPath = resolve(SRC_PAGES, `${service.slug}-${city.slug}.html`);
 
     writeFileSync(outPath, html, 'utf-8');
     generated++;
@@ -90,13 +76,13 @@ function generateServicePages(service, outputDir = 'src') {
 /**
  * Генерирует все городские страницы
  */
-function generateAll(outputDir = 'src') {
+function generateAll() {
   console.log('Generating city pages...\n');
 
   let total = 0;
 
   services.forEach(service => {
-    const count = generateServicePages(service, outputDir);
+    const count = generateServicePages(service);
     console.log(`  ${service.name}: ${count} pages`);
     total += count;
   });
@@ -121,6 +107,7 @@ function findCssFileName() {
 
 /**
  * Генерирует страницы напрямую в public_html (для production build)
+ * Файлы выводятся в public_html/service-city.html (корень)
  */
 function generateForBuild() {
   console.log('Generating city pages for production build...\n');
@@ -152,14 +139,11 @@ function generateForBuild() {
     template = template.replace(/\.\.\/\.\.\/scripts\//g, '/scripts/');
     template = template.replace(/\.\.\/scripts\//g, '/scripts/');
 
-    const outDir = resolve(PUBLIC_PAGES, service.slug);
-    mkdirSync(outDir, { recursive: true });
-
     let count = 0;
 
     cities.forEach(city => {
       const html = replaceCity(template, TEMPLATE_CITY, city);
-      const outPath = resolve(outDir, `${city.slug}.html`);
+      const outPath = resolve(PUBLIC_HTML, `${service.slug}-${city.slug}.html`);
 
       writeFileSync(outPath, html, 'utf-8');
       count++;
@@ -169,12 +153,12 @@ function generateForBuild() {
     total += count;
   });
 
-  console.log(`\nTotal: ${total} pages generated to public_html/pages/`);
+  console.log(`\nTotal: ${total} pages generated to public_html/`);
   return total;
 }
 
 /**
- * Очищает сгенерированные страницы (оставляет только шаблон)
+ * Очищает сгенерированные плоские страницы из src/pages/
  */
 function clean() {
   console.log('Cleaning generated city pages...\n');
@@ -182,18 +166,12 @@ function clean() {
   let removed = 0;
 
   services.forEach(service => {
-    const serviceDir = resolve(SRC_PAGES, service.slug);
-
-    if (!existsSync(serviceDir)) return;
-
-    const files = readdirSync(serviceDir).filter(f => f.endsWith('.html'));
+    const files = readdirSync(SRC_PAGES).filter(
+      f => f.startsWith(`${service.slug}-`) && f.endsWith('.html')
+    );
 
     files.forEach(file => {
-      // Не удаляем шаблон
-      if (file === `${TEMPLATE_CITY.slug}.html`) return;
-
-      const filePath = resolve(serviceDir, file);
-      unlinkSync(filePath);
+      unlinkSync(resolve(SRC_PAGES, file));
       removed++;
     });
   });
@@ -208,7 +186,7 @@ const command = args[0] || 'generate';
 switch (command) {
   case 'generate':
   case 'gen':
-    generateAll('src');
+    generateAll();
     break;
 
   case 'build':
@@ -225,7 +203,7 @@ Usage: node generate-city-pages.js [command]
 
 Commands:
   generate, gen  Generate pages in src/pages/ (default)
-  build          Generate pages directly to public_html/pages/ for production
+  build          Generate pages directly to public_html/ for production
   clean          Remove generated pages (keep templates)
   help           Show this help
 `);

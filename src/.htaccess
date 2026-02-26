@@ -4,12 +4,13 @@
     RewriteEngine On
     RewriteBase /
 
-    # 🔥 1. БЛОГ РЕДИРЕКТЫ (ПРИОРИТЕТ №1)
-    # /blog/article-name → /articles/article-name.html (физически в articles/)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{DOCUMENT_ROOT}/articles/$1.html -f
-    RewriteRule ^blog/([^/]+)$ /articles/$1.html [L]
+    # 🔥 1. РЕДИРЕКТЫ СТАТЕЙ БЛОГА (старые URL → новые, 301 постоянный)
+    RewriteRule ^blog/shtukaturka-guide$ /shtukaturka-guide [R=301,L]
+    RewriteRule ^blog/shtukaturka-sten-v-novostrojke$ /shtukaturka-sten-v-novostrojke [R=301,L]
+    RewriteRule ^blog/mashinnaya-ili-ruchnaya-shtukaturka$ /mashinnaya-ili-ruchnaya-shtukaturka [R=301,L]
+    RewriteRule ^blog/vybor-shtukaturki$ /vybor-shtukaturki [R=301,L]
+    RewriteRule ^blog/preimushestva-bezvozdushnoj-pokraski$ /preimushestva-bezvozdushnoj-pokraski [R=301,L]
+    RewriteRule ^blog/vybor-kraski-airless-painting$ /vybor-kraski-airless-painting [R=301,L]
 
     # /blog → /blog.html
     RewriteRule ^blog/?$ /blog.html [L]
@@ -25,15 +26,12 @@
     # 4. СЛЕШ → без слеша (если файл существует)
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} ^(.+)/$
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
     RewriteCond %{DOCUMENT_ROOT}%1.html -f
     RewriteRule ^(.+)/$ /$1 [R=301,L]
 
-    # 5. Городские страницы услуг: /service/city → /pages/service/city.html
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{DOCUMENT_ROOT}/pages/$1/$2.html -f
-    RewriteRule ^(turnkey-repair|plastering|airless-painting|floor-screed)/([^/]+)$ /pages/$1/$2.html [L]
+    # 5. Городские страницы услуг: /service/city → /service-city (301 постоянный)
+    RewriteRule ^(turnkey-repair|plastering|airless-painting|floor-screed)/([^/]+)$ /$1-$2 [R=301,L]
 
     # 6. Если файл/папка НЕ существует → ищем .html
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -42,7 +40,7 @@
     RewriteRule ^(.*)$ $1.html [L]
 
     # 7. Всё остальное → 404
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles|pages)/ [NC]
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts|pages)/ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html !-f
