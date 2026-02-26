@@ -170,7 +170,7 @@
     padding: 0 12px;
 
     @media (width <= 768px) {
-      margin-bottom: 0 !important;
+      margin-bottom: 24px;
       margin-left: 12px;
       margin-right: 12px;
       padding: 0;
@@ -368,9 +368,9 @@
     overflow: hidden;
 
     @media (width <= 768px) {
-      width: 100vw;
-      overflow-x: auto;
-      overflow-y: hidden;
+      width: 100vw !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
@@ -392,12 +392,12 @@
 
     @media (width <= 768px) {
       display: flex;
-      width: max-content;
+      width: max-content !important;
       gap: 12px !important;
       padding-left: 40px;
       padding-right: 40px;
-      transition: none;
-      transform: none;
+      transition: none !important;
+      transform: none !important;
 
       & > * {
         flex: 0 0 calc(100vw - 80px) !important;

@@ -1,6 +1,5 @@
 {
   "cities": [
-    { "slug": "moskva", "name": "Москва", "nameIn": "Москве" },
     { "slug": "balashikha", "name": "Балашиха", "nameIn": "Балашихе" },
     { "slug": "khimki", "name": "Химки", "nameIn": "Химках" },
     { "slug": "podolsk", "name": "Подольск", "nameIn": "Подольске" },
@@ -42,6 +41,11 @@
     { "slug": "stupino", "name": "Ступино", "nameIn": "Ступино" },
     { "slug": "troitsk", "name": "Троицк", "nameIn": "Троицке" },
     { "slug": "fryazino", "name": "Фрязино", "nameIn": "Фрязино" },
-    { "slug": "chekhov", "name": "Чехов", "nameIn": "Чехове" }
+    { "slug": "chekhov", "name": "Чехов", "nameIn": "Чехове" },
+    { "slug": "korolev", "name": "Королёв", "nameIn": "Королёве" },
+    { "slug": "sergiev-posad", "name": "Сергиев Посад", "nameIn": "Сергиевом Посаде" },
+    { "slug": "odintsovo", "name": "Одинцово", "nameIn": "Одинцово" },
+    { "slug": "reutov", "name": "Реутов", "nameIn": "Реутове" },
+    { "slug": "lobnya", "name": "Лобня", "nameIn": "Лобне" }
   ]
 }
