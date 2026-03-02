@@ -312,7 +312,17 @@ export default defineConfig({
     // })
   ],
   server: { port: 3000, open: "/" },
-  preview: { port: 4173, open: "/", cors: true },
+  preview: {
+    port: 4173,
+    open: "/",
+    cors: true,
+    proxy: {
+      "/scripts/api": {
+        target: "http://localhost:8080",
+        changeOrigin: true,
+      },
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {

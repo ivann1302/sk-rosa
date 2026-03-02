@@ -52,8 +52,8 @@
     list-style: none;
     padding: 0;
     margin: 0 0 28px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
 
     li {
@@ -124,6 +124,7 @@
 
     &__check-list,
     &__object-list {
+      grid-template-columns: 1fr;
       margin-bottom: 22px;
       gap: 10px;
 

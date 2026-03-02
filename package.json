@@ -23,6 +23,7 @@
     "deploy": "npm run build:github",
     "deploy:hosting": "npm run build:hosting",
     "preview": "vite preview",
+    "preview:full": "concurrently -n \"PHP,VITE\" -c \"blue,green\" \"php -S localhost:8080 -t public_html/\" \"vite preview\"",
     "preview:old": "live-server --port=3000 --open=/public_html/index.html --watch=public_html",
     "serve": "cd public_html && php -S localhost:8000 router.php",
     "lint": "npm run lint:js && npm run lint:css",

@@ -26,7 +26,7 @@
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--color-dark);
-    margin: 0 0 16px 0;
+    margin: 16px 0 16px 0;
     line-height: 1.2;
 
     @media (width <= 768px) {
@@ -48,7 +48,7 @@
 
   &__grid {
     background: #ececec;
-    padding: 40px;
+    padding: 0 40px 40px;
     border-radius: 8px;
     box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
     display: grid;
@@ -58,7 +58,7 @@
     @media (width <= 768px) {
       grid-template-columns: 1fr;
       gap: 20px;
-      padding: 24px 12px; /* внутренние отступы */
+      padding: 0 12px 24px; /* внутренние отступы */
       margin: 0; /* без внешних отступов */
       width: 100%;
       max-width: 100%;
@@ -71,7 +71,7 @@
     @include tablet {
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      padding: 32px;
+      padding: 0 32px 32px;
     }
   }
 
