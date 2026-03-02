@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".calculator-request__form", // Форма в калькуляторе
     ".contact-request-turnkey__form-fields", // Форма на странице ремонта под ключ
     ".about-turnkey-2__form", // Форма калькулятора на странице ремонта под ключ
+    ".call-banner__form", // Форма в баннере (появляется через 10 сек)
   ];
 
   formSelectors.forEach(selector => {
@@ -85,6 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.");
           }
           form.reset();
+          // Закрываем баннер после успешной отправки
+          if (window.closeCallBanner) {
+            window.closeCallBanner();
+          }
         } else {
           alert(result.error || "Ошибка при отправке. Попробуйте позже.");
         }

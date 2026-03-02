@@ -288,6 +288,7 @@ export default defineConfig({
         { src: "scripts/features/calculator/price-calc.js", dest: "scripts/features/calculator" },
         { src: "scripts/features/contact/contact-request.js", dest: "scripts/features/contact" },
         { src: "scripts/features/contact/success-modal.js", dest: "scripts/features/contact" },
+        { src: "scripts/features/contact/call-banner.js", dest: "scripts/features/contact" },
         { src: "scripts/features/contact/form-handler.js", dest: "scripts/features/contact" },
         { src: "scripts/features/contact/form-utils.js", dest: "scripts/features/contact" },
         { src: "scripts/features/blog/blog-filter.js", dest: "scripts/features/blog" },

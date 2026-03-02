@@ -231,9 +231,9 @@
       }
     </script>
     <script type="module" crossorigin src="/assets/js/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <script type="module" crossorigin src="/assets/js/features-Dp2Dqyaz.js"></script>
-    <script type="module" crossorigin src="/assets/js/core-xS-krrY3.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/css/main-PobpeIXl.css">
+    <script type="module" crossorigin src="/assets/js/features-DJoLFjoB.js"></script>
+    <script type="module" crossorigin src="/assets/js/core-CrPQKexT.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/css/main-BOWycZ7c.css">
   </head>
   <body id="top">
     <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -1425,9 +1425,42 @@
       </div>
     </aside>
 
+    <!-- Баннер: заказ звонка (появляется через 10 секунд) -->
+    <div
+      id="call-banner"
+      class="call-banner"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Закажите звонок"
+      aria-hidden="true"
+    >
+      <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="call-banner__content">
+        <p class="call-banner__title">Закажите обратный звонок.</p>
+        <p class="call-banner__subtitle">Это совершенно бесплатно и ни к чему не обязывает. Наш специалист Вас проконсультирует.</p>
+        <form class="call-banner__form" action="scripts/api/send.php" method="POST">
+          <div class="call-banner__field">
+            <input type="text" name="NAME" autocomplete="name" required placeholder="Ваше имя" />
+          </div>
+          <div class="call-banner__field">
+            <input type="tel" name="PHONE" autocomplete="tel" required placeholder="+7 (999) 123-45-67" />
+          </div>
+          <input type="hidden" name="COMMENTS" value="Заявка с баннера (10 сек)" />
+          <input type="hidden" name="form_source" value="Баннер 10 секунд" />
+          <button type="submit" class="call-banner__submit">Заказать звонок</button>
+        </form>
+      </div>
+    </div>
+
     <script src="scripts/core/constants.js" defer></script>
     <script src="scripts/features/contact/init-contacts.js" defer></script>
     <script src="scripts/core/carousel.js" defer></script>
     <script src="scripts/features/contact/success-modal.js" defer></script>
+    <script src="scripts/features/contact/call-banner.js" defer></script>
   </body>
 </html>
