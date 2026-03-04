@@ -141,7 +141,7 @@ header("Status: 404 Not Found");
             >
             <a
               class="header__social-link"
-              href="https://t.me/oorosa"
+              href="https://t.me/MSKROSA"
               target="_blank"
               rel="noopener"
               aria-label="Telegram"
@@ -208,7 +208,7 @@ header("Status: 404 Not Found");
               </a>
               <a
                 class="header__mobile-contacts-social-link"
-                href="https://t.me/oorosa"
+                href="https://t.me/MSKROSA"
                 target="_blank"
                 rel="noopener"
                 aria-label="Telegram"
@@ -323,7 +323,7 @@ header("Status: 404 Not Found");
               />
             </a>
             <a
-              href="https://t.me/oorosa"
+              href="https://t.me/MSKROSA"
               class="footer__social-link telegram"
               target="_blank"
               rel="noopener noreferrer"
