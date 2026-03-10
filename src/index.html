@@ -24,21 +24,9 @@
     <link rel="preconnect" href="https://mc.yandex.ru" />
 
     <!-- Preload для LCP изображения -->
-    <link rel="preload" as="image" href="assets/images/common/about-hero.webp" type="image/webp" />
-    <link rel="preload" as="image" href="assets/images/common/about-hero.jpg" type="image/jpeg" />
+    <link rel="preload" as="image" href="assets/images/portfolio/20-mobile.webp" type="image/webp" media="(max-width: 768px)" />
+    <link rel="preload" as="image" href="assets/images/common/about-hero.webp" type="image/webp" media="(min-width: 769px)" />
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106210167', 'ym');
-
-    ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<!-- /Yandex.Metrika counter -->
 
     <!-- Open Graph для соцсетей -->
     <meta property="og:type" content="website" />
@@ -48,14 +36,14 @@
       content="Штукатурные работы. Безвоздушная покраска. Стяжка пола. Ремонт квартир, домов, коммерческих помещений в Москве и Московской области. Более 6 лет опыта, официальный договор, гарантия качества."
     />
     <meta property="og:url" content="https://sk-rosa.ru/" />
-    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.jpg" />
+    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
     <meta
       property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/about-hero.jpg"
+      content="https://sk-rosa.ru/assets/images/common/about-hero.webp"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="645" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:alt" content="ROSA - Профессиональный ремонт под ключ в Москве и МО" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ROSA - Ремонт под ключ" />
@@ -95,7 +83,7 @@
         "alternateName": "OOO.ROSA",
         "image": [
           "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
-          "https://sk-rosa.ru/assets/images/common/about-hero.jpg"
+          "https://sk-rosa.ru/assets/images/common/about-hero.webp"
         ],
         "logo": "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
         "url": "https://sk-rosa.ru",
@@ -219,7 +207,7 @@
           "worstRating": "5"
         },
         "sameAs": [
-          "https://t.me/MSKROSA",
+          "https://t.me/mskrosa",
           "https://wa.me/79851354991"
         ],
         "foundingDate": "2019",
@@ -328,7 +316,7 @@
             >
             <a
               class="header__social-link"
-              href="https://t.me/sk_rosa"
+              href="https://t.me/mskrosa?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!%20%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8%20%D0%B1%D1%8B%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%B2%D0%B0%D1%88%D0%B8%D1%85%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B0%D1%85%3F%20%F0%9F%91%8B"
               target="_blank"
               rel="noopener"
               aria-label="Telegram"
@@ -429,17 +417,21 @@
       <section class="about">
         <div class="about__container">
           <picture>
-            <source srcset="assets/images/common/about-hero.webp" type="image/webp" />
-            <source srcset="assets/images/common/about-hero.jpg" type="image/jpeg" />
+            <source
+              media="(max-width: 768px)"
+              srcset="assets/images/portfolio/20-mobile.webp"
+              type="image/webp"
+              width="750"
+              height="375"
+            />
             <img
               class="about__image"
-              src="assets/images/common/about-hero.jpg"
+              src="assets/images/common/about-hero.webp"
               alt="О нас"
-              width="320"
-              height="220"
+              width="1920"
+              height="645"
               loading="eager"
               fetchpriority="high"
-              decoding="async"
             />
           </picture>
           <div class="about__content">
@@ -1462,5 +1454,17 @@
     <script src="scripts/features/contact/call-banner.js" defer></script>
     <script type="module" src="scripts/features/contact/form-handler.js" defer></script>
     <script type="module" src="scripts/core/main.js" defer></script>
-  </body>
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106210167', 'ym');
+
+    ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->
+</body>
 </html>

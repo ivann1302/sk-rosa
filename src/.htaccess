@@ -11,6 +11,13 @@
     RewriteRule ^blog/vybor-shtukaturki$ /vybor-shtukaturki [R=301,L]
     RewriteRule ^blog/preimushestva-bezvozdushnoj-pokraski$ /preimushestva-bezvozdushnoj-pokraski [R=301,L]
     RewriteRule ^blog/vybor-kraski-airless-painting$ /vybor-kraski-airless-painting [R=301,L]
+    RewriteRule ^blog/fasad-shtukaturka$ /fasad-shtukaturka [R=301,L]
+    RewriteRule ^blog/gidroizolyaciya-pola-pod-styazhku$ /gidroizolyaciya-pola-pod-styazhku [R=301,L]
+    RewriteRule ^blog/vidy-styazhki-pola$ /vidy-styazhki-pola [R=301,L]
+    RewriteRule ^blog/pokraska-sten-bez-razvodov$ /pokraska-sten-bez-razvodov [R=301,L]
+
+    # /articles/slug → /slug (301)
+    RewriteRule ^articles/([^/]+)$ /$1 [R=301,L]
 
     # /blog → /blog.html
     RewriteRule ^blog/?$ /blog.html [L]
@@ -71,6 +78,14 @@ ErrorDocument 404 /404.php
     # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' mc.yandex.ru *.yandex.ru api-maps.yandex.ru; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: fonts.gstatic.com cdn.jsdelivr.net; connect-src 'self' https: mc.yandex.ru *.yandex.ru;"
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Сжатие Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/xml text/xml text/plain image/svg+xml font/woff font/woff2
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \\bMSIE !no-gzip !gzip-only-text/html
 </IfModule>
 
 # Кеширование

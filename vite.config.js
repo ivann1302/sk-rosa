@@ -240,6 +240,11 @@ export default defineConfig({
         "mashinnaya-ili-ruchnaya-shtukaturka": resolve(__dirname, "src/pages/mashinnaya-ili-ruchnaya-shtukaturka.html"),
         "vybor-kraski-airless-painting": resolve(__dirname, "src/pages/vybor-kraski-airless-painting.html"),
         "vybor-shtukaturki": resolve(__dirname, "src/pages/vybor-shtukaturki.html"),
+        "fasad-shtukaturka": resolve(__dirname, "src/pages/fasad-shtukaturka.html"),
+        "gidroizolyaciya-pola-pod-styazhku": resolve(__dirname, "src/pages/gidroizolyaciya-pola-pod-styazhku.html"),
+        "vidy-styazhki-pola": resolve(__dirname, "src/pages/vidy-styazhki-pola.html"),
+        "pokraska-sten-bez-razvodov": resolve(__dirname, "src/pages/pokraska-sten-bez-razvodov.html"),
+        "armirovanie-shtukaturki-setkoj": resolve(__dirname, "src/pages/armirovanie-shtukaturki-setkoj.html"),
         // Городские страницы генерируются отдельно: npm run generate:build
       },
       output: {
@@ -294,6 +299,9 @@ export default defineConfig({
         { src: "scripts/features/blog/blog-filter.js", dest: "scripts/features/blog" },
         { src: "scripts/features/blog/blog-search.js", dest: "scripts/features/blog" },
         { src: "scripts/features/blog/blog-copy-link.js", dest: "scripts/features/blog" },
+        { src: "scripts/features/pricing-table.js", dest: "scripts/features" },
+        { src: "scripts/features/pricing-table-airless-painting.js", dest: "scripts/features" },
+        { src: "scripts/features/pricing-table-floor-screed.js", dest: "scripts/features" },
         { src: ".nojekyll", dest: "." },
         { src: ".htaccess", dest: "." },
         { src: "404.php", dest: "." },

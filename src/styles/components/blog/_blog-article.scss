@@ -551,6 +551,73 @@ body:has(.blog-article) {
         color: var(--color-dark-green);
       }
     }
+
+    // Таблицы
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgb(0 0 0 / 6%);
+
+      @media (width <= 768px) {
+        font-size: 0.875rem;
+        margin: 24px 0;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      thead {
+        background: var(--color-green);
+        color: #fff;
+
+        th {
+          padding: 14px 16px;
+          text-align: left;
+          font-weight: 600;
+          font-size: 0.875rem;
+          letter-spacing: 0.3px;
+          white-space: nowrap;
+
+          @media (width <= 768px) {
+            padding: 12px 14px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid #e8e8e8;
+          transition: background 0.15s ease;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &:nth-child(even) {
+            background: #f9fafb;
+          }
+
+          &:hover {
+            background: rgb(136 165 147 / 8%);
+          }
+        }
+
+        td {
+          padding: 14px 16px;
+          color: #333;
+          vertical-align: top;
+          line-height: 1.6;
+
+          @media (width <= 768px) {
+            padding: 12px 14px;
+          }
+        }
+      }
+    }
   }
 
   // Футер статьи (дата публикации)
