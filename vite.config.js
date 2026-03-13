@@ -106,9 +106,10 @@ const fixHtmlPaths = () => {
             content = content.replace(/src="\.\/assets\//g, 'src="/assets/');
           }
 
-          // Замены для блога: все .html ссылки → абсолютные пути
-          if (relative === "pages/blog.html" || relative === "blog.html") {
+          // Для root-level страниц: все .html ссылки → абсолютные чистые пути
+          if (depth === 0) {
             content = content.replace(/href=["']([a-z][a-z0-9-]+)\.html["']/g, 'href="/$1"');
+            content = content.replace(/href=["']\.\.\/([a-z][a-z0-9-]+)\.html["']/g, 'href="/$1"');
           }
 
           writeFileSync(targetFile, content, "utf-8");
@@ -245,6 +246,7 @@ export default defineConfig({
         "vidy-styazhki-pola": resolve(__dirname, "src/pages/vidy-styazhki-pola.html"),
         "pokraska-sten-bez-razvodov": resolve(__dirname, "src/pages/pokraska-sten-bez-razvodov.html"),
         "armirovanie-shtukaturki-setkoj": resolve(__dirname, "src/pages/armirovanie-shtukaturki-setkoj.html"),
+        "shpaklevka-sten-posle-shtukaturki": resolve(__dirname, "src/pages/shpaklevka-sten-posle-shtukaturki.html"),
         // Городские страницы генерируются отдельно: npm run generate:build
       },
       output: {

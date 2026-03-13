@@ -53,6 +53,14 @@ export default [
     },
   },
   {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     ignores: ["public_html/**", "node_modules/**"],
   },
 ];

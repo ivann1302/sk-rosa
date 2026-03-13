@@ -1,0 +1,61 @@
+name: Deploy
+
+# Только при пуше в main (не при PR)
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build + Deploy to SprintHost
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Сборка для хостинга (линтинг + Vite + генератор городских страниц)
+      - name: Build
+        run: npm run build:hosting
+
+      # Защита: если public_html/ пустая — не деплоить (что-то пошло не так при сборке)
+      - name: Check build output
+        run: |
+          FILE_COUNT=$(find ./public_html -name "*.html" | wc -l)
+          echo "HTML файлов в сборке: $FILE_COUNT"
+          if [ "$FILE_COUNT" -lt 10 ]; then
+            echo "ОШИБКА: слишком мало файлов в сборке. Деплой отменён."
+            exit 1
+          fi
+
+      # Настройка SSH для подключения к SprintHost
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          # Записываем приватный ключ из секрета GitHub
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Добавляем хост в known_hosts чтобы не было интерактивного запроса "доверяешь ли хосту?"
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # Деплой через rsync (загружает только изменившиеся файлы)
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.gitkeep' \
+            -e "ssh -p 22 -i ~/.ssh/id_ed25519" \
+            ./public_html/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}
+
+      - name: Done
+        run: echo "Деплой завершён — https://sk-rosa.ru"

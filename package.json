@@ -22,6 +22,7 @@
     "build:copy": "cp -r src/* public_html/ && rm -rf public_html/styles/*.scss public_html/styles/blocks public_html/styles/helpers public_html/main.css.map public_html/node_modules public_html/package*.json public_html/package*.json.old public_html/.idea && find public_html -name '*.map' -delete 2>/dev/null || true",
     "deploy": "npm run build:github",
     "deploy:hosting": "npm run build:hosting",
+    "deploy:sprint": "bash scripts/deploy.sh",
     "preview": "vite preview",
     "preview:full": "concurrently -n \"PHP,VITE\" -c \"blue,green\" \"php -S localhost:8080 -t public_html/\" \"vite preview\"",
     "preview:old": "live-server --port=3000 --open=/public_html/index.html --watch=public_html",
@@ -35,7 +36,9 @@
     "format": "prettier --write \"src/**/*.{js,html,json,scss}\"",
     "fix": "npm run lint && npm run lint:fix && npm run format",
     "format:check": "prettier --check \"src/**/*.{js,html,json,scss}\"",
-    "analyze:css": "node analyze-css.js"
+    "analyze:css": "node analyze-css.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -50,6 +53,7 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
     "vite": "^7.3.0",
-    "vite-plugin-static-copy": "^3.1.4"
+    "vite-plugin-static-copy": "^3.1.4",
+    "vitest": "^3.2.4"
   }
 }
