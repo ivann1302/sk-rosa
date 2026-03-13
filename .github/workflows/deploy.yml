@@ -5,9 +5,12 @@ on:
     branches:
       - main
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
-    name: Build + Deploy to SprintHost
+    name: Lint + Test + Build + Deploy to SprintHost
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +25,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Lint JS
+        run: npx eslint "src/scripts/**/*.js"
+
+      - name: Lint CSS
+        run: npx stylelint "src/styles/**/*.scss"
+
+      - name: Generate city pages (for tests)
+        run: npm run generate
+
+      - name: Run tests
+        run: npm run test
 
       - name: Build
         run: npm run build:hosting
