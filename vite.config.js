@@ -245,6 +245,7 @@ export default defineConfig({
         "gidroizolyaciya-pola-pod-styazhku": resolve(__dirname, "src/pages/gidroizolyaciya-pola-pod-styazhku.html"),
         "vidy-styazhki-pola": resolve(__dirname, "src/pages/vidy-styazhki-pola.html"),
         "pokraska-sten-bez-razvodov": resolve(__dirname, "src/pages/pokraska-sten-bez-razvodov.html"),
+        "styazhka-pod-teply-pol": resolve(__dirname, "src/pages/styazhka-pod-teply-pol.html"),
         "armirovanie-shtukaturki-setkoj": resolve(__dirname, "src/pages/armirovanie-shtukaturki-setkoj.html"),
         "shpaklevka-sten-posle-shtukaturki": resolve(__dirname, "src/pages/shpaklevka-sten-posle-shtukaturki.html"),
         // Городские страницы генерируются отдельно: npm run generate:build
