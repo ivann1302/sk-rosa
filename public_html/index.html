@@ -24,13 +24,27 @@
     <link rel="preconnect" href="https://mc.yandex.ru" />
 
     <!-- Preload для LCP изображения -->
-    <link rel="preload" as="image" href="/assets/images/20-mobile-C5c5uDPj.webp" type="image/webp" media="(max-width: 768px)" />
-    <link rel="preload" as="image" href="/assets/images/about-hero-BUxKa8BX.webp" type="image/webp" media="(min-width: 769px)" />
-
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/20-mobile-C5c5uDPj.webp"
+      type="image/webp"
+      media="(max-width: 768px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/about-hero-BUxKa8BX.webp"
+      type="image/webp"
+      media="(min-width: 769px)"
+    />
 
     <!-- Open Graph для соцсетей -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Rosa | Профессиональный ремонт под ключ в Москве и Подмосковье" />
+    <meta
+      property="og:title"
+      content="Rosa | Профессиональный ремонт под ключ в Москве и Подмосковье"
+    />
     <meta
       property="og:description"
       content="Штукатурные работы. Безвоздушная покраска. Стяжка пола. Ремонт квартир, домов, коммерческих помещений в Москве и Московской области. Более 6 лет опыта, официальный договор, гарантия качества."
@@ -57,19 +71,73 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="preload"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" /></noscript>
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    /></noscript>
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
       rel="preload"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" /></noscript>
+    <noscript
+      ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+    /></noscript>
     <!-- Скрипт для поддержки асинхронной загрузки CSS в старых браузерах -->
     <script>
-      !function(e){"use strict";var t=function(t,n,o){var i,r=e.document,a=r.createElement("link");if(n)i=n;else{var l=(r.body||r.getElementsByTagName("head")[0]).childNodes;i=l[l.length-1]}var d=r.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(r.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+      !(function (e) {
+        "use strict";
+        var t = function (t, n, o) {
+          var i,
+            r = e.document,
+            a = r.createElement("link");
+          if (n) i = n;
+          else {
+            var l = (r.body || r.getElementsByTagName("head")[0]).childNodes;
+            i = l[l.length - 1];
+          }
+          var d = r.styleSheets;
+          ((a.rel = "stylesheet"),
+            (a.href = t),
+            (a.media = "only x"),
+            (function e(t) {
+              if (r.body) return t();
+              setTimeout(function () {
+                e(t);
+              });
+            })(function () {
+              i.parentNode.insertBefore(a, n ? i : i.nextSibling);
+            }));
+          var f = function (e) {
+            for (var t = a.href, n = d.length; n--; ) if (d[n].href === t) return e();
+            setTimeout(function () {
+              f(e);
+            });
+          };
+          return (
+            a.addEventListener &&
+              a.addEventListener("load", function () {
+                this.media = o || "all";
+              }),
+            (a.onloadcssdefined = f),
+            f(function () {
+              a.media !== o && (a.media = o || "all");
+            }),
+            a
+          );
+        };
+        "undefined" != typeof exports ? (exports.loadCSS = t) : (e.loadCSS = t);
+      })("undefined" != typeof global ? global : this);
     </script>
 
     <!-- JSON-LD -->
@@ -205,10 +273,7 @@
           "bestRating": "5",
           "worstRating": "5"
         },
-        "sameAs": [
-          "https://t.me/mskrosa",
-          "https://wa.me/79851354991"
-        ],
+        "sameAs": ["https://t.me/mskrosa", "https://wa.me/79851354991"],
         "foundingDate": "2019",
         "numberOfEmployees": {
           "@type": "QuantitativeValue",
@@ -219,12 +284,19 @@
       }
     </script>
     <script type="module" crossorigin src="/assets/js/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <script type="module" crossorigin src="/assets/js/features-DJoLFjoB.js"></script>
-    <script type="module" crossorigin src="/assets/js/core-CrPQKexT.js"></script>
+    <script type="module" crossorigin src="/assets/js/features-Dbt4v8rD.js"></script>
+    <script type="module" crossorigin src="/assets/js/core-FBUEax2_.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/css/main-47fEBh-r.css">
   </head>
   <body id="top">
-    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/106210167"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
     <header class="header" data-js-header>
       <div class="header__body">
         <div class="header__body-inner">
@@ -438,9 +510,12 @@
             />
           </picture>
           <div class="about__content">
-            <h1 class="about__title"> Ремонт квартир, домов и коммерческих помещений под ключ в Москве</h1>
+            <h1 class="about__title">
+              Ремонт квартир, домов и коммерческих помещений под ключ в Москве
+            </h1>
             <h2 class="about__subtitle">
-             Штукатурка, стяжка пола и безвоздушная покраска — профессиональный ремонт<br> без лишних забот
+              Штукатурка, стяжка пола и безвоздушная покраска — профессиональный ремонт<br />
+              без лишних забот
             </h2>
           </div>
           <div class="about__bottom">
@@ -463,7 +538,8 @@
                   />
                 </div>
                 <p class="advantages__desc">
-                  <strong>Более 6 лет</strong> успешной работы в сфере ремонта и отделки на территории Москвы и Подмосковья
+                  <strong>Более 6 лет</strong> успешной работы в сфере ремонта и отделки на
+                  территории Москвы и Подмосковья
                 </p>
               </div>
               <div class="advantages__item">
@@ -524,11 +600,13 @@
             <h4 class="company-description__title">О компании</h4>
             <div class="company-description__text">
               <p>
-                Компания <strong>"Rosa"</strong> специализируется на комплексном ремонте квартир, домов и коммерческих помещений в Москве и Подмосковье.
-                Наша команда оказывает услуги по <strong>механизированной штукатурке</strong>, <strong>стяжке пола</strong>, <strong>безвоздушной покраске</strong> и <strong>ремонту под ключ</strong>. Мы
+                Компания <strong>"Rosa"</strong> специализируется на комплексном ремонте квартир,
+                домов и коммерческих помещений в Москве и Подмосковье. Наша команда оказывает услуги
+                по <strong>механизированной штукатурке</strong>, <strong>стяжке пола</strong>,
+                <strong>безвоздушной покраске</strong> и <strong>ремонту под ключ</strong>. Мы
                 работаем на рынке более 6 лет и за это время реализовали десятки успешных проектов
-                различной сложности. Среди наших сотрудников — только опытные специалисты, которые любят
-                своё дело и постоянно совершенствуют профессиональные навыки.
+                различной сложности. Среди наших сотрудников — только опытные специалисты, которые
+                любят своё дело и постоянно совершенствуют профессиональные навыки.
               </p>
               <p>
                 Мы ценим доверие клиентов и всегда работаем по официальному договору. Каждый проект
@@ -566,7 +644,8 @@
                   <div class="service-card__content">
                     <h3 class="service-card__title">Ремонт под ключ</h3>
                     <p class="service-card__description">
-                      Комплексный ремонт квартир, домов и коммерческих помещений. Все работы от А до Я с гарантией качества.
+                      Комплексный ремонт квартир, домов и коммерческих помещений. Все работы от А до
+                      Я с гарантией качества.
                     </p>
                     <div class="service-card__footer">
                       <span class="service-card__price">от 10 000 ₽/м²</span>
@@ -592,7 +671,8 @@
                   <div class="service-card__content">
                     <h3 class="service-card__title">Штукатурные работы</h3>
                     <p class="service-card__description">
-                      Механизированная и ручная штукатурка стен. Идеально ровные поверхности под любую отделку.
+                      Механизированная и ручная штукатурка стен. Идеально ровные поверхности под
+                      любую отделку.
                     </p>
                     <div class="service-card__footer">
                       <span class="service-card__price">от 600 ₽/м²</span>
@@ -618,7 +698,8 @@
                   <div class="service-card__content">
                     <h3 class="service-card__title">Безвоздушная покраска</h3>
                     <p class="service-card__description">
-                      Профессиональная покраска стен, потолков и фасадов. Ровное покрытие без разводов и подтеков.
+                      Профессиональная покраска стен, потолков и фасадов. Ровное покрытие без
+                      разводов и подтеков.
                     </p>
                     <div class="service-card__footer">
                       <span class="service-card__price">от 250 ₽/м²</span>
@@ -644,7 +725,8 @@
                   <div class="service-card__content">
                     <h3 class="service-card__title">Стяжка пола</h3>
                     <p class="service-card__description">
-                      Полусухая механизированная стяжка пола. Быстро, качественно и с гарантией ровности.
+                      Полусухая механизированная стяжка пола. Быстро, качественно и с гарантией
+                      ровности.
                     </p>
                     <div class="service-card__footer">
                       <span class="service-card__price">от 800 ₽/м²</span>
@@ -670,10 +752,34 @@
                 >Если вы уже воспользовались нашими услугами, расскажите о своём опыте! Нам важно
                 знать, что вам понравилось, а что можно улучшить. Оставить отзыв можно в наших
                 официальных аккаунтах в
-                <a href="https://t.me/sk_rosa" target="_blank" rel="noopener noreferrer" class="reviews__account-link">Telegram</a>,
-                <a href="https://2gis.ru/moscow/geo/70000001110771901" target="_blank" rel="noopener noreferrer" class="reviews__account-link">2GIS</a>,
-                <a href="https://yandex.com/maps/-/CPUHqN1w1" target="_blank" rel="noopener noreferrer" class="reviews__account-link">Яндекс.Картах</a>,
-                <a href="https://vk.com/skrosa" target="_blank" rel="noopener noreferrer" class="reviews__account-link">ВКонтакте</a>
+                <a
+                  href="https://t.me/sk_rosa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="reviews__account-link"
+                  >Telegram</a
+                >,
+                <a
+                  href="https://2gis.ru/moscow/geo/70000001110771901"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="reviews__account-link"
+                  >2GIS</a
+                >,
+                <a
+                  href="https://yandex.com/maps/-/CPUHqN1w1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="reviews__account-link"
+                  >Яндекс.Картах</a
+                >,
+                <a
+                  href="https://vk.com/skrosa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="reviews__account-link"
+                  >ВКонтакте</a
+                >
                 и других удобных для вас площадках.</span
               ><br /><br />
               <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
@@ -691,7 +797,14 @@
                 <div class="reviews-carousel__track">
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-anna-DoM1a7Cf.webp" alt="Анна" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-anna-DoM1a7Cf.webp"
+                        alt="Анна"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <p class="reviews-card__name">Анна, Москва</p>
                     </div>
                     <p class="reviews-card__text">
@@ -701,7 +814,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-igor-Cuz-BKHx.webp" alt="Игорь" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-igor-Cuz-BKHx.webp"
+                        alt="Игорь"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <p class="reviews-card__name">Игорь, Химки</p>
                     </div>
                     <p class="reviews-card__text">
@@ -711,7 +831,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-maria-DDSNlRSL.webp" alt="Мария" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-maria-DDSNlRSL.webp"
+                        alt="Мария"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <div class="reviews-card__name">Мария, Одинцово</div>
                     </div>
                     <div class="reviews-card__text">
@@ -721,7 +848,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-vladimir-Bwqh2R7i.webp" alt="Владимир" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-vladimir-Bwqh2R7i.webp"
+                        alt="Владимир"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <p class="reviews-card__name">Владимир, Балашиха</p>
                     </div>
                     <p class="reviews-card__text">
@@ -731,7 +865,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-ekaterina-DcfL4iNE.webp" alt="Екатерина" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-ekaterina-DcfL4iNE.webp"
+                        alt="Екатерина"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <p class="reviews-card__name">Екатерина, Реутов</p>
                     </div>
                     <p class="reviews-card__text">
@@ -740,7 +881,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-sergey-Ca3X0BXk.webp" alt="Сергей" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-sergey-Ca3X0BXk.webp"
+                        alt="Сергей"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <div class="reviews-card__name">Сергей, Москва</div>
                     </div>
                     <div class="reviews-card__text">
@@ -749,7 +897,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-olga-C31tfr_6.webp" alt="Ольга" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-olga-C31tfr_6.webp"
+                        alt="Ольга"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <div class="reviews-card__name">Ольга, Люберцы</div>
                     </div>
                     <div class="reviews-card__text">
@@ -758,7 +913,14 @@
                   </article>
                   <article class="reviews-card">
                     <div class="reviews-card__header">
-                      <img src="/assets/images/photo-dmitriy-CvQir35A.webp" alt="Дмитрий" loading="lazy" decoding="async" width="50" height="50" />
+                      <img
+                        src="/assets/images/photo-dmitriy-CvQir35A.webp"
+                        alt="Дмитрий"
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
                       <div class="reviews-card__name">Дмитрий, Балашиха</div>
                     </div>
                     <div class="reviews-card__text">
@@ -787,7 +949,14 @@
               <h3 class="useful-links__item-title">Калькулятор ремонта</h3>
               <picture>
                 <source srcset="/assets/images/calculator-0lcqdUxP.webp" type="image/webp" />
-                <img src="/assets/images/calculator-DOKhLvVP.jpg" alt="Калькулятор" loading="lazy" decoding="async" width="150" height="150" />
+                <img
+                  src="/assets/images/calculator-DOKhLvVP.jpg"
+                  alt="Калькулятор"
+                  loading="lazy"
+                  decoding="async"
+                  width="150"
+                  height="150"
+                />
               </picture>
             </a>
 
@@ -795,7 +964,14 @@
               <h3 class="useful-links__item-title">Блог о ремонте</h3>
               <picture>
                 <source srcset="/assets/images/blog-C1zZR4cv.webp" type="image/webp" />
-                <img src="/assets/images/blog-CtbC6aSh.jpg" alt="Блог" loading="lazy" decoding="async" width="150" height="150" />
+                <img
+                  src="/assets/images/blog-CtbC6aSh.jpg"
+                  alt="Блог"
+                  loading="lazy"
+                  decoding="async"
+                  width="150"
+                  height="150"
+                />
               </picture>
             </a>
 
@@ -803,7 +979,14 @@
               <h3 class="useful-links__item-title">Консультация</h3>
               <picture>
                 <source srcset="/assets/images/consultation-buV-GaUc.webp" type="image/webp" />
-                <img src="/assets/images/consultation-DrwxxWzW.jpg" alt="Консультация" loading="lazy" decoding="async" width="130" height="130" />
+                <img
+                  src="/assets/images/consultation-DrwxxWzW.jpg"
+                  alt="Консультация"
+                  loading="lazy"
+                  decoding="async"
+                  width="130"
+                  height="130"
+                />
               </picture>
             </a>
 
@@ -811,7 +994,14 @@
               <h3 class="useful-links__item-title">Сертификаты и лицензии</h3>
               <picture>
                 <source srcset="/assets/images/certificates-Bha4KfUB.webp" type="image/webp" />
-                <img src="/assets/images/certificates-BOXlSTGs.jpg" alt="Сертификаты" loading="lazy" decoding="async" width="130" height="130" />
+                <img
+                  src="/assets/images/certificates-BOXlSTGs.jpg"
+                  alt="Сертификаты"
+                  loading="lazy"
+                  decoding="async"
+                  width="130"
+                  height="130"
+                />
               </picture>
             </a>
 
@@ -819,7 +1009,14 @@
               <h3 class="useful-links__item-title">Работа по договору</h3>
               <picture>
                 <source srcset="/assets/images/contract-CBVG7pGM.webp" type="image/webp" />
-                <img src="/assets/images/contract-DnCVFO84.jpg" alt="Работа по договору" loading="lazy" decoding="async" width="100" height="100" />
+                <img
+                  src="/assets/images/contract-DnCVFO84.jpg"
+                  alt="Работа по договору"
+                  loading="lazy"
+                  decoding="async"
+                  width="100"
+                  height="100"
+                />
               </picture>
             </a>
           </div>
@@ -836,7 +1033,14 @@
               <fieldset>
                 <legend class="visually-hidden">Контактная информация</legend>
                 <div class="contact-form__field">
-                  <input type="text" id="name" name="NAME" autocomplete="name" required placeholder="Ваше имя" />
+                  <input
+                    type="text"
+                    id="name"
+                    name="NAME"
+                    autocomplete="name"
+                    required
+                    placeholder="Ваше имя"
+                  />
                 </div>
                 <div class="contact-form__field">
                   <input
@@ -858,7 +1062,17 @@
         </div>
       </section>
 
-      <h3 style="text-align: center; font-size: 2.5rem; font-weight: 700; color: #222; margin: 60px 0 40px;">Примеры наших работ</h3>
+      <h3
+        style="
+          text-align: center;
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #222;
+          margin: 60px 0 40px;
+        "
+      >
+        Примеры наших работ
+      </h3>
 
       <div class="portfolio-grid">
         <div class="portfolio-grid__container">
@@ -1008,7 +1222,10 @@
                   </div>
                   <div class="contacts__contact-content">
                     <h4>Адрес</h4>
-                    <p>г. Долгопрудный,<br> Лихачёвский пр-д, 6с1</p>
+                    <p>
+                      г. Долгопрудный,<br />
+                      Лихачёвский пр-д, 6с1
+                    </p>
                   </div>
                 </div>
                 <div class="contacts__contact-item">
@@ -1065,48 +1282,122 @@
         <div class="articles-carousel__container">
           <h3 class="articles-carousel__title">Полезные статьи о ремонте</h3>
           <div class="articles-carousel__wrapper">
-            <button class="articles-carousel__arrow articles-carousel__arrow--prev" aria-label="Предыдущая статья">&#10094;</button>
+            <button
+              class="articles-carousel__arrow articles-carousel__arrow--prev"
+              aria-label="Предыдущая статья"
+            >
+              &#10094;
+            </button>
             <div class="articles-carousel__viewport">
               <div class="articles-carousel__track">
-                <a href="/articles/preimushestva-bezvozdushnoj-pokraski" class="articles-carousel__card">
+                <a
+                  href="/articles/preimushestva-bezvozdushnoj-pokraski"
+                  class="articles-carousel__card"
+                >
                   <h3 class="articles-carousel__card-title">Преимущества безвоздушной покраски</h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/airless-paint-DmTpxC4i.webp" alt="Преимущества безвоздушной покраски" loading="lazy" decoding="async" width="600" height="350" />
+                    <img
+                      src="/assets/images/airless-paint-DmTpxC4i.webp"
+                      alt="Преимущества безвоздушной покраски"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
                   </div>
                 </a>
-                <a href="/articles/shtukaturka-sten-v-novostrojke" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">Штукатурка стен в новостройке: полное руководство по выбору смесей и технологий</h3>
+                <a
+                  href="/articles/shtukaturka-sten-v-novostrojke"
+                  class="articles-carousel__card"
+                >
+                  <h3 class="articles-carousel__card-title">
+                    Штукатурка стен в новостройке: полное руководство по выбору смесей и технологий
+                  </h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/plastering-hero-DmxKiSFB.webp" alt="Штукатурка стен в новостройке" loading="lazy" decoding="async" width="600" height="350" />
+                    <img
+                      src="/assets/images/plastering-hero-DmxKiSFB.webp"
+                      alt="Штукатурка стен в новостройке"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
                   </div>
                 </a>
-                <a href="/articles/vybor-kraski-airless-painting" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">Как выбрать краску для безвоздушной покраски в Москве в 2026 году</h3>
+                <a
+                  href="/articles/vybor-kraski-airless-painting"
+                  class="articles-carousel__card"
+                >
+                  <h3 class="articles-carousel__card-title">
+                    Как выбрать краску для безвоздушной покраски в Москве в 2026 году
+                  </h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/how-to-choose-paint-CnCZ3yyY.webp" alt="Как выбрать краску для безвоздушной покраски" loading="lazy" decoding="async" width="600" height="400" />
+                    <img
+                      src="/assets/images/how-to-choose-paint-CnCZ3yyY.webp"
+                      alt="Как выбрать краску для безвоздушной покраски"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="400"
+                    />
                   </div>
                 </a>
                 <a href="/articles/shtukaturka-guide" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">Как правильно штукатурить стены: пошаговое руководство</h3>
+                  <h3 class="articles-carousel__card-title">
+                    Как правильно штукатурить стены: пошаговое руководство
+                  </h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/how-to-plastering-CaopGtIV.webp" alt="Как правильно штукатурить стены" loading="lazy" decoding="async" width="600" height="350" />
+                    <img
+                      src="/assets/images/how-to-plastering-CaopGtIV.webp"
+                      alt="Как правильно штукатурить стены"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
                   </div>
                 </a>
-                <a href="/articles/mashinnaya-ili-ruchnaya-shtukaturka" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">Механизированная или ручная штукатурка: что лучше для ремонта</h3>
+                <a
+                  href="/articles/mashinnaya-ili-ruchnaya-shtukaturka"
+                  class="articles-carousel__card"
+                >
+                  <h3 class="articles-carousel__card-title">
+                    Механизированная или ручная штукатурка: что лучше для ремонта
+                  </h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/article-machine-shtukaturka-D0hTnhTt.webp" alt="Механизированная или ручная штукатурка" loading="lazy" decoding="async" width="600" height="350" />
+                    <img
+                      src="/assets/images/article-machine-shtukaturka-D0hTnhTt.webp"
+                      alt="Механизированная или ручная штукатурка"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
                   </div>
                 </a>
                 <a href="/articles/vybor-shtukaturki" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">Какую штукатурку выбрать для стен: гид по типам и применению</h3>
+                  <h3 class="articles-carousel__card-title">
+                    Какую штукатурку выбрать для стен: гид по типам и применению
+                  </h3>
                   <div class="articles-carousel__card-image">
-                    <img src="/assets/images/article-how-to-choose-plastering-DWRyQ5Ke.webp" alt="Какую штукатурку выбрать для стен" loading="lazy" decoding="async" width="600" height="350" />
+                    <img
+                      src="/assets/images/article-how-to-choose-plastering-DWRyQ5Ke.webp"
+                      alt="Какую штукатурку выбрать для стен"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
                   </div>
                 </a>
               </div>
             </div>
-            <button class="articles-carousel__arrow articles-carousel__arrow--next" aria-label="Следующая статья">&#10095;</button>
+            <button
+              class="articles-carousel__arrow articles-carousel__arrow--next"
+              aria-label="Следующая статья"
+            >
+              &#10095;
+            </button>
           </div>
           <a href="/blog" class="articles-carousel__more-btn">Посмотреть другие статьи</a>
         </div>
@@ -1143,7 +1434,12 @@
               </div>
               <div class="footer__contact-item">
                 <div class="footer__contact-icon">
-                  <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%2018L9%2012M20%2018L15%2012M3%208L10.225%2012.8166C10.8665%2013.2443%2011.1872%2013.4582%2011.5339%2013.5412C11.8403%2013.6147%2012.1597%2013.6147%2012.4661%2013.5412C12.8128%2013.4582%2013.1335%2013.2443%2013.775%2012.8166L21%208M6.2%2019H17.8C18.9201%2019%2019.4802%2019%2019.908%2018.782C20.2843%2018.5903%2020.5903%2018.2843%2020.782%2017.908C21%2017.4802%2021%2016.9201%2021%2015.8V8.2C21%207.0799%2021%206.51984%2020.782%206.09202C20.5903%205.71569%2020.2843%205.40973%2019.908%205.21799C19.4802%205%2018.9201%205%2017.8%205H6.2C5.0799%205%204.51984%205%204.09202%205.21799C3.71569%205.40973%203.40973%205.71569%203.21799%206.09202C3%206.51984%203%207.07989%203%208.2V15.8C3%2016.9201%203%2017.4802%203.21799%2017.908C3.40973%2018.2843%203.71569%2018.5903%204.09202%2018.782C4.51984%2019%205.07989%2019%206.2%2019Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Email" loading="lazy" decoding="async" />
+                  <img
+                    src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%2018L9%2012M20%2018L15%2012M3%208L10.225%2012.8166C10.8665%2013.2443%2011.1872%2013.4582%2011.5339%2013.5412C11.8403%2013.6147%2012.1597%2013.6147%2012.4661%2013.5412C12.8128%2013.4582%2013.1335%2013.2443%2013.775%2012.8166L21%208M6.2%2019H17.8C18.9201%2019%2019.4802%2019%2019.908%2018.782C20.2843%2018.5903%2020.5903%2018.2843%2020.782%2017.908C21%2017.4802%2021%2016.9201%2021%2015.8V8.2C21%207.0799%2021%206.51984%2020.782%206.09202C20.5903%205.71569%2020.2843%205.40973%2019.908%205.21799C19.4802%205%2018.9201%205%2017.8%205H6.2C5.0799%205%204.51984%205%204.09202%205.21799C3.71569%205.40973%203.40973%205.71569%203.21799%206.09202C3%206.51984%203%207.07989%203%208.2V15.8C3%2016.9201%203%2017.4802%203.21799%2017.908C3.40973%2018.2843%203.71569%2018.5903%204.09202%2018.782C4.51984%2019%205.07989%2019%206.2%2019Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+                    alt="Email"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <a href="mailto:ooo.rosa2019@yandex.ru">ooo.rosa2019@yandex.ru</a>
               </div>
@@ -1328,9 +1624,26 @@
 
     <!-- Фиксированный блок социальных сетей -->
     <aside class="social-fixed" aria-label="Социальные сети" data-js-social-fixed>
-      <button class="social-fixed__toggle" type="button" aria-label="Показать соцсети" data-js-social-toggle>
-        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 2L2 10L10 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <button
+        class="social-fixed__toggle"
+        type="button"
+        aria-label="Показать соцсети"
+        data-js-social-toggle
+      >
+        <svg
+          width="12"
+          height="20"
+          viewBox="0 0 12 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 2L2 10L10 18"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
       </button>
       <div class="social-fixed__links">
@@ -1427,20 +1740,36 @@
       aria-hidden="true"
     >
       <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
       <div class="call-banner__content">
         <p class="call-banner__title">Закажите обратный звонок.</p>
-        <p class="call-banner__subtitle">Это совершенно бесплатно и ни к чему не обязывает. Наш специалист Вас проконсультирует.</p>
+        <p class="call-banner__subtitle">
+          Это совершенно бесплатно и ни к чему не обязывает. Наш специалист Вас проконсультирует.
+        </p>
         <form class="call-banner__form" action="scripts/api/send.php" method="POST">
           <div class="call-banner__field">
             <input type="text" name="NAME" autocomplete="name" required placeholder="Ваше имя" />
           </div>
           <div class="call-banner__field">
-            <input type="tel" name="PHONE" autocomplete="tel" required placeholder="+7 (999) 123-45-67" />
+            <input
+              type="tel"
+              name="PHONE"
+              autocomplete="tel"
+              required
+              placeholder="+7 (999) 123-45-67"
+            />
           </div>
           <input type="hidden" name="COMMENTS" value="Заявка с баннера (10 сек)" />
           <input type="hidden" name="form_source" value="Баннер 10 секунд" />
@@ -1454,17 +1783,36 @@
     <script src="scripts/core/carousel.js" defer></script>
     <script src="scripts/features/contact/success-modal.js" defer></script>
     <script src="scripts/features/contact/call-banner.js" defer></script>
-  <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106210167', 'ym');
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=106210167", "ym");
 
-    ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<!-- /Yandex.Metrika counter -->
-</body>
+      ym(106210167, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+  </body>
 </html>
