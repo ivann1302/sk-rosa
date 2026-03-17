@@ -5,7 +5,7 @@ const isDevelopment = window.location.port === "3000";
 
 console.warn("[form-utils] загружен. port=" + window.location.port + " isDevelopment=" + isDevelopment);
 
-async function mockSubmitForm(action, _formData) {
+async function mockSubmitForm(_action, _formData) {
   console.warn("🧪 [form-utils] МОК режим — реальной отправки нет");
   const delay = 1000 + Math.random() * 1000;
   await new Promise(resolve => setTimeout(resolve, delay));

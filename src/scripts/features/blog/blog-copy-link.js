@@ -35,7 +35,6 @@
         copyButton.classList.add("blog-article__share-button--copied");
         
         if (buttonText) {
-          const savedText = buttonText.textContent;
           buttonText.textContent = "Скопировано!";
           
           // Возвращаем исходный текст через 2 секунды

@@ -29,8 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedArea = areaFilter ? parseInt(areaFilter.value) : 0;
     const selectedPrice = getFilterValue("price");
 
-    let visibleCount = 0;
-
     portfolioItems.forEach(item => {
       let showItem = true;
 
@@ -77,35 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Показываем/скрываем элемент
       if (showItem) {
         item.style.display = "block";
-        visibleCount++;
       } else {
         item.style.display = "none";
       }
-    });
-  }
-
-  // Функция сброса фильтров
-  function resetFilters() {
-    // Сброс кастомных select'ов
-    const customSelects = document.querySelectorAll(".custom-select");
-    customSelects.forEach(select => {
-      const firstOption = select.querySelector('.custom-select__option[data-value=""]');
-      if (firstOption) {
-        firstOption.click();
-      }
-    });
-
-    // Сброс обычных select'ов
-    const selects = document.querySelectorAll("select[data-filter]");
-    selects.forEach(select => {
-      select.value = "";
-    });
-
-    if (areaFilter) {areaFilter.value = "";}
-
-    // Показываем все элементы
-    portfolioItems.forEach(item => {
-      item.style.display = "block";
     });
   }
 

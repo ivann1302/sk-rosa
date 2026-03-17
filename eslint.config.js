@@ -30,6 +30,13 @@ export default [
         requestAnimationFrame: "readonly",
         cancelAnimationFrame: "readonly",
         Map: "readonly",
+        alert: "readonly",
+        localStorage: "readonly",
+        navigator: "readonly",
+        SyntaxError: "readonly",
+        Promise: "readonly",
+        URL: "readonly",
+        CustomEvent: "readonly",
       },
     },
     rules: {

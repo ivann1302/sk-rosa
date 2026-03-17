@@ -16,7 +16,7 @@ export function validateName(name) {
     return { valid: false, error: 'Имя слишком длинное (максимум 100 символов)' };
   }
   
-  if (!/^[а-яА-ЯёЁa-zA-Z\s\-\.]+$/u.test(trimmed)) {
+  if (!/^[а-яА-ЯёЁa-zA-Z\s\-.]+$/u.test(trimmed)) {
     return { valid: false, error: 'Имя содержит недопустимые символы' };
   }
   

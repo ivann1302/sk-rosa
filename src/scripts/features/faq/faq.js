@@ -61,7 +61,7 @@ function initFAQ() {
   });
 
   // Обработка клика по элементам
-  faqItems.forEach((item, index) => {
+  faqItems.forEach(item => {
     item.addEventListener("click", function (e) {
       e.stopPropagation();
       const isActive = this.classList.contains("active");

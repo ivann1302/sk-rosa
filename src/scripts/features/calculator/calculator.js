@@ -50,8 +50,6 @@ class Calculator {
     const area = parseFloat(this.areaInput.value) || 0;
     const height = parseFloat(this.heightInput.value) || 0;
     const propertyClass = this.getSelectedValue("property-class");
-    const location = this.getSelectedValue("location");
-
     // Обновляем количество комнат в зависимости от типа объекта
     this.updateRoomsByObjectType(objectType);
 
@@ -243,7 +241,6 @@ class Calculator {
     if (!distribution) {return;}
 
     // Получаем видимые комнаты
-    const visibleRooms = document.querySelectorAll(".calculator-results__room:not(.hidden)");
     const roomInputs = document.querySelectorAll(
       ".calculator-results__room:not(.hidden) .calculator-results__input"
     );
