@@ -100,7 +100,7 @@ class CustomSelect {
   }
 
   open() {
-    if (this.isOpen) return;
+    if (this.isOpen) {return;}
 
     this.isOpen = true;
     this.button.setAttribute("aria-expanded", "true");
@@ -114,7 +114,7 @@ class CustomSelect {
   }
 
   close() {
-    if (!this.isOpen) return;
+    if (!this.isOpen) {return;}
 
     this.isOpen = false;
     this.button.setAttribute("aria-expanded", "false");
@@ -162,8 +162,8 @@ class CustomSelect {
     const maxIndex = optionsArray.length - 1;
     const minIndex = 0;
 
-    if (index < minIndex) index = maxIndex;
-    if (index > maxIndex) index = minIndex;
+    if (index < minIndex) {index = maxIndex;}
+    if (index > maxIndex) {index = minIndex;}
 
     optionsArray[index].focus();
   }

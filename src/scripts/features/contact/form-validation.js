@@ -139,7 +139,7 @@ export function hideFieldError(field) {
   // Для price-calc__phone-input-container ищем ошибку после контейнера
   if (fieldContainer?.classList.contains('price-calc__phone-input-container')) {
     // Ищем следующий элемент-брат с классом field-error
-    let nextSibling = fieldContainer.nextElementSibling;
+    const nextSibling = fieldContainer.nextElementSibling;
     errorElement = nextSibling?.classList?.contains('field-error') ? nextSibling : null;
   } else {
     errorElement = fieldContainer?.querySelector('.field-error') ||
@@ -208,7 +208,7 @@ export function setupFieldValidation(field, validator) {
  * Применение маски телефона
  */
 export function applyPhoneMask(input) {
-  if (input.dataset.maskApplied) return;
+  if (input.dataset.maskApplied) {return;}
   
   // Управление placeholder при фокусе
   if (input.placeholder) {

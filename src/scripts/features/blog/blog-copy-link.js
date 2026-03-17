@@ -6,7 +6,7 @@
 
   function initCopyLink() {
     const copyButton = document.querySelector("[data-copy-link]");
-    if (!copyButton) return;
+    if (!copyButton) {return;}
 
     copyButton.addEventListener("click", async function () {
       try {

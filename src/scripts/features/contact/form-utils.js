@@ -75,7 +75,7 @@ export async function submitForm(action, formData) {
 }
 
 export function setSubmitButtonState(submitButton, isLoading, loadingText = "Отправка...") {
-  if (!submitButton) return;
+  if (!submitButton) {return;}
 
   if (isLoading) {
     submitButton.disabled = true;

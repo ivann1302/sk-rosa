@@ -21,7 +21,7 @@ const blogSearch = {
     this.clearButton = document.querySelector('.blog-search__clear');
     this.articles = document.querySelectorAll('.blog-card');
 
-    if (!this.searchInput || !this.articles.length) return;
+    if (!this.searchInput || !this.articles.length) {return;}
 
     this.attachEvents();
   },
@@ -48,7 +48,7 @@ const blogSearch = {
   },
 
   toggleClearButton(value) {
-    if (!this.clearButton) return;
+    if (!this.clearButton) {return;}
 
     if (value.trim()) {
       this.clearButton.classList.add('active');

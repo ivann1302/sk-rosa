@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   formSelectors.forEach(selector => {
     const form = document.querySelector(selector);
-    if (!form) return;
+    if (!form) {return;}
 
     // Настройка валидации в реальном времени для каждого поля
     const nameField = form.querySelector('input[name="NAME"]');

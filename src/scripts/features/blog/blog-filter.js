@@ -8,7 +8,7 @@ const blogFilter = {
     const filterButtons = document.querySelectorAll('.blog-filter__button');
     const articles = document.querySelectorAll('.blog-card');
 
-    if (!filterButtons.length || !articles.length) return;
+    if (!filterButtons.length || !articles.length) {return;}
 
     filterButtons.forEach((button) => {
       button.addEventListener('click', () => {
