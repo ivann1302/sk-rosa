@@ -102,3 +102,11 @@ jobs:
 
           echo ""
           echo "IndexNow завершён"
+
+      - name: Ping Google Sitemap
+        run: |
+          echo "Пинг Google Sitemap..."
+          curl -s -o /dev/null -w "%{http_code}" \
+            "https://www.google.com/ping?sitemap=https://sk-rosa.ru/sitemap.xml"
+          echo ""
+          echo "Google Sitemap ping завершён"
