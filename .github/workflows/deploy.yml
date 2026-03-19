@@ -64,3 +64,41 @@ jobs:
             **/.git*
             **/.git*/**
             .gitkeep
+
+      - name: IndexNow — уведомить Yandex и Bing
+        run: |
+          KEY="bde05525-af0e-48de-b161-305c96820afb"
+          HOST="sk-rosa.ru"
+          PAYLOAD=$(cat <<EOF
+          {
+            "host": "$HOST",
+            "key": "$KEY",
+            "keyLocation": "https://$HOST/$KEY.txt",
+            "urlList": [
+              "https://$HOST/",
+              "https://$HOST/plastering",
+              "https://$HOST/airless-painting",
+              "https://$HOST/floor-screed",
+              "https://$HOST/turnkey-repair",
+              "https://$HOST/blog",
+              "https://$HOST/sitemap.xml"
+            ]
+          }
+          EOF
+          )
+
+          echo "Отправка в Yandex IndexNow..."
+          curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://yandex.com/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD"
+
+          echo ""
+          echo "Отправка в Bing IndexNow..."
+          curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.indexnow.org/IndexNow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD"
+
+          echo ""
+          echo "IndexNow завершён"
