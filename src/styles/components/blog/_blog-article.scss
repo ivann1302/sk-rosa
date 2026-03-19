@@ -669,6 +669,38 @@ body:has(.blog-article) {
     color: #222;
   }
 
+  &__footer-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 12px;
+
+    @media (width <= 768px) {
+      font-size: 0.9rem;
+      gap: 10px;
+    }
+  }
+
+  &__footer-author-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--color-green);
+    opacity: 0.8;
+  }
+
+  &__footer-author-label {
+    font-weight: 500;
+    color: #555;
+  }
+
+  &__footer-author-name {
+    font-weight: 600;
+    color: #222;
+  }
+
   // Блок "Поделиться"
   &__share {
     display: flex;

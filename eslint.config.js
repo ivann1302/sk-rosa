@@ -29,6 +29,7 @@ export default [
         fetch: "readonly",
         requestAnimationFrame: "readonly",
         cancelAnimationFrame: "readonly",
+        requestIdleCallback: "readonly",
         Map: "readonly",
         alert: "readonly",
         localStorage: "readonly",

@@ -90,6 +90,7 @@ const fixHtmlPaths = () => {
           content = content.replace(/\.\.\/\.\.\/\.\.\/styles\/main\.scss/g, cssPath);
           content = content.replace(/\.\.\/\.\.\/styles\/main\.scss/g, cssPath);
           content = content.replace(/\.\.\/styles\/main\.scss/g, cssPath);
+          content = content.replace(/\.\/styles\/main\.scss/g, cssPath);
           content = content.replace(/\.\.\/\.\.\//g, "../");
           content = content.replace(/\.\.\/scripts\//g, "/scripts/");
           content = content.replace(/\.\/scripts\//g, "/scripts/");

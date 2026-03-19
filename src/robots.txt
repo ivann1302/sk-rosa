@@ -2,6 +2,23 @@ User-agent: *
 Allow: /
 Disallow: /scripts/api/
 Disallow: /test-
-Disallow: /articles/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
 
 Sitemap: https://sk-rosa.ru/sitemap.xml

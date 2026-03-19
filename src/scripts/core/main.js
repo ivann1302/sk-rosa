@@ -6,9 +6,17 @@ import { initSubmenu } from "../modules/submenu.js";
 import { createSwipeHandler } from "../modules/swipe.js";
 import { initCarouselPosition } from "../modules/carousel-position.js";
 
-// 6.1: Динамические импорты для редко используемых модулей
+// Запуск задачи когда браузер свободен (фолбэк для Safari < 16)
+const scheduleIdle = cb => {
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(cb, { timeout: 2000 });
+  } else {
+    setTimeout(cb, 200);
+  }
+};
+
+// Динамические импорты для редко используемых модулей
 async function loadFeatureModules() {
-  // Загружаем calculator только если есть соответствующий элемент
   if (document.querySelector(".calculator") || document.querySelector(".price-calc")) {
     try {
       await import("../features/calculator/calculator.js");
@@ -17,7 +25,6 @@ async function loadFeatureModules() {
     }
   }
 
-  // Загружаем portfolio только если есть соответствующий элемент
   if (document.querySelector(".portfolio") || document.querySelector(".portfolio-filter")) {
     try {
       await import("../features/portfolio/portfolio-filter.js");
@@ -26,7 +33,6 @@ async function loadFeatureModules() {
     }
   }
 
-  // Загружаем FAQ только если есть соответствующий элемент
   if (document.querySelector(".faq") || document.querySelector("[data-faq]")) {
     try {
       await import("../features/faq/faq.js");
@@ -36,60 +42,49 @@ async function loadFeatureModules() {
   }
 }
 
-// Инициализация при загрузке DOM
-document.addEventListener("DOMContentLoaded", function () {
-  // Инициализация мобильного меню
-  initMobileMenu();
+// Один общий IntersectionObserver для всех анимаций появления при скролле.
+// Раньше было 8 отдельных Observer — теперь один на все элементы.
+function initScrollReveal() {
+  const selectors = [
+    "company-description__container",
+    "reviews__header",
+    "portfolio-description__text",
+    "portfolio-description__container",
+    "portfolio-service__container",
+    "reviews__content",
+    "calculator-info__section",
+    "portfolio-filter__title",
+    "portfolio-filter__intro-text",
+    "portfolio-filter__why-title",
+    "portfolio-filter__why-list",
+  ];
 
-  // Инициализация подменю
-  initSubmenu();
-
-  // Инициализация свайпа для полезных ссылок
-  const usefulLinksSwipe = createSwipeHandler({
-    trackSelector: ".useful-links__grid",
-    wrapperSelector: ".useful-links__container",
+  const elements = [];
+  selectors.forEach(cls => {
+    document.querySelectorAll(`.${cls}`).forEach(el => {
+      el.dataset.revealClass = `${cls}--revealed`;
+      elements.push(el);
+    });
   });
-  usefulLinksSwipe.setupSwipe();
 
-  // Инициализация позиции карусели
-  initCarouselPosition();
+  if (elements.length === 0) {
+    return;
+  }
 
-  // Анимация появления блока "О компании" при скролле
-  initCompanyDescriptionReveal();
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(entry.target.dataset.revealClass);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+  );
 
-  // Анимация появления блока "Отзывы" при скролле
-  initReviewsReveal();
-
-  // Анимация появления текста portfolio-description__text при скролле
-  initPortfolioDescriptionTextReveal();
-
-  // Анимация появления блока portfolio-description__container при скролле (справа)
-  initPortfolioDescriptionContainerReveal();
-
-  // Анимация появления блока portfolio-service__container при скролле (слева)
-  initPortfolioServiceReveal();
-
-  // Анимация появления блока reviews__content при скролле (справа)
-  initReviewsContentReveal();
-
-  // Анимация появления блока calculator-info__section при скролле (слева)
-  initCalculatorInfoSectionReveal();
-
-  // Анимация появления элементов портфолио при скролле (слева)
-  initPortfolioFilterReveal();
-
-  // Параллакс-эффект для изображения услуг
-  initServiceImageParallax();
-
-  // Круговая карусель статей
-  initArticlesCarousel();
-
-  // Фиксированный блок соцсетей: клик — раскрыть, скролл — свернуть
-  initSocialFixed();
-
-  // Загружаем редко используемые модули динамически
-  loadFeatureModules();
-});
+  elements.forEach(el => observer.observe(el));
+}
 
 // Параллакс-эффект для services__img--first при движении курсора
 function initServiceImageParallax() {
@@ -130,263 +125,6 @@ function initServiceImageParallax() {
     }
     img.style.transform = "translate(0, 0)";
   });
-}
-
-// Анимация появления блока "О компании" при скролле
-function initCompanyDescriptionReveal() {
-  const container = document.querySelector(".company-description__container");
-
-  if (!container) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("company-description__container--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(container);
-}
-
-// Анимация появления блока "Отзывы" при скролле (справа)
-function initReviewsReveal() {
-  const header = document.querySelector(".reviews__header");
-
-  if (!header) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("reviews__header--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(header);
-}
-
-// Анимация появления текста portfolio-description__text при скролле (слева)
-function initPortfolioDescriptionTextReveal() {
-  const textElement = document.querySelector(".portfolio-description__text");
-
-  if (!textElement) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("portfolio-description__text--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(textElement);
-}
-
-// Анимация появления блока portfolio-description__container при скролле (справа)
-function initPortfolioDescriptionContainerReveal() {
-  const container = document.querySelector(".portfolio-description__container");
-
-  if (!container) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("portfolio-description__container--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(container);
-}
-
-// Анимация появления блока portfolio-service__container при скролле (слева)
-function initPortfolioServiceReveal() {
-  const container = document.querySelector(".portfolio-service__container");
-
-  if (!container) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("portfolio-service__container--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(container);
-}
-
-// Анимация появления блока reviews__content при скролле (справа)
-function initReviewsContentReveal() {
-  const content = document.querySelector(".reviews__content");
-
-  if (!content) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("reviews__content--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за элементом
-  observer.observe(content);
-}
-
-// Анимация появления блока calculator-info__section при скролле (слева)
-function initCalculatorInfoSectionReveal() {
-  const sections = document.querySelectorAll(".calculator-info__section");
-
-  if (sections.length === 0) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Добавляем класс для анимации появления
-        entry.target.classList.add("calculator-info__section--revealed");
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за каждым элементом
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-}
-
-// Анимация появления элементов портфолио при скролле (слева)
-function initPortfolioFilterReveal() {
-  const title = document.querySelector(".portfolio-filter__title");
-  const introText = document.querySelector(".portfolio-filter__intro-text");
-  const whyTitle = document.querySelector(".portfolio-filter__why-title");
-  const whyList = document.querySelector(".portfolio-filter__why-list");
-
-  if (!title && !introText && !whyTitle && !whyList) {
-    return;
-  }
-
-  // Настройки Intersection Observer
-  const observerOptions = {
-    threshold: 0.1, // Срабатывает, когда 10% элемента видно
-    rootMargin: "0px 0px -100px 0px", // Срабатывает немного раньше
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const target = entry.target;
-        // Добавляем класс для анимации появления в зависимости от класса элемента
-        if (target.classList.contains("portfolio-filter__title")) {
-          target.classList.add("portfolio-filter__title--revealed");
-        } else if (target.classList.contains("portfolio-filter__intro-text")) {
-          target.classList.add("portfolio-filter__intro-text--revealed");
-        } else if (target.classList.contains("portfolio-filter__why-title")) {
-          target.classList.add("portfolio-filter__why-title--revealed");
-        } else if (target.classList.contains("portfolio-filter__why-list")) {
-          target.classList.add("portfolio-filter__why-list--revealed");
-        }
-        // Отключаем наблюдение после первого появления
-        observer.unobserve(target);
-      }
-    });
-  }, observerOptions);
-
-  // Начинаем наблюдение за каждым элементом
-  if (title) {
-    observer.observe(title);
-  }
-  if (introText) {
-    observer.observe(introText);
-  }
-  if (whyTitle) {
-    observer.observe(whyTitle);
-  }
-  if (whyList) {
-    observer.observe(whyList);
-  }
 }
 
 // Фиксированный блок соцсетей: toggle по клику, скрытие при скролле
@@ -453,7 +191,6 @@ function initArticlesCarousel() {
     const prevIdx = (current - 1 + total) % total;
     const nextIdx = (current + 1) % total;
 
-    // Задержки зависят от направления: карточки движутся волной
     const delays = new Map();
 
     if (direction === 1) {
@@ -486,3 +223,29 @@ function initArticlesCarousel() {
   document.querySelector(".articles-carousel__arrow--prev").addEventListener("click", () => navigate(-1));
   document.querySelector(".articles-carousel__arrow--next").addEventListener("click", () => navigate(1));
 }
+
+// Инициализация при загрузке DOM
+document.addEventListener("DOMContentLoaded", () => {
+  // ─── КРИТИЧНЫЕ: нужны сразу для интерактивности ───────────────────────────
+  initMobileMenu();
+  initSubmenu();
+
+  const usefulLinksSwipe = createSwipeHandler({
+    trackSelector: ".useful-links__grid",
+    wrapperSelector: ".useful-links__container",
+  });
+  usefulLinksSwipe.setupSwipe();
+
+  initCarouselPosition();
+  initArticlesCarousel();
+  initSocialFixed();
+
+  // Динамические импорты — калькулятор, портфолио, FAQ
+  loadFeatureModules();
+
+  // ─── ОТЛОЖЕННЫЕ: анимации и эффекты — запускаем когда браузер свободен ────
+  scheduleIdle(() => {
+    initScrollReveal();
+    initServiceImageParallax();
+  });
+});

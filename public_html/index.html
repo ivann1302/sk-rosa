@@ -3,14 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ремонт квартир, домов и коммерческих помещений в Москве и Подмосковье | ROSA</title>
+    <title>Ремонт квартир, домов и офисов в Москве | ROSA</title>
     <meta
       name="description"
       content="Ремонт квартир, домов, офисов и помещений под ключ в Москве и области ➤ 6+ лет опыта ➤ По договору ➤ Фиксированные цены ☎ 8(985) 135-49-91"
-    />
-    <meta
-      name="keywords"
-      content="ремонт под ключ, ремонт квартир, ремонт домов, Москва, Московская область, отделочные работы, ремонт с гарантией"
     />
     <meta name="author" content="OOO.ROSA" />
     <meta name="robots" content="index, follow" />
@@ -30,6 +26,7 @@
       href="/assets/images/20-mobile-C5c5uDPj.webp"
       type="image/webp"
       media="(max-width: 768px)"
+      fetchpriority="high"
     />
     <link
       rel="preload"
@@ -37,6 +34,7 @@
       href="/assets/images/about-hero-BUxKa8BX.webp"
       type="image/webp"
       media="(min-width: 769px)"
+      fetchpriority="high"
     />
 
     <!-- Open Graph для соцсетей -->
@@ -66,6 +64,147 @@
     <link rel="icon" href="/assets/images/favicon-0QYmXPtt.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/assets/images/r-32-BsgFgYCL.png" />
     <link rel="apple-touch-icon" href="/assets/images/r-180-LZqMh4I-.png" />
+    <!-- Critical CSS — инлайн стили первого экрана (header + hero) для мгновенного LCP -->
+    <style>
+      :root {
+        --color-light: #fff;
+        --color-green: #88a593;
+        --font-family-base: "Montserrat", sans-serif;
+        --font-family-accent: "Kumbh Sans", sans-serif;
+        --transition-duration: 0.3s;
+        --container-padding-x: 32px;
+      }
+      html, body { margin: 0; padding: 0; overflow-x: hidden; }
+      body {
+        display: flex;
+        flex-direction: column;
+        font-family: var(--font-family-base);
+        background: #fff;
+        color: #a0a0a0;
+        letter-spacing: -0.03em;
+        padding-top: 56px;
+      }
+      main { flex-grow: 1; margin: 0; padding: 0; }
+      a[class] { text-decoration: none; }
+      .header {
+        position: fixed !important;
+        z-index: 100;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1200px;
+        width: 1200px;
+        height: 48px;
+        min-height: 48px;
+        background: #fff;
+        box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
+        border-radius: 8px;
+        margin-top: 8px;
+      }
+      .header__body {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 8px;
+        border: solid 2px #88a593;
+        padding: 0 !important;
+      }
+      .header__body-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+      }
+      .header__logo { margin-left: 16px; }
+      .logo__image { display: block; }
+      .about {
+        position: relative;
+        margin-top: -56px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .about__container {
+        width: 100vw;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        position: relative;
+      }
+      .about__image {
+        width: 100vw;
+        height: 700px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        margin: 0;
+      }
+      .about__content {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 2;
+        width: 1200px;
+        max-width: 90vw;
+      }
+      .about__title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #222;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .about__subtitle {
+        font-size: 1.1rem;
+        color: #444;
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .about__bottom {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        width: 1200px;
+        max-width: 90vw;
+      }
+      .about__row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+      }
+      .about__btn {
+        display: inline-block;
+        padding: 0.8em 1.5em;
+        background: #88a593;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      @media (max-width: 768px) {
+        .header { width: calc(100% - 24px) !important; max-width: 100vw; }
+        .about__image { height: 280px; }
+        .about__content { position: static; transform: none; width: calc(100% - 2rem); margin: 16px auto 0; }
+        .about__bottom { position: static; transform: none; width: calc(100% - 2rem); margin: 16px auto 40px; }
+        .about__title { font-size: 2rem; }
+        .about__subtitle { font-size: 0.85rem; }
+      }
+    </style>
+    <!-- CSS главной страницы — путь обрабатывается fixHtmlPaths при сборке -->
+    <link href="data:application/octet-stream;base64,QHVzZSAibm9ybWFsaXplIjsKQHVzZSAiZm9udHMiOwpAdXNlICJ2YXJpYWJsZXMiOwpAdXNlICJ1dGlscyI7CkB1c2UgImdsb2JhbHMiOwpAdXNlICJjb21wb25lbnRzL2hlYWRlci9oZWFkZXIiOwpAdXNlICJjb21wb25lbnRzL2Zvb3Rlci9mb290ZXIiOwpAdXNlICJjb21wb25lbnRzL2Zvb3Rlci91c2VmdWwtbGlua3MiOwpAdXNlICJjb21wb25lbnRzL2NvbnRhY3QvY29udGFjdC1mb3JtIjsKQHVzZSAiY29tcG9uZW50cy9jb250YWN0L2NvbnRhY3QtcmVxdWVzdCI7CkB1c2UgImNvbXBvbmVudHMvY29udGFjdC9jb250YWN0LXJlcXVlc3Qtb3ZlcmxheSI7CkB1c2UgImNvbXBvbmVudHMvY29udGFjdC9jb250YWN0LXJlcXVlc3QtdHVybmtleSI7CkB1c2UgImNvbXBvbmVudHMvY29udGFjdC9jb250YWN0cyI7CkB1c2UgImNvbXBvbmVudHMvZm9ybXMvZm9ybS12YWxpZGF0aW9uIjsKQHVzZSAiY29tcG9uZW50cy9jYWxjdWxhdG9yL2NhbGN1bGF0b3IiOwpAdXNlICJjb21wb25lbnRzL2NhbGN1bGF0b3IvY2FsY3VsYXRvci1pbmZvIjsKQHVzZSAiY29tcG9uZW50cy9jYWxjdWxhdG9yL2NhbGN1bGF0b3ItcmVxdWVzdCI7CkB1c2UgImNvbXBvbmVudHMvY2FsY3VsYXRvci9wcmljZS1jYWxjIjsKQHVzZSAiY29tcG9uZW50cy9wb3J0Zm9saW8vcG9ydGZvbGlvIjsKQHVzZSAiY29tcG9uZW50cy9wb3J0Zm9saW8vcG9ydGZvbGlvLWZpbHRlciI7CkB1c2UgImNvbXBvbmVudHMvcG9ydGZvbGlvL3BvcnRmb2xpby1nYWxsZXJ5IjsKQHVzZSAiY29tcG9uZW50cy9wb3J0Zm9saW8vcG9ydGZvbGlvLWdyaWQiOwpAdXNlICJjb21wb25lbnRzL3BvcnRmb2xpby9wb3J0Zm9saW8tc2VydmljZSI7CkB1c2UgImNvbXBvbmVudHMvcG9ydGZvbGlvL3BvcnRmb2xpby10dXJua2V5IjsKQHVzZSAiY29tcG9uZW50cy9hYm91dC9hYm91dCI7CkB1c2UgImNvbXBvbmVudHMvYWJvdXQvYWJvdXQtc2VydmljZSI7CkB1c2UgImNvbXBvbmVudHMvYWJvdXQvYWJvdXQtdHVybmtleSI7CkB1c2UgImNvbXBvbmVudHMvYWJvdXQvYWJvdXQtdHVybmtleS0yIjsKQHVzZSAiY29tcG9uZW50cy9hYm91dC9jb21wYW55LWRlc2NyaXB0aW9uIjsKQHVzZSAiY29tcG9uZW50cy9hYm91dC9jb21wYW55LWRlc2NyaXB0aW9uLXR1cm5rZXkiOwpAdXNlICJjb21wb25lbnRzL3NlcnZpY2VzL3NlcnZpY2VzIjsKQHVzZSAiY29tcG9uZW50cy9zZXJ2aWNlcy9hZHZhbnRhZ2VzIjsKQHVzZSAiY29tcG9uZW50cy9zZXJ2aWNlcy9hZHZhbnRhZ2VzLXNlcnZpY2UiOwpAdXNlICJjb21wb25lbnRzL3NlcnZpY2VzL2FkdmFudGFnZXMtdHVybmtleSI7CkB1c2UgImNvbXBvbmVudHMvc2VydmljZXMvd29yay1zdGFnZXMtc2VydmljZSI7CkB1c2UgImNvbXBvbmVudHMvc2VydmljZXMvd29yay1zdGFnZXMtdHVybmtleSI7CkB1c2UgImNvbXBvbmVudHMvc2VydmljZXMvd2hhdC13ZS1wYWludC1saXN0IjsKQHVzZSAiY29tcG9uZW50cy9zZXJ2aWNlcy9zZXJ2aWNlLXRleHQtYmxvY2siOwpAdXNlICJjb21wb25lbnRzL3NlcnZpY2VzL2NpdHktY29tcGxleGVzIjsKQHVzZSAiY29tcG9uZW50cy9zZXJ2aWNlcy9zZXJ2aWNlcy1jYXJkcyI7CkB1c2UgImNvbXBvbmVudHMvY29tbW9uL3Jldmlld3MiOwpAdXNlICJjb21wb25lbnRzL2NvbW1vbi9zb2NpYWwtcmV2aWV3cyI7CkB1c2UgImNvbXBvbmVudHMvY29tbW9uL3NvY2lhbC1maXhlZCI7CkB1c2UgImNvbXBvbmVudHMvY29tbW9uL2ZhcS1jb21tb24iOwpAdXNlICJjb21wb25lbnRzL2NvbW1vbi9sZWdhbC1wYWdlcyI7CkB1c2UgImNvbXBvbmVudHMvY29tbW9uL2Z1bGwtd2lkdGgtaW1hZ2UiOwpAdXNlICJjb21wb25lbnRzL2NvbW1vbi9lcnJvci00MDQiOwpAdXNlICJjb21wb25lbnRzL2NvbW1vbi9zdWNjZXNzLW1vZGFsIjsKQHVzZSAiY29tcG9uZW50cy9jb21tb24vY2FsbC1iYW5uZXIiOwpAdXNlICJjb21wb25lbnRzL2NvbW1vbi9hcnRpY2xlcy1jYXJvdXNlbCI7CkB1c2UgImNvbXBvbmVudHMvYmxvZy9ibG9nIjsKQHVzZSAiYmxvY2tzL3ByaWNpbmctdGFibGUiOwoKLy8g0KHRgtC40LvQuCDQtNC70Y8g0LLRgdC10YUg0L/QsNGA0LDQs9GA0LDRhNC+0LIgLSDRgNCw0YHRgtGP0LPQuNCy0LDQvdC40LUg0L3QsCDQstGB0Y4g0YHRgtGA0L7QutGDCnAgewogIGRpc3BsYXk6IGJsb2NrOwogIHdpZHRoOiAxMDAlOwogIGJveC1zaXppbmc6IGJvcmRlci1ib3g7Cn0K" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript></noscript>
     <!-- Асинхронная загрузка внешних CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -144,8 +283,30 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://sk-rosa.ru/#website",
+        "url": "https://sk-rosa.ru",
+        "name": "ROSA - Ремонт под ключ",
+        "inLanguage": "ru"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://sk-rosa.ru/#webpage",
+        "url": "https://sk-rosa.ru",
+        "name": "ROSA - Ремонт под ключ",
+        "isPartOf": { "@id": "https://sk-rosa.ru/#website" },
+        "about": { "@id": "https://sk-rosa.ru/#business" },
+        "mainEntity": { "@id": "https://sk-rosa.ru/#business" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-        "@id": "https://sk-rosa.ru",
+        "@id": "https://sk-rosa.ru/#business",
         "name": "ROSA - Ремонт под ключ",
         "alternateName": "OOO.ROSA",
         "image": [
@@ -169,6 +330,7 @@
           "latitude": 55.9381,
           "longitude": 37.5067
         },
+        "openingHours": ["Mo-Fr 09:00-20:00", "Sa 10:00-18:00"],
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -183,6 +345,7 @@
             "closes": "18:00"
           }
         ],
+        "hasMap": "https://yandex.com/maps/org/rosa/244762145159/",
         "priceRange": "$$",
         "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer"],
         "currenciesAccepted": "RUB",
@@ -220,7 +383,7 @@
             "name": "Красногорск"
           },
           {
-            "@type": "State",
+            "@type": "AdministrativeArea",
             "name": "Московская область"
           }
         ],
@@ -269,11 +432,17 @@
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5",
-          "reviewCount": "2",
+          "reviewCount": "4",
           "bestRating": "5",
-          "worstRating": "5"
+          "worstRating": "1"
         },
-        "sameAs": ["https://t.me/mskrosa", "https://wa.me/79851354991"],
+        "sameAs": [
+          "https://t.me/mskrosa",
+          "https://t.me/sk_rosa",
+          "https://vk.com/skrosa",
+          "https://yandex.com/maps/org/rosa/244762145159/",
+          "https://2gis.ru/firm/70000001110771901"
+        ],
         "foundingDate": "2019",
         "numberOfEmployees": {
           "@type": "QuantitativeValue",
@@ -285,14 +454,14 @@
     </script>
     <script type="module" crossorigin src="/assets/js/modulepreload-polyfill-B5Qt9EMX.js"></script>
     <script type="module" crossorigin src="/assets/js/features-Dbt4v8rD.js"></script>
-    <script type="module" crossorigin src="/assets/js/core-FBUEax2_.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/css/main-47fEBh-r.css">
+    <script type="module" crossorigin src="/assets/js/core-02K_qRI3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/css/main-DGkD12Hn.css">
   </head>
   <body id="top">
     <noscript
       ><div>
         <img
-          src="https://mc.yandex.ru/watch/106210167"
+          src="https://mc.yandex.ru/watch/107041182"
           style="position: absolute; left: -9999px"
           alt=""
         /></div
@@ -604,7 +773,7 @@
                 домов и коммерческих помещений в Москве и Подмосковье. Наша команда оказывает услуги
                 по <strong>механизированной штукатурке</strong>, <strong>стяжке пола</strong>,
                 <strong>безвоздушной покраске</strong> и <strong>ремонту под ключ</strong>. Мы
-                работаем на рынке более 6 лет и за это время реализовали десятки успешных проектов
+                работаем на рынке более 6 лет и за это время реализовали более 500 успешных проектов
                 различной сложности. Среди наших сотрудников — только опытные специалисты, которые
                 любят своё дело и постоянно совершенствуют профессиональные навыки.
               </p>
@@ -1738,6 +1907,7 @@
       aria-modal="true"
       aria-label="Закажите звонок"
       aria-hidden="true"
+      inert
     >
       <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
         <svg
@@ -1802,9 +1972,9 @@
           (k.async = 1),
           (k.src = r),
           a.parentNode.insertBefore(k, a));
-      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=106210167", "ym");
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=107041182", "ym");
 
-      ym(106210167, "init", {
+      ym(107041182, "init", {
         ssr: true,
         webvisor: true,
         clickmap: true,

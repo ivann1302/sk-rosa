@@ -8,45 +8,9 @@
       name="description"
       content="Безвоздушная покраска стен и потолков в Волоколамске. Цена от 200 руб/м². Без разводов, в 5–10 раз быстрее ручной. Бесплатный замер. ☎ 8 (985) 135-49-91"
     />
-    <meta
-      name="keywords"
-      content="безвоздушная покраска, покраска стен, покраска потолков, Волоколамск, покраска фасадов, профессиональная покраска"
-    />
     <meta name="author" content="OOO.ROSA" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href="https://sk-rosa.ru/airless-painting-volokolamsk" />
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-          if (document.scripts[j].src === r) {
-            return;
-          }
-        }
-        ((k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a));
-      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=106210167", "ym");
-
-      ym(106210167, "init", {
-        ssr: true,
-        webvisor: true,
-        clickmap: true,
-        ecommerce: "dataLayer",
-        accurateTrackBounce: true,
-        trackLinks: true,
-      });
-    </script>
-    <!-- /Yandex.Metrika counter -->
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -61,46 +25,55 @@
     <meta property="og:url" content="https://sk-rosa.ru/airless-painting-volokolamsk" />
     <meta
       property="og:image"
-      content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.png"
+      content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.webp"
     />
     <meta
       property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.png"
+      content="https://sk-rosa.ru/assets/images/common/airless-painting-hero.webp"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="645" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="Безвоздушная покраска в Волоколамске - ROSA" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ROSA - Ремонт под ключ" />
     <link rel="icon" href="../../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../../assets/icons/ui/favIcons/r-180.png" />
+    <!-- Preload LCP изображения -->
+    <link rel="preload" as="image" href="../../assets/images/common/airless_painting.webp" type="image/webp" fetchpriority="high" />
+    <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../../styles/main.scss" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <!-- Preload шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" /></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": "https://sk-rosa.ru/airless-painting-volokolamsk#service",
         "serviceType": "Безвоздушная покраска",
         "name": "Безвоздушная покраска стен и потолков",
         "description": "Профессиональная безвоздушная покраска в Волоколамске. Покраска стен, потолков, фасадов. Качественное нанесение краски, ровное покрытие.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "ROSA - Ремонт под ключ",
-          "@id": "https://sk-rosa.ru"
+          "@id": "https://sk-rosa.ru/#business"
         },
         "areaServed": {
           "@type": "City",
           "name": "Волоколамск",
           "containedInPlace": {
-            "@type": "State",
+            "@type": "AdministrativeArea",
             "name": "Московская область"
           }
         },
@@ -145,12 +118,68 @@
         ]
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Сколько времени занимает безвоздушная покраска?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Время выполнения работ зависит от площади поверхности и сложности объекта. В среднем покраска помещения площадью 100 м² занимает 1-2 дня. Мы всегда заранее согласовываем сроки и соблюдаем договоренности."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Какие поверхности можно красить безвоздушным способом?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Безвоздушная покраска подходит для любых поверхностей: стены, потолки, фасады, металлоконструкции, деревянные поверхности, бетон, кирпич. Мы работаем как с внутренними, так и с наружными поверхностями."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Нужна ли специальная подготовка поверхности?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, качественная подготовка поверхности — залог долговечности покрытия. Мы очищаем поверхность от загрязнений, заделываем трещины, грунтуем при необходимости. Подготовка включена в стоимость работ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Какие краски используются для безвоздушной покраски?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Мы используем качественные краски ведущих производителей: водоэмульсионные, акриловые, алкидные, эпоксидные. Выбор краски зависит от типа поверхности и условий эксплуатации. Все материалы сертифицированы."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Есть ли гарантия на работы?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, мы предоставляем гарантию 3 года на все виды работ. Гарантия распространяется на качество нанесения краски и адгезию к поверхности. При выявлении дефектов устраняем их бесплатно."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Можно ли красить в холодное время года?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Да, мы выполняем работы круглый год. Для наружных работ используем специальные краски, устойчивые к низким температурам. Внутренние работы выполняем при любой погоде, соблюдая температурный режим."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body id="top">
     <noscript
       ><div>
         <img
-          src="https://mc.yandex.ru/watch/106210167"
+          src="https://mc.yandex.ru/watch/107041182"
           style="position: absolute; left: -9999px"
           alt=""
         /></div
@@ -354,14 +383,13 @@
             <picture class="about-service__image-mobile">
               <source srcset="../../assets/images/common/airless_painting.webp" type="image/webp" />
               <img
-                src="../../assets/images/common/airless-painting-hero.png"
+                src="../../assets/images/common/airless-painting-hero.webp"
                 alt="Безвоздушная покраска"
                 width="500"
                 height="500"
                 loading="eager"
                 fetchpriority="high"
                 decoding="sync"
-                style="content-visibility: auto"
               />
             </picture>
 
@@ -655,6 +683,18 @@
             Если объект готов под финишную отделку – мы можем выполнить покраску
             <strong>в сжатые сроки</strong> без потери качества.
           </p>
+        </div>
+      </section>
+
+            <section class="city-complexes">
+        <div class="city-complexes__container">
+          <h2 class="city-complexes__title">Новостройки в Волоколамске, где мы работаем</h2>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
+          <ul class="city-complexes__list">
+        <li class="city-complexes__item">ЖК Волоколамск-Сити</li>
+        <li class="city-complexes__item">ЖК Центральный</li>
+        <li class="city-complexes__item">ЖК Новый Волоколамск</li>
+          </ul>
         </div>
       </section>
 
@@ -1130,7 +1170,7 @@
             </div>
             <div class="what-we-paint-list__right">
               <img
-                src="../../assets/images/common/airless-painting-hero.png"
+                src="../../assets/images/common/airless-painting-hero.webp"
                 alt="Безвоздушная покраска"
                 class="what-we-paint-list__image"
               />
@@ -2343,6 +2383,7 @@
       aria-modal="true"
       aria-label="Закажите звонок"
       aria-hidden="true"
+      inert
     >
       <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
         <svg
@@ -2384,5 +2425,17 @@
     </div>
     <script type="module" src="../../scripts/features/contact/form-handler.js" defer></script>
     <script src="../../scripts/features/contact/call-banner.js" defer></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107041182', 'ym');
+      ym(107041182, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107041182" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
   </body>
 </html>

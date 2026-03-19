@@ -3,50 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Безвоздушная покраска стен и потолков в Москве. Цена от 200 руб/м² | ROSA</title>
+    <title>Безвоздушная покраска в Москве — от 200 руб/м² | ROSA</title>
     <meta
       name="description"
       content="Безвоздушная покраска стен и потолков в Москве. ➤ Качественные материалы ➤ Цена от  200 руб/м² ➤ Бесплатный замер. ☎ 8(985) 135-49-91"
     />
-    <meta
-      name="keywords"
-      content="безвоздушная покраска, покраска стен, покраска потолков, покраска квартиры, Москва, Московская область, покраска без разводов"
-    />
     <meta name="author" content="OOO.ROSA" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sk-rosa.ru/airless-painting" />
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-          if (document.scripts[j].src === r) {
-            return;
-          }
-        }
-        ((k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a));
-      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=106210167", "ym");
-
-      ym(106210167, "init", {
-        ssr: true,
-        webvisor: true,
-        clickmap: true,
-        ecommerce: "dataLayer",
-        accurateTrackBounce: true,
-        trackLinks: true,
-      });
-    </script>
-    <!-- /Yandex.Metrika counter -->
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -59,39 +23,62 @@
       content="Безвоздушная покраска стен и потолков в Москве и МО. Профессиональная покраска без разводов и подтеков. Гарантия результата."
     />
     <meta property="og:url" content="https://sk-rosa.ru/airless-painting" />
-    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.jpg" />
+    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
     <meta
       property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/about-hero.jpg"
+      content="https://sk-rosa.ru/assets/images/common/about-hero.webp"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="645" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:alt" content="Безвоздушная покраска стен и потолков - ROSA" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ROSA - Ремонт под ключ" />
     <link rel="icon" href="../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" as="image" href="../assets/images/common/airless_painting.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Критический CSS: скрыть мобильную картинку до загрузки основных стилей -->
+    <style>
+      .about-service__image-mobile { display: none; }
+      @media (max-width: 768px) {
+        .about-service__image-mobile { display: block; }
+        .about-service__image-desktop { display: none !important; }
+      }
+    </style>
+
+    <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../styles/main.scss" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+    <!-- Preload шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" /></noscript>
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": "https://sk-rosa.ru/airless-painting#service",
+        "url": "https://sk-rosa.ru/airless-painting",
         "serviceType": "Безвоздушная покраска",
         "name": "Безвоздушная покраска стен и потолков",
         "description": "Профессиональная безвоздушная покраска стен и потолков в Москве и Московской области. Качественные материалы, гарантия результата, покраска без разводов и подтеков.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "ROSA - Ремонт под ключ",
-          "@id": "https://sk-rosa.ru"
+          "@id": "https://sk-rosa.ru/#business"
         },
         "areaServed": [
           {
@@ -99,7 +86,7 @@
             "name": "Москва"
           },
           {
-            "@type": "State",
+            "@type": "AdministrativeArea",
             "name": "Московская область"
           }
         ],
@@ -206,7 +193,7 @@
     <noscript
       ><div>
         <img
-          src="https://mc.yandex.ru/watch/106210167"
+          src="https://mc.yandex.ru/watch/107041182"
           style="position: absolute; left: -9999px"
           alt=""
         /></div
@@ -407,14 +394,13 @@
             <picture class="about-service__image-mobile">
               <source srcset="../assets/images/common/airless_painting.webp" type="image/webp" />
               <img
-                src="../assets/images/common/airless-painting-hero.png"
+                src="../assets/images/common/airless-painting-hero.webp"
                 alt="Безвоздушная покраска"
                 width="500"
                 height="500"
                 loading="eager"
                 fetchpriority="high"
                 decoding="sync"
-                style="content-visibility: auto"
               />
             </picture>
 
@@ -839,7 +825,7 @@
             </div>
             <div class="what-we-paint-list__right">
               <img
-                src="../assets/images/common/airless-painting-hero.png"
+                src="../assets/images/common/airless-painting-hero.webp"
                 alt="Безвоздушная покраска"
                 class="what-we-paint-list__image"
               />
@@ -2388,6 +2374,7 @@
       aria-modal="true"
       aria-label="Закажите звонок"
       aria-hidden="true"
+      inert
     >
       <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
         <svg
@@ -2429,5 +2416,17 @@
     </div>
     <script type="module" src="../scripts/features/contact/form-handler.js" defer></script>
     <script src="../scripts/features/contact/call-banner.js" defer></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107041182', 'ym');
+      ym(107041182, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107041182" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
   </body>
 </html>

@@ -21,6 +21,7 @@ const PUBLIC_HTML = resolve(ROOT, 'public_html');
 // Загружаем данные
 const cities = JSON.parse(readFileSync(resolve(__dirname, 'cities.json'), 'utf-8')).cities;
 const services = JSON.parse(readFileSync(resolve(__dirname, 'services.json'), 'utf-8')).services;
+const complexesData = JSON.parse(readFileSync(resolve(__dirname, 'residential-complexes.json'), 'utf-8')).complexes;
 
 // Базовый город для шаблонов
 const TEMPLATE_CITY = {
@@ -28,6 +29,30 @@ const TEMPLATE_CITY = {
   name: 'Балашиха',
   nameIn: 'Балашихе'
 };
+
+/**
+ * Генерирует HTML-блок ЖК для города
+ */
+function buildComplexesBlock(cityName, cityNameIn) {
+  const list = complexesData[cityName];
+  if (!list || list.length === 0) {
+    return '';
+  }
+
+  const items = list
+    .map(name => `        <li class="city-complexes__item">${name}</li>`)
+    .join('\n');
+
+  return `      <section class="city-complexes">
+        <div class="city-complexes__container">
+          <h2 class="city-complexes__title">Новостройки в ${cityNameIn}, где мы работаем</h2>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
+          <ul class="city-complexes__list">
+${items}
+          </ul>
+        </div>
+      </section>`;
+}
 
 /**
  * Заменяет данные города в HTML
@@ -63,7 +88,9 @@ function generateServicePages(service) {
   let generated = 0;
 
   cities.forEach(city => {
-    const html = replaceCity(template, TEMPLATE_CITY, city);
+    let html = replaceCity(template, TEMPLATE_CITY, city);
+    const complexesBlock = buildComplexesBlock(city.name, city.nameIn);
+    html = html.replace('<!-- COMPLEXES_BLOCK -->', complexesBlock);
     const outPath = resolve(SRC_PAGES, `${service.slug}-${city.slug}.html`);
 
     writeFileSync(outPath, html, 'utf-8');
@@ -142,7 +169,9 @@ function generateForBuild() {
     let count = 0;
 
     cities.forEach(city => {
-      const html = replaceCity(template, TEMPLATE_CITY, city);
+      let html = replaceCity(template, TEMPLATE_CITY, city);
+      const complexesBlock = buildComplexesBlock(city.name, city.nameIn);
+      html = html.replace('<!-- COMPLEXES_BLOCK -->', complexesBlock);
       const outPath = resolve(PUBLIC_HTML, `${service.slug}-${city.slug}.html`);
 
       writeFileSync(outPath, html, 'utf-8');

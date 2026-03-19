@@ -13,8 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = document.getElementById("call-banner-close");
 
   function openBanner() {
+    banner.inert = false;
+    banner.removeAttribute("aria-hidden");
     banner.classList.add("call-banner--visible");
-    banner.setAttribute("aria-hidden", "false");
 
     setTimeout(() => {
       closeBtn && closeBtn.focus();
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function closeBanner() {
+    // inert снимает фокус автоматически без race condition с aria-hidden
+    banner.inert = true;
     banner.classList.remove("call-banner--visible");
     banner.setAttribute("aria-hidden", "true");
     localStorage.setItem("call-banner-dismissed", "1");

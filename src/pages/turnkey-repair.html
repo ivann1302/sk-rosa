@@ -3,32 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ремонт квартир и домов под ключ в Москве. | ROSA</title>
+    <title>Ремонт квартир и домов под ключ в Москве | ROSA</title>
     <meta
       name="description"
       content="Ремонт квартир, домов, коммерческих помещений под ключ в Москве. ➤ 6+ лет опыта ➤ С гарантией ➤ По договору ➤ Фиксированные цены. ☎ 8(985) 135-49-91"
-    />
-    <meta
-      name="keywords"
-      content="ремонт под ключ, ремонт квартир под ключ, ремонт домов, Москва, Московская область, комплексный ремонт, отделочные работы, ремонт с гарантией"
     />
     <meta name="author" content="OOO.ROSA" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sk-rosa.ru/turnkey-repair" />
      
-    
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106210167', 'ym');
-
-      ym(106210167, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -41,26 +24,39 @@
       content="Ремонт квартир и домов под ключ в Москве и МО. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества."
     />
     <meta property="og:url" content="https://sk-rosa.ru/turnkey-repair" />
-    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.jpg" />
+    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
     <meta
       property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/about-hero.jpg"
+      content="https://sk-rosa.ru/assets/images/common/about-hero.webp"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="645" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:alt" content="Ремонт под ключ в Москве и МО - ROSA" />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:site_name" content="ROSA - Ремонт под ключ" />
     <link rel="icon" href="../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../assets/icons/ui/favIcons/r-180.png" />
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" as="image" href="../assets/images/turnkey/u2928876119_A_modern_minimalist_room._Most_of_the_room_is_empty_a18d0b54-c19b-4d1a-b80b-1d4379f6a300.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../styles/main.scss" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+    <!-- Preload шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" /></noscript>
+
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" /></noscript>
+
     <style>
       .services__item {
         box-sizing: border-box !important;
@@ -90,13 +86,15 @@
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": "https://sk-rosa.ru/turnkey-repair#service",
+        "url": "https://sk-rosa.ru/turnkey-repair",
         "serviceType": "Ремонт под ключ",
         "name": "Ремонт квартир и домов под ключ",
         "description": "Ремонт квартир и домов под ключ в Москве и Московской области. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "ROSA - Ремонт под ключ",
-          "@id": "https://sk-rosa.ru"
+          "@id": "https://sk-rosa.ru/#business"
         },
         "areaServed": [
           {
@@ -104,7 +102,7 @@
             "name": "Москва"
           },
           {
-            "@type": "State",
+            "@type": "AdministrativeArea",
             "name": "Московская область"
           }
         ],
@@ -119,7 +117,15 @@
           "@type": "Offer",
           "priceCurrency": "RUB",
           "availability": "https://schema.org/InStock",
-          "url": "https://sk-rosa.ru/turnkey-repair"
+          "url": "https://sk-rosa.ru/turnkey-repair",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "minPrice": "10000",
+            "maxPrice": "15000",
+            "priceCurrency": "RUB",
+            "unitCode": "MTK",
+            "unitText": "м²"
+          }
         }
       }
     </script>
@@ -201,7 +207,6 @@
     </script>
   </head>
   <body id="top">
-    <noscript><div><img src="https://mc.yandex.ru/watch/106210167" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <header class="header" data-js-header>
       <div class="header__body">
         <div class="header__body-inner">
@@ -388,6 +393,10 @@
             class="about-turnkey__image"
             src="../assets/images/turnkey/u2928876119_A_modern_minimalist_room._Most_of_the_room_is_empty_a18d0b54-c19b-4d1a-b80b-1d4379f6a300.png"
             alt="Ремонт под ключ"
+            fetchpriority="high"
+            loading="eager"
+            width="720"
+            height="480"
           />
         </picture>
         <div class="about-turnkey__content">
@@ -1747,7 +1756,8 @@
       });
     </script>
     <!-- Баннер: заказ звонка (появляется через 10 секунд) -->
-    <div id="call-banner" class="call-banner" role="dialog" aria-modal="true" aria-label="Закажите звонок" aria-hidden="true">
+    <div id="call-banner" class="call-banner" role="dialog" aria-modal="true" aria-label="Закажите звонок" aria-hidden="true"
+      inert>
       <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1772,5 +1782,17 @@
     </div>
     <script type="module" src="../scripts/features/contact/form-handler.js" defer></script>
     <script src="../scripts/features/contact/call-banner.js" defer></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107041182', 'ym');
+      ym(107041182, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107041182" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
   </body>
 </html>
