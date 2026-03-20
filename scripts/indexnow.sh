@@ -16,7 +16,9 @@ curl -s -X POST "https://yandex.com/indexnow" \
       \"https://${HOST}/turnkey-repair\",
       \"https://${HOST}/floor-screed\",
       \"https://${HOST}/airless-painting\",
-      \"https://${HOST}/blog\"
+      \"https://${HOST}/blog\",
+      \"https://${HOST}/pokraska-sten-dvumya-cvetami\",
+      \"https://${HOST}/kak-rasscitat-raskhod-shtukaturki\"
     ]
   }"
 

@@ -245,6 +245,8 @@ export default defineConfig({
         "fasad-shtukaturka": resolve(__dirname, "src/pages/fasad-shtukaturka.html"),
         "gidroizolyaciya-pola-pod-styazhku": resolve(__dirname, "src/pages/gidroizolyaciya-pola-pod-styazhku.html"),
         "vidy-styazhki-pola": resolve(__dirname, "src/pages/vidy-styazhki-pola.html"),
+        "kak-rasscitat-raskhod-shtukaturki": resolve(__dirname, "src/pages/kak-rasscitat-raskhod-shtukaturki.html"),
+        "pokraska-sten-dvumya-cvetami": resolve(__dirname, "src/pages/pokraska-sten-dvumya-cvetami.html"),
         "pokraska-sten-bez-razvodov": resolve(__dirname, "src/pages/pokraska-sten-bez-razvodov.html"),
         "styazhka-pod-teply-pol": resolve(__dirname, "src/pages/styazhka-pod-teply-pol.html"),
         "armirovanie-shtukaturki-setkoj": resolve(__dirname, "src/pages/armirovanie-shtukaturki-setkoj.html"),
