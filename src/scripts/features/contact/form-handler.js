@@ -1,13 +1,18 @@
 // Универсальный обработчик форм для показа модального окна
 import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
-import { 
-  validateName, 
-  validatePhone, 
-  setupFieldValidation, 
-  showFieldError, 
+import {
+  validateName,
+  validatePhone,
+  setupFieldValidation,
+  showFieldError,
   hideFieldError,
-  applyPhoneMask 
+  applyPhoneMask,
 } from "./form-validation.js";
+import { captureUtm, getUtmData } from "./utm-tracker.js";
+
+// Захватываем UTM сразу при загрузке страницы.
+// Если в URL есть ?utm_source=... — сохранится в sessionStorage.
+captureUtm();
 
 document.addEventListener("DOMContentLoaded", function () {
   // Список селекторов форм, которые нужно обработать
@@ -70,6 +75,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      // Добавляем UTM-метки к данным формы.
+      // PHP получит их как обычные POST-поля: utm_source, utm_medium и т.д.
+      const utmData = getUtmData();
+      Object.entries(utmData).forEach(([key, value]) => {
+        if (value) {
+          formData.append(key, value);
+        }
+      });
+
       // Показываем индикатор загрузки
       const submitButton = form.querySelector('button[type="submit"]');
       setSubmitButtonState(submitButton, true, "Отправка...");
@@ -79,6 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const result = await submitForm(form.action, formData);
 
         if (result.success) {
+          // Трекинг цели в Яндекс.Метрике
+          if (typeof ym !== "undefined") {
+            ym(107041182, "reachGoal", "form_submit");
+          }
           // Показываем модальное окно успеха, передавая кнопку для фокуса
           if (window.openSuccessModal) {
             window.openSuccessModal(submitButton);

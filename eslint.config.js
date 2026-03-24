@@ -33,6 +33,8 @@ export default [
         Map: "readonly",
         alert: "readonly",
         localStorage: "readonly",
+        sessionStorage: "readonly",
+        URLSearchParams: "readonly",
         navigator: "readonly",
         SyntaxError: "readonly",
         Promise: "readonly",

@@ -16,6 +16,13 @@
   $sComment    = htmlspecialchars(trim($_POST['COMMENTS']    ?? ''), ENT_QUOTES, 'UTF-8');
   $sFormSource = htmlspecialchars(trim($_POST['form_source'] ?? 'Не указан'), ENT_QUOTES, 'UTF-8');
 
+  // UTM-метки, переданные из sessionStorage через JS
+  $sUtmSource   = htmlspecialchars(trim($_POST['utm_source']   ?? ''), ENT_QUOTES, 'UTF-8');
+  $sUtmMedium   = htmlspecialchars(trim($_POST['utm_medium']   ?? ''), ENT_QUOTES, 'UTF-8');
+  $sUtmCampaign = htmlspecialchars(trim($_POST['utm_campaign'] ?? ''), ENT_QUOTES, 'UTF-8');
+  $sUtmTerm     = htmlspecialchars(trim($_POST['utm_term']     ?? ''), ENT_QUOTES, 'UTF-8');
+  $sReferrer    = htmlspecialchars(trim($_POST['referrer']     ?? ''), ENT_QUOTES, 'UTF-8');
+
   if (empty($sName) || empty($sPhone)) {
       error_log('[SEND] Ошибка валидации: имя или телефон пусты');
       http_response_code(400);
@@ -46,6 +53,24 @@
       if (!empty($sFormSource)) {
           $tgLines[] = '📍 Услуга: ' . $sFormSource;
       }
+
+      // Блок источника трафика — собираем только непустые данные
+      if (!empty($sUtmSource)) {
+          $utmLine = '📊 Источник: ' . $sUtmSource;
+          if (!empty($sUtmMedium))   { $utmLine .= ' / ' . $sUtmMedium; }
+          if (!empty($sUtmCampaign)) { $utmLine .= ' / ' . $sUtmCampaign; }
+          $tgLines[] = $utmLine;
+          if (!empty($sUtmTerm)) {
+              $tgLines[] = '🔑 Ключ: ' . $sUtmTerm;
+          }
+      } elseif (!empty($sReferrer)) {
+          // Нет UTM, но есть реферер — значит органика или переход с другого сайта
+          $referrerHost = parse_url($sReferrer, PHP_URL_HOST) ?: $sReferrer;
+          $tgLines[] = '📊 Источник: ' . $referrerHost . ' (без UTM)';
+      } else {
+          $tgLines[] = '📊 Источник: прямой заход';
+      }
+
       $pageUrl = $_SERVER['HTTP_REFERER'] ?? '';
       if (!empty($pageUrl)) {
           $tgLines[] = '🌐 Страница: ' . $pageUrl;
