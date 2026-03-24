@@ -5,11 +5,7 @@
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
   padding: 40px 0 80px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(136 165 147 / 20%)
-  );
+  background: linear-gradient(to bottom, transparent, rgb(136 165 147 / 20%));
 
   @media (width <= 768px) {
     padding: 24px 0 60px;
@@ -78,7 +74,9 @@
   .blog-card {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
 
     &[hidden] {
       display: none;

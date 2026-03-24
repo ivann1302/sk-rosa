@@ -9,6 +9,7 @@ export default [
       sourceType: "module",
       globals: {
         ymaps: "readonly",
+        ym: "readonly",
         console: "readonly",
         document: "readonly",
         window: "readonly",
@@ -59,6 +60,7 @@ export default [
         ...globals.node,
         ...globals.browser,
         ymaps: "readonly",
+        ym: "readonly",
       },
     },
   },

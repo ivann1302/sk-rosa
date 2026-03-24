@@ -165,9 +165,13 @@ class PricingTable {
           <div class="pricing-card${this.isFree(row.price) ? " pricing-card--free" : ""}">
             <div class="pricing-card__service">${row.service}</div>
             <div class="pricing-card__details">
-              ${this.isFree(row.price) ? `<span class="pricing-card__price pricing-card__price--free">${row.price}</span>` : `<span class="pricing-card__price">Цена: ${row.price} руб</span>
+              ${
+                this.isFree(row.price)
+                  ? `<span class="pricing-card__price pricing-card__price--free">${row.price}</span>`
+                  : `<span class="pricing-card__price">Цена: ${row.price} руб</span>
               <span class="pricing-card__separator">|</span>
-              <span class="pricing-card__unit">Ед: ${row.unit}</span>`}
+              <span class="pricing-card__unit">Ед: ${row.unit}</span>`
+              }
             </div>
           </div>
         `

@@ -54,19 +54,29 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           switch (selectedPrice) {
             case "0-1000000":
-              if (itemPrice > 1000000) {showItem = false;}
+              if (itemPrice > 1000000) {
+                showItem = false;
+              }
               break;
             case "1000000-2000000":
-              if (itemPrice < 1000000 || itemPrice > 2000000) {showItem = false;}
+              if (itemPrice < 1000000 || itemPrice > 2000000) {
+                showItem = false;
+              }
               break;
             case "2000000-3000000":
-              if (itemPrice < 2000000 || itemPrice > 3000000) {showItem = false;}
+              if (itemPrice < 2000000 || itemPrice > 3000000) {
+                showItem = false;
+              }
               break;
             case "3000000-5000000":
-              if (itemPrice < 3000000 || itemPrice > 5000000) {showItem = false;}
+              if (itemPrice < 3000000 || itemPrice > 5000000) {
+                showItem = false;
+              }
               break;
             case "5000000+":
-              if (itemPrice < 5000000) {showItem = false;}
+              if (itemPrice < 5000000) {
+                showItem = false;
+              }
               break;
           }
         }

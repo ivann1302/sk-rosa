@@ -11,7 +11,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: linear-gradient(to right, rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 85%) 35%, #fff 65%);
+  background: linear-gradient(
+    to right,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 85%) 35%,
+    #fff 65%
+  );
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -167,6 +172,5 @@
         transform: translateY(0);
       }
     }
-
   }
 }

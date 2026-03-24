@@ -220,8 +220,12 @@ function initArticlesCarousel() {
 
   updatePositions();
 
-  document.querySelector(".articles-carousel__arrow--prev").addEventListener("click", () => navigate(-1));
-  document.querySelector(".articles-carousel__arrow--next").addEventListener("click", () => navigate(1));
+  document
+    .querySelector(".articles-carousel__arrow--prev")
+    .addEventListener("click", () => navigate(-1));
+  document
+    .querySelector(".articles-carousel__arrow--next")
+    .addEventListener("click", () => navigate(1));
 }
 
 // Инициализация при загрузке DOM

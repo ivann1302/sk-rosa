@@ -13,33 +13,35 @@ const blogSearch = {
   searchForm: null,
   clearButton: null,
   articles: null,
-  activeCategory: 'all',
+  activeCategory: "all",
 
   init() {
-    this.searchInput = document.querySelector('.blog-search__input');
-    this.searchForm = document.querySelector('.blog-search');
-    this.clearButton = document.querySelector('.blog-search__clear');
-    this.articles = document.querySelectorAll('.blog-card');
+    this.searchInput = document.querySelector(".blog-search__input");
+    this.searchForm = document.querySelector(".blog-search");
+    this.clearButton = document.querySelector(".blog-search__clear");
+    this.articles = document.querySelectorAll(".blog-card");
 
-    if (!this.searchInput || !this.articles.length) {return;}
+    if (!this.searchInput || !this.articles.length) {
+      return;
+    }
 
     this.attachEvents();
   },
 
   attachEvents() {
     // Предотвращаем отправку формы
-    this.searchForm?.addEventListener('submit', (e) => {
+    this.searchForm?.addEventListener("submit", e => {
       e.preventDefault();
     });
 
     // Поиск при вводе текста
-    this.searchInput.addEventListener('input', (e) => {
+    this.searchInput.addEventListener("input", e => {
       this.toggleClearButton(e.target.value);
       this.performSearch(e.target.value);
     });
 
     // Сброс поиска
-    this.clearButton?.addEventListener('click', () => {
+    this.clearButton?.addEventListener("click", () => {
       this.clearSearch();
     });
 
@@ -48,19 +50,21 @@ const blogSearch = {
   },
 
   toggleClearButton(value) {
-    if (!this.clearButton) {return;}
+    if (!this.clearButton) {
+      return;
+    }
 
     if (value.trim()) {
-      this.clearButton.classList.add('active');
+      this.clearButton.classList.add("active");
     } else {
-      this.clearButton.classList.remove('active');
+      this.clearButton.classList.remove("active");
     }
   },
 
   clearSearch() {
-    this.searchInput.value = '';
-    this.toggleClearButton('');
-    this.performSearch('');
+    this.searchInput.value = "";
+    this.toggleClearButton("");
+    this.performSearch("");
     this.searchInput.focus();
   },
 
@@ -68,24 +72,25 @@ const blogSearch = {
     const searchTerm = query.toLowerCase().trim();
     let visibleCount = 0;
 
-    this.articles.forEach((article) => {
-      const title = article.querySelector('.blog-card__title')?.textContent.toLowerCase() || '';
-      const excerpt = article.querySelector('.blog-card__excerpt')?.textContent.toLowerCase() || '';
-      const category = article.dataset.category || '';
+    this.articles.forEach(article => {
+      const title = article.querySelector(".blog-card__title")?.textContent.toLowerCase() || "";
+      const excerpt = article.querySelector(".blog-card__excerpt")?.textContent.toLowerCase() || "";
+      const category = article.dataset.category || "";
 
       // Проверяем совпадение с поисковым запросом
-      const matchesSearch = !searchTerm || title.includes(searchTerm) || excerpt.includes(searchTerm);
+      const matchesSearch =
+        !searchTerm || title.includes(searchTerm) || excerpt.includes(searchTerm);
 
       // Проверяем совпадение с активной категорией
-      const matchesCategory = this.activeCategory === 'all' || category === this.activeCategory;
+      const matchesCategory = this.activeCategory === "all" || category === this.activeCategory;
 
       // Показываем статью только если она соответствует И поиску И категории
       if (matchesSearch && matchesCategory) {
-        article.style.display = '';
-        article.style.animation = 'fade-in 0.3s ease-in';
+        article.style.display = "";
+        article.style.animation = "fade-in 0.3s ease-in";
         visibleCount++;
       } else {
-        article.style.display = 'none';
+        article.style.display = "none";
       }
     });
 
@@ -95,10 +100,10 @@ const blogSearch = {
 
   watchCategoryChanges() {
     // Отслеживаем клики по кнопкам фильтра
-    const filterButtons = document.querySelectorAll('.blog-filter__button');
+    const filterButtons = document.querySelectorAll(".blog-filter__button");
 
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
         this.activeCategory = button.dataset.category;
         // Применяем текущий поисковый запрос с новой категорией
         this.performSearch(this.searchInput.value);
@@ -107,16 +112,17 @@ const blogSearch = {
   },
 
   toggleNoResults(show) {
-    let noResultsEl = document.querySelector('.blog-search__no-results');
+    let noResultsEl = document.querySelector(".blog-search__no-results");
 
     if (show && !noResultsEl) {
       // Создаем элемент "ничего не найдено"
-      noResultsEl = document.createElement('div');
-      noResultsEl.className = 'blog-search__no-results';
-      noResultsEl.textContent = 'По вашему запросу ничего не найдено. Попробуйте изменить поисковый запрос.';
+      noResultsEl = document.createElement("div");
+      noResultsEl.className = "blog-search__no-results";
+      noResultsEl.textContent =
+        "По вашему запросу ничего не найдено. Попробуйте изменить поисковый запрос.";
 
-      const blogGrid = document.querySelector('.blog-grid');
-      blogGrid?.insertAdjacentElement('afterend', noResultsEl);
+      const blogGrid = document.querySelector(".blog-grid");
+      blogGrid?.insertAdjacentElement("afterend", noResultsEl);
     } else if (!show && noResultsEl) {
       // Удаляем элемент
       noResultsEl.remove();
@@ -125,8 +131,8 @@ const blogSearch = {
 };
 
 // Инициализация при загрузке DOM
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => blogSearch.init());
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => blogSearch.init());
 } else {
   blogSearch.init();
 }

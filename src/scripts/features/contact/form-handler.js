@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   formSelectors.forEach(selector => {
     const form = document.querySelector(selector);
-    if (!form) {return;}
+    if (!form) {
+      return;
+    }
 
     // Настройка валидации в реальном времени для каждого поля
     const nameField = form.querySelector('input[name="NAME"]');
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
 
       // Скрываем все предыдущие ошибки
-      form.querySelectorAll('.field--error').forEach(field => {
+      form.querySelectorAll(".field--error").forEach(field => {
         hideFieldError(field);
       });
 
@@ -57,21 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validation.valid) {
         // Показываем ошибки для всех полей
         const errors = validation.errors || {};
-        
+
         if (errors.NAME && nameField) {
           showFieldError(nameField, errors.NAME);
         }
-        
+
         if (errors.PHONE && phoneField) {
           showFieldError(phoneField, errors.PHONE);
         }
-        
+
         // Фокус на первое поле с ошибкой
-        const firstErrorField = nameField?.classList.contains('field--error') ? nameField : phoneField;
+        const firstErrorField = nameField?.classList.contains("field--error")
+          ? nameField
+          : phoneField;
         if (firstErrorField) {
           firstErrorField.focus();
         }
-        
+
         return;
       }
 

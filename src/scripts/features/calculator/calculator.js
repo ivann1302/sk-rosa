@@ -164,40 +164,84 @@ class Calculator {
     switch (objectType) {
       case "1-room":
         // 1-к квартира: Ванная, Коридор, Кухня, Гостиная
-        if (rooms[0]) {rooms[0].classList.remove("hidden");} // Ванная
-        if (rooms[1]) {rooms[1].classList.remove("hidden");} // Коридор
-        if (rooms[2]) {rooms[2].classList.remove("hidden");} // Кухня
-        if (rooms[3]) {rooms[3].classList.remove("hidden");} // Гостиная
+        if (rooms[0]) {
+          rooms[0].classList.remove("hidden");
+        } // Ванная
+        if (rooms[1]) {
+          rooms[1].classList.remove("hidden");
+        } // Коридор
+        if (rooms[2]) {
+          rooms[2].classList.remove("hidden");
+        } // Кухня
+        if (rooms[3]) {
+          rooms[3].classList.remove("hidden");
+        } // Гостиная
         break;
 
       case "2-room":
         // 2-к квартира: Ванная, Коридор, Кухня, Гостиная, 2-я Комната
-        if (rooms[0]) {rooms[0].classList.remove("hidden");} // Ванная
-        if (rooms[1]) {rooms[1].classList.remove("hidden");} // Коридор
-        if (rooms[2]) {rooms[2].classList.remove("hidden");} // Кухня
-        if (rooms[3]) {rooms[3].classList.remove("hidden");} // Гостиная
-        if (rooms[4]) {rooms[4].classList.remove("hidden");} // 2-я Комната
+        if (rooms[0]) {
+          rooms[0].classList.remove("hidden");
+        } // Ванная
+        if (rooms[1]) {
+          rooms[1].classList.remove("hidden");
+        } // Коридор
+        if (rooms[2]) {
+          rooms[2].classList.remove("hidden");
+        } // Кухня
+        if (rooms[3]) {
+          rooms[3].classList.remove("hidden");
+        } // Гостиная
+        if (rooms[4]) {
+          rooms[4].classList.remove("hidden");
+        } // 2-я Комната
         break;
 
       case "3-room":
         // 3-к квартира: Ванная, Коридор, Кухня, Гостиная, 2-я Комната, 3-я Комната
-        if (rooms[0]) {rooms[0].classList.remove("hidden");} // Ванная
-        if (rooms[1]) {rooms[1].classList.remove("hidden");} // Коридор
-        if (rooms[2]) {rooms[2].classList.remove("hidden");} // Кухня
-        if (rooms[3]) {rooms[3].classList.remove("hidden");} // Гостиная
-        if (rooms[4]) {rooms[4].classList.remove("hidden");} // 2-я Комната
-        if (rooms[5]) {rooms[5].classList.remove("hidden");} // 3-я Комната
+        if (rooms[0]) {
+          rooms[0].classList.remove("hidden");
+        } // Ванная
+        if (rooms[1]) {
+          rooms[1].classList.remove("hidden");
+        } // Коридор
+        if (rooms[2]) {
+          rooms[2].classList.remove("hidden");
+        } // Кухня
+        if (rooms[3]) {
+          rooms[3].classList.remove("hidden");
+        } // Гостиная
+        if (rooms[4]) {
+          rooms[4].classList.remove("hidden");
+        } // 2-я Комната
+        if (rooms[5]) {
+          rooms[5].classList.remove("hidden");
+        } // 3-я Комната
         break;
 
       case "4-room":
         // 4-к квартира: Ванная, Коридор, Кухня, Гостиная, 2-я Комната, 3-я Комната, 4-я Комната
-        if (rooms[0]) {rooms[0].classList.remove("hidden");} // Ванная
-        if (rooms[1]) {rooms[1].classList.remove("hidden");} // Коридор
-        if (rooms[2]) {rooms[2].classList.remove("hidden");} // Кухня
-        if (rooms[3]) {rooms[3].classList.remove("hidden");} // Гостиная
-        if (rooms[4]) {rooms[4].classList.remove("hidden");} // 2-я Комната
-        if (rooms[5]) {rooms[5].classList.remove("hidden");} // 3-я Комната
-        if (rooms[6]) {rooms[6].classList.remove("hidden");} // 4-я Комната
+        if (rooms[0]) {
+          rooms[0].classList.remove("hidden");
+        } // Ванная
+        if (rooms[1]) {
+          rooms[1].classList.remove("hidden");
+        } // Коридор
+        if (rooms[2]) {
+          rooms[2].classList.remove("hidden");
+        } // Кухня
+        if (rooms[3]) {
+          rooms[3].classList.remove("hidden");
+        } // Гостиная
+        if (rooms[4]) {
+          rooms[4].classList.remove("hidden");
+        } // 2-я Комната
+        if (rooms[5]) {
+          rooms[5].classList.remove("hidden");
+        } // 3-я Комната
+        if (rooms[6]) {
+          rooms[6].classList.remove("hidden");
+        } // 4-я Комната
         break;
     }
   }
@@ -238,7 +282,9 @@ class Calculator {
     };
 
     const distribution = areaDistribution[objectType];
-    if (!distribution) {return;}
+    if (!distribution) {
+      return;
+    }
 
     // Получаем видимые комнаты
     const roomInputs = document.querySelectorAll(

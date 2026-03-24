@@ -30,7 +30,9 @@
     margin-bottom: 16px;
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
 
     &--revealed {
       opacity: 1;
@@ -43,7 +45,9 @@
     line-height: 1.7;
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    transition:
+      opacity 0.6s ease 0.2s,
+      transform 0.6s ease 0.2s;
 
     &--revealed {
       opacity: 1;
@@ -59,7 +63,9 @@
     color: #333;
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
+    transition:
+      opacity 0.6s ease 0.4s,
+      transform 0.6s ease 0.4s;
 
     &--revealed {
       opacity: 1;
@@ -73,7 +79,9 @@
     margin: 0 0 24px 0;
     opacity: 0;
     transform: translateX(-50px);
-    transition: opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
+    transition:
+      opacity 0.6s ease 0.6s,
+      transform 0.6s ease 0.6s;
 
     &--revealed {
       opacity: 1;

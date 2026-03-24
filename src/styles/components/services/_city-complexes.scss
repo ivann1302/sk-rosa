@@ -47,7 +47,9 @@
     padding: 8px 16px;
     font-size: 0.9rem;
     color: #333;
-    transition: border-color 0.2s, color 0.2s;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
 
     &:hover {
       border-color: var(--color-green);

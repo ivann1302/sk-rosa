@@ -41,19 +41,49 @@
     <link rel="icon" type="image/png" href="../../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../../assets/icons/ui/favIcons/r-180.png" />
     <!-- Preload LCP изображения -->
-    <link rel="preload" as="image" href="../../assets/images/common/airless_painting.webp" type="image/webp" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="../../assets/images/common/airless_painting.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../../styles/main.scss" />
     <!-- Preload шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" as="style" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" /></noscript>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" /></noscript>
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      as="style"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link
+        href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    /></noscript>
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"
+    /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -718,14 +748,17 @@
         </div>
       </section>
 
-            <section class="city-complexes">
+      <section class="city-complexes">
         <div class="city-complexes__container">
           <h2 class="city-complexes__title">Новостройки в Ивантеевке, где мы работаем</h2>
-          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
+          <p class="city-complexes__desc">
+            Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов,
+            застройщиков и типичные задачи.
+          </p>
           <ul class="city-complexes__list">
-        <li class="city-complexes__item">ЖК Лесной</li>
-        <li class="city-complexes__item">ЖК Центральный</li>
-        <li class="city-complexes__item">ЖК Новый город</li>
+            <li class="city-complexes__item">ЖК Лесной</li>
+            <li class="city-complexes__item">ЖК Центральный</li>
+            <li class="city-complexes__item">ЖК Новый город</li>
           </ul>
         </div>
       </section>
@@ -2459,15 +2492,40 @@
     <script src="../../scripts/features/contact/call-banner.js" defer></script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107041182', 'ym');
-      ym(107041182, 'init', {webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=107041182", "ym");
+      ym(107041182, "init", {
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/107041182" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/107041182"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
     <!-- /Yandex.Metrika counter -->
   </body>
 </html>

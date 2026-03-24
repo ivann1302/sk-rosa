@@ -94,9 +94,9 @@ function initFAQ() {
 
 // Инициализация FAQ
 // Проверяем готовность DOM для поддержки динамической и статической загрузки
-if (document.readyState === 'loading') {
+if (document.readyState === "loading") {
   // DOM еще не готов, ждем события
-  document.addEventListener('DOMContentLoaded', initFAQ);
+  document.addEventListener("DOMContentLoaded", initFAQ);
 } else {
   // DOM уже готов (динамическая загрузка), инициализируем сразу
   initFAQ();

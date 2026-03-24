@@ -1,10 +1,10 @@
 // Импорт функций валидации
-import { 
-  validatePhone, 
-  setupFieldValidation, 
-  showFieldError, 
+import {
+  validatePhone,
+  setupFieldValidation,
+  showFieldError,
   hideFieldError,
-  applyPhoneMask 
+  applyPhoneMask,
 } from "../contact/form-validation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const phone = phoneField.value.trim();
       const activeMessengerBtn = document.querySelector(".price-calc__messenger-btn--active");
-      
+
       if (!activeMessengerBtn) {
         alert("Пожалуйста, выберите способ связи");
         return;

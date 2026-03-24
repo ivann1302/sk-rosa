@@ -1,9 +1,11 @@
 // Общие утилиты для работы с формами
-import { validateFormFields } from './form-validation.js';
+import { validateFormFields } from "./form-validation.js";
 
 const isDevelopment = window.location.port === "3000";
 
-console.warn("[form-utils] загружен. port=" + window.location.port + " isDevelopment=" + isDevelopment);
+console.warn(
+  "[form-utils] загружен. port=" + window.location.port + " isDevelopment=" + isDevelopment
+);
 
 async function mockSubmitForm(_action, _formData) {
   console.warn("🧪 [form-utils] МОК режим — реальной отправки нет");
@@ -25,7 +27,9 @@ export function validateForm(formData) {
 }
 
 export async function submitForm(action, formData) {
-  console.warn("[form-utils] submitForm вызван. action=" + action + " isDevelopment=" + isDevelopment);
+  console.warn(
+    "[form-utils] submitForm вызван. action=" + action + " isDevelopment=" + isDevelopment
+  );
 
   if (isDevelopment && action.includes("send.php")) {
     console.warn("[form-utils] → МОК (dev порт 3000)");
@@ -75,7 +79,9 @@ export async function submitForm(action, formData) {
 }
 
 export function setSubmitButtonState(submitButton, isLoading, loadingText = "Отправка...") {
-  if (!submitButton) {return;}
+  if (!submitButton) {
+    return;
+  }
 
   if (isLoading) {
     submitButton.disabled = true;

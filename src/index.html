@@ -74,7 +74,12 @@
         --transition-duration: 0.3s;
         --container-padding-x: 32px;
       }
-      html, body { margin: 0; padding: 0; overflow-x: hidden; }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
       body {
         display: flex;
         flex-direction: column;
@@ -84,8 +89,14 @@
         letter-spacing: -0.03em;
         padding-top: 56px;
       }
-      main { flex-grow: 1; margin: 0; padding: 0; }
-      a[class] { text-decoration: none; }
+      main {
+        flex-grow: 1;
+        margin: 0;
+        padding: 0;
+      }
+      a[class] {
+        text-decoration: none;
+      }
       .header {
         position: fixed !important;
         z-index: 100;
@@ -117,8 +128,12 @@
         width: 100%;
         padding: 0;
       }
-      .header__logo { margin-left: 16px; }
-      .logo__image { display: block; }
+      .header__logo {
+        margin-left: 16px;
+      }
+      .logo__image {
+        display: block;
+      }
       .about {
         position: relative;
         margin-top: -56px;
@@ -194,17 +209,36 @@
         text-decoration: none;
       }
       @media (max-width: 768px) {
-        .header { width: calc(100% - 24px) !important; max-width: 100vw; }
-        .about__image { height: 280px; }
-        .about__content { position: static; transform: none; width: calc(100% - 2rem); margin: 16px auto 0; }
-        .about__bottom { position: static; transform: none; width: calc(100% - 2rem); margin: 16px auto 40px; }
-        .about__title { font-size: 2rem; }
-        .about__subtitle { font-size: 0.85rem; }
+        .header {
+          width: calc(100% - 24px) !important;
+          max-width: 100vw;
+        }
+        .about__image {
+          height: 280px;
+        }
+        .about__content {
+          position: static;
+          transform: none;
+          width: calc(100% - 2rem);
+          margin: 16px auto 0;
+        }
+        .about__bottom {
+          position: static;
+          transform: none;
+          width: calc(100% - 2rem);
+          margin: 16px auto 40px;
+        }
+        .about__title {
+          font-size: 2rem;
+        }
+        .about__subtitle {
+          font-size: 0.85rem;
+        }
       }
     </style>
     <!-- CSS главной страницы — путь обрабатывается fixHtmlPaths при сборке -->
     <link rel="preload" href="./styles/main.scss" as="style" />
-    <link href="./styles/main.scss" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="./styles/main.scss" rel="stylesheet" media="print" onload="this.media = 'all'" />
     <noscript><link href="./styles/main.scss" rel="stylesheet" /></noscript>
     <!-- Асинхронная загрузка внешних CSS -->
     <link
@@ -2007,7 +2041,6 @@
       })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=107041182", "ym");
 
       ym(107041182, "init", {
-        
         webvisor: true,
         clickmap: true,
         ecommerce: "dataLayer",

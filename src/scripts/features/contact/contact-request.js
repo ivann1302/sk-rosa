@@ -1,12 +1,12 @@
 // Обработка формы заявки
 import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
-import { 
-  validateName, 
-  validatePhone, 
-  setupFieldValidation, 
-  showFieldError, 
+import {
+  validateName,
+  validatePhone,
+  setupFieldValidation,
+  showFieldError,
   hideFieldError,
-  applyPhoneMask 
+  applyPhoneMask,
 } from "./form-validation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     // Скрываем все предыдущие ошибки
-    form.querySelectorAll('.field--error').forEach(field => {
+    form.querySelectorAll(".field--error").forEach(field => {
       hideFieldError(field);
     });
 
@@ -45,24 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!validation.valid) {
       // Показываем ошибки для всех полей
       const errors = validation.errors || {};
-      
+
       if (errors.NAME && nameField) {
         showFieldError(nameField, errors.NAME);
       }
-      
+
       if (errors.PHONE && phoneField) {
         showFieldError(phoneField, errors.PHONE);
       }
-      
+
       // Показываем общее сообщение для обратной совместимости
       showMessage(validation.error, "error");
-      
+
       // Фокус на первое поле с ошибкой
-      const firstErrorField = nameField?.classList.contains('field--error') ? nameField : phoneField;
+      const firstErrorField = nameField?.classList.contains("field--error")
+        ? nameField
+        : phoneField;
       if (firstErrorField) {
         firstErrorField.focus();
       }
-      
+
       return;
     }
 

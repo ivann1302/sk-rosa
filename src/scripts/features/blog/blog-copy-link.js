@@ -6,7 +6,9 @@
 
   function initCopyLink() {
     const copyButton = document.querySelector("[data-copy-link]");
-    if (!copyButton) {return;}
+    if (!copyButton) {
+      return;
+    }
 
     copyButton.addEventListener("click", async function () {
       try {
@@ -31,12 +33,12 @@
         // Показываем визуальную обратную связь
         const buttonText = copyButton.querySelector(".blog-article__share-button-text");
         const originalText = buttonText ? buttonText.textContent : "Скопировать ссылку";
-        
+
         copyButton.classList.add("blog-article__share-button--copied");
-        
+
         if (buttonText) {
           buttonText.textContent = "Скопировано!";
-          
+
           // Возвращаем исходный текст через 2 секунды
           setTimeout(() => {
             copyButton.classList.remove("blog-article__share-button--copied");
