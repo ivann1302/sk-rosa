@@ -36,7 +36,7 @@ describe("Генератор городских страниц (plastering)", ()
 
     sample.forEach(file => {
       const content = readFileSync(resolve(PAGES_DIR, file), "utf-8");
-      expect(content, `Файл ${file}: нет тега <h1>`).toMatch(/<h1[^>]*>.+<\/h1>/);
+      expect(content, `Файл ${file}: нет тега <h1>`).toMatch(/<h1[^>]*>[\s\S]+<\/h1>/);
     });
   });
 
