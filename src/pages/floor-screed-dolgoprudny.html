@@ -14,10 +14,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Полусухая стяжка пола в Долгопрудном по низкой цене | ROSA"
-    />
+    <meta property="og:title" content="Полусухая стяжка пола в Долгопрудном по низкой цене | ROSA" />
     <meta
       property="og:description"
       content="Профессиональная стяжка пола в Долгопрудном. Выравнивание пола, подготовка основания под финишное покрытие. Качественные материалы, гарантия качества. Звоните: +7 (985) 135-49-91"
@@ -723,17 +720,14 @@
         </div>
       </section>
 
-      <section class="city-complexes">
+            <section class="city-complexes">
         <div class="city-complexes__container">
           <h2 class="city-complexes__title">Новостройки в Долгопрудном, где мы работаем</h2>
-          <p class="city-complexes__desc">
-            Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов,
-            застройщиков и типичные задачи.
-          </p>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
           <ul class="city-complexes__list">
-            <li class="city-complexes__item">ЖК Новое Водники</li>
-            <li class="city-complexes__item">ЖК Мосмарт</li>
-            <li class="city-complexes__item">ЖК Химкинский Лес</li>
+        <li class="city-complexes__item">ЖК Новое Водники</li>
+        <li class="city-complexes__item">ЖК Мосмарт</li>
+        <li class="city-complexes__item">ЖК Химкинский Лес</li>
           </ul>
         </div>
       </section>
@@ -1220,7 +1214,7 @@
             <div class="price-calc__top-small-card">
               <div class="price-calc__form-image-content">
                 <div class="price-calc__form-block">
-                  <div class="price-calc__form">
+                  <form class="price-calc__form" action="../../scripts/api/send.php" method="POST">
                     <h3>Получите детальную и точную смету на стяжку пола онлайн</h3>
                     <div class="price-calc__messenger-choice">
                       <button
@@ -1257,13 +1251,14 @@
                     <div class="price-calc__phone-input-container">
                       <input
                         type="tel"
+                        name="PHONE"
                         autocomplete="tel"
                         placeholder="Ваш номер телефона"
                         class="price-calc__phone-field"
                       />
                       <button class="price-calc__submit-btn">Получить</button>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div class="price-calc__form-image-right">
                   <img src="../../assets/images/common/service-hero.png" alt="Проект" />

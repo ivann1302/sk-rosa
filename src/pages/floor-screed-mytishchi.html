@@ -720,21 +720,18 @@
         </div>
       </section>
 
-      <section class="city-complexes">
+            <section class="city-complexes">
         <div class="city-complexes__container">
           <h2 class="city-complexes__title">Новостройки в Мытищах, где мы работаем</h2>
-          <p class="city-complexes__desc">
-            Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов,
-            застройщиков и типичные задачи.
-          </p>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
           <ul class="city-complexes__list">
-            <li class="city-complexes__item">ЖК Мытищи Парк</li>
-            <li class="city-complexes__item">ЖК Ярославский</li>
-            <li class="city-complexes__item">ЖК КИТ</li>
-            <li class="city-complexes__item">ЖК Отрадный</li>
-            <li class="city-complexes__item">ЖК Ярославский квартал</li>
-            <li class="city-complexes__item">ЖК Яуза Парк</li>
-            <li class="city-complexes__item">ЖК Дружба</li>
+        <li class="city-complexes__item">ЖК Мытищи Парк</li>
+        <li class="city-complexes__item">ЖК Ярославский</li>
+        <li class="city-complexes__item">ЖК КИТ</li>
+        <li class="city-complexes__item">ЖК Отрадный</li>
+        <li class="city-complexes__item">ЖК Ярославский квартал</li>
+        <li class="city-complexes__item">ЖК Яуза Парк</li>
+        <li class="city-complexes__item">ЖК Дружба</li>
           </ul>
         </div>
       </section>
@@ -1221,7 +1218,7 @@
             <div class="price-calc__top-small-card">
               <div class="price-calc__form-image-content">
                 <div class="price-calc__form-block">
-                  <div class="price-calc__form">
+                  <form class="price-calc__form" action="../../scripts/api/send.php" method="POST">
                     <h3>Получите детальную и точную смету на стяжку пола онлайн</h3>
                     <div class="price-calc__messenger-choice">
                       <button
@@ -1258,13 +1255,14 @@
                     <div class="price-calc__phone-input-container">
                       <input
                         type="tel"
+                        name="PHONE"
                         autocomplete="tel"
                         placeholder="Ваш номер телефона"
                         class="price-calc__phone-field"
                       />
                       <button class="price-calc__submit-btn">Получить</button>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div class="price-calc__form-image-right">
                   <img src="../../assets/images/common/service-hero.png" alt="Проект" />

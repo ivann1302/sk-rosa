@@ -557,9 +557,9 @@
 
           <div class="service-text-block__content">
             <p>
-              Нужна <strong>качественная штукатурка стен в Подольске</strong> без трещин и
-              перепадов? Выполним выравнивание стен и потолков в квартире, доме или офисе – быстро,
-              аккуратно и по технологии.
+              Нужна <strong>качественная штукатурка стен в Подольске</strong> без трещин и перепадов?
+              Выполним выравнивание стен и потолков в квартире, доме или офисе – быстро, аккуратно и
+              по технологии.
             </p>
             <p>
               Работаем с <strong>новостройками и вторичным жильём</strong>. Используем штукатурные
@@ -736,20 +736,17 @@
         </div>
       </section>
 
-      <section class="city-complexes">
+            <section class="city-complexes">
         <div class="city-complexes__container">
           <h2 class="city-complexes__title">Новостройки в Подольске, где мы работаем</h2>
-          <p class="city-complexes__desc">
-            Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов,
-            застройщиков и типичные задачи.
-          </p>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
           <ul class="city-complexes__list">
-            <li class="city-complexes__item">ЖК Подольские Просторы</li>
-            <li class="city-complexes__item">ЖК Красная Горка</li>
-            <li class="city-complexes__item">ЖК Онегин</li>
-            <li class="city-complexes__item">ЖК Плещеево</li>
-            <li class="city-complexes__item">ЖК Шепчинки</li>
-            <li class="city-complexes__item">ЖК Калужский</li>
+        <li class="city-complexes__item">ЖК Подольские Просторы</li>
+        <li class="city-complexes__item">ЖК Красная Горка</li>
+        <li class="city-complexes__item">ЖК Онегин</li>
+        <li class="city-complexes__item">ЖК Плещеево</li>
+        <li class="city-complexes__item">ЖК Шепчинки</li>
+        <li class="city-complexes__item">ЖК Калужский</li>
           </ul>
         </div>
       </section>
@@ -793,7 +790,7 @@
               Механизированная штукатурка — производительный подход, ускоряющий отделку без
               компромиссов. Мы следуем СП 71.13330.2017 и пункту 7.2 по изоляционным покрытиям. Роса
               дает гарантию 5 лет на работы. Закажите механизированную штукатурку цена 600 ₽/м² в
-              Подольске и области: топовые смеси (Rotband, Sheetrock), профессиональные машины (PFT,
+              Балашихе и области: топовые смеси (Rotband, Sheetrock), профессиональные машины (PFT,
               Putzmeister). Бесплатный выезд мастера — звоните или оставьте заявку.
             </p>
           </div>
@@ -1602,7 +1599,7 @@
             <div class="price-calc__top-small-card">
               <div class="price-calc__form-image-content">
                 <div class="price-calc__form-block">
-                  <div class="price-calc__form">
+                  <form class="price-calc__form" action="../../scripts/api/send.php" method="POST">
                     <h3>Получите детальную и точную смету на штукатурные работы онлайн</h3>
                     <div class="price-calc__messenger-choice">
                       <button
@@ -1639,13 +1636,14 @@
                     <div class="price-calc__phone-input-container">
                       <input
                         type="tel"
+                        name="PHONE"
                         autocomplete="tel"
                         placeholder="Ваш номер телефона"
                         class="price-calc__phone-field"
                       />
                       <button class="price-calc__submit-btn">Получить</button>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div class="price-calc__form-image-right">
                   <img src="../../assets/images/common/service-hero.png" alt="Проект" />

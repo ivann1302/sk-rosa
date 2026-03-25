@@ -15,6 +15,7 @@
   $sName       = htmlspecialchars(trim($_POST['NAME']        ?? ''), ENT_QUOTES, 'UTF-8');
   $sComment    = htmlspecialchars(trim($_POST['COMMENTS']    ?? ''), ENT_QUOTES, 'UTF-8');
   $sFormSource = htmlspecialchars(trim($_POST['form_source'] ?? 'Не указан'), ENT_QUOTES, 'UTF-8');
+  $sMessenger  = htmlspecialchars(trim($_POST['MESSENGER']   ?? ''), ENT_QUOTES, 'UTF-8');
 
   // UTM-метки, переданные из sessionStorage через JS
   $sUtmSource   = htmlspecialchars(trim($_POST['utm_source']   ?? ''), ENT_QUOTES, 'UTF-8');
@@ -23,11 +24,11 @@
   $sUtmTerm     = htmlspecialchars(trim($_POST['utm_term']     ?? ''), ENT_QUOTES, 'UTF-8');
   $sReferrer    = htmlspecialchars(trim($_POST['referrer']     ?? ''), ENT_QUOTES, 'UTF-8');
 
-  if (empty($sName) || empty($sPhone)) {
-      error_log('[SEND] Ошибка валидации: имя или телефон пусты');
+  if (empty($sPhone)) {
+      error_log('[SEND] Ошибка валидации: телефон пуст');
       http_response_code(400);
       header('Content-Type: application/json; charset=utf-8');
-      die(json_encode(['success' => false, 'error' => 'Заполните имя и телефон'], JSON_UNESCAPED_UNICODE));
+      die(json_encode(['success' => false, 'error' => 'Заполните номер телефона'], JSON_UNESCAPED_UNICODE));
   }
 
   $telegramToken   = $_ENV['TELEGRAM_BOT_TOKEN']  ?? getenv('TELEGRAM_BOT_TOKEN')  ?: '8400675649:AAFNYG8Q8hvHtcy1dlGeteS4c5fgLOOhYRc';
@@ -44,9 +45,14 @@
       $tgLines = [
           '🔔 <b>Новая заявка с сайта!</b>',
           '',
-          '👤 Имя: <b>' . $sName . '</b>',
-          '📞 Телефон: <b>' . $sPhone . '</b>',
       ];
+      if (!empty($sName)) {
+          $tgLines[] = '👤 Имя: <b>' . $sName . '</b>';
+      }
+      $tgLines[] = '📞 Телефон: <b>' . $sPhone . '</b>';
+      if (!empty($sMessenger)) {
+          $tgLines[] = '📲 Прошу отправить расчёт в <b>' . $sMessenger . '</b>';
+      }
       if (!empty($sComment)) {
           $tgLines[] = '💬 Комментарий: ' . $sComment;
       }
