@@ -533,6 +533,15 @@ body:has(.blog-article) {
       font-style: italic;
     }
 
+    // Выделение ключевых фактов span.highlight
+    span.highlight {
+      background: rgb(136 165 147 / 15%);
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
     // Ссылки
     a {
       color: var(--color-green);

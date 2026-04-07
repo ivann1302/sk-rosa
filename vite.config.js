@@ -11,6 +11,25 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 // npm run generate:build
 // Это решает проблему OOM при сборке через Vite
 
+// Плагин подстановки header/footer из шаблонов (работает в dev и build)
+const injectPartials = () => {
+  let headerHtml = "";
+  let footerHtml = "";
+
+  return {
+    name: "inject-partials",
+    buildStart() {
+      headerHtml = readFileSync(resolve(__dirname, "src/templates/header.html"), "utf-8");
+      footerHtml = readFileSync(resolve(__dirname, "src/templates/footer.html"), "utf-8");
+    },
+    transformIndexHtml(html) {
+      return html
+        .replace("<!-- HEADER -->", headerHtml)
+        .replace("<!-- FOOTER -->", footerHtml);
+    },
+  };
+};
+
 // Плагин перемещения файлов (упрощённый — без городских страниц)
 const fixHtmlPaths = () => {
   return {
@@ -32,7 +51,7 @@ const fixHtmlPaths = () => {
               htmlFiles.push({ path: filePath, relative: join(relativePath, file) });
             }
           });
-        } catch (e) {}
+        } catch { /* ignore */ }
       }
 
       // Собираем из pages/
@@ -52,7 +71,7 @@ const fixHtmlPaths = () => {
             }
           }
         });
-      } catch (e) {}
+      } catch { /* ignore */ }
 
       // Находим CSS файл
       let cssFileName = "./assets/css/main.css";
@@ -60,9 +79,11 @@ const fixHtmlPaths = () => {
         const cssDir = join(outDir, "assets/css");
         if (statSync(cssDir, { throwIfNoEntry: false })) {
           const cssFiles = readdirSync(cssDir).filter(f => f.startsWith("main-") && f.endsWith(".css"));
-          if (cssFiles.length > 0) cssFileName = `./assets/css/${cssFiles[0]}`;
+          if (cssFiles.length > 0) {
+            cssFileName = `./assets/css/${cssFiles[0]}`
+          }
         }
-      } catch (e) {}
+      } catch { /* ignore */ }
 
       // Обработка файлов
       htmlFiles.forEach(({ path: sourceFile, relative }) => {
@@ -143,7 +164,7 @@ const fixHtmlPaths = () => {
         if (statSync(pagesDir, { throwIfNoEntry: false })) {
           removeEmptyDirs(pagesDir);
         }
-      } catch (e) {}
+      } catch { /* ignore */ }
 
       // Обработка index.html
       try {
@@ -154,7 +175,7 @@ const fixHtmlPaths = () => {
           content = content.replace(/href="pages\/([^"']+)\.html"/g, 'href="/$1"');
           writeFileSync(indexFile, content, "utf-8");
         }
-      } catch (e) {}
+      } catch { /* ignore */ }
     }
   };
 };
@@ -199,7 +220,6 @@ const htaccessMiddleware = () => {
     const cleanUrl = url.replace(/\/$/, '');
     req.url = isPreview ? `${cleanUrl}.html` : `/pages${cleanUrl}.html`;
     console.log('✅ [Regular Page]', originalUrl, '→', req.url);
-
     next();
   };
 
@@ -235,6 +255,7 @@ export default defineConfig({
         terms: resolve(__dirname, "src/pages/terms.html"),
         "turnkey-repair": resolve(__dirname, "src/pages/turnkey-repair.html"),
         "where-we-work": resolve(__dirname, "src/pages/where-we-work.html"),
+        "soft-roofing": resolve(__dirname, "src/pages/soft-roofing.html"),
         // Статьи блога (URL: /article-name — 2й уровень вложенности)
         "preimushestva-bezvozdushnoj-pokraski": resolve(__dirname, "src/pages/preimushestva-bezvozdushnoj-pokraski.html"),
         "shtukaturka-sten-v-novostrojke": resolve(__dirname, "src/pages/shtukaturka-sten-v-novostrojke.html"),
@@ -255,24 +276,39 @@ export default defineConfig({
       },
       output: {
         manualChunks: id => {
-          if (id.includes("node_modules")) return "vendor";
-          if (id.includes("scripts/core")) return "core";
-          if (id.includes("scripts/features")) return "features";
+          if (id.includes("node_modules")) { 
+            return "vendor"
+
+          };
+          if (id.includes("scripts/core"))  {
+            return "core"
+
+          }
+          if (id.includes("scripts/features")) {
+            return "features";
+          }
           return null;
         },
         chunkFileNames: "assets/js/[name]-[hash].js",
         entryFileNames: "assets/js/[name]-[hash].js",
         assetFileNames: assetInfo => {
           const name = assetInfo.name || "";
-          if (name.endsWith(".css")) return "assets/css/[name]-[hash][extname]";
-          if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(name)) return "assets/images/[name]-[hash][extname]";
-          if (/\.(woff2?|eot|ttf|otf)$/.test(name)) return "assets/fonts/[name]-[hash][extname]";
+          if (name.endsWith(".css")) {
+             return  "assets/css/[name]-[hash][extname]";
+          }
+          if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(name)) { 
+            return "assets/images/[name]-[hash][extname]"
+          }
+          if (/\.(woff2?|eot|ttf|otf)$/.test(name)) { 
+            return "assets/fonts/[name]-[hash][extname]"
+          }
           return "assets/[name]-[hash][extname]";
         }
       }
     }
   },
   plugins: [
+    injectPartials(),
     htaccessMiddleware(),
     fixHtmlPaths(),
     viteStaticCopy({
@@ -309,6 +345,8 @@ export default defineConfig({
         { src: "scripts/features/pricing-table.js", dest: "scripts/features" },
         { src: "scripts/features/pricing-table-airless-painting.js", dest: "scripts/features" },
         { src: "scripts/features/pricing-table-floor-screed.js", dest: "scripts/features" },
+        { src: "scripts/features/pricing-table-soft-roofing.js", dest: "scripts/features" },
+        { src: "assets/images/soft-roofing/**/*", dest: "assets/images/soft-roofing" },
         { src: ".nojekyll", dest: "." },
         { src: ".htaccess", dest: "." },
         { src: "404.php", dest: "." },

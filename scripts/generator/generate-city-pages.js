@@ -104,17 +104,12 @@ function generateServicePages(service) {
  * Генерирует все городские страницы
  */
 function generateAll() {
-  console.log('Generating city pages...\n');
-
   let total = 0;
 
   services.forEach(service => {
     const count = generateServicePages(service);
-    console.log(`  ${service.name}: ${count} pages`);
     total += count;
   });
-
-  console.log(`\nTotal: ${total} pages generated`);
   return total;
 }
 
@@ -123,7 +118,10 @@ function generateAll() {
  */
 function findCssFileName() {
   const cssDir = resolve(ROOT, 'public_html/assets/css');
-  if (!existsSync(cssDir)) return '/assets/css/main.css';
+if (!existsSync(cssDir)) { 
+  return '/assets/css/main.css'; 
+
+}
 
   const files = readdirSync(cssDir).filter(f => f.startsWith('main-') && f.endsWith('.css'));
   if (files.length > 0) {
@@ -137,12 +135,8 @@ function findCssFileName() {
  * Файлы выводятся в public_html/service-city.html (корень)
  */
 function generateForBuild() {
-  console.log('Generating city pages for production build...\n');
-
   // Находим актуальный CSS файл
   const cssPath = findCssFileName();
-  console.log(`  Using CSS: ${cssPath}\n`);
-
   let total = 0;
 
   services.forEach(service => {
@@ -177,12 +171,8 @@ function generateForBuild() {
       writeFileSync(outPath, html, 'utf-8');
       count++;
     });
-
-    console.log(`  ${service.name}: ${count} pages`);
     total += count;
   });
-
-  console.log(`\nTotal: ${total} pages generated to public_html/`);
   return total;
 }
 
@@ -190,8 +180,6 @@ function generateForBuild() {
  * Очищает сгенерированные плоские страницы из src/pages/
  */
 function clean() {
-  console.log('Cleaning generated city pages...\n');
-
   let removed = 0;
 
   services.forEach(service => {
@@ -204,8 +192,6 @@ function clean() {
       removed++;
     });
   });
-
-  console.log(`Removed ${removed} generated files`);
 }
 
 // CLI
