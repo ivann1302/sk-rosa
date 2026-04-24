@@ -1,4 +1,4 @@
-// Баннер с предложением заказать звонок (появляется через 10 секунд)
+// Баннер с предложением заказать звонок (появляется при прокрутке 50% страницы)
 document.addEventListener("DOMContentLoaded", function () {
   const banner = document.getElementById("call-banner");
   if (!banner) {
@@ -33,7 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Экспортируем для form-handler.js
   window.closeCallBanner = closeBanner;
 
-  setTimeout(openBanner, 10000);
+  // Показываем баннер, когда пользователь прокрутил 50% страницы
+  function handleScroll() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll > 0 && window.scrollY / maxScroll >= 0.5) {
+      openBanner();
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
 
   if (closeBtn) {
     closeBtn.addEventListener("click", closeBanner);

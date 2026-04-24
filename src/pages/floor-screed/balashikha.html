@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Полусухая стяжка пола в Балашихе по низкой цене | ROSA</title>
+    <title>Стяжка пола в Балашихе — полусухая и цементная под ключ | ROSA</title>
     <meta
       name="description"
-      content="Полусухая и цементная стяжка пола с материалом в Балашихе. Цена от 400 руб/м². Выравнивание под любое покрытие. Бесплатный замер. ☎ 8 (985) 135-49-91"
+      content="Механизированная стяжка пола в Балашихе и Московской области. От 900 ₽/м². Полусухая и цементная стяжка под ключ. ➤ 7+ лет опыта ➤ Гарантия 3 года ➤ Бесплатный замер. ☎ 8 (985) 135-49-91"
     />
     <meta name="author" content="OOO.ROSA" />
     <meta name="robots" content="index, follow" />
@@ -14,10 +14,13 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Полусухая стяжка пола в Балашихе по низкой цене | ROSA" />
+    <meta
+      property="og:title"
+      content="Стяжка пола в Балашихе | ROSA — Профессиональная стяжка под ключ"
+    />
     <meta
       property="og:description"
-      content="Профессиональная стяжка пола в Балашихе. Выравнивание пола, подготовка основания под финишное покрытие. Качественные материалы, гарантия качества. Звоните: +7 (985) 135-49-91"
+      content="Профессиональная стяжка пола в Балашихе. Полусухая и цементная стяжка, лазерный контроль ровности. Гарантия 3 года, договор с фиксированной ценой."
     />
     <meta property="og:url" content="https://sk-rosa.ru/floor-screed-balashikha" />
     <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
@@ -34,7 +37,7 @@
     <link rel="icon" href="../../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../../assets/icons/ui/favIcons/r-180.png" />
-    <!-- Preload LCP изображения -->
+    <!-- Preload критических ресурсов -->
     <link
       rel="preload"
       as="image"
@@ -42,12 +45,65 @@
       type="image/webp"
       fetchpriority="high"
     />
+
+    <!-- Критический CSS: скрыть мобильную картинку до загрузки основных стилей -->
+    <style>
+      .about-service__image-mobile {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .about-service__image-mobile {
+          display: block;
+        }
+        .about-service__image-desktop {
+          display: none !important;
+        }
+
+        /* Центрирование всех заголовков страницы на мобильных */
+        .about-service__title,
+        .service-text-block__title,
+        .service-text-block__subtitle,
+        .service-text-block__list-title,
+        .work-stages-service__title,
+        .work-stages-service__subtitle,
+        .work-stages-service__stage-title,
+        .work-stages-service__cta-title,
+        .what-we-paint-list__title,
+        .pricing-section__title,
+        .price-calc__articles-title,
+        .reviews__title,
+        .contact-request__title,
+        .faq__title,
+        .faq__question,
+        .articles-carousel__title {
+          text-align: center !important;
+        }
+      }
+    </style>
+
     <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../../styles/main.scss" />
+
     <!-- Preload шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"
+    /></noscript>
+
     <link
       rel="preload"
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -64,20 +120,6 @@
         href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
         rel="stylesheet"
     /></noscript>
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      as="style"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media = 'all'"
-    />
-    <noscript
-      ><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"
-    /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -85,9 +127,10 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "@id": "https://sk-rosa.ru/floor-screed-balashikha#service",
+        "url": "https://sk-rosa.ru/floor-screed-balashikha",
         "serviceType": "Стяжка пола",
-        "name": "Профессиональная стяжка пола",
-        "description": "Профессиональная стяжка пола в Балашихе. Выравнивание пола, подготовка основания под финишное покрытие. Качественные материалы, гарантия качества.",
+        "name": "Стяжка пола в Балашихе",
+        "description": "Механизированная стяжка пола в Балашихе и Московской области. Полусухая и цементная стяжка, лазерный контроль ровности. Гарантия 3 года, договор с фиксированной ценой.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "ROSA - Ремонт под ключ",
@@ -111,6 +154,13 @@
         "offers": {
           "@type": "Offer",
           "priceCurrency": "RUB",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "900",
+            "priceCurrency": "RUB",
+            "unitCode": "MTK",
+            "unitText": "м²"
+          },
           "availability": "https://schema.org/InStock",
           "url": "https://sk-rosa.ru/floor-screed-balashikha"
         }
@@ -198,30 +248,34 @@
         ]
       }
     </script>
+    <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108700223', 'ym');
+
+    ym(108700223, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/108700223" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
   </head>
   <body id="top">
-    <noscript
-      ><div>
-        <img
-          src="https://mc.yandex.ru/watch/107041182"
-          style="position: absolute; left: -9999px"
-          alt=""
-        /></div
-    ></noscript>
     <!-- HEADER -->
     <main>
       <section class="about-service">
         <div class="about-service__container">
           <div class="about-service__info">
-            <h1 class="about-service__title">
-              Полусухая стяжка пола<br />
-              в Балашихе
-            </h1>
+            <h1 class="about-service__title">Механизированная стяжка пола в Балашихе</h1>
             <div class="about-service__subtitle">
-              Современный метод выравнивания основания под напольное покрытие, обеспечивающий
-              прочную и идеально ровную поверхность. Применяется для подготовки полов в жилых и
-              коммерческих помещениях, а также для укладки систем "тёплый пол".
+              Полусухая и цементная стяжка под любое покрытие — ровно, с лазерным контролем уровня,
+              по договору с фиксированной ценой. Работаем в Балашихе и Московской области.
             </div>
+            <ul class="about-service__badges">
+              <li class="about-service__badge">от 900 ₽/м²</li>
+            </ul>
             <button
               class="about-service__btn"
               onclick="
@@ -234,23 +288,9 @@
           <div class="about-service__image-wrap">
             <!-- Изображение для мобильной версии -->
             <picture class="about-service__image-mobile">
-              <source
-                srcset="
-                  ../../assets/images/common/floor-screed-hero-400.webp  400w,
-                  ../../assets/images/common/floor-screed-hero-800.webp  800w,
-                  ../../assets/images/common/floor-screed-hero.webp     1200w
-                "
-                sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
-                type="image/webp"
-              />
+              <source srcset="../../assets/images/common/floor-screed-hero.webp" type="image/webp" />
               <img
-                src="../../assets/images/common/floor-screed-hero.webp"
-                srcset="
-                  ../../assets/images/common/floor-screed-hero-400.webp  400w,
-                  ../../assets/images/common/floor-screed-hero-800.webp  800w,
-                  ../../assets/images/common/floor-screed-hero.webp     1200w
-                "
-                sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
+                src="../../assets/images/common/floor-screed-hero.png"
                 alt="Стяжка пола"
                 width="500"
                 height="500"
@@ -273,64 +313,64 @@
           </div>
         </div>
       </section>
-      <section class="advantages-service" style="margin-bottom: 0; padding-bottom: 0">
+      <section class="advantages-service advantages-service--numbers">
         <h2 class="visually-hidden">Преимущества стяжки пола</h2>
-        <div class="advantages-service__container" style="padding-left: 30px; padding-right: 30px">
+        <div class="advantages-service__container">
           <div class="advantages-service__list">
             <div class="advantages-service__item">
               <div class="advantages-service__icon">
                 <img
-                  src="../../assets/icons/features/advantages/ruler-2.svg"
-                  alt="Ровная поверхность"
+                  src="../../assets/icons/features/advantages/hourglass-empty.svg"
+                  alt="7+ лет опыта"
                   width="48"
                   height="48"
                 />
               </div>
-              <div class="advantages-service__name">Ровная поверхность</div>
+              <div class="advantages-service__name">7+</div>
               <div class="advantages-service__desc">
-                Идеально плоское основание без перепадов и трещин
-              </div>
-            </div>
-            <div class="advantages-service__item">
-              <div class="advantages-service__icon">
-                <img
-                  src="../../assets/icons/features/advantages/alarm.svg"
-                  alt="Экономия времени"
-                  width="48"
-                  height="48"
-                />
-              </div>
-              <div class="advantages-service__name">Экономия времени</div>
-              <div class="advantages-service__desc">
-                Быстрая укладка с минимальными трудозатратами
-              </div>
-            </div>
-            <div class="advantages-service__item">
-              <div class="advantages-service__icon">
-                <img
-                  src="../../assets/icons/features/advantages/geometry.svg"
-                  alt="Универсальность"
-                  width="48"
-                  height="48"
-                />
-              </div>
-              <div class="advantages-service__name">Универсальность</div>
-              <div class="advantages-service__desc">
-                Применимо для любых типов полов и помещений
+                лет опыта — работаем на рынке ремонта в Балашихе и Московской области
               </div>
             </div>
             <div class="advantages-service__item">
               <div class="advantages-service__icon">
                 <img
                   src="../../assets/icons/features/advantages/checks.svg"
-                  alt="Качество"
+                  alt="Более 150 сданных объектов"
                   width="48"
                   height="48"
                 />
               </div>
-              <div class="advantages-service__name">Качество</div>
+              <div class="advantages-service__name">150+</div>
               <div class="advantages-service__desc">
-                Прочные смеси и профессиональное исполнение
+                объектов сдано по стяжке пола в квартирах, домах и коммерции
+              </div>
+            </div>
+            <div class="advantages-service__item">
+              <div class="advantages-service__icon">
+                <img
+                  src="../../assets/icons/features/advantages/badge-check.svg"
+                  alt="Гарантия 3 года по договору"
+                  width="48"
+                  height="48"
+                />
+              </div>
+              <div class="advantages-service__name">3 года</div>
+              <div class="advantages-service__desc">
+                гарантии — фиксируем в официальном договоре, без скрытых условий
+              </div>
+            </div>
+            <div class="advantages-service__item">
+              <div class="advantages-service__icon">
+                <img
+                  src="../../assets/icons/features/advantages/circle-dashed-check.svg"
+                  alt="Бесплатный выезд специалиста"
+                  width="48"
+                  height="48"
+                />
+              </div>
+              <div class="advantages-service__name">0 ₽</div>
+              <div class="advantages-service__desc">
+                за выезд — бесплатный замер и точный расчёт стоимости на объекте
               </div>
             </div>
           </div>
@@ -338,483 +378,50 @@
             >Цены на стяжку пола<img
               src="../../assets/icons/common/share-alt-svgrepo-com.svg"
               alt="share"
-              style="width: 1.2em; height: 1.2em; vertical-align: middle; margin-left: 0.18em"
+              class="inline-icon"
           /></a>
         </div>
       </section>
 
-      <section class="service-text-block">
+      <section class="service-text-block reveal-on-scroll">
         <div class="service-text-block__container">
-          <h2 class="service-text-block__title">Стяжка пола в Балашихе</h2>
+          <h2 class="service-text-block__title">
+            Механизированная стяжка пола под ключ в Балашихе
+          </h2>
           <p class="service-text-block__subtitle">
-            <strong>Ровное основание под любое покрытие</strong> – быстро и по технологии
+            <strong>Полусухая и цементная стяжка</strong> — от замера до сдачи под чистовую отделку
           </p>
 
           <div class="service-text-block__content">
             <p>
-              Нужна <strong>качественная стяжка пола в Балашихе</strong> без трещин и перепадов?
-              Сделаем ровное, прочное основание под плитку, ламинат или паркет – в квартире, доме
-              или офисе.
+              Основные наши заказчики — владельцы
+              <strong>частных домов и коммерческих объектов</strong>: коттеджей, офисов, магазинов,
+              складов, автосервисов и производственных помещений. Механизированная технология
+              создана именно под такие объёмы — до 150 м² готовой стяжки за смену.
+              <strong>Полусухая стяжка</strong> — выбор для коттеджей с тёплым полом и коммерческой
+              отделки: сохнет 7 дней, не боится небольших минусовых температур в межсезонье.
+              <strong>Цементная стяжка</strong> прочнее и выдерживает высокие нагрузки — заливаем
+              её в гаражи, паркинги, склады и цеха, где по полу ходит техника или стоит
+              оборудование. На замере бесплатно подскажем, какая технология подойдёт под ваш
+              объект.
             </p>
             <p>
-              Работаем с <strong>новостройками и вторичным жильём</strong>. Соблюдаем технологию,
-              используем профессиональное оборудование и контролируем уровень лазером.
+              Работаем на профессиональном пневмонагнетателе: смесь готовим на улице и подаём по
+              шлангу прямо на этаж — без грязи в подъезде и мусора на площадке. Ровность
+              контролируем лазерным нивелиром, допуск <strong>±2 мм на 2 метра</strong>. Армируем
+              фиброволокном, чтобы стяжка не трескалась при усадке. Объём работ, сроки и цену
+              фиксируем в договоре до начала заливки — доплат в процессе не будет, на стяжку даём
+              <strong>3 года гарантии</strong>. За 7 лет сдали 150+ объектов в Балашихе и
+              Московской области: стяжку в новостройках под чистовую отделку, полы под тёплые
+              системы, промышленные стяжки для складов и автосервисов.
             </p>
           </div>
-
-          <h3 class="service-text-block__list-title">Что вы получаете</h3>
-          <ul class="service-text-block__check-list">
-            <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <span><strong>Идеально ровный пол</strong> без «бухтения»</span>
-            </li>
-            <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <span><strong>Правильную геометрию</strong> помещения</span>
-            </li>
-            <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <span><strong>Готовность под чистовую отделку</strong></span>
-            </li>
-            <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-              <span><strong>Чёткие сроки</strong> без затягивания ремонта</span>
-            </li>
-          </ul>
-
-          <h3 class="service-text-block__list-title">Выполняем</h3>
-          <ul class="service-text-block__object-list">
-            <li>
-              <svg
-                class="service-text-block__arrow-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 5l7 7-7 7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Полусухую стяжку</span>
-            </li>
-            <li>
-              <svg
-                class="service-text-block__arrow-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 5l7 7-7 7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Цементно-песчаную стяжку</span>
-            </li>
-            <li>
-              <svg
-                class="service-text-block__arrow-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 5l7 7-7 7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Стяжку под тёплый пол</span>
-            </li>
-            <li>
-              <svg
-                class="service-text-block__arrow-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 5l7 7-7 7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>Выравнивание по маякам</span>
-            </li>
-          </ul>
-
-          <p class="service-text-block__note">
-            Стоимость зависит от площади и толщины слоя. <strong>Расчёт делаем бесплатно.</strong>
-          </p>
-
-          <p class="service-text-block__note">
-            <strong>Стяжка пола в Балашихе под ключ</strong> – без переделок и скрытых доплат.
-            Оставьте заявку – рассчитаем цену и согласуем удобную дату начала работ.
-          </p>
         </div>
       </section>
 
       <!-- COMPLEXES_BLOCK -->
 
-      <section class="portfolio-service">
-        <div class="portfolio-service__container">
-          <h2 class="portfolio-service__title">Работы, которыми мы гордимся</h2>
-          <div class="portfolio-service__description">
-            <p>
-              В нашем портфолио представлены объекты, выполненные с особым вниманием к деталям и
-              высоким стандартам качества. Мы реализуем проекты любой сложности: от современных
-              квартир до просторных домов. Каждый этап работ контролируется профессионалами, а
-              результат всегда радует наших клиентов. Мы гордимся тем, что доверие заказчиков
-              оправдывается безупречным исполнением и индивидуальным подходом к каждому проекту.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Отдельный контейнер на всю ширину для кольцевой анимации -->
-      <div class="portfolio-service-carousel">
-        <div class="portfolio-service__grid">
-          <div class="portfolio-service__row top-row">
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/1.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/2.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/3.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/4.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/5.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/6.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/7.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/8.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/9.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/10.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/11.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/9.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/13.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/14.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/10.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/16.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/17.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/18.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/19.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/20.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-          </div>
-          <div class="portfolio-service__row bottom-row">
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/1.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/2.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/3.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/4.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/5.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/6.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/7.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/8.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/9.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/10.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/11.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/9.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/13.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/14.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/15.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/16.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/17.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/18.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/19.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-            <div class="portfolio-service__item">
-              <img
-                src="../../assets/images/portfolio/20.png"
-                alt="Пример стяжки пола в квартире"
-                class="portfolio-service__image"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a href="/portfolio" class="portfolio-service__more-btn">Больше наших работ</a>
-
-      <section class="work-stages-service">
+      <section class="work-stages-service reveal-on-scroll">
         <div class="work-stages-service__container">
           <div class="work-stages-service__grid">
             <div class="work-stages-service__header">
@@ -887,7 +494,7 @@
         </div>
       </section>
 
-      <section class="what-we-paint-list">
+      <section class="what-we-paint-list reveal-on-scroll">
         <div class="what-we-paint-list__container">
           <div class="what-we-paint-list__content">
             <div class="what-we-paint-list__left">
@@ -956,18 +563,10 @@
             </div>
             <div class="what-we-paint-list__right">
               <picture>
-                <source
-                  srcset="
-                    ../../assets/images/common/floor-screed-hero-400.webp  400w,
-                    ../../assets/images/common/floor-screed-hero-800.webp  800w,
-                    ../../assets/images/common/floor-screed-hero.webp     1200w
-                  "
-                  sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
-                  type="image/webp"
-                />
+                <source srcset="../../assets/images/common/floor-screed-hero.webp" type="image/webp" />
                 <img
-                  src="../../assets/images/common/floor-screed-hero.webp"
-                  alt="Безвоздушная покраска"
+                  src="../../assets/images/common/floor-screed-hero.png"
+                  alt="Виды стяжки пола"
                   class="what-we-paint-list__image"
                 />
               </picture>
@@ -976,62 +575,227 @@
         </div>
       </section>
 
-      <section class="pricing-section" id="pricing-table">
+      <section class="pricing-section reveal-on-scroll" id="pricing-table">
         <div class="pricing-section__container">
           <h2 class="pricing-section__title">Цены на стяжку пола</h2>
           <div id="pricing-table-floor-screed"></div>
         </div>
       </section>
 
-      <section class="price-calc">
+      <section class="price-calc reveal-on-scroll">
         <div class="price-calc__container">
           <div class="price-calc__top-row">
             <div class="price-calc__top-small-card">
               <div class="price-calc__form-image-content">
                 <div class="price-calc__form-block">
-                  <form class="price-calc__form" action="../scripts/api/send.php" method="POST">
-                    <h3>Получите детальную и точную смету на стяжку пола онлайн</h3>
-                    <div class="price-calc__messenger-choice">
-                      <button
-                        class="price-calc__messenger-btn price-calc__messenger-btn--active"
-                        data-messenger="telegram"
-                      >
-                        <img
-                          src="../../assets/images/common/telegram_icon.png"
-                          alt="Telegram"
-                          width="24"
-                          height="24"
-                        />
-                        Telegram
-                      </button>
-                      <button class="price-calc__messenger-btn" data-messenger="whatsapp">
-                        <img
-                          src="../../assets/images/common/whatsapp_icon.png"
-                          alt="WhatsApp"
-                          width="24"
-                          height="24"
-                        />
-                        WhatsApp
-                      </button>
-                      <button class="price-calc__messenger-btn" data-messenger="viber">
-                        <img
-                          src="../../assets/icons/common/viber-svgrepo-com.svg"
-                          alt="Viber"
-                          width="24"
-                          height="24"
-                        />
-                        Viber
-                      </button>
+                  <form
+                    class="price-calc__form price-calc__form--quiz"
+                    action="../../scripts/api/send.php"
+                    method="POST"
+                  >
+                    <h3 class="price-calc__quiz-heading">Расчёт стоимости стяжки за 3 шага</h3>
+
+                    <div class="price-calc__quiz-progress" data-quiz-progress>
+                      <span class="price-calc__quiz-dot price-calc__quiz-dot--active"></span>
+                      <span class="price-calc__quiz-dot"></span>
+                      <span class="price-calc__quiz-dot"></span>
+                      <span class="price-calc__quiz-dot"></span>
                     </div>
-                    <div class="price-calc__phone-input-container">
+
+                    <div class="price-calc__quiz-step price-calc__quiz-step--active" data-step="1">
+                      <p class="price-calc__quiz-title">Какая площадь пола?</p>
+                      <div class="price-calc__quiz-presets">
+                        <button
+                          type="button"
+                          class="price-calc__quiz-preset"
+                          data-area-preset="25"
+                        >
+                          до 30 м²
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-preset"
+                          data-area-preset="50"
+                        >
+                          30–60 м²
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-preset"
+                          data-area-preset="80"
+                        >
+                          60–100 м²
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-preset"
+                          data-area-preset="150"
+                        >
+                          100–200 м²
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-preset"
+                          data-area-preset="300"
+                        >
+                          более 200 м²
+                        </button>
+                      </div>
+                      <div class="price-calc__quiz-area-row">
+                        <input
+                          type="number"
+                          name="AREA"
+                          min="1"
+                          max="10000"
+                          placeholder="или введите свою площадь"
+                          class="price-calc__quiz-area-field"
+                          inputmode="numeric"
+                        />
+                        <span class="price-calc__quiz-area-unit">м²</span>
+                      </div>
+                      <p class="price-calc__quiz-error" data-quiz-error="1">
+                        Укажите площадь от 1 до 10 000 м²
+                      </p>
+                      <div class="price-calc__quiz-nav">
+                        <button
+                          type="button"
+                          class="price-calc__quiz-next"
+                          data-quiz-next="2"
+                        >
+                          Далее
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="price-calc__quiz-step" data-step="2">
+                      <p class="price-calc__quiz-title">Где заливаем стяжку?</p>
+                      <div class="price-calc__quiz-options">
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="PROPERTY_TYPE" value="Квартира / новостройка" />
+                          <span>Квартира / новостройка</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="PROPERTY_TYPE" value="Частный дом / коттедж" />
+                          <span>Частный дом / коттедж</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input
+                            type="radio"
+                            name="PROPERTY_TYPE"
+                            value="Офис / магазин / кафе"
+                          />
+                          <span>Офис / магазин / кафе</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input
+                            type="radio"
+                            name="PROPERTY_TYPE"
+                            value="Склад / цех / автосервис"
+                          />
+                          <span>Склад / цех / автосервис</span>
+                        </label>
+                      </div>
+                      <p class="price-calc__quiz-error" data-quiz-error="2">Выберите тип объекта</p>
+                      <div class="price-calc__quiz-nav">
+                        <button
+                          type="button"
+                          class="price-calc__quiz-prev"
+                          data-quiz-prev="1"
+                        >
+                          Назад
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-next"
+                          data-quiz-next="3"
+                        >
+                          Далее
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="price-calc__quiz-step" data-step="3">
+                      <p class="price-calc__quiz-title">Какое покрытие планируете?</p>
+                      <div class="price-calc__quiz-options">
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="COATING" value="Плитка / керамогранит" />
+                          <span>Плитка / керамогранит</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="COATING" value="Ламинат / паркет" />
+                          <span>Ламинат / паркет</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="COATING" value="Тёплый пол" />
+                          <span>Тёплый пол</span>
+                        </label>
+                        <label class="price-calc__quiz-option">
+                          <input type="radio" name="COATING" value="Не знаю — подскажите" />
+                          <span>Не знаю — подскажите</span>
+                        </label>
+                      </div>
+                      <p class="price-calc__quiz-error" data-quiz-error="3">Выберите покрытие</p>
+                      <div class="price-calc__quiz-nav">
+                        <button
+                          type="button"
+                          class="price-calc__quiz-prev"
+                          data-quiz-prev="2"
+                        >
+                          Назад
+                        </button>
+                        <button
+                          type="button"
+                          class="price-calc__quiz-next"
+                          data-quiz-next="4"
+                        >
+                          Рассчитать
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="price-calc__quiz-step" data-step="4">
+                      <p class="price-calc__quiz-title">Последний шаг — введите телефон</p>
+                      <p class="price-calc__quiz-callback-text">
+                        Передадим ваши ответы менеджеру. Он перезвонит в течение 15 минут, уточнит
+                        детали и назовёт точную стоимость. Бесплатно и ни к чему не обязывает.
+                      </p>
+
+                      <label class="price-calc__quiz-phone-label" for="quiz-phone-input">
+                        Ваш номер телефона<span class="price-calc__quiz-required" aria-hidden="true"
+                          >*</span
+                        >
+                      </label>
+                      <div
+                        class="price-calc__phone-input-container price-calc__phone-input-container--stacked"
+                      >
+                        <input
+                          id="quiz-phone-input"
+                          type="tel"
+                          name="PHONE"
+                          autocomplete="tel"
+                          placeholder="+7 (999) 123-45-67"
+                          class="price-calc__phone-field"
+                          required
+                        />
+                        <button type="submit" class="price-calc__submit-btn">
+                          Заказать звонок
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        class="price-calc__quiz-prev price-calc__quiz-prev--ghost"
+                        data-quiz-prev="3"
+                      >
+                        ← Изменить ответы
+                      </button>
+
                       <input
-                        type="tel"
-                        name="PHONE"
-                        autocomplete="tel"
-                        placeholder="Ваш номер телефона"
-                        class="price-calc__phone-field"
+                        type="hidden"
+                        name="form_source"
+                        value="Квиз-смета стяжки пола (Балашиха)"
                       />
-                      <button class="price-calc__submit-btn">Получить</button>
+                      <input type="hidden" name="COMMENTS" value="" data-quiz-comments />
                     </div>
                   </form>
                 </div>
@@ -1045,45 +809,30 @@
                 <h3 class="price-calc__articles-title">Полезные статьи</h3>
                 <ul class="price-calc__articles-list">
                   <li>
-                    <a href="../vidy-styazhki-pola.html" class="price-calc__article-link"
+                    <a href="./vidy-styazhki-pola.html" class="price-calc__article-link"
                       ><span class="price-calc__article-number">1.</span> Как выбрать стяжку пола
                       правильно<img
                         src="../../assets/icons/common/share-alt-svgrepo-com.svg"
                         alt="share"
-                        style="
-                          width: 1.2em;
-                          height: 1.2em;
-                          vertical-align: middle;
-                          margin-left: 0.18em;
-                        "
+                        class="inline-icon"
                     /></a>
                   </li>
                   <li>
-                    <a href="../gidroizolyaciya-pola-pod-styazhku.html" class="price-calc__article-link"
+                    <a href="./gidroizolyaciya-pola-pod-styazhku.html" class="price-calc__article-link"
                       ><span class="price-calc__article-number">2.</span> Гидроизоляция пола под
                       стяжку<img
                         src="../../assets/icons/common/share-alt-svgrepo-com.svg"
                         alt="share"
-                        style="
-                          width: 1.2em;
-                          height: 1.2em;
-                          vertical-align: middle;
-                          margin-left: 0.18em;
-                        "
+                        class="inline-icon"
                     /></a>
                   </li>
                   <li>
-                    <a href="../styazhka-pod-teply-pol.html" class="price-calc__article-link"
+                    <a href="./styazhka-pod-teply-pol.html" class="price-calc__article-link"
                       ><span class="price-calc__article-number">3.</span> Стяжка для теплого
                       пола<img
                         src="../../assets/icons/common/share-alt-svgrepo-com.svg"
                         alt="share"
-                        style="
-                          width: 1.2em;
-                          height: 1.2em;
-                          vertical-align: middle;
-                          margin-left: 0.18em;
-                        "
+                        class="inline-icon"
                     /></a>
                   </li>
                 </ul>
@@ -1096,29 +845,72 @@
             </div>
             <div class="price-calc__large-card">
               <div class="price-calc__large-content">
-                <div class="price-calc__large-text">
-                  <h3 class="hidden-mobile">
-                    Точный расчет ремонта<br class="visible-mobile" />
-                    онлайн — за пару минут!
-                  </h3>
-                  <h3 class="visible-mobile">Калькулятор стоимости ремонта</h3>
-                  <p>
-                    Вы знаете объём и вид работ — мы рассчитаем итоговую цену за считанные минуты.
-                    Прозрачный и понятный расчет без лишних шагов.
-                  </p>
-                  <a href="/calculator" class="price-calc__btn">
-                    Подробнее<img
-                      src="../../assets/icons/common/share-alt-svgrepo-com.svg"
-                      alt="share"
-                      style="
-                        width: 1.2em;
-                        height: 1.2em;
-                        vertical-align: middle;
-                        margin-left: 0.18em;
-                      "
+                <form
+                  class="price-calc__mini-calc"
+                  action="../../scripts/api/send.php"
+                  method="POST"
+                >
+                  <h3 class="price-calc__mini-calc-title">Калькулятор стяжки пола</h3>
+
+                  <div class="price-calc__mini-calc-fields">
+                    <label class="price-calc__mini-calc-field">
+                      <span class="price-calc__mini-calc-label">Площадь, м²</span>
+                      <input
+                        type="number"
+                        name="AREA"
+                        min="1"
+                        max="10000"
+                        placeholder="80"
+                        class="price-calc__mini-calc-input"
+                        data-calc-area
+                        inputmode="numeric"
+                      />
+                    </label>
+
+                    <label class="price-calc__mini-calc-field">
+                      <span class="price-calc__mini-calc-label">Тип стяжки</span>
+                      <select
+                        name="SCREED_TYPE"
+                        class="price-calc__mini-calc-select"
+                        data-calc-type
+                      >
+                        <option value="Полусухая стяжка" data-rate="900">
+                          Полусухая — 900 ₽/м²
+                        </option>
+                        <option value="Цементная стяжка" data-rate="1000">
+                          Цементная — 1000 ₽/м²
+                        </option>
+                        <option value="Цементная стяжка под тёплый пол" data-rate="1100">
+                          Под тёплый пол — 1100 ₽/м²
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="price-calc__mini-calc-result">
+                    Ориентировочная стоимость:
+                    <span class="price-calc__mini-calc-amount" data-calc-amount>0</span> ₽
+                  </div>
+
+                  <div class="price-calc__phone-input-container">
+                    <input
+                      type="tel"
+                      name="PHONE"
+                      autocomplete="tel"
+                      placeholder="+7 (999) 123-45-67"
+                      class="price-calc__phone-field"
                     />
-                  </a>
-                </div>
+                    <button type="submit" class="price-calc__submit-btn">Получить расчёт</button>
+                  </div>
+
+                  <input
+                    type="hidden"
+                    name="form_source"
+                    value="Мини-калькулятор стяжки (Балашиха)"
+                  />
+                  <input type="hidden" name="COMMENTS" value="" data-calc-comments />
+                </form>
+
                 <div class="price-calc__large-image">
                   <img src="../../assets/images/common/calculator-hero.webp" alt="Калькулятор" />
                 </div>
@@ -1127,22 +919,11 @@
           </div>
         </div>
       </section>
-      <section class="reviews" style="background: #fff; padding: 40px 0 48px 0">
-        <div class="reviews__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
+      <section class="reviews reveal-on-scroll">
+        <div class="reviews__container">
           <div class="reviews__content">
-            <h2
-              class="reviews__title"
-              style="
-                text-align: left;
-                font-size: 1.6rem;
-                font-weight: 600;
-                color: #333;
-                margin-bottom: 24px;
-              "
-            >
-              Отзывы о нашей работе
-            </h2>
-            <div class="reviews__desc" style="font-size: 1.1rem; color: #555; margin-bottom: 24px">
+            <h2 class="reviews__title">Отзывы о нашей работе</h2>
+            <div class="reviews__desc">
               Мы всегда стремимся к совершенству и ценим каждого клиента. Ваши отзывы — важная часть
               нашей работы, ведь именно благодаря вашей обратной связи мы можем становиться лучше,
               совершенствовать сервис и поддерживать высокий уровень качества.<br /><br />
@@ -1183,383 +964,142 @@
               <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
             </div>
           </div>
-          <div
-            class="reviews__carousel-outer"
-            style="
-              position: relative;
-              width: 100vw;
-              left: 50%;
-              right: 50%;
-              margin-left: -50vw;
-              margin-right: -50vw;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            "
-          >
-            <button
-              class="reviews-carousel__arrow reviews-carousel__arrow--left"
-              style="
-                position: absolute;
-                left: calc(50% - 660px);
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 2;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: rgba(0, 0, 0, 0.08);
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                font-size: 2rem;
-                color: #333;
-                transition: background 0.2s;
-              "
-            >
-              &#8592;
-            </button>
-            <section
-              class="reviews-carousel"
-              style="
-                max-width: 1200px;
-                width: 100%;
-                margin: 0 auto;
-                overflow: hidden;
-                position: relative;
-              "
-            >
+          <div class="reviews__carousel-outer">
+            <button class="reviews-carousel__arrow reviews-carousel__arrow--left">&#8592;</button>
+            <section class="reviews-carousel">
               <h2 class="visually-hidden">Карусель отзывов</h2>
-              <div class="reviews-carousel__wrapper" style="width: 100%">
-                <div
-                  class="reviews-carousel__track"
-                  style="
-                    display: flex;
-                    gap: 24px;
-                    box-sizing: border-box;
-                    width: calc(4 * (100% - 72px) / 4 + 72px);
-                    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                    will-change: transform;
-                  "
-                >
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+              <div class="reviews-carousel__wrapper">
+                <div class="reviews-carousel__track">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-anna.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Анна, Москва
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Очень довольна ремонтом! Всё сделали в срок, аккуратно и качественно. Спасибо
-                      вашей команде!
+                    <div class="reviews-card__text">
+                      Делали полусухую стяжку в трёшке на 82 м². Бригада приехала утром, к вечеру
+                      всё залито и выровнено. Через неделю положили плитку — ровно, без перепадов.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-igor.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Игорь, Химки
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Понравился подход и прозрачность. Все этапы согласовывали, материалы
-                      качественные. Рекомендую!
+                    <div class="reviews-card__text">
+                      Заливали цементную стяжку в загородном доме под тёплый пол. Всё с лазерным
+                      уровнем, по договору, в срок. Через 3 недели уложили паркет — лежит как
+                      влитой.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-maria.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Мария, Одинцово
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Спасибо за ремонт кухни! Всё очень понравилось, мастера вежливые, результат
-                      отличный.
+                    <div class="reviews-card__text">
+                      В новостройке перепад по полу был почти 4 см. Ребята всё замерили, заключили
+                      договор с фиксированной ценой и за день залили полусухую на 68 м².
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-vladimir.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Владимир, Балашиха
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Работа выполнена на отлично! Буду обращаться ещё и советовать друзьям.
-                      Спасибо!
+                    <div class="reviews-card__text">
+                      Делали стяжку в гараже под автомобиль — цементную с армированием фиброй.
+                      Прошло полгода, никаких трещин, машина и стеллажи стоят без вопросов.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-ekaterina.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Екатерина, Реутов
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Всё понравилось, особенно отношение к деталям. Буду рекомендовать знакомым!
+                    <div class="reviews-card__text">
+                      Полусухая стяжка в квартире перед ремонтом под ключ. Что удивило — не было
+                      пыли: смесь подавали шлангом с улицы. Ровно, под ламинат уже готово.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-sergey.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Сергей, Москва
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Спасибо за профессионализм и аккуратность. Всё устроило, результат отличный!
+                    <div class="reviews-card__text">
+                      Заливали стяжку в кафе, 140 м², ночью — чтобы не останавливать работу днём.
+                      За смену всё залили и выровняли. Спасибо за профессиональный подход.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-olga.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Ольга, Люберцы
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Очень приятное общение, всё объяснили, сделали быстро и качественно.
+                    <div class="reviews-card__text">
+                      Стяжка под тёплый пол в новостройке, в двух комнатах. Всё по уровню, трещин
+                      нет. Удивила аккуратность бригады — после работы убрали за собой.
                     </div>
                   </div>
-                  <div
-                    class="reviews-card"
-                    style="
-                      position: relative;
-                      flex: 0 0 calc((100% - 72px) / 4);
-                      max-width: calc((100% - 72px) / 4);
-                      height: 240px;
-                      display: flex;
-                      flex-direction: column;
-                      background: #f8f9fa;
-                      border-radius: 12px;
-                      padding: 24px;
-                      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-                    "
-                  >
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px">
+                  <div class="reviews-card">
+                    <div class="reviews-card__header">
                       <img
                         src="../../assets/images/common/reviewers/photo-dmitriy.webp"
                         alt="user"
-                        style="
-                          width: 48px;
-                          height: 48px;
-                          border-radius: 50%;
-                          background: #fff;
-                          border: 2px solid #e0e0e0;
-                        "
                       />
-                      <div style="font-weight: 600; font-size: 1.1rem; color: #222">
+                      <div class="reviews-card__name">
                         Дмитрий, Балашиха
                       </div>
                     </div>
-                    <div style="color: #444; font-size: 1rem">
-                      Ремонт прошёл без стресса, всё чётко по срокам. Спасибо за работу!
+                    <div class="reviews-card__text">
+                      Стяжка на складе, 320 м², цементная с армированием. Залили за две смены, по
+                      графику, без доплат сверх договора. С юрлицами работают грамотно.
                     </div>
                   </div>
                 </div>
               </div>
             </section>
-            <button
-              class="reviews-carousel__arrow reviews-carousel__arrow--right"
-              style="
-                position: absolute;
-                right: calc(50% - 660px);
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 2;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                background: rgba(0, 0, 0, 0.08);
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                font-size: 2rem;
-                color: #333;
-                transition: background 0.2s;
-              "
-            >
-              &#8594;
-            </button>
+            <button class="reviews-carousel__arrow reviews-carousel__arrow--right">&#8594;</button>
           </div>
         </div>
       </section>
 
-      <section class="contact-request" id="contact-request">
+      <section class="contact-request reveal-on-scroll" id="contact-request">
         <div class="contact-request__container">
           <div class="contact-request__content">
             <div class="contact-request__info">
@@ -1618,7 +1158,7 @@
             <div class="contact-request__form">
               <form
                 class="contact-request__form-fields"
-                action="../scripts/api/send.php"
+                action="../../scripts/api/send.php"
                 method="POST"
               >
                 <div class="contact-request__field">
@@ -1643,9 +1183,9 @@
                     required
                   />
                 </div>
-                <input type="hidden" name="COMMENTS" value="Заявка на стяжку пола" />
+                <input type="hidden" name="COMMENTS" value="Заявка на стяжку пола в Балашихе" />
                 <input type="hidden" name="property_type" value="apartment" />
-                <input type="hidden" name="form_source" value="Стяжка пола" />
+                <input type="hidden" name="form_source" value="Стяжка пола (Балашиха)" />
                 <button type="submit" class="contact-request__submit">Отправить заявку</button>
               </form>
             </div>
@@ -1653,7 +1193,7 @@
         </div>
       </section>
 
-      <section class="faq">
+      <section class="faq reveal-on-scroll">
         <div class="faq__container">
           <h2 class="faq__title">Ответы на частые вопросы</h2>
           <p class="faq__description">
@@ -1708,8 +1248,7 @@
           </div>
         </div>
       </section>
-
-      <section class="articles-carousel">
+      <section class="articles-carousel reveal-on-scroll">
         <div class="articles-carousel__container">
           <h2 class="articles-carousel__title">Полезные статьи о ремонте</h2>
           <div class="articles-carousel__wrapper">
@@ -1721,15 +1260,14 @@
             </button>
             <div class="articles-carousel__viewport">
               <div class="articles-carousel__track">
-                <a
-                  href="../preimushestva-bezvozdushnoj-pokraski.html"
-                  class="articles-carousel__card"
-                >
-                  <h3 class="articles-carousel__card-title">Преимущества безвоздушной покраски</h3>
+                <a href="vidy-styazhki-pola.html" class="articles-carousel__card">
+                  <h3 class="articles-carousel__card-title">
+                    Как выбрать стяжку пола правильно: виды, преимущества и применение
+                  </h3>
                   <div class="articles-carousel__card-image">
                     <img
-                      src="../../assets/images/common/airless-paint.webp"
-                      alt="Преимущества безвоздушной покраски"
+                      src="../../assets/images/common/how-to-choose-floor-screed.webp"
+                      alt="Как выбрать стяжку пола"
                       loading="lazy"
                       decoding="async"
                       width="600"
@@ -1737,7 +1275,37 @@
                     />
                   </div>
                 </a>
-                <a href="../shtukaturka-sten-v-novostrojke.html" class="articles-carousel__card">
+                <a href="styazhka-pod-teply-pol.html" class="articles-carousel__card">
+                  <h3 class="articles-carousel__card-title">
+                    Стяжка для тёплого пола: какую выбрать и как правильно заливать
+                  </h3>
+                  <div class="articles-carousel__card-image">
+                    <img
+                      src="../../assets/images/common/floor-screed-underfloor-heating.webp"
+                      alt="Стяжка для тёплого пола"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
+                  </div>
+                </a>
+                <a href="gidroizolyaciya-pola-pod-styazhku.html" class="articles-carousel__card">
+                  <h3 class="articles-carousel__card-title">
+                    Гидроизоляция пола под стяжку: материалы и технология
+                  </h3>
+                  <div class="articles-carousel__card-image">
+                    <img
+                      src="../../assets/images/common/waterproof-panel.webp"
+                      alt="Гидроизоляция пола под стяжку"
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="350"
+                    />
+                  </div>
+                </a>
+                <a href="shtukaturka-sten-v-novostrojke.html" class="articles-carousel__card">
                   <h3 class="articles-carousel__card-title">
                     Штукатурка стен в новостройке: полное руководство по выбору смесей и технологий
                   </h3>
@@ -1752,40 +1320,7 @@
                     />
                   </div>
                 </a>
-                <a href="../vybor-kraski-airless-painting.html" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">
-                    Как выбрать краску для безвоздушной покраски в Москве в 2026 году
-                  </h3>
-                  <div class="articles-carousel__card-image">
-                    <img
-                      src="../../assets/images/common/how-to-choose-paint.webp"
-                      alt="Как выбрать краску для безвоздушной покраски"
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="400"
-                    />
-                  </div>
-                </a>
-                <a href="../shtukaturka-guide.html" class="articles-carousel__card">
-                  <h3 class="articles-carousel__card-title">
-                    Как правильно штукатурить стены: пошаговое руководство
-                  </h3>
-                  <div class="articles-carousel__card-image">
-                    <img
-                      src="../../assets/images/common/how-to-plastering.webp"
-                      alt="Как правильно штукатурить стены"
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="350"
-                    />
-                  </div>
-                </a>
-                <a
-                  href="../mashinnaya-ili-ruchnaya-shtukaturka.html"
-                  class="articles-carousel__card"
-                >
+                <a href="mashinnaya-ili-ruchnaya-shtukaturka.html" class="articles-carousel__card">
                   <h3 class="articles-carousel__card-title">
                     Механизированная или ручная штукатурка: что лучше для ремонта
                   </h3>
@@ -1800,14 +1335,14 @@
                     />
                   </div>
                 </a>
-                <a href="../vybor-shtukaturki.html" class="articles-carousel__card">
+                <a href="shtukaturka-guide.html" class="articles-carousel__card">
                   <h3 class="articles-carousel__card-title">
-                    Какую штукатурку выбрать для стен: гид по типам и применению
+                    Как правильно штукатурить стены: пошаговое руководство
                   </h3>
                   <div class="articles-carousel__card-image">
                     <img
-                      src="../../assets/images/common/article-how-to-choose-plastering.webp"
-                      alt="Какую штукатурку выбрать для стен"
+                      src="../../assets/images/common/how-to-plastering.webp"
+                      alt="Как правильно штукатурить стены"
                       loading="lazy"
                       decoding="async"
                       width="600"
@@ -1824,65 +1359,12 @@
               &#10095;
             </button>
           </div>
-          <a href="../blog.html" class="articles-carousel__more-btn">Посмотреть другие статьи</a>
+          <a href="blog.html" class="articles-carousel__more-btn">Посмотреть другие статьи</a>
         </div>
       </section>
     </main>
 
         <!-- FOOTER -->
-
-    <!-- Модальное окно успешной отправки -->
-    <div class="success-modal" id="success-modal" aria-hidden="true">
-      <div class="success-modal__overlay"></div>
-      <div class="success-modal__content">
-        <button class="success-modal__close" aria-label="Закрыть" type="button">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 6L6 18M6 6L18 18"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-        <div class="success-modal__icon">
-          <svg
-            width="64"
-            height="64"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="32" cy="32" r="32" fill="#88a593" />
-            <path
-              d="M18 32L26 40L46 20"
-              fill="none"
-              stroke="#ffffff"
-              stroke-width="5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-            />
-          </svg>
-        </div>
-        <h2 class="success-modal__title">Спасибо за вашу заявку!</h2>
-        <p class="success-modal__text">
-          Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
-        </p>
-        <div class="success-modal__actions">
-          <a href="/" class="success-modal__button success-modal__button--primary">На главную</a>
-          <button class="success-modal__button success-modal__button--secondary" data-close-modal>
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Фиксированный блок социальных сетей -->
     <aside class="social-fixed" aria-label="Социальные сети" data-js-social-fixed>
@@ -1991,6 +1473,61 @@
         </a>
       </div>
     </aside>
+
+    <!-- Модальное окно успешной отправки -->
+    <div class="success-modal" id="success-modal" aria-hidden="true">
+      <div class="success-modal__overlay"></div>
+      <div class="success-modal__content">
+        <button class="success-modal__close" aria-label="Закрыть" type="button">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="success-modal__icon">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="32" cy="32" r="32" fill="#88a593" />
+            <path
+              d="M18 32L26 40L46 20"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
+        <h2 class="success-modal__title">Спасибо за вашу заявку!</h2>
+        <p class="success-modal__text">
+          Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
+        </p>
+        <div class="success-modal__actions">
+          <a href="./blog.html" class="success-modal__button success-modal__button--primary"
+            >Читать полезные статьи</a
+          >
+          <button class="success-modal__button success-modal__button--secondary" data-close-modal>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="../../scripts/core/constants.js" defer></script>
     <script src="../../scripts/features/contact/init-contacts.js" defer></script>

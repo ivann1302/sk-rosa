@@ -55,6 +55,28 @@
     max-width: 520px;
   }
 
+  &__badges {
+    list-style: none;
+    padding: 0;
+    margin: -16px 0 24px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--color-green);
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 999px;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
   &__image-wrap {
     width: 50%;
     flex: 0 0 50%;
@@ -191,6 +213,15 @@
 
     .about-service__btn {
       align-self: center;
+    }
+
+    &__badges {
+      justify-content: center;
+      margin: -8px 0 20px 0;
+    }
+
+    &__badge {
+      font-size: 1rem;
     }
   }
 

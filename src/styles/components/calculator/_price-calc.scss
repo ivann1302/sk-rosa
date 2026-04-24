@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 200px;
+    min-height: 200px;
 
     h3 {
       font-size: 1.1rem;
@@ -151,13 +151,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 200px;
+    min-height: 200px;
   }
 
   &__large-content {
     display: flex;
-    align-items: center;
-    height: 100%;
+    align-items: stretch;
+    min-height: 100%;
+    width: 100%;
   }
 
   &__large-text {
@@ -273,7 +274,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    min-height: 200px;
     font-size: 1.2rem;
     font-weight: 600;
   }
@@ -470,10 +471,11 @@
       }
     }
 
-    /* уменьшенная картинка в большой плашке */
+    /* мобильный: форма сверху, картинка снизу */
     &__large-content {
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
       width: 100%;
     }
 
@@ -484,9 +486,10 @@
     }
 
     &__large-image {
-      flex: 0 0 120px;
-      height: 120px;
-      margin-right: 0;
+      flex: 0 0 auto;
+      width: 100%;
+      height: 140px;
+      margin: 0;
     }
 
     &__large-image img {
@@ -498,6 +501,8 @@
 
     /* Адаптивная ширина для поля телефона */
     &__phone-input-container {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       max-width: 100%;
       gap: 12px;
@@ -532,6 +537,358 @@
 
     &__articles {
       padding: 24px;
+    }
+  }
+
+  // ─── Квиз-смета ───────────────────────────────────────────────────────────
+  &__form--quiz {
+    width: 100%;
+  }
+
+  &__quiz-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--color-dark);
+  }
+
+  &__quiz-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  &__quiz-dot {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #e0e0e0;
+    transition: background 0.2s;
+
+    &--active {
+      background: var(--color-green);
+    }
+  }
+
+  &__quiz-step {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__quiz-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: #222;
+  }
+
+  &__quiz-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__quiz-preset {
+    padding: 8px 14px;
+    background: #fff;
+    color: #444;
+    border: 1.5px solid #d0d0d0;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      background 0.2s;
+
+    &:hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+
+    &--active {
+      background: var(--color-green);
+      color: #fff;
+      border-color: var(--color-green);
+    }
+  }
+
+  &__quiz-area-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__quiz-area-field {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border: 1.5px solid #111;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: var(--color-green);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  &__quiz-area-unit {
+    color: #666;
+    font-size: 0.95rem;
+  }
+
+  &__quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__quiz-option {
+    display: block;
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    span {
+      display: block;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1.5px solid #d0d0d0;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: #333;
+      text-align: center;
+      transition:
+        border-color 0.2s,
+        background 0.2s,
+        color 0.2s;
+    }
+
+    &:hover span {
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+
+    input:checked + span {
+      border-color: var(--color-green);
+      background: rgb(136 165 147 / 10%);
+      color: var(--color-green);
+      font-weight: 600;
+    }
+  }
+
+  &__quiz-error {
+    display: none;
+    color: #d04040;
+    font-size: 0.85rem;
+    margin: -4px 0 10px;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__quiz-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  &__quiz-next,
+  &__quiz-prev {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  &__quiz-next {
+    background: var(--color-green);
+    color: #fff;
+    flex: 1;
+
+    &:hover {
+      background: #6e8c7a;
+    }
+  }
+
+  &__quiz-prev {
+    background: transparent;
+    color: #666;
+    border: 1.5px solid #d0d0d0;
+
+    &:hover {
+      border-color: var(--color-green);
+      color: var(--color-green);
+    }
+
+    &--ghost {
+      display: block;
+      background: transparent;
+      border: none;
+      color: #666;
+      margin-top: 12px;
+      padding: 6px 0;
+      text-align: left;
+      font-weight: 400;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: var(--color-green);
+      }
+    }
+  }
+
+  &__quiz-callback-text {
+    background: rgb(136 165 147 / 10%);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  &__quiz-phone-label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  &__quiz-required {
+    color: var(--color-green);
+    margin-left: 2px;
+  }
+
+  // ─── Мини-калькулятор в нижней широкой карточке ──────────────────────────
+  &__mini-calc {
+    flex: 1;
+    padding: 24px 40px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  &__mini-calc-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-dark);
+  }
+
+  &__mini-calc-fields {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 12px;
+  }
+
+  &__mini-calc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__mini-calc-label {
+    font-size: 0.85rem;
+    color: #555;
+    font-weight: 500;
+  }
+
+  &__mini-calc-input,
+  &__mini-calc-select {
+    padding: 10px 12px;
+    border: 1.5px solid #d0d0d0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  &__mini-calc-select {
+    appearance: none;
+    padding-right: 36px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23666' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px 8px;
+  }
+
+  &__mini-calc-input:focus,
+  &__mini-calc-select:focus {
+    border-color: var(--color-green);
+  }
+
+  &__mini-calc-result {
+    background: rgb(136 165 147 / 10%);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  &__mini-calc-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-green);
+  }
+
+  &__phone-input-container--stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+
+    .price-calc__phone-field {
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .price-calc__submit-btn {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  @media (width <= 768px) {
+    &__quiz-options {
+      grid-template-columns: 1fr;
+    }
+
+    &__mini-calc {
+      padding: 20px;
+    }
+
+    &__mini-calc-fields {
+      grid-template-columns: 1fr;
     }
   }
 }
