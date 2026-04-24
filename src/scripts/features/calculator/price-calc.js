@@ -10,27 +10,56 @@ import { captureUtm, getUtmData } from "../contact/utm-tracker.js";
 
 captureUtm();
 
-const RATES = {
-  "Плитка / керамогранит": { base: 1000, type: "Цементная стяжка" },
-  "Ламинат / паркет": { base: 900, type: "Полусухая стяжка" },
-  "Тёплый пол": { base: 1100, type: "Цементная стяжка под тёплый пол" },
-  "Не знаю — подскажите": { base: 950, type: "Полусухая стяжка" },
+const SERVICE_CONFIGS = {
+  "floor-screed": {
+    quizLabel: "Квиз-расчёт стяжки пола:",
+    miniCalcLabel: "Мини-калькулятор стяжки:",
+    coatingFieldLabel: "Покрытие",
+    rates: {
+      "Плитка / керамогранит": { base: 1000, type: "Цементная стяжка" },
+      "Ламинат / паркет": { base: 900, type: "Полусухая стяжка" },
+      "Тёплый пол": { base: 1100, type: "Цементная стяжка под тёплый пол" },
+      "Не знаю — подскажите": { base: 950, type: "Полусухая стяжка" },
+    },
+    propertyMultiplier: {
+      "Квартира / новостройка": 1.0,
+      "Частный дом / коттедж": 1.0,
+      "Офис / магазин / кафе": 1.0,
+      "Склад / цех / автосервис": 1.1,
+    },
+  },
+  plastering: {
+    quizLabel: "Квиз-расчёт штукатурных работ:",
+    miniCalcLabel: "Мини-калькулятор штукатурки:",
+    coatingFieldLabel: "Отделка",
+    rates: {
+      "Под обои": { base: 450, type: "Гипсовая штукатурка по маякам" },
+      "Под покраску": { base: 500, type: "Гипсовая штукатурка под покраску" },
+      "Под плитку": { base: 550, type: "Цементная штукатурка" },
+      "Не знаю — подскажите": { base: 480, type: "Гипсовая штукатурка по маякам" },
+    },
+    propertyMultiplier: {
+      "Квартира / новостройка": 1.0,
+      "Частный дом / коттедж": 1.0,
+      "Офис / магазин / кафе": 1.05,
+      "Склад / цех / автосервис": 1.1,
+    },
+  },
 };
 
-const PROPERTY_MULTIPLIER = {
-  "Квартира / новостройка": 1.0,
-  "Частный дом / коттедж": 1.0,
-  "Офис / магазин / кафе": 1.0,
-  "Склад / цех / автосервис": 1.1,
-};
+function getServiceConfig(form) {
+  const key = form?.dataset?.service;
+  return SERVICE_CONFIGS[key] || SERVICE_CONFIGS["floor-screed"];
+}
 
 const roundTo = (value, step) => Math.round(value / step) * step;
 
 const formatPrice = value => value.toLocaleString("ru-RU");
 
-function calculatePrice(area, propertyType, coating) {
-  const rate = RATES[coating] ?? RATES["Не знаю — подскажите"];
-  const multiplier = PROPERTY_MULTIPLIER[propertyType] ?? 1.0;
+function calculatePrice(config, area, propertyType, coating) {
+  const rates = config.rates;
+  const rate = rates[coating] ?? rates["Не знаю — подскажите"];
+  const multiplier = config.propertyMultiplier[propertyType] ?? 1.0;
   const base = area * rate.base * multiplier;
   const min = roundTo(base * 0.9, 500);
   const max = roundTo(base * 1.1, 500);
@@ -43,6 +72,7 @@ function initMiniCalc() {
     return;
   }
 
+  const config = getServiceConfig(form);
   const areaField = form.querySelector("[data-calc-area]");
   const typeField = form.querySelector("[data-calc-type]");
   const amountEl = form.querySelector("[data-calc-amount]");
@@ -67,7 +97,7 @@ function initMiniCalc() {
     const area = Number(areaField.value) || 0;
     const option = typeField.options[typeField.selectedIndex];
     const lines = [
-      "Мини-калькулятор стяжки:",
+      config.miniCalcLabel,
       `• Площадь: ${area} м²`,
       `• Тип: ${option.value}`,
       `• Ставка: ${option.dataset.rate} ₽/м²`,
@@ -151,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  const config = getServiceConfig(form);
   const steps = Array.from(form.querySelectorAll(".price-calc__quiz-step"));
   const dots = Array.from(form.querySelectorAll(".price-calc__quiz-dot"));
   const areaField = form.querySelector('input[name="AREA"]');
@@ -213,13 +244,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const area = Number(areaField.value);
     const propertyType = form.querySelector('input[name="PROPERTY_TYPE"]:checked')?.value ?? "";
     const coating = form.querySelector('input[name="COATING"]:checked')?.value ?? "";
-    const { min, max, recommendation } = calculatePrice(area, propertyType, coating);
+    const { min, max, recommendation } = calculatePrice(config, area, propertyType, coating);
 
     const lines = [
-      "Квиз-расчёт стяжки пола:",
+      config.quizLabel,
       `• Площадь: ${area} м²`,
       `• Объект: ${propertyType}`,
-      `• Покрытие: ${coating}`,
+      `• ${config.coatingFieldLabel}: ${coating}`,
       `• Рекомендация: ${recommendation}`,
       `• Ориентир: ${formatPrice(min)}–${formatPrice(max)} ₽`,
       "Клиент просил перезвонить для уточнения точной стоимости.",

@@ -30,13 +30,16 @@ let warnedHeader = 0;
 
 for (const filePath of htmlFiles) {
   const rel = filePath.replace(OUT_DIR + "/", "");
+  if (/^yandex_[a-f0-9]+\.html$/.test(rel)) {
+    continue;
+  }
   let content = readFileSync(filePath, "utf-8");
   let changed = false;
 
   if (content.includes("<!-- HEADER -->")) {
     content = content.replace("<!-- HEADER -->", headerHtml);
     changed = true;
-  } else {
+  } else if (!/<header[\s>]/.test(content)) {
     console.warn(`WARN: нет <!-- HEADER --> в ${rel}`);
     warnedHeader++;
   }
@@ -44,7 +47,7 @@ for (const filePath of htmlFiles) {
   if (content.includes("<!-- FOOTER -->")) {
     content = content.replace("<!-- FOOTER -->", footerHtml);
     changed = true;
-  } else {
+  } else if (!/<footer[\s>]/.test(content)) {
     console.warn(`WARN: нет <!-- FOOTER --> в ${rel}`);
     warnedFooter++;
   }
