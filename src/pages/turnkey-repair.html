@@ -108,6 +108,30 @@
         visibility: visible !important;
         opacity: 1 !important;
       }
+
+      @media (max-width: 768px) {
+        /* Центрирование всех заголовков страницы на мобильных */
+        .about-turnkey__title,
+        .about-turnkey-2__title,
+        .about-turnkey-2__calc-title,
+        .advantages-turnkey__title,
+        .service-text-block__title,
+        .service-text-block__subtitle,
+        .service-text-block__list-title,
+        .company-description-turnkey__title,
+        .work-stages-turnkey__title,
+        .social-reviews__title,
+        .reviews__title,
+        .useful-links__title,
+        .contact-request-turnkey__title,
+        .faq__title,
+        .faq__question,
+        .articles-carousel__title,
+        .portfolio-description__title,
+        .portfolio-turnkey__title {
+          text-align: center !important;
+        }
+      }
     </style>
 
     <!-- JSON-LD -->
@@ -338,6 +362,19 @@
                 </div>
               </div>
               <div class="about-turnkey-2__field">
+                <label class="about-turnkey-2__label">Площадь, м²</label>
+                <input
+                  class="about-turnkey-2__input"
+                  type="number"
+                  name="AREA"
+                  min="1"
+                  max="10000"
+                  inputmode="numeric"
+                  placeholder="50"
+                  required
+                />
+              </div>
+              <div class="about-turnkey-2__field">
                 <label class="about-turnkey-2__label">Имя</label>
                 <input
                   class="about-turnkey-2__input"
@@ -367,7 +404,7 @@
         </div>
       </section>
 
-      <section class="advantages-turnkey">
+      <section class="advantages-turnkey reveal-on-scroll">
         <div class="advantages-turnkey__container">
           <div class="advantages-turnkey__list">
             <div class="advantages-turnkey__item">
@@ -439,7 +476,7 @@
         </div>
       </section>
 
-      <section class="service-text-block">
+      <section class="service-text-block reveal-on-scroll">
         <div class="service-text-block__container">
           <h2 class="service-text-block__title">Ремонт под ключ в Москве</h2>
           <p class="service-text-block__subtitle">
@@ -648,7 +685,7 @@
         </div>
       </section>
 
-      <section class="company-description-turnkey">
+      <section class="company-description-turnkey reveal-on-scroll">
         <div class="company-description-turnkey__container">
           <h2 class="visually-hidden">О компании</h2>
           <div class="company-description-turnkey__content">
@@ -668,7 +705,7 @@
         </div>
       </section>
 
-      <section class="work-stages-turnkey">
+      <section class="work-stages-turnkey reveal-on-scroll">
         <div class="work-stages-turnkey__container">
           <div class="work-stages-turnkey__row">
             <h2 class="work-stages-turnkey__title">Как мы работаем?</h2>
@@ -755,7 +792,7 @@
         </div>
       </section>
 
-      <section class="social-reviews">
+      <section class="social-reviews reveal-on-scroll">
         <div class="social-reviews__container">
           <!-- Левая секция -->
           <div class="social-reviews__left">
@@ -788,7 +825,7 @@
         </div>
       </section>
 
-      <section class="reviews">
+      <section class="reviews reveal-on-scroll">
         <div class="reviews__container">
           <h2 class="reviews__title">Отзывы наших клиентов</h2>
           <div class="reviews__grid-outer">
@@ -799,40 +836,39 @@
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Обращались в компанию ROSA для ремонта квартиры под ключ. Очень довольны
-                  результатом! Мастера работали аккуратно, всё сделали в срок. Особенно понравилось,
-                  что использовали качественные материалы и соблюдали все технологии. Рекомендуем!
+                  Делали ремонт двушки 62 м² в новостройке под ключ — от штукатурки до плинтуса.
+                  Договор с фиксированной ценой, поэтапная оплата по факту работ. Уложились в 2,5
+                  месяца, никаких сюрпризов в смете не было.
                 </p>
                 <div class="reviewer-info">
                   <img src="../assets/images/icons/flaticon/3135823.png" alt="Светлана" />
-                  <div class="reviewer-name">Светлана</div>
+                  <div class="reviewer-name">Светлана, Москва</div>
                 </div>
               </div>
 
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Заказывали ремонт офиса в компании ROSA. Работали оперативно, точно рассчитали
-                  стоимость, помогли с выбором материалов. Использовали современное оборудование,
-                  что ускорило процесс. Качеством довольны на 100%.
+                  Ремонт офиса 180 м² с дизайн-проектом. ROSA работали по чертежам, согласовывали
+                  каждый этап, фотоотчёты в Telegram. Сдали под арендатора в срок — арендатор зашёл
+                  с понедельника как и планировали.
                 </p>
                 <div class="reviewer-info">
                   <img src="../assets/images/icons/flaticon/3135768-Bz0eA-Ko.png" alt="Станислав" />
-                  <div class="reviewer-name">Станислав</div>
+                  <div class="reviewer-name">Станислав, Химки</div>
                 </div>
               </div>
 
-              <!-- Третий отзыв -->
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Делали ремонт магазина одежды. Было сложно найти подрядчиков для работы с дорогими
-                  материалами, но ROSA справились отлично. Работа выполнена качественно и в срок.
-                  Спасибо за профессионализм!
+                  Делали ремонт магазина одежды 90 м². Были дорогие отделочные материалы —
+                  венецианка, латунные профили. ROSA работали аккуратно, мебель и витрины ставили
+                  бережно. Гарантия 3 года в договоре.
                 </p>
                 <div class="reviewer-info">
                   <img src="../assets/images/icons/flaticon/3135823.png" alt="Татьяна" />
-                  <div class="reviewer-name">Татьяна</div>
+                  <div class="reviewer-name">Татьяна, Одинцово</div>
                 </div>
               </div>
             </div>
@@ -843,7 +879,7 @@
         </div>
       </section>
 
-      <section class="useful-links" style="background: #fff; padding: 40px 0">
+      <section class="useful-links reveal-on-scroll" style="background: #fff; padding: 40px 0">
         <div class="useful-links__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
           <h2 class="useful-links__title">Собрали для вас все самые полезные ссылки</h2>
 
@@ -1074,7 +1110,7 @@
         </div>
       </section>
 
-      <section id="contact-request-turnkey" class="contact-request-turnkey">
+      <section id="contact-request-turnkey" class="contact-request-turnkey reveal-on-scroll">
         <div class="contact-request-turnkey__container">
           <div class="contact-request-turnkey__content">
             <div class="contact-request-turnkey__form">
@@ -1173,7 +1209,7 @@
         </div>
       </section>
 
-      <section class="faq">
+      <section class="faq reveal-on-scroll">
         <div class="faq__container">
           <h2 class="faq__title">Ответы на частые вопросы</h2>
           <p class="faq__description">
@@ -1235,7 +1271,7 @@
       </section>
     </section>
 
-    <section class="portfolio-description">
+    <section class="portfolio-description reveal-on-scroll">
       <div class="portfolio-description__container">
         <h2 class="portfolio-description__title">Наши работы — ваш ориентир</h2>
         <p class="portfolio-description__text">
@@ -1341,7 +1377,7 @@
       </div>
     </section>
 
-    <section class="articles-carousel">
+    <section class="articles-carousel reveal-on-scroll">
       <div class="articles-carousel__container">
         <h2 class="articles-carousel__title">Полезные статьи о ремонте</h2>
         <div class="articles-carousel__wrapper">
@@ -1609,7 +1645,9 @@
           Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
         </p>
         <div class="success-modal__actions">
-          <a href="/" class="success-modal__button success-modal__button--primary">На главную</a>
+          <a href="./blog.html" class="success-modal__button success-modal__button--primary"
+            >Читать полезные статьи</a
+          >
           <button class="success-modal__button success-modal__button--secondary" data-close-modal>
             Закрыть
           </button>

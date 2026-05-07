@@ -272,6 +272,7 @@ export default defineConfig({
         "styazhka-pod-teply-pol": resolve(__dirname, "src/pages/styazhka-pod-teply-pol.html"),
         "armirovanie-shtukaturki-setkoj": resolve(__dirname, "src/pages/armirovanie-shtukaturki-setkoj.html"),
         "shpaklevka-sten-posle-shtukaturki": resolve(__dirname, "src/pages/shpaklevka-sten-posle-shtukaturki.html"),
+        "stoimost-remonta-kvartiry": resolve(__dirname, "src/pages/stoimost-remonta-kvartiry.html"),
         // Городские страницы генерируются отдельно: npm run generate:build
       },
       output: {

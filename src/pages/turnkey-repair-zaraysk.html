@@ -6,7 +6,7 @@
     <title>Ремонт квартир и домов под ключ в Зарайске | ROSA</title>
     <meta
       name="description"
-      content="Ремонт квартир, частных домов и коммерческих помещений под ключ в Зарайске. Фиксированные цены, договор, гарантия 3 года. ☎ 8 (985) 135-49-91"
+      content="Ремонт квартир, домов и коммерческих помещений под ключ в Зарайске. ➤ 7+ лет опыта ➤ Гарантия 3 года ➤ Договор с фиксированной ценой. ☎ 8(985) 135-49-91"
     />
     <meta name="author" content="OOO.ROSA" />
     <meta name="robots" content="index, follow" />
@@ -14,10 +14,13 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ремонт квартир и домов под ключ в Зарайске | ROSA" />
+    <meta
+      property="og:title"
+      content="Ремонт под ключ в Зарайске | ROSA — Профессиональный ремонт квартир"
+    />
     <meta
       property="og:description"
-      content="Ремонт квартир и домов под ключ в Зарайске. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены. Бесплатный замер. Звоните: +7 (985) 135-"
+      content="Ремонт квартир и домов под ключ в Зарайске. Полный комплекс работ от демонтажа до чистовой отделки. Договор, гарантия 3 года."
     />
     <meta property="og:url" content="https://sk-rosa.ru/turnkey-repair-zaraysk" />
     <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
@@ -34,7 +37,7 @@
     <link rel="icon" href="../../assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="../../assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="../../assets/icons/ui/favIcons/r-180.png" />
-    <!-- Preload LCP изображения -->
+    <!-- Preload критических ресурсов -->
     <link
       rel="preload"
       as="image"
@@ -42,12 +45,30 @@
       type="image/webp"
       fetchpriority="high"
     />
+
     <!-- Асинхронная загрузка CSS -->
     <link rel="stylesheet" href="../../../styles/main.scss" />
+
     <!-- Preload шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript
+      ><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"
+    /></noscript>
+
     <link
       rel="preload"
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
@@ -64,20 +85,7 @@
         href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
         rel="stylesheet"
     /></noscript>
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      as="style"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media = 'all'"
-    />
-    <noscript
-      ><link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"
-    /></noscript>
+
     <style>
       .services__item {
         box-sizing: border-box !important;
@@ -100,6 +108,30 @@
         visibility: visible !important;
         opacity: 1 !important;
       }
+
+      @media (max-width: 768px) {
+        /* Центрирование всех заголовков страницы на мобильных */
+        .about-turnkey__title,
+        .about-turnkey-2__title,
+        .about-turnkey-2__calc-title,
+        .advantages-turnkey__title,
+        .service-text-block__title,
+        .service-text-block__subtitle,
+        .service-text-block__list-title,
+        .company-description-turnkey__title,
+        .work-stages-turnkey__title,
+        .social-reviews__title,
+        .reviews__title,
+        .useful-links__title,
+        .contact-request-turnkey__title,
+        .faq__title,
+        .faq__question,
+        .articles-carousel__title,
+        .portfolio-description__title,
+        .portfolio-turnkey__title {
+          text-align: center !important;
+        }
+      }
     </style>
 
     <!-- JSON-LD -->
@@ -108,9 +140,10 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "@id": "https://sk-rosa.ru/turnkey-repair-zaraysk#service",
+        "url": "https://sk-rosa.ru/turnkey-repair-zaraysk",
         "serviceType": "Ремонт под ключ",
-        "name": "Ремонт квартир и домов под ключ",
-        "description": "Ремонт квартир и домов под ключ в Зарайске. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены.",
+        "name": "Ремонт под ключ в Зарайске",
+        "description": "Ремонт квартир, домов и коммерческих помещений под ключ в Зарайске и Московской области. Полный комплекс работ от демонтажа до чистовой отделки. Договор, гарантия 3 года, фиксированные цены.",
         "provider": {
           "@type": "LocalBusiness",
           "name": "ROSA - Ремонт под ключ",
@@ -135,7 +168,15 @@
           "@type": "Offer",
           "priceCurrency": "RUB",
           "availability": "https://schema.org/InStock",
-          "url": "https://sk-rosa.ru/turnkey-repair-zaraysk"
+          "url": "https://sk-rosa.ru/turnkey-repair-zaraysk",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "minPrice": "10000",
+            "maxPrice": "15000",
+            "priceCurrency": "RUB",
+            "unitCode": "MTK",
+            "unitText": "м²"
+          }
         }
       }
     </script>
@@ -172,50 +213,50 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Что входит в ремонт под ключ?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ремонт под ключ включает полный цикл работ: демонтаж старой отделки, выравнивание стен и полов, прокладку электрики и сантехники, монтаж потолков, чистовую отделку (штукатурка, шпаклёвка, покраска, укладка плитки и напольных покрытий). Вы получаете готовое к проживанию помещение по фиксированной цене."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "Сколько времени занимает ремонт под ключ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Сроки зависят от площади и объёма работ. Однокомнатную квартиру мы ремонтируем за 4–6 недель, двухкомнатную — за 6–10 недель. Точные сроки прописываем в договоре и строго их соблюдаем. Возможна поэтапная сдача работ."
+              "text": "Время выполнения зависит от площади помещения и объема работ. В среднем ремонт квартиры площадью 50 м² занимает 2-4 недели. Точные сроки согласовываем в договоре и строго их соблюдаем."
             }
           },
           {
             "@type": "Question",
-            "name": "Нужно ли самостоятельно закупать материалы?",
+            "name": "Что входит в ремонт под ключ?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Нет, закупку всех материалов берём на себя. Мы работаем с проверенными поставщиками и закупаем материалы по оптовым ценам. Вы платите только за то, что идёт в дело — перерасход не вашей вины не оплачивается."
+              "text": "Полный комплекс работ: демонтаж, электрика, сантехника, выравнивание стен и потолков, стяжка пола, финишная отделка, установка дверей и плинтусов. Всё до состояния 'заходи и живи'."
             }
           },
           {
             "@type": "Question",
-            "name": "Как формируется стоимость ремонта под ключ?",
+            "name": "Нужно ли мне покупать материалы?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Стоимость рассчитывается на основе сметы: площадь помещения, виды отделочных работ и выбранные материалы. Смету составляем бесплатно после выезда на объект. Цена фиксируется в договоре и не меняется в процессе ремонта."
+              "text": "Нет, мы берем эту задачу на себя. Закупаем все необходимые материалы с учетом ваших пожеланий и бюджета. Предоставляем чеки и гарантируем качество всех материалов."
             }
           },
           {
             "@type": "Question",
-            "name": "Есть ли гарантия на ремонт под ключ?",
+            "name": "Можно ли сделать ремонт в рассрочку?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Да, мы предоставляем гарантию 3 года на все виды работ. Гарантия распространяется на качество отделки, соблюдение технологий и применённые материалы. При выявлении дефектов устраняем их бесплатно в согласованные сроки."
+              "text": "Да, мы работаем по этапам. Оплата производится поэтапно: после подписания договора, по завершении черновых работ и после сдачи объекта. Можем согласовать индивидуальный график оплаты."
             }
           },
           {
             "@type": "Question",
-            "name": "Можно ли делать ремонт в новостройке без предчистовой отделки?",
+            "name": "Есть ли гарантия на работы?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Да, мы работаем с квартирами в любом состоянии: черновая отделка, предчистовая, а также под снос старого ремонта. Перед стартом проводим осмотр и составляем детальную смету с учётом реального состояния помещения."
+              "text": "Да, мы предоставляем гарантию 3 года на все виды работ. Гарантия закрепляется в договоре. При выявлении дефектов по нашей вине устраняем их бесплатно в течение 7 дней."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Нужно ли мне присутствовать на объекте?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Не обязательно. Мы согласовываем все важные моменты заранее, ведем фотоотчет и оперативно консультируем по телефону. Ваше присутствие требуется только при приемке этапов и итоговой сдаче."
             }
           }
         ]
@@ -223,14 +264,6 @@
     </script>
   </head>
   <body id="top">
-    <noscript
-      ><div>
-        <img
-          src="https://mc.yandex.ru/watch/107041182"
-          style="position: absolute; left: -9999px"
-          alt=""
-        /></div
-    ></noscript>
     <!-- HEADER -->
 
     <section class="about-turnkey">
@@ -255,12 +288,12 @@
         <div class="about-turnkey__content">
           <p class="about-turnkey__subtitle-small">Что мы предлагаем</p>
           <h1 class="about-turnkey__title">
-            Ремонт квартир и домов под ключ<br />
-            в Зарайске
+            Ремонт квартир, домов, офисов,<br />
+            коммерческих помещений под ключ в Зарайске
           </h1>
           <div class="about-turnkey__row">
             <a
-              href="/portfolio"
+              href="portfolio.html"
               class="about-turnkey__btn about-turnkey__btn--secondary"
               style="text-decoration: none; display: inline-block"
             >
@@ -279,7 +312,7 @@
           </div>
           <div class="about-turnkey-2__right">
             <h3 class="about-turnkey-2__calc-title">КАЛЬКУЛЯТОР РЕМОНТА</h3>
-            <form class="about-turnkey-2__form" action="../scripts/api/send.php" method="POST">
+            <form class="about-turnkey-2__form" action="../../scripts/api/send.php" method="POST">
               <div class="about-turnkey-2__field">
                 <label class="about-turnkey-2__label">Объект</label>
                 <div class="custom-select about-turnkey-2__select-wrapper">
@@ -333,6 +366,19 @@
                 </div>
               </div>
               <div class="about-turnkey-2__field">
+                <label class="about-turnkey-2__label">Площадь, м²</label>
+                <input
+                  class="about-turnkey-2__input"
+                  type="number"
+                  name="AREA"
+                  min="1"
+                  max="10000"
+                  inputmode="numeric"
+                  placeholder="50"
+                  required
+                />
+              </div>
+              <div class="about-turnkey-2__field">
                 <label class="about-turnkey-2__label">Имя</label>
                 <input
                   class="about-turnkey-2__input"
@@ -354,15 +400,15 @@
                   required
                 />
               </div>
-              <input type="hidden" name="COMMENTS" value="Заявка на расчет с формы калькулятора" />
-              <input type="hidden" name="form_source" value="Ремонт под ключ - Калькулятор" />
+              <input type="hidden" name="COMMENTS" value="Заявка на расчет ремонта в Зарайске" />
+              <input type="hidden" name="form_source" value="Ремонт под ключ - Калькулятор (Зарайск)" />
               <button class="about-turnkey-2__btn" type="submit">Рассчитать</button>
             </form>
           </div>
         </div>
       </section>
 
-      <section class="advantages-turnkey">
+      <section class="advantages-turnkey reveal-on-scroll">
         <div class="advantages-turnkey__container">
           <div class="advantages-turnkey__list">
             <div class="advantages-turnkey__item">
@@ -377,8 +423,8 @@
               <div class="advantages-turnkey__content">
                 <h3 class="advantages-turnkey__title">Бесплатный выезд</h3>
                 <div class="advantages-turnkey__desc">
-                  Бесплатный выезд специалиста для замера и составления сметы на территории Балашихи
-                  и Московской области.
+                  Бесплатный выезд специалиста для замера и составления сметы на территории Москвы и
+                  МО.
                 </div>
               </div>
             </div>
@@ -434,7 +480,19 @@
         </div>
       </section>
 
-      <section class="service-text-block">
+            <section class="city-complexes">
+        <div class="city-complexes__container">
+          <h2 class="city-complexes__title">Новостройки в Зарайске, где мы работаем</h2>
+          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
+          <ul class="city-complexes__list">
+        <li class="city-complexes__item">ЖК Зарайск</li>
+        <li class="city-complexes__item">ЖК Южный</li>
+        <li class="city-complexes__item">ЖК Новый Зарайск</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="service-text-block reveal-on-scroll">
         <div class="service-text-block__container">
           <h2 class="service-text-block__title">Ремонт под ключ в Зарайске</h2>
           <p class="service-text-block__subtitle">
@@ -443,7 +501,7 @@
 
           <div class="service-text-block__content">
             <p>
-              Нужен <strong>качественный ремонт квартиры или дома в Зарайске</strong> без головной
+              Нужен <strong>качественный ремонт квартиры или дома в Москве</strong> без головной
               боли? Выполним весь комплекс работ – от проектирования и демонтажа до финишной отделки
               и уборки.
             </p>
@@ -456,73 +514,88 @@
           <h3 class="service-text-block__list-title">Почему выбирают нас</h3>
           <ul class="service-text-block__check-list">
             <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
               <span><strong>Официальный договор</strong> с фиксированными ценами</span>
             </li>
             <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
               <span><strong>Собственная бригада</strong> проверенных мастеров</span>
             </li>
             <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
               <span><strong>Поэтапная оплата</strong> по факту выполненных работ</span>
             </li>
             <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
               <span><strong>Гарантия 3 года</strong> на все виды работ</span>
             </li>
             <li>
-              <div class="contact-request__feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
               <span><strong>Чёткие сроки</strong> без затягивания ремонта</span>
             </li>
           </ul>
@@ -622,13 +695,13 @@
           </p>
 
           <p class="service-text-block__note">
-            <strong>Ремонт под ключ в Зарайске</strong> – без переделок и скрытых доплат. Оставьте
+            <strong>Ремонт под ключ в Москве</strong> – без переделок и скрытых доплат. Оставьте
             заявку – рассчитаем стоимость и согласуем удобную дату начала работ.
           </p>
         </div>
       </section>
 
-      <section class="company-description-turnkey">
+      <section class="company-description-turnkey reveal-on-scroll">
         <div class="company-description-turnkey__container">
           <h2 class="visually-hidden">О компании</h2>
           <div class="company-description-turnkey__content">
@@ -648,7 +721,7 @@
         </div>
       </section>
 
-      <section class="work-stages-turnkey">
+      <section class="work-stages-turnkey reveal-on-scroll">
         <div class="work-stages-turnkey__container">
           <div class="work-stages-turnkey__row">
             <h2 class="work-stages-turnkey__title">Как мы работаем?</h2>
@@ -735,126 +808,7 @@
         </div>
       </section>
 
-            <section class="city-complexes">
-        <div class="city-complexes__container">
-          <h2 class="city-complexes__title">Новостройки в Зарайске, где мы работаем</h2>
-          <p class="city-complexes__desc">Наши мастера выполняли работы в этих жилых комплексах — знаем особенности домов, застройщиков и типичные задачи.</p>
-          <ul class="city-complexes__list">
-        <li class="city-complexes__item">ЖК Зарайск</li>
-        <li class="city-complexes__item">ЖК Южный</li>
-        <li class="city-complexes__item">ЖК Новый Зарайск</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="portfolio-description">
-        <div class="portfolio-description__container">
-          <h2 class="portfolio-description__title">Наши работы — ваш ориентир</h2>
-          <p class="portfolio-description__text">
-            В портфолио ROSA — реальные интерьеры, которые мы реализовали для клиентов с разными
-            задачами, вкусами и метражом. Это не визуализации, а готовые квартиры, где уже живут
-            люди. Посмотрите, каким может быть ваш будущий интерьер — от планировки до финальной
-            отделки.
-          </p>
-          <p class="portfolio-description__text">
-            Понравился стиль или подход? Узнайте, сколько может стоить ремонт в вашей квартире —
-            воспользуйтесь удобным калькулятором, чтобы прикинуть бюджет и понять, с чего начать.
-            <a href="/calculator" class="portfolio-description__button">
-              Рассчитать стоимость
-              <img
-                src="../../assets/icons/common/share-alt-svgrepo-com.svg"
-                alt="Поделиться"
-                width="16"
-                height="16"
-              />
-            </a>
-          </p>
-        </div>
-      </section>
-
-      <section class="portfolio-turnkey" id="portfolio">
-        <div class="portfolio-turnkey__container">
-          <div class="portfolio-turnkey__project">
-            <div class="portfolio-turnkey__project-image">
-              <picture>
-                <source
-                  srcset="
-                    ../../assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp
-                  "
-                  type="image/webp"
-                />
-                <img
-                  src="../../assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png"
-                  alt="Интерьер квартиры"
-                  id="project-image"
-                />
-              </picture>
-            </div>
-            <div
-              class="portfolio-turnkey__content-card"
-              style="
-                background: #fff;
-                border-radius: 8px;
-                padding: 24px;
-                box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-              "
-            >
-              <div class="portfolio-turnkey__project-header" id="project-location">
-                г. Москва, ЖК "Московский"
-              </div>
-              <h2 class="portfolio-turnkey__project-title" id="project-title">
-                Дизайн-проект однокомнатной квартиры
-              </h2>
-              <div class="portfolio-turnkey__project-costs-row">
-                <div class="portfolio-turnkey__project-cost">
-                  <span class="portfolio-turnkey__cost-label">Площадь объекта</span>
-                  <span class="portfolio-turnkey__cost-amount" id="project-area">32.12м²</span>
-                </div>
-                <div class="portfolio-turnkey__project-cost">
-                  <span class="portfolio-turnkey__cost-label">Стоимость ремонта</span>
-                  <span class="portfolio-turnkey__cost-amount" id="project-price">885 443 ₽</span>
-                </div>
-              </div>
-              <p class="portfolio-turnkey__project-description" id="project-description">
-                Модернизм выделяется утончённым дизайном и оригинальной архитектурой. Гармония
-                базовых тонов с яркими акцентами подчёркивает стиль, а удобная мебель делает
-                пространство комфортным для жизни.
-              </p>
-              <div class="portfolio-turnkey__navigation">
-                <div class="portfolio-turnkey__nav-buttons">
-                  <button
-                    class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--prev"
-                    id="prev-btn"
-                  >
-                    <img
-                      src="../../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
-                      alt="Предыдущий"
-                      width="30"
-                      height="30"
-                    />
-                  </button>
-                  <button
-                    class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--next"
-                    id="next-btn"
-                  >
-                    <img
-                      src="../../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
-                      alt="Следующий"
-                      width="30"
-                      height="30"
-                    />
-                  </button>
-                </div>
-                <div class="portfolio-turnkey__nav-counter-card">
-                  <span class="portfolio-turnkey__nav-counter" id="project-counter">1 / 10</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="social-reviews">
+      <section class="social-reviews reveal-on-scroll">
         <div class="social-reviews__container">
           <!-- Левая секция -->
           <div class="social-reviews__left">
@@ -887,79 +841,67 @@
         </div>
       </section>
 
-      <section class="reviews">
+      <section class="reviews reveal-on-scroll">
         <div class="reviews__container">
           <h2 class="reviews__title">Отзывы наших клиентов</h2>
           <div class="reviews__grid-outer">
+            <button class="review-grid-arrow review-grid-arrow--left" aria-label="Предыдущий отзыв">
+              &#8592;
+            </button>
             <div class="reviews__grid">
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Обращались в компанию ROSA для ремонта квартиры под ключ. Очень довольны
-                  результатом! Мастера работали аккуратно, всё сделали в срок. Особенно понравилось,
-                  что использовали качественные материалы и соблюдали все технологии. Рекомендуем!
+                  Делали ремонт двушки 62 м² в новостройке под ключ — от штукатурки до плинтуса.
+                  Договор с фиксированной ценой, поэтапная оплата по факту работ. Уложились в 2,5
+                  месяца, никаких сюрпризов в смете не было.
                 </p>
                 <div class="reviewer-info">
-                  <img
-                    src="../../assets/images/icons/flaticon/3135823.png"
-                    alt="Светлана"
-                    width="50"
-                    height="50"
-                    loading="lazy"
-                  />
-                  <div class="reviewer-name">Светлана</div>
+                  <img src="../../assets/images/icons/flaticon/3135823.png" alt="Светлана" />
+                  <div class="reviewer-name">Светлана, Москва</div>
                 </div>
               </div>
 
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Заказывали ремонт офиса в компании ROSA. Работали оперативно, точно рассчитали
-                  стоимость, помогли с выбором материалов. Использовали современное оборудование,
-                  что ускорило процесс. Качеством довольны на 100%.
+                  Ремонт офиса 180 м² с дизайн-проектом. ROSA работали по чертежам, согласовывали
+                  каждый этап, фотоотчёты в Telegram. Сдали под арендатора в срок — арендатор зашёл
+                  с понедельника как и планировали.
                 </p>
                 <div class="reviewer-info">
-                  <img
-                    src="../../assets/images/icons/flaticon/3135768-Bz0eA-Ko.png"
-                    alt="Станислав"
-                    width="50"
-                    height="50"
-                    loading="lazy"
-                  />
-                  <div class="reviewer-name">Станислав</div>
+                  <img src="../../assets/images/icons/flaticon/3135768-Bz0eA-Ko.png" alt="Станислав" />
+                  <div class="reviewer-name">Станислав, Химки</div>
                 </div>
               </div>
 
               <div class="review-card">
                 <div class="quote-mark">"</div>
                 <p class="review-text">
-                  Делали ремонт магазина одежды. Было сложно найти подрядчиков для работы с дорогими
-                  материалами, но ROSA справились отлично. Работа выполнена качественно и в срок.
-                  Спасибо за профессионализм!
+                  Делали ремонт магазина одежды 90 м². Были дорогие отделочные материалы —
+                  венецианка, латунные профили. ROSA работали аккуратно, мебель и витрины ставили
+                  бережно. Гарантия 3 года в договоре.
                 </p>
                 <div class="reviewer-info">
-                  <img
-                    src="../../assets/images/icons/flaticon/3135823.png"
-                    alt="Татьяна"
-                    width="50"
-                    height="50"
-                    loading="lazy"
-                  />
-                  <div class="reviewer-name">Татьяна</div>
+                  <img src="../../assets/images/icons/flaticon/3135823.png" alt="Татьяна" />
+                  <div class="reviewer-name">Татьяна, Одинцово</div>
                 </div>
               </div>
             </div>
+            <button class="review-grid-arrow review-grid-arrow--right" aria-label="Следующий отзыв">
+              &#8594;
+            </button>
           </div>
         </div>
       </section>
 
-      <section class="useful-links" style="background: #fff; padding: 40px 0">
+      <section class="useful-links reveal-on-scroll" style="background: #fff; padding: 40px 0">
         <div class="useful-links__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
           <h2 class="useful-links__title">Собрали для вас все самые полезные ссылки</h2>
 
           <div class="useful-links__grid">
             <a
-              href="/calculator"
+              href="calculator.html"
               class="useful-links__item"
               style="
                 background: #fff;
@@ -1006,7 +948,7 @@
             </a>
 
             <a
-              href="/blog"
+              href="blog.html"
               class="useful-links__item"
               style="
                 background: #fff;
@@ -1184,13 +1126,13 @@
         </div>
       </section>
 
-      <section id="contact-request-turnkey" class="contact-request-turnkey">
+      <section id="contact-request-turnkey" class="contact-request-turnkey reveal-on-scroll">
         <div class="contact-request-turnkey__container">
           <div class="contact-request-turnkey__content">
             <div class="contact-request-turnkey__form">
               <form
                 class="contact-request-turnkey__form-fields"
-                action="../scripts/api/send.php"
+                action="../../scripts/api/send.php"
                 method="POST"
               >
                 <div class="contact-request-turnkey__field">
@@ -1215,9 +1157,9 @@
                     required
                   />
                 </div>
-                <input type="hidden" name="COMMENTS" value="Заявка на бесплатную консультацию" />
+                <input type="hidden" name="COMMENTS" value="Заявка на ремонт в Зарайске" />
                 <input type="hidden" name="property_type" value="apartment" />
-                <input type="hidden" name="form_source" value="Ремонт под ключ - Консультация" />
+                <input type="hidden" name="form_source" value="Ремонт под ключ - Консультация (Зарайск)" />
                 <button type="submit" class="contact-request-turnkey__submit">
                   Отправить заявку
                 </button>
@@ -1283,58 +1225,61 @@
         </div>
       </section>
 
-      <section class="faq">
+      <section class="faq reveal-on-scroll">
         <div class="faq__container">
+          <h2 class="faq__title">Ответы на частые вопросы</h2>
+          <p class="faq__description">
+            Мы собрали самые популярные вопросы, которые нам задают клиенты при заказе ремонта под
+            ключ. Здесь вы найдете подробные ответы на все важные моменты: от сроков выполнения
+            работ до гарантийных обязательств. Если у вас есть дополнительные вопросы, не
+            стесняйтесь обращаться к нам напрямую.
+          </p>
           <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__question">Что входит в ремонт под ключ?</h3>
-              <p class="faq__answer">
-                Ремонт под ключ включает полный цикл работ: демонтаж старой отделки, выравнивание
-                стен и полов, прокладку электрики и сантехники, монтаж потолков, чистовую отделку
-                (штукатурка, шпаклёвка, покраска, укладка плитки и напольных покрытий). Вы получаете
-                готовое к проживанию помещение по фиксированной цене.
-              </p>
-            </div>
             <div class="faq__item">
               <h3 class="faq__question">Сколько времени занимает ремонт под ключ?</h3>
               <p class="faq__answer">
-                Сроки зависят от площади и объёма работ. Однокомнатную квартиру мы ремонтируем за
-                4–6 недель, двухкомнатную — за 6–10 недель. Точные сроки прописываем в договоре и
-                строго их соблюдаем. Возможна поэтапная сдача работ.
+                Время выполнения зависит от площади помещения и объема работ. В среднем ремонт
+                квартиры площадью 50 м² занимает 2-4 недели. Точные сроки согласовываем в договоре и
+                строго их соблюдаем.
               </p>
             </div>
             <div class="faq__item">
-              <h3 class="faq__question">Нужно ли самостоятельно закупать материалы?</h3>
+              <h3 class="faq__question">Что входит в ремонт под ключ?</h3>
               <p class="faq__answer">
-                Нет, закупку всех материалов берём на себя. Мы работаем с проверенными поставщиками
-                и закупаем материалы по оптовым ценам. Вы платите только за то, что идёт в дело —
-                перерасход не вашей вины не оплачивается.
+                Полный комплекс работ: демонтаж, электрика, сантехника, выравнивание стен и
+                потолков, стяжка пола, финишная отделка, установка дверей и плинтусов. Всё до
+                состояния "заходи и живи".
               </p>
             </div>
             <div class="faq__item">
-              <h3 class="faq__question">Как формируется стоимость ремонта под ключ?</h3>
+              <h3 class="faq__question">Нужно ли мне покупать материалы?</h3>
               <p class="faq__answer">
-                Стоимость рассчитывается на основе сметы: площадь помещения, виды отделочных работ и
-                выбранные материалы. Смету составляем бесплатно после выезда на объект. Цена
-                фиксируется в договоре и не меняется в процессе ремонта.
+                Нет, мы берем эту задачу на себя. Закупаем все необходимые материалы с учетом ваших
+                пожеланий и бюджета. Предоставляем чеки и гарантируем качество всех материалов.
               </p>
             </div>
             <div class="faq__item">
-              <h3 class="faq__question">Есть ли гарантия на ремонт под ключ?</h3>
+              <h3 class="faq__question">Можно ли сделать ремонт в рассрочку?</h3>
               <p class="faq__answer">
-                Да, мы предоставляем гарантию 3 года на все виды работ. Гарантия распространяется на
-                качество отделки, соблюдение технологий и применённые материалы. При выявлении
-                дефектов устраняем их бесплатно в согласованные сроки.
+                Да, мы работаем по этапам. Оплата производится поэтапно: после подписания договора,
+                по завершении черновых работ и после сдачи объекта. Можем согласовать индивидуальный
+                график оплаты.
               </p>
             </div>
             <div class="faq__item">
-              <h3 class="faq__question">
-                Можно ли делать ремонт в новостройке без предчистовой отделки?
-              </h3>
+              <h3 class="faq__question">Есть ли гарантия на работы?</h3>
               <p class="faq__answer">
-                Да, мы работаем с квартирами в любом состоянии: черновая отделка, предчистовая, а
-                также под снос старого ремонта. Перед стартом проводим осмотр и составляем детальную
-                смету с учётом реального состояния помещения.
+                Да, мы предоставляем гарантию 3 года на все виды работ. Гарантия закрепляется в
+                договоре. При выявлении дефектов по нашей вине устраняем их бесплатно в течение 7
+                дней.
+              </p>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__question">Нужно ли мне присутствовать на объекте?</h3>
+              <p class="faq__answer">
+                Не обязательно. Мы согласовываем все важные моменты заранее, ведем фотоотчет и
+                оперативно консультируем по телефону. Ваше присутствие требуется только при приемке
+                этапов и итоговой сдаче.
               </p>
             </div>
           </div>
@@ -1342,7 +1287,113 @@
       </section>
     </section>
 
-    <section class="articles-carousel">
+    <section class="portfolio-description reveal-on-scroll">
+      <div class="portfolio-description__container">
+        <h2 class="portfolio-description__title">Наши работы — ваш ориентир</h2>
+        <p class="portfolio-description__text">
+          В портфолио ROSA — реальные интерьеры, которые мы реализовали для клиентов с разными
+          задачами, вкусами и метражом. Это не визуализации, а готовые квартиры, где уже живут люди.
+          Посмотрите, каким может быть ваш будущий интерьер — от планировки до финальной отделки.
+        </p>
+        <p class="portfolio-description__text">
+          Понравился стиль или подход? Узнайте, сколько может стоить ремонт в вашей квартире —
+          воспользуйтесь удобным калькулятором, чтобы прикинуть бюджет и понять, с чего начать.
+          <a href="calculator.html" class="portfolio-description__button">
+            Рассчитать стоимость
+            <img
+              src="../../assets/icons/common/share-alt-svgrepo-com.svg"
+              alt="Поделиться"
+              width="16"
+              height="16"
+            />
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="portfolio-turnkey" id="portfolio">
+      <div class="portfolio-turnkey__container">
+        <div class="portfolio-turnkey__project">
+          <div class="portfolio-turnkey__project-image">
+            <picture>
+              <source
+                srcset="
+                  ../../assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp
+                "
+                type="image/webp"
+              />
+              <img
+                src="../../assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.png"
+                alt="Интерьер квартиры"
+                id="project-image"
+              />
+            </picture>
+          </div>
+          <div
+            class="portfolio-turnkey__content-card"
+            style="
+              background: #fff;
+              border-radius: 8px;
+              padding: 24px;
+              box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+            "
+          >
+            <div class="portfolio-turnkey__project-header" id="project-location">
+              г. Москва, ЖК "Московский"
+            </div>
+            <h2 class="portfolio-turnkey__project-title" id="project-title">
+              Дизайн-проект однокомнатной квартиры
+            </h2>
+            <div class="portfolio-turnkey__project-costs-row">
+              <div class="portfolio-turnkey__project-cost">
+                <span class="portfolio-turnkey__cost-label">Площадь объекта</span>
+                <span class="portfolio-turnkey__cost-amount" id="project-area">32.12м²</span>
+              </div>
+              <div class="portfolio-turnkey__project-cost">
+                <span class="portfolio-turnkey__cost-label">Стоимость ремонта</span>
+                <span class="portfolio-turnkey__cost-amount" id="project-price">885 443 ₽</span>
+              </div>
+            </div>
+            <p class="portfolio-turnkey__project-description" id="project-description">
+              Модернизм выделяется утончённым дизайном и оригинальной архитектурой. Гармония базовых
+              тонов с яркими акцентами подчёркивает стиль, а удобная мебель делает пространство
+              комфортным для жизни.
+            </p>
+            <div class="portfolio-turnkey__navigation">
+              <div class="portfolio-turnkey__nav-buttons">
+                <button
+                  class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--prev"
+                  id="prev-btn"
+                >
+                  <img
+                    src="../../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                    alt="Предыдущий"
+                    width="30"
+                    height="30"
+                  />
+                </button>
+                <button
+                  class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--next"
+                  id="next-btn"
+                >
+                  <img
+                    src="../../assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                    alt="Следующий"
+                    width="30"
+                    height="30"
+                  />
+                </button>
+              </div>
+              <div class="portfolio-turnkey__nav-counter-card">
+                <span class="portfolio-turnkey__nav-counter" id="project-counter">1 / 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="articles-carousel reveal-on-scroll">
       <div class="articles-carousel__container">
         <h2 class="articles-carousel__title">Полезные статьи о ремонте</h2>
         <div class="articles-carousel__wrapper">
@@ -1354,9 +1405,22 @@
           </button>
           <div class="articles-carousel__viewport">
             <div class="articles-carousel__track">
-              <a href="../shtukaturka-sten-v-novostrojke.html" class="articles-carousel__card">
+              <a href="preimushestva-bezvozdushnoj-pokraski.html" class="articles-carousel__card">
+                <h3 class="articles-carousel__card-title">Преимущества безвоздушной покраски</h3>
+                <div class="articles-carousel__card-image">
+                  <img
+                    src="../../assets/images/common/airless-paint.webp"
+                    alt="Преимущества безвоздушной покраски"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="350"
+                  />
+                </div>
+              </a>
+              <a href="shtukaturka-sten-v-novostrojke.html" class="articles-carousel__card">
                 <h3 class="articles-carousel__card-title">
-                  Штукатурка стен в новостройке: смеси и технологии
+                  Штукатурка стен в новостройке: полное руководство по выбору смесей и технологий
                 </h3>
                 <div class="articles-carousel__card-image">
                   <img
@@ -1369,22 +1433,22 @@
                   />
                 </div>
               </a>
-              <a href="../vybor-shtukaturki.html" class="articles-carousel__card">
+              <a href="vybor-kraski-airless-painting.html" class="articles-carousel__card">
                 <h3 class="articles-carousel__card-title">
-                  Какую штукатурку выбрать для стен: гид мастеров
+                  Как выбрать краску для безвоздушной покраски в Москве в 2026 году
                 </h3>
                 <div class="articles-carousel__card-image">
                   <img
-                    src="../../assets/images/common/article-how-to-choose-plastering.webp"
-                    alt="Какую штукатурку выбрать для стен"
+                    src="../../assets/images/common/how-to-choose-paint.webp"
+                    alt="Как выбрать краску для безвоздушной покраски"
                     loading="lazy"
                     decoding="async"
                     width="600"
-                    height="350"
+                    height="400"
                   />
                 </div>
               </a>
-              <a href="../shtukaturka-guide.html" class="articles-carousel__card">
+              <a href="shtukaturka-guide.html" class="articles-carousel__card">
                 <h3 class="articles-carousel__card-title">
                   Как правильно штукатурить стены: пошаговое руководство
                 </h3>
@@ -1399,14 +1463,14 @@
                   />
                 </div>
               </a>
-              <a href="../shpaklevka-sten-posle-shtukaturki.html" class="articles-carousel__card">
+              <a href="mashinnaya-ili-ruchnaya-shtukaturka.html" class="articles-carousel__card">
                 <h3 class="articles-carousel__card-title">
-                  Шпаклёвка стен после штукатурки: технология и советы
+                  Механизированная или ручная штукатурка: что лучше для ремонта
                 </h3>
                 <div class="articles-carousel__card-image">
                   <img
-                    src="../../assets/images/common/plastering-hero.webp"
-                    alt="Шпаклёвка стен после штукатурки"
+                    src="../../assets/images/common/article-machine-shtukaturka.webp"
+                    alt="Механизированная или ручная штукатурка"
                     loading="lazy"
                     decoding="async"
                     width="600"
@@ -1414,15 +1478,14 @@
                   />
                 </div>
               </a>
-              <a
-                href="../preimushestva-bezvozdushnoj-pokraski.html"
-                class="articles-carousel__card"
-              >
-                <h3 class="articles-carousel__card-title">Преимущества безвоздушной покраски</h3>
+              <a href="vybor-shtukaturki.html" class="articles-carousel__card">
+                <h3 class="articles-carousel__card-title">
+                  Какую штукатурку выбрать для стен: гид по типам и применению
+                </h3>
                 <div class="articles-carousel__card-image">
                   <img
-                    src="../../assets/images/common/airless-paint.webp"
-                    alt="Преимущества безвоздушной покраски"
+                    src="../../assets/images/common/article-how-to-choose-plastering.webp"
+                    alt="Какую штукатурку выбрать для стен"
                     loading="lazy"
                     decoding="async"
                     width="600"
@@ -1439,64 +1502,11 @@
             &#10095;
           </button>
         </div>
-        <a href="../blog.html" class="articles-carousel__more-btn">Посмотреть другие статьи</a>
+        <a href="blog.html" class="articles-carousel__more-btn">Посмотреть другие статьи</a>
       </div>
     </section>
 
         <!-- FOOTER -->
-
-    <!-- Модальное окно успешной отправки -->
-    <div class="success-modal" id="success-modal" aria-hidden="true">
-      <div class="success-modal__overlay"></div>
-      <div class="success-modal__content">
-        <button class="success-modal__close" aria-label="Закрыть" type="button">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 6L6 18M6 6L18 18"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-        <div class="success-modal__icon">
-          <svg
-            width="64"
-            height="64"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="32" cy="32" r="32" fill="#88a593" />
-            <path
-              d="M18 32L26 40L46 20"
-              fill="none"
-              stroke="#ffffff"
-              stroke-width="5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-            />
-          </svg>
-        </div>
-        <h2 class="success-modal__title">Спасибо за вашу заявку!</h2>
-        <p class="success-modal__text">
-          Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
-        </p>
-        <div class="success-modal__actions">
-          <a href="/" class="success-modal__button success-modal__button--primary">На главную</a>
-          <button class="success-modal__button success-modal__button--secondary" data-close-modal>
-            Закрыть
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Фиксированный блок социальных сетей -->
     <aside class="social-fixed" aria-label="Социальные сети" data-js-social-fixed>
@@ -1606,6 +1616,61 @@
       </div>
     </aside>
 
+    <!-- Модальное окно успешной отправки -->
+    <div class="success-modal" id="success-modal" aria-hidden="true">
+      <div class="success-modal__overlay"></div>
+      <div class="success-modal__content">
+        <button class="success-modal__close" aria-label="Закрыть" type="button">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="success-modal__icon">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="32" cy="32" r="32" fill="#88a593" />
+            <path
+              d="M18 32L26 40L46 20"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
+        <h2 class="success-modal__title">Спасибо за вашу заявку!</h2>
+        <p class="success-modal__text">
+          Ваша заявка успешно отправлена. Наш специалист свяжется с вами в течение 15 минут.
+        </p>
+        <div class="success-modal__actions">
+          <a href="./blog.html" class="success-modal__button success-modal__button--primary"
+            >Читать полезные статьи</a
+          >
+          <button class="success-modal__button success-modal__button--secondary" data-close-modal>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="../../scripts/core/constants.js"></script>
     <script src="../../scripts/features/contact/init-contacts.js"></script>
     <script type="module" src="../../scripts/features/contact/lazy-yandex-maps.js"></script>
@@ -1617,6 +1682,48 @@
     <script type="module" src="../../scripts/features/contact/form-handler.js" defer></script>
     <script type="module" src="../../scripts/features/portfolio/custom-select.js" defer></script>
     <script type="module" src="../../scripts/core/main.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const grid = document.querySelector(".reviews__grid");
+        const leftBtn = document.querySelector(".review-grid-arrow--left");
+        const rightBtn = document.querySelector(".review-grid-arrow--right");
+
+        if (!grid || !leftBtn || !rightBtn) {
+          return;
+        }
+
+        function updateArrows() {
+          const atStart = grid.scrollLeft <= 0;
+          const atEnd = grid.scrollLeft >= grid.scrollWidth - grid.offsetWidth - 1;
+          if (atStart) {
+            leftBtn.classList.add("review-grid-arrow--disabled");
+          } else {
+            leftBtn.classList.remove("review-grid-arrow--disabled");
+          }
+          if (atEnd) {
+            rightBtn.classList.add("review-grid-arrow--disabled");
+          } else {
+            rightBtn.classList.remove("review-grid-arrow--disabled");
+          }
+        }
+
+        function getCardWidth() {
+          const card = grid.querySelector(".review-card");
+          return card ? card.offsetWidth + 12 : 0;
+        }
+
+        leftBtn.addEventListener("click", function () {
+          grid.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
+        });
+
+        rightBtn.addEventListener("click", function () {
+          grid.scrollBy({ left: getCardWidth(), behavior: "smooth" });
+        });
+
+        grid.addEventListener("scroll", updateArrows);
+        updateArrows();
+      });
+    </script>
     <!-- Баннер: заказ звонка (появляется через 10 секунд) -->
     <div
       id="call-banner"
@@ -1659,8 +1766,8 @@
               placeholder="+7 (999) 123-45-67"
             />
           </div>
-          <input type="hidden" name="COMMENTS" value="Заявка с баннера (10 сек)" />
-          <input type="hidden" name="form_source" value="Баннер 10 секунд" />
+          <input type="hidden" name="COMMENTS" value="Заявка с баннера (10 сек) — Зарайск" />
+          <input type="hidden" name="form_source" value="Баннер 10 секунд (Зарайск)" />
           <button type="submit" class="call-banner__submit">Заказать звонок</button>
         </form>
       </div>
