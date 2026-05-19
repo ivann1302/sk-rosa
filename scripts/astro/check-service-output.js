@@ -5,7 +5,7 @@ import process from "node:process";
 const rootDir = process.cwd();
 const astroDir = path.join(rootDir, "public_html_astro");
 const cities = JSON.parse(
-  fs.readFileSync(path.join(rootDir, "astro/data/directus-cache/cities.json"), "utf8"),
+  fs.readFileSync(path.join(rootDir, "astro/data/directus-cache/cities.json"), "utf8")
 ).cities;
 
 const services = [
@@ -15,7 +15,7 @@ const services = [
     basePage: "plastering.html",
     pricingScript: "/scripts/features/pricing-table.js",
     cityFormPrefix: "Штукатурные работы",
-    quizPrefix: "Квиз-смета штукатурки",
+    quizPrefix: "Калькулятор штукатурки",
     miniCalcPrefix: "Мини-калькулятор штукатурки",
   },
   {
@@ -74,38 +74,42 @@ function attrValue(tag, name) {
 }
 
 function textValue(html, pattern) {
-  return (html.match(pattern)?.[1] ?? "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return (html.match(pattern)?.[1] ?? "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function metaValue(html, name) {
   const tag = html.match(
-    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${name}["'])[^>]*>`, "i"),
+    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${name}["'])[^>]*>`, "i")
   )?.[0];
 
   return tag ? attrValue(tag, "content") : "";
 }
 
 function canonicalValue(html) {
-  return attrValue(
-    html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "",
-    "href",
-  );
+  return attrValue(html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "", "href");
 }
 
 function formSources(html) {
   return [...html.matchAll(/<input\b(?=[^>]*name=["']form_source["'])[^>]*>/gi)].map(tag =>
-    attrValue(tag[0], "value"),
+    attrValue(tag[0], "value")
   );
 }
 
 function scripts(html) {
   return [...html.matchAll(/<script\b[^>]*\ssrc=["']([^"']+)["'][^>]*>/gi)].map(match =>
-    match[1].replace(/^(?:\.\.\/)+/, "/"),
+    match[1].replace(/^(?:\.\.\/)+/, "/")
   );
 }
 
 function jsonLdTypes(html) {
-  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+  return [
+    ...html.matchAll(
+      /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+    ),
+  ]
     .map(match => JSON.parse(match[1].trim())["@type"])
     .sort();
 }
@@ -136,40 +140,45 @@ function checkPage(page, service, city = null) {
     assert(html.includes('class="about-turnkey-2"'), `${page}: missing turnkey legacy calculator`);
     assert(
       sources.includes(`Ремонт под ключ - Калькулятор${expectedCitySuffix}`),
-      `${page}: missing turnkey calculator form_source`,
+      `${page}: missing turnkey calculator form_source`
+    );
+  } else if (service.slug === "plastering") {
+    assert(
+      sources.includes(`${service.quizPrefix}${expectedCitySuffix}`),
+      `${page}: missing plastering calculator form_source`
     );
   } else {
     assert(
       sources.includes(`${service.quizPrefix}${expectedCitySuffix}`),
-      `${page}: missing quiz form_source`,
+      `${page}: missing quiz form_source`
     );
     assert(
       sources.includes(`${service.miniCalcPrefix}${expectedCitySuffix}`),
-      `${page}: missing mini calc form_source`,
+      `${page}: missing mini calc form_source`
     );
   }
   assert(
     sources.includes(`${service.cityFormPrefix}${expectedCitySuffix}`),
-    `${page}: missing contact form_source`,
+    `${page}: missing contact form_source`
   );
   if (isTurnkeyRepair) {
     assert(
       pageScripts.includes("/scripts/features/portfolio/custom-select.js"),
-      `${page}: missing turnkey custom select script`,
+      `${page}: missing turnkey custom select script`
     );
     assert(
       pageScripts.includes("/scripts/features/portfolio/portfolio-turnkey.js"),
-      `${page}: missing turnkey portfolio script`,
+      `${page}: missing turnkey portfolio script`
     );
   } else {
     assert(
       pageScripts.includes("/scripts/features/calculator/price-calc.js"),
-      `${page}: missing price calc script`,
+      `${page}: missing price calc script`
     );
     assert(pageScripts.includes(service.pricingScript), `${page}: missing pricing script`);
     assert(
       pageScripts.includes("/scripts/features/contact/contact-request.js"),
-      `${page}: missing contact request script`,
+      `${page}: missing contact request script`
     );
   }
 }

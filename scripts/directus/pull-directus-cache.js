@@ -7,9 +7,9 @@ const outputDir = path.join(projectRoot, "astro/data/directus-cache");
 const adminEmail = process.env.DIRECTUS_ADMIN_EMAIL ?? "admin@example.com";
 const adminPassword = process.env.DIRECTUS_ADMIN_PASSWORD ?? "admin";
 const localSources = {
-  cities: path.join(projectRoot, "scripts/generator/cities.json"),
-  services: path.join(projectRoot, "scripts/generator/services.json"),
-  complexes: path.join(projectRoot, "scripts/generator/residential-complexes.json"),
+  cities: path.join(outputDir, "cities.json"),
+  services: path.join(outputDir, "services.json"),
+  complexes: path.join(outputDir, "residential-complexes.json"),
 };
 
 async function readJson(filePath) {
@@ -19,11 +19,7 @@ async function readJson(filePath) {
 
 async function writeJson(fileName, data) {
   await fs.mkdir(outputDir, { recursive: true });
-  await fs.writeFile(
-    path.join(outputDir, fileName),
-    `${JSON.stringify(data, null, 2)}\n`,
-    "utf8",
-  );
+  await fs.writeFile(path.join(outputDir, fileName), `${JSON.stringify(data, null, 2)}\n`, "utf8");
 }
 
 async function directusToken(baseUrl) {
@@ -132,5 +128,5 @@ await writeJson("cities.json", data.cities);
 await writeJson("residential-complexes.json", data.complexes);
 
 console.warn(
-  `Directus cache updated from ${source}: ${data.services.services.length} services, ${data.cities.cities.length} cities.`,
+  `Directus cache updated from ${source}: ${data.services.services.length} services, ${data.cities.cities.length} cities.`
 );

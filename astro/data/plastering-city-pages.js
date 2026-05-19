@@ -17,9 +17,7 @@ const selectedCitySlugs = new Set(selectedCities.map(city => city.slug));
 const missingCitySlugs = citySlugsFilter.filter(slug => !selectedCitySlugs.has(slug));
 
 if (missingCitySlugs.length > 0) {
-  throw new Error(
-    `Unknown ASTRO_PLASTERING_CITY_SLUGS value(s): ${missingCitySlugs.join(", ")}`,
-  );
+  throw new Error(`Unknown ASTRO_PLASTERING_CITY_SLUGS value(s): ${missingCitySlugs.join(", ")}`);
 }
 
 export const plasteringCitySlugs = selectedCities.map(city => city.slug);
@@ -117,7 +115,7 @@ function buildCityPage(city) {
     },
     priceCalc: {
       ...plasteringPage.priceCalc,
-      quizFormSource: `Квиз-смета штукатурки (${city.name})`,
+      quizFormSource: `Калькулятор штукатурки (${city.name})`,
       miniCalcFormSource: `Мини-калькулятор штукатурки (${city.name})`,
     },
     runtime: {

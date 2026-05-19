@@ -4,13 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT_DIR"
 
-if [[ ! -f "public_html/calculator.html" || ! -f "public_html/blog.html" ]]; then
-  echo "Legacy public_html baseline is missing; building it for parity checks."
-  npm run build:hosting
-fi
-
-npm run build:astro:poc
-npm run check:astro:poc
+npm run build:astro
 npm run check:astro:services
 npm run check:astro:blog
 npm run check:astro:production

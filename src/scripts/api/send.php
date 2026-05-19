@@ -38,7 +38,10 @@
   error_log('[SEND] Telegram token: ' . (empty($telegramToken) ? 'ПУСТО' : substr($telegramToken, 0, 15) . '...'));
   error_log('[SEND] Chat IDs: ' . $telegramChatId . ', ' . $telegramChatId2);
 
-  if (!empty($telegramToken) && !empty($telegramChatId)) {
+  $telegramConfigured = !empty($telegramToken) && !empty($telegramChatId);
+  $telegramDelivered = !$telegramConfigured;
+
+  if ($telegramConfigured) {
       $moscow     = new DateTimeZone('Europe/Moscow');
       $moscowTime = (new DateTime('now', $moscow))->format('d.m.Y H:i');
 
@@ -87,11 +90,14 @@
       $chatIds = array_filter([$telegramChatId, $telegramChatId2]);
       foreach ($chatIds as $chatId) {
           error_log('[SEND] Отправка в Telegram chat_id=' . $chatId);
+          $requestTimeout = $telegramDelivered ? 5 : 15;
+          $connectTimeout = $telegramDelivered ? 4 : 8;
           $tgCurl = curl_init('https://api.telegram.org/bot' . $telegramToken . '/sendMessage');
           curl_setopt_array($tgCurl, [
               CURLOPT_POST           => true,
               CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_TIMEOUT        => 5,
+              CURLOPT_CONNECTTIMEOUT => $connectTimeout,
+              CURLOPT_TIMEOUT        => $requestTimeout,
               CURLOPT_POSTFIELDS     => http_build_query([
                   'chat_id'    => $chatId,
                   'text'       => $tgMessage,
@@ -107,12 +113,21 @@
           } else {
               $tgData = json_decode($tgResponse, true);
               if ($tgData['ok'] ?? false) {
+                  $telegramDelivered = true;
                   error_log('[SEND] ✅ Telegram OK, message_id=' . $tgData['result']['message_id']);
               } else {
                   error_log('[SEND] ❌ Telegram ОШИБКА: ' . ($tgData['description'] ?? $tgResponse));
               }
           }
       }
+  }
+
+  if ($telegramConfigured && !$telegramDelivered) {
+      error_log('[SEND] Ответ клиенту: success=false, Telegram delivery failed');
+      header('Content-Type: application/json; charset=utf-8');
+      http_response_code(502);
+      echo json_encode(['success' => false, 'error' => 'Не удалось отправить заявку в Telegram. Попробуйте позже или позвоните нам.'], JSON_UNESCAPED_UNICODE);
+      exit;
   }
 
   error_log('[SEND] Ответ клиенту: success=true');

@@ -1,0 +1,635 @@
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/utm-tracker.js";
+
+const ENDPOINT = "/scripts/api/send.php";
+const TOTAL_STEPS = 4;
+
+const wallOptions = [
+  {
+    value: "small",
+    title: "Небольшие перепады",
+    text: "Подойдет для большинства квартир в новостройках.",
+    thickness: "до 30 мм",
+  },
+  {
+    value: "medium",
+    title: "Средние перепады",
+    text: "Стены заметно уходят, но без сложного восстановления.",
+    thickness: "до 30 мм",
+  },
+  {
+    value: "strong",
+    title: "Сильные перепады",
+    text: "Нужно больше слоя и тщательная подготовка.",
+    thickness: "40-60 мм",
+  },
+  {
+    value: "unknown",
+    title: "Не знаю",
+    text: "Посчитаем базовый вариант, точнее скажем на замере.",
+    thickness: "до 30 мм",
+  },
+];
+
+const materialOptions = [
+  {
+    value: "with",
+    title: "С материалами",
+    text: "Мы привозим смеси, грунт и расходники.",
+  },
+  {
+    value: "without",
+    title: "Без материалов",
+    text: "Если материалы уже закуплены на объект.",
+  },
+];
+
+const benefits = [
+  "Работаем от 100 м²",
+  "До 100 м² в день",
+  "4 человека в бригаде",
+  "Доставка включена",
+  "Фиксируем стоимость до начала работ",
+];
+
+function toNumber(value) {
+  const normalized = String(value)
+    .replace(",", ".")
+    .replace(/[^\d.]/g, "");
+  return Number(normalized) || 0;
+}
+
+function formatMoney(value) {
+  return Math.round(value).toLocaleString("ru-RU");
+}
+
+function formatPhone(value) {
+  let digits = value.replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  if (digits.startsWith("8")) {
+    digits = `7${digits.slice(1)}`;
+  }
+
+  if (!digits.startsWith("7")) {
+    digits = `7${digits}`;
+  }
+
+  digits = digits.slice(0, 11);
+  const parts = ["+7"];
+  const code = digits.slice(1, 4);
+  const first = digits.slice(4, 7);
+  const second = digits.slice(7, 9);
+  const third = digits.slice(9, 11);
+
+  if (code) {
+    parts.push(` (${code}`);
+  }
+  if (code.length === 3) {
+    parts[1] += ")";
+  }
+  if (first) {
+    parts.push(` ${first}`);
+  }
+  if (second) {
+    parts.push(`-${second}`);
+  }
+  if (third) {
+    parts.push(`-${third}`);
+  }
+
+  return parts.join("");
+}
+
+function getRate(area, wallValue, materialValue) {
+  const isStrong = wallValue === "strong";
+
+  if (area >= 1000 && materialValue === "with" && !isStrong) {
+    return 750;
+  }
+
+  if (isStrong) {
+    return materialValue === "with" ? 1500 : 1350;
+  }
+
+  return materialValue === "with" ? 950 : 800;
+}
+
+function validatePhone(phone) {
+  const digits = phone.replace(/\D/g, "");
+  return digits.length === 11 && digits.startsWith("7");
+}
+
+function StepHeader({ currentStep }) {
+  const progress = (currentStep / TOTAL_STEPS) * 100;
+  const labels = ["Площадь", "Стены", "Материалы", "Контакты"];
+
+  return (
+    <div className="plaster-lead-calc__header">
+      <div className="plaster-lead-calc__eyebrow">Быстрый расчет стоимости</div>
+      <div className="plaster-lead-calc__headline-row">
+        <h2 className="plaster-lead-calc__title">Предварительная смета за 1 минуту</h2>
+        <span className="plaster-lead-calc__step-count">
+          {currentStep}/{TOTAL_STEPS}
+        </span>
+      </div>
+      <div
+        className="plaster-lead-calc__progress"
+        aria-label={`Шаг ${currentStep} из ${TOTAL_STEPS}`}
+      >
+        <span style={{ width: `${progress}%` }} />
+      </div>
+      <div className="plaster-lead-calc__steps" aria-hidden="true">
+        {labels.map((label, index) => (
+          <span
+            className={
+              index + 1 <= currentStep
+                ? "plaster-lead-calc__step-label is-active"
+                : "plaster-lead-calc__step-label"
+            }
+            key={label}
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SummaryCard({ amount, area, rate, wall, material, onLeadClick }) {
+  return (
+    <aside className="plaster-lead-calc__summary" aria-label="Предварительная стоимость">
+      <span className="plaster-lead-calc__summary-label">Предварительная стоимость</span>
+      <strong className="plaster-lead-calc__summary-price">≈ {formatMoney(amount)} ₽</strong>
+      <div className="plaster-lead-calc__summary-meta">
+        <span>{area || 0} м²</span>
+        <span>{rate} ₽/м²</span>
+        <span>{wall.title}</span>
+        <span>{material.title.toLowerCase()}</span>
+      </div>
+      <ul className="plaster-lead-calc__benefits">
+        {benefits.map(item => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <motion.button
+        className="plaster-lead-calc__summary-button"
+        onClick={onLeadClick}
+        type="button"
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        Получить точную смету
+      </motion.button>
+    </aside>
+  );
+}
+
+function SuccessScreen({ amount, onReset }) {
+  return (
+    <motion.div
+      animate={{ opacity: 1, y: 0 }}
+      className="plaster-lead-calc__success"
+      initial={{ opacity: 0, y: 16 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
+      <span className="plaster-lead-calc__success-mark" aria-hidden="true" />
+      <h2>Заявка отправлена</h2>
+      <p>
+        Менеджер получит расчет на сумму около {formatMoney(amount)} ₽ и свяжется с вами, чтобы
+        уточнить объект и зафиксировать точную смету.
+      </p>
+      <button className="plaster-lead-calc__secondary-button" onClick={onReset} type="button">
+        Рассчитать другой объект
+      </button>
+    </motion.div>
+  );
+}
+
+export default function PlasteringLeadCalculator({ data }) {
+  const shouldReduceMotion = useReducedMotion();
+  const [currentStep, setCurrentStep] = useState(1);
+  const [areaInput, setAreaInput] = useState("120");
+  const [wallValue, setWallValue] = useState("unknown");
+  const [materialValue, setMaterialValue] = useState("with");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [hasHydrated, setHasHydrated] = useState(false);
+  const nameRef = useRef(null);
+
+  const area = toNumber(areaInput);
+  const wall = wallOptions.find(option => option.value === wallValue) ?? wallOptions[3];
+  const material =
+    materialOptions.find(option => option.value === materialValue) ?? materialOptions[0];
+  const rate = getRate(area, wallValue, materialValue);
+  const amount = area * rate;
+  const formSource = data?.quizFormSource ?? "Калькулятор штукатурки";
+
+  const stepVariants = useMemo(
+    () => ({
+      initial: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 24 },
+      animate: { opacity: 1, x: 0 },
+      exit: shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -24 },
+    }),
+    [shouldReduceMotion]
+  );
+
+  useEffect(() => {
+    captureUtm();
+    setHasHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (currentStep === 4) {
+      window.setTimeout(() => nameRef.current?.focus(), 180);
+    }
+  }, [currentStep]);
+
+  function validateArea() {
+    if (!area || area < 1 || area > 10000) {
+      setErrors(prev => ({ ...prev, area: "Укажите площадь от 1 до 10 000 м²" }));
+      return false;
+    }
+
+    setErrors(prev => ({ ...prev, area: "" }));
+    return true;
+  }
+
+  function goNext() {
+    if (currentStep === 1 && !validateArea()) {
+      return;
+    }
+
+    setErrors({});
+    setCurrentStep(step => Math.min(step + 1, TOTAL_STEPS));
+  }
+
+  function goBack() {
+    setErrors({});
+    setCurrentStep(step => Math.max(step - 1, 1));
+  }
+
+  function requestEstimate() {
+    if (!validateArea()) {
+      setCurrentStep(1);
+      return;
+    }
+
+    setErrors({});
+    setCurrentStep(4);
+  }
+
+  function buildComments() {
+    const lines = [
+      "Калькулятор штукатурки:",
+      `- Площадь стен: ${area} м²`,
+      `- Неровность стен: ${wall.title}`,
+      `- Тип расчета: штукатурка ${wall.thickness}`,
+      `- Материалы: ${material.title}`,
+      `- Ставка: ${rate} ₽/м²`,
+      `- Предварительная стоимость: ${formatMoney(amount)} ₽`,
+      area < 100 ? "- Предупреждение: площадь меньше минимального объема 100 м²" : "",
+      "Клиент просит точную смету.",
+    ];
+
+    return lines.filter(Boolean).join("\n");
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setSubmitError("");
+
+    const nextErrors = {};
+    if (!name.trim() || name.trim().length < 2) {
+      nextErrors.name = "Укажите имя";
+    }
+    if (!validatePhone(phone)) {
+      nextErrors.phone = "Укажите телефон в формате +7 (999) 123-45-67";
+    }
+    if (!validateArea()) {
+      nextErrors.area = "Укажите площадь от 1 до 10 000 м²";
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("NAME", name.trim());
+    formData.append("PHONE", phone.trim());
+    formData.append("AREA", String(area));
+    formData.append("WALL_CURVATURE", wall.title);
+    formData.append("MATERIALS", material.title);
+    formData.append("PRICE_PER_M2", String(rate));
+    formData.append("ESTIMATE", String(Math.round(amount)));
+    formData.append("COMMENTS", buildComments());
+    formData.append("form_source", formSource);
+
+    Object.entries(getUtmData()).forEach(([key, value]) => {
+      if (value) {
+        formData.append(key, value);
+      }
+    });
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Ошибка при отправке. Попробуйте позже.");
+      }
+
+      if (typeof window.ym !== "undefined") {
+        window.ym(window.rosaMetrikaId || 107041182, "reachGoal", "form_submit");
+      }
+
+      setIsSuccess(true);
+    } catch (error) {
+      setSubmitError(error.message || "Ошибка при отправке. Попробуйте позже.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  function resetCalculator() {
+    setCurrentStep(1);
+    setAreaInput("120");
+    setWallValue("unknown");
+    setMaterialValue("with");
+    setName("");
+    setPhone("");
+    setErrors({});
+    setSubmitError("");
+    setIsSuccess(false);
+  }
+
+  if (isSuccess) {
+    return (
+      <section className="plaster-lead-calc plaster-lead-calc--success reveal-on-scroll">
+        <div className="plaster-lead-calc__shell">
+          <SuccessScreen amount={amount} onReset={resetCalculator} />
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="plaster-lead-calc reveal-on-scroll" id="plastering-calculator">
+      <div className="plaster-lead-calc__shell">
+        <form
+          className="plaster-lead-calc__form"
+          method="POST"
+          action={ENDPOINT}
+          onSubmit={handleSubmit}
+        >
+          <input name="form_source" type="hidden" value={formSource} readOnly />
+          <input name="COMMENTS" type="hidden" value={buildComments()} readOnly />
+          <StepHeader currentStep={currentStep} />
+
+          <div className="plaster-lead-calc__content">
+            <div className="plaster-lead-calc__panel">
+              <AnimatePresence initial={false} mode="wait">
+                {currentStep === 1 && (
+                  <motion.div
+                    animate="animate"
+                    className="plaster-lead-calc__step"
+                    exit="exit"
+                    initial={hasHydrated ? "initial" : false}
+                    key="step-area"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    variants={stepVariants}
+                  >
+                    <span className="plaster-lead-calc__step-kicker">Шаг 1</span>
+                    <h3>Какая площадь стен?</h3>
+                    <p>Введите ориентировочный объем. Точную площадь проверим на замере.</p>
+                    <label className="plaster-lead-calc__area-field">
+                      <input
+                        aria-describedby="area-warning area-error"
+                        inputMode="decimal"
+                        max="10000"
+                        min="1"
+                        name="AREA"
+                        onChange={event => {
+                          setAreaInput(event.target.value);
+                          setErrors(prev => ({ ...prev, area: "" }));
+                        }}
+                        placeholder="120"
+                        type="number"
+                        value={areaInput}
+                      />
+                      <span>м²</span>
+                    </label>
+                    {area > 0 && area < 100 && (
+                      <div className="plaster-lead-calc__warning" id="area-warning">
+                        Минимальный объем работ - от 100 м²
+                      </div>
+                    )}
+                    {errors.area && (
+                      <div className="plaster-lead-calc__error" id="area-error">
+                        {errors.area}
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+
+                {currentStep === 2 && (
+                  <motion.div
+                    animate="animate"
+                    className="plaster-lead-calc__step"
+                    exit="exit"
+                    initial={hasHydrated ? "initial" : false}
+                    key="step-walls"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    variants={stepVariants}
+                  >
+                    <span className="plaster-lead-calc__step-kicker">Шаг 2</span>
+                    <h3>Насколько кривые стены?</h3>
+                    <p>Выберите по ощущениям. Если сомневаетесь, оставьте вариант «Не знаю».</p>
+                    <div className="plaster-lead-calc__option-grid">
+                      {wallOptions.map(option => (
+                        <motion.label
+                          className={
+                            option.value === wallValue
+                              ? "plaster-lead-calc__option is-selected"
+                              : "plaster-lead-calc__option"
+                          }
+                          key={option.value}
+                          whileHover={{ y: -3 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <input
+                            checked={option.value === wallValue}
+                            name="WALL_CURVATURE"
+                            onChange={() => setWallValue(option.value)}
+                            type="radio"
+                            value={option.title}
+                          />
+                          <strong>{option.title}</strong>
+                          <span>{option.text}</span>
+                        </motion.label>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {currentStep === 3 && (
+                  <motion.div
+                    animate="animate"
+                    className="plaster-lead-calc__step"
+                    exit="exit"
+                    initial={hasHydrated ? "initial" : false}
+                    key="step-materials"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    variants={stepVariants}
+                  >
+                    <span className="plaster-lead-calc__step-kicker">Шаг 3</span>
+                    <h3>Материалы включить в расчет?</h3>
+                    <p>Покажем сумму в том формате, в котором удобнее сравнить подрядчиков.</p>
+                    <div className="plaster-lead-calc__material-switch">
+                      {materialOptions.map(option => (
+                        <motion.label
+                          className={
+                            option.value === materialValue
+                              ? "plaster-lead-calc__material is-selected"
+                              : "plaster-lead-calc__material"
+                          }
+                          key={option.value}
+                          whileHover={{ y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <input
+                            checked={option.value === materialValue}
+                            name="MATERIALS"
+                            onChange={() => setMaterialValue(option.value)}
+                            type="radio"
+                            value={option.title}
+                          />
+                          <strong>{option.title}</strong>
+                          <span>{option.text}</span>
+                        </motion.label>
+                      ))}
+                    </div>
+                    {area >= 1000 && materialValue === "with" && wallValue !== "strong" && (
+                      <div className="plaster-lead-calc__notice">
+                        Для объема от 1000 м² применили специальную ставку 750 ₽/м².
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+
+                {currentStep === 4 && (
+                  <motion.div
+                    animate="animate"
+                    className="plaster-lead-calc__step"
+                    exit="exit"
+                    initial={hasHydrated ? "initial" : false}
+                    key="step-contact"
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    variants={stepVariants}
+                  >
+                    <span className="plaster-lead-calc__step-kicker">Шаг 4</span>
+                    <h3>Получить точную смету</h3>
+                    <p>
+                      Передадим расчет менеджеру. Он уточнит объект и назовет финальную стоимость.
+                    </p>
+                    <div className="plaster-lead-calc__contact-grid">
+                      <label className="plaster-lead-calc__field">
+                        <span>Имя</span>
+                        <input
+                          autoComplete="name"
+                          name="NAME"
+                          onChange={event => {
+                            setName(event.target.value);
+                            setErrors(prev => ({ ...prev, name: "" }));
+                          }}
+                          placeholder="Как к вам обращаться"
+                          ref={nameRef}
+                          type="text"
+                          value={name}
+                        />
+                        {errors.name && <em>{errors.name}</em>}
+                      </label>
+                      <label className="plaster-lead-calc__field">
+                        <span>Телефон</span>
+                        <input
+                          autoComplete="tel"
+                          name="PHONE"
+                          onChange={event => {
+                            setPhone(formatPhone(event.target.value));
+                            setErrors(prev => ({ ...prev, phone: "" }));
+                          }}
+                          placeholder="+7 (999) 123-45-67"
+                          type="tel"
+                          value={phone}
+                        />
+                        {errors.phone && <em>{errors.phone}</em>}
+                      </label>
+                    </div>
+                    {submitError && <div className="plaster-lead-calc__error">{submitError}</div>}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="plaster-lead-calc__nav">
+                {currentStep > 1 && (
+                  <button
+                    className="plaster-lead-calc__secondary-button"
+                    onClick={goBack}
+                    type="button"
+                  >
+                    Назад
+                  </button>
+                )}
+                {currentStep < TOTAL_STEPS ? (
+                  <motion.button
+                    className="plaster-lead-calc__primary-button"
+                    onClick={goNext}
+                    type="button"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Продолжить
+                  </motion.button>
+                ) : (
+                  <motion.button
+                    className="plaster-lead-calc__primary-button"
+                    disabled={isSubmitting}
+                    type="submit"
+                    whileHover={{ y: isSubmitting ? 0 : -2 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  >
+                    {isSubmitting ? "Отправляем..." : "Отправить заявку"}
+                  </motion.button>
+                )}
+              </div>
+            </div>
+
+            <SummaryCard
+              amount={amount}
+              area={area}
+              material={material}
+              onLeadClick={requestEstimate}
+              rate={rate}
+              wall={wall}
+            />
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}

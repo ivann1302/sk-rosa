@@ -5,16 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Если уже закрывали в этой сессии — не показываем
-  if (localStorage.getItem("call-banner-dismissed")) {
-    return;
-  }
-
   const closeBtn = document.getElementById("call-banner-close");
+  const triggers = document.querySelectorAll("[data-call-banner-trigger]");
 
   function openBanner() {
     banner.inert = false;
-    banner.removeAttribute("aria-hidden");
+    banner.setAttribute("aria-hidden", "false");
     banner.classList.add("call-banner--visible");
 
     setTimeout(() => {
@@ -30,11 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("call-banner-dismissed", "1");
   }
 
-  // Экспортируем для form-handler.js
+  // Экспортируем для form-handler.js и ручного открытия из других сценариев
+  window.openCallBanner = openBanner;
   window.closeCallBanner = closeBanner;
 
   // Показываем баннер, когда пользователь прокрутил 50% страницы
   function handleScroll() {
+    if (localStorage.getItem("call-banner-dismissed")) {
+      window.removeEventListener("scroll", handleScroll);
+      return;
+    }
+
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     if (maxScroll > 0 && window.scrollY / maxScroll >= 0.5) {
       openBanner();
@@ -42,14 +44,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  window.addEventListener("scroll", handleScroll, { passive: true });
+  // Если уже закрывали в этой сессии — не показываем автоматически, но кнопка работает.
+  if (!localStorage.getItem("call-banner-dismissed")) {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", openBanner);
+  });
 
   if (closeBtn) {
     closeBtn.addEventListener("click", closeBanner);
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && banner.getAttribute("aria-hidden") === "false") {
+    if (e.key === "Escape" && banner.classList.contains("call-banner--visible")) {
       closeBanner();
     }
   });

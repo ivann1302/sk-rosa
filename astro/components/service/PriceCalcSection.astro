@@ -2,69 +2,77 @@
 import calculatorHeroImage from "../../../src/assets/images/common/calculator-hero.webp";
 import serviceHeroImage from "../../../src/assets/images/common/service-hero.png";
 import shareIcon from "../../../src/assets/icons/common/share-alt-svgrepo-com.svg";
+import PlasteringLeadCalculator from "./PlasteringLeadCalculator.jsx";
 
 const { data } = Astro.props;
 const serviceSlug = data.serviceSlug ?? "plastering";
 const calcTypeName = data.calcTypeName ?? "PLASTER_TYPE";
 const calcTypes = data.calcTypes ?? data.plasterTypes;
+const usePlasteringLeadCalculator = serviceSlug === "plastering";
 ---
 
-<section class="price-calc reveal-on-scroll">
-  <div class="price-calc__container">
-    <div class="price-calc__top-row">
-      <div class="price-calc__top-small-card">
-        <div class="price-calc__form-image-content">
-          <div class="price-calc__form-block">
-            <form
-              class="price-calc__form price-calc__form--quiz"
-              action="/scripts/api/send.php"
-              method="POST"
-              data-service={serviceSlug}
-            >
-              <h3 class="price-calc__quiz-heading">{data.quizTitle}</h3>
-              <div class="price-calc__quiz-progress" data-quiz-progress>
-                <span class="price-calc__quiz-dot price-calc__quiz-dot--active"></span>
-                <span class="price-calc__quiz-dot"></span>
-                <span class="price-calc__quiz-dot"></span>
-                <span class="price-calc__quiz-dot"></span>
-              </div>
+{
+  usePlasteringLeadCalculator ? (
+    <PlasteringLeadCalculator client:load data={data} />
+  ) : (
+    <section class="price-calc reveal-on-scroll">
+      <div class="price-calc__container">
+        <div class="price-calc__top-row">
+          <div class="price-calc__top-small-card">
+            <div class="price-calc__form-image-content">
+              <div class="price-calc__form-block">
+                <form
+                  class="price-calc__form price-calc__form--quiz"
+                  action="/scripts/api/send.php"
+                  method="POST"
+                  data-service={serviceSlug}
+                >
+                  <h3 class="price-calc__quiz-heading">{data.quizTitle}</h3>
+                  <div class="price-calc__quiz-progress" data-quiz-progress>
+                    <span class="price-calc__quiz-dot price-calc__quiz-dot--active"></span>
+                    <span class="price-calc__quiz-dot"></span>
+                    <span class="price-calc__quiz-dot"></span>
+                    <span class="price-calc__quiz-dot"></span>
+                  </div>
 
-              <div class="price-calc__quiz-step price-calc__quiz-step--active" data-step="1">
-                <p class="price-calc__quiz-title">{data.areaQuestion ?? "Какая площадь стен?"}</p>
-                <div class="price-calc__quiz-presets">
-                  {
-                    data.areaPresets.map(preset => (
-                      <button
-                        type="button"
-                        class="price-calc__quiz-preset"
-                        data-area-preset={preset.value}
-                      >
-                        {preset.label}
+                  <div class="price-calc__quiz-step price-calc__quiz-step--active" data-step="1">
+                    <p class="price-calc__quiz-title">
+                      {data.areaQuestion ?? "Какая площадь стен?"}
+                    </p>
+                    <div class="price-calc__quiz-presets">
+                      {
+                        data.areaPresets.map(preset => (
+                          <button
+                            type="button"
+                            class="price-calc__quiz-preset"
+                            data-area-preset={preset.value}
+                          >
+                            {preset.label}
+                          </button>
+                        ))
+                      }
+                    </div>
+                    <div class="price-calc__quiz-area-row">
+                      <input
+                        type="number"
+                        name="AREA"
+                        min="1"
+                        max="10000"
+                        placeholder="или введите свою площадь"
+                        class="price-calc__quiz-area-field"
+                        inputmode="numeric"
+                      />
+                      <span class="price-calc__quiz-area-unit">м²</span>
+                    </div>
+                    <p class="price-calc__quiz-error" data-quiz-error="1">
+                      Укажите площадь от 1 до 10 000 м²
+                    </p>
+                    <div class="price-calc__quiz-nav">
+                      <button type="button" class="price-calc__quiz-next" data-quiz-next="2">
+                        Далее
                       </button>
-                    ))
-                  }
-                </div>
-                <div class="price-calc__quiz-area-row">
-                  <input
-                    type="number"
-                    name="AREA"
-                    min="1"
-                    max="10000"
-                    placeholder="или введите свою площадь"
-                    class="price-calc__quiz-area-field"
-                    inputmode="numeric"
-                  />
-                  <span class="price-calc__quiz-area-unit">м²</span>
-                </div>
-                <p class="price-calc__quiz-error" data-quiz-error="1">
-                  Укажите площадь от 1 до 10 000 м²
-                </p>
-                <div class="price-calc__quiz-nav">
-                  <button type="button" class="price-calc__quiz-next" data-quiz-next="2">
-                    Далее
-                  </button>
-                </div>
-              </div>
+                    </div>
+                  </div>
 
               <div class="price-calc__quiz-step" data-step="2">
                 <p class="price-calc__quiz-title">{data.objectQuestion ?? "Где штукатурим?"}</p>
@@ -246,4 +254,6 @@ const calcTypes = data.calcTypes ?? data.plasterTypes;
       </div>
     </div>
   </div>
-</section>
+    </section>
+  )
+}

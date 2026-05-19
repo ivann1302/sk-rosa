@@ -1,8 +1,19 @@
-const articleSources = import.meta.glob("../../src/pages/*.html", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-});
+import armirovanieShtukaturkiSetkojHtml from "../../src/pages/armirovanie-shtukaturki-setkoj.html?raw";
+import fasadShtukaturkaHtml from "../../src/pages/fasad-shtukaturka.html?raw";
+import gidroizolyaciyaPolaPodStyazhkuHtml from "../../src/pages/gidroizolyaciya-pola-pod-styazhku.html?raw";
+import kakRasscitatRaskhodShtukaturkiHtml from "../../src/pages/kak-rasscitat-raskhod-shtukaturki.html?raw";
+import mashinnayaIliRuchnayaShtukaturkaHtml from "../../src/pages/mashinnaya-ili-ruchnaya-shtukaturka.html?raw";
+import pokraskaStenBezRazvodovHtml from "../../src/pages/pokraska-sten-bez-razvodov.html?raw";
+import pokraskaStenDvumyaCvetamiHtml from "../../src/pages/pokraska-sten-dvumya-cvetami.html?raw";
+import preimushestvaBezvozdushnojPokraskiHtml from "../../src/pages/preimushestva-bezvozdushnoj-pokraski.html?raw";
+import shpaklevkaStenPosleShtukaturkiHtml from "../../src/pages/shpaklevka-sten-posle-shtukaturki.html?raw";
+import shtukaturkaGuideHtml from "../../src/pages/shtukaturka-guide.html?raw";
+import shtukaturkaStenVNovostrojkeHtml from "../../src/pages/shtukaturka-sten-v-novostrojke.html?raw";
+import stoimostRemontaKvartiryHtml from "../../src/pages/stoimost-remonta-kvartiry.html?raw";
+import styazhkaPodTeplyPolHtml from "../../src/pages/styazhka-pod-teply-pol.html?raw";
+import vidyStyazhkiPolaHtml from "../../src/pages/vidy-styazhki-pola.html?raw";
+import vyborKraskiAirlessPaintingHtml from "../../src/pages/vybor-kraski-airless-painting.html?raw";
+import vyborShtukaturkiHtml from "../../src/pages/vybor-shtukaturki.html?raw";
 
 export const blogPage = {
   seo: {
@@ -176,7 +187,8 @@ export const blogArticles = [
     href: "/fasad-shtukaturka",
     category: "plastering",
     categoryLabel: "Штукатурные работы",
-    title: "Наружная штукатурка фасадов здания: как выбрать материал и сделать долговечный штукатурный фасад",
+    title:
+      "Наружная штукатурка фасадов здания: как выбрать материал и сделать долговечный штукатурный фасад",
     excerpt:
       "Полный гид по фасадной штукатурке: виды материалов, устройство мокрого фасада, технология работ, типичные ошибки и как принять работу у подрядчика.",
     date: "2026-03-04",
@@ -285,6 +297,25 @@ export const blogArticles = [
   },
 ];
 
+const articleSources = {
+  "armirovanie-shtukaturki-setkoj": armirovanieShtukaturkiSetkojHtml,
+  "fasad-shtukaturka": fasadShtukaturkaHtml,
+  "gidroizolyaciya-pola-pod-styazhku": gidroizolyaciyaPolaPodStyazhkuHtml,
+  "kak-rasscitat-raskhod-shtukaturki": kakRasscitatRaskhodShtukaturkiHtml,
+  "mashinnaya-ili-ruchnaya-shtukaturka": mashinnayaIliRuchnayaShtukaturkaHtml,
+  "pokraska-sten-bez-razvodov": pokraskaStenBezRazvodovHtml,
+  "pokraska-sten-dvumya-cvetami": pokraskaStenDvumyaCvetamiHtml,
+  "preimushestva-bezvozdushnoj-pokraski": preimushestvaBezvozdushnojPokraskiHtml,
+  "shpaklevka-sten-posle-shtukaturki": shpaklevkaStenPosleShtukaturkiHtml,
+  "shtukaturka-guide": shtukaturkaGuideHtml,
+  "shtukaturka-sten-v-novostrojke": shtukaturkaStenVNovostrojkeHtml,
+  "stoimost-remonta-kvartiry": stoimostRemontaKvartiryHtml,
+  "styazhka-pod-teply-pol": styazhkaPodTeplyPolHtml,
+  "vidy-styazhki-pola": vidyStyazhkiPolaHtml,
+  "vybor-kraski-airless-painting": vyborKraskiAirlessPaintingHtml,
+  "vybor-shtukaturki": vyborShtukaturkiHtml,
+};
+
 function attrValue(tag, name) {
   const pattern = new RegExp(`\\s${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i");
   const match = tag.match(pattern);
@@ -293,28 +324,30 @@ function attrValue(tag, name) {
 }
 
 function tagText(html, pattern) {
-  return (html.match(pattern)?.[1] ?? "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return (html.match(pattern)?.[1] ?? "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function metaValue(html, name) {
   const tag = html.match(
-    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${name}["'])[^>]*>`, "i"),
+    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${name}["'])[^>]*>`, "i")
   )?.[0];
 
   return tag ? attrValue(tag, "content") : "";
 }
 
 function canonicalValue(html) {
-  return attrValue(
-    html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "",
-    "href",
-  );
+  return attrValue(html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "", "href");
 }
 
 function jsonLd(html) {
-  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map(
-    match => JSON.parse(match[1].trim()),
-  );
+  return [
+    ...html.matchAll(
+      /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+    ),
+  ].map(match => JSON.parse(match[1].trim()));
 }
 
 function articleHeadHtml(html) {
@@ -324,7 +357,7 @@ function articleHeadHtml(html) {
 }
 
 function sourceFor(slug) {
-  const sourceHtml = articleSources[`../../src/pages/${slug}.html`];
+  const sourceHtml = articleSources[slug];
 
   if (!sourceHtml) {
     throw new Error(`Missing legacy article source for ${slug}`);

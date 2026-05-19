@@ -3,53 +3,94 @@ import path from "node:path";
 import process from "node:process";
 
 const rootDir = process.cwd();
-const legacyDir = path.join(rootDir, "public_html");
 const astroDir = path.join(rootDir, "public_html_astro");
 
 const pages = [
-  "blog.html",
-  "stoimost-remonta-kvartiry.html",
-  "kak-rasscitat-raskhod-shtukaturki.html",
-  "pokraska-sten-dvumya-cvetami.html",
-  "styazhka-pod-teply-pol.html",
-  "shpaklevka-sten-posle-shtukaturki.html",
-  "pokraska-sten-bez-razvodov.html",
-  "armirovanie-shtukaturki-setkoj.html",
-  "gidroizolyaciya-pola-pod-styazhku.html",
-  "vidy-styazhki-pola.html",
-  "fasad-shtukaturka.html",
-  "preimushestva-bezvozdushnoj-pokraski.html",
-  "shtukaturka-sten-v-novostrojke.html",
-  "vybor-kraski-airless-painting.html",
-  "shtukaturka-guide.html",
-  "mashinnaya-ili-ruchnaya-shtukaturka.html",
-  "vybor-shtukaturki.html",
+  { file: "blog.html", canonical: "https://sk-rosa.ru/blog", kind: "blog" },
+  {
+    file: "stoimost-remonta-kvartiry.html",
+    canonical: "https://sk-rosa.ru/stoimost-remonta-kvartiry",
+    kind: "article",
+  },
+  {
+    file: "kak-rasscitat-raskhod-shtukaturki.html",
+    canonical: "https://sk-rosa.ru/kak-rasscitat-raskhod-shtukaturki",
+    kind: "article",
+  },
+  {
+    file: "pokraska-sten-dvumya-cvetami.html",
+    canonical: "https://sk-rosa.ru/pokraska-sten-dvumya-cvetami",
+    kind: "article",
+  },
+  {
+    file: "styazhka-pod-teply-pol.html",
+    canonical: "https://sk-rosa.ru/styazhka-pod-teply-pol",
+    kind: "article",
+  },
+  {
+    file: "shpaklevka-sten-posle-shtukaturki.html",
+    canonical: "https://sk-rosa.ru/shpaklevka-sten-posle-shtukaturki",
+    kind: "article",
+  },
+  {
+    file: "pokraska-sten-bez-razvodov.html",
+    canonical: "https://sk-rosa.ru/pokraska-sten-bez-razvodov",
+    kind: "article",
+  },
+  {
+    file: "armirovanie-shtukaturki-setkoj.html",
+    canonical: "https://sk-rosa.ru/armirovanie-shtukaturki-setkoj",
+    kind: "article",
+  },
+  {
+    file: "gidroizolyaciya-pola-pod-styazhku.html",
+    canonical: "https://sk-rosa.ru/gidroizolyaciya-pola-pod-styazhku",
+    kind: "article",
+  },
+  {
+    file: "vidy-styazhki-pola.html",
+    canonical: "https://sk-rosa.ru/vidy-styazhki-pola",
+    kind: "article",
+  },
+  {
+    file: "fasad-shtukaturka.html",
+    canonical: "https://sk-rosa.ru/fasad-shtukaturka",
+    kind: "article",
+  },
+  {
+    file: "preimushestva-bezvozdushnoj-pokraski.html",
+    canonical: "https://sk-rosa.ru/preimushestva-bezvozdushnoj-pokraski",
+    kind: "article",
+  },
+  {
+    file: "shtukaturka-sten-v-novostrojke.html",
+    canonical: "https://sk-rosa.ru/shtukaturka-sten-v-novostrojke",
+    kind: "article",
+  },
+  {
+    file: "vybor-kraski-airless-painting.html",
+    canonical: "https://sk-rosa.ru/vybor-kraski-airless-painting",
+    kind: "article",
+  },
+  {
+    file: "shtukaturka-guide.html",
+    canonical: "https://sk-rosa.ru/shtukaturka-guide",
+    kind: "article",
+  },
+  {
+    file: "mashinnaya-ili-ruchnaya-shtukaturka.html",
+    canonical: "https://sk-rosa.ru/mashinnaya-ili-ruchnaya-shtukaturka",
+    kind: "article",
+  },
+  {
+    file: "vybor-shtukaturki.html",
+    canonical: "https://sk-rosa.ru/vybor-shtukaturki",
+    kind: "article",
+  },
 ];
 
-const headFields = [
-  "title",
-  "description",
-  "robots",
-  "canonical",
-  "og:type",
-  "og:title",
-  "og:description",
-  "og:url",
-  "og:image",
-  "og:image:secure_url",
-  "og:image:width",
-  "og:image:height",
-  "og:image:type",
-  "og:image:alt",
-  "og:locale",
-  "og:site_name",
-  "article:published_time",
-  "article:author",
-  "article:section",
-];
-
-function readHtml(dir, page) {
-  const filePath = path.join(dir, page);
+function readHtml(page) {
+  const filePath = path.join(astroDir, page);
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`Missing ${path.relative(rootDir, filePath)}`);
@@ -58,158 +99,114 @@ function readHtml(dir, page) {
   return fs.readFileSync(filePath, "utf8");
 }
 
-function decodeEntities(value) {
-  return value
-    .replaceAll("&quot;", '"')
-    .replaceAll("&#34;", '"')
-    .replaceAll("&apos;", "'")
-    .replaceAll("&#39;", "'")
-    .replaceAll("&amp;", "&")
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
-    .replaceAll("&nbsp;", " ");
-}
-
-function stripTags(value) {
-  return value.replace(/<[^>]*>/g, " ");
-}
-
-function normalizeText(value = "") {
-  return decodeEntities(stripTags(value))
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function normalizePublicPath(value = "") {
-  return normalizeText(value)
-    .replace(/^(?:\.\.\/)+/, "/")
-    .replace(/^\.\//, "/")
-    .replace(/^([a-z][a-z0-9-]+)\.html$/, "/$1")
-    .replace(/^\.\.\/([a-z][a-z0-9-]+)\.html$/, "/$1");
-}
-
 function attrValue(tag, name) {
   const pattern = new RegExp(`\\s${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i");
   const match = tag.match(pattern);
 
-  return normalizeText(match?.[1] ?? match?.[2] ?? match?.[3] ?? "");
+  return match?.[1] ?? match?.[2] ?? match?.[3] ?? "";
 }
 
-function matchFirst(html, pattern) {
-  return html.match(pattern)?.[1] ?? "";
+function textValue(html, pattern) {
+  return (html.match(pattern)?.[1] ?? "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function extractMeta(html, name) {
+function metaValue(html, name) {
   const tag = html.match(
-    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${escapeRegExp(name)}["'])[^>]*>`, "i"),
+    new RegExp(`<meta\\b(?=[^>]*(?:name|property)=["']${name}["'])[^>]*>`, "i")
   )?.[0];
 
   return tag ? attrValue(tag, "content") : "";
 }
 
-function extractHead(html) {
-  return {
-    title: normalizeText(matchFirst(html, /<title[^>]*>([\s\S]*?)<\/title>/i)),
-    description: extractMeta(html, "description"),
-    robots: extractMeta(html, "robots"),
-    canonical: attrValue(
-      html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "",
-      "href",
+function canonicalValue(html) {
+  return attrValue(html.match(/<link\b(?=[^>]*rel=["']canonical["'])[^>]*>/i)?.[0] ?? "", "href");
+}
+
+function collectJsonLdTypes(value, types = []) {
+  if (Array.isArray(value)) {
+    value.forEach(item => collectJsonLdTypes(item, types));
+    return types;
+  }
+
+  if (!value || typeof value !== "object") {
+    return types;
+  }
+
+  if (value["@type"]) {
+    types.push(value["@type"]);
+  }
+
+  if (value["@graph"]) {
+    collectJsonLdTypes(value["@graph"], types);
+  }
+
+  return types;
+}
+
+function jsonLdTypes(html) {
+  return [
+    ...html.matchAll(
+      /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
     ),
-    "og:type": extractMeta(html, "og:type"),
-    "og:title": extractMeta(html, "og:title"),
-    "og:description": extractMeta(html, "og:description"),
-    "og:url": extractMeta(html, "og:url"),
-    "og:image": extractMeta(html, "og:image"),
-    "og:image:secure_url": extractMeta(html, "og:image:secure_url"),
-    "og:image:width": extractMeta(html, "og:image:width"),
-    "og:image:height": extractMeta(html, "og:image:height"),
-    "og:image:type": extractMeta(html, "og:image:type"),
-    "og:image:alt": extractMeta(html, "og:image:alt"),
-    "og:locale": extractMeta(html, "og:locale"),
-    "og:site_name": extractMeta(html, "og:site_name"),
-    "article:published_time": extractMeta(html, "article:published_time"),
-    "article:author": extractMeta(html, "article:author"),
-    "article:section": extractMeta(html, "article:section"),
-  };
+  ].flatMap(match => collectJsonLdTypes(JSON.parse(match[1].trim())));
 }
 
-function extractJsonLdTypes(html) {
-  return [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
-    .map(match => JSON.parse(match[1].trim())["@type"] ?? "unknown")
-    .sort();
-}
-
-function extractFormSources(html) {
-  return [...html.matchAll(/<input\b(?=[^>]*name=["']form_source["'])[^>]*>/gi)]
-    .map(tag => attrValue(tag[0], "value"))
-    .sort();
-}
-
-function extractScripts(html) {
+function scripts(html) {
   return [...html.matchAll(/<script\b[^>]*\ssrc=["']([^"']+)["'][^>]*>/gi)].map(match =>
-    normalizePublicPath(match[1]),
+    match[1].replace(/^(?:\.\.\/)+/, "/")
   );
 }
 
-function extractPage(html) {
-  return {
-    head: extractHead(html),
-    h1: normalizeText(matchFirst(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i)),
-    jsonLdTypes: extractJsonLdTypes(html),
-    formSources: extractFormSources(html),
-    scripts: extractScripts(html).filter(script =>
-      [
-        "/scripts/features/blog/blog-filter.js",
-        "/scripts/features/blog/blog-search.js",
-        "/scripts/features/blog/blog-copy-link.js",
-        "/scripts/features/contact/call-banner.js",
-      ].includes(script),
-    ),
-  };
-}
-
-function stable(value) {
-  return JSON.stringify(value);
-}
-
-function compareValue(diffs, page, field, legacyValue, astroValue) {
-  if (stable(legacyValue) !== stable(astroValue)) {
-    diffs.push({ page, field, legacy: legacyValue, astro: astroValue });
+function assert(condition, message) {
+  if (!condition) {
+    throw new Error(message);
   }
 }
 
-const diffs = [];
+function checkPage({ file, canonical, kind }) {
+  const html = readHtml(file);
+  const types = jsonLdTypes(html);
+  const pageScripts = scripts(html);
+
+  assert(textValue(html, /<title[^>]*>([\s\S]*?)<\/title>/i), `${file}: missing title`);
+  assert(metaValue(html, "description"), `${file}: missing description`);
+  assert(canonicalValue(html) === canonical, `${file}: unexpected canonical`);
+  assert(textValue(html, /<h1\b[^>]*>([\s\S]*?)<\/h1>/i), `${file}: missing h1`);
+  assert(types.includes("BreadcrumbList"), `${file}: missing BreadcrumbList JSON-LD`);
+
+  if (kind === "blog") {
+    assert(types.includes("Blog"), `${file}: missing Blog JSON-LD`);
+    assert(
+      pageScripts.includes("/scripts/features/blog/blog-filter.js"),
+      `${file}: missing blog filter script`
+    );
+    assert(
+      pageScripts.includes("/scripts/features/blog/blog-search.js"),
+      `${file}: missing blog search script`
+    );
+    assert(
+      pageScripts.includes("/scripts/features/contact/call-banner.js"),
+      `${file}: missing call banner script`
+    );
+    return;
+  }
+
+  assert(
+    types.includes("BlogPosting") || types.includes("Article"),
+    `${file}: missing article JSON-LD`
+  );
+  assert(metaValue(html, "article:published_time"), `${file}: missing article published time`);
+  assert(
+    pageScripts.includes("/scripts/features/blog/blog-copy-link.js"),
+    `${file}: missing blog copy link script`
+  );
+}
 
 for (const page of pages) {
-  const legacy = extractPage(readHtml(legacyDir, page));
-  const astro = extractPage(readHtml(astroDir, page));
-
-  for (const field of headFields) {
-    compareValue(diffs, page, field, legacy.head[field], astro.head[field]);
-  }
-
-  compareValue(diffs, page, "h1", legacy.h1, astro.h1);
-  compareValue(diffs, page, "jsonLdTypes", legacy.jsonLdTypes, astro.jsonLdTypes);
-  compareValue(diffs, page, "formSources", legacy.formSources, astro.formSources);
-  compareValue(diffs, page, "blogRuntimeScripts", legacy.scripts, astro.scripts);
+  checkPage(page);
 }
 
-if (diffs.length === 0) {
-  process.stdout.write(`Astro blog output check passed for ${pages.length} pages.\n`);
-  process.exit(0);
-}
-
-console.error(`Astro blog output check failed: ${diffs.length} difference(s).`);
-
-for (const diff of diffs) {
-  console.error(`\n${diff.page}: ${diff.field}`);
-  console.error(`  legacy: ${stable(diff.legacy)}`);
-  console.error(`  astro:  ${stable(diff.astro)}`);
-}
-
-process.exit(1);
+process.stdout.write(`Astro blog output check passed for ${pages.length} generated blog pages.\n`);

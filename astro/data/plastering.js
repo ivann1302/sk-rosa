@@ -4,8 +4,7 @@ export const plasteringPage = {
     description:
       "Гипсовая и цементная штукатурка стен в Москве ➤ Машинное нанесение, работа с маяками. Цена от 450 руб/м². Бесплатный замер. ☎ 8(985) 135-49-91",
     canonical: "https://sk-rosa.ru/plastering",
-    ogTitle:
-      "Штукатурные работы в Москве и МО | ROSA - Штукатурка стен и потолков от 450 рублей",
+    ogTitle: "Штукатурные работы в Москве и МО | ROSA - Штукатурка стен и потолков от 450 рублей",
     ogDescription:
       "Профессиональные штукатурные работы в Москве и МО. Штукатурка стен и потолков, выравнивание поверхностей. Цена от 450 руб Гарантия качества.",
     ogImageAlt: "Штукатурные работы в Москве и МО - ROSA",
@@ -19,7 +18,7 @@ export const plasteringPage = {
     ctaHref: "#contact-request",
     image: {
       webp: "/assets/images/common/plastering-hero.webp",
-      fallback: "/assets/images/common/plastering-hero.png",
+      fallback: "/assets/images/common/plastering-hero.webp",
       alt: "Штукатурные работы",
     },
     video:
@@ -102,7 +101,8 @@ export const plasteringPage = {
     },
   ],
   priceCalc: {
-    quizTitle: "Расчёт стоимости штукатурки за 3 шага",
+    serviceSlug: "plastering",
+    quizTitle: "Предварительная смета штукатурки за 1 минуту",
     areaPresets: [
       { label: "до 50 м²", value: "40" },
       { label: "50-100 м²", value: "80" },
@@ -117,7 +117,7 @@ export const plasteringPage = {
       "Склад / цех / автосервис",
     ],
     coatings: ["Под обои", "Под покраску", "Под плитку", "Не знаю — подскажите"],
-    quizFormSource: "Квиз-смета штукатурки",
+    quizFormSource: "Калькулятор штукатурки",
     miniCalcFormSource: "Мини-калькулятор штукатурки",
     articles: [
       { href: "/shtukaturka-sten-v-novostrojke", label: "Штукатурка стен в новостройке" },
@@ -134,7 +134,11 @@ export const plasteringPage = {
     title: "Оставить заявку на бесплатную консультацию",
     subtitle:
       "Получите бесплатную консультацию и расчет стоимости штукатурки. Наши специалисты свяжутся с вами в течение 15 минут и ответят на все вопросы.",
-    features: ["Бесплатный выезд специалиста", "Точный расчет стоимости", "Гарантия качества работ"],
+    features: [
+      "Бесплатный выезд специалиста",
+      "Точный расчет стоимости",
+      "Гарантия качества работ",
+    ],
     comments: "Заявка на штукатурные работы",
     formSource: "Штукатурные работы",
   },

@@ -18,7 +18,7 @@ export const floorScreedPage = {
     ctaHref: "#contact-request",
     image: {
       webp: "/assets/images/common/floor-screed-hero.webp",
-      fallback: "/assets/images/common/floor-screed-hero.png",
+      fallback: "/assets/images/common/floor-screed-hero.webp",
       alt: "Стяжка пола",
     },
     video:

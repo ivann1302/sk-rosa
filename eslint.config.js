@@ -53,7 +53,7 @@ export default [
     },
   },
   {
-    // Конфигурация для Node.js файлов (vite.config.js и другие конфигурационные файлы)
+    // Конфигурация для Node.js config-файлов
     files: ["*.config.js", "*.config.mjs", "*.config.ts", "*.config.cjs"],
     languageOptions: {
       globals: {
