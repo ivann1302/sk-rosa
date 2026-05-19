@@ -73,6 +73,13 @@ const fixHtmlPaths = () => {
         });
       } catch { /* ignore */ }
 
+      htmlFiles.sort((a, b) => {
+        const aFromPages = a.relative.startsWith("pages/");
+        const bFromPages = b.relative.startsWith("pages/");
+
+        return Number(aFromPages) - Number(bFromPages);
+      });
+
       // Находим CSS файл
       let cssFileName = "./assets/css/main.css";
       try {

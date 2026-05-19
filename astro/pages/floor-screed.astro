@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
+import ContactRequest from "../components/service/ContactRequest.astro";
+import FaqSection from "../components/service/FaqSection.astro";
+import PriceCalcSection from "../components/service/PriceCalcSection.astro";
+import PricingSection from "../components/service/PricingSection.astro";
+import ReviewsSection from "../components/service/ReviewsSection.astro";
+import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
+import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceRuntime from "../components/service/ServiceRuntime.astro";
+import ServiceSteps from "../components/service/ServiceSteps.astro";
+import ServiceTaskList from "../components/service/ServiceTaskList.astro";
+import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
+import { floorScreedJsonLd, floorScreedPage } from "../data/floor-screed.js";
+import { breadcrumbJsonLd } from "../lib/seo.js";
+
+const { seo } = floorScreedPage;
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: floorScreedPage.faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  bodyClass="astro-service-page"
+  metrikaId={108700223}
+  metrikaOptions={{
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
+    accurateTrackBounce: true,
+    trackLinks: true,
+  }}
+  jsonLd={[
+    floorScreedJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Стяжка пола", url: seo.canonical },
+    ]),
+    faqJsonLd,
+  ]}
+>
+  <main>
+    <ServiceHero {...floorScreedPage.hero} />
+    <ServiceAdvantages
+      title={floorScreedPage.service.advantagesTitle}
+      items={floorScreedPage.advantages}
+      cta={{ href: "#pricing-table", label: floorScreedPage.service.advantagesCtaLabel }}
+    />
+    <ServiceTextBlock
+      title={floorScreedPage.textBlock.title}
+      subtitle={floorScreedPage.textBlock.subtitle}
+    >
+      {floorScreedPage.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </ServiceTextBlock>
+    <ServiceSteps
+      title={floorScreedPage.stages.title}
+      subtitle={floorScreedPage.stages.subtitle}
+      steps={floorScreedPage.stages.items}
+      cta={{
+        title: "Готовы начать? Давайте обсудим ваш ремонт, оставьте заявку",
+        href: "#contact-request",
+        label: "Рассчитать стоимость",
+      }}
+    />
+    <ServiceTaskList
+      title={floorScreedPage.service.taskListTitle}
+      items={floorScreedPage.taskList}
+      image={floorScreedPage.hero.image}
+    />
+    <PricingSection
+      title={floorScreedPage.service.pricingTitle}
+      containerId={floorScreedPage.service.pricingContainerId}
+    />
+    <PriceCalcSection data={floorScreedPage.priceCalc} />
+    <ReviewsSection reviews={floorScreedPage.reviews} />
+    <ContactRequest {...floorScreedPage.contact} />
+    <FaqSection
+      title="Ответы на частые вопросы"
+      description={floorScreedPage.faqDescription}
+      items={floorScreedPage.faq}
+    />
+    <ArticlesCarousel
+      title="Полезные статьи о ремонте"
+      articles={floorScreedPage.articles}
+      moreHref="/blog"
+      moreLabel="Посмотреть другие статьи"
+    />
+  </main>
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={floorScreedPage.runtime.pricingScript}
+    callBannerComments={floorScreedPage.runtime.callBannerComments}
+    callBannerSource={floorScreedPage.runtime.callBannerSource}
+  />
+</BaseLayout>

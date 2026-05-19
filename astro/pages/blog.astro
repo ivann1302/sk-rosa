@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import LegacyRuntime from "../components/LegacyRuntime.astro";
+import BlogIndexPage from "../components/blog/BlogIndexPage.astro";
+import { blogArticles, blogCategories, blogJsonLd, blogPage } from "../data/blog.js";
+import { breadcrumbJsonLd } from "../lib/seo.js";
+import blogHtml from "../../src/pages/blog.html?raw";
+
+const { seo } = blogPage;
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImage={seo.ogImage}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  jsonLd={[
+    blogJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Блог", url: seo.canonical },
+    ]),
+  ]}
+>
+  <main>
+    <BlogIndexPage articles={blogArticles} categories={blogCategories} />
+  </main>
+  <LegacyRuntime slot="runtime" sourceHtml={blogHtml} />
+</BaseLayout>

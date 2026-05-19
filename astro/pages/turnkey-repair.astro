@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import TurnkeyRepairLegacyPage from "../components/service/TurnkeyRepairLegacyPage.astro";
+import TurnkeyRepairLegacyRuntime from "../components/service/TurnkeyRepairLegacyRuntime.astro";
+import { turnkeyRepairJsonLd, turnkeyRepairPage } from "../data/turnkey-repair.js";
+import { breadcrumbJsonLd } from "../lib/seo.js";
+
+const { seo } = turnkeyRepairPage;
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: turnkeyRepairPage.faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  bodyClass="astro-service-page"
+  metrikaId={107041182}
+  jsonLd={[
+    turnkeyRepairJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Ремонт под ключ", url: seo.canonical },
+    ]),
+    faqJsonLd,
+  ]}
+>
+  <main>
+    <TurnkeyRepairLegacyPage page={turnkeyRepairPage} />
+  </main>
+  <TurnkeyRepairLegacyRuntime
+    slot="runtime"
+    callBannerComments={turnkeyRepairPage.runtime.callBannerComments}
+    callBannerSource={turnkeyRepairPage.runtime.callBannerSource}
+  />
+</BaseLayout>

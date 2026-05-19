@@ -1,0 +1,26 @@
+---
+const { title = "Преимущества услуги", items, cta } = Astro.props;
+---
+
+<section class="advantages-service advantages-service--numbers">
+  <h2 class="visually-hidden">{title}</h2>
+  <div class="advantages-service__container">
+    <div class="advantages-service__list">
+      {
+        items.map(item => (
+          <div class="advantages-service__item">
+            <div class="advantages-service__icon">
+              <img src={item.icon} alt={item.alt} width="48" height="48" />
+            </div>
+            <div class="advantages-service__name">{item.value}</div>
+            <div class="advantages-service__desc">{item.description}</div>
+          </div>
+        ))
+      }
+    </div>
+    <a href={cta.href} class="advantages-service__more-btn">
+      {cta.label}
+      <img src="/assets/icons/common/share-alt-svgrepo-com.svg" alt="share" class="inline-icon" />
+    </a>
+  </div>
+</section>

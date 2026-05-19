@@ -90,6 +90,8 @@ const roundTo = (value, step) => Math.round(value / step) * step;
 
 const formatPrice = value => value.toLocaleString("ru-RU");
 
+const getMetrikaId = () => window.rosaMetrikaId || 107041182;
+
 function calculatePrice(config, area, propertyType, coating) {
   const rates = config.rates;
   const rate = rates[coating] ?? rates["Не знаю — подскажите"];
@@ -183,7 +185,7 @@ function initMiniCalc() {
       const result = await submitForm(form.action, formData);
       if (result.success) {
         if (typeof ym !== "undefined") {
-          ym(107041182, "reachGoal", "form_submit");
+          ym(getMetrikaId(), "reachGoal", "form_submit");
         }
         if (window.openSuccessModal) {
           window.openSuccessModal(submitBtn);
@@ -379,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (result.success) {
         if (typeof ym !== "undefined") {
-          ym(107041182, "reachGoal", "form_submit");
+          ym(getMetrikaId(), "reachGoal", "form_submit");
         }
         if (window.openSuccessModal) {
           window.openSuccessModal(submitBtn);

@@ -3,10 +3,12 @@ node_modules/
 
 # Build output
 public_html/
+public_html_astro/
 !public_html/.gitkeep
 
 # Vite cache
 .vite/
+.astro/
 
 # Compiled files
 *.css.map
@@ -47,6 +49,10 @@ css-analysis-report.txt
 
 # Environment variables
 .env
+
+# Local Directus runtime data
+directus/database/
+directus/uploads/
 
 # IDE
 .vscode/

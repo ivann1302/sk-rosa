@@ -1,0 +1,45 @@
+@use "../../src/styles/main.scss";
+
+.astro-service-page {
+  .about-service,
+  .advantages-service,
+  .service-text-block,
+  .work-stages-service,
+  .what-we-paint-list,
+  .pricing-section,
+  .contact-request,
+  .faq,
+  .articles-carousel {
+    max-width: 100%;
+  }
+
+  .about-service__title,
+  .about-service__subtitle,
+  .advantages-service__desc {
+    overflow-wrap: anywhere;
+  }
+
+  @media (width <= 768px) {
+    .about-service__info,
+    .advantages-service__container {
+      box-sizing: border-box;
+      max-width: calc(100vw - 24px);
+      overflow: hidden;
+    }
+
+    .about-service__title {
+      font-size: clamp(1.55rem, 7vw, 2rem);
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .about-service__subtitle {
+      text-align: left;
+      max-width: 100%;
+    }
+
+    .advantages-service__list {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+---
+import CallBanner from "../common/CallBanner.astro";
+import FloatingSocials from "../common/FloatingSocials.astro";
+import SuccessModal from "../common/SuccessModal.astro";
+
+const { callBannerComments, callBannerSource, pricingScript = "/scripts/features/pricing-table.js" } =
+  Astro.props;
+---
+
+<FloatingSocials />
+<SuccessModal />
+<script type="module" src="/scripts/features/calculator/price-calc.js" defer></script>
+<script type="module" src={pricingScript} defer></script>
+<script src="/scripts/core/constants.js" defer></script>
+<script src="/scripts/features/contact/init-contacts.js" defer></script>
+<script src="/scripts/core/carousel.js" defer></script>
+<script src="/scripts/features/contact/success-modal.js" defer></script>
+<script type="module" src="/scripts/features/contact/contact-request.js" defer></script>
+<script type="module" src="/scripts/core/main.js" defer></script>
+<CallBanner comments={callBannerComments} formSource={callBannerSource} />
+<script type="module" src="/scripts/features/contact/form-handler.js" defer></script>
+<script src="/scripts/features/contact/call-banner.js" defer></script>

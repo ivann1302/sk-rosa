@@ -1,0 +1,43 @@
+---
+const { title, items, image } = Astro.props;
+---
+
+<section class="what-we-paint-list reveal-on-scroll">
+  <div class="what-we-paint-list__container">
+    <div class="what-we-paint-list__content">
+      <div class="what-we-paint-list__left">
+        <h2 class="what-we-paint-list__title">{title}</h2>
+        <div class="what-we-paint-list__items">
+          {
+            items.map((item, index) => (
+              <div class="what-we-paint-list__item">
+                <div class="what-we-paint-list__icon">
+                  <span class="what-we-paint-list__number">{index + 1}</span>
+                </div>
+                <div class="what-we-paint-list__text">
+                  <div class="what-we-paint-list__name">{item.name}</div>
+                  <div class="what-we-paint-list__desc">{item.description}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="what-we-paint-list__right">
+        <picture>
+          <source srcset={image.webp} type="image/webp" />
+          <img
+            src={image.fallback}
+            alt={image.alt}
+            class="what-we-paint-list__image"
+            width="500"
+            height="500"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>

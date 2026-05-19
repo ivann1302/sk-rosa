@@ -1,0 +1,20 @@
+---
+const { title, description, items } = Astro.props;
+---
+
+<section class="faq reveal-on-scroll">
+  <div class="faq__container">
+    <h2 class="faq__title">{title}</h2>
+    <p class="faq__description">{description}</p>
+    <div class="faq__list">
+      {
+        items.map(item => (
+          <div class="faq__item">
+            <h3 class="faq__question">{item.question}</h3>
+            <p class="faq__answer">{item.answer}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

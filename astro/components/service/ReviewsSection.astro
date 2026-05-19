@@ -1,0 +1,77 @@
+---
+const { reviews } = Astro.props;
+---
+
+<section class="reviews reveal-on-scroll">
+  <div class="reviews__container">
+    <div class="reviews__content">
+      <h2 class="reviews__title">Отзывы о нашей работе</h2>
+      <div class="reviews__desc">
+        Мы всегда стремимся к совершенству и ценим каждого клиента. Ваши отзывы - важная часть
+        нашей работы, ведь именно благодаря вашей обратной связи мы можем становиться лучше,
+        совершенствовать сервис и поддерживать высокий уровень качества.<br /><br />
+        <span class="reviews__desc-extra">
+          Если вы уже воспользовались нашими услугами, расскажите о своём опыте! Нам важно знать,
+          что вам понравилось, а что можно улучшить. Оставить отзыв можно в наших официальных
+          аккаунтах в
+          <a
+            href="https://t.me/sk_rosa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reviews__account-link"
+          >
+            Telegram
+          </a>,
+          <a
+            href="https://2gis.ru/moscow/geo/70000001110771901"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reviews__account-link"
+          >
+            2GIS
+          </a>,
+          <a
+            href="https://yandex.com/maps/-/CPUHqN1w1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reviews__account-link"
+          >
+            Яндекс.Картах
+          </a>,
+          <a
+            href="https://vk.com/skrosa"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reviews__account-link"
+          >
+            ВКонтакте
+          </a>
+          и других удобных для вас площадках.
+        </span><br /><br />
+        <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
+      </div>
+    </div>
+    <div class="reviews__carousel-outer">
+      <button class="reviews-carousel__arrow reviews-carousel__arrow--left">&#8592;</button>
+      <section class="reviews-carousel">
+        <h2 class="visually-hidden">Карусель отзывов</h2>
+        <div class="reviews-carousel__wrapper">
+          <div class="reviews-carousel__track">
+            {
+              reviews.map(review => (
+                <div class="reviews-card">
+                  <div class="reviews-card__header">
+                    <img src={review.image} alt="user" />
+                    <div class="reviews-card__name">{review.name}</div>
+                  </div>
+                  <div class="reviews-card__text">{review.text}</div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+      <button class="reviews-carousel__arrow reviews-carousel__arrow--right">&#8594;</button>
+    </div>
+  </div>
+</section>

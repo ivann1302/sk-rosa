@@ -1,0 +1,29 @@
+---
+const { article, headingLevel = "h2" } = Astro.props;
+const Heading = headingLevel;
+---
+
+<article class="blog-card" data-category={article.category}>
+  <a href={article.href} class="blog-card__link">
+    <div class="blog-card__image-wrapper">
+      <img
+        src={article.image}
+        alt={article.imageAlt}
+        class="blog-card__image"
+        loading="lazy"
+        decoding="async"
+        width={article.width}
+        height={article.height}
+      />
+    </div>
+    <div class="blog-card__content">
+      <span class="blog-card__category">{article.categoryLabel}</span>
+      <Heading class="blog-card__title">{article.title}</Heading>
+      <p class="blog-card__excerpt">{article.excerpt}</p>
+      <div class="blog-card__meta">
+        <time class="blog-card__date" datetime={article.date}>{article.dateLabel}</time>
+        <span class="blog-card__read-time">{article.readTime}</span>
+      </div>
+    </div>
+  </a>
+</article>

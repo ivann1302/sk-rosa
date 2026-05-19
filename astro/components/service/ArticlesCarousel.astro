@@ -1,0 +1,45 @@
+---
+const { title, articles, moreHref, moreLabel } = Astro.props;
+---
+
+<section class="articles-carousel reveal-on-scroll">
+  <div class="articles-carousel__container">
+    <h2 class="articles-carousel__title">{title}</h2>
+    <div class="articles-carousel__wrapper">
+      <button
+        class="articles-carousel__arrow articles-carousel__arrow--prev"
+        aria-label="Предыдущая статья"
+      >
+        &#10094;
+      </button>
+      <div class="articles-carousel__viewport">
+        <div class="articles-carousel__track">
+          {
+            articles.map(article => (
+              <a href={article.href} class="articles-carousel__card">
+                <h3 class="articles-carousel__card-title">{article.title}</h3>
+                <div class="articles-carousel__card-image">
+                  <img
+                    src={article.image}
+                    alt={article.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width={article.width}
+                    height={article.height}
+                  />
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <button
+        class="articles-carousel__arrow articles-carousel__arrow--next"
+        aria-label="Следующая статья"
+      >
+        &#10095;
+      </button>
+    </div>
+    <a href={moreHref} class="articles-carousel__more-btn">{moreLabel}</a>
+  </div>
+</section>

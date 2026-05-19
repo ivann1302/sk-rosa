@@ -1,0 +1,50 @@
+{
+  "collections": {
+    "services": {
+      "primary": "slug",
+      "fields": {
+        "slug": "string",
+        "name": "string",
+        "nameShort": "string",
+        "serviceType": "string",
+        "heroImage": "string",
+        "heroVideo": "string",
+        "description": "text",
+        "keywords": "text",
+        "buttonText": "string",
+        "priceFrom": "string",
+        "advantages": "json",
+        "seo": "json"
+      }
+    },
+    "cities": {
+      "primary": "slug",
+      "fields": {
+        "slug": "string",
+        "name": "string",
+        "nameIn": "string",
+        "sort": "integer"
+      }
+    },
+    "residential_complexes": {
+      "primary": "id",
+      "fields": {
+        "id": "uuid",
+        "city": "string",
+        "name": "string",
+        "sort": "integer"
+      }
+    },
+    "pages": {
+      "primary": "slug",
+      "fields": {
+        "slug": "string",
+        "title": "string",
+        "description": "text",
+        "canonical": "string",
+        "content": "json",
+        "seo": "json"
+      }
+    }
+  }
+}

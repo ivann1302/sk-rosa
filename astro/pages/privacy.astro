@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import LegacyRuntime from "../components/LegacyRuntime.astro";
+import { extractBetween, normalizeLegacyPaths } from "../lib/legacy-html.js";
+import { breadcrumbJsonLd, organizationJsonLd } from "../lib/seo.js";
+import privacyHtml from "../../src/pages/privacy.html?raw";
+
+const contentHtml = normalizeLegacyPaths(
+  extractBetween(privacyHtml, "<!-- HEADER -->", "<!-- FOOTER -->")
+);
+
+const title = "Политика конфиденциальности | OOO.ROSA";
+const description =
+  "Политика конфиденциальности OOO.ROSA. Информация о защите персональных данных пользователей сайта sk-rosa.ru";
+const canonical = "https://sk-rosa.ru/privacy";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle="Политика конфиденциальности OOO 'ROSA'"
+  ogDescription={description}
+  ogImageAlt="ROSA - Логотип компании"
+  jsonLd={[
+    organizationJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Политика конфиденциальности", url: canonical },
+    ]),
+  ]}
+>
+  <Fragment set:html={contentHtml} />
+  <LegacyRuntime slot="runtime" sourceHtml={privacyHtml} />
+</BaseLayout>

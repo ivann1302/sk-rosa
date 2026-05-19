@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import LegacyRuntime from "../components/LegacyRuntime.astro";
+import { extractBetween, normalizeLegacyPaths } from "../lib/legacy-html.js";
+import { breadcrumbJsonLd, organizationJsonLd } from "../lib/seo.js";
+import termsHtml from "../../src/pages/terms.html?raw";
+
+const contentHtml = normalizeLegacyPaths(
+  extractBetween(termsHtml, "<!-- HEADER -->", "<!-- FOOTER -->")
+);
+
+const title = "Пользовательское соглашение | OOO.ROSA";
+const description = "Пользовательское соглашение OOO.ROSA. Условия использования сайта sk-rosa.ru";
+const canonical = "https://sk-rosa.ru/terms";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle="Пользовательское соглашение OOO 'ROSA'"
+  ogDescription={description}
+  ogImageAlt="ROSA - Логотип компании"
+  jsonLd={[
+    organizationJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Пользовательское соглашение", url: canonical },
+    ]),
+  ]}
+>
+  <Fragment set:html={contentHtml} />
+  <LegacyRuntime slot="runtime" sourceHtml={termsHtml} />
+</BaseLayout>

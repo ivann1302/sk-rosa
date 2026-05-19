@@ -1,0 +1,54 @@
+---
+const {
+  comments = "Заявка с баннера (10 сек)",
+  formSource = "Баннер 10 секунд",
+} = Astro.props;
+---
+
+<div
+  id="call-banner"
+  class="call-banner"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Закажите звонок"
+  aria-hidden="true"
+  inert
+>
+  <button class="call-banner__close" id="call-banner-close" aria-label="Закрыть">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <div class="call-banner__content">
+    <p class="call-banner__title">Закажите обратный звонок.</p>
+    <p class="call-banner__subtitle">
+      Это совершенно бесплатно и ни к чему не обязывает. Наш специалист Вас проконсультирует.
+    </p>
+    <form class="call-banner__form" action="/scripts/api/send.php" method="POST">
+      <div class="call-banner__field">
+        <input type="text" name="NAME" autocomplete="name" required placeholder="Ваше имя" />
+      </div>
+      <div class="call-banner__field">
+        <input
+          type="tel"
+          name="PHONE"
+          autocomplete="tel"
+          required
+          placeholder="+7 (999) 123-45-67"
+        />
+      </div>
+      <input type="hidden" name="COMMENTS" value={comments} />
+      <input type="hidden" name="form_source" value={formSource} />
+      <button type="submit" class="call-banner__submit">Заказать звонок</button>
+    </form>
+  </div>
+</div>

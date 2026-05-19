@@ -1,0 +1,64 @@
+---
+const { title, subtitle, features, formSource, comments } = Astro.props;
+---
+
+<section class="contact-request reveal-on-scroll" id="contact-request">
+  <div class="contact-request__container">
+    <div class="contact-request__content">
+      <div class="contact-request__info">
+        <h2 class="contact-request__title">{title}</h2>
+        <p class="contact-request__subtitle">{subtitle}</p>
+        <div class="contact-request__features">
+          {
+            features.map(feature => (
+              <div class="contact-request__feature">
+                <div class="contact-request__feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div class="contact-request__feature-text">{feature}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="contact-request__form">
+        <form class="contact-request__form-fields" action="/scripts/api/send.php" method="POST">
+          <div class="contact-request__field">
+            <label for="contact-name">Ваше имя *</label>
+            <input
+              type="text"
+              id="contact-name"
+              name="NAME"
+              autocomplete="name"
+              placeholder="Введите ваше имя"
+              required
+            />
+          </div>
+          <div class="contact-request__field">
+            <label for="contact-phone">Телефон *</label>
+            <input
+              type="tel"
+              id="contact-phone"
+              name="PHONE"
+              autocomplete="tel"
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+          </div>
+          <input type="hidden" name="COMMENTS" value={comments} />
+          <input type="hidden" name="property_type" value="apartment" />
+          <input type="hidden" name="form_source" value={formSource} />
+          <button type="submit" class="contact-request__submit">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

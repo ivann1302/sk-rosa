@@ -1,0 +1,13 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<section class="service-text-block reveal-on-scroll">
+  <div class="service-text-block__container">
+    <h2 class="service-text-block__title">{title}</h2>
+    {subtitle && <p class="service-text-block__subtitle">{subtitle}</p>}
+    <div class="service-text-block__content">
+      <slot />
+    </div>
+  </div>
+</section>

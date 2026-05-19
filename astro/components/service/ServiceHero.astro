@@ -1,0 +1,48 @@
+---
+const { title, subtitle, badges, ctaLabel, ctaHref, image, video } = Astro.props;
+---
+
+<section class="about-service">
+  <div class="about-service__container">
+    <div class="about-service__info">
+      <h1 class="about-service__title">{title}</h1>
+      <div class="about-service__subtitle">{subtitle}</div>
+      <ul class="about-service__badges">
+        {badges.map(badge => <li class="about-service__badge">{badge}</li>)}
+      </ul>
+      <a class="about-service__btn" href={ctaHref}>{ctaLabel}</a>
+    </div>
+    <div class="about-service__image-wrap">
+      <picture class="about-service__image-mobile">
+        <source srcset={image.webp} type="image/webp" />
+        <img
+          src={image.fallback}
+          alt={image.alt}
+          width="500"
+          height="500"
+          loading="eager"
+          fetchpriority="high"
+          decoding="sync"
+        />
+      </picture>
+      {
+        video ? (
+          <video
+            class="about-service__image about-service__image-desktop"
+            src={video}
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="none"
+          ></video>
+        ) : (
+          <picture class="about-service__image about-service__image-desktop">
+            <source srcset={image.webp} type="image/webp" />
+            <img src={image.fallback} alt={image.alt} width="500" height="500" loading="eager" />
+          </picture>
+        )
+      }
+    </div>
+  </div>
+</section>

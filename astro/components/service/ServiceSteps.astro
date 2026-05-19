@@ -1,0 +1,27 @@
+---
+const { title, subtitle, steps, cta } = Astro.props;
+---
+
+<section class="work-stages-service reveal-on-scroll">
+  <div class="work-stages-service__container">
+    <div class="work-stages-service__grid">
+      <div class="work-stages-service__header">
+        <h2 class="work-stages-service__title">{title}</h2>
+        <p class="work-stages-service__subtitle">{subtitle}</p>
+      </div>
+      {
+        steps.map((step, index) => (
+          <div class="work-stages-service__stage">
+            <div class="work-stages-service__stage-number">шаг {index + 1}</div>
+            <h3 class="work-stages-service__stage-title">{step.title}</h3>
+            <p class="work-stages-service__stage-description">{step.description}</p>
+          </div>
+        ))
+      }
+      <div class="work-stages-service__cta">
+        <h3 class="work-stages-service__cta-title">{cta.title}</h3>
+        <a class="work-stages-service__cta-btn" href={cta.href}>{cta.label}</a>
+      </div>
+    </div>
+  </div>
+</section>

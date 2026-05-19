@@ -1,0 +1,22 @@
+---
+const { cityNameIn, complexes = [] } = Astro.props;
+---
+
+{
+  complexes.length > 0 && (
+    <section class="city-complexes">
+      <div class="city-complexes__container">
+        <h2 class="city-complexes__title">Новостройки в {cityNameIn}, где мы работаем</h2>
+        <p class="city-complexes__desc">
+          Наши мастера выполняли работы в этих жилых комплексах - знаем особенности домов,
+          застройщиков и типичные задачи.
+        </p>
+        <ul class="city-complexes__list">
+          {complexes.map(name => (
+            <li class="city-complexes__item">{name}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

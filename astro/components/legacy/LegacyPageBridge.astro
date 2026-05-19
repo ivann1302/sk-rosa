@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../BaseLayout.astro";
+import LegacyRuntime from "../LegacyRuntime.astro";
+import {
+  extractBetween,
+  extractLegacyJsonLd,
+  extractLegacySeo,
+  normalizeLegacyPaths,
+} from "../../lib/legacy-html.js";
+
+const { sourceHtml } = Astro.props;
+const seo = extractLegacySeo(sourceHtml);
+const jsonLd = extractLegacyJsonLd(sourceHtml);
+const contentHtml = normalizeLegacyPaths(
+  extractBetween(sourceHtml, "<!-- HEADER -->", "<!-- FOOTER -->"),
+);
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogType={seo.ogType}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImage={seo.ogImage}
+  ogImageSecureUrl={seo.ogImageSecureUrl}
+  ogImageWidth={seo.ogImageWidth}
+  ogImageHeight={seo.ogImageHeight}
+  ogImageType={seo.ogImageType}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName={seo.ogSiteName}
+  jsonLd={jsonLd}
+>
+  <Fragment set:html={contentHtml} />
+  <LegacyRuntime slot="runtime" sourceHtml={sourceHtml} />
+</BaseLayout>

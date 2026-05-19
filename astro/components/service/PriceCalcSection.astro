@@ -1,0 +1,249 @@
+---
+import calculatorHeroImage from "../../../src/assets/images/common/calculator-hero.webp";
+import serviceHeroImage from "../../../src/assets/images/common/service-hero.png";
+import shareIcon from "../../../src/assets/icons/common/share-alt-svgrepo-com.svg";
+
+const { data } = Astro.props;
+const serviceSlug = data.serviceSlug ?? "plastering";
+const calcTypeName = data.calcTypeName ?? "PLASTER_TYPE";
+const calcTypes = data.calcTypes ?? data.plasterTypes;
+---
+
+<section class="price-calc reveal-on-scroll">
+  <div class="price-calc__container">
+    <div class="price-calc__top-row">
+      <div class="price-calc__top-small-card">
+        <div class="price-calc__form-image-content">
+          <div class="price-calc__form-block">
+            <form
+              class="price-calc__form price-calc__form--quiz"
+              action="/scripts/api/send.php"
+              method="POST"
+              data-service={serviceSlug}
+            >
+              <h3 class="price-calc__quiz-heading">{data.quizTitle}</h3>
+              <div class="price-calc__quiz-progress" data-quiz-progress>
+                <span class="price-calc__quiz-dot price-calc__quiz-dot--active"></span>
+                <span class="price-calc__quiz-dot"></span>
+                <span class="price-calc__quiz-dot"></span>
+                <span class="price-calc__quiz-dot"></span>
+              </div>
+
+              <div class="price-calc__quiz-step price-calc__quiz-step--active" data-step="1">
+                <p class="price-calc__quiz-title">{data.areaQuestion ?? "Какая площадь стен?"}</p>
+                <div class="price-calc__quiz-presets">
+                  {
+                    data.areaPresets.map(preset => (
+                      <button
+                        type="button"
+                        class="price-calc__quiz-preset"
+                        data-area-preset={preset.value}
+                      >
+                        {preset.label}
+                      </button>
+                    ))
+                  }
+                </div>
+                <div class="price-calc__quiz-area-row">
+                  <input
+                    type="number"
+                    name="AREA"
+                    min="1"
+                    max="10000"
+                    placeholder="или введите свою площадь"
+                    class="price-calc__quiz-area-field"
+                    inputmode="numeric"
+                  />
+                  <span class="price-calc__quiz-area-unit">м²</span>
+                </div>
+                <p class="price-calc__quiz-error" data-quiz-error="1">
+                  Укажите площадь от 1 до 10 000 м²
+                </p>
+                <div class="price-calc__quiz-nav">
+                  <button type="button" class="price-calc__quiz-next" data-quiz-next="2">
+                    Далее
+                  </button>
+                </div>
+              </div>
+
+              <div class="price-calc__quiz-step" data-step="2">
+                <p class="price-calc__quiz-title">{data.objectQuestion ?? "Где штукатурим?"}</p>
+                <div class="price-calc__quiz-options">
+                  {
+                    data.propertyTypes.map(option => (
+                      <label class="price-calc__quiz-option">
+                        <input type="radio" name="PROPERTY_TYPE" value={option} />
+                        <span>{option}</span>
+                      </label>
+                    ))
+                  }
+                </div>
+                <p class="price-calc__quiz-error" data-quiz-error="2">Выберите тип объекта</p>
+                <div class="price-calc__quiz-nav">
+                  <button type="button" class="price-calc__quiz-prev" data-quiz-prev="1">
+                    Назад
+                  </button>
+                  <button type="button" class="price-calc__quiz-next" data-quiz-next="3">
+                    Далее
+                  </button>
+                </div>
+              </div>
+
+              <div class="price-calc__quiz-step" data-step="3">
+                <p class="price-calc__quiz-title">
+                  {data.coatingQuestion ?? "Какая будет финишная отделка?"}
+                </p>
+                <div class="price-calc__quiz-options">
+                  {
+                    data.coatings.map(option => (
+                      <label class="price-calc__quiz-option">
+                        <input type="radio" name="COATING" value={option} />
+                        <span>{option}</span>
+                      </label>
+                    ))
+                  }
+                </div>
+                <p class="price-calc__quiz-error" data-quiz-error="3">
+                  {data.coatingError ?? "Выберите отделку"}
+                </p>
+                <div class="price-calc__quiz-nav">
+                  <button type="button" class="price-calc__quiz-prev" data-quiz-prev="2">
+                    Назад
+                  </button>
+                  <button type="button" class="price-calc__quiz-next" data-quiz-next="4">
+                    Рассчитать
+                  </button>
+                </div>
+              </div>
+
+              <div class="price-calc__quiz-step" data-step="4">
+                <p class="price-calc__quiz-title">Последний шаг - введите телефон</p>
+                <p class="price-calc__quiz-callback-text">
+                  Передадим ваши ответы менеджеру. Он перезвонит в течение 15 минут, уточнит детали
+                  и назовёт точную стоимость. Бесплатно и ни к чему не обязывает.
+                </p>
+                <label class="price-calc__quiz-phone-label" for="quiz-phone-input">
+                  Ваш номер телефона<span class="price-calc__quiz-required" aria-hidden="true">*</span>
+                </label>
+                <div class="price-calc__phone-input-container price-calc__phone-input-container--stacked">
+                  <input
+                    id="quiz-phone-input"
+                    type="tel"
+                    name="PHONE"
+                    autocomplete="tel"
+                    placeholder="+7 (999) 123-45-67"
+                    class="price-calc__phone-field"
+                    required
+                  />
+                  <button type="submit" class="price-calc__submit-btn">Заказать звонок</button>
+                </div>
+                <button
+                  type="button"
+                  class="price-calc__quiz-prev price-calc__quiz-prev--ghost"
+                  data-quiz-prev="3"
+                >
+                  Изменить ответы
+                </button>
+                <input type="hidden" name="form_source" value={data.quizFormSource ?? "Квиз-смета штукатурки"} />
+                <input type="hidden" name="COMMENTS" value="" data-quiz-comments />
+              </div>
+            </form>
+          </div>
+          <div class="price-calc__form-image-right">
+            <img src={serviceHeroImage.src} alt="Проект" />
+          </div>
+        </div>
+      </div>
+
+      <div class="price-calc__top-large-card">
+        <div class="price-calc__articles">
+          <h3 class="price-calc__articles-title">Полезные статьи</h3>
+          <ul class="price-calc__articles-list">
+            {
+              data.articles.map((article, index) => (
+                <li>
+                  <a href={article.href} class="price-calc__article-link">
+                    <span class="price-calc__article-number">{index + 1}.</span>
+                    {article.label}
+                    <img src={shareIcon.src} alt="share" class="inline-icon" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-calc__row">
+      <div class="price-calc__small-card">
+        <span class="price-calc__percent">%</span>
+      </div>
+      <div class="price-calc__large-card">
+        <div class="price-calc__large-content">
+          <form
+            class="price-calc__mini-calc"
+            action="/scripts/api/send.php"
+            method="POST"
+            data-service={serviceSlug}
+          >
+            <h3 class="price-calc__mini-calc-title">
+              {data.miniCalcTitle ?? "Калькулятор штукатурки"}
+            </h3>
+            <div class="price-calc__mini-calc-fields">
+              <label class="price-calc__mini-calc-field">
+                <span class="price-calc__mini-calc-label">
+                  {data.miniCalcAreaLabel ?? "Площадь стен, м²"}
+                </span>
+                <input
+                  type="number"
+                  name="AREA"
+                  min="1"
+                  max="10000"
+                  placeholder="100"
+                  class="price-calc__mini-calc-input"
+                  data-calc-area
+                  inputmode="numeric"
+                />
+              </label>
+              <label class="price-calc__mini-calc-field">
+                <span class="price-calc__mini-calc-label">
+                  {data.miniCalcTypeLabel ?? "Тип штукатурки"}
+                </span>
+                <select name={calcTypeName} class="price-calc__mini-calc-select" data-calc-type>
+                  {
+                    calcTypes.map(type => (
+                      <option value={type.value} data-rate={type.rate}>
+                        {type.label}
+                      </option>
+                    ))
+                  }
+                </select>
+              </label>
+            </div>
+            <div class="price-calc__mini-calc-result">
+              Ориентировочная стоимость:
+              <span class="price-calc__mini-calc-amount" data-calc-amount>0</span> ₽
+            </div>
+            <div class="price-calc__phone-input-container">
+              <input
+                type="tel"
+                name="PHONE"
+                autocomplete="tel"
+                placeholder="+7 (999) 123-45-67"
+                class="price-calc__phone-field"
+              />
+              <button type="submit" class="price-calc__submit-btn">Получить расчёт</button>
+            </div>
+            <input type="hidden" name="form_source" value={data.miniCalcFormSource ?? "Мини-калькулятор штукатурки"} />
+            <input type="hidden" name="COMMENTS" value="" data-calc-comments />
+          </form>
+
+          <div class="price-calc__large-image">
+            <img src={calculatorHeroImage.src} alt="Калькулятор" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

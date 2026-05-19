@@ -14,6 +14,8 @@ import { captureUtm, getUtmData } from "./utm-tracker.js";
 // Если в URL есть ?utm_source=... — сохранится в sessionStorage.
 captureUtm();
 
+const getMetrikaId = () => window.rosaMetrikaId || 107041182;
+
 document.addEventListener("DOMContentLoaded", function () {
   // Список селекторов форм, которые нужно обработать
   const formSelectors = [
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result.success) {
           // Трекинг цели в Яндекс.Метрике
           if (typeof ym !== "undefined") {
-            ym(107041182, "reachGoal", "form_submit");
+            ym(getMetrikaId(), "reachGoal", "form_submit");
           }
           // Показываем модальное окно успеха, передавая кнопку для фокуса
           if (window.openSuccessModal) {

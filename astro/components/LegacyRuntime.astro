@@ -1,0 +1,9 @@
+---
+import { extractAfter, normalizeLegacyPaths } from "../lib/legacy-html.js";
+
+const { sourceHtml } = Astro.props;
+
+const runtimeHtml = normalizeLegacyPaths(extractAfter(sourceHtml, "<!-- FOOTER -->"));
+---
+
+<Fragment set:html={runtimeHtml} />

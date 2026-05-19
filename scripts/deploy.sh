@@ -7,7 +7,7 @@ REMOTE_PATH="/home/a1139549/domains/sk-rosa.ru/public_html/"
 LOCAL_PATH="./public_html/"
 
 echo "→ Сборка для хостинга..."
-npm run build:hosting
+npm run build:astro:production
 
 echo "→ Деплой на $REMOTE_HOST..."
 rsync -avz --delete \

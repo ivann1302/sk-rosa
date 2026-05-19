@@ -32,14 +32,11 @@ jobs:
       - name: Lint CSS
         run: npx stylelint "src/styles/**/*.scss"
 
-      - name: Generate city pages (for tests)
-        run: npm run generate
-
       - name: Run tests
         run: npm run test
 
       - name: Build
-        run: npm run build:hosting
+        run: npm run build:astro:production
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
 
@@ -47,7 +44,7 @@ jobs:
         run: |
           FILE_COUNT=$(find ./public_html -name "*.html" | wc -l)
           echo "HTML файлов в сборке: $FILE_COUNT"
-          if [ "$FILE_COUNT" -lt 10 ]; then
+          if [ "$FILE_COUNT" -lt 260 ]; then
             echo "ОШИБКА: слишком мало файлов в сборке. Деплой отменён."
             exit 1
           fi

@@ -1,0 +1,10 @@
+---
+const { title, containerId = "pricing-table-container" } = Astro.props;
+---
+
+<section class="pricing-section reveal-on-scroll" id="pricing-table">
+  <div class="pricing-section__container">
+    <h2 class="pricing-section__title">{title}</h2>
+    <div id={containerId}></div>
+  </div>
+</section>
