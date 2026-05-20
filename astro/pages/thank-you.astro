@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import FloatingSocials from "../components/common/FloatingSocials.astro";
+import { breadcrumbJsonLd, organizationJsonLd } from "../lib/seo.js";
+
+const title = "Благодарим за заказ | OOO.ROSA";
+const description =
+  "Благодарим за заказ. Менеджер ROSA скоро свяжется с вами, а пока вы можете почитать наш блог.";
+const canonical = "https://sk-rosa.ru/thank-you";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle="Благодарим за заказ | OOO.ROSA"
+  ogDescription={description}
+  ogImageAlt="ROSA - Ремонт под ключ"
+  robots="noindex, follow"
+  bodyClass="thank-you-page"
+  jsonLd={[
+    organizationJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Благодарим за заказ", url: canonical },
+    ]),
+  ]}
+>
+  <main class="thank-you" aria-labelledby="thank-you-title">
+    <section class="thank-you__section">
+      <div class="thank-you__container container">
+        <div class="thank-you__icon" aria-hidden="true">
+          <svg viewBox="0 0 96 96" width="96" height="96" focusable="false">
+            <circle cx="48" cy="48" r="46" />
+            <path d="M28 49.5 41.5 63 69 34" />
+          </svg>
+        </div>
+        <h1 class="thank-you__title" id="thank-you-title">Благодарим за заказ.</h1>
+        <p class="thank-you__text">Менеджер скоро свяжется с Вами.</p>
+        <p class="thank-you__hint">Пока можете почитать наш блог.</p>
+        <a class="thank-you__link" href="/blog">Перейти в блог</a>
+      </div>
+    </section>
+  </main>
+
+  <FloatingSocials />
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof ym === "function") {
+        ym(window.rosaMetrikaId || 107041182, "reachGoal", "thank_you_page");
+      }
+    });
+  </script>
+  <script src="/scripts/core/constants.js" defer></script>
+  <script src="/scripts/features/contact/init-contacts.js" defer></script>
+  <script type="module" src="/scripts/core/main.js" defer></script>
+</BaseLayout>

@@ -7,7 +7,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const publicHtmlDir = resolve(__dirname, "public_html");
 
 function formatBytes(bytes) {
-  if (bytes === 0) return "0 Bytes";
+  if (bytes === 0) {return "0 Bytes";}
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -43,11 +43,11 @@ function analyzeDirectory(dir, prefix = "") {
 }
 
 function getFileType(filename) {
-  if (filename.endsWith(".js")) return "JS";
-  if (filename.endsWith(".css")) return "CSS";
-  if (filename.endsWith(".woff2") || filename.endsWith(".woff")) return "Font";
-  if (filename.match(/\.(png|jpg|jpeg|gif|svg|webp|ico)$/)) return "Image";
-  if (filename.endsWith(".mp4") || filename.endsWith(".webm")) return "Video";
+  if (filename.endsWith(".js")) {return "JS";}
+  if (filename.endsWith(".css")) {return "CSS";}
+  if (filename.endsWith(".woff2") || filename.endsWith(".woff")) {return "Font";}
+  if (filename.match(/\.(png|jpg|jpeg|gif|svg|webp|ico)$/)) {return "Image";}
+  if (filename.endsWith(".mp4") || filename.endsWith(".webm")) {return "Video";}
   return "Other";
 }
 

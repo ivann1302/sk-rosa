@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { trackFormSubmitAndRedirect } from "../../../src/scripts/features/contact/thank-you-redirect.js";
 import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/utm-tracker.js";
 
 const ENDPOINT = "/scripts/api/send.php";
@@ -212,24 +213,6 @@ function SummaryCard({ amount, area, rate, material, onLeadClick }) {
   );
 }
 
-function SuccessScreen({ amount, onReset }) {
-  return (
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      className="plaster-lead-calc__success"
-      initial={{ opacity: 0, y: 16 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-    >
-      <span className="plaster-lead-calc__success-mark" aria-hidden="true" />
-      <h2>Заявка отправлена</h2>
-      <p>Расчет на сумму около {formatMoney(amount)} ₽ передан менеджеру.</p>
-      <button className="plaster-lead-calc__secondary-button" onClick={onReset} type="button">
-        Рассчитать другой объект
-      </button>
-    </motion.div>
-  );
-}
-
 export default function PlasteringLeadCalculator({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const [currentStep, setCurrentStep] = useState(1);
@@ -239,7 +222,6 @@ export default function PlasteringLeadCalculator({ data }) {
   const [contactValue, setContactValue] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [hasHydrated, setHasHydrated] = useState(false);
   const contactRef = useRef(null);
@@ -413,37 +395,12 @@ export default function PlasteringLeadCalculator({ data }) {
         throw new Error(result.error || "Ошибка при отправке. Попробуйте позже.");
       }
 
-      if (typeof window.ym !== "undefined") {
-        window.ym(window.rosaMetrikaId || 107041182, "reachGoal", "form_submit");
-      }
-
-      setIsSuccess(true);
+      trackFormSubmitAndRedirect();
     } catch (error) {
       setSubmitError(error.message || "Ошибка при отправке. Попробуйте позже.");
     } finally {
       setIsSubmitting(false);
     }
-  }
-
-  function resetCalculator() {
-    setCurrentStep(1);
-    setAreaInput("120");
-    setMaterialValue("with");
-    setContactMethod("phone");
-    setContactValue("");
-    setErrors({});
-    setSubmitError("");
-    setIsSuccess(false);
-  }
-
-  if (isSuccess) {
-    return (
-      <section className="plaster-lead-calc plaster-lead-calc--success reveal-on-scroll">
-        <div className="plaster-lead-calc__shell">
-          <SuccessScreen amount={amount} onReset={resetCalculator} />
-        </div>
-      </section>
-    );
   }
 
   return (

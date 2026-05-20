@@ -1,4 +1,4 @@
-// Универсальный обработчик форм для показа модального окна
+// Универсальный обработчик форм
 import { validateForm, submitForm, setSubmitButtonState } from "./form-utils.js";
 import {
   validateName,
@@ -8,13 +8,12 @@ import {
   hideFieldError,
   applyPhoneMask,
 } from "./form-validation.js";
+import { trackFormSubmitAndRedirect } from "./thank-you-redirect.js";
 import { captureUtm, getUtmData } from "./utm-tracker.js";
 
 // Захватываем UTM сразу при загрузке страницы.
 // Если в URL есть ?utm_source=... — сохранится в sessionStorage.
 captureUtm();
-
-const getMetrikaId = () => window.rosaMetrikaId || 107041182;
 
 document.addEventListener("DOMContentLoaded", function () {
   // Список селекторов форм, которые нужно обработать
@@ -99,21 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const result = await submitForm(form.action, formData);
 
         if (result.success) {
-          // Трекинг цели в Яндекс.Метрике
-          if (typeof ym !== "undefined") {
-            ym(getMetrikaId(), "reachGoal", "form_submit");
-          }
-          // Показываем модальное окно успеха, передавая кнопку для фокуса
-          if (window.openSuccessModal) {
-            window.openSuccessModal(submitButton);
-          } else {
-            alert("Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.");
-          }
           form.reset();
           // Закрываем баннер после успешной отправки
           if (window.closeCallBanner) {
             window.closeCallBanner();
           }
+          trackFormSubmitAndRedirect();
         } else {
           alert(result.error || "Ошибка при отправке. Попробуйте позже.");
         }

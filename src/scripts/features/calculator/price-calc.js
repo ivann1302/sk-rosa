@@ -6,6 +6,7 @@ import {
   applyPhoneMask,
 } from "../contact/form-validation.js";
 import { submitForm, setSubmitButtonState } from "../contact/form-utils.js";
+import { trackFormSubmitAndRedirect } from "../contact/thank-you-redirect.js";
 import { captureUtm, getUtmData } from "../contact/utm-tracker.js";
 
 captureUtm();
@@ -67,9 +68,9 @@ const SERVICE_CONFIGS = {
     miniCalcLabel: "Мини-калькулятор покраски:",
     coatingFieldLabel: "Поверхность",
     rates: {
-      "Стены": { base: 200, type: "Покраска стен безвоздушным методом" },
-      "Потолки": { base: 250, type: "Покраска потолков безвоздушным методом" },
-      "Фасад": { base: 350, type: "Безвоздушная покраска фасада" },
+      Стены: { base: 200, type: "Покраска стен безвоздушным методом" },
+      Потолки: { base: 250, type: "Покраска потолков безвоздушным методом" },
+      Фасад: { base: 350, type: "Безвоздушная покраска фасада" },
       "Не знаю — подскажите": { base: 220, type: "Подберём при выезде" },
     },
     propertyMultiplier: {
@@ -89,8 +90,6 @@ function getServiceConfig(form) {
 const roundTo = (value, step) => Math.round(value / step) * step;
 
 const formatPrice = value => value.toLocaleString("ru-RU");
-
-const getMetrikaId = () => window.rosaMetrikaId || 107041182;
 
 function calculatePrice(config, area, propertyType, coating) {
   const rates = config.rates;
@@ -184,16 +183,9 @@ function initMiniCalc() {
     try {
       const result = await submitForm(form.action, formData);
       if (result.success) {
-        if (typeof ym !== "undefined") {
-          ym(getMetrikaId(), "reachGoal", "form_submit");
-        }
-        if (window.openSuccessModal) {
-          window.openSuccessModal(submitBtn);
-        } else {
-          alert("Спасибо! Менеджер перезвонит в течение 15 минут.");
-        }
         form.reset();
         updateAmount();
+        trackFormSubmitAndRedirect();
       } else {
         alert(result.error || "Ошибка при отправке. Попробуйте позже.");
       }
@@ -380,17 +372,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = await submitForm(form.action, formData);
 
       if (result.success) {
-        if (typeof ym !== "undefined") {
-          ym(getMetrikaId(), "reachGoal", "form_submit");
-        }
-        if (window.openSuccessModal) {
-          window.openSuccessModal(submitBtn);
-        } else {
-          alert("Спасибо! Менеджер перезвонит в течение 15 минут.");
-        }
         form.reset();
         goToStep(1);
         areaPresets.forEach(p => p.classList.remove("price-calc__quiz-preset--active"));
+        trackFormSubmitAndRedirect();
       } else {
         alert(result.error || "Ошибка при отправке. Попробуйте позже.");
       }

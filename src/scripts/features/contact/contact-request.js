@@ -8,6 +8,7 @@ import {
   hideFieldError,
   applyPhoneMask,
 } from "./form-validation.js";
+import { trackFormSubmitAndRedirect } from "./thank-you-redirect.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-request__form-fields");
@@ -77,17 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = await submitForm(form.action, formData);
 
       if (result.success) {
-        // Показываем модальное окно успеха, передавая кнопку для фокуса
-        if (window.openSuccessModal) {
-          window.openSuccessModal(submitButton);
-        } else {
-          // Fallback на старое сообщение, если модальное окно не загружено
-          showMessage(
-            "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение 15 минут.",
-            "success"
-          );
-        }
         form.reset();
+        trackFormSubmitAndRedirect();
       } else {
         showMessage(result.error || "Ошибка при отправке. Попробуйте позже.", "error");
       }
