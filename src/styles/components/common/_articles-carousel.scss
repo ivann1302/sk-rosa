@@ -165,8 +165,7 @@
     }
 
     &__wrapper {
-      flex-direction: column;
-      gap: 16px;
+      display: block;
       margin: 0;
     }
 
@@ -176,36 +175,45 @@
 
     &__viewport {
       height: auto;
-      overflow: visible;
       width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     &__track {
       position: static;
       height: auto;
       display: flex;
-      flex-direction: column;
       gap: 16px;
+      padding-bottom: 4px;
     }
 
     &__card {
       position: static;
+      flex: 0 0 100%;
       width: 100%;
+      min-width: 100%;
       height: auto;
       transform: none;
       opacity: 1;
       pointer-events: auto;
-
-      &:nth-child(n + 4) {
-        display: none;
-      }
+      scroll-snap-align: center;
 
       &[data-pos="active"],
       &[data-pos="prev"],
       &[data-pos="next"],
       &[data-pos="hidden"] {
         position: static;
+        flex: 0 0 100%;
         width: 100%;
+        min-width: 100%;
         height: auto;
         transform: none;
         opacity: 1;

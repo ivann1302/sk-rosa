@@ -10,22 +10,17 @@ const materialOptions = [
   {
     value: "with",
     title: "С материалами",
-    text: "Мы привозим смеси, грунт и расходники.",
   },
   {
     value: "without",
     title: "Без материалов",
-    text: "Если материалы уже закуплены на объект.",
   },
 ];
-
-const benefits = ["Работаем от 100 м²", "До 100 м² в день", "Доставка включена"];
 
 const contactMethods = [
   {
     value: "max",
     label: "MAX",
-    text: "Отправим расчет в мессенджер MAX.",
     inputLabel: "Телефон для MAX",
     placeholder: "+7 (999) 123-45-67",
     type: "phone",
@@ -33,23 +28,20 @@ const contactMethods = [
   {
     value: "telegram",
     label: "Telegram",
-    text: "Можно указать ник или номер телефона.",
     inputLabel: "Ник или телефон",
-    placeholder: "@username или +7 (999) 123-45-67",
+    placeholder: "username или +7 (999) 123-45-67",
     type: "telegram",
   },
   {
     value: "whatsapp",
     label: "WhatsApp",
-    text: "Пришлем расчет в WhatsApp.",
     inputLabel: "Телефон для WhatsApp",
     placeholder: "+7 (999) 123-45-67",
     type: "phone",
   },
   {
     value: "phone",
-    label: "По телефону",
-    text: "Менеджер перезвонит и назовет стоимость.",
+    label: "Телефон",
     inputLabel: "Телефон",
     placeholder: "+7 (999) 123-45-67",
     type: "phone",
@@ -57,7 +49,6 @@ const contactMethods = [
   {
     value: "no-data",
     label: "Не хочу оставлять свои данные",
-    text: "Откроем звонок на номер компании.",
     type: "call",
   },
 ];
@@ -127,16 +118,36 @@ function validatePhone(phone) {
   return digits.length === 11 && digits.startsWith("7");
 }
 
-function validateTelegramContact(value) {
-  const trimmed = value.trim();
-  const username = trimmed.replace(/^https?:\/\/t\.me\//i, "").replace(/^t\.me\//i, "");
-
-  return validatePhone(trimmed) || /^@?[A-Za-z0-9_]{5,32}$/.test(username);
+function normalizeTelegramUsername(value) {
+  return value
+    .trim()
+    .replace(/^https?:\/\/t\.me\//i, "")
+    .replace(/^t\.me\//i, "")
+    .replace(/^@+/, "");
 }
 
-function formatContact(value, method) {
-  if (method === "telegram" && /[@A-Za-zА-Яа-яЁё_]/u.test(value)) {
-    return value;
+function isPhoneInput(value) {
+  const trimmed = value.trim();
+  return /\d/.test(trimmed) && /^[+\d\s().-]+$/.test(trimmed);
+}
+
+function isTelegramUsernameInput(value) {
+  const trimmed = value.trim();
+  return trimmed.length > 0 && !isPhoneInput(trimmed);
+}
+
+function validateTelegramContact(value) {
+  const trimmed = value.trim();
+  const username = normalizeTelegramUsername(trimmed);
+
+  return validatePhone(trimmed) || /^[A-Za-z0-9_]{5,32}$/.test(username);
+}
+
+function formatTelegramContact(value) {
+  const trimmedStart = value.trimStart();
+
+  if (isTelegramUsernameInput(trimmedStart)) {
+    return normalizeTelegramUsername(trimmedStart);
   }
 
   return formatPhone(value);
@@ -148,9 +159,8 @@ function StepHeader({ currentStep }) {
 
   return (
     <div className="plaster-lead-calc__header">
-      <div className="plaster-lead-calc__eyebrow">Быстрый расчет стоимости</div>
       <div className="plaster-lead-calc__headline-row">
-        <h2 className="plaster-lead-calc__title">Предварительная смета за 1 минуту</h2>
+        <h2 className="plaster-lead-calc__title">Калькулятор штукатурки</h2>
         <span className="plaster-lead-calc__step-count">
           {currentStep}/{TOTAL_STEPS}
         </span>
@@ -182,18 +192,13 @@ function StepHeader({ currentStep }) {
 function SummaryCard({ amount, area, rate, material, onLeadClick }) {
   return (
     <aside className="plaster-lead-calc__summary" aria-label="Предварительная стоимость">
-      <span className="plaster-lead-calc__summary-label">Предварительная стоимость</span>
+      <span className="plaster-lead-calc__summary-label">Итого</span>
       <strong className="plaster-lead-calc__summary-price">≈ {formatMoney(amount)} ₽</strong>
       <div className="plaster-lead-calc__summary-meta">
         <span>{area || 0} м²</span>
         <span>{rate} ₽/м²</span>
         <span>{material.title.toLowerCase()}</span>
       </div>
-      <ul className="plaster-lead-calc__benefits">
-        {benefits.map(item => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
       <motion.button
         className="plaster-lead-calc__summary-button"
         onClick={onLeadClick}
@@ -217,10 +222,7 @@ function SuccessScreen({ amount, onReset }) {
     >
       <span className="plaster-lead-calc__success-mark" aria-hidden="true" />
       <h2>Заявка отправлена</h2>
-      <p>
-        Менеджер получит расчет на сумму около {formatMoney(amount)} ₽ и свяжется с вами, чтобы
-        уточнить объект и зафиксировать точную смету.
-      </p>
+      <p>Расчет на сумму около {formatMoney(amount)} ₽ передан менеджеру.</p>
       <button className="plaster-lead-calc__secondary-button" onClick={onReset} type="button">
         Рассчитать другой объект
       </button>
@@ -250,6 +252,19 @@ export default function PlasteringLeadCalculator({ data }) {
   const rate = getRate(area, materialValue);
   const amount = area * rate;
   const formSource = data?.quizFormSource ?? "Калькулятор штукатурки";
+  const rawContactValue = contactValue.trim();
+  const preparedContactValue =
+    contactOption.type === "telegram" && !validatePhone(rawContactValue)
+      ? normalizeTelegramUsername(rawContactValue)
+      : rawContactValue;
+  const telegramUsername =
+    contactOption.type === "telegram" ? normalizeTelegramUsername(contactValue) : "";
+  const showTelegramHint =
+    contactOption.type === "telegram" && isTelegramUsernameInput(contactValue);
+  const telegramHint =
+    telegramUsername.length < 5
+      ? `Ник: ${telegramUsername.length}/32, минимум 5`
+      : `Ник: ${telegramUsername.length}/32`;
 
   const stepVariants = useMemo(
     () => ({
@@ -322,7 +337,7 @@ export default function PlasteringLeadCalculator({ data }) {
     }
   }
 
-  function buildComments(contact = contactValue.trim()) {
+  function buildComments(contact = preparedContactValue) {
     const lines = [
       "Калькулятор штукатурки:",
       `- Площадь стен: ${area} м²`,
@@ -349,10 +364,10 @@ export default function PlasteringLeadCalculator({ data }) {
 
     const nextErrors = {};
 
-    const contact = contactValue.trim();
+    const contact = preparedContactValue;
     if (contactOption.type === "telegram") {
-      if (!validateTelegramContact(contact)) {
-        nextErrors.contact = "Укажите ник Telegram или телефон";
+      if (!validateTelegramContact(rawContactValue)) {
+        nextErrors.contact = "Ник: 5-32 символа, латиница, цифры или _";
       }
     } else if (!validatePhone(contact)) {
       nextErrors.contact = "Укажите телефон в формате +7 (999) 123-45-67";
@@ -457,9 +472,7 @@ export default function PlasteringLeadCalculator({ data }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 1</span>
                     <h3>Какая площадь стен?</h3>
-                    <p>Введите ориентировочный объем. Точную площадь проверим на замере.</p>
                     <label className="plaster-lead-calc__area-field">
                       <input
                         aria-describedby="area-warning area-error"
@@ -500,9 +513,7 @@ export default function PlasteringLeadCalculator({ data }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 2</span>
-                    <h3>Материалы включить в расчет?</h3>
-                    <p>Покажем сумму в том формате, в котором удобнее сравнить подрядчиков.</p>
+                    <h3>Материалы</h3>
                     <div className="plaster-lead-calc__material-switch">
                       {materialOptions.map(option => (
                         <motion.label
@@ -523,7 +534,6 @@ export default function PlasteringLeadCalculator({ data }) {
                             value={option.title}
                           />
                           <strong>{option.title}</strong>
-                          <span>{option.text}</span>
                         </motion.label>
                       ))}
                     </div>
@@ -545,9 +555,7 @@ export default function PlasteringLeadCalculator({ data }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 3</span>
-                    <h3>Где хотите получить расчет?</h3>
-                    <p>Выберите удобный способ. Для Telegram можно указать ник или телефон.</p>
+                    <h3>Куда отправить расчет?</h3>
                     <div
                       aria-label="Где получить расчет"
                       className="plaster-lead-calc__method-grid"
@@ -572,7 +580,6 @@ export default function PlasteringLeadCalculator({ data }) {
                             value={option.label}
                           />
                           <strong>{option.label}</strong>
-                          <span>{option.text}</span>
                         </motion.label>
                       ))}
                     </div>
@@ -583,7 +590,11 @@ export default function PlasteringLeadCalculator({ data }) {
                           autoComplete={contactOption.type === "telegram" ? "off" : "tel"}
                           name={contactOption.type === "telegram" ? "CONTACT_VALUE" : "PHONE"}
                           onChange={event => {
-                            setContactValue(formatContact(event.target.value, contactOption.type));
+                            setContactValue(
+                              contactOption.type === "telegram"
+                                ? formatTelegramContact(event.target.value)
+                                : formatPhone(event.target.value)
+                            );
                             setErrors(prev => ({ ...prev, contact: "" }));
                           }}
                           placeholder={contactOption.placeholder}
@@ -591,6 +602,18 @@ export default function PlasteringLeadCalculator({ data }) {
                           type={contactOption.type === "telegram" ? "text" : "tel"}
                           value={contactValue}
                         />
+                        {showTelegramHint && (
+                          <small
+                            aria-live="polite"
+                            className={
+                              telegramUsername.length < 5
+                                ? "plaster-lead-calc__telegram-hint is-short"
+                                : "plaster-lead-calc__telegram-hint"
+                            }
+                          >
+                            {telegramHint}
+                          </small>
+                        )}
                         {errors.contact && <em>{errors.contact}</em>}
                       </label>
                     ) : (

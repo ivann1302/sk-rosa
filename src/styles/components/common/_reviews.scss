@@ -329,6 +329,12 @@
       background 0.2s,
       opacity 0.2s;
 
+    .astro-service-page & {
+      @media (width <= 768px) {
+        display: none;
+      }
+    }
+
     &:hover:not(&--disabled) {
       background: rgb(0 0 0 / 15%);
     }

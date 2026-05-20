@@ -1,23 +1,22 @@
 .plaster-lead-calc {
-  --calc-ink: #000;
-  --calc-muted: #000;
-  --calc-line: var(--color-green);
-  --calc-panel: #e5e5e5;
-  --calc-soft: #f5f5f5;
+  --calc-ink: #141611;
+  --calc-muted: #5e6658;
+  --calc-line: #dfe6dc;
+  --calc-panel: #fff;
+  --calc-soft: #f7f9f5;
   --calc-green: var(--color-green);
   --calc-green-dark: var(--color-dark-green);
 
-  padding: 72px 16px;
-  background: #f5f5f5;
+  padding: 96px 20px;
+  background: var(--calc-soft);
   color: var(--calc-ink);
 
   &__shell {
     max-width: 1180px;
     margin: 0 auto;
-    border: 1px solid var(--calc-line);
     border-radius: 8px;
     background: var(--calc-panel);
-    box-shadow: 0 18px 46px rgb(0 0 0 / 8%);
+    box-shadow: 0 18px 44px rgb(0 0 0 / 6%);
     overflow: hidden;
   }
 
@@ -26,39 +25,25 @@
   }
 
   &__header {
-    padding: 34px 40px 26px;
+    padding: 48px 56px 32px;
     border-bottom: 1px solid var(--calc-line);
     background: var(--calc-panel);
-    color: #000;
-  }
-
-  &__eyebrow {
-    width: fit-content;
-    margin-bottom: 14px;
-    padding: 7px 11px;
-    border: 1px solid var(--calc-line);
-    border-radius: 999px;
-    background: var(--calc-soft);
-    color: #000;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: uppercase;
+    color: var(--calc-ink);
   }
 
   &__headline-row {
     display: flex;
-    gap: 18px;
+    gap: 24px;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 22px;
+    margin-bottom: 28px;
   }
 
   &__title {
     max-width: 720px;
     margin: 0;
-    color: #000;
-    font-size: clamp(1.65rem, 3vw, 2.65rem);
+    color: var(--calc-ink);
+    font-size: clamp(1.8rem, 3vw, 2.75rem);
     line-height: 1.1;
     font-weight: 800;
     letter-spacing: 0;
@@ -67,7 +52,7 @@
   &__step-count {
     flex: 0 0 auto;
     padding-top: 6px;
-    color: #000;
+    color: var(--calc-muted);
     font-size: 1rem;
     font-weight: 700;
   }
@@ -75,7 +60,7 @@
   &__progress {
     height: 6px;
     border-radius: 999px;
-    background: rgb(0 0 0 / 10%);
+    background: var(--calc-line);
     overflow: hidden;
 
     span {
@@ -91,16 +76,16 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
-    margin-top: 14px;
+    margin-top: 16px;
   }
 
   &__step-label {
-    color: #000;
+    color: var(--calc-muted);
     font-size: 0.86rem;
     font-weight: 600;
 
     &.is-active {
-      color: #000;
+      color: var(--calc-ink);
     }
   }
 
@@ -113,26 +98,17 @@
 
   &__panel {
     min-height: 520px;
-    padding: 42px 44px 34px;
+    padding: 56px 56px 48px;
     border-right: 1px solid var(--calc-line);
-    background: var(--calc-soft);
+    background: var(--calc-panel);
   }
 
   &__step {
-    min-height: 350px;
-  }
-
-  &__step-kicker {
-    display: inline-flex;
-    margin-bottom: 12px;
-    color: #000;
-    font-size: 0.82rem;
-    font-weight: 800;
-    text-transform: uppercase;
+    min-height: 330px;
   }
 
   h3 {
-    margin: 0 0 10px;
+    margin: 0 0 32px;
     color: var(--calc-ink);
     font-size: clamp(1.35rem, 2vw, 1.9rem);
     line-height: 1.15;
@@ -142,7 +118,7 @@
 
   p {
     max-width: 590px;
-    margin: 0 0 24px;
+    margin: 0 0 30px;
     color: var(--calc-muted);
     font-size: 1rem;
     line-height: 1.55;
@@ -152,10 +128,10 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    max-width: 460px;
+    max-width: 520px;
     border: 1px solid var(--calc-line);
     border-radius: 8px;
-    background: var(--calc-panel);
+    background: var(--calc-soft);
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease;
@@ -168,7 +144,7 @@
     input {
       width: 100%;
       min-width: 0;
-      padding: 24px 10px 24px 24px;
+      padding: 28px 12px 28px 28px;
       border: 0;
       background: transparent;
       color: var(--calc-ink);
@@ -179,7 +155,7 @@
     }
 
     span {
-      padding: 0 24px 0 10px;
+      padding: 0 28px 0 10px;
       color: var(--calc-muted);
       font-size: 1.05rem;
       font-weight: 700;
@@ -190,8 +166,8 @@
   &__notice,
   &__error {
     max-width: 590px;
-    margin-top: 14px;
-    padding: 12px 14px;
+    margin-top: 18px;
+    padding: 14px 16px;
     border-radius: 8px;
     font-size: 0.94rem;
     line-height: 1.45;
@@ -199,14 +175,14 @@
 
   &__warning {
     border: 1px solid var(--calc-line);
-    background: var(--calc-panel);
-    color: #000;
+    background: var(--calc-soft);
+    color: var(--calc-ink);
   }
 
   &__notice {
     border: 1px solid var(--calc-line);
-    background: var(--calc-panel);
-    color: #000;
+    background: var(--calc-soft);
+    color: var(--calc-ink);
   }
 
   &__error {
@@ -226,13 +202,13 @@
   &__contact-method {
     position: relative;
     display: flex;
-    padding: 20px;
+    padding: 26px;
     border: 1px solid var(--calc-line);
     border-radius: 8px;
     background: var(--calc-panel);
     cursor: pointer;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease,
@@ -279,24 +255,24 @@
   &__material-switch {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
     max-width: 680px;
   }
 
   &__material {
-    min-height: 170px;
+    min-height: 132px;
   }
 
   &__method-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
     max-width: 760px;
-    margin-bottom: 18px;
+    margin-bottom: 28px;
   }
 
   &__contact-method {
-    min-height: 118px;
+    min-height: 88px;
 
     &:last-child {
       grid-column: 1 / -1;
@@ -307,7 +283,7 @@
   &__material:hover,
   &__contact-method:hover {
     border-color: var(--calc-green);
-    box-shadow: 0 12px 28px rgb(0 0 0 / 8%);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 6%);
   }
 
   &__option.is-selected,
@@ -335,7 +311,7 @@
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 
     span {
       color: var(--calc-ink);
@@ -346,10 +322,10 @@
     input {
       width: 100%;
       min-width: 0;
-      padding: 15px 16px;
+      padding: 18px 18px;
       border: 1px solid var(--calc-line);
       border-radius: 8px;
-      background: var(--calc-panel);
+      background: var(--calc-soft);
       color: var(--calc-ink);
       font-size: 1rem;
       outline: none;
@@ -369,25 +345,37 @@
       font-style: normal;
       line-height: 1.35;
     }
+
+    small {
+      color: var(--calc-muted);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
   }
 
   &__field--contact {
-    max-width: 560px;
+    max-width: 600px;
+  }
+
+  &__telegram-hint {
+    &.is-short {
+      color: #8a6400;
+    }
   }
 
   &__nav {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 28px;
+    margin-top: 36px;
   }
 
   &__primary-button,
   &__summary-button,
   &__secondary-button {
     display: inline-flex;
-    min-height: 48px;
+    min-height: 52px;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
@@ -411,8 +399,8 @@
   }
 
   &__primary-button {
-    min-width: 190px;
-    padding: 0 24px;
+    min-width: 200px;
+    padding: 0 28px;
   }
 
   &__primary-button:hover {
@@ -429,37 +417,37 @@
     border: 1px solid var(--calc-line);
     background: var(--calc-soft);
     color: var(--calc-ink);
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
   &__secondary-button:hover {
     border-color: var(--calc-green);
-    color: #000;
+    color: var(--calc-ink);
   }
 
   &__summary {
     position: sticky;
-    top: 94px;
+    top: 110px;
     display: flex;
     min-height: 520px;
-    padding: 34px;
+    padding: 44px 40px;
     border-left: 1px solid var(--calc-line);
-    background: var(--calc-panel);
-    color: #000;
+    background: var(--calc-soft);
+    color: var(--calc-ink);
     flex-direction: column;
     align-self: start;
   }
 
   &__summary-label {
-    color: #000;
+    color: var(--calc-muted);
     font-size: 0.88rem;
     font-weight: 700;
   }
 
   &__summary-price {
     display: block;
-    margin: 10px 0 18px;
-    color: #000;
+    margin: 12px 0 24px;
+    color: var(--calc-ink);
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1;
     font-weight: 900;
@@ -470,44 +458,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 36px;
 
     span {
-      padding: 7px 9px;
+      padding: 8px 10px;
       border: 1px solid var(--calc-line);
       border-radius: 999px;
-      background: var(--calc-soft);
-      color: #000;
+      background: var(--calc-panel);
+      color: var(--calc-ink);
       font-size: 0.78rem;
       font-weight: 700;
-    }
-  }
-
-  &__benefits {
-    display: grid;
-    gap: 12px;
-    margin: 0 0 28px;
-    padding: 0;
-    list-style: none;
-
-    li {
-      position: relative;
-      padding-left: 24px;
-      color: #000;
-      font-size: 0.95rem;
-      line-height: 1.4;
-
-      &::before {
-        position: absolute;
-        top: 0.58em;
-        left: 0;
-        width: 10px;
-        height: 10px;
-        border: 2px solid var(--calc-green);
-        border-radius: 50%;
-        content: "";
-        transform: translateY(-50%);
-      }
     }
   }
 
@@ -576,21 +536,19 @@
     }
 
     &__summary {
-      position: sticky;
-      bottom: 12px;
+      position: static;
       top: auto;
       min-height: 0;
-      margin: 14px;
-      border: 1px solid var(--calc-line);
-      border-radius: 8px;
+      border-top: 1px solid var(--calc-line);
+      border-left: 0;
     }
   }
 
   @media (width <= 680px) {
-    padding: 44px 12px;
+    padding: 52px 12px;
 
     &__header {
-      padding: 24px 20px 22px;
+      padding: 30px 22px 24px;
     }
 
     &__headline-row {
@@ -614,7 +572,7 @@
 
     &__panel {
       min-height: 0;
-      padding: 28px 18px 22px;
+      padding: 34px 22px 28px;
     }
 
     &__step {
@@ -631,8 +589,8 @@
     &__option,
     &__material,
     &__contact-method {
-      min-height: 118px;
-      padding: 18px;
+      min-height: 92px;
+      padding: 22px;
     }
 
     &__area-field {
@@ -663,11 +621,6 @@
 
     &__summary-price {
       margin-bottom: 14px;
-    }
-
-    &__benefits {
-      gap: 9px;
-      margin-bottom: 20px;
     }
   }
 

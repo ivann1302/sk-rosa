@@ -1,6 +1,257 @@
 ---
-import LegacyPageBridge from "../components/legacy/LegacyPageBridge.astro";
+import BaseLayout from "../components/BaseLayout.astro";
+import LegacyRuntime from "../components/LegacyRuntime.astro";
+import { airlessPaintingCityPages } from "../data/airless-painting-city-pages.js";
+import { floorScreedCityPages } from "../data/floor-screed-city-pages.js";
+import { plasteringCityPages } from "../data/plastering-city-pages.js";
+import { softRoofingCityPages } from "../data/soft-roofing-city-pages.js";
+import { turnkeyRepairCityPages } from "../data/turnkey-repair-city-pages.js";
+import { breadcrumbJsonLd } from "../lib/seo.js";
 import sourceHtml from "../../src/pages/where-we-work.html?raw";
+
+const title = "Где мы работаем - города Московской области | ROSA";
+const description =
+  "Профессиональные услуги ремонта и отделки в городах Московской области. Выберите услугу и город: ремонт под ключ, штукатурка, стяжка пола, покраска, мягкая кровля.";
+const canonical = "https://sk-rosa.ru/where-we-work";
+
+const services = [
+  {
+    id: "turnkey-repair",
+    title: "Ремонт под ключ",
+    description: "Комплексный ремонт квартир, домов и коммерческих помещений.",
+    pages: turnkeyRepairCityPages,
+  },
+  {
+    id: "plastering",
+    title: "Штукатурные работы",
+    description: "Механизированная гипсовая и цементная штукатурка стен.",
+    pages: plasteringCityPages,
+  },
+  {
+    id: "floor-screed",
+    title: "Стяжка пола",
+    description: "Полусухая и цементная стяжка пола под любое покрытие.",
+    pages: floorScreedCityPages,
+  },
+  {
+    id: "airless-painting",
+    title: "Безвоздушная покраска",
+    description: "Покраска стен, потолков, фасадов и коммерческих помещений.",
+    pages: airlessPaintingCityPages,
+  },
+  {
+    id: "soft-roofing",
+    title: "Мягкая кровля",
+    description: "Монтаж и ремонт гибкой, мембранной и наплавляемой кровли.",
+    pages: softRoofingCityPages,
+  },
+];
 ---
 
-<LegacyPageBridge sourceHtml={sourceHtml} />
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={title}
+  ogDescription={description}
+  ogImageAlt="ROSA - города работы в Московской области"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Где мы работаем", url: canonical },
+    ]),
+  ]}
+>
+  <main class="cities-page">
+    <div class="cities-page__container">
+      <header class="cities-page__header">
+        <h1 class="cities-page__title">Где мы работаем</h1>
+        <p class="cities-page__subtitle">
+          Выберите услугу и город Подмосковья, чтобы открыть страницу с условиями, ценами и заявкой
+          на бесплатный замер.
+        </p>
+      </header>
+
+      <div class="cities-page__services">
+        {
+          services.map(service => (
+            <section class="service-block" aria-labelledby={`service-${service.id}`}>
+              <div class="service-block__head">
+                <h2 class="service-block__title" id={`service-${service.id}`}>
+                  {service.title}
+                </h2>
+                <p class="service-block__desc">{service.description}</p>
+              </div>
+
+              <div class="service-block__cities" aria-label={`${service.title} по городам`}>
+                {service.pages.map(({ route, page }) => (
+                  <a
+                    href={`/${route}`}
+                    class="city-link"
+                    aria-label={`${service.title} в городе ${page.city.name}`}
+                  >
+                    {page.city.name}
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+  <LegacyRuntime slot="runtime" sourceHtml={sourceHtml} />
+</BaseLayout>
+
+<style>
+  :global(body#top) {
+    background: #f4f6f5;
+  }
+
+  .cities-page {
+    padding: 120px 0 80px;
+    background: linear-gradient(180deg, #f8faf9 0%, #edf2ef 100%);
+    min-height: 100vh;
+  }
+
+  .cities-page__container {
+    width: min(1200px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .cities-page__header {
+    max-width: 760px;
+    margin: 0 auto 52px;
+    text-align: center;
+  }
+
+  .cities-page__title {
+    margin: 0 0 16px;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    color: #1f2937;
+  }
+
+  .cities-page__subtitle {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #59636e;
+  }
+
+  .cities-page__services {
+    display: grid;
+    gap: 28px;
+  }
+
+  .service-block {
+    background: #fff;
+    border: 1px solid #e3e8e5;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 12px 32px rgb(24 39 33 / 7%);
+  }
+
+  .service-block__head {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e3e8e5;
+  }
+
+  .service-block__title {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    color: #2f6b45;
+  }
+
+  .service-block__desc {
+    margin: 0;
+    color: #59636e;
+    line-height: 1.55;
+  }
+
+  .service-block__cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .city-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid #d7e2dc;
+    border-radius: 8px;
+    background: #f8fbf9;
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .city-link:hover,
+  .city-link:focus-visible {
+    background: var(--color-green);
+    border-color: var(--color-green);
+    color: #fff;
+    box-shadow: 0 8px 18px rgb(47 107 69 / 20%);
+  }
+
+  @media (width <= 768px) {
+    .cities-page {
+      padding: 88px 0 52px;
+    }
+
+    .cities-page__container {
+      width: min(100% - 24px, 1200px);
+    }
+
+    .cities-page__header {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .cities-page__title {
+      font-size: 2rem;
+    }
+
+    .cities-page__subtitle {
+      font-size: 1rem;
+    }
+
+    .cities-page__services {
+      gap: 20px;
+    }
+
+    .service-block {
+      padding: 20px;
+    }
+
+    .service-block__title {
+      font-size: 1.35rem;
+    }
+
+    .service-block__cities {
+      grid-template-columns: 1fr;
+    }
+
+    .city-link {
+      justify-content: flex-start;
+      min-height: 46px;
+      padding: 12px 14px;
+      text-align: left;
+    }
+  }
+</style>

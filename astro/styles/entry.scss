@@ -1,4 +1,4 @@
-@use "../../src/styles/main.scss";
+@use "../../src/styles/main";
 
 .astro-service-page {
   .about-service,
@@ -20,7 +20,12 @@
   }
 
   @media (width <= 768px) {
-    .about-service__info,
+    .about-service__info {
+      box-sizing: border-box;
+      max-width: calc(100vw - 24px);
+      overflow: visible;
+    }
+
     .advantages-service__container {
       box-sizing: border-box;
       max-width: calc(100vw - 24px);
@@ -36,6 +41,15 @@
     .about-service__subtitle {
       text-align: left;
       max-width: 100%;
+    }
+
+    .about-service__badges {
+      max-width: 100%;
+    }
+
+    .about-service__badge {
+      white-space: normal;
+      text-align: center;
     }
 
     .advantages-service__list {
