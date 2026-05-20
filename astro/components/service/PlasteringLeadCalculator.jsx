@@ -3,34 +3,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/utm-tracker.js";
 
 const ENDPOINT = "/scripts/api/send.php";
-const TOTAL_STEPS = 4;
-
-const wallOptions = [
-  {
-    value: "small",
-    title: "Небольшие перепады",
-    text: "Подойдет для большинства квартир в новостройках.",
-    thickness: "до 30 мм",
-  },
-  {
-    value: "medium",
-    title: "Средние перепады",
-    text: "Стены заметно уходят, но без сложного восстановления.",
-    thickness: "до 30 мм",
-  },
-  {
-    value: "strong",
-    title: "Сильные перепады",
-    text: "Нужно больше слоя и тщательная подготовка.",
-    thickness: "40-60 мм",
-  },
-  {
-    value: "unknown",
-    title: "Не знаю",
-    text: "Посчитаем базовый вариант, точнее скажем на замере.",
-    thickness: "до 30 мм",
-  },
-];
+const TOTAL_STEPS = 3;
+const COMPANY_PHONE = "+79851354991";
 
 const materialOptions = [
   {
@@ -45,12 +19,47 @@ const materialOptions = [
   },
 ];
 
-const benefits = [
-  "Работаем от 100 м²",
-  "До 100 м² в день",
-  "4 человека в бригаде",
-  "Доставка включена",
-  "Фиксируем стоимость до начала работ",
+const benefits = ["Работаем от 100 м²", "До 100 м² в день", "Доставка включена"];
+
+const contactMethods = [
+  {
+    value: "max",
+    label: "MAX",
+    text: "Отправим расчет в мессенджер MAX.",
+    inputLabel: "Телефон для MAX",
+    placeholder: "+7 (999) 123-45-67",
+    type: "phone",
+  },
+  {
+    value: "telegram",
+    label: "Telegram",
+    text: "Можно указать ник или номер телефона.",
+    inputLabel: "Ник или телефон",
+    placeholder: "@username или +7 (999) 123-45-67",
+    type: "telegram",
+  },
+  {
+    value: "whatsapp",
+    label: "WhatsApp",
+    text: "Пришлем расчет в WhatsApp.",
+    inputLabel: "Телефон для WhatsApp",
+    placeholder: "+7 (999) 123-45-67",
+    type: "phone",
+  },
+  {
+    value: "phone",
+    label: "По телефону",
+    text: "Менеджер перезвонит и назовет стоимость.",
+    inputLabel: "Телефон",
+    placeholder: "+7 (999) 123-45-67",
+    type: "phone",
+  },
+  {
+    value: "no-data",
+    label: "Не хочу оставлять свои данные",
+    text: "Откроем звонок на номер компании.",
+    type: "call",
+  },
 ];
 
 function toNumber(value) {
@@ -105,15 +114,9 @@ function formatPhone(value) {
   return parts.join("");
 }
 
-function getRate(area, wallValue, materialValue) {
-  const isStrong = wallValue === "strong";
-
-  if (area >= 1000 && materialValue === "with" && !isStrong) {
+function getRate(area, materialValue) {
+  if (area >= 1000 && materialValue === "with") {
     return 750;
-  }
-
-  if (isStrong) {
-    return materialValue === "with" ? 1500 : 1350;
   }
 
   return materialValue === "with" ? 950 : 800;
@@ -124,9 +127,24 @@ function validatePhone(phone) {
   return digits.length === 11 && digits.startsWith("7");
 }
 
+function validateTelegramContact(value) {
+  const trimmed = value.trim();
+  const username = trimmed.replace(/^https?:\/\/t\.me\//i, "").replace(/^t\.me\//i, "");
+
+  return validatePhone(trimmed) || /^@?[A-Za-z0-9_]{5,32}$/.test(username);
+}
+
+function formatContact(value, method) {
+  if (method === "telegram" && /[@A-Za-zА-Яа-яЁё_]/u.test(value)) {
+    return value;
+  }
+
+  return formatPhone(value);
+}
+
 function StepHeader({ currentStep }) {
   const progress = (currentStep / TOTAL_STEPS) * 100;
-  const labels = ["Площадь", "Стены", "Материалы", "Контакты"];
+  const labels = ["Площадь", "Материалы", "Контакты"];
 
   return (
     <div className="plaster-lead-calc__header">
@@ -161,7 +179,7 @@ function StepHeader({ currentStep }) {
   );
 }
 
-function SummaryCard({ amount, area, rate, wall, material, onLeadClick }) {
+function SummaryCard({ amount, area, rate, material, onLeadClick }) {
   return (
     <aside className="plaster-lead-calc__summary" aria-label="Предварительная стоимость">
       <span className="plaster-lead-calc__summary-label">Предварительная стоимость</span>
@@ -169,7 +187,6 @@ function SummaryCard({ amount, area, rate, wall, material, onLeadClick }) {
       <div className="plaster-lead-calc__summary-meta">
         <span>{area || 0} м²</span>
         <span>{rate} ₽/м²</span>
-        <span>{wall.title}</span>
         <span>{material.title.toLowerCase()}</span>
       </div>
       <ul className="plaster-lead-calc__benefits">
@@ -215,22 +232,22 @@ export default function PlasteringLeadCalculator({ data }) {
   const shouldReduceMotion = useReducedMotion();
   const [currentStep, setCurrentStep] = useState(1);
   const [areaInput, setAreaInput] = useState("120");
-  const [wallValue, setWallValue] = useState("unknown");
   const [materialValue, setMaterialValue] = useState("with");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [contactMethod, setContactMethod] = useState("phone");
+  const [contactValue, setContactValue] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [hasHydrated, setHasHydrated] = useState(false);
-  const nameRef = useRef(null);
+  const contactRef = useRef(null);
 
   const area = toNumber(areaInput);
-  const wall = wallOptions.find(option => option.value === wallValue) ?? wallOptions[3];
   const material =
     materialOptions.find(option => option.value === materialValue) ?? materialOptions[0];
-  const rate = getRate(area, wallValue, materialValue);
+  const contactOption =
+    contactMethods.find(option => option.value === contactMethod) ?? contactMethods[3];
+  const rate = getRate(area, materialValue);
   const amount = area * rate;
   const formSource = data?.quizFormSource ?? "Калькулятор штукатурки";
 
@@ -249,10 +266,10 @@ export default function PlasteringLeadCalculator({ data }) {
   }, []);
 
   useEffect(() => {
-    if (currentStep === 4) {
-      window.setTimeout(() => nameRef.current?.focus(), 180);
+    if (currentStep === TOTAL_STEPS && contactOption.type !== "call") {
+      window.setTimeout(() => contactRef.current?.focus(), 180);
     }
-  }, [currentStep]);
+  }, [contactOption.type, currentStep]);
 
   function validateArea() {
     if (!area || area < 1 || area > 10000) {
@@ -285,18 +302,35 @@ export default function PlasteringLeadCalculator({ data }) {
     }
 
     setErrors({});
-    setCurrentStep(4);
+    setCurrentStep(TOTAL_STEPS);
   }
 
-  function buildComments() {
+  function callCompany() {
+    if (typeof window !== "undefined") {
+      window.location.href = `tel:${COMPANY_PHONE}`;
+    }
+  }
+
+  function selectContactMethod(method) {
+    setContactMethod(method);
+    setContactValue("");
+    setErrors(prev => ({ ...prev, contact: "" }));
+    setSubmitError("");
+
+    if (method === "no-data") {
+      callCompany();
+    }
+  }
+
+  function buildComments(contact = contactValue.trim()) {
     const lines = [
       "Калькулятор штукатурки:",
       `- Площадь стен: ${area} м²`,
-      `- Неровность стен: ${wall.title}`,
-      `- Тип расчета: штукатурка ${wall.thickness}`,
       `- Материалы: ${material.title}`,
       `- Ставка: ${rate} ₽/м²`,
       `- Предварительная стоимость: ${formatMoney(amount)} ₽`,
+      contactOption.type !== "call" ? `- Где получить расчет: ${contactOption.label}` : "",
+      contact ? `- Контакт для расчета: ${contact}` : "",
       area < 100 ? "- Предупреждение: площадь меньше минимального объема 100 м²" : "",
       "Клиент просит точную смету.",
     ];
@@ -308,13 +342,22 @@ export default function PlasteringLeadCalculator({ data }) {
     event.preventDefault();
     setSubmitError("");
 
+    if (contactOption.type === "call") {
+      callCompany();
+      return;
+    }
+
     const nextErrors = {};
-    if (!name.trim() || name.trim().length < 2) {
-      nextErrors.name = "Укажите имя";
+
+    const contact = contactValue.trim();
+    if (contactOption.type === "telegram") {
+      if (!validateTelegramContact(contact)) {
+        nextErrors.contact = "Укажите ник Telegram или телефон";
+      }
+    } else if (!validatePhone(contact)) {
+      nextErrors.contact = "Укажите телефон в формате +7 (999) 123-45-67";
     }
-    if (!validatePhone(phone)) {
-      nextErrors.phone = "Укажите телефон в формате +7 (999) 123-45-67";
-    }
+
     if (!validateArea()) {
       nextErrors.area = "Укажите площадь от 1 до 10 000 м²";
     }
@@ -325,14 +368,15 @@ export default function PlasteringLeadCalculator({ data }) {
     }
 
     const formData = new FormData();
-    formData.append("NAME", name.trim());
-    formData.append("PHONE", phone.trim());
+    formData.append("PHONE", validatePhone(contact) ? contact : "");
+    formData.append("CONTACT_METHOD", contactOption.label);
+    formData.append("CONTACT_VALUE", contact);
+    formData.append("MESSENGER", contactOption.label);
     formData.append("AREA", String(area));
-    formData.append("WALL_CURVATURE", wall.title);
     formData.append("MATERIALS", material.title);
     formData.append("PRICE_PER_M2", String(rate));
     formData.append("ESTIMATE", String(Math.round(amount)));
-    formData.append("COMMENTS", buildComments());
+    formData.append("COMMENTS", buildComments(contact));
     formData.append("form_source", formSource);
 
     Object.entries(getUtmData()).forEach(([key, value]) => {
@@ -369,10 +413,9 @@ export default function PlasteringLeadCalculator({ data }) {
   function resetCalculator() {
     setCurrentStep(1);
     setAreaInput("120");
-    setWallValue("unknown");
     setMaterialValue("with");
-    setName("");
-    setPhone("");
+    setContactMethod("phone");
+    setContactValue("");
     setErrors({});
     setSubmitError("");
     setIsSuccess(false);
@@ -453,51 +496,11 @@ export default function PlasteringLeadCalculator({ data }) {
                     className="plaster-lead-calc__step"
                     exit="exit"
                     initial={hasHydrated ? "initial" : false}
-                    key="step-walls"
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    variants={stepVariants}
-                  >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 2</span>
-                    <h3>Насколько кривые стены?</h3>
-                    <p>Выберите по ощущениям. Если сомневаетесь, оставьте вариант «Не знаю».</p>
-                    <div className="plaster-lead-calc__option-grid">
-                      {wallOptions.map(option => (
-                        <motion.label
-                          className={
-                            option.value === wallValue
-                              ? "plaster-lead-calc__option is-selected"
-                              : "plaster-lead-calc__option"
-                          }
-                          key={option.value}
-                          whileHover={{ y: -3 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <input
-                            checked={option.value === wallValue}
-                            name="WALL_CURVATURE"
-                            onChange={() => setWallValue(option.value)}
-                            type="radio"
-                            value={option.title}
-                          />
-                          <strong>{option.title}</strong>
-                          <span>{option.text}</span>
-                        </motion.label>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {currentStep === 3 && (
-                  <motion.div
-                    animate="animate"
-                    className="plaster-lead-calc__step"
-                    exit="exit"
-                    initial={hasHydrated ? "initial" : false}
                     key="step-materials"
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 3</span>
+                    <span className="plaster-lead-calc__step-kicker">Шаг 2</span>
                     <h3>Материалы включить в расчет?</h3>
                     <p>Покажем сумму в том формате, в котором удобнее сравнить подрядчиков.</p>
                     <div className="plaster-lead-calc__material-switch">
@@ -524,7 +527,7 @@ export default function PlasteringLeadCalculator({ data }) {
                         </motion.label>
                       ))}
                     </div>
-                    {area >= 1000 && materialValue === "with" && wallValue !== "strong" && (
+                    {area >= 1000 && materialValue === "with" && (
                       <div className="plaster-lead-calc__notice">
                         Для объема от 1000 м² применили специальную ставку 750 ₽/м².
                       </div>
@@ -532,7 +535,7 @@ export default function PlasteringLeadCalculator({ data }) {
                   </motion.div>
                 )}
 
-                {currentStep === 4 && (
+                {currentStep === 3 && (
                   <motion.div
                     animate="animate"
                     className="plaster-lead-calc__step"
@@ -542,44 +545,59 @@ export default function PlasteringLeadCalculator({ data }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <span className="plaster-lead-calc__step-kicker">Шаг 4</span>
-                    <h3>Получить точную смету</h3>
-                    <p>
-                      Передадим расчет менеджеру. Он уточнит объект и назовет финальную стоимость.
-                    </p>
-                    <div className="plaster-lead-calc__contact-grid">
-                      <label className="plaster-lead-calc__field">
-                        <span>Имя</span>
-                        <input
-                          autoComplete="name"
-                          name="NAME"
-                          onChange={event => {
-                            setName(event.target.value);
-                            setErrors(prev => ({ ...prev, name: "" }));
-                          }}
-                          placeholder="Как к вам обращаться"
-                          ref={nameRef}
-                          type="text"
-                          value={name}
-                        />
-                        {errors.name && <em>{errors.name}</em>}
-                      </label>
-                      <label className="plaster-lead-calc__field">
-                        <span>Телефон</span>
-                        <input
-                          autoComplete="tel"
-                          name="PHONE"
-                          onChange={event => {
-                            setPhone(formatPhone(event.target.value));
-                            setErrors(prev => ({ ...prev, phone: "" }));
-                          }}
-                          placeholder="+7 (999) 123-45-67"
-                          type="tel"
-                          value={phone}
-                        />
-                        {errors.phone && <em>{errors.phone}</em>}
-                      </label>
+                    <span className="plaster-lead-calc__step-kicker">Шаг 3</span>
+                    <h3>Где хотите получить расчет?</h3>
+                    <p>Выберите удобный способ. Для Telegram можно указать ник или телефон.</p>
+                    <div
+                      aria-label="Где получить расчет"
+                      className="plaster-lead-calc__method-grid"
+                      role="radiogroup"
+                    >
+                      {contactMethods.map(option => (
+                        <motion.label
+                          className={
+                            option.value === contactMethod
+                              ? "plaster-lead-calc__contact-method is-selected"
+                              : "plaster-lead-calc__contact-method"
+                          }
+                          key={option.value}
+                          whileHover={{ y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <input
+                            checked={option.value === contactMethod}
+                            name="CONTACT_METHOD"
+                            onChange={() => selectContactMethod(option.value)}
+                            type="radio"
+                            value={option.label}
+                          />
+                          <strong>{option.label}</strong>
+                          <span>{option.text}</span>
+                        </motion.label>
+                      ))}
                     </div>
+                    {contactOption.type !== "call" ? (
+                      <label className="plaster-lead-calc__field plaster-lead-calc__field--contact">
+                        <span>{contactOption.inputLabel}</span>
+                        <input
+                          autoComplete={contactOption.type === "telegram" ? "off" : "tel"}
+                          name={contactOption.type === "telegram" ? "CONTACT_VALUE" : "PHONE"}
+                          onChange={event => {
+                            setContactValue(formatContact(event.target.value, contactOption.type));
+                            setErrors(prev => ({ ...prev, contact: "" }));
+                          }}
+                          placeholder={contactOption.placeholder}
+                          ref={contactRef}
+                          type={contactOption.type === "telegram" ? "text" : "tel"}
+                          value={contactValue}
+                        />
+                        {errors.contact && <em>{errors.contact}</em>}
+                      </label>
+                    ) : (
+                      <div className="plaster-lead-calc__notice">
+                        Сейчас откроется звонок на номер 8 (985) 135-49-91.
+                      </div>
+                    )}
                     {submitError && <div className="plaster-lead-calc__error">{submitError}</div>}
                   </motion.div>
                 )}
@@ -613,7 +631,11 @@ export default function PlasteringLeadCalculator({ data }) {
                     whileHover={{ y: isSubmitting ? 0 : -2 }}
                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   >
-                    {isSubmitting ? "Отправляем..." : "Отправить заявку"}
+                    {isSubmitting
+                      ? "Отправляем..."
+                      : contactOption.type === "call"
+                        ? "Позвонить в компанию"
+                        : "Отправить расчет"}
                   </motion.button>
                 )}
               </div>
@@ -625,7 +647,6 @@ export default function PlasteringLeadCalculator({ data }) {
               material={material}
               onLeadClick={requestEstimate}
               rate={rate}
-              wall={wall}
             />
           </div>
         </form>

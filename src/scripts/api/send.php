@@ -16,6 +16,12 @@
   $sComment    = htmlspecialchars(trim($_POST['COMMENTS']    ?? ''), ENT_QUOTES, 'UTF-8');
   $sFormSource = htmlspecialchars(trim($_POST['form_source'] ?? 'Не указан'), ENT_QUOTES, 'UTF-8');
   $sMessenger  = htmlspecialchars(trim($_POST['MESSENGER']   ?? ''), ENT_QUOTES, 'UTF-8');
+  $sContactMethod = htmlspecialchars(trim($_POST['CONTACT_METHOD'] ?? ''), ENT_QUOTES, 'UTF-8');
+  $sContactValue  = htmlspecialchars(trim($_POST['CONTACT_VALUE']  ?? ''), ENT_QUOTES, 'UTF-8');
+
+  if (empty($sMessenger) && !empty($sContactMethod)) {
+      $sMessenger = $sContactMethod;
+  }
 
   // UTM-метки, переданные из sessionStorage через JS
   $sUtmSource   = htmlspecialchars(trim($_POST['utm_source']   ?? ''), ENT_QUOTES, 'UTF-8');
@@ -24,19 +30,20 @@
   $sUtmTerm     = htmlspecialchars(trim($_POST['utm_term']     ?? ''), ENT_QUOTES, 'UTF-8');
   $sReferrer    = htmlspecialchars(trim($_POST['referrer']     ?? ''), ENT_QUOTES, 'UTF-8');
 
-  if (empty($sPhone)) {
-      error_log('[SEND] Ошибка валидации: телефон пуст');
+  if (empty($sPhone) && empty($sContactValue)) {
+      error_log('[SEND] Ошибка валидации: контакт пуст');
       http_response_code(400);
       header('Content-Type: application/json; charset=utf-8');
-      die(json_encode(['success' => false, 'error' => 'Заполните номер телефона'], JSON_UNESCAPED_UNICODE));
+      die(json_encode(['success' => false, 'error' => 'Заполните контакт для связи'], JSON_UNESCAPED_UNICODE));
   }
 
   $telegramToken   = $_ENV['TELEGRAM_BOT_TOKEN']  ?? getenv('TELEGRAM_BOT_TOKEN')  ?: '8400675649:AAFNYG8Q8hvHtcy1dlGeteS4c5fgLOOhYRc';
   $telegramChatId  = $_ENV['TELEGRAM_CHAT_ID']    ?? getenv('TELEGRAM_CHAT_ID')    ?: '711139656';
   $telegramChatId2 = $_ENV['TELEGRAM_CHAT_ID_2']  ?? getenv('TELEGRAM_CHAT_ID_2')  ?: '473152112';
+  $telegramChatId3 = $_ENV['TELEGRAM_CHAT_ID_3']  ?? getenv('TELEGRAM_CHAT_ID_3')  ?: '';
 
   error_log('[SEND] Telegram token: ' . (empty($telegramToken) ? 'ПУСТО' : substr($telegramToken, 0, 15) . '...'));
-  error_log('[SEND] Chat IDs: ' . $telegramChatId . ', ' . $telegramChatId2);
+  error_log('[SEND] Chat IDs: ' . implode(', ', array_filter([$telegramChatId, $telegramChatId2, $telegramChatId3])));
 
   $telegramConfigured = !empty($telegramToken) && !empty($telegramChatId);
   $telegramDelivered = !$telegramConfigured;
@@ -52,9 +59,14 @@
       if (!empty($sName)) {
           $tgLines[] = '👤 Имя: <b>' . $sName . '</b>';
       }
-      $tgLines[] = '📞 Телефон: <b>' . $sPhone . '</b>';
+      if (!empty($sPhone)) {
+          $tgLines[] = '📞 Телефон: <b>' . $sPhone . '</b>';
+      }
       if (!empty($sMessenger)) {
-          $tgLines[] = '📲 Прошу отправить расчёт в <b>' . $sMessenger . '</b>';
+          $tgLines[] = '📲 Где получить расчёт: <b>' . $sMessenger . '</b>';
+      }
+      if (!empty($sContactValue) && $sContactValue !== $sPhone) {
+          $tgLines[] = '💬 Контакт для расчёта: <b>' . $sContactValue . '</b>';
       }
       if (!empty($sComment)) {
           $tgLines[] = '💬 Комментарий: ' . $sComment;
@@ -87,7 +99,7 @@
       $tgLines[]  = '🕐 Время: ' . $moscowTime;
       $tgMessage  = implode("\n", $tgLines);
 
-      $chatIds = array_filter([$telegramChatId, $telegramChatId2]);
+      $chatIds = array_filter([$telegramChatId, $telegramChatId2, $telegramChatId3]);
       foreach ($chatIds as $chatId) {
           error_log('[SEND] Отправка в Telegram chat_id=' . $chatId);
           $requestTimeout = $telegramDelivered ? 5 : 15;
