@@ -127,6 +127,7 @@ function checkPage(page, service, city = null) {
   const types = jsonLdTypes(html);
   const expectedCitySuffix = city ? ` (${city.name})` : "";
   const isTurnkeyRepair = service.slug === "turnkey-repair";
+  const requiresPricingScript = !(service.slug === "plastering" && !city);
 
   assert(textValue(html, /<title[^>]*>([\s\S]*?)<\/title>/i), `${page}: missing title`);
   assert(metaValue(html, "description"), `${page}: missing description`);
@@ -175,7 +176,12 @@ function checkPage(page, service, city = null) {
       pageScripts.includes("/scripts/features/calculator/price-calc.js"),
       `${page}: missing price calc script`
     );
-    assert(pageScripts.includes(service.pricingScript), `${page}: missing pricing script`);
+    if (requiresPricingScript) {
+      assert(pageScripts.includes(service.pricingScript), `${page}: missing pricing script`);
+    } else {
+      assert(!html.includes('id="pricing-table"'), `${page}: unexpected pricing section`);
+      assert(!pageScripts.includes(service.pricingScript), `${page}: unexpected pricing script`);
+    }
     assert(
       pageScripts.includes("/scripts/features/contact/contact-request.js"),
       `${page}: missing contact request script`

@@ -75,6 +75,17 @@
     }
   }
 
+  &__grid--center-second-row {
+    @include tablet-above {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+
+      .work-stages-service__stage,
+      .work-stages-service__cta {
+        grid-column: span 2;
+      }
+    }
+  }
+
   &__stage {
     background: #fff;
     padding: 24px;
@@ -84,6 +95,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+
+  &__stage--center-second-row {
+    @include tablet-above {
+      grid-column: 2 / span 2;
+    }
   }
 
   &__stage-number {
@@ -126,6 +143,12 @@
     text-align: center;
     height: 100%;
     min-height: 200px;
+  }
+
+  &__cta--center-second-row {
+    @include tablet-above {
+      grid-column: 4 / span 2;
+    }
   }
 
   &__cta-title {

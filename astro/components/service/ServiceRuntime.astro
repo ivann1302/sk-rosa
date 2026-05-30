@@ -10,7 +10,7 @@ const { callBannerComments, callBannerSource, pricingScript = "/scripts/features
 <FloatingSocials />
 <SuccessModal />
 <script type="module" src="/scripts/features/calculator/price-calc.js" defer></script>
-<script type="module" src={pricingScript} defer></script>
+{pricingScript && <script type="module" src={pricingScript} defer></script>}
 <script src="/scripts/core/constants.js" defer></script>
 <script src="/scripts/features/contact/init-contacts.js" defer></script>
 <script src="/scripts/core/carousel.js" defer></script>

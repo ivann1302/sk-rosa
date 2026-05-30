@@ -1,0 +1,184 @@
+---
+const { title, subtitle, items = [] } = Astro.props;
+
+const getCaseImages = item => {
+  if (Array.isArray(item.images) && item.images.length > 0) {
+    return item.images;
+  }
+
+  return item.image ? [item.image] : [];
+};
+---
+
+<section class="plastering-cases reveal-on-scroll" aria-labelledby="plastering-cases-title">
+  <div class="plastering-cases__container">
+    <div class="plastering-cases__header">
+      <span class="plastering-cases__eyebrow">Кейсы</span>
+      <h2 class="plastering-cases__title" id="plastering-cases-title">{title}</h2>
+      {subtitle && <p class="plastering-cases__subtitle">{subtitle}</p>}
+    </div>
+
+    <div class="plastering-cases__viewport" aria-label="Примеры выполненных штукатурных работ">
+      <div class="plastering-cases__track">
+        {
+          items.map(item => {
+            const images = getCaseImages(item);
+            const hasMultipleImages = images.length > 1;
+
+            return (
+              <article class="plastering-cases__card">
+                <div class="plastering-cases__media" data-plastering-case-gallery>
+                  {images.length > 0 ? (
+                    <div class="plastering-cases__gallery">
+                      <div class="plastering-cases__slides" data-gallery-track>
+                        {images.map((image, index) => {
+                          const imageSrc = image.src ?? image.fallback ?? image.webp;
+
+                          return (
+                            <div
+                              class="plastering-cases__slide"
+                              data-gallery-slide
+                              aria-hidden={index === 0 ? "false" : "true"}
+                            >
+                              <picture>
+                                {image.webp && <source srcset={image.webp} type="image/webp" />}
+                                <img
+                                  src={imageSrc}
+                                  alt={image.alt ?? item.title}
+                                  width={image.width ?? 960}
+                                  height={image.height ?? 1280}
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                              </picture>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {hasMultipleImages && (
+                        <div class="plastering-cases__gallery-controls">
+                          <button
+                            class="plastering-cases__gallery-button"
+                            type="button"
+                            aria-label={`Предыдущее фото: ${item.title}`}
+                            data-gallery-prev
+                          >
+                            &#8249;
+                          </button>
+                          <button
+                            class="plastering-cases__gallery-button"
+                            type="button"
+                            aria-label={`Следующее фото: ${item.title}`}
+                            data-gallery-next
+                          >
+                            &#8250;
+                          </button>
+                        </div>
+                      )}
+
+                      {hasMultipleImages && (
+                        <div class="plastering-cases__gallery-dots" aria-label="Фотографии кейса">
+                          {images.map((_, index) => (
+                            <button
+                              class={
+                                index === 0
+                                  ? "plastering-cases__gallery-dot is-active"
+                                  : "plastering-cases__gallery-dot"
+                              }
+                              type="button"
+                              aria-label={`Показать фото ${index + 1}`}
+                              aria-current={index === 0 ? "true" : "false"}
+                              data-gallery-dot
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div
+                      class="plastering-cases__placeholder"
+                      role="img"
+                      aria-label={`Место для фотографии: ${item.title}`}
+                    >
+                      <span>Фото объекта</span>
+                    </div>
+                  )}
+                </div>
+
+                <div class="plastering-cases__body">
+                  <div class="plastering-cases__location">{item.location}</div>
+                  <h3 class="plastering-cases__card-title">{item.title}</h3>
+                  <p class="plastering-cases__description">{item.description}</p>
+
+                  <dl class="plastering-cases__facts">
+                    {
+                      item.facts.map(fact => (
+                        <div class="plastering-cases__fact">
+                          <dt>{fact.label}</dt>
+                          <dd>{fact.value}</dd>
+                        </div>
+                      ))
+                    }
+                  </dl>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const galleries = document.querySelectorAll("[data-plastering-case-gallery]");
+
+  galleries.forEach(gallery => {
+    if (gallery.dataset.galleryReady === "true") {
+      return;
+    }
+
+    gallery.dataset.galleryReady = "true";
+
+    const track = gallery.querySelector("[data-gallery-track]");
+    const slides = Array.from(gallery.querySelectorAll("[data-gallery-slide]"));
+    const prevButton = gallery.querySelector("[data-gallery-prev]");
+    const nextButton = gallery.querySelector("[data-gallery-next]");
+    const dots = Array.from(gallery.querySelectorAll("[data-gallery-dot]"));
+
+    if (!track || slides.length <= 1) {
+      return;
+    }
+
+    let currentIndex = 0;
+
+    const updateGallery = () => {
+      track.style.transform = `translateX(${-currentIndex * 100}%)`;
+
+      slides.forEach((slide, index) => {
+        slide.setAttribute("aria-hidden", index === currentIndex ? "false" : "true");
+      });
+
+      dots.forEach((dot, index) => {
+        const isActive = index === currentIndex;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+    };
+
+    const goToSlide = index => {
+      currentIndex = (index + slides.length) % slides.length;
+      updateGallery();
+    };
+
+    prevButton?.addEventListener("click", () => goToSlide(currentIndex - 1));
+    nextButton?.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+
+    updateGallery();
+  });
+</script>

@@ -1,3 +1,5 @@
+import { serviceReviews } from "./service-reviews.js";
+
 export const softRoofingPage = {
   seo: {
     title: "Монтаж мягкой кровли в Москве и МО под ключ — цена за м² | ROSA",
@@ -27,7 +29,8 @@ export const softRoofingPage = {
       icon: "/assets/icons/features/advantages/geometry.svg",
       alt: "Сложная геометрия",
       value: "Сложная геометрия",
-      description: "Гнётся вокруг любых узлов — ендов, примыканий, вентвыходов — без щелей и стыков",
+      description:
+        "Гнётся вокруг любых узлов — ендов, примыканий, вентвыходов — без щелей и стыков",
     },
     {
       icon: "/assets/icons/features/advantages/layers.svg",
@@ -143,7 +146,10 @@ export const softRoofingPage = {
     quizFormSource: "Квиз-смета мягкой кровли",
     miniCalcFormSource: "Мини-калькулятор мягкой кровли",
     articles: [
-      { href: "/preimushestva-bezvozdushnoj-pokraski", label: "Преимущества безвоздушной покраски" },
+      {
+        href: "/preimushestva-bezvozdushnoj-pokraski",
+        label: "Преимущества безвоздушной покраски",
+      },
       { href: "/shtukaturka-guide", label: "Как правильно штукатурить стены" },
       { href: "/vidy-styazhki-pola", label: "Виды стяжки пола" },
     ],
@@ -157,42 +163,15 @@ export const softRoofingPage = {
     title: "Оставить заявку на бесплатную консультацию",
     subtitle:
       "Получите бесплатную консультацию и расчёт стоимости мягкой кровли. Наши специалисты свяжутся с вами в течение 15 минут и ответят на все вопросы.",
-    features: ["Бесплатный выезд специалиста", "Точный расчёт стоимости", "Гарантия качества работ"],
+    features: [
+      "Бесплатный выезд специалиста",
+      "Точный расчёт стоимости",
+      "Гарантия качества работ",
+    ],
     comments: "Заявка на мягкую кровлю",
     formSource: "Мягкая кровля",
   },
-  reviews: [
-    {
-      image: "/assets/images/common/reviewers/photo-anna.webp",
-      name: "Анна, Москва",
-      text: "Гибкая черепица на коттедже 140 м² с двумя ендовами. За 4 дня сдали под ключ — узлы аккуратные, конёк ровный.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-igor.webp",
-      name: "Игорь, Химки",
-      text: "Меняли наплавляемую кровлю на гараже — старая текла. Положили новую с праймером, год — ни капли.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-maria.webp",
-      name: "Мария, Одинцово",
-      text: "Локальный ремонт пристройки — переложили примыкания и подкладочный ковёр. Без попыток продать «всю крышу».",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-vladimir.webp",
-      name: "Владимир, Реутов",
-      text: "ПВХ-мембрана на офисе 320 м². Сварили швы горячим воздухом — после двух зим ни одной протечки.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-ekaterina.webp",
-      name: "Екатерина, Подольск",
-      text: "Гибкая черепица на даче 90 м². Стропила старые, но усиливать не пришлось — вес небольшой. Тихо в дождь.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-sergey.webp",
-      name: "Сергей, Москва",
-      text: "Сложная крыша, 4 ската с разными уклонами. Черепица легла без подгонок и щелей — рекомендую.",
-    },
-  ],
+  reviews: serviceReviews,
   faqDescription:
     "Собрали ключевые вопросы, которые чаще всего задают перед монтажом мягкой кровли. Если чего-то не хватает — свяжитесь с нами, мы всегда на связи.",
   faq: [

@@ -213,7 +213,7 @@ function SummaryCard({ amount, area, rate, material, onLeadClick }) {
   );
 }
 
-export default function PlasteringLeadCalculator({ data }) {
+export default function PlasteringLeadCalculator({ data, showEstimate = true }) {
   const shouldReduceMotion = useReducedMotion();
   const [currentStep, setCurrentStep] = useState(1);
   const [areaInput, setAreaInput] = useState("120");
@@ -231,8 +231,8 @@ export default function PlasteringLeadCalculator({ data }) {
     materialOptions.find(option => option.value === materialValue) ?? materialOptions[0];
   const contactOption =
     contactMethods.find(option => option.value === contactMethod) ?? contactMethods[3];
-  const rate = getRate(area, materialValue);
-  const amount = area * rate;
+  const rate = showEstimate ? getRate(area, materialValue) : 0;
+  const amount = showEstimate ? area * rate : 0;
   const formSource = data?.quizFormSource ?? "Калькулятор штукатурки";
   const rawContactValue = contactValue.trim();
   const preparedContactValue =
@@ -324,12 +324,22 @@ export default function PlasteringLeadCalculator({ data }) {
       "Калькулятор штукатурки:",
       `- Площадь стен: ${area} м²`,
       `- Материалы: ${material.title}`,
-      `- Ставка: ${rate} ₽/м²`,
-      `- Предварительная стоимость: ${formatMoney(amount)} ₽`,
-      contactOption.type !== "call" ? `- Где получить расчет: ${contactOption.label}` : "",
-      contact ? `- Контакт для расчета: ${contact}` : "",
+      showEstimate ? `- Ставка: ${rate} ₽/м²` : "",
+      showEstimate ? `- Предварительная стоимость: ${formatMoney(amount)} ₽` : "",
+      contactOption.type !== "call"
+        ? showEstimate
+          ? `- Где получить расчет: ${contactOption.label}`
+          : `- Где связаться: ${contactOption.label}`
+        : "",
+      contact
+        ? showEstimate
+          ? `- Контакт для расчета: ${contact}`
+          : `- Контакт для связи: ${contact}`
+        : "",
       area < 100 ? "- Предупреждение: площадь меньше минимального объема 100 м²" : "",
-      "Клиент просит точную смету.",
+      showEstimate
+        ? "Клиент просит точную смету."
+        : "Клиент просит связаться и подготовить расчет.",
     ];
 
     return lines.filter(Boolean).join("\n");
@@ -371,8 +381,10 @@ export default function PlasteringLeadCalculator({ data }) {
     formData.append("MESSENGER", contactOption.label);
     formData.append("AREA", String(area));
     formData.append("MATERIALS", material.title);
-    formData.append("PRICE_PER_M2", String(rate));
-    formData.append("ESTIMATE", String(Math.round(amount)));
+    if (showEstimate) {
+      formData.append("PRICE_PER_M2", String(rate));
+      formData.append("ESTIMATE", String(Math.round(amount)));
+    }
     formData.append("COMMENTS", buildComments(contact));
     formData.append("form_source", formSource);
 
@@ -404,7 +416,14 @@ export default function PlasteringLeadCalculator({ data }) {
   }
 
   return (
-    <section className="plaster-lead-calc reveal-on-scroll" id="plastering-calculator">
+    <section
+      className={
+        showEstimate
+          ? "plaster-lead-calc reveal-on-scroll"
+          : "plaster-lead-calc plaster-lead-calc--no-estimate reveal-on-scroll"
+      }
+      id="plastering-calculator"
+    >
       <div className="plaster-lead-calc__shell">
         <form
           className="plaster-lead-calc__form"
@@ -494,7 +513,7 @@ export default function PlasteringLeadCalculator({ data }) {
                         </motion.label>
                       ))}
                     </div>
-                    {area >= 1000 && materialValue === "with" && (
+                    {showEstimate && area >= 1000 && materialValue === "with" && (
                       <div className="plaster-lead-calc__notice">
                         Для объема от 1000 м² применили специальную ставку 750 ₽/м².
                       </div>
@@ -512,9 +531,9 @@ export default function PlasteringLeadCalculator({ data }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     variants={stepVariants}
                   >
-                    <h3>Куда отправить расчет?</h3>
+                    <h3>{showEstimate ? "Куда отправить расчет?" : "Как с вами связаться?"}</h3>
                     <div
-                      aria-label="Где получить расчет"
+                      aria-label={showEstimate ? "Где получить расчет" : "Как с вами связаться"}
                       className="plaster-lead-calc__method-grid"
                       role="radiogroup"
                     >
@@ -615,19 +634,22 @@ export default function PlasteringLeadCalculator({ data }) {
                       ? "Отправляем..."
                       : contactOption.type === "call"
                         ? "Позвонить в компанию"
-                        : "Отправить расчет"}
+                        : showEstimate
+                          ? "Отправить расчет"
+                          : "Отправить заявку"}
                   </motion.button>
                 )}
               </div>
             </div>
-
-            <SummaryCard
-              amount={amount}
-              area={area}
-              material={material}
-              onLeadClick={requestEstimate}
-              rate={rate}
-            />
+            {showEstimate && (
+              <SummaryCard
+                amount={amount}
+                area={area}
+                material={material}
+                onLeadClick={requestEstimate}
+                rate={rate}
+              />
+            )}
           </div>
         </form>
       </div>

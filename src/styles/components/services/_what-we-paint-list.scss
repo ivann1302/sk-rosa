@@ -88,6 +88,17 @@
     margin-left: auto;
   }
 
+  &__placeholder {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+    margin-left: auto;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 55%) 0%, rgb(255 255 255 / 0%) 45%), #f6f6f6;
+  }
+
   @media (width <= 900px) {
     &__content {
       flex-direction: column;
@@ -100,6 +111,11 @@
     }
 
     &__image {
+      max-width: 250px;
+      aspect-ratio: 1;
+    }
+
+    &__placeholder {
       max-width: 250px;
       aspect-ratio: 1;
     }
@@ -122,6 +138,11 @@
     }
 
     &__image {
+      max-width: 200px;
+      aspect-ratio: 1;
+    }
+
+    &__placeholder {
       max-width: 200px;
       aspect-ratio: 1;
     }
@@ -161,5 +182,18 @@
       aspect-ratio: 1;
       margin: 0 auto;
     }
+
+    &__placeholder {
+      width: calc(100vw - 24px);
+      max-width: none;
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+  }
+}
+
+.biozashchita-page {
+  .what-we-paint-list__image {
+    object-position: center bottom;
   }
 }

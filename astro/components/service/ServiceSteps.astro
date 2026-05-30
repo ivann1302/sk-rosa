@@ -1,24 +1,40 @@
 ---
 const { title, subtitle, steps, cta } = Astro.props;
+const centerSecondRow = steps.length === 4;
+const gridClass = centerSecondRow
+  ? "work-stages-service__grid work-stages-service__grid--center-second-row"
+  : "work-stages-service__grid";
 ---
 
 <section class="work-stages-service reveal-on-scroll">
   <div class="work-stages-service__container">
-    <div class="work-stages-service__grid">
+    <div class={gridClass}>
       <div class="work-stages-service__header">
         <h2 class="work-stages-service__title">{title}</h2>
         <p class="work-stages-service__subtitle">{subtitle}</p>
       </div>
       {
         steps.map((step, index) => (
-          <div class="work-stages-service__stage">
+          <div
+            class:list={[
+              "work-stages-service__stage",
+              centerSecondRow &&
+                index === 3 &&
+                "work-stages-service__stage--center-second-row",
+            ]}
+          >
             <div class="work-stages-service__stage-number">шаг {index + 1}</div>
             <h3 class="work-stages-service__stage-title">{step.title}</h3>
             <p class="work-stages-service__stage-description">{step.description}</p>
           </div>
         ))
       }
-      <div class="work-stages-service__cta">
+      <div
+        class:list={[
+          "work-stages-service__cta",
+          centerSecondRow && "work-stages-service__cta--center-second-row",
+        ]}
+      >
         <h3 class="work-stages-service__cta-title">{cta.title}</h3>
         <a class="work-stages-service__cta-btn" href={cta.href}>{cta.label}</a>
       </div>

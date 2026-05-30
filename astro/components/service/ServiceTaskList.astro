@@ -1,5 +1,6 @@
 ---
 const { title, items, image } = Astro.props;
+const hasImage = image && !image.placeholder;
 ---
 
 <section class="what-we-paint-list reveal-on-scroll">
@@ -24,19 +25,25 @@ const { title, items, image } = Astro.props;
         </div>
       </div>
       <div class="what-we-paint-list__right">
-        <picture>
-          <source srcset={image.webp} type="image/webp" />
-          <img
-            src={image.fallback}
-            alt={image.alt}
-            class="what-we-paint-list__image"
-            width="500"
-            height="500"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+        {
+          hasImage ? (
+            <picture>
+              <source srcset={image.webp} type="image/webp" />
+              <img
+                src={image.fallback}
+                alt={image.alt}
+                class="what-we-paint-list__image"
+                width="500"
+                height="500"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+          ) : (
+            <div class="what-we-paint-list__placeholder" aria-hidden="true"></div>
+          )
+        }
       </div>
     </div>
   </div>

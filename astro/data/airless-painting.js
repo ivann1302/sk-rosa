@@ -1,3 +1,5 @@
+import { serviceReviews } from "./service-reviews.js";
+
 export const airlessPaintingPage = {
   seo: {
     title: "Безвоздушная покраска в Москве — от 200 руб/м² | ROSA",
@@ -139,8 +141,14 @@ export const airlessPaintingPage = {
     quizFormSource: "Квиз-смета безвоздушной покраски",
     miniCalcFormSource: "Мини-калькулятор покраски",
     articles: [
-      { href: "/vybor-kraski-airless-painting", label: "Как выбрать краску для безвоздушной покраски" },
-      { href: "/preimushestva-bezvozdushnoj-pokraski", label: "Преимущества безвоздушной покраски" },
+      {
+        href: "/vybor-kraski-airless-painting",
+        label: "Как выбрать краску для безвоздушной покраски",
+      },
+      {
+        href: "/preimushestva-bezvozdushnoj-pokraski",
+        label: "Преимущества безвоздушной покраски",
+      },
       { href: "/pokraska-sten-dvumya-cvetami", label: "Покраска стен двумя цветами" },
     ],
     calcTypes: [
@@ -153,52 +161,15 @@ export const airlessPaintingPage = {
     title: "Оставить заявку на бесплатную консультацию",
     subtitle:
       "Получите бесплатную консультацию и расчет стоимости безвоздушной покраски. Наши специалисты свяжутся с вами в течение 15 минут и ответят на все вопросы.",
-    features: ["Бесплатный выезд специалиста", "Точный расчет стоимости", "Гарантия качества работ"],
+    features: [
+      "Бесплатный выезд специалиста",
+      "Точный расчет стоимости",
+      "Гарантия качества работ",
+    ],
     comments: "Заявка на безвоздушную покраску",
     formSource: "Безвоздушная покраска",
   },
-  reviews: [
-    {
-      image: "/assets/images/common/reviewers/photo-anna.webp",
-      name: "Анна, Москва",
-      text: "Покрасили квартиру 78 м² Tikkurila Joker. Без полос и наплывов, цвет равномерный. За день всё закончили.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-igor.webp",
-      name: "Игорь, Химки",
-      text: "Дом 220 м², фасад под покраску. Аппарат Graco — за смену всё ровно, без следов от валика. Через год — никаких выгораний.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-maria.webp",
-      name: "Мария, Одинцово",
-      text: "Покраска потолков по гипсокартону, 60 м². Caparol матовая. Засветка по углам идеальная — переходов не видно.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-vladimir.webp",
-      name: "Владимир, Реутов",
-      text: "Гараж и мастерская, 95 м². Покрасили эпоксидной краской по бетону. Износостойкое — масло и реагенты не страшны.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-ekaterina.webp",
-      name: "Екатерина, Подольск",
-      text: "Шоурум 140 м², глубокоматовая Tikkurila. Цена в смете не выросла, бригада укрыла всю мебель сама.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-sergey.webp",
-      name: "Сергей, Москва",
-      text: "Покрасили офис 320 м² по ночам, чтобы не мешать арендаторам. За три смены под чистовую сдачу.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-olga.webp",
-      name: "Ольга, Люберцы",
-      text: "В двушке стены и потолки под акрил. Аппаратом — без капель, без подтёков. Сразу заехали жить.",
-    },
-    {
-      image: "/assets/images/common/reviewers/photo-dmitriy.webp",
-      name: "Дмитрий, Мытищи",
-      text: "Склад 480 м², водоэмульсионка по бетону. Две смены, без доплат. Закрывающие документы пришли быстро.",
-    },
-  ],
+  reviews: serviceReviews,
   faqDescription:
     "Мы собрали самые популярные вопросы, которые нам задают клиенты при заказе безвоздушной покраски. Здесь вы найдете подробные ответы на все важные моменты: от сроков выполнения работ до гарантийных обязательств.",
   faq: [

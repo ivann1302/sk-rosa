@@ -1,0 +1,32 @@
+---
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="service-trust-grid reveal-on-scroll">
+  <div class="service-trust-grid__container">
+    <div class="service-trust-grid__header">
+      <h2 class="service-trust-grid__title">{title}</h2>
+      {subtitle && <p class="service-trust-grid__subtitle">{subtitle}</p>}
+    </div>
+    <div class="service-trust-grid__grid">
+      {
+        items.map(item => (
+          <div class="service-trust-grid__item">
+            <span class="service-trust-grid__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20 6L9 17l-5-5"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="service-trust-grid__text">{item}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

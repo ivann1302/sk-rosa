@@ -1,0 +1,119 @@
+.service-trust-grid {
+  background: #fff;
+  padding: 48px 0 56px;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 40px 40px;
+    border-radius: 16px;
+    background: #f8f8f8;
+    box-shadow: 0 2px 20px rgb(0 0 0 / 8%);
+  }
+
+  &__header {
+    max-width: 780px;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+
+  &__subtitle {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  &__item {
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    background: var(--color-primary);
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__text {
+    color: #222;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  @media (width <= 900px) {
+    &__container {
+      width: calc(100vw - 24px);
+      max-width: calc(100vw - 24px);
+      padding: 28px 20px 32px;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (width <= 599px) {
+    padding: 40px 12px 48px;
+
+    &__container {
+      width: 100%;
+      max-width: 100%;
+      padding: 24px 16px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    &__title {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    &__subtitle {
+      text-align: left;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    &__item {
+      min-height: 72px;
+      border-radius: 12px;
+    }
+  }
+}

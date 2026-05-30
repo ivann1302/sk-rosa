@@ -1,4 +1,6 @@
 ---
+import ReviewsCarousel from "./ReviewsCarousel.jsx";
+
 const { reviews } = Astro.props;
 ---
 
@@ -51,27 +53,16 @@ const { reviews } = Astro.props;
         <span class="reviews__desc-extra">Спасибо за доверие и выбор нашей компании!</span>
       </div>
     </div>
-    <div class="reviews__carousel-outer">
-      <button class="reviews-carousel__arrow reviews-carousel__arrow--left">&#8592;</button>
-      <section class="reviews-carousel">
-        <h2 class="visually-hidden">Карусель отзывов</h2>
-        <div class="reviews-carousel__wrapper">
-          <div class="reviews-carousel__track">
-            {
-              reviews.map(review => (
-                <div class="reviews-card">
-                  <div class="reviews-card__header">
-                    <img src={review.image} alt="user" />
-                    <div class="reviews-card__name">{review.name}</div>
-                  </div>
-                  <div class="reviews-card__text">{review.text}</div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-      <button class="reviews-carousel__arrow reviews-carousel__arrow--right">&#8594;</button>
+    <ReviewsCarousel client:load reviews={reviews} />
+    <div class="reviews__more">
+      <a
+        href="https://yandex.ru/maps/org/rosa/244762145159/reviews/?ll=37.513521%2C55.922212&z=17"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reviews__more-link"
+      >
+        Больше отзывов можно посмотреть тут
+      </a>
     </div>
   </div>
 </section>

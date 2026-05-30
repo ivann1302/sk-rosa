@@ -38,11 +38,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const reviewsLeftBtn = document.querySelector(".reviews-carousel__arrow--left");
   const reviewsRightBtn = document.querySelector(".reviews-carousel__arrow--right");
 
+  if (reviewsCarousel?.hasAttribute("data-react-reviews")) {
+    return;
+  }
+
   let reviewsCurrent = 0;
   const reviewsCards = reviewsTrack ? reviewsTrack.querySelectorAll(".reviews-card") : [];
-  const reviewsVisible = 4;
 
   const isMobileReviews = () => window.innerWidth <= 768;
+  const getReviewsGap = () => {
+    if (!reviewsTrack) {
+      return 24;
+    }
+    const gap = Number.parseFloat(window.getComputedStyle(reviewsTrack).columnGap);
+    return Number.isNaN(gap) ? 24 : gap;
+  };
+  const getReviewsVisible = () => {
+    const card = reviewsCards[0];
+    if (!reviewsCarousel || !card) {
+      return 1;
+    }
+    return Math.max(
+      1,
+      Math.round(reviewsCarousel.offsetWidth / (card.offsetWidth + getReviewsGap()))
+    );
+  };
+  const getReviewsMaxCurrent = () => Math.max(0, reviewsCards.length - getReviewsVisible());
 
   function updateArrowsState() {
     if (!reviewsLeftBtn || !reviewsRightBtn) {
@@ -68,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         reviewsLeftBtn.classList.remove("reviews-carousel__arrow--disabled");
       }
-      if (reviewsCurrent >= reviewsCards.length - reviewsVisible) {
+      if (reviewsCurrent >= getReviewsMaxCurrent()) {
         reviewsRightBtn.classList.add("reviews-carousel__arrow--disabled");
       } else {
         reviewsRightBtn.classList.remove("reviews-carousel__arrow--disabled");
@@ -80,8 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!isMobileReviews()) {
       const card = reviewsCards[0];
       const cardWidth = card ? card.offsetWidth : 0;
+      const gap = getReviewsGap();
+      reviewsCurrent = Math.min(reviewsCurrent, getReviewsMaxCurrent());
       if (reviewsTrack) {
-        reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + 24)}px)`;
+        reviewsTrack.style.transform = `translateX(${-reviewsCurrent * (cardWidth + gap)}px)`;
       }
     }
     updateArrowsState();
@@ -105,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cardWidth = reviewsCards[0] ? reviewsCards[0].offsetWidth + 12 : 0;
         reviewsCarousel.scrollBy({ left: cardWidth, behavior: "smooth" });
       } else {
-        if (reviewsCurrent < reviewsCards.length - reviewsVisible) {
+        if (reviewsCurrent < getReviewsMaxCurrent()) {
           reviewsCurrent++;
           reviewsUpdate();
         }

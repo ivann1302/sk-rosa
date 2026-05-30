@@ -1,5 +1,6 @@
 ---
 const { title, subtitle, badges, ctaLabel, ctaHref, image, video } = Astro.props;
+const hasImage = image && !image.placeholder;
 ---
 
 <section class="about-service">
@@ -13,20 +14,26 @@ const { title, subtitle, badges, ctaLabel, ctaHref, image, video } = Astro.props
       <a class="about-service__btn" href={ctaHref}>{ctaLabel}</a>
     </div>
     <div class="about-service__image-wrap">
-      <picture class="about-service__image-mobile">
-        <source srcset={image.webp} type="image/webp" />
-        <img
-          src={image.fallback}
-          alt={image.alt}
-          width="500"
-          height="500"
-          loading="eager"
-          fetchpriority="high"
-          decoding="sync"
-        />
-      </picture>
       {
-        video ? (
+        hasImage ? (
+          <picture class="about-service__image-mobile">
+            <source srcset={image.webp} type="image/webp" />
+            <img
+              src={image.fallback}
+              alt={image.alt}
+              width="500"
+              height="500"
+              loading="eager"
+              fetchpriority="high"
+              decoding="sync"
+            />
+          </picture>
+        ) : (
+          <div class="about-service__placeholder" aria-hidden="true"></div>
+        )
+      }
+      {
+        hasImage && video ? (
           <video
             class="about-service__image about-service__image-desktop"
             src={video}
@@ -36,12 +43,12 @@ const { title, subtitle, badges, ctaLabel, ctaHref, image, video } = Astro.props
             playsinline
             preload="none"
           ></video>
-        ) : (
+        ) : hasImage ? (
           <picture class="about-service__image about-service__image-desktop">
             <source srcset={image.webp} type="image/webp" />
             <img src={image.fallback} alt={image.alt} width="500" height="500" loading="eager" />
           </picture>
-        )
+        ) : null
       }
     </div>
   </div>

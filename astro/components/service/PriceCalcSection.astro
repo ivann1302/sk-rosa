@@ -4,7 +4,7 @@ import serviceHeroImage from "../../../src/assets/images/common/service-hero.png
 import shareIcon from "../../../src/assets/icons/common/share-alt-svgrepo-com.svg";
 import PlasteringLeadCalculator from "./PlasteringLeadCalculator.jsx";
 
-const { data } = Astro.props;
+const { data, showPlasteringEstimate = true } = Astro.props;
 const serviceSlug = data.serviceSlug ?? "plastering";
 const calcTypeName = data.calcTypeName ?? "PLASTER_TYPE";
 const calcTypes = data.calcTypes ?? data.plasterTypes;
@@ -13,7 +13,7 @@ const usePlasteringLeadCalculator = serviceSlug === "plastering";
 
 {
   usePlasteringLeadCalculator ? (
-    <PlasteringLeadCalculator client:load data={data} />
+    <PlasteringLeadCalculator client:load data={data} showEstimate={showPlasteringEstimate} />
   ) : (
     <section class="price-calc reveal-on-scroll">
       <div class="price-calc__container">
