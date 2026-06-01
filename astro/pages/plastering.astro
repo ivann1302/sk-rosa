@@ -4,6 +4,7 @@ import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
+import PlasteringQuiz from "../components/service/PlasteringQuiz.jsx";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
@@ -39,7 +40,7 @@ const faqJsonLd = {
   ogImageAlt={seo.ogImageAlt}
   ogSiteName="ROSA - Ремонт под ключ"
   bodyClass="astro-service-page"
-  metrikaId={108700223}
+  metrikaId={109562461}
   metrikaOptions={{
     ssr: true,
     webvisor: true,
@@ -66,6 +67,7 @@ const faqJsonLd = {
       items={plasteringPage.advantages}
       cta={{ href: "#plastering-calculator", label: "Рассчитать штукатурку" }}
     />
+    <PlasteringQuiz client:load />
     <ServiceTextBlock
       title="Механизированная штукатурка стен под ключ в Москве и МО"
       subtitle="Гипсовая и цементная штукатурка - от замера до сдачи под чистовую отделку"

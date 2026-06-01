@@ -22,11 +22,14 @@ const {
   enableMetrika = true,
   robots = "index, follow",
   bodyClass = "",
-  metrikaId = 107041182,
+  metrikaId = 109562461,
   metrikaOptions = {
+    ssr: true,
     webvisor: true,
     clickmap: true,
     ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
     accurateTrackBounce: true,
     trackLinks: true,
   },
@@ -88,6 +91,48 @@ const metrikaOptionsScript = JSON.stringify(metrikaOptions)
 })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=${metrikaId}", "ym");
 
 ym(${metrikaId}, "init", ${metrikaOptionsScript});`}
+        />
+      )
+    }
+
+    {
+      enableMetrika && (
+        <script
+          type="text/javascript"
+          is:inline
+          set:html={`(function (m, d) {
+  var metrikaId = ${metrikaId};
+  var lastTrackedUrl = location.href;
+
+  function trackPageView() {
+    var currentUrl = location.href;
+    if (currentUrl === lastTrackedUrl || typeof m.ym !== "function") return;
+
+    var referer = lastTrackedUrl;
+    lastTrackedUrl = currentUrl;
+    m.ym(metrikaId, "hit", currentUrl, {
+      title: d.title,
+      referer: referer,
+    });
+  }
+
+  function scheduleTrackPageView() {
+    setTimeout(trackPageView, 0);
+  }
+
+  ["pushState", "replaceState"].forEach(function (methodName) {
+    var originalMethod = history[methodName];
+    history[methodName] = function () {
+      var result = originalMethod.apply(this, arguments);
+      scheduleTrackPageView();
+      return result;
+    };
+  });
+
+  addEventListener("popstate", scheduleTrackPageView);
+  addEventListener("hashchange", scheduleTrackPageView);
+  d.addEventListener("astro:page-load", scheduleTrackPageView);
+})(window, document);`}
         />
       )
     }

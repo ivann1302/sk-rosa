@@ -40,6 +40,10 @@ export async function submitForm(action, formData) {
   try {
     const response = await fetch(action, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+      },
       body: formData,
     });
 

@@ -9,6 +9,11 @@
       die(json_encode(['success' => false, 'error' => 'Метод не разрешен'], JSON_UNESCAPED_UNICODE));
   }
 
+  $acceptHeader = $_SERVER['HTTP_ACCEPT'] ?? '';
+  $requestedWith = $_SERVER['HTTP_X_REQUESTED_WITH'] ?? '';
+  $expectsJson = stripos($acceptHeader, 'application/json') !== false
+      || strcasecmp($requestedWith, 'XMLHttpRequest') === 0;
+
   error_log('[SEND] POST данные: NAME=' . ($_POST['NAME'] ?? 'ПУСТО') . ' PHONE=' . ($_POST['PHONE'] ?? 'ПУСТО'));
 
   $sPhone      = htmlspecialchars(trim($_POST['PHONE']       ?? ''), ENT_QUOTES, 'UTF-8');
@@ -143,6 +148,11 @@
   }
 
   error_log('[SEND] Ответ клиенту: success=true');
+  if (!$expectsJson) {
+      header('Location: /thank-you', true, 303);
+      exit;
+  }
+
   header('Content-Type: application/json; charset=utf-8');
   http_response_code(200);
   echo json_encode(['success' => true, 'message' => 'Заявка успешно отправлена'], JSON_UNESCAPED_UNICODE);

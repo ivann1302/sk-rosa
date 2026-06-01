@@ -17,7 +17,7 @@ export function trackFormSubmitAndRedirect() {
 
   if (typeof window.ym === "function") {
     try {
-      window.ym(window.rosaMetrikaId || 107041182, "reachGoal", "form_submit", {}, redirect);
+      window.ym(window.rosaMetrikaId || 109562461, "reachGoal", "form_submit", {}, redirect);
       window.setTimeout(redirect, 600);
       return;
     } catch (error) {

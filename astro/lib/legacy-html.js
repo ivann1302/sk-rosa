@@ -1,5 +1,5 @@
 export function normalizeLegacyPaths(html) {
-  return html
+  return stripLegacyMetrika(html)
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll("href='assets/", "href='/assets/")
     .replaceAll('src="assets/', 'src="/assets/')
@@ -15,6 +15,13 @@ export function normalizeLegacyPaths(html) {
     .replaceAll("../../scripts/", "/scripts/")
     .replaceAll("../../../scripts/", "/scripts/")
     .replace(/href=(["'])(?:\.\/|\.\.\/)?([a-z][a-z0-9-]+)\.html\1/g, 'href="/$2"');
+}
+
+function stripLegacyMetrika(html) {
+  return html.replace(
+    /\s*<!--\s*Yandex\.Metrika counter\s*-->[\s\S]*?<!--\s*\/Yandex\.Metrika counter\s*-->\s*/gi,
+    "",
+  );
 }
 
 export function extractBetween(html, startMarker, endMarker) {
