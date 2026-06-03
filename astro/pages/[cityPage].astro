@@ -3,6 +3,7 @@ import BaseLayout from "../components/BaseLayout.astro";
 import BlogArticleBridge from "../components/blog/BlogArticleBridge.astro";
 import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import CityComplexes from "../components/service/CityComplexes.astro";
+import CityLocalContent from "../components/service/CityLocalContent.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
@@ -101,6 +102,7 @@ const faqJsonLd = {
               {page.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
             </ServiceTextBlock>
             <CityComplexes cityNameIn={city.nameIn} complexes={page.complexes} />
+            <CityLocalContent content={page.localContent} />
             <ServiceSteps
               title={page.stages.title}
               subtitle={page.stages.subtitle}

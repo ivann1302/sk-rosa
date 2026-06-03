@@ -1,6 +1,7 @@
 import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
+import { buildLocalServiceContent } from "./local-service-content.js";
 import { turnkeyRepairPage } from "./turnkey-repair.js";
 
 const citySlugsFilter = (process.env.ASTRO_TURNKEY_REPAIR_CITY_SLUGS ?? "")
@@ -85,13 +86,21 @@ function serviceJsonLd(city, seo) {
 
 function buildCityPage(city) {
   const seo = citySeo(city);
+  const complexes = complexesData.complexes[city.name] ?? [];
+  const localContent = buildLocalServiceContent({
+    city,
+    serviceSlug: "turnkey-repair",
+    complexes,
+  });
 
   return {
     ...turnkeyRepairPage,
     city,
     seo,
     jsonLd: serviceJsonLd(city, seo),
-    complexes: complexesData.complexes[city.name] ?? [],
+    complexes,
+    localContent,
+    faq: [...turnkeyRepairPage.faq, ...localContent.faq],
     hero: {
       ...turnkeyRepairPage.hero,
       title: `Ремонт квартир, домов и коммерческих помещений под ключ в ${city.nameIn}`,

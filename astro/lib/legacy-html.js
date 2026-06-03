@@ -14,6 +14,14 @@ export function normalizeLegacyPaths(html) {
     .replaceAll("../scripts/", "/scripts/")
     .replaceAll("../../scripts/", "/scripts/")
     .replaceAll("../../../scripts/", "/scripts/")
+    .replace(
+      /href=(["'])(?:\.\/|\.\.\/)?pages\/articles\/([a-z][a-z0-9-]+)\.html\1/g,
+      'href="/$2"',
+    )
+    .replace(
+      /href=(["'])(?:\.\/|\.\.\/)?pages\/([a-z][a-z0-9-]+)\.html\1/g,
+      'href="/$2"',
+    )
     .replace(/href=(["'])(?:\.\/|\.\.\/)?([a-z][a-z0-9-]+)\.html\1/g, 'href="/$2"');
 }
 

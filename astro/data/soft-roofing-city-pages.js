@@ -1,6 +1,7 @@
 import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
+import { buildLocalServiceContent } from "./local-service-content.js";
 import { softRoofingPage } from "./soft-roofing.js";
 
 const citySlugsFilter = (process.env.ASTRO_SOFT_ROOFING_CITY_SLUGS ?? "")
@@ -85,13 +86,21 @@ function serviceJsonLd(city, seo) {
 
 function buildCityPage(city) {
   const seo = citySeo(city);
+  const complexes = complexesData.complexes[city.name] ?? [];
+  const localContent = buildLocalServiceContent({
+    city,
+    serviceSlug: "soft-roofing",
+    complexes,
+  });
 
   return {
     ...softRoofingPage,
     city,
     seo,
     jsonLd: serviceJsonLd(city, seo),
-    complexes: complexesData.complexes[city.name] ?? [],
+    complexes,
+    localContent,
+    faq: [...softRoofingPage.faq, ...localContent.faq],
     hero: {
       ...softRoofingPage.hero,
       title: `Монтаж мягкой кровли в ${city.nameIn} под ключ`,

@@ -2,6 +2,7 @@ import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { floorScreedPage } from "./floor-screed.js";
+import { buildLocalServiceContent } from "./local-service-content.js";
 
 const citySlugsFilter = (process.env.ASTRO_FLOOR_SCREED_CITY_SLUGS ?? "")
   .split(",")
@@ -97,13 +98,21 @@ function serviceJsonLd(city, seo) {
 
 function buildCityPage(city) {
   const seo = citySeo(city);
+  const complexes = complexesData.complexes[city.name] ?? [];
+  const localContent = buildLocalServiceContent({
+    city,
+    serviceSlug: "floor-screed",
+    complexes,
+  });
 
   return {
     ...floorScreedPage,
     city,
     seo,
     jsonLd: serviceJsonLd(city, seo),
-    complexes: complexesData.complexes[city.name] ?? [],
+    complexes,
+    localContent,
+    faq: [...floorScreedPage.faq, ...localContent.faq],
     hero: {
       ...floorScreedPage.hero,
       title: `Механизированная стяжка пола в ${city.nameIn}`,

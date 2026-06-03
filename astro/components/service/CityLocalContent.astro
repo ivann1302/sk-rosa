@@ -1,0 +1,39 @@
+---
+const { content } = Astro.props;
+---
+
+{
+  content && (
+    <section class="city-local-content reveal-on-scroll">
+      <div class="city-local-content__container">
+        <div class="city-local-content__header">
+          <h2 class="city-local-content__title">{content.title}</h2>
+          <p class="city-local-content__subtitle">{content.subtitle}</p>
+        </div>
+
+        <div class="city-local-content__lead">
+          {content.lead.map(paragraph => <p class="city-local-content__lead-text">{paragraph}</p>)}
+        </div>
+
+        <div class="city-local-content__grid">
+          {content.blocks.map(block => (
+            <article class="city-local-content__block">
+              <h3 class="city-local-content__block-title">{block.title}</h3>
+              {
+                block.paragraphs?.map(paragraph => (
+                  <p class="city-local-content__block-text">{paragraph}</p>
+                ))
+              }
+              {block.items && (
+                <ul class="city-local-content__list">
+                  {block.items.map(item => <li>{item}</li>)}
+                </ul>
+              )}
+              {block.note && <p class="city-local-content__note">{block.note}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

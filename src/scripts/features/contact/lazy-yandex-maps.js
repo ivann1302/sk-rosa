@@ -87,9 +87,9 @@
 
     // Используем константы из constants.js
     const office = window.CONFIG?.office || {
-      latitude: 55.950398,
-      longitude: 37.533535,
-      address: "г. Мытищи, д. Грибки, ш. Дмитровское, 31а/3",
+      latitude: 55.9381,
+      longitude: 37.5067,
+      address: "Московская область, г. Долгопрудный, Лихачёвский пр-д, 6с1",
       mapZoom: 16,
     };
 

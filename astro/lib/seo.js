@@ -1,10 +1,52 @@
 export const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": "https://sk-rosa.ru/#business",
   name: "OOO.ROSA",
   legalName: "OOO.ROSA",
+  alternateName: "ROSA - Ремонт под ключ",
   url: "https://sk-rosa.ru",
   logo: "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
+  image: [
+    "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
+    "https://sk-rosa.ru/assets/images/common/about-hero.webp",
+  ],
+  telephone: "+79851354991",
+  email: "ooo.rosa2019@yandex.ru",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Лихачёвский пр-д, 6с1",
+    addressLocality: "Долгопрудный",
+    addressRegion: "Московская область",
+    postalCode: "141700",
+    addressCountry: "RU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 55.9381,
+    longitude: 37.5067,
+  },
+  openingHours: ["Mo-Fr 09:00-20:00", "Sa 10:00-18:00"],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
+  hasMap: "https://yandex.com/maps/org/rosa/244762145159/",
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "AdministrativeArea", name: "Московская область" },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+79851354991",
@@ -13,8 +55,14 @@ export const organizationJsonLd = {
     availableLanguage: ["Russian"],
   },
   sameAs: [
-    "https://t.me/mskrosa?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!%20%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8%20%D0%B1%D1%8B%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%B2%D0%B0%D1%88%D0%B8%D1%85%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B0%D1%85%3F%20%F0%9F%91%8B",
+    "https://t.me/mskrosa",
     "https://wa.me/79851354991",
+    "https://t.me/sk_rosa",
+    "https://vk.com/skrosa",
+    "https://dzen.ru/id/699317fa4c68660edaa347ae?share_to=link",
+    "https://ok.ru/group/70000044485400",
+    "https://yandex.com/maps/org/rosa/244762145159/",
+    "https://2gis.ru/firm/70000001110771901",
   ],
 };
 

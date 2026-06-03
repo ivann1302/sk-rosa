@@ -4,6 +4,11 @@
     RewriteEngine On
     RewriteBase /
 
+    # Канонический хост и протокол
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC,OR]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
     # 🔥 1. БЛОГ РЕДИРЕКТЫ (ПРИОРИТЕТ №1)
     # /blog/article-name → /articles/article-name.html (физически в articles/)
     RewriteCond %{REQUEST_FILENAME} !-f

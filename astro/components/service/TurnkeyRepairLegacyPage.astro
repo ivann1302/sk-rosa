@@ -1,6 +1,7 @@
 ---
 import ArticlesCarousel from "./ArticlesCarousel.astro";
 import CityComplexes from "./CityComplexes.astro";
+import CityLocalContent from "./CityLocalContent.astro";
 import FaqSection from "./FaqSection.astro";
 import ReviewsSection from "./ReviewsSection.astro";
 
@@ -317,6 +318,8 @@ const usefulLinks = [
       </p>
     </div>
   </section>
+
+  <CityLocalContent content={page.localContent} />
 
   <section class="company-description-turnkey reveal-on-scroll">
     <div class="company-description-turnkey__container">

@@ -2,6 +2,7 @@ import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { airlessPaintingPage } from "./airless-painting.js";
+import { buildLocalServiceContent } from "./local-service-content.js";
 
 const citySlugsFilter = (process.env.ASTRO_AIRLESS_PAINTING_CITY_SLUGS ?? "")
   .split(",")
@@ -97,13 +98,21 @@ function serviceJsonLd(city, seo) {
 
 function buildCityPage(city) {
   const seo = citySeo(city);
+  const complexes = complexesData.complexes[city.name] ?? [];
+  const localContent = buildLocalServiceContent({
+    city,
+    serviceSlug: "airless-painting",
+    complexes,
+  });
 
   return {
     ...airlessPaintingPage,
     city,
     seo,
     jsonLd: serviceJsonLd(city, seo),
-    complexes: complexesData.complexes[city.name] ?? [],
+    complexes,
+    localContent,
+    faq: [...airlessPaintingPage.faq, ...localContent.faq],
     hero: {
       ...airlessPaintingPage.hero,
       title: `Безвоздушная покраска стен и потолков в ${city.nameIn}`,

@@ -1,5 +1,4 @@
 <?php
-// Устанавливаем правильный HTTP код 404
 http_response_code(404);
 header("HTTP/1.1 404 Not Found");
 header("Status: 404 Not Found");
@@ -9,357 +8,116 @@ header("Status: 404 Not Found");
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 - Страница не найдена | Rosa</title>
+    <title>404 - Страница не найдена | ROSA</title>
     <meta
       name="description"
-      content="Страница не найдена. Вернитесь на главную страницу ROSA - Профессиональный ремонт под ключ в Москве и МО"
+      content="Страница не найдена. Перейдите на главную страницу ROSA или выберите одну из услуг."
     />
-    <link rel="canonical" href="https://sk-rosa.ru/404" />
-
-    <!-- Open Graph для соцсетей -->
+    <meta name="robots" content="noindex, nofollow" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="404 - Страница не найдена | Rosa" />
-    <meta
-      property="og:description"
-      content="Страница не найдена. Вернитесь на главную страницу ROSA - Профессиональный ремонт под ключ в Москве и МО"
-    />
+    <meta property="og:title" content="404 - Страница не найдена | ROSA" />
+    <meta property="og:description" content="Страница не найдена на сайте ROSA." />
     <meta property="og:url" content="https://sk-rosa.ru/404" />
-    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.jpg" />
-    <meta
-      property="og:image:secure_url"
-      content="https://sk-rosa.ru/assets/images/common/about-hero.jpg"
-    />
-    <meta property="og:image:width" content="1920" />
-    <meta property="og:image:height" content="645" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="ROSA - Профессиональный ремонт под ключ в Москве и МО" />
-    <meta property="og:locale" content="ru_RU" />
-    <meta property="og:site_name" content="ROSA - Ремонт под ключ" />
+    <meta property="og:image" content="https://sk-rosa.ru/assets/images/common/about-hero.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="ROSA - Ремонт под ключ" />
+    <link rel="icon" href="/assets/icons/ui/favIcons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/assets/icons/ui/favIcons/r-32.png" />
+    <link rel="apple-touch-icon" href="/assets/icons/ui/favIcons/r-180.png" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, sans-serif;
+      }
 
-    <link rel="icon" href="./assets/icons/ui/favIcons/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="./assets/icons/ui/favIcons/r-32.png" />
-    <link rel="apple-touch-icon" href="./assets/icons/ui/favIcons/r-180.png" />
-    <link rel="stylesheet" href="./styles/main.scss" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+      body {
+        margin: 0;
+        background: #f4f6f5;
+        color: #1f2937;
+      }
+
+      main {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+        padding: 32px 20px;
+      }
+
+      .error-page {
+        max-width: 680px;
+        text-align: center;
+      }
+
+      .error-page__logo {
+        width: 140px;
+        height: auto;
+        margin-bottom: 28px;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(2rem, 7vw, 4rem);
+        line-height: 1.05;
+      }
+
+      p {
+        margin: 0 auto 28px;
+        max-width: 560px;
+        color: #59636e;
+        font-size: 1.08rem;
+        line-height: 1.6;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        border: 1px solid #d7e2dc;
+        border-radius: 8px;
+        padding: 0 16px;
+        background: #fff;
+        color: #1f2937;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      a:first-child {
+        border-color: #2f6b45;
+        background: #2f6b45;
+        color: #fff;
+      }
+    </style>
   </head>
-  <body id="top">
-    <header class="header" data-js-header>
-      <div class="header__body">
-        <div class="header__body-inner">
-          <a class="header__logo logo" href="/" aria-label="Home" title="Home">
-            <img
-              class="logo__image"
-              src="assets/images/common/rosa-logo.png"
-              alt="ROSA - Профессиональный ремонт под ключ"
-              width="140"
-              height="40"
-            />
-          </a>
-          <nav class="header__menu">
-            <div class="header__menu-slider"></div>
-            <ul class="header__menu-list">
-              <li class="header__menu-item">
-                <a class="header__menu-link" href="pages/turnkey-repair.html">Ремонт под ключ</a>
-              </li>
-              <li
-                class="header__menu-item header__menu-item--has-arrow header__menu-item--has-submenu"
-              >
-                <a class="header__menu-link" href="#services">
-                  Другие услуги
-                  <span class="header__menu-arrow">
-                    <svg
-                      width="12"
-                      height="8"
-                      viewBox="0 0 12 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <polygon
-                        points="2,2 10,2 6,6"
-                        stroke="#222"
-                        stroke-width="1.5"
-                        fill="none"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </a>
-                <button class="header__menu-toggle" type="button" aria-expanded="false">
-                  Другие услуги
-                  <span class="header__menu-arrow">
-                    <svg
-                      width="12"
-                      height="8"
-                      viewBox="0 0 12 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <polygon
-                        points="2,2 10,2 6,6"
-                        stroke="#222"
-                        stroke-width="1.5"
-                        fill="none"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </button>
-                <ul class="header__submenu">
-                  <li>
-                    <a href="pages/airless-painting.html" class="header__submenu-link"
-                      >Безвоздушная покраска</a
-                    >
-                  </li>
-                  <li>
-                    <a href="pages/floor-screed.html" class="header__submenu-link">Стяжка пола</a>
-                  </li>
-                  <li>
-                    <a href="pages/plastering.html" class="header__submenu-link"
-                      >Штукатурные работы</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="header__menu-item">
-                <a class="header__menu-link" href="pages/calculator.html"> Калькулятор </a>
-              </li>
-              <li class="header__menu-item">
-                <a class="header__menu-link" href="pages/portfolio.html">Портфолио</a>
-              </li>
-              <li class="header__menu-item">
-                <a class="header__menu-link" href="pages/blog.html">Блог</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="header__contacts">
-            <a class="header__phone-link" id="header-phone-link" href="tel:+79851354991"
-              >+7 (985) 135 49-91</a
-            >
-            <a
-              class="header__social-link"
-              href="https://t.me/mskrosa?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!%20%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8%20%D0%B1%D1%8B%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%B2%D0%B0%D1%88%D0%B8%D1%85%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B0%D1%85%3F%20%F0%9F%91%8B"
-              target="_blank"
-              rel="noopener"
-              aria-label="Telegram"
-            >
-              <img
-                src="assets/images/common/telegram_icon.png"
-                alt="Telegram"
-                width="40"
-                height="40"
-              />
-            </a>
-            <a
-              class="header__social-link"
-              href="https://wa.me/79851354991"
-              target="_blank"
-              rel="noopener"
-              aria-label="WhatsApp"
-            >
-              <img
-                src="assets/images/common/whatsapp_icon.png"
-                alt="WhatsApp"
-                width="40"
-                height="40"
-              />
-            </a>
-          </div>
-          <button
-            class="header__burger-button burger-button visible-mobile"
-            type="button"
-            aria-label="Open menu"
-            title="Open menu"
-            data-js-header-burger-button
-          >
-            <img
-              src="assets/icons/ui/burger-button/icons8-hamburger-button-50.png"
-              alt="Меню"
-              class="burger-icon burger-icon--menu"
-            />
-            <img
-              src="assets/icons/ui/burger-button/icons8-close-window-50.png"
-              alt="Закрыть"
-              class="burger-icon burger-icon--close"
-            />
-          </button>
-
-          <!-- Мобильная плашка с контактами -->
-          <div class="header__mobile-contacts" data-js-mobile-contacts>
-            <div class="header__mobile-contacts-phone">+7 (985) 135 49-91</div>
-            <div class="header__mobile-contacts-social">
-              <span class="header__mobile-contacts-social-label">Соц.сети:</span>
-              <a
-                class="header__mobile-contacts-social-link"
-                href="https://wa.me/79851354991"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-              >
-                <img
-                  src="assets/images/common/whatsapp_icon.png"
-                  alt="WhatsApp"
-                  width="24"
-                  height="24"
-                />
-              </a>
-              <a
-                class="header__mobile-contacts-social-link"
-                href="https://t.me/mskrosa?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!%20%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8%20%D0%B1%D1%8B%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%B2%D0%B0%D1%88%D0%B8%D1%85%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B0%D1%85%3F%20%F0%9F%91%8B"
-                target="_blank"
-                rel="noopener"
-                aria-label="Telegram"
-              >
-                <img
-                  src="assets/images/common/telegram_icon.png"
-                  alt="Telegram"
-                  width="24"
-                  height="24"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
+  <body>
     <main>
-      <section class="error-404 section--white">
-        <div class="container">
-          <div class="error-404__content">
-            <h1 class="error-404__title">404</h1>
-            <h2 class="error-404__subtitle">Страница не найдена</h2>
-            <p class="error-404__text">
-              К сожалению, запрашиваемая страница не существует или была перемещена.
-            </p>
-            <div class="error-404__actions">
-              <a href="/" class="error-404__button button button--primary">
-                Вернуться на главную
-              </a>
-              <a href="./portfolio" class="error-404__button button button--secondary">
-                Посмотреть портфолио
-              </a>
-            </div>
-          </div>
-        </div>
+      <section class="error-page" aria-labelledby="page-title">
+        <img
+          class="error-page__logo"
+          src="/assets/images/common/rosa-logo.png"
+          alt="ROSA"
+          width="140"
+          height="40"
+        />
+        <h1 id="page-title">Страница не найдена</h1>
+        <p>
+          Возможно, адрес изменился. Перейдите на главную страницу, выберите услугу или откройте
+          карту городов, где работает ROSA.
+        </p>
+        <nav aria-label="Основные разделы">
+          <a href="/">На главную</a>
+          <a href="/turnkey-repair">Ремонт под ключ</a>
+          <a href="/plastering">Штукатурка</a>
+          <a href="/floor-screed">Стяжка пола</a>
+          <a href="/where-we-work">Где работаем</a>
+        </nav>
       </section>
     </main>
-
-    <footer class="footer">
-      <div class="footer__container">
-        <div class="footer__grid">
-          <div class="footer__brand">
-            <a href="#top" class="footer__brand-link">
-              <img
-                class="logo__image"
-                src="assets/images/common/rosa-logo.png"
-                alt="OOO.ROSA"
-                width="140"
-                height="40"
-              />
-            </a>
-            <p>Профессиональные отделочные работы под ключ с гарантией качества</p>
-            <div class="footer__contacts">
-              <div class="footer__contact-item">
-                <div class="footer__contact-icon">
-                  <img
-                    src="assets/icons/features/footer/phone-call-svgrepo-com.svg"
-                    alt="Телефон"
-                  />
-                </div>
-                <a href="tel:+79851354991">+7 (985) 135 49-91</a>
-              </div>
-              <div class="footer__contact-item">
-                <div class="footer__contact-icon">
-                  <img src="assets/icons/features/footer/mail-alt-svgrepo-com.svg" alt="Email" />
-                </div>
-                <a href="mailto:ooo.rosa2019@yandex.ru">ooo.rosa2019@yandex.ru</a>
-              </div>
-              <div class="footer__contact-item">
-                <div class="footer__contact-icon">
-                  <img
-                    src="assets/icons/features/footer/clock-three-svgrepo-com.svg"
-                    alt="Часы работы"
-                  />
-                </div>
-                <span>Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</span>
-              </div>
-            </div>
-          </div>
-          <div class="footer__section">
-            <h3>Услуги</h3>
-            <ul>
-              <li><a href="pages/turnkey-repair.html">Ремонт под ключ</a></li>
-              <li><a href="pages/airless-painting.html">Безвоздушная покраска</a></li>
-              <li><a href="pages/floor-screed.html">Стяжка пола</a></li>
-              <li><a href="pages/plastering.html">Штукатурные работы</a></li>
-            </ul>
-          </div>
-          <div class="footer__section">
-            <h3>Информация</h3>
-            <ul>
-              <li><a href="pages/portfolio.html">Наши работы</a></li>
-              <li><a href="pages/calculator.html">Калькулятор стоимости</a></li>
-              <li><a href="pages/blog.html">Блог</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer__social">
-          <div class="footer__social-links">
-            <a
-              href="https://wa.me/79851354991?text=Hello%2C%20I%27d%20like%20a%20consultation"
-              class="footer__social-link whatsapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="assets/images/common/whatsapp_icon.png"
-                alt="WhatsApp"
-                width="24"
-                height="24"
-              />
-            </a>
-            <a
-              href="https://t.me/mskrosa?text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C!%20%D0%9D%D0%B5%20%D0%BC%D0%BE%D0%B3%D0%BB%D0%B8%20%D0%B1%D1%8B%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BE%20%D0%B2%D0%B0%D1%88%D0%B8%D1%85%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B0%D1%85%3F%20%F0%9F%91%8B"
-              class="footer__social-link telegram"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="assets/images/common/telegram_icon.png"
-                alt="Telegram"
-                width="24"
-                height="24"
-              />
-            </a>
-            <a
-              href="https://www.avito.ru/user/50424d9d0243d8558fec368a8f2057e3/profile?src=sharing"
-              class="footer__social-link avito"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="assets/images/common/avito-icon.png" alt="Авито" width="24" height="24" />
-            </a>
-          </div>
-        </div>
-        <div class="footer__bottom">
-          <p class="footer__copyright">© 2019 - 2026 ROSA. Все права защищены.</p>
-          <div class="footer__links">
-            <a href="pages/privacy.html">Политика конфиденциальности</a>
-            <span class="footer__separator">|</span>
-            <a href="pages/terms.html">Пользовательское соглашение</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="./scripts/core/constants.js" defer></script>
-    <script src="./scripts/features/contact/init-contacts.js" defer></script>
-    <script src="./scripts/core/carousel.js" defer></script>
-    <script type="module" src="./scripts/core/main.js" defer></script>
   </body>
 </html>

@@ -4,6 +4,11 @@
     RewriteEngine On
     RewriteBase /
 
+    # 1. Канонический хост и протокол: все варианты ведём на https://sk-rosa.ru
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC,OR]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
     # 🔥 1. РЕДИРЕКТЫ СТАТЕЙ БЛОГА (старые URL → новые, 301 постоянный)
     RewriteRule ^blog/shtukaturka-guide$ /shtukaturka-guide [R=301,L]
     RewriteRule ^blog/shtukaturka-sten-v-novostrojke$ /shtukaturka-sten-v-novostrojke [R=301,L]
@@ -21,10 +26,6 @@
 
     # /blog → /blog.html
     RewriteRule ^blog/?$ /blog.html [L]
-
-    # 2. www → non-www (301)
-    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
-    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
 
     # 3. УБИРАЕМ .html из URL (например: /page.html → /page)
     RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
@@ -47,7 +48,7 @@
     RewriteRule ^(.*)$ $1.html [L]
 
     # 7. Всё остальное → 404
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|pages)/ [NC]
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html !-f

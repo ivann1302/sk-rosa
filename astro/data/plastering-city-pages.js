@@ -1,6 +1,7 @@
 import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
+import { buildLocalServiceContent } from "./local-service-content.js";
 import { plasteringPage } from "./plastering.js";
 
 const citySlugsFilter = (process.env.ASTRO_PLASTERING_CITY_SLUGS ?? "")
@@ -95,13 +96,21 @@ function serviceJsonLd(city, seo) {
 
 function buildCityPage(city) {
   const seo = citySeo(city);
+  const complexes = complexesData.complexes[city.name] ?? [];
+  const localContent = buildLocalServiceContent({
+    city,
+    serviceSlug: "plastering",
+    complexes,
+  });
 
   return {
     ...plasteringPage,
     city,
     seo,
     jsonLd: serviceJsonLd(city, seo),
-    complexes: complexesData.complexes[city.name] ?? [],
+    complexes,
+    localContent,
+    faq: [...plasteringPage.faq, ...localContent.faq],
     hero: {
       ...plasteringPage.hero,
       title: `Механизированная штукатурка стен в ${city.nameIn}`,

@@ -1,8 +1,8 @@
 function initMap() {
   const office = window.CONFIG?.office || {
-    latitude: 55.922212,
-    longitude: 37.513521,
-    address: "Московская обл., г. Долгопрудный, Лихачёвский пр-д, 6с1, офис 302/1",
+    latitude: 55.9381,
+    longitude: 37.5067,
+    address: "Московская область, г. Долгопрудный, Лихачёвский пр-д, 6с1",
     mapZoom: 16,
   };
 
