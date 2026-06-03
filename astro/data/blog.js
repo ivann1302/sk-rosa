@@ -5,12 +5,14 @@ import kakRasscitatRaskhodShtukaturkiHtml from "../../src/pages/kak-rasscitat-ra
 import mashinnayaIliRuchnayaShtukaturkaHtml from "../../src/pages/mashinnaya-ili-ruchnaya-shtukaturka.html?raw";
 import pokraskaStenBezRazvodovHtml from "../../src/pages/pokraska-sten-bez-razvodov.html?raw";
 import pokraskaStenDvumyaCvetamiHtml from "../../src/pages/pokraska-sten-dvumya-cvetami.html?raw";
+import podgotovkaStenPodDekorativnuyuShtukaturkuHtml from "../../src/pages/podgotovka-sten-pod-dekorativnuyu-shtukaturku.html?raw";
 import preimushestvaBezvozdushnojPokraskiHtml from "../../src/pages/preimushestva-bezvozdushnoj-pokraski.html?raw";
 import shpaklevkaStenPosleShtukaturkiHtml from "../../src/pages/shpaklevka-sten-posle-shtukaturki.html?raw";
 import shtukaturkaGuideHtml from "../../src/pages/shtukaturka-guide.html?raw";
 import shtukaturkaStenVNovostrojkeHtml from "../../src/pages/shtukaturka-sten-v-novostrojke.html?raw";
 import stoimostRemontaKvartiryHtml from "../../src/pages/stoimost-remonta-kvartiry.html?raw";
 import styazhkaPodTeplyPolHtml from "../../src/pages/styazhka-pod-teply-pol.html?raw";
+import trebovaniyaKVypolneniyuShtukaturnyhRabotHtml from "../../src/pages/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot.html?raw";
 import vidyStyazhkiPolaHtml from "../../src/pages/vidy-styazhki-pola.html?raw";
 import vyborKraskiAirlessPaintingHtml from "../../src/pages/vybor-kraski-airless-painting.html?raw";
 import vyborShtukaturkiHtml from "../../src/pages/vybor-shtukaturki.html?raw";
@@ -38,6 +40,39 @@ export const blogCategories = [
 ];
 
 export const blogArticles = [
+  {
+    slug: "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
+    href: "/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
+    category: "plastering",
+    categoryLabel: "Штукатурные работы",
+    title: "Требования к выполнению штукатурных работ: как проверить качество стен",
+    excerpt:
+      "Что проверить при приемке стен, какие дефекты недопустимы и почему требования к качеству штукатурки зависят от будущей финишной отделки.",
+    date: "2026-06-03",
+    dateLabel: "3 июня 2026",
+    readTime: "5 мин чтения",
+    image: "/assets/images/common/plastering-quality-requirements.webp",
+    imageAlt: "Проверка качества штукатурных работ мастерами ROSA",
+    width: 600,
+    height: 400,
+  },
+  {
+    slug: "podgotovka-sten-pod-dekorativnuyu-shtukaturku",
+    href: "/podgotovka-sten-pod-dekorativnuyu-shtukaturku",
+    category: "plastering",
+    categoryLabel: "Штукатурные работы",
+    title:
+      "Подготовка стен под декоративную штукатурку: что действительно влияет на результат",
+    excerpt:
+      "Как проверить основание, когда нужна шпаклевка или штукатурка, зачем грунтовать стены и какие ошибки портят декоративное покрытие через несколько месяцев.",
+    date: "2026-06-03",
+    dateLabel: "3 июня 2026",
+    readTime: "6 мин чтения",
+    image: "/assets/images/common/decorative-plastering.webp",
+    imageAlt: "Подготовка стен под декоративную штукатурку мастерами ROSA",
+    width: 600,
+    height: 400,
+  },
   {
     slug: "stoimost-remonta-kvartiry",
     href: "/stoimost-remonta-kvartiry",
@@ -305,12 +340,16 @@ const articleSources = {
   "mashinnaya-ili-ruchnaya-shtukaturka": mashinnayaIliRuchnayaShtukaturkaHtml,
   "pokraska-sten-bez-razvodov": pokraskaStenBezRazvodovHtml,
   "pokraska-sten-dvumya-cvetami": pokraskaStenDvumyaCvetamiHtml,
+  "podgotovka-sten-pod-dekorativnuyu-shtukaturku":
+    podgotovkaStenPodDekorativnuyuShtukaturkuHtml,
   "preimushestva-bezvozdushnoj-pokraski": preimushestvaBezvozdushnojPokraskiHtml,
   "shpaklevka-sten-posle-shtukaturki": shpaklevkaStenPosleShtukaturkiHtml,
   "shtukaturka-guide": shtukaturkaGuideHtml,
   "shtukaturka-sten-v-novostrojke": shtukaturkaStenVNovostrojkeHtml,
   "stoimost-remonta-kvartiry": stoimostRemontaKvartiryHtml,
   "styazhka-pod-teply-pol": styazhkaPodTeplyPolHtml,
+  "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot":
+    trebovaniyaKVypolneniyuShtukaturnyhRabotHtml,
   "vidy-styazhki-pola": vidyStyazhkiPolaHtml,
   "vybor-kraski-airless-painting": vyborKraskiAirlessPaintingHtml,
   "vybor-shtukaturki": vyborShtukaturkiHtml,

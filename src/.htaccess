@@ -5,8 +5,11 @@
     RewriteBase /
 
     # 1. Канонический хост и протокол: все варианты ведём на https://sk-rosa.ru
-    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC,OR]
+    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
+    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
+
     RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
     RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
 
     # 🔥 1. РЕДИРЕКТЫ СТАТЕЙ БЛОГА (старые URL → новые, 301 постоянный)
@@ -61,6 +64,11 @@ ErrorDocument 404 /404.php
 
 # Защита файлов
 <Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "router.php">
     Order allow,deny
     Deny from all
 </Files>

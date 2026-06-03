@@ -1,6 +1,61 @@
 ---
 import LegacyPageBridge from "../components/legacy/LegacyPageBridge.astro";
+import { blogArticles } from "../data/blog.js";
 import sourceHtml from "../../src/index.html?raw";
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function articleCardHtml(article) {
+  return `                <a href="${escapeHtml(article.href)}" class="articles-carousel__card">
+                  <h3 class="articles-carousel__card-title">${escapeHtml(article.title)}</h3>
+                  <div class="articles-carousel__card-image">
+                    <img
+                      src="${escapeHtml(article.image)}"
+                      alt="${escapeHtml(article.imageAlt)}"
+                      loading="lazy"
+                      decoding="async"
+                      width="${escapeHtml(article.width ?? 600)}"
+                      height="${escapeHtml(article.height ?? 350)}"
+                    />
+                  </div>
+                </a>`;
+}
+
+function replaceArticleCarouselCards(html, cardsHtml) {
+  const trackMarker = '<div class="articles-carousel__track">';
+  const trackIndex = html.indexOf(trackMarker);
+
+  if (trackIndex === -1) {
+    throw new Error("Cannot find homepage articles carousel track");
+  }
+
+  const contentStart = trackIndex + trackMarker.length;
+  const divTagPattern = /<\/?div\b[^>]*>/gi;
+  divTagPattern.lastIndex = contentStart;
+
+  let depth = 1;
+  let match;
+
+  while ((match = divTagPattern.exec(html))) {
+    depth += match[0].startsWith("</") ? -1 : 1;
+
+    if (depth === 0) {
+      return `${html.slice(0, contentStart)}\n${cardsHtml}\n${html.slice(match.index)}`;
+    }
+  }
+
+  throw new Error("Cannot find homepage articles carousel closing tag");
+}
+
+const articleCardsHtml = blogArticles.map(articleCardHtml).join("\n");
+const sourceHtmlWithAllArticles = replaceArticleCarouselCards(sourceHtml, articleCardsHtml);
 ---
 
-<LegacyPageBridge sourceHtml={sourceHtml} />
+<LegacyPageBridge sourceHtml={sourceHtmlWithAllArticles} />

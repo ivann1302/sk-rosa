@@ -8,6 +8,16 @@ const astroDir = path.join(rootDir, "public_html_astro");
 const pages = [
   { file: "blog.html", canonical: "https://sk-rosa.ru/blog", kind: "blog" },
   {
+    file: "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot.html",
+    canonical: "https://sk-rosa.ru/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
+    kind: "article",
+  },
+  {
+    file: "podgotovka-sten-pod-dekorativnuyu-shtukaturku.html",
+    canonical: "https://sk-rosa.ru/podgotovka-sten-pod-dekorativnuyu-shtukaturku",
+    kind: "article",
+  },
+  {
     file: "stoimost-remonta-kvartiry.html",
     canonical: "https://sk-rosa.ru/stoimost-remonta-kvartiry",
     kind: "article",
@@ -208,5 +218,28 @@ function checkPage({ file, canonical, kind }) {
 for (const page of pages) {
   checkPage(page);
 }
+
+function checkHomepageArticleCarousel() {
+  const html = readHtml("index.html");
+  const articlePages = pages.filter(page => page.kind === "article");
+
+  for (const { canonical } of articlePages) {
+    const href = new URL(canonical).pathname;
+
+    assert(
+      html.includes(`href="${href}"`),
+      `index.html: missing homepage article carousel link to ${href}`
+    );
+  }
+
+  const cardCount = [...html.matchAll(/class=["'][^"']*articles-carousel__card\b/gi)].length;
+
+  assert(
+    cardCount >= articlePages.length,
+    `index.html: expected at least ${articlePages.length} article carousel cards, found ${cardCount}`
+  );
+}
+
+checkHomepageArticleCarousel();
 
 process.stdout.write(`Astro blog output check passed for ${pages.length} generated blog pages.\n`);
