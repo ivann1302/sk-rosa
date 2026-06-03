@@ -8,6 +8,10 @@ import {
   normalizeLegacyPaths,
 } from "../../lib/legacy-html.js";
 
+interface Props {
+  sourceHtml: string;
+}
+
 const { sourceHtml } = Astro.props;
 const seo = extractLegacySeo(sourceHtml);
 const jsonLd = extractLegacyJsonLd(sourceHtml);

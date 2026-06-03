@@ -14,8 +14,17 @@
     },
     "module": "ESNext",
     "target": "ES2020",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "jsx": "preserve"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public_html"]
+  "include": [
+    ".astro/types.d.ts",
+    "astro/**/*",
+    "src/**/*",
+    "scripts/**/*",
+    "tests/**/*",
+    "*.config.js",
+    "*.config.mjs"
+  ],
+  "exclude": ["node_modules", "public_html", "public_html_astro"]
 }
