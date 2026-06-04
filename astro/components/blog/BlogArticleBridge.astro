@@ -1,13 +1,96 @@
 ---
 import BaseLayout from "../BaseLayout.astro";
 import LegacyRuntime from "../LegacyRuntime.astro";
+import BlogRelatedArticles from "./BlogRelatedArticles.astro";
+import { getRelatedBlogArticles } from "../../data/blog.js";
+import { getArticleServiceLink } from "../../data/site-links.js";
 import { extractBetween, normalizeLegacyPaths } from "../../lib/legacy-html.js";
 
 const { article } = Astro.props;
 const { seo } = article;
-const contentHtml = normalizeLegacyPaths(
-  extractBetween(article.sourceHtml, "<!-- HEADER -->", "<!-- FOOTER -->"),
+const articleServiceLink = getArticleServiceLink(article);
+const relatedArticles = getRelatedBlogArticles(article, 6);
+const contentHtml = insertArticleCtas(
+  stripLegacyRelatedSection(
+    normalizeLegacyPaths(extractBetween(article.sourceHtml, "<!-- HEADER -->", "<!-- FOOTER -->")),
+  ),
+  articleServiceLink,
 );
+
+function stripLegacyRelatedSection(html) {
+  return html.replace(
+    /\s*(?:<!--\s*(?:Related Articles|Похожие статьи)\s*-->\s*)?<section\s+class=(["'])blog-article-related\1[\s\S]*?<\/section>\s*(?=<\/main>)/i,
+    "",
+  ).replace(/\s*<!--\s*Footer\s*-->\s*$/i, "");
+}
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function serviceCtaHtml(serviceLink) {
+  if (!serviceLink) {
+    return "";
+  }
+
+  const href = escapeHtml(serviceLink.href);
+  const label = escapeHtml(serviceLink.label);
+
+  return `
+    <div class="blog-article__service-cta">
+      <a class="blog-article__service-link" href="${href}">
+        <span class="blog-article__service-link-kicker">Вид работ</span>
+        <span class="blog-article__service-link-label">${label}</span>
+      </a>
+    </div>`;
+}
+
+function consultationCtaHtml() {
+  return `
+    <div class="blog-article__consultation-cta blog-article__consultation-cta--desktop">
+      <button
+        class="blog-article__consultation-button"
+        type="button"
+        data-call-banner-trigger
+        aria-controls="call-banner"
+        aria-haspopup="dialog"
+      >
+        Заказать консультацию
+      </button>
+    </div>`;
+}
+
+function authorHtml() {
+  return `
+    <div class="blog-article__footer-author blog-article__footer-author--generated">
+      <span class="blog-article__footer-author-label">Автор:</span>
+      <span class="blog-article__footer-author-name">Кукуй Олег Игоревич, Генеральный директор ООО «Роса»</span>
+    </div>`;
+}
+
+function insertArticleCtas(html, serviceLink) {
+  const serviceCta = serviceCtaHtml(serviceLink);
+  const consultationCta = consultationCtaHtml();
+  const generatedAuthor = authorHtml();
+  const authorPattern = /(<div\s+class=(["'])blog-article__footer-author\2[\s\S]*?<\/div>)/i;
+
+  if (authorPattern.test(html)) {
+    return html.replace(authorPattern, `${serviceCta}$1${consultationCta}`);
+  }
+
+  const sharePattern = /(<div\s+class=(["'])blog-article__share\2)/i;
+
+  if (sharePattern.test(html)) {
+    return html.replace(sharePattern, `${serviceCta}${generatedAuthor}${consultationCta}$1`);
+  }
+
+  return html.replace(/(<\/article>)/i, `${serviceCta}${generatedAuthor}${consultationCta}$1`);
+}
 ---
 
 <BaseLayout
@@ -27,5 +110,15 @@ const contentHtml = normalizeLegacyPaths(
   jsonLd={article.jsonLd}
 >
   <Fragment set:html={contentHtml} />
+  <BlogRelatedArticles articles={relatedArticles} />
+  <button
+    class="call-banner-mobile-cta blog-article-mobile-consultation"
+    type="button"
+    data-call-banner-trigger
+    aria-controls="call-banner"
+    aria-haspopup="dialog"
+  >
+    Заказать консультацию
+  </button>
   <LegacyRuntime slot="runtime" sourceHtml={article.sourceHtml} />
 </BaseLayout>

@@ -301,14 +301,6 @@ export const plasteringPage = {
   ],
   articles: [
     {
-      href: "/preimushestva-bezvozdushnoj-pokraski",
-      title: "Преимущества безвоздушной покраски",
-      image: "/assets/images/common/airless-paint.webp",
-      alt: "Преимущества безвоздушной покраски",
-      width: 600,
-      height: 350,
-    },
-    {
       href: "/shtukaturka-sten-v-novostrojke",
       title: "Штукатурка стен в новостройке: полное руководство по выбору смесей и технологий",
       image: "/assets/images/common/plastering-hero.webp",
@@ -317,12 +309,12 @@ export const plasteringPage = {
       height: 350,
     },
     {
-      href: "/vybor-kraski-airless-painting",
-      title: "Как выбрать краску для безвоздушной покраски в Москве в 2026 году",
-      image: "/assets/images/common/how-to-choose-paint.webp",
-      alt: "Как выбрать краску для безвоздушной покраски",
+      href: "/armirovanie-shtukaturki-setkoj",
+      title: "Как армировать штукатурку сеткой: полная инструкция",
+      image: "/assets/images/common/plaster-reinforcement-mesh.webp",
+      alt: "Армирование штукатурки сеткой",
       width: 600,
-      height: 400,
+      height: 350,
     },
     {
       href: "/shtukaturka-guide",
@@ -341,10 +333,10 @@ export const plasteringPage = {
       height: 350,
     },
     {
-      href: "/vybor-shtukaturki",
-      title: "Какую штукатурку выбрать для стен: гид по типам и применению",
-      image: "/assets/images/common/article-how-to-choose-plastering.webp",
-      alt: "Какую штукатурку выбрать для стен",
+      href: "/priemka-shtukaturnyh-rabot",
+      title: "Приемка штукатурных работ: что проверить перед подписанием акта",
+      image: "/assets/images/common/priemka-shtukaturki.webp",
+      alt: "Приемка штукатурных работ",
       width: 600,
       height: 350,
     },

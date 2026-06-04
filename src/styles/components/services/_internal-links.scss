@@ -1,0 +1,162 @@
+.internal-links {
+  padding: 12px 0;
+  background: #f8f9f7;
+  border-top: 1px solid #e5e8e2;
+  border-bottom: 1px solid #e5e8e2;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    text-align: center;
+  }
+
+  &__header {
+    flex: 0 0 auto;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  &__subtitle {
+    display: none;
+  }
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    min-width: 0;
+  }
+
+  &__group {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  &__group-title {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #747b70;
+    white-space: nowrap;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: baseline;
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 1px;
+      height: 0.72em;
+      margin: 0 8px;
+      background: #ccd4c8;
+      transform: translateY(0.08em);
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    color: #3f4a3f;
+    text-decoration: none;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-underline-offset: 3px;
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-green);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+  }
+
+  &__link-label {
+    font-weight: 500;
+    line-height: inherit;
+  }
+
+  &__link-description {
+    display: none;
+  }
+
+  @media (width <= 768px) {
+    padding: 12px 0;
+
+    &__container {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__header {
+      margin-bottom: 0;
+    }
+
+    &__grid {
+      display: grid;
+      gap: 7px;
+      justify-items: center;
+    }
+
+    &__group {
+      display: block;
+      text-align: center;
+    }
+
+    &__group-title {
+      display: inline;
+      margin-right: 6px;
+      white-space: normal;
+    }
+
+    &__list {
+      display: inline-flex;
+      vertical-align: baseline;
+    }
+  }
+}

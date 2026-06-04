@@ -3,19 +3,24 @@ import BaseLayout from "../components/BaseLayout.astro";
 import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
+import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
 import ServiceSteps from "../components/service/ServiceSteps.astro";
 import ServiceTaskList from "../components/service/ServiceTaskList.astro";
 import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
 import { softRoofingJsonLd, softRoofingPage } from "../data/soft-roofing.js";
+import { getServiceQuiz } from "../data/service-quizzes.js";
+import { getServiceInterlinkGroups } from "../data/site-links.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 
 const { seo } = softRoofingPage;
+const serviceQuiz = getServiceQuiz(softRoofingPage.service.slug);
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -61,6 +66,13 @@ const faqJsonLd = {
 >
   <main>
     <ServiceHero {...softRoofingPage.hero} />
+    <ServiceQuiz
+      client:load
+      formSource={softRoofingPage.priceCalc.quizFormSource}
+      questions={serviceQuiz.questions}
+      serviceName={serviceQuiz.serviceName}
+      title={softRoofingPage.priceCalc.quizTitle}
+    />
     <ServiceAdvantages
       title={softRoofingPage.service.advantagesTitle}
       items={softRoofingPage.advantages}
@@ -103,6 +115,11 @@ const faqJsonLd = {
       moreLabel="Посмотреть другие статьи"
     />
   </main>
+  <InternalLinksSection
+    slot="before-footer"
+    title="Связанные разделы"
+    groups={getServiceInterlinkGroups(softRoofingPage.service.slug)}
+  />
   <ServiceRuntime
     slot="runtime"
     pricingScript={softRoofingPage.runtime.pricingScript}

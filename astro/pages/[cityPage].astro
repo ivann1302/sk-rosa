@@ -6,11 +6,13 @@ import CityComplexes from "../components/service/CityComplexes.astro";
 import CityLocalContent from "../components/service/CityLocalContent.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
+import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
 import ServiceSteps from "../components/service/ServiceSteps.astro";
 import ServiceTaskList from "../components/service/ServiceTaskList.astro";
@@ -18,7 +20,9 @@ import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
 import TurnkeyRepairLegacyPage from "../components/service/TurnkeyRepairLegacyPage.astro";
 import TurnkeyRepairLegacyRuntime from "../components/service/TurnkeyRepairLegacyRuntime.astro";
 import { blogArticlePages } from "../data/blog.js";
+import { getServiceQuiz } from "../data/service-quizzes.js";
 import { serviceCityPages } from "../data/service-city-pages.js";
+import { getCityInterlinkGroups } from "../data/site-links.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 
 export function getStaticPaths() {
@@ -39,6 +43,8 @@ const isBlogArticle = kind === "blog-article";
 const city = isBlogArticle ? null : page.city;
 const seo = isBlogArticle ? null : page.seo;
 const isTurnkeyRepair = !isBlogArticle && page.service.slug === "turnkey-repair";
+const serviceQuiz = isBlogArticle ? null : getServiceQuiz(page.service.slug);
+const cityInterlinkGroups = isBlogArticle ? [] : getCityInterlinkGroups(page.service.slug, city);
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -89,10 +95,21 @@ const faqJsonLd = {
     >
       <main>
         {isTurnkeyRepair ? (
-          <TurnkeyRepairLegacyPage page={page} />
+          <>
+            <TurnkeyRepairLegacyPage page={page} />
+          </>
         ) : (
           <>
             <ServiceHero {...page.hero} />
+            {serviceQuiz && (
+              <ServiceQuiz
+                client:load
+                formSource={page.priceCalc.quizFormSource}
+                questions={serviceQuiz.questions}
+                serviceName={serviceQuiz.serviceName}
+                title={page.priceCalc.quizTitle}
+              />
+            )}
             <ServiceAdvantages
               title={page.service.advantagesTitle}
               items={page.advantages}
@@ -139,6 +156,11 @@ const faqJsonLd = {
           </>
         )}
       </main>
+      <InternalLinksSection
+        slot="before-footer"
+        title={`Работы в ${city.nameIn} и рядом`}
+        groups={cityInterlinkGroups}
+      />
       {isTurnkeyRepair ? (
         <TurnkeyRepairLegacyRuntime
           slot="runtime"

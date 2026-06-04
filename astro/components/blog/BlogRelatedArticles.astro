@@ -1,0 +1,18 @@
+---
+import BlogCard from "./BlogCard.astro";
+
+const { articles = [] } = Astro.props;
+---
+
+{
+  articles.length > 0 && (
+    <section class="blog-article-related" aria-label="Похожие статьи">
+      <div class="blog-article-related__container">
+        <h2 class="blog-article-related__title">Похожие статьи</h2>
+        <div class="blog-grid blog-article-related__grid">
+          {articles.map(article => <BlogCard article={article} headingLevel="h3" />)}
+        </div>
+      </div>
+    </section>
+  )
+}

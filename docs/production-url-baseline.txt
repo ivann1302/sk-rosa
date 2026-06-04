@@ -51,6 +51,7 @@ https://sk-rosa.ru/airless-painting.html
 https://sk-rosa.ru/armirovanie-shtukaturki-setkoj.html
 https://sk-rosa.ru/blog.html
 https://sk-rosa.ru/calculator.html
+https://sk-rosa.ru/defekty-ognezashchitnogo-pokrytiya-metalla.html
 https://sk-rosa.ru/fasad-shtukaturka.html
 https://sk-rosa.ru/floor-screed-aprelevka.html
 https://sk-rosa.ru/floor-screed-balashikha.html
@@ -156,8 +157,10 @@ https://sk-rosa.ru/pokraska-sten-bez-razvodov.html
 https://sk-rosa.ru/pokraska-sten-dvumya-cvetami.html
 https://sk-rosa.ru/portfolio.html
 https://sk-rosa.ru/preimushestva-bezvozdushnoj-pokraski.html
+https://sk-rosa.ru/priemka-shtukaturnyh-rabot.html
 https://sk-rosa.ru/privacy.html
 https://sk-rosa.ru/router.php
+https://sk-rosa.ru/srok-sluzhby-ognezashchitnogo-pokrytiya.html
 https://sk-rosa.ru/scripts/api/check_forms.php
 https://sk-rosa.ru/scripts/api/get-csrf-token.php
 https://sk-rosa.ru/scripts/api/load-env.php

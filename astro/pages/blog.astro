@@ -2,6 +2,7 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import LegacyRuntime from "../components/LegacyRuntime.astro";
 import BlogIndexPage from "../components/blog/BlogIndexPage.astro";
+import BlogServiceLinks from "../components/blog/BlogServiceLinks.astro";
 import { blogArticles, blogCategories, blogJsonLd, blogPage } from "../data/blog.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 import blogHtml from "../../src/pages/blog.html?raw";
@@ -29,5 +30,6 @@ const { seo } = blogPage;
   <main>
     <BlogIndexPage articles={blogArticles} categories={blogCategories} />
   </main>
+  <BlogServiceLinks slot="before-footer" />
   <LegacyRuntime slot="runtime" sourceHtml={blogHtml} />
 </BaseLayout>

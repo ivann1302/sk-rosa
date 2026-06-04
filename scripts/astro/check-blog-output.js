@@ -8,6 +8,21 @@ const astroDir = path.join(rootDir, "public_html_astro");
 const pages = [
   { file: "blog.html", canonical: "https://sk-rosa.ru/blog", kind: "blog" },
   {
+    file: "defekty-ognezashchitnogo-pokrytiya-metalla.html",
+    canonical: "https://sk-rosa.ru/defekty-ognezashchitnogo-pokrytiya-metalla",
+    kind: "article",
+  },
+  {
+    file: "srok-sluzhby-ognezashchitnogo-pokrytiya.html",
+    canonical: "https://sk-rosa.ru/srok-sluzhby-ognezashchitnogo-pokrytiya",
+    kind: "article",
+  },
+  {
+    file: "priemka-shtukaturnyh-rabot.html",
+    canonical: "https://sk-rosa.ru/priemka-shtukaturnyh-rabot",
+    kind: "article",
+  },
+  {
     file: "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot.html",
     canonical: "https://sk-rosa.ru/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
     kind: "article",

@@ -2,19 +2,25 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
+import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
+import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
 import ServiceSteps from "../components/service/ServiceSteps.astro";
 import ServiceTaskList from "../components/service/ServiceTaskList.astro";
 import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
 import ServiceTrustGrid from "../components/service/ServiceTrustGrid.astro";
 import { biozashchitaJsonLd, biozashchitaPage } from "../data/biozashchita.js";
+import { getServiceQuiz } from "../data/service-quizzes.js";
+import { getServiceInterlinkGroups } from "../data/site-links.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 
 const { seo } = biozashchitaPage;
+const serviceQuiz = getServiceQuiz(biozashchitaPage.service.slug);
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -53,13 +59,20 @@ const faqJsonLd = {
     biozashchitaJsonLd,
     breadcrumbJsonLd([
       { name: "Главная", url: "https://sk-rosa.ru/" },
-      { name: "Биозащита", url: seo.canonical },
+      { name: "Огнебиозащита", url: seo.canonical },
     ]),
     faqJsonLd,
   ]}
 >
   <main>
     <ServiceHero {...biozashchitaPage.hero} />
+    <ServiceQuiz
+      client:load
+      formSource={biozashchitaPage.priceCalc.quizFormSource}
+      questions={serviceQuiz.questions}
+      serviceName={serviceQuiz.serviceName}
+      title={biozashchitaPage.priceCalc.quizTitle}
+    />
     <ServiceAdvantages
       title={biozashchitaPage.service.advantagesTitle}
       items={biozashchitaPage.advantages}
@@ -96,6 +109,7 @@ const faqJsonLd = {
       containerId={biozashchitaPage.service.pricingContainerId}
     />
     <PriceCalcSection data={biozashchitaPage.priceCalc} />
+    <ReviewsSection reviews={biozashchitaPage.reviews} />
     <ContactRequest {...biozashchitaPage.contact} />
     <FaqSection
       title="Ответы на частые вопросы"
@@ -103,6 +117,11 @@ const faqJsonLd = {
       items={biozashchitaPage.faq}
     />
   </main>
+  <InternalLinksSection
+    slot="before-footer"
+    title="Связанные разделы"
+    groups={getServiceInterlinkGroups(biozashchitaPage.service.slug)}
+  />
   <ServiceRuntime
     slot="runtime"
     pricingScript={biozashchitaPage.runtime.pricingScript}

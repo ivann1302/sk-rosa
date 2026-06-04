@@ -1,4 +1,5 @@
 import armirovanieShtukaturkiSetkojHtml from "../../src/pages/armirovanie-shtukaturki-setkoj.html?raw";
+import defektyOgnezashchitnogoPokrytiyaMetallaHtml from "../../src/pages/defekty-ognezashchitnogo-pokrytiya-metalla.html?raw";
 import fasadShtukaturkaHtml from "../../src/pages/fasad-shtukaturka.html?raw";
 import gidroizolyaciyaPolaPodStyazhkuHtml from "../../src/pages/gidroizolyaciya-pola-pod-styazhku.html?raw";
 import kakRasscitatRaskhodShtukaturkiHtml from "../../src/pages/kak-rasscitat-raskhod-shtukaturki.html?raw";
@@ -6,10 +7,12 @@ import mashinnayaIliRuchnayaShtukaturkaHtml from "../../src/pages/mashinnaya-ili
 import pokraskaStenBezRazvodovHtml from "../../src/pages/pokraska-sten-bez-razvodov.html?raw";
 import pokraskaStenDvumyaCvetamiHtml from "../../src/pages/pokraska-sten-dvumya-cvetami.html?raw";
 import podgotovkaStenPodDekorativnuyuShtukaturkuHtml from "../../src/pages/podgotovka-sten-pod-dekorativnuyu-shtukaturku.html?raw";
+import priemkaShtukaturnyhRabotHtml from "../../src/pages/priemka-shtukaturnyh-rabot.html?raw";
 import preimushestvaBezvozdushnojPokraskiHtml from "../../src/pages/preimushestva-bezvozdushnoj-pokraski.html?raw";
 import shpaklevkaStenPosleShtukaturkiHtml from "../../src/pages/shpaklevka-sten-posle-shtukaturki.html?raw";
 import shtukaturkaGuideHtml from "../../src/pages/shtukaturka-guide.html?raw";
 import shtukaturkaStenVNovostrojkeHtml from "../../src/pages/shtukaturka-sten-v-novostrojke.html?raw";
+import srokSluzhbyOgnezashchitnogoPokrytiyaHtml from "../../src/pages/srok-sluzhby-ognezashchitnogo-pokrytiya.html?raw";
 import stoimostRemontaKvartiryHtml from "../../src/pages/stoimost-remonta-kvartiry.html?raw";
 import styazhkaPodTeplyPolHtml from "../../src/pages/styazhka-pod-teply-pol.html?raw";
 import trebovaniyaKVypolneniyuShtukaturnyhRabotHtml from "../../src/pages/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot.html?raw";
@@ -37,9 +40,58 @@ export const blogCategories = [
   { slug: "plastering", label: "Штукатурные работы" },
   { slug: "floor-screed", label: "Стяжка пола" },
   { slug: "remont", label: "Ремонт и отделка" },
+  { slug: "materials", label: "Материалы и технологии" },
 ];
 
 export const blogArticles = [
+  {
+    slug: "defekty-ognezashchitnogo-pokrytiya-metalla",
+    href: "/defekty-ognezashchitnogo-pokrytiya-metalla",
+    category: "materials",
+    categoryLabel: "Материалы и технологии",
+    title: "Типичные дефекты огнезащитного покрытия металла: причины и способы устранения",
+    excerpt:
+      "Отслоение огнезащитной краски, трещины и другие дефекты огнезащитного покрытия металла: причины, последствия и порядок устранения.",
+    date: "2026-06-04",
+    dateLabel: "4 июня 2026",
+    readTime: "5 мин чтения",
+    image: "/assets/images/common/ognezashita-defekty-pokrytiya.webp",
+    imageAlt: "Дефекты огнезащитного покрытия металла",
+    width: 600,
+    height: 400,
+  },
+  {
+    slug: "srok-sluzhby-ognezashchitnogo-pokrytiya",
+    href: "/srok-sluzhby-ognezashchitnogo-pokrytiya",
+    category: "materials",
+    categoryLabel: "Материалы и технологии",
+    title: "Срок службы огнезащитного покрытия металлоконструкций: когда обновлять защиту",
+    excerpt:
+      "Сколько служит огнезащитное покрытие металлоконструкций, от чего зависит срок эксплуатации и по каким признакам понять, что защиту пора обновлять.",
+    date: "2026-06-04",
+    dateLabel: "4 июня 2026",
+    readTime: "5 мин чтения",
+    image: "/assets/images/common/ognezashita-srok-sluzhby.webp",
+    imageAlt: "Огнезащитное покрытие металлоконструкций",
+    width: 600,
+    height: 400,
+  },
+  {
+    slug: "priemka-shtukaturnyh-rabot",
+    href: "/priemka-shtukaturnyh-rabot",
+    category: "plastering",
+    categoryLabel: "Штукатурные работы",
+    title: "Приемка штукатурных работ: что проверить перед подписанием акта",
+    excerpt:
+      "Как принять штукатурные работы: что проверить правилом и уровнем, какие дефекты считаются браком и когда замечания нужно внести в акт.",
+    date: "2026-06-04",
+    dateLabel: "4 июня 2026",
+    readTime: "6 мин чтения",
+    image: "/assets/images/common/priemka-shtukaturki.webp",
+    imageAlt: "Приемка штукатурных работ правилом и уровнем",
+    width: 600,
+    height: 400,
+  },
   {
     slug: "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
     href: "/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
@@ -61,8 +113,7 @@ export const blogArticles = [
     href: "/podgotovka-sten-pod-dekorativnuyu-shtukaturku",
     category: "plastering",
     categoryLabel: "Штукатурные работы",
-    title:
-      "Подготовка стен под декоративную штукатурку: что действительно влияет на результат",
+    title: "Подготовка стен под декоративную штукатурку: что действительно влияет на результат",
     excerpt:
       "Как проверить основание, когда нужна шпаклевка или штукатурка, зачем грунтовать стены и какие ошибки портят декоративное покрытие через несколько месяцев.",
     date: "2026-06-03",
@@ -332,24 +383,51 @@ export const blogArticles = [
   },
 ];
 
+const relatedCategoryPriority = {
+  plastering: ["plastering", "remont", "painting", "floor-screed", "materials"],
+  painting: ["painting", "plastering", "remont", "materials", "floor-screed"],
+  "floor-screed": ["floor-screed", "remont", "plastering", "materials", "painting"],
+  remont: ["remont", "plastering", "floor-screed", "painting", "materials"],
+  materials: ["materials", "plastering", "painting", "floor-screed", "remont"],
+};
+
+export function getRelatedBlogArticles(article, limit = 6) {
+  const priority = relatedCategoryPriority[article.category] ?? [article.category];
+  const candidates = blogArticles
+    .filter(candidate => candidate.slug !== article.slug)
+    .map(candidate => {
+      const priorityIndex = priority.indexOf(candidate.category);
+
+      return {
+        article: candidate,
+        priorityIndex: priorityIndex === -1 ? priority.length : priorityIndex,
+      };
+    })
+    .sort((first, second) => first.priorityIndex - second.priorityIndex)
+    .map(candidate => candidate.article);
+
+  return candidates.slice(0, limit);
+}
+
 const articleSources = {
   "armirovanie-shtukaturki-setkoj": armirovanieShtukaturkiSetkojHtml,
+  "defekty-ognezashchitnogo-pokrytiya-metalla": defektyOgnezashchitnogoPokrytiyaMetallaHtml,
   "fasad-shtukaturka": fasadShtukaturkaHtml,
   "gidroizolyaciya-pola-pod-styazhku": gidroizolyaciyaPolaPodStyazhkuHtml,
   "kak-rasscitat-raskhod-shtukaturki": kakRasscitatRaskhodShtukaturkiHtml,
   "mashinnaya-ili-ruchnaya-shtukaturka": mashinnayaIliRuchnayaShtukaturkaHtml,
   "pokraska-sten-bez-razvodov": pokraskaStenBezRazvodovHtml,
   "pokraska-sten-dvumya-cvetami": pokraskaStenDvumyaCvetamiHtml,
-  "podgotovka-sten-pod-dekorativnuyu-shtukaturku":
-    podgotovkaStenPodDekorativnuyuShtukaturkuHtml,
+  "podgotovka-sten-pod-dekorativnuyu-shtukaturku": podgotovkaStenPodDekorativnuyuShtukaturkuHtml,
+  "priemka-shtukaturnyh-rabot": priemkaShtukaturnyhRabotHtml,
   "preimushestva-bezvozdushnoj-pokraski": preimushestvaBezvozdushnojPokraskiHtml,
   "shpaklevka-sten-posle-shtukaturki": shpaklevkaStenPosleShtukaturkiHtml,
   "shtukaturka-guide": shtukaturkaGuideHtml,
   "shtukaturka-sten-v-novostrojke": shtukaturkaStenVNovostrojkeHtml,
+  "srok-sluzhby-ognezashchitnogo-pokrytiya": srokSluzhbyOgnezashchitnogoPokrytiyaHtml,
   "stoimost-remonta-kvartiry": stoimostRemontaKvartiryHtml,
   "styazhka-pod-teply-pol": styazhkaPodTeplyPolHtml,
-  "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot":
-    trebovaniyaKVypolneniyuShtukaturnyhRabotHtml,
+  "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot": trebovaniyaKVypolneniyuShtukaturnyhRabotHtml,
   "vidy-styazhki-pola": vidyStyazhkiPolaHtml,
   "vybor-kraski-airless-painting": vyborKraskiAirlessPaintingHtml,
   "vybor-shtukaturki": vyborShtukaturkiHtml,

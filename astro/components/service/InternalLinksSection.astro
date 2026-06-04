@@ -1,0 +1,37 @@
+---
+const { title = "Полезные переходы", subtitle, groups = [] } = Astro.props;
+const visibleGroups = groups.filter(group => group.links?.length);
+---
+
+{
+  visibleGroups.length > 0 && (
+    <section class="internal-links reveal-on-scroll" aria-label={title}>
+      <div class="internal-links__container">
+        <div class="internal-links__header">
+          <h2 class="internal-links__title">{title}</h2>
+          {subtitle && <p class="internal-links__subtitle">{subtitle}</p>}
+        </div>
+        <div class="internal-links__grid">
+          {visibleGroups.map(group => (
+            <article class="internal-links__group">
+              <h3 class="internal-links__group-title">{group.title}</h3>
+              <ul class="internal-links__list">
+                {group.links.map(link => (
+                  <li class="internal-links__item">
+                    <a class="internal-links__link" href={link.href}>
+                      <span class="internal-links__link-label">{link.label}</span>
+                      {link.description && (
+                        <span class="internal-links__link-description">{link.description}</span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+

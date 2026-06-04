@@ -4,39 +4,28 @@ import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/ut
 
 const ENDPOINT = "/scripts/api/send.php";
 
-const questions = [
+const contactMethods = [
+  { value: "whatsapp", label: "WhatsApp", input: "phone" },
+  { value: "telegram", label: "Telegram", input: "telegram" },
+  { value: "max", label: "MAX", input: "phone" },
+  { value: "phone", label: "Позвонить", input: "phone" },
+];
+
+const defaultQuestions = [
   {
     key: "area",
-    title: "Какая площадь стен?",
+    title: "Какая площадь работ?",
     fieldName: "AREA_RANGE",
-    options: ["До 100 м²", "До 200 м²", "Свыше 200 м²", "Нужен расчет"],
-  },
-  {
-    key: "height",
-    title: "Какая высота стен?",
-    fieldName: "WALL_HEIGHT",
-    options: ["До 3 м", "Свыше 3 м", "Не знаю"],
-  },
-  {
-    key: "thickness",
-    title: "Какая толщина штукатурки?",
-    fieldName: "PLASTER_THICKNESS",
-    options: ["30 мм", "Больше 30 мм", "Не знаю"],
+    options: ["До 100 м²", "100-200 м²", "Больше 200 м²", "Нужен расчет"],
   },
 ];
 
-const contactMethods = [
-  { value: "whatsapp", label: "WhatsApp" },
-  { value: "max", label: "MAX" },
-  { value: "phone", label: "Позвонить" },
-];
-
-const TOTAL_STEPS = questions.length + 1;
-
-const initialAnswers = questions.reduce((answers, question) => {
-  answers[question.key] = question.options[0];
-  return answers;
-}, {});
+function answersFromQuestions(questions) {
+  return questions.reduce((answers, question) => {
+    answers[question.key] = question.options[0] ?? "";
+    return answers;
+  }, {});
+}
 
 function formatPhone(value) {
   let digits = value.replace(/\D/g, "");
@@ -86,15 +75,48 @@ function validatePhone(phone) {
   return digits.length === 11 && digits.startsWith("7");
 }
 
-export default function PlasteringQuiz({
-  formSource = "Квиз по штукатурным работам",
-  title = "Быстрый расчет штукатурных работ",
+function normalizeTelegramUsername(value) {
+  const username = value
+    .trim()
+    .replace(/^https?:\/\/t\.me\//i, "")
+    .replace(/^@+/, "");
+
+  return username ? `@${username.slice(0, 32)}` : "";
+}
+
+function isTelegramUsername(value) {
+  return /^@?[a-zA-Z0-9_]{5,32}$/.test(value.trim().replace(/^@+/, ""));
+}
+
+function formatContactValue(value, contactMethod) {
+  if (contactMethod.input === "telegram" && /[a-zA-Z_@]|t\.me/i.test(value.trim())) {
+    return normalizeTelegramUsername(value);
+  }
+
+  return formatPhone(value);
+}
+
+function validateContact(value, contactMethod) {
+  if (contactMethod.input === "telegram") {
+    return validatePhone(value) || isTelegramUsername(value);
+  }
+
+  return validatePhone(value);
+}
+
+export default function ServiceQuiz({
+  formSource = "Квиз-смета услуги",
+  questions = defaultQuestions,
+  serviceName = "услуге",
+  title = "Предварительная смета за 1 минуту",
 }) {
+  const quizQuestions = questions.length ? questions : defaultQuestions;
+  const totalSteps = quizQuestions.length + 1;
   const [currentStep, setCurrentStep] = useState(1);
-  const [answers, setAnswers] = useState(initialAnswers);
-  const [phone, setPhone] = useState("");
+  const [answers, setAnswers] = useState(() => answersFromQuestions(quizQuestions));
+  const [contactValue, setContactValue] = useState("");
   const [contactMethod, setContactMethod] = useState(contactMethods[0].value);
-  const [phoneError, setPhoneError] = useState("");
+  const [contactError, setContactError] = useState("");
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -102,9 +124,10 @@ export default function PlasteringQuiz({
     () => contactMethods.find(method => method.value === contactMethod) ?? contactMethods[0],
     [contactMethod]
   );
-  const activeQuestion = questions[currentStep - 1];
-  const isContactStep = currentStep === TOTAL_STEPS;
-  const progress = (currentStep / TOTAL_STEPS) * 100;
+  const activeQuestion = quizQuestions[currentStep - 1];
+  const isContactStep = currentStep === totalSteps;
+  const progress = (currentStep / totalSteps) * 100;
+  const phoneValue = validatePhone(contactValue) ? contactValue : "";
 
   useEffect(() => {
     captureUtm();
@@ -117,25 +140,35 @@ export default function PlasteringQuiz({
     }));
   }
 
+  function updateContactMethod(value) {
+    const nextContact = contactMethods.find(method => method.value === value) ?? contactMethods[0];
+    setContactMethod(value);
+    setContactError("");
+    setSubmitError("");
+    setContactValue(currentValue => formatContactValue(currentValue, nextContact));
+  }
+
   function goNext() {
     setSubmitError("");
-    setCurrentStep(step => Math.min(step + 1, TOTAL_STEPS));
+    setCurrentStep(step => Math.min(step + 1, totalSteps));
   }
 
   function goBack() {
-    setPhoneError("");
+    setContactError("");
     setSubmitError("");
     setCurrentStep(step => Math.max(step - 1, 1));
   }
 
   function buildComments() {
+    const answerLines = quizQuestions.map(
+      question => `- ${question.title}: ${answers[question.key]}`
+    );
+
     return [
-      "Квиз по штукатурным работам:",
-      `- Площадь стен: ${answers.area}`,
-      `- Высота стен: ${answers.height}`,
-      `- Толщина штукатурки: ${answers.thickness}`,
+      `Квиз по услуге: ${serviceName}`,
+      ...answerLines,
       `- Способ связи: ${selectedContact.label}`,
-      `- Телефон: ${phone}`,
+      `- Контакт: ${contactValue}`,
       "Клиент просит связаться и подготовить расчет.",
     ].join("\n");
   }
@@ -144,22 +177,26 @@ export default function PlasteringQuiz({
     event.preventDefault();
     setSubmitError("");
 
-    if (!validatePhone(phone)) {
-      setPhoneError("Укажите телефон в формате +7 (999) 123-45-67");
+    if (!validateContact(contactValue, selectedContact)) {
+      setContactError(
+        selectedContact.input === "telegram"
+          ? "Укажите телефон или Telegram username, например @username"
+          : "Укажите телефон в формате +7 (999) 123-45-67"
+      );
       return;
     }
 
-    setPhoneError("");
+    setContactError("");
     setIsSubmitting(true);
 
     const formData = new FormData();
-    formData.append("PHONE", phone);
+    formData.append("PHONE", phoneValue);
     formData.append("CONTACT_METHOD", selectedContact.label);
-    formData.append("CONTACT_VALUE", phone);
+    formData.append("CONTACT_VALUE", contactValue);
     formData.append("MESSENGER", selectedContact.label);
-    formData.append("AREA_RANGE", answers.area);
-    formData.append("WALL_HEIGHT", answers.height);
-    formData.append("PLASTER_THICKNESS", answers.thickness);
+    quizQuestions.forEach(question => {
+      formData.append(question.fieldName, answers[question.key]);
+    });
     formData.append("COMMENTS", buildComments());
     formData.append("form_source", formSource);
 
@@ -193,17 +230,19 @@ export default function PlasteringQuiz({
   }
 
   return (
-    <section className="plastering-quiz reveal-on-scroll" id="plastering-quiz">
-      <div className="plastering-quiz__container">
+    <section className="service-quiz reveal-on-scroll" id="service-quiz">
+      <div className="service-quiz__container">
         <form
-          className="plastering-quiz__form"
+          className="service-quiz__form"
           method="POST"
           action={ENDPOINT}
           onSubmit={handleSubmit}
         >
           <input name="form_source" type="hidden" value={formSource} readOnly />
           <input name="COMMENTS" type="hidden" value={buildComments()} readOnly />
-          {questions.map(question => (
+          <input name="CONTACT_VALUE" type="hidden" value={contactValue} readOnly />
+          <input name="MESSENGER" type="hidden" value={selectedContact.label} readOnly />
+          {quizQuestions.map(question => (
             <input
               key={question.fieldName}
               name={question.fieldName}
@@ -213,35 +252,35 @@ export default function PlasteringQuiz({
             />
           ))}
 
-          <div className="plastering-quiz__heading">
-            <span className="plastering-quiz__eyebrow">Квиз</span>
+          <div className="service-quiz__heading">
+            <span className="service-quiz__eyebrow">Квиз</span>
             <h2>{title}</h2>
             <p>Ответьте на 4 вопроса, и мастер уточнит объем работ и ориентир по материалам.</p>
-            <div className="plastering-quiz__step-meta">
+            <div className="service-quiz__step-meta">
               <span>
-                Шаг {currentStep} из {TOTAL_STEPS}
+                Шаг {currentStep} из {totalSteps}
               </span>
               <strong>{isContactStep ? "Контакты" : activeQuestion.title}</strong>
             </div>
             <div
-              className="plastering-quiz__progress"
-              aria-label={`Шаг ${currentStep} из ${TOTAL_STEPS}`}
+              className="service-quiz__progress"
+              aria-label={`Шаг ${currentStep} из ${totalSteps}`}
             >
               <span style={{ width: `${progress}%` }} />
             </div>
           </div>
 
-          <div className="plastering-quiz__body">
+          <div className="service-quiz__body">
             {!isContactStep && activeQuestion && (
-              <fieldset className="plastering-quiz__question" key={activeQuestion.key}>
+              <fieldset className="service-quiz__question" key={activeQuestion.key}>
                 <legend>{activeQuestion.title}</legend>
-                <div className="plastering-quiz__options">
+                <div className="service-quiz__options">
                   {activeQuestion.options.map(option => (
                     <label
                       className={
                         answers[activeQuestion.key] === option
-                          ? "plastering-quiz__option is-selected"
-                          : "plastering-quiz__option"
+                          ? "service-quiz__option is-selected"
+                          : "service-quiz__option"
                       }
                       key={option}
                     >
@@ -260,48 +299,56 @@ export default function PlasteringQuiz({
             )}
 
             {isContactStep && (
-              <fieldset className="plastering-quiz__question plastering-quiz__question--contact">
+              <fieldset className="service-quiz__question service-quiz__question--contact">
                 <legend>Как с вами связаться?</legend>
-                <label className="plastering-quiz__phone-field">
-                  <span>Номер телефона</span>
+                <label className="service-quiz__phone-field">
+                  <span>
+                    {selectedContact.input === "telegram"
+                      ? "Телефон или Telegram"
+                      : "Номер телефона"}
+                  </span>
                   <input
-                    aria-describedby={phoneError ? "plastering-quiz-phone-error" : undefined}
-                    autoComplete="tel"
-                    inputMode="tel"
-                    name="PHONE"
+                    aria-describedby={contactError ? "service-quiz-contact-error" : undefined}
+                    autoComplete={selectedContact.input === "telegram" ? "off" : "tel"}
+                    inputMode={selectedContact.input === "telegram" ? "text" : "tel"}
+                    name={phoneValue ? "PHONE" : "CONTACT_VALUE"}
                     onChange={event => {
-                      setPhone(formatPhone(event.target.value));
-                      setPhoneError("");
+                      setContactValue(formatContactValue(event.target.value, selectedContact));
+                      setContactError("");
                     }}
-                    placeholder="+7 (999) 123-45-67"
-                    type="tel"
-                    value={phone}
+                    placeholder={
+                      selectedContact.input === "telegram"
+                        ? "+7 (999) 123-45-67 или @username"
+                        : "+7 (999) 123-45-67"
+                    }
+                    type={selectedContact.input === "telegram" ? "text" : "tel"}
+                    value={contactValue}
                   />
                 </label>
-                {phoneError && (
-                  <em className="plastering-quiz__error" id="plastering-quiz-phone-error">
-                    {phoneError}
+                {contactError && (
+                  <em className="service-quiz__error" id="service-quiz-contact-error">
+                    {contactError}
                   </em>
                 )}
 
                 <div
                   aria-label="Выберите способ связи"
-                  className="plastering-quiz__contact-methods"
+                  className="service-quiz__contact-methods"
                   role="radiogroup"
                 >
                   {contactMethods.map(method => (
                     <label
                       className={
                         method.value === contactMethod
-                          ? "plastering-quiz__contact-method is-selected"
-                          : "plastering-quiz__contact-method"
+                          ? "service-quiz__contact-method is-selected"
+                          : "service-quiz__contact-method"
                       }
                       key={method.value}
                     >
                       <input
                         checked={method.value === contactMethod}
                         name="CONTACT_METHOD"
-                        onChange={() => setContactMethod(method.value)}
+                        onChange={() => updateContactMethod(method.value)}
                         type="radio"
                         value={method.label}
                       />
@@ -310,23 +357,23 @@ export default function PlasteringQuiz({
                   ))}
                 </div>
 
-                {submitError && <div className="plastering-quiz__submit-error">{submitError}</div>}
+                {submitError && <div className="service-quiz__submit-error">{submitError}</div>}
               </fieldset>
             )}
           </div>
 
-          <div className="plastering-quiz__nav">
+          <div className="service-quiz__nav">
             {currentStep > 1 && (
-              <button className="plastering-quiz__back" type="button" onClick={goBack}>
+              <button className="service-quiz__back" type="button" onClick={goBack}>
                 Назад
               </button>
             )}
             {isContactStep ? (
-              <button className="plastering-quiz__submit" disabled={isSubmitting} type="submit">
+              <button className="service-quiz__submit" disabled={isSubmitting} type="submit">
                 {isSubmitting ? "Отправляем..." : "Получить расчет"}
               </button>
             ) : (
-              <button className="plastering-quiz__submit" type="button" onClick={goNext}>
+              <button className="service-quiz__submit" type="button" onClick={goNext}>
                 Далее
               </button>
             )}

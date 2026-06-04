@@ -46,6 +46,15 @@ const services = [
     miniCalcPrefix: "Мини-калькулятор мягкой кровли",
   },
   {
+    slug: "biozashchita",
+    name: "Огнебиозащита",
+    basePage: "biozashchita.html",
+    pricingScript: "/scripts/features/pricing-table-biozashchita.js",
+    cityFormPrefix: "Огнебиозащита",
+    quizPrefix: "Квиз-смета огнебиозащиты",
+    miniCalcPrefix: "Мини-калькулятор огнебиозащиты",
+  },
+  {
     slug: "turnkey-repair",
     name: "Ремонт под ключ",
     basePage: "turnkey-repair.html",
@@ -136,6 +145,11 @@ function checkPage(page, service, city = null) {
   assert(types.includes("Service"), `${page}: missing Service JSON-LD`);
   assert(types.includes("BreadcrumbList"), `${page}: missing BreadcrumbList JSON-LD`);
   assert(types.includes("FAQPage"), `${page}: missing FAQPage JSON-LD`);
+  assert(html.includes('class="service-quiz'), `${page}: missing service quiz`);
+  assert(
+    sources.includes(`${service.quizPrefix}${expectedCitySuffix}`),
+    `${page}: missing service quiz form_source`
+  );
   if (isTurnkeyRepair) {
     assert(html.includes('class="about-turnkey"'), `${page}: missing turnkey legacy hero`);
     assert(html.includes('class="about-turnkey-2"'), `${page}: missing turnkey legacy calculator`);

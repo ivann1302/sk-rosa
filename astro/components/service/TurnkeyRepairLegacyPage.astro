@@ -4,9 +4,12 @@ import CityComplexes from "./CityComplexes.astro";
 import CityLocalContent from "./CityLocalContent.astro";
 import FaqSection from "./FaqSection.astro";
 import ReviewsSection from "./ReviewsSection.astro";
+import ServiceQuiz from "./ServiceQuiz.jsx";
+import { getServiceQuiz } from "../../data/service-quizzes.js";
 
 const { page } = Astro.props;
 const city = page.city;
+const serviceQuiz = getServiceQuiz(page.service.slug);
 const heroLocation = city?.nameIn ? `в ${city.nameIn}` : "в Москве";
 const calcComments = city?.name
   ? `Заявка на расчет ремонта в ${city.nameIn}`
@@ -112,6 +115,18 @@ const usefulLinks = [
       </div>
     </div>
   </div>
+
+  {
+    serviceQuiz && (
+      <ServiceQuiz
+        client:load
+        formSource={page.priceCalc.quizFormSource}
+        questions={serviceQuiz.questions}
+        serviceName={serviceQuiz.serviceName}
+        title={page.priceCalc.quizTitle}
+      />
+    )
+  }
 
   <section class="about-turnkey-2" id="prices">
     <div class="about-turnkey-2__container">

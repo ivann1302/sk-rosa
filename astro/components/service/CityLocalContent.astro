@@ -8,7 +8,7 @@ const { content } = Astro.props;
       <div class="city-local-content__container">
         <div class="city-local-content__header">
           <h2 class="city-local-content__title">{content.title}</h2>
-          <p class="city-local-content__subtitle">{content.subtitle}</p>
+          {content.subtitle && <p class="city-local-content__subtitle">{content.subtitle}</p>}
         </div>
 
         <div class="city-local-content__lead">

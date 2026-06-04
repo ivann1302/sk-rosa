@@ -2,6 +2,7 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import LegacyRuntime from "../components/LegacyRuntime.astro";
 import { airlessPaintingCityPages } from "../data/airless-painting-city-pages.js";
+import { biozashchitaCityPages } from "../data/biozashchita-city-pages.js";
 import { floorScreedCityPages } from "../data/floor-screed-city-pages.js";
 import { plasteringCityPages } from "../data/plastering-city-pages.js";
 import { softRoofingCityPages } from "../data/soft-roofing-city-pages.js";
@@ -44,6 +45,12 @@ const services = [
     title: "Мягкая кровля",
     description: "Монтаж и ремонт гибкой, мембранной и наплавляемой кровли.",
     pages: softRoofingCityPages,
+  },
+  {
+    id: "biozashchita",
+    title: "Огнебиозащита",
+    description: "Огнезащитная и биозащитная обработка дерева и металлоконструкций.",
+    pages: biozashchitaCityPages,
   },
 ];
 ---

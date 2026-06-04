@@ -15,6 +15,12 @@ body:has(.blog-article) {
   min-height: 100vh;
 }
 
+@media (width <= 768px) {
+  body:has(.blog-article-mobile-consultation) {
+    padding-bottom: 88px;
+  }
+}
+
 // Хлебные крошки
 .blog-article-breadcrumbs {
   width: 100vw;
@@ -702,6 +708,115 @@ body:has(.blog-article) {
     color: #222;
   }
 
+  &__service-cta {
+    margin-top: 22px;
+    margin-bottom: 14px;
+
+    @media (width <= 768px) {
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+    padding: 10px 16px;
+    border: 1px solid rgb(136 165 147 / 35%);
+    border-radius: 8px;
+    background: rgb(136 165 147 / 9%);
+    color: var(--color-dark-green);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-green);
+      border-color: var(--color-green);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgb(136 165 147 / 30%);
+      outline-offset: 3px;
+    }
+
+    @media (width <= 768px) {
+      width: 100%;
+      justify-content: center;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__service-link-kicker {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: currentcolor;
+    opacity: 0.78;
+  }
+
+  &__service-link-label {
+    overflow-wrap: anywhere;
+  }
+
+  &__consultation-cta {
+    margin-top: 18px;
+
+    @media (width <= 768px) {
+      display: none;
+    }
+  }
+
+  &__consultation-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: var(--color-green);
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgb(136 165 147 / 22%);
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-dark-green);
+      box-shadow: 0 10px 22px rgb(136 165 147 / 28%);
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid rgb(136 165 147 / 30%);
+      outline-offset: 3px;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
   // Блок "Поделиться"
   &__share {
     display: flex;
@@ -873,5 +988,45 @@ body:has(.blog-article) {
       font-size: 1.5rem;
       margin-bottom: 32px;
     }
+  }
+
+  &__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (width <= 1024px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (width <= 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .blog-card__image-wrapper {
+    height: 190px;
+
+    @media (width <= 768px) {
+      height: 200px;
+    }
+  }
+
+  .blog-card__content {
+    padding: 20px;
+  }
+
+  .blog-card__title {
+    font-size: 1.15rem;
+  }
+
+  .blog-card__excerpt {
+    font-size: 0.92rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+.blog-article-mobile-consultation {
+  @media (width <= 768px) {
+    font-size: 0.98rem;
   }
 }

@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
+import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import TurnkeyRepairLegacyPage from "../components/service/TurnkeyRepairLegacyPage.astro";
 import TurnkeyRepairLegacyRuntime from "../components/service/TurnkeyRepairLegacyRuntime.astro";
+import { getServiceInterlinkGroups } from "../data/site-links.js";
 import { turnkeyRepairJsonLd, turnkeyRepairPage } from "../data/turnkey-repair.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 
@@ -42,6 +44,11 @@ const faqJsonLd = {
   <main>
     <TurnkeyRepairLegacyPage page={turnkeyRepairPage} />
   </main>
+  <InternalLinksSection
+    slot="before-footer"
+    title="Связанные разделы"
+    groups={getServiceInterlinkGroups(turnkeyRepairPage.service.slug)}
+  />
   <TurnkeyRepairLegacyRuntime
     slot="runtime"
     callBannerComments={turnkeyRepairPage.runtime.callBannerComments}

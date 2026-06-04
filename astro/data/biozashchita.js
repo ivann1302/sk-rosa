@@ -1,3 +1,5 @@
+import { serviceReviews } from "./service-reviews.js";
+
 export const biozashchitaPage = {
   seo: {
     title: "Огнебиозащита конструкций в Москве и МО | ROSA",
@@ -166,9 +168,15 @@ export const biozashchitaPage = {
     quizFormSource: "Квиз-смета огнебиозащиты",
     miniCalcFormSource: "Мини-калькулятор огнебиозащиты",
     articles: [
-      { href: "/fasad-shtukaturka", label: "Фасадная штукатурка" },
-      { href: "/gidroizolyaciya-pola-pod-styazhku", label: "Гидроизоляция пола под стяжку" },
-      { href: "/vidy-styazhki-pola", label: "Виды стяжки пола" },
+      {
+        href: "/defekty-ognezashchitnogo-pokrytiya-metalla",
+        label: "Дефекты огнезащитного покрытия",
+      },
+      {
+        href: "/srok-sluzhby-ognezashchitnogo-pokrytiya",
+        label: "Срок службы огнезащитного покрытия",
+      },
+      { href: "/soft-roofing", label: "Мягкая кровля и защита конструкций" },
     ],
     calcTypes: [
       { label: "Биозащита дерева — 120 ₽/м²", value: "Биозащита дерева", rate: "120" },
@@ -188,6 +196,7 @@ export const biozashchitaPage = {
     comments: "Заявка на огнебиозащиту",
     formSource: "Огнебиозащита",
   },
+  reviews: serviceReviews,
   faqDescription:
     "Собрали основные вопросы по огнезащитной и биозащитной обработке конструкций. Если нужна точная смета, оставьте заявку — рассчитаем по вашему объекту.",
   faq: [
@@ -222,6 +231,32 @@ export const biozashchitaPage = {
         "Да, выполняем обработку складов, производственных цехов, торговых помещений, офисных и технических зон. Для подрядчиков можем работать по согласованному графику.",
     },
   ],
+  articles: [
+    {
+      href: "/srok-sluzhby-ognezashchitnogo-pokrytiya",
+      title: "Срок службы огнезащитного покрытия металлоконструкций",
+      image: "/assets/images/common/ognezashita-srok-sluzhby.webp",
+      alt: "Срок службы огнезащитного покрытия",
+      width: 600,
+      height: 400,
+    },
+    {
+      href: "/defekty-ognezashchitnogo-pokrytiya-metalla",
+      title: "Типичные дефекты огнезащитного покрытия металла",
+      image: "/assets/images/common/ognezashita-defekty-pokrytiya.webp",
+      alt: "Дефекты огнезащитного покрытия металла",
+      width: 600,
+      height: 400,
+    },
+    {
+      href: "/soft-roofing",
+      title: "Мягкая кровля и защита деревянных конструкций",
+      image: "/assets/images/soft-roofing/soft-roofing3.webp",
+      alt: "Мягкая кровля и стропильная система",
+      width: 600,
+      height: 400,
+    },
+  ],
   runtime: {
     callBannerComments: "Заявка с баннера (10 сек)",
     callBannerSource: "Баннер 10 секунд",
@@ -229,7 +264,7 @@ export const biozashchitaPage = {
   },
   service: {
     slug: "biozashchita",
-    name: "Биозащита",
+    name: "Огнебиозащита",
     advantagesTitle: "Преимущества огнебиозащиты",
     advantagesCtaLabel: "Цены на огнебиозащиту",
     taskListTitle: "Какие конструкции обрабатываем",

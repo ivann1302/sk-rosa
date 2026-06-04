@@ -1,4 +1,4 @@
-.plastering-quiz {
+.service-quiz {
   --quiz-ink: #141611;
   --quiz-muted: #5e6658;
   --quiz-line: #dfe6dc;
@@ -207,7 +207,7 @@
 
   &__contact-methods {
     display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    grid-template-columns: repeat(4, minmax(95px, 1fr));
   }
 
   &__contact-method span {

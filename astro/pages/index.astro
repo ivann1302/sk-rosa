@@ -1,6 +1,16 @@
 ---
-import LegacyPageBridge from "../components/legacy/LegacyPageBridge.astro";
+import BaseLayout from "../components/BaseLayout.astro";
+import LegacyRuntime from "../components/LegacyRuntime.astro";
+import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
 import { blogArticles } from "../data/blog.js";
+import { plasteringPage } from "../data/plastering.js";
+import { serviceReviews } from "../data/service-reviews.js";
+import {
+  extractBetween,
+  extractLegacyJsonLd,
+  extractLegacySeo,
+  normalizeLegacyPaths,
+} from "../lib/legacy-html.js";
 import sourceHtml from "../../src/index.html?raw";
 
 function escapeHtml(value) {
@@ -28,12 +38,40 @@ function articleCardHtml(article) {
                 </a>`;
 }
 
-function replaceArticleCarouselCards(html, cardsHtml) {
-  const trackMarker = '<div class="articles-carousel__track">';
+function reviewCardHtml(review) {
+  if (review.screenshot) {
+    return `                  <article class="reviews-card reviews-card--image">
+                    <img
+                      class="reviews-card__screenshot"
+                      src="${escapeHtml(review.screenshot)}"
+                      alt="Отзыв клиента ${escapeHtml(review.name)}: ${escapeHtml(review.text)}"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </article>`;
+  }
+
+  return `                  <article class="reviews-card">
+                    <div class="reviews-card__header">
+                      <img
+                        src="${escapeHtml(review.image)}"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        width="50"
+                        height="50"
+                      />
+                      <p class="reviews-card__name">${escapeHtml(review.name)}</p>
+                    </div>
+                    <p class="reviews-card__text">${escapeHtml(review.text)}</p>
+                  </article>`;
+}
+
+function replaceCarouselCards(html, trackMarker, cardsHtml, errorMessage) {
   const trackIndex = html.indexOf(trackMarker);
 
   if (trackIndex === -1) {
-    throw new Error("Cannot find homepage articles carousel track");
+    throw new Error(errorMessage);
   }
 
   const contentStart = trackIndex + trackMarker.length;
@@ -51,11 +89,137 @@ function replaceArticleCarouselCards(html, cardsHtml) {
     }
   }
 
-  throw new Error("Cannot find homepage articles carousel closing tag");
+  throw new Error(`${errorMessage}: cannot find closing tag`);
+}
+
+function ensureReviewsMoreLink(html) {
+  if (html.includes('class="reviews__more"')) {
+    return html;
+  }
+
+  const reviewsClosingMarker = '\n        </div>\n      </section>\n\n      <section class="useful-links">';
+  const reviewsClosingIndex = html.indexOf(reviewsClosingMarker);
+
+  if (reviewsClosingIndex === -1) {
+    throw new Error("Cannot find homepage reviews section closing tag");
+  }
+
+  const moreLinkHtml = `\n          <div class="reviews__more">
+            <a
+              href="https://yandex.ru/maps/org/rosa/244762145159/reviews/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="reviews__more-link"
+            >
+              Больше отзывов можно посмотреть тут
+            </a>
+          </div>`;
+
+  return `${html.slice(0, reviewsClosingIndex)}${moreLinkHtml}${html.slice(reviewsClosingIndex)}`;
+}
+
+function replacePortfolioGridWithMarker(html) {
+  if (html.includes("<!-- HOMEPAGE_CASES -->")) {
+    return html;
+  }
+
+  const headingTextIndex = html.indexOf("Примеры наших работ");
+
+  if (headingTextIndex === -1) {
+    throw new Error("Cannot find homepage portfolio grid heading");
+  }
+
+  const replaceStart = html.lastIndexOf("<h3", headingTextIndex);
+  const gridStart = html.indexOf('<div class="portfolio-grid">', headingTextIndex);
+
+  if (replaceStart === -1 || gridStart === -1) {
+    throw new Error("Cannot find homepage portfolio grid markup");
+  }
+
+  const divTagPattern = /<\/?div\b[^>]*>/gi;
+  divTagPattern.lastIndex = gridStart;
+
+  let depth = 0;
+  let match;
+  let gridEnd = -1;
+
+  while ((match = divTagPattern.exec(html))) {
+    depth += match[0].startsWith("</") ? -1 : 1;
+
+    if (depth === 0) {
+      gridEnd = divTagPattern.lastIndex;
+      break;
+    }
+  }
+
+  if (gridEnd === -1) {
+    throw new Error("Cannot find homepage portfolio grid closing tag");
+  }
+
+  const moreButtonPattern = /\s*<a href="(?:pages\/)?portfolio\.html" class="portfolio-grid__button">[\s\S]*?<\/a>/i;
+  const afterGrid = html.slice(gridEnd);
+  const moreButtonMatch = afterGrid.match(moreButtonPattern);
+  const replaceEnd = moreButtonMatch?.index === 0 ? gridEnd + moreButtonMatch[0].length : gridEnd;
+
+  return `${html.slice(0, replaceStart)}\n<!-- HOMEPAGE_CASES -->\n${html.slice(replaceEnd)}`;
+}
+
+function splitAtMarker(html, marker) {
+  const markerIndex = html.indexOf(marker);
+
+  if (markerIndex === -1) {
+    throw new Error(`Cannot find marker ${marker}`);
+  }
+
+  return [html.slice(0, markerIndex), html.slice(markerIndex + marker.length)];
 }
 
 const articleCardsHtml = blogArticles.map(articleCardHtml).join("\n");
-const sourceHtmlWithAllArticles = replaceArticleCarouselCards(sourceHtml, articleCardsHtml);
+const reviewCardsHtml = serviceReviews.map(reviewCardHtml).join("\n");
+const sourceHtmlWithAllArticles = replaceCarouselCards(
+  sourceHtml,
+  '<div class="articles-carousel__track">',
+  articleCardsHtml,
+  "Cannot find homepage articles carousel track",
+);
+const sourceHtmlWithReviews = replaceCarouselCards(
+  sourceHtmlWithAllArticles,
+  '<div class="reviews-carousel__track">',
+  reviewCardsHtml,
+  "Cannot find homepage reviews carousel track",
+);
+const sourceHtmlWithReviewsMoreLink = ensureReviewsMoreLink(sourceHtmlWithReviews);
+const sourceHtmlWithCasesMarker = replacePortfolioGridWithMarker(sourceHtmlWithReviewsMoreLink);
+const seo = extractLegacySeo(sourceHtmlWithCasesMarker);
+const jsonLd = extractLegacyJsonLd(sourceHtmlWithCasesMarker);
+const contentHtml = normalizeLegacyPaths(
+  extractBetween(sourceHtmlWithCasesMarker, "<!-- HEADER -->", "<!-- FOOTER -->"),
+);
+const [contentBeforeCases, contentAfterCases] = splitAtMarker(contentHtml, "<!-- HOMEPAGE_CASES -->");
+const homepageWorkCases = {
+  ...plasteringPage.workCases,
+  title: "Примеры наших работ",
+};
 ---
 
-<LegacyPageBridge sourceHtml={sourceHtmlWithAllArticles} />
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogType={seo.ogType}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImage={seo.ogImage}
+  ogImageSecureUrl={seo.ogImageSecureUrl}
+  ogImageWidth={seo.ogImageWidth}
+  ogImageHeight={seo.ogImageHeight}
+  ogImageType={seo.ogImageType}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName={seo.ogSiteName}
+  jsonLd={jsonLd}
+>
+  <Fragment set:html={contentBeforeCases} />
+  <PlasteringCasesSection {...homepageWorkCases} />
+  <Fragment set:html={contentAfterCases} />
+  <LegacyRuntime slot="runtime" sourceHtml={sourceHtmlWithCasesMarker} />
+</BaseLayout>

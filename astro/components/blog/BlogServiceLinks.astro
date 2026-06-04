@@ -1,0 +1,7 @@
+---
+import { blogServiceLinks } from "../../data/site-links.js";
+---
+
+<nav class="blog-service-links" aria-label="Разделы услуг">
+  {blogServiceLinks.map(link => <a href={link.href} class="blog-service-links__item">{link.label}</a>)}
+</nav>
