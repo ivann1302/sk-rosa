@@ -41,6 +41,7 @@
     top: 50%;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     text-decoration: none;
     color: #222;
     background: #fff;
@@ -100,13 +101,20 @@
   }
 
   &__card-image {
-    flex: 1;
+    position: relative;
+    display: block;
+    flex: 1 1 0;
+    width: 100%;
+    align-self: stretch;
     overflow: hidden;
     min-height: 0;
 
     img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
+      max-width: none;
       object-fit: cover;
       display: block;
     }
@@ -226,7 +234,7 @@
 
     &__card-image {
       height: 220px;
-      flex: none;
+      flex: 0 0 220px;
     }
 
     &__card-title {
