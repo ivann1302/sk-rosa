@@ -27,6 +27,15 @@ const usePlasteringLeadCalculator = serviceSlug === "plastering";
                   method="POST"
                   data-service={serviceSlug}
                 >
+                  <div
+                    aria-hidden="true"
+                    style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+                  >
+                    <label>
+                      Сайт компании
+                      <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+                    </label>
+                  </div>
                   <h3 class="price-calc__quiz-heading">{data.quizTitle}</h3>
                   <div class="price-calc__quiz-progress" data-quiz-progress>
                     <span class="price-calc__quiz-dot price-calc__quiz-dot--active"></span>
@@ -195,6 +204,15 @@ const usePlasteringLeadCalculator = serviceSlug === "plastering";
             method="POST"
             data-service={serviceSlug}
           >
+            <div
+              aria-hidden="true"
+              style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+            >
+              <label>
+                Сайт компании
+                <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
             <h3 class="price-calc__mini-calc-title">
               {data.miniCalcTitle ?? "Калькулятор штукатурки"}
             </h3>

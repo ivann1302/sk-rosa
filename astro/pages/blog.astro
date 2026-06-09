@@ -19,6 +19,7 @@ const { seo } = blogPage;
   ogImage={seo.ogImage}
   ogImageAlt={seo.ogImageAlt}
   ogSiteName="ROSA - Ремонт под ключ"
+  mainEntityId={`${seo.canonical}#blog`}
   jsonLd={[
     blogJsonLd,
     breadcrumbJsonLd([

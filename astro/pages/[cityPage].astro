@@ -45,6 +45,17 @@ const seo = isBlogArticle ? null : page.seo;
 const isTurnkeyRepair = !isBlogArticle && page.service.slug === "turnkey-repair";
 const serviceQuiz = isBlogArticle ? null : getServiceQuiz(page.service.slug);
 const cityInterlinkGroups = isBlogArticle ? [] : getCityInterlinkGroups(page.service.slug, city);
+const servicePricingScripts = {
+  plastering: "/scripts/features/pricing-table.js",
+  "floor-screed": "/scripts/features/pricing-table-floor-screed.js",
+  "airless-painting": "/scripts/features/pricing-table-airless-painting.js",
+  "soft-roofing": "/scripts/features/pricing-table-soft-roofing.js",
+  biozashchita: "/scripts/features/pricing-table-biozashchita.js",
+};
+const pricingScript =
+  !isBlogArticle
+    ? (page.runtime.pricingScript ?? servicePricingScripts[page.service.slug] ?? null)
+    : null;
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -83,6 +94,7 @@ const faqJsonLd = {
         accurateTrackBounce: true,
         trackLinks: true,
       }}
+      mainEntityId={`${seo.canonical}#service`}
       jsonLd={[
         page.jsonLd,
         breadcrumbJsonLd([
@@ -172,7 +184,7 @@ const faqJsonLd = {
           slot="runtime"
           callBannerComments={page.runtime.callBannerComments}
           callBannerSource={page.runtime.callBannerSource}
-          pricingScript={page.runtime.pricingScript}
+          pricingScript={pricingScript}
         />
       )}
     </BaseLayout>

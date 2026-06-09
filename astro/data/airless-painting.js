@@ -1,4 +1,5 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const airlessPaintingPage = {
   seo: {
@@ -254,42 +255,15 @@ export const airlessPaintingPage = {
   },
 };
 
-export const airlessPaintingJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/airless-painting#service",
-  url: "https://sk-rosa.ru/airless-painting",
+export const airlessPaintingJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/airless-painting",
   serviceType: "Безвоздушная покраска",
   name: "Безвоздушная покраска стен и потолков",
   description:
     "Профессиональная безвоздушная покраска стен и потолков в Москве и Московской области. Качественные материалы, гарантия результата, покраска без разводов и подтеков.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/airless-painting",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "200",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/airless-painting",
-  },
-};
+  price: "200",
+});

@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
 import { plasteringPage } from "./plastering.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_PLASTERING_CITY_SLUGS ?? "")
   .split(",")
@@ -40,8 +41,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/plastering-${city.slug}`;
 
   return {
-    title: `Штукатурка стен в ${city.nameIn} — гипсовая и цементная под ключ | ROSA`,
-    description: `Машинная штукатурка стен в ${city.nameIn} и Московской области. От 450 ₽/м². Гипсовая и цементная штукатурка под ключ. ➤ 7+ лет опыта ➤ Гарантия 3 года ➤ Бесплатный замер. ☎ 8 (985) 135-49-91`,
+    title: `Штукатурка стен в ${city.nameIn} от 450 ₽/м² | ROSA`,
+    description: `Машинная штукатурка стен в ${city.nameIn}: гипсовая и цементная, по маякам. От 450 ₽/м², гарантия 3 года, бесплатный замер.`,
     canonical,
     ogTitle: `Штукатурные работы в ${city.nameIn} | ROSA — Машинная штукатурка под ключ`,
     ogDescription: `Профессиональная штукатурка стен в ${city.nameIn}. Гипсовая и цементная штукатурка по маякам, машинное нанесение. Гарантия 3 года, договор с фиксированной ценой.`,
@@ -50,19 +51,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Штукатурные работы",
     name: `Штукатурка стен в ${city.nameIn}`,
     description: `Машинная штукатурка стен в ${city.nameIn} и Московской области. Гипсовая и цементная штукатурка по маякам, фасады. Гарантия 3 года, договор с фиксированной ценой.`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -71,27 +64,8 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "450",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-    },
-  };
+    price: "450",
+  });
 }
 
 function buildCityPage(city) {

@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
 import { turnkeyRepairPage } from "./turnkey-repair.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_TURNKEY_REPAIR_CITY_SLUGS ?? "")
   .split(",")
@@ -29,8 +30,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/turnkey-repair-${city.slug}`;
 
   return {
-    title: `Ремонт под ключ в ${city.nameIn} | ROSA — Профессиональный ремонт квартир`,
-    description: `Ремонт квартир, домов и коммерческих помещений под ключ в ${city.nameIn}. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия 3 года, фиксированные цены. ☎ 8 (985) 135-49-91`,
+    title: `Ремонт под ключ в ${city.nameIn} | ROSA`,
+    description: `Ремонт квартир, домов и коммерческих помещений в ${city.nameIn}. Демонтаж, черновая и чистовая отделка, договор, гарантия 3 года.`,
     canonical,
     ogTitle: `Ремонт под ключ в ${city.nameIn} | ROSA — Профессиональный ремонт квартир`,
     ogDescription: `Ремонт квартир и домов под ключ в ${city.nameIn}. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества.`,
@@ -39,19 +40,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Ремонт под ключ",
     name: `Ремонт под ключ в ${city.nameIn}`,
     description: `Ремонт квартир и домов под ключ в ${city.nameIn}. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены.`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -60,28 +53,9 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        minPrice: "10000",
-        maxPrice: "20000",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-    },
-  };
+    minPrice: "10000",
+    maxPrice: "20000",
+  });
 }
 
 function buildCityPage(city) {

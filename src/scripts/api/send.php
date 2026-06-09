@@ -1,7 +1,25 @@
 <?php
+  define('SK_ROSA_INTERNAL_API', true);
   require_once __DIR__ . '/load-env.php';
 
-  error_log('[SEND] Запрос получен: ' . $_SERVER['REQUEST_METHOD'] . ' от ' . ($_SERVER['REMOTE_ADDR'] ?? '?'));
+  function maskContactForLog($value) {
+      $digits = preg_replace('/\D+/', '', (string)$value);
+
+      if (strlen($digits) >= 4) {
+          return str_repeat('*', max(0, strlen($digits) - 4)) . substr($digits, -4);
+      }
+
+      return trim((string)$value) === '' ? 'empty' : 'set';
+  }
+
+  function hashForLog($value) {
+      $value = trim((string)$value);
+
+      return $value === '' ? 'unknown' : substr(hash('sha256', $value), 0, 12);
+  }
+
+  $leadLogId = 'lead_' . gmdate('YmdHis') . '_' . bin2hex(random_bytes(3));
+  error_log('[SEND] event=' . $leadLogId . ' status=request method=' . $_SERVER['REQUEST_METHOD'] . ' ip_hash=' . hashForLog($_SERVER['REMOTE_ADDR'] ?? ''));
 
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
       http_response_code(405);
@@ -14,7 +32,21 @@
   $expectsJson = stripos($acceptHeader, 'application/json') !== false
       || strcasecmp($requestedWith, 'XMLHttpRequest') === 0;
 
-  error_log('[SEND] POST данные: NAME=' . ($_POST['NAME'] ?? 'ПУСТО') . ' PHONE=' . ($_POST['PHONE'] ?? 'ПУСТО'));
+  $honeypotValue = trim($_POST['company_website'] ?? '');
+  if ($honeypotValue !== '') {
+      error_log('[SEND] event=' . $leadLogId . ' status=bot_filtered filter=honeypot');
+      if (!$expectsJson) {
+          header('Location: /thank-you', true, 303);
+          exit;
+      }
+
+      header('Content-Type: application/json; charset=utf-8');
+      http_response_code(200);
+      echo json_encode(['success' => true, 'message' => 'Заявка успешно отправлена'], JSON_UNESCAPED_UNICODE);
+      exit;
+  }
+
+  error_log('[SEND] event=' . $leadLogId . ' status=payload name_set=' . (empty($_POST['NAME']) ? 'no' : 'yes') . ' contact_mask=' . maskContactForLog($_POST['PHONE'] ?? $_POST['CONTACT_VALUE'] ?? '') . ' source_hash=' . hashForLog($_POST['form_source'] ?? ''));
 
   $sPhone      = htmlspecialchars(trim($_POST['PHONE']       ?? ''), ENT_QUOTES, 'UTF-8');
   $sName       = htmlspecialchars(trim($_POST['NAME']        ?? ''), ENT_QUOTES, 'UTF-8');
@@ -36,22 +68,27 @@
   $sReferrer    = htmlspecialchars(trim($_POST['referrer']     ?? ''), ENT_QUOTES, 'UTF-8');
 
   if (empty($sPhone) && empty($sContactValue)) {
-      error_log('[SEND] Ошибка валидации: контакт пуст');
+      error_log('[SEND] event=' . $leadLogId . ' status=validation_failed reason=empty_contact');
       http_response_code(400);
       header('Content-Type: application/json; charset=utf-8');
       die(json_encode(['success' => false, 'error' => 'Заполните контакт для связи'], JSON_UNESCAPED_UNICODE));
   }
 
-  $telegramToken   = $_ENV['TELEGRAM_BOT_TOKEN']  ?? getenv('TELEGRAM_BOT_TOKEN')  ?: '8400675649:AAFNYG8Q8hvHtcy1dlGeteS4c5fgLOOhYRc';
-  $telegramChatId  = $_ENV['TELEGRAM_CHAT_ID']    ?? getenv('TELEGRAM_CHAT_ID')    ?: '711139656';
-  $telegramChatId2 = $_ENV['TELEGRAM_CHAT_ID_2']  ?? getenv('TELEGRAM_CHAT_ID_2')  ?: '473152112';
+  $telegramToken   = $_ENV['TELEGRAM_BOT_TOKEN']  ?? getenv('TELEGRAM_BOT_TOKEN')  ?: '';
+  $telegramChatId  = $_ENV['TELEGRAM_CHAT_ID']    ?? getenv('TELEGRAM_CHAT_ID')    ?: '';
+  $telegramChatId2 = $_ENV['TELEGRAM_CHAT_ID_2']  ?? getenv('TELEGRAM_CHAT_ID_2')  ?: '';
   $telegramChatId3 = $_ENV['TELEGRAM_CHAT_ID_3']  ?? getenv('TELEGRAM_CHAT_ID_3')  ?: '';
 
-  error_log('[SEND] Telegram token: ' . (empty($telegramToken) ? 'ПУСТО' : substr($telegramToken, 0, 15) . '...'));
-  error_log('[SEND] Chat IDs: ' . implode(', ', array_filter([$telegramChatId, $telegramChatId2, $telegramChatId3])));
+  if (empty($telegramToken) || empty($telegramChatId)) {
+      error_log('[SEND] event=' . $leadLogId . ' status=config_error service=telegram token_configured=' . (empty($telegramToken) ? 'no' : 'yes') . ' primary_recipient_configured=' . (empty($telegramChatId) ? 'no' : 'yes'));
+      header('Content-Type: application/json; charset=utf-8');
+      http_response_code(500);
+      echo json_encode(['success' => false, 'error' => 'Сервис отправки заявок временно недоступен. Позвоните нам или напишите в мессенджер.'], JSON_UNESCAPED_UNICODE);
+      exit;
+  }
 
-  $telegramConfigured = !empty($telegramToken) && !empty($telegramChatId);
-  $telegramDelivered = !$telegramConfigured;
+  $telegramConfigured = true;
+  $telegramDelivered = false;
 
   if ($telegramConfigured) {
       $moscow     = new DateTimeZone('Europe/Moscow');
@@ -105,8 +142,8 @@
       $tgMessage  = implode("\n", $tgLines);
 
       $chatIds = array_filter([$telegramChatId, $telegramChatId2, $telegramChatId3]);
-      foreach ($chatIds as $chatId) {
-          error_log('[SEND] Отправка в Telegram chat_id=' . $chatId);
+      foreach ($chatIds as $recipientIndex => $chatId) {
+          error_log('[SEND] event=' . $leadLogId . ' status=telegram_send_attempt recipient_index=' . ($recipientIndex + 1));
           $requestTimeout = $telegramDelivered ? 5 : 15;
           $connectTimeout = $telegramDelivered ? 4 : 8;
           $tgCurl = curl_init('https://api.telegram.org/bot' . $telegramToken . '/sendMessage');
@@ -126,28 +163,28 @@
           curl_close($tgCurl);
 
           if (!empty($tgError)) {
-              error_log('[SEND] CURL ОШИБКА для ' . $chatId . ': ' . $tgError);
+              error_log('[SEND] event=' . $leadLogId . ' status=telegram_curl_error recipient_index=' . ($recipientIndex + 1) . ' error_hash=' . hashForLog($tgError));
           } else {
               $tgData = json_decode($tgResponse, true);
               if ($tgData['ok'] ?? false) {
                   $telegramDelivered = true;
-                  error_log('[SEND] ✅ Telegram OK, message_id=' . $tgData['result']['message_id']);
+                  error_log('[SEND] event=' . $leadLogId . ' status=telegram_delivered recipient_index=' . ($recipientIndex + 1));
               } else {
-                  error_log('[SEND] ❌ Telegram ОШИБКА: ' . ($tgData['description'] ?? $tgResponse));
+                  error_log('[SEND] event=' . $leadLogId . ' status=telegram_api_error recipient_index=' . ($recipientIndex + 1) . ' error_hash=' . hashForLog($tgData['description'] ?? $tgResponse));
               }
           }
       }
   }
 
   if ($telegramConfigured && !$telegramDelivered) {
-      error_log('[SEND] Ответ клиенту: success=false, Telegram delivery failed');
+      error_log('[SEND] event=' . $leadLogId . ' status=failed reason=telegram_delivery_failed');
       header('Content-Type: application/json; charset=utf-8');
       http_response_code(502);
       echo json_encode(['success' => false, 'error' => 'Не удалось отправить заявку в Telegram. Попробуйте позже или позвоните нам.'], JSON_UNESCAPED_UNICODE);
       exit;
   }
 
-  error_log('[SEND] Ответ клиенту: success=true');
+  error_log('[SEND] event=' . $leadLogId . ' status=success');
   if (!$expectsJson) {
       header('Location: /thank-you', true, 303);
       exit;

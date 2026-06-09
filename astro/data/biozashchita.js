@@ -1,10 +1,11 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const biozashchitaPage = {
   seo: {
     title: "Огнебиозащита конструкций в Москве и МО | ROSA",
     description:
-      "Огнезащитная и биозащитная обработка деревянных и металлических конструкций в Москве и МО. Стропила, чердаки, склады, цеха, коммерческие объекты. Бесплатный выезд и смета.",
+      "Огнезащитная и биозащитная обработка деревянных и металлических конструкций в Москве и МО. Стропила, чердаки, склады, цеха. Бесплатный выезд и смета.",
     canonical: "https://sk-rosa.ru/biozashchita",
     ogTitle: "Огнебиозащита конструкций в Москве и МО | ROSA",
     ogDescription:
@@ -273,43 +274,15 @@ export const biozashchitaPage = {
   },
 };
 
-export const biozashchitaJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/biozashchita#service",
-  url: "https://sk-rosa.ru/biozashchita",
+export const biozashchitaJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/biozashchita",
   serviceType: "Огнебиозащита конструкций",
   name: "Огнезащитная и биозащитная обработка конструкций",
   description:
     "Огнебиозащитная обработка деревянных и металлических конструкций в Москве и Московской области. Стропила, чердаки, склады, производственные и коммерческие объекты.",
-  priceRange: "от 180 ₽/м²",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/biozashchita",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "180",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/biozashchita",
-  },
-};
+  price: "180",
+});

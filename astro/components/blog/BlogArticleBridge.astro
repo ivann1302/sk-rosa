@@ -107,6 +107,7 @@ function insertArticleCtas(html, serviceLink) {
   ogImageAlt={seo.ogImageAlt}
   ogSiteName={seo.ogSiteName}
   extraHeadHtml={seo.extraHeadHtml}
+  mainEntityId={`${seo.canonical}#article`}
   jsonLd={article.jsonLd}
 >
   <Fragment set:html={contentHtml} />

@@ -7,6 +7,7 @@ import {
   extractLegacySeo,
   normalizeLegacyPaths,
 } from "../../lib/legacy-html.js";
+import { businessId } from "../../lib/seo.js";
 
 interface Props {
   sourceHtml: string;
@@ -14,10 +15,48 @@ interface Props {
 
 const { sourceHtml } = Astro.props;
 const seo = extractLegacySeo(sourceHtml);
-const jsonLd = extractLegacyJsonLd(sourceHtml);
+const jsonLd = extractLegacyJsonLd(sourceHtml).map(normalizeLegacyJsonLd);
 const contentHtml = normalizeLegacyPaths(
   extractBetween(sourceHtml, "<!-- HEADER -->", "<!-- FOOTER -->"),
 );
+
+function normalizeLinkedEntity(value) {
+  if (!value || typeof value !== "object") {
+    return value;
+  }
+
+  const types = Array.isArray(value["@type"]) ? value["@type"] : [value["@type"]];
+
+  if (types.some(type => ["Organization", "LocalBusiness", "HomeAndConstructionBusiness"].includes(type))) {
+    return {
+      "@id": businessId,
+    };
+  }
+
+  return value;
+}
+
+function normalizeLegacyJsonLd(item) {
+  if (Array.isArray(item)) {
+    return item.map(normalizeLegacyJsonLd);
+  }
+
+  if (!item || typeof item !== "object") {
+    return item;
+  }
+
+  const normalized = { ...item };
+
+  if (normalized.provider) {
+    normalized.provider = normalizeLinkedEntity(normalized.provider);
+  }
+
+  if (normalized.publisher) {
+    normalized.publisher = normalizeLinkedEntity(normalized.publisher);
+  }
+
+  return normalized;
+}
 ---
 
 <BaseLayout

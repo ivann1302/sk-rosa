@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { biozashchitaPage } from "./biozashchita.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_BIOZASHCHITA_CITY_SLUGS ?? "")
   .split(",")
@@ -29,8 +30,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/biozashchita-${city.slug}`;
 
   return {
-    title: `Огнебиозащита конструкций в ${city.nameIn} — обработка дерева и металла | ROSA`,
-    description: `Огнезащитная и биозащитная обработка конструкций в ${city.nameIn} и Московской области. Стропила, чердаки, склады, цеха, металлоконструкции. Выезд, смета и работа по договору. ☎ 8 (985) 135-49-91`,
+    title: `Огнебиозащита в ${city.nameIn}: дерево и металл | ROSA`,
+    description: `Огнебиозащитная обработка в ${city.nameIn}: дерево, стропила, чердаки, металлоконструкции. Выезд, смета и работа по договору.`,
     canonical,
     ogTitle: `Огнебиозащита конструкций в ${city.nameIn} | ROSA`,
     ogDescription: `Огнебиозащитная обработка дерева и металлоконструкций в ${city.nameIn}. Работаем с частными, коммерческими и промышленными объектами.`,
@@ -39,20 +40,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Огнебиозащита конструкций",
     name: `Огнезащитная и биозащитная обработка конструкций в ${city.nameIn}`,
     description: `Огнебиозащитная обработка деревянных и металлических конструкций в ${city.nameIn} и Московской области. Стропила, чердаки, склады, производственные и коммерческие объекты. Бесплатный выезд и смета.`,
-    priceRange: "от 180 ₽/м²",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -61,27 +53,8 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "180",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-    },
-  };
+    price: "180",
+  });
 }
 
 function buildCityPage(city) {

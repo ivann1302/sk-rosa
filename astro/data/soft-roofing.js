@@ -1,4 +1,5 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const softRoofingPage = {
   seo: {
@@ -268,43 +269,15 @@ export const softRoofingPage = {
   },
 };
 
-export const softRoofingJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/soft-roofing#service",
-  url: "https://sk-rosa.ru/soft-roofing",
+export const softRoofingJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/soft-roofing",
   serviceType: "Мягкая кровля",
   name: "Монтаж и ремонт мягкой кровли",
   description:
     "Монтаж мягкой кровли в Москве и Московской области под ключ. Укладка гибкой черепицы, ПВХ-мембраны, наплавляемой кровли. Ремонт мягкой кровли, демонтаж старого покрытия. Бесплатный замер и смета, гарантия 5 лет.",
-  priceRange: "от 650 ₽/м²",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/soft-roofing",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "350",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/soft-roofing",
-  },
-};
+  price: "350",
+});

@@ -1,4 +1,5 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const turnkeyRepairPage = {
   seo: {
@@ -269,43 +270,16 @@ export const turnkeyRepairPage = {
   },
 };
 
-export const turnkeyRepairJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/turnkey-repair#service",
-  url: "https://sk-rosa.ru/turnkey-repair",
+export const turnkeyRepairJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/turnkey-repair",
   serviceType: "Ремонт под ключ",
   name: "Ремонт квартир и домов под ключ",
   description:
     "Ремонт квартир и домов под ключ в Москве и Московской области. Полный комплекс работ от демонтажа до чистовой отделки. Официальный договор, гарантия качества, фиксированные цены.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/turnkey-repair",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/turnkey-repair",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      minPrice: "10000",
-      maxPrice: "20000",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-  },
-};
+  minPrice: "10000",
+  maxPrice: "20000",
+});

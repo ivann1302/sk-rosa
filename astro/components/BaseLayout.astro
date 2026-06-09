@@ -2,6 +2,7 @@
 import "../styles/entry.scss";
 import Footer from "./layout/Footer.astro";
 import Header from "./layout/Header.astro";
+import { organizationJsonLd, webPageJsonLd, websiteJsonLd } from "../lib/seo.js";
 
 const {
   title,
@@ -19,6 +20,7 @@ const {
   ogSiteName,
   extraHeadHtml = "",
   jsonLd = [],
+  mainEntityId = "",
   enableMetrika = true,
   robots = "index, follow",
   bodyClass = "",
@@ -38,6 +40,52 @@ const {
 const metrikaOptionsScript = JSON.stringify(metrikaOptions)
   .replaceAll('"document.referrer"', "document.referrer")
   .replaceAll('"location.href"', "location.href");
+
+function jsonLdKey(item) {
+  if (!item || typeof item !== "object") {
+    return "";
+  }
+
+  if (item["@id"]) {
+    return `id:${item["@id"]}`;
+  }
+
+  if (item["@type"] && item.url) {
+    return `type-url:${JSON.stringify(item["@type"])}:${item.url}`;
+  }
+
+  return "";
+}
+
+function uniqueJsonLd(items) {
+  const seen = new Set();
+
+  return items.flat().filter(item => {
+    if (!item) {
+      return false;
+    }
+
+    const key = jsonLdKey(item);
+
+    if (!key) {
+      return true;
+    }
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+const baseJsonLd = [
+  organizationJsonLd,
+  websiteJsonLd,
+  webPageJsonLd({ canonical, title, description, mainEntityId }),
+];
+const pageJsonLd = uniqueJsonLd([...baseJsonLd, ...jsonLd]);
 ---
 
 <!doctype html>
@@ -138,7 +186,7 @@ ym(${metrikaId}, "init", ${metrikaOptionsScript});`}
     }
 
     {
-      jsonLd.map(item => (
+      pageJsonLd.map(item => (
         <script type="application/ld+json" set:html={JSON.stringify(item)} />
       ))
     }

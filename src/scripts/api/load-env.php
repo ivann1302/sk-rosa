@@ -1,4 +1,9 @@
 <?php
+if (!defined('SK_ROSA_INTERNAL_API')) {
+  http_response_code(403);
+  exit;
+}
+
 /**
  * Простая загрузка переменных окружения из .env файла
  * Работает без composer и дополнительных зависимостей
@@ -62,24 +67,20 @@ foreach ($possiblePaths as $envPath) {
     if (is_readable($envPath)) {
       if (loadEnv($envPath)) {
         $envLoaded = true;
-        error_log("load-env: Successfully loaded .env from: $envPath");
+        error_log('load-env: environment loaded');
         break;
       } else {
-        $lastError = "Failed to parse .env file: $envPath";
+        $lastError = "Failed to parse .env file";
       }
     } else {
-      $lastError = "File exists but not readable: $envPath (check permissions)";
+      $lastError = "File exists but not readable";
     }
   } else {
-    $lastError = "File not found: $envPath";
+    $lastError = "File not found";
   }
 }
 
 // Если не удалось загрузить, логируем предупреждение с проверенными путями
 if (!$envLoaded) {
-  error_log('load-env: Warning: .env file not found. Checked paths: ' . implode(', ', $possiblePaths));
-  error_log('load-env: Last error: ' . $lastError);
-  error_log('load-env: __DIR__ = ' . __DIR__);
-  error_log('load-env: DOCUMENT_ROOT = ' . ($_SERVER['DOCUMENT_ROOT'] ?? 'not set'));
+  error_log('load-env: environment not loaded; last_error=' . $lastError);
 }
-

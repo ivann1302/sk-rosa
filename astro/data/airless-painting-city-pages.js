@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { airlessPaintingPage } from "./airless-painting.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_AIRLESS_PAINTING_CITY_SLUGS ?? "")
   .split(",")
@@ -43,7 +44,7 @@ function citySeo(city) {
 
   return {
     title: `Безвоздушная покраска в ${city.nameIn} — от 200 руб/м² | ROSA`,
-    description: `Безвоздушная покраска стен и потолков в ${city.nameIn} и Московской области. Цена от 200 руб/м². ➤ 7+ лет опыта ➤ Гарантия 2 года ➤ Бесплатный замер. ☎ 8 (985) 135-49-91`,
+    description: `Безвоздушная покраска в ${city.nameIn}: стены, потолки, фасады. От 200 ₽/м², гарантия 2 года, бесплатный замер.`,
     canonical,
     ogTitle: `Безвоздушная покраска в ${city.nameIn} | ROSA — Покраска стен и потолков`,
     ogDescription: `Профессиональная безвоздушная покраска в ${city.nameIn}. Покраска стен, потолков и фасадов без разводов и подтеков. Гарантия результата.`,
@@ -52,19 +53,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Безвоздушная покраска",
     name: `Безвоздушная покраска в ${city.nameIn}`,
     description: `Профессиональная безвоздушная покраска стен и потолков в ${city.nameIn} и Московской области. Качественное нанесение краски, ровное покрытие, гарантия результата.`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -73,27 +66,8 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "200",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-    },
-  };
+    price: "200",
+  });
 }
 
 function buildCityPage(city) {

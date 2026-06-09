@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { floorScreedPage } from "./floor-screed.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_FLOOR_SCREED_CITY_SLUGS ?? "")
   .split(",")
@@ -42,8 +43,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/floor-screed-${city.slug}`;
 
   return {
-    title: `Стяжка пола в ${city.nameIn} — полусухая и цементная под ключ | ROSA`,
-    description: `Механизированная стяжка пола в ${city.nameIn} и Московской области. От 900 ₽/м². Полусухая и цементная стяжка под ключ. ➤ 7+ лет опыта ➤ Гарантия 3 года ➤ Бесплатный замер. ☎ 8 (985) 135-49-91`,
+    title: `Стяжка пола в ${city.nameIn} от 900 ₽/м² | ROSA`,
+    description: `Полусухая и цементная стяжка пола в ${city.nameIn}. От 900 ₽/м², лазерный контроль, гарантия 3 года, бесплатный замер.`,
     canonical,
     ogTitle: `Стяжка пола в ${city.nameIn} | ROSA — Профессиональная стяжка под ключ`,
     ogDescription: `Профессиональная стяжка пола в ${city.nameIn}. Полусухая и цементная стяжка, лазерный контроль ровности. Гарантия 3 года, договор с фиксированной ценой.`,
@@ -52,19 +53,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Стяжка пола",
     name: `Стяжка пола в ${city.nameIn}`,
     description: `Механизированная стяжка пола в ${city.nameIn} и Московской области. Полусухая и цементная стяжка, лазерный контроль ровности. Гарантия 3 года, договор с фиксированной ценой.`,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -73,27 +66,8 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "900",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-    },
-  };
+    price: "900",
+  });
 }
 
 function buildCityPage(city) {

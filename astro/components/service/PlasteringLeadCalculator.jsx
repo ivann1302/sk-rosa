@@ -6,6 +6,16 @@ import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/ut
 const ENDPOINT = "/scripts/api/send.php";
 const TOTAL_STEPS = 3;
 const COMPANY_PHONE = "+79851354991";
+const honeypotStyle = {
+  position: "absolute",
+  left: "-10000px",
+  top: "auto",
+  width: "1px",
+  height: "1px",
+  overflow: "hidden",
+  opacity: 0,
+  pointerEvents: "none",
+};
 
 const materialOptions = [
   {
@@ -374,6 +384,7 @@ export default function PlasteringLeadCalculator({ data, showEstimate = true }) 
       return;
     }
 
+    const nativeFormData = new FormData(event.currentTarget);
     const formData = new FormData();
     formData.append("PHONE", validatePhone(contact) ? contact : "");
     formData.append("CONTACT_METHOD", contactOption.label);
@@ -387,6 +398,7 @@ export default function PlasteringLeadCalculator({ data, showEstimate = true }) 
     }
     formData.append("COMMENTS", buildComments(contact));
     formData.append("form_source", formSource);
+    formData.append("company_website", nativeFormData.get("company_website") ?? "");
 
     Object.entries(getUtmData()).forEach(([key, value]) => {
       if (value) {
@@ -431,6 +443,12 @@ export default function PlasteringLeadCalculator({ data, showEstimate = true }) 
           action={ENDPOINT}
           onSubmit={handleSubmit}
         >
+          <div aria-hidden="true" style={honeypotStyle}>
+            <label>
+              Сайт компании
+              <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
           <input name="form_source" type="hidden" value={formSource} readOnly />
           <input name="COMMENTS" type="hidden" value={buildComments()} readOnly />
           <StepHeader currentStep={currentStep} />

@@ -34,6 +34,15 @@ const {
       Это совершенно бесплатно и ни к чему не обязывает. Наш специалист Вас проконсультирует.
     </p>
     <form class="call-banner__form" action="/scripts/api/send.php" method="POST">
+      <div
+        aria-hidden="true"
+        style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+      >
+        <label>
+          Сайт компании
+          <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
       <div class="call-banner__field">
         <input type="text" name="NAME" autocomplete="name" required placeholder="Ваше имя" />
       </div>

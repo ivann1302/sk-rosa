@@ -28,14 +28,14 @@
 
     # 3. УБИРАЕМ .html из URL (например: /page.html → /page)
     RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
-    RewriteRule ^ /%1 [R=301,L]
+    RewriteRule ^ https://sk-rosa.ru/%1 [R=301,L]
 
     # 4. СЛЕШ → без слеша (если файл существует)
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} ^(.+)/$
     RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
     RewriteCond %{DOCUMENT_ROOT}%1.html -f
-    RewriteRule ^(.+)/$ /$1 [R=301,L]
+    RewriteRule ^(.+)/$ https://sk-rosa.ru/$1 [R=301,L]
 
     # 5. Если файл/папка НЕ существует → ищем .html
     RewriteCond %{REQUEST_FILENAME} !-f

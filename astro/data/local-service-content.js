@@ -180,7 +180,7 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
       {
         title: `Какие объекты чаще берём в ${city.nameIn}`,
         paragraphs: [
-          `${profile.demand} Для ${city.nameIn} типичны ${sentenceList(objectMix)}, поэтому сценарий работ подбираем под конкретный объект, а не по общей таблице.`,
+          `${profile.demand} В ${city.nameIn} типичны ${sentenceList(objectMix)}, поэтому сценарий работ подбираем под конкретный объект, а не по общей таблице.`,
           complexText(city, complexes),
         ],
       },
@@ -206,7 +206,7 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
         title: "Выезд и соседние направления",
         paragraphs: [
           `${profile.logistics} Бригада приезжает с инструментом и согласованным списком материалов, чтобы не тратить день на организационные вопросы.`,
-          `Помимо ${city.nameIn}, можем планировать выезд на близкие направления: ${sentenceList(nearby)}. Это удобно, если объект находится не в самом центре города, а в посёлке, ЖК или частном секторе рядом.`,
+          `Помимо выездов в ${city.nameIn}, можем планировать близкие направления: ${sentenceList(nearby)}. Это удобно, если объект находится не в самом центре города, а в посёлке, ЖК или частном секторе рядом.`,
         ],
       },
     ],
@@ -217,7 +217,7 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
       },
       {
         question: `Сколько стоит ${service.questionName} в ${city.nameIn}?`,
-        answer: `Цена зависит не только от площади. Для ${city.nameIn} мы отдельно учитываем ${sentenceList(priceFactors.slice(0, 3))}. Точную стоимость фиксируем после замера и согласования состава работ.`,
+        answer: `Цена зависит не только от площади. На объекте в ${city.nameIn} мы отдельно учитываем ${sentenceList(priceFactors.slice(0, 3))}. Точную стоимость фиксируем после замера и согласования состава работ.`,
       },
       {
         question: `Можно ли начать работы в ${city.nameIn} без предварительной подготовки?`,

@@ -1,4 +1,5 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const plasteringPage = {
   seo: {
@@ -343,42 +344,15 @@ export const plasteringPage = {
   ],
 };
 
-export const plasteringJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/plastering#service",
-  url: "https://sk-rosa.ru/plastering",
+export const plasteringJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/plastering",
   serviceType: "Штукатурные работы",
   name: "Профессиональные штукатурные работы",
   description:
     "Профессиональные штукатурные работы в Москве и Московской области. Штукатурка стен и потолков, выравнивание поверхностей. Качественные материалы, гарантия качества.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/plastering",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "430",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/plastering",
-  },
-};
+  price: "430",
+});

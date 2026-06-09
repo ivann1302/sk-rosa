@@ -138,6 +138,15 @@ const usefulLinks = [
       <div class="about-turnkey-2__right">
         <h3 class="about-turnkey-2__calc-title">КАЛЬКУЛЯТОР РЕМОНТА</h3>
         <form class="about-turnkey-2__form" action="/scripts/api/send.php" method="POST">
+          <div
+            aria-hidden="true"
+            style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+          >
+            <label>
+              Сайт компании
+              <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
           <div class="about-turnkey-2__field">
             <label class="about-turnkey-2__label">Объект</label>
             <div class="custom-select about-turnkey-2__select-wrapper">
@@ -424,6 +433,15 @@ const usefulLinks = [
             action="/scripts/api/send.php"
             method="POST"
           >
+            <div
+              aria-hidden="true"
+              style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+            >
+              <label>
+                Сайт компании
+                <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
             <div class="contact-request-turnkey__field">
               <label for="turnkey-contact-name">Ваше имя *</label>
               <input

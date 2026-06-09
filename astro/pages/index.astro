@@ -13,7 +13,23 @@ import {
 } from "../lib/legacy-html.js";
 import sourceHtml from "../../src/index.html?raw";
 
-function escapeHtml(value) {
+type ArticleCard = {
+  href: string;
+  title: string;
+  image: string;
+  imageAlt: string;
+  width?: number | string;
+  height?: number | string;
+};
+
+type ReviewCard = {
+  name: string;
+  text: string;
+  image?: string;
+  screenshot?: string;
+};
+
+function escapeHtml(value: unknown): string {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -22,7 +38,7 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function articleCardHtml(article) {
+function articleCardHtml(article: ArticleCard): string {
   return `                <a href="${escapeHtml(article.href)}" class="articles-carousel__card">
                   <h3 class="articles-carousel__card-title">${escapeHtml(article.title)}</h3>
                   <div class="articles-carousel__card-image">
@@ -38,7 +54,7 @@ function articleCardHtml(article) {
                 </a>`;
 }
 
-function reviewCardHtml(review) {
+function reviewCardHtml(review: ReviewCard): string {
   if (review.screenshot) {
     return `                  <article class="reviews-card reviews-card--image">
                     <img
@@ -67,7 +83,12 @@ function reviewCardHtml(review) {
                   </article>`;
 }
 
-function replaceCarouselCards(html, trackMarker, cardsHtml, errorMessage) {
+function replaceCarouselCards(
+  html: string,
+  trackMarker: string,
+  cardsHtml: string,
+  errorMessage: string,
+): string {
   const trackIndex = html.indexOf(trackMarker);
 
   if (trackIndex === -1) {
@@ -79,7 +100,7 @@ function replaceCarouselCards(html, trackMarker, cardsHtml, errorMessage) {
   divTagPattern.lastIndex = contentStart;
 
   let depth = 1;
-  let match;
+  let match: RegExpExecArray | null;
 
   while ((match = divTagPattern.exec(html))) {
     depth += match[0].startsWith("</") ? -1 : 1;
@@ -92,7 +113,7 @@ function replaceCarouselCards(html, trackMarker, cardsHtml, errorMessage) {
   throw new Error(`${errorMessage}: cannot find closing tag`);
 }
 
-function ensureReviewsMoreLink(html) {
+function ensureReviewsMoreLink(html: string): string {
   if (html.includes('class="reviews__more"')) {
     return html;
   }
@@ -118,7 +139,7 @@ function ensureReviewsMoreLink(html) {
   return `${html.slice(0, reviewsClosingIndex)}${moreLinkHtml}${html.slice(reviewsClosingIndex)}`;
 }
 
-function replacePortfolioGridWithMarker(html) {
+function replacePortfolioGridWithMarker(html: string): string {
   if (html.includes("<!-- HOMEPAGE_CASES -->")) {
     return html;
   }
@@ -140,7 +161,7 @@ function replacePortfolioGridWithMarker(html) {
   divTagPattern.lastIndex = gridStart;
 
   let depth = 0;
-  let match;
+  let match: RegExpExecArray | null;
   let gridEnd = -1;
 
   while ((match = divTagPattern.exec(html))) {
@@ -164,7 +185,7 @@ function replacePortfolioGridWithMarker(html) {
   return `${html.slice(0, replaceStart)}\n<!-- HOMEPAGE_CASES -->\n${html.slice(replaceEnd)}`;
 }
 
-function splitAtMarker(html, marker) {
+function splitAtMarker(html: string, marker: string): [string, string] {
   const markerIndex = html.indexOf(marker);
 
   if (markerIndex === -1) {

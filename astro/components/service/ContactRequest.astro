@@ -31,6 +31,15 @@ const { title, subtitle, features, formSource, comments } = Astro.props;
       </div>
       <div class="contact-request__form">
         <form class="contact-request__form-fields" action="/scripts/api/send.php" method="POST">
+          <div
+            aria-hidden="true"
+            style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;"
+          >
+            <label>
+              Сайт компании
+              <input type="text" name="company_website" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
           <div class="contact-request__field">
             <label for="contact-name">Ваше имя *</label>
             <input

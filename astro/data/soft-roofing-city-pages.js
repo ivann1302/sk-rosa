@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
 import { softRoofingPage } from "./soft-roofing.js";
+import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_SOFT_ROOFING_CITY_SLUGS ?? "")
   .split(",")
@@ -29,8 +30,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/soft-roofing-${city.slug}`;
 
   return {
-    title: `Монтаж мягкой кровли в ${city.nameIn} под ключ — цена за м² | ROSA`,
-    description: `Монтаж и ремонт мягкой кровли в ${city.nameIn} и Московской области под ключ. Гибкая черепица, ПВХ-мембрана, наплавляемая кровля. Цена от 350 ₽/м², бесплатный замер и смета. ☎ 8 (985) 135-49-91`,
+    title: `Мягкая кровля в ${city.nameIn} от 350 ₽/м² | ROSA`,
+    description: `Монтаж и ремонт мягкой кровли в ${city.nameIn}: гибкая черепица, ПВХ-мембрана, наплавляемая кровля. От 350 ₽/м², замер бесплатно.`,
     canonical,
     ogTitle: `Монтаж мягкой кровли в ${city.nameIn} под ключ | ROSA`,
     ogDescription: `Монтаж и ремонт мягкой кровли в ${city.nameIn}. Гибкая черепица, ПВХ-мембрана, наплавляемая кровля. Бесплатный замер и гарантия 5 лет.`,
@@ -39,20 +40,11 @@ function citySeo(city) {
 }
 
 function serviceJsonLd(city, seo) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${seo.canonical}#service`,
-    url: seo.canonical,
+  return buildServiceJsonLd({
+    canonical: seo.canonical,
     serviceType: "Мягкая кровля",
     name: `Монтаж и ремонт мягкой кровли в ${city.nameIn}`,
     description: `Монтаж мягкой кровли в ${city.nameIn} и Московской области под ключ. Укладка гибкой черепицы, ПВХ-мембраны, наплавляемой кровли. Ремонт мягкой кровли, демонтаж старого покрытия. Бесплатный замер и смета, гарантия 5 лет.`,
-    priceRange: "от 350 ₽/м²",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "ROSA - Ремонт под ключ",
-      "@id": "https://sk-rosa.ru/#business",
-    },
     areaServed: {
       "@type": "City",
       name: city.name,
@@ -61,27 +53,8 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    availableChannel: {
-      "@type": "ServiceChannel",
-      serviceUrl: seo.canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
-    },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "RUB",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "350",
-        priceCurrency: "RUB",
-        unitCode: "MTK",
-        unitText: "м²",
-      },
-      availability: "https://schema.org/InStock",
-      url: seo.canonical,
-    },
-  };
+    price: "350",
+  });
 }
 
 function buildCityPage(city) {

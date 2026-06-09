@@ -2,6 +2,13 @@
 
 > Строительная компания ООО «Роса» выполняет профессиональные отделочные и ремонтные работы в Москве и Московской области. Официальный договор, фиксированные цены, гарантия качества.
 
+## Метаданные сайта
+
+- Canonical domain: https://sk-rosa.ru
+- Sitemap: https://sk-rosa.ru/sitemap.xml
+- Robots: https://sk-rosa.ru/robots.txt
+- Preferred URL format: canonical URLs without `.html` and without trailing slash, except the homepage.
+
 ## Контакты
 
 - Телефон: +7 (985) 135-49-91

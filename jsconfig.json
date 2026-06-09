@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@scripts/*": ["src/scripts/*"],
-      "@core/*": ["src/scripts/core/*"],
-      "@modules/*": ["src/scripts/modules/*"],
-      "@features/*": ["src/scripts/features/*"],
-      "@utils/*": ["src/scripts/utils/*"],
-      "@api/*": ["src/scripts/api/*"],
-      "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"]
+      "@/*": ["./src/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@core/*": ["./src/scripts/core/*"],
+      "@modules/*": ["./src/scripts/modules/*"],
+      "@features/*": ["./src/scripts/features/*"],
+      "@utils/*": ["./src/scripts/utils/*"],
+      "@api/*": ["./src/scripts/api/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@assets/*": ["./src/assets/*"]
     },
     "module": "ESNext",
     "target": "ES2020",

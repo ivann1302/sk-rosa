@@ -70,7 +70,7 @@ app.post("/lead", async (req, res) => {
 
   try {
     await bot.sendMessage(CHAT_ID, message, { parse_mode: "HTML" });
-    console.log(`Лид отправлен в Telegram (chat: ${CHAT_ID})`);
+    console.log("Лид отправлен в Telegram");
     res.json({ ok: true });
   } catch (err) {
     console.error("Ошибка отправки в Telegram:", err.message);

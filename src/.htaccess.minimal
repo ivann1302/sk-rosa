@@ -12,7 +12,7 @@ ErrorDocument 404 /404.html
 
     # Убираем .html из URL
     RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
-    RewriteRule ^ /%1 [R=301,L]
+    RewriteRule ^ https://sk-rosa.ru/%1 [R=301,L]
 
     # Если файл существует без .html, показываем его
     RewriteCond %{REQUEST_FILENAME} !-f

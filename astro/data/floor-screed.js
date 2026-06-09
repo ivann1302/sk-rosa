@@ -1,4 +1,5 @@
 import { serviceReviews } from "./service-reviews.js";
+import { serviceJsonLd } from "../lib/seo.js";
 
 export const floorScreedPage = {
   seo: {
@@ -238,42 +239,15 @@ export const floorScreedPage = {
   },
 };
 
-export const floorScreedJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://sk-rosa.ru/floor-screed#service",
-  url: "https://sk-rosa.ru/floor-screed",
+export const floorScreedJsonLd = serviceJsonLd({
+  canonical: "https://sk-rosa.ru/floor-screed",
   serviceType: "Стяжка пола",
   name: "Профессиональная стяжка пола",
   description:
     "Профессиональная стяжка пола в Москве и Московской области. Качественная заливка стяжки, выравнивание пола. Гарантия качества, официальный договор.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "ROSA - Ремонт под ключ",
-    "@id": "https://sk-rosa.ru/#business",
-  },
   areaServed: [
     { "@type": "City", name: "Москва" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: "https://sk-rosa.ru/floor-screed",
-    servicePhone: "+79851354991",
-    serviceSmsNumber: "+79851354991",
-    availableLanguage: "Russian",
-  },
-  offers: {
-    "@type": "Offer",
-    priceCurrency: "RUB",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "900",
-      priceCurrency: "RUB",
-      unitCode: "MTK",
-      unitText: "м²",
-    },
-    availability: "https://schema.org/InStock",
-    url: "https://sk-rosa.ru/floor-screed",
-  },
-};
+  price: "900",
+});

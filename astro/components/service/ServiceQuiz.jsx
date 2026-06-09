@@ -3,6 +3,16 @@ import { trackFormSubmitAndRedirect } from "../../../src/scripts/features/contac
 import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/utm-tracker.js";
 
 const ENDPOINT = "/scripts/api/send.php";
+const honeypotStyle = {
+  position: "absolute",
+  left: "-10000px",
+  top: "auto",
+  width: "1px",
+  height: "1px",
+  overflow: "hidden",
+  opacity: 0,
+  pointerEvents: "none",
+};
 
 const contactMethods = [
   { value: "whatsapp", label: "WhatsApp", input: "phone" },
@@ -189,6 +199,7 @@ export default function ServiceQuiz({
     setContactError("");
     setIsSubmitting(true);
 
+    const nativeFormData = new FormData(event.currentTarget);
     const formData = new FormData();
     formData.append("PHONE", phoneValue);
     formData.append("CONTACT_METHOD", selectedContact.label);
@@ -199,6 +210,7 @@ export default function ServiceQuiz({
     });
     formData.append("COMMENTS", buildComments());
     formData.append("form_source", formSource);
+    formData.append("company_website", nativeFormData.get("company_website") ?? "");
 
     Object.entries(getUtmData()).forEach(([key, value]) => {
       if (value) {
@@ -238,6 +250,12 @@ export default function ServiceQuiz({
           action={ENDPOINT}
           onSubmit={handleSubmit}
         >
+          <div aria-hidden="true" style={honeypotStyle}>
+            <label>
+              Сайт компании
+              <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
           <input name="form_source" type="hidden" value={formSource} readOnly />
           <input name="COMMENTS" type="hidden" value={buildComments()} readOnly />
           <input name="CONTACT_VALUE" type="hidden" value={contactValue} readOnly />

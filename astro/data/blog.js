@@ -19,6 +19,7 @@ import trebovaniyaKVypolneniyuShtukaturnyhRabotHtml from "../../src/pages/trebov
 import vidyStyazhkiPolaHtml from "../../src/pages/vidy-styazhki-pola.html?raw";
 import vyborKraskiAirlessPaintingHtml from "../../src/pages/vybor-kraski-airless-painting.html?raw";
 import vyborShtukaturkiHtml from "../../src/pages/vybor-shtukaturki.html?raw";
+import { businessId } from "../lib/seo.js";
 
 export const blogPage = {
   seo: {
@@ -464,7 +465,46 @@ function jsonLd(html) {
     ...html.matchAll(
       /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
     ),
-  ].map(match => JSON.parse(match[1].trim()));
+  ].map(match => normalizeArticleJsonLd(JSON.parse(match[1].trim())));
+}
+
+function normalizeAuthor(author) {
+  if (Array.isArray(author)) {
+    return author.map(normalizeAuthor);
+  }
+
+  if (!author || typeof author !== "object") {
+    return author;
+  }
+
+  return {
+    ...author,
+    worksFor: {
+      "@id": businessId,
+    },
+  };
+}
+
+function normalizeArticleJsonLd(item) {
+  if (Array.isArray(item)) {
+    return item.map(normalizeArticleJsonLd);
+  }
+
+  if (!item || typeof item !== "object") {
+    return item;
+  }
+
+  if (item["@type"] !== "BlogPosting") {
+    return item;
+  }
+
+  return {
+    ...item,
+    author: normalizeAuthor(item.author),
+    publisher: {
+      "@id": businessId,
+    },
+  };
 }
 
 function articleHeadHtml(html) {
@@ -483,6 +523,44 @@ function sourceFor(slug) {
   return sourceHtml;
 }
 
+const articleSeoTitleOverrides = {
+  "defekty-ognezashchitnogo-pokrytiya-metalla":
+    "Дефекты огнезащитного покрытия металла | ROSA",
+  "srok-sluzhby-ognezashchitnogo-pokrytiya":
+    "Срок службы огнезащитного покрытия | ROSA",
+  "priemka-shtukaturnyh-rabot": "Приемка штукатурных работ: чек-лист | ROSA",
+  "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot":
+    "Требования к штукатурным работам | ROSA",
+  "podgotovka-sten-pod-dekorativnuyu-shtukaturku":
+    "Подготовка стен под декоративную штукатурку | ROSA",
+  "stoimost-remonta-kvartiry": "Стоимость ремонта квартиры в Москве 2026 | ROSA",
+  "kak-rasscitat-raskhod-shtukaturki":
+    "Расход штукатурки: расчет для стен и потолка | ROSA",
+  "pokraska-sten-dvumya-cvetami": "Покраска стены двумя цветами | ROSA",
+  "styazhka-pod-teply-pol": "Стяжка под теплый пол: как сделать правильно | ROSA",
+  "shpaklevka-sten-posle-shtukaturki": "Шпаклевка стен после штукатурки | ROSA",
+  "pokraska-sten-bez-razvodov": "Покраска стен без разводов | ROSA",
+  "armirovanie-shtukaturki-setkoj": "Армирование штукатурки сеткой | ROSA",
+  "gidroizolyaciya-pola-pod-styazhku": "Гидроизоляция пола под стяжку | ROSA",
+  "vidy-styazhki-pola": "Виды стяжки пола: что выбрать | ROSA",
+  "fasad-shtukaturka": "Фасадная штукатурка: материалы и цены | ROSA",
+  "preimushestva-bezvozdushnoj-pokraski":
+    "Преимущества безвоздушной покраски | ROSA",
+  "shtukaturka-sten-v-novostrojke": "Штукатурка стен в новостройке | ROSA",
+  "vybor-kraski-airless-painting": "Краска для безвоздушной покраски | ROSA",
+  "shtukaturka-guide": "Как правильно штукатурить стены | ROSA",
+  "mashinnaya-ili-ruchnaya-shtukaturka":
+    "Машинная или ручная штукатурка | ROSA",
+  "vybor-shtukaturki": "Какую штукатурку выбрать для стен | ROSA",
+};
+
+const articleSeoDescriptionOverrides = {
+  "stoimost-remonta-kvartiry":
+    "Цены на ремонт квартиры в Москве в 2026 году: от 5 000 до 35 000 ₽/м², таблицы работ и расчет бюджета. Бесплатная смета от ROSA.",
+  "vybor-kraski-airless-painting":
+    "Как выбрать краску для безвоздушной покраски: типы составов, вязкость, подбор сопла, подготовка основания и частые ошибки.",
+};
+
 export const blogArticlePages = blogArticles.map(article => {
   const sourceHtml = sourceFor(article.slug);
 
@@ -490,8 +568,14 @@ export const blogArticlePages = blogArticles.map(article => {
     ...article,
     sourceHtml,
     seo: {
-      title: tagText(sourceHtml, /<title[^>]*>([\s\S]*?)<\/title>/i),
-      description: metaValue(sourceHtml, "description"),
+      title:
+        articleSeoTitleOverrides[article.slug] ??
+        tagText(sourceHtml, /<title[^>]*>([\s\S]*?)<\/title>/i).replace(
+          /\s*\|\s*ROSA\s+-\s+Блог о ремонте\s*$/i,
+          " | ROSA",
+        ),
+      description:
+        articleSeoDescriptionOverrides[article.slug] ?? metaValue(sourceHtml, "description"),
       canonical: canonicalValue(sourceHtml),
       ogType: metaValue(sourceHtml, "og:type") || "article",
       ogTitle: metaValue(sourceHtml, "og:title"),
@@ -511,16 +595,12 @@ export const blogArticlePages = blogArticles.map(article => {
 export const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
+  "@id": "https://sk-rosa.ru/blog#blog",
   name: "Блог ROSA",
   description:
     "Полезные статьи о ремонте квартир, выборе материалов, технологиях отделки. Советы от профессионалов.",
   url: "https://sk-rosa.ru/blog",
   publisher: {
-    "@type": "Organization",
-    name: "ROSA",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://sk-rosa.ru/assets/images/common/rosa-logo.png",
-    },
+    "@id": businessId,
   },
 };
