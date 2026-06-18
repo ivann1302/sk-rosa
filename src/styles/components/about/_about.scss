@@ -17,11 +17,16 @@
     padding: 0;
     text-align: center;
     position: relative;
+    height: 100vh;
+
+    @media (width <= 768px) {
+      height: auto;
+    }
   }
 
   &__image {
     width: 100vw;
-    height: 700px;
+    height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
