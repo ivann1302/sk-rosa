@@ -411,4 +411,22 @@
       line-height: 1.5;
     }
   }
+
+  &__credit {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 16px 0 0;
+    text-align: center;
+
+    a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #88a593;
+      }
+    }
+  }
 }
