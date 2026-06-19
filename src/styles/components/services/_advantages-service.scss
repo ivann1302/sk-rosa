@@ -153,6 +153,35 @@
       }
     }
   }
+
+  &--compact {
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    .advantages-service__container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .advantages-service__icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 14px;
+    }
+
+    .advantages-service__name {
+      color: #222;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      margin-bottom: 0.55rem;
+    }
+
+    .advantages-service__desc {
+      max-width: 240px;
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+  }
 }
 
 .advantages-service__more-btn {

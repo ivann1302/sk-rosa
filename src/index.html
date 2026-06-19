@@ -71,6 +71,7 @@
         --color-green: #88a593;
         --font-family-base: "Montserrat", sans-serif;
         --font-family-accent: "Kumbh Sans", sans-serif;
+        --font-family-hero: "TT Chocolates", "Montserrat", sans-serif;
         --transition-duration: 0.3s;
         --container-padding-x: 32px;
       }
@@ -170,18 +171,24 @@
         max-width: 90vw;
       }
       .about__title {
-        font-size: 3rem;
-        font-weight: 700;
-        color: #222;
+        font-family: var(--font-family-hero);
+        font-size: clamp(2.55rem, 4.8vw, 4.5rem);
+        font-weight: 600;
+        line-height: 1.08;
+        letter-spacing: 0;
+        color: #202421;
         text-align: center;
-        margin-bottom: 1rem;
+        max-width: 900px;
+        margin: 0 auto 1.15rem;
       }
       .about__subtitle {
-        font-size: 1.1rem;
-        color: #444;
+        font-family: var(--font-family-hero);
+        font-size: clamp(1rem, 1.2vw, 1.15rem);
+        color: rgb(32 36 33 / 72%);
         font-weight: 400;
-        line-height: 1.6;
-        max-width: 800px;
+        line-height: 1.65;
+        letter-spacing: 0;
+        max-width: 720px;
         margin: 0 auto;
       }
       .about__bottom {
@@ -233,10 +240,12 @@
           margin: 16px auto 40px;
         }
         .about__title {
-          font-size: 2rem;
+          font-size: clamp(2rem, 9vw, 2.75rem);
+          line-height: 1.12;
         }
         .about__subtitle {
-          font-size: 0.85rem;
+          font-size: 0.95rem;
+          line-height: 1.55;
         }
       }
     </style>
@@ -526,7 +535,7 @@
           </picture>
           <div class="about__content">
             <h1 class="about__title">
-              Ремонт квартир, домов и коммерческих помещений под ключ в Москве
+              От черновых работ до готового пространства
             </h1>
             <h2 class="about__subtitle">
               Штукатурка, стяжка пола и безвоздушная покраска — профессиональный ремонт<br />

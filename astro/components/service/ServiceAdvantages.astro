@@ -1,8 +1,12 @@
 ---
-const { title = "Преимущества услуги", items, cta } = Astro.props;
+const { title = "Преимущества услуги", items, cta, variant = "numbers" } = Astro.props;
+const className =
+  variant === "compact"
+    ? "advantages-service advantages-service--compact"
+    : "advantages-service advantages-service--numbers";
 ---
 
-<section class="advantages-service advantages-service--numbers">
+<section class={className}>
   <h2 class="visually-hidden">{title}</h2>
   <div class="advantages-service__container">
     <div class="advantages-service__list">

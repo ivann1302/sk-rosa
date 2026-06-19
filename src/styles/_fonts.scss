@@ -7,6 +7,28 @@
 }
 
 @font-face {
+  font-family: "TT Chocolates";
+  src:
+    local("TT Chocolates Regular"),
+    local("TT Chocolates-Regular"),
+    local("TT Chocolates");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Chocolates";
+  src:
+    local("TT Chocolates DemiBold"),
+    local("TT Chocolates-DemiBold"),
+    local("TT Chocolates");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Kumbh Sans";
   src: url("../assets/fonts/KumbhSans-Medium.woff2") format("woff2");
   font-weight: 500;

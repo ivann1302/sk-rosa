@@ -151,6 +151,23 @@
     }
   }
 
+  &--centered {
+    @include tablet-above {
+      .work-stages-service__header,
+      .work-stages-service__stage {
+        text-align: center;
+      }
+
+      .work-stages-service__subtitle {
+        margin: 0 auto;
+      }
+
+      .work-stages-service__cta {
+        grid-column: 2;
+      }
+    }
+  }
+
   &__cta-title {
     font-size: 1.1rem;
     font-weight: 600;

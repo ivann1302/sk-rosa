@@ -32,6 +32,33 @@ export const serviceHubLinks = {
     label: "Огнебиозащита",
     description: "Огнезащита дерева, металлоконструкций, стропил, чердаков и складов.",
   },
+  "fire-protection": {
+    href: "/fire-protection",
+    label: "Огнезащита конструкций",
+    description:
+      "Комплексная огнезащита металлоконструкций, воздуховодов, дымоудаления и деревянных элементов.",
+  },
+  "kompleksnaya-ognezashchita": {
+    href: "/kompleksnaya-ognezashchita",
+    label: "Комплексная огнезащита",
+    description:
+      "Огнезащита металлоконструкций, воздуховодов, дымоудаления и деревянных элементов в одном проекте.",
+  },
+  "ognezashchita-derevyannyh-konstruktsiy": {
+    href: "/ognezashchita-derevyannyh-konstruktsiy",
+    label: "Огнезащита деревянных конструкций",
+    description: "Обработка стропил, чердаков, перекрытий, каркасных и несущих элементов.",
+  },
+  "ognezashchita-vozduhovodov": {
+    href: "/ognezashchita-vozduhovodov",
+    label: "Огнезащита воздуховодов",
+    description: "Защита воздуховодов вентиляции, дымоудаления, коробов и транзитных участков.",
+  },
+  "ognezashchita-metallokonstruktsiy": {
+    href: "/ognezashchita-metallokonstruktsiy",
+    label: "Огнезащита металлоконструкций",
+    description: "Защита колонн, балок, ферм, ригелей, лестниц и несущего металлического каркаса.",
+  },
 };
 
 const cityServiceSlugs = [
@@ -49,7 +76,36 @@ const relatedServicesBySlug = {
   "airless-painting": ["plastering", "turnkey-repair", "floor-screed"],
   "floor-screed": ["turnkey-repair", "plastering", "airless-painting"],
   "soft-roofing": ["biozashchita", "turnkey-repair", "plastering"],
-  biozashchita: ["soft-roofing", "turnkey-repair", "airless-painting"],
+  biozashchita: [
+    "fire-protection",
+    "kompleksnaya-ognezashchita",
+    "ognezashchita-derevyannyh-konstruktsiy",
+  ],
+  "ognezashchita-vozduhovodov": [
+    "fire-protection",
+    "kompleksnaya-ognezashchita",
+    "ognezashchita-metallokonstruktsiy",
+  ],
+  "ognezashchita-metallokonstruktsiy": [
+    "fire-protection",
+    "kompleksnaya-ognezashchita",
+    "ognezashchita-vozduhovodov",
+  ],
+  "fire-protection": [
+    "kompleksnaya-ognezashchita",
+    "ognezashchita-metallokonstruktsiy",
+    "ognezashchita-vozduhovodov",
+  ],
+  "ognezashchita-derevyannyh-konstruktsiy": [
+    "fire-protection",
+    "kompleksnaya-ognezashchita",
+    "biozashchita",
+  ],
+  "kompleksnaya-ognezashchita": [
+    "fire-protection",
+    "ognezashchita-metallokonstruktsiy",
+    "ognezashchita-vozduhovodov",
+  ],
 };
 
 const articleLinksByCluster = {
@@ -87,8 +143,27 @@ const articleLinksByCluster = {
     { href: "/srok-sluzhby-ognezashchitnogo-pokrytiya", label: "Срок службы огнезащитного покрытия" },
     { href: "/soft-roofing", label: "Мягкая кровля и защита конструкций" },
   ],
+  "fire-protection": [
+    { href: "/defekty-ognezashchitnogo-pokrytiya-metalla", label: "Дефекты огнезащитного покрытия" },
+    { href: "/srok-sluzhby-ognezashchitnogo-pokrytiya", label: "Срок службы огнезащитного покрытия" },
+    { href: "/ognezashchita-metallokonstruktsiy", label: "Огнезащита металлоконструкций" },
+  ],
+  "kompleksnaya-ognezashchita": [
+    { href: "/srok-sluzhby-ognezashchitnogo-pokrytiya", label: "Срок службы огнезащитного покрытия" },
+    { href: "/defekty-ognezashchitnogo-pokrytiya-metalla", label: "Дефекты огнезащитного покрытия" },
+    { href: "/fire-protection", label: "Огнезащита конструкций" },
+  ],
+  "ognezashchita-derevyannyh-konstruktsiy": [
+    { href: "/srok-sluzhby-ognezashchitnogo-pokrytiya", label: "Срок службы огнезащитного покрытия" },
+    { href: "/biozashchita", label: "Огнебиозащита конструкций" },
+    { href: "/soft-roofing", label: "Мягкая кровля и защита дерева" },
+  ],
+  "ognezashchita-metallokonstruktsiy": [
+    { href: "/defekty-ognezashchitnogo-pokrytiya-metalla", label: "Дефекты огнезащитного покрытия" },
+    { href: "/srok-sluzhby-ognezashchitnogo-pokrytiya", label: "Срок службы огнезащитного покрытия" },
+    { href: "/ognezashchita-vozduhovodov", label: "Огнезащита воздуховодов" },
+  ],
 };
-
 const articleClusterBySlug = {
   "stoimost-remonta-kvartiry": "turnkey-repair",
   "shtukaturka-sten-v-novostrojke": "plastering",
@@ -231,4 +306,8 @@ export const blogServiceLinks = [
   serviceHubLinks["floor-screed"],
   serviceHubLinks["turnkey-repair"],
   serviceHubLinks.biozashchita,
+  serviceHubLinks["fire-protection"],
+  serviceHubLinks["kompleksnaya-ognezashchita"],
+  serviceHubLinks["ognezashchita-metallokonstruktsiy"],
+  serviceHubLinks["ognezashchita-vozduhovodov"],
 ];

@@ -1,6 +1,7 @@
 ---
-const { title, subtitle, badges, ctaLabel, ctaHref, image, video } = Astro.props;
+const { title, subtitle, badges = [], ctaLabel, ctaHref, image, video } = Astro.props;
 const hasImage = image && !image.placeholder;
+const hasBadges = badges.length > 0;
 ---
 
 <section class="about-service">
@@ -8,9 +9,9 @@ const hasImage = image && !image.placeholder;
     <div class="about-service__info">
       <h1 class="about-service__title">{title}</h1>
       <div class="about-service__subtitle">{subtitle}</div>
-      <ul class="about-service__badges">
+      {hasBadges && <ul class="about-service__badges">
         {badges.map(badge => <li class="about-service__badge">{badge}</li>)}
-      </ul>
+      </ul>}
       <a class="about-service__btn" href={ctaHref}>{ctaLabel}</a>
     </div>
     <div class="about-service__image-wrap">

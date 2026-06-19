@@ -2,7 +2,12 @@ import existingSitemapXml from "../../src/sitemap.xml?raw";
 import { airlessPaintingPage } from "../data/airless-painting.js";
 import { biozashchitaPage } from "../data/biozashchita.js";
 import { blogArticlePages, blogPage } from "../data/blog.js";
+import { fireProtectionPage } from "../data/fire-protection.js";
 import { floorScreedPage } from "../data/floor-screed.js";
+import { kompleksnayaOgnezashchitaPage } from "../data/kompleksnaya-ognezashchita.js";
+import { ognezashchitaDerevyannyhKonstruktsiyPage } from "../data/ognezashchita-derevyannyh-konstruktsiy.js";
+import { ognezashchitaMetallokonstruktsiyPage } from "../data/ognezashchita-metallokonstruktsiy.js";
+import { ognezashchitaVozduhovodovPage } from "../data/ognezashchita-vozduhovodov.js";
 import { plasteringPage } from "../data/plastering.js";
 import { serviceCityPages } from "../data/service-city-pages.js";
 import { softRoofingPage } from "../data/soft-roofing.js";
@@ -16,6 +21,11 @@ const staticPages = [
   floorScreedPage.seo,
   softRoofingPage.seo,
   biozashchitaPage.seo,
+  fireProtectionPage.seo,
+  kompleksnayaOgnezashchitaPage.seo,
+  ognezashchitaDerevyannyhKonstruktsiyPage.seo,
+  ognezashchitaVozduhovodovPage.seo,
+  ognezashchitaMetallokonstruktsiyPage.seo,
   { canonical: "https://sk-rosa.ru/portfolio" },
   { canonical: "https://sk-rosa.ru/calculator" },
   blogPage.seo,

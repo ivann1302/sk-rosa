@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
+import ContactRequest from "../components/service/ContactRequest.astro";
+import FaqSection from "../components/service/FaqSection.astro";
+import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
+import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
+import ServiceSteps from "../components/service/ServiceSteps.astro";
+import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
+import {
+  kompleksnayaOgnezashchitaJsonLd,
+  kompleksnayaOgnezashchitaPage,
+} from "../data/kompleksnaya-ognezashchita.js";
+import { getServiceQuiz } from "../data/service-quizzes.js";
+import { breadcrumbJsonLd } from "../lib/seo.js";
+
+const { seo } = kompleksnayaOgnezashchitaPage;
+const [mainTextSection] = kompleksnayaOgnezashchitaPage.textSections;
+const serviceQuiz = getServiceQuiz(kompleksnayaOgnezashchitaPage.service.slug);
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: kompleksnayaOgnezashchitaPage.faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  bodyClass="astro-service-page"
+  metrikaId={109562461}
+  metrikaOptions={{
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
+    accurateTrackBounce: true,
+    trackLinks: true,
+  }}
+  mainEntityId={`${seo.canonical}#service`}
+  jsonLd={[
+    kompleksnayaOgnezashchitaJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Комплексная огнезащита", url: seo.canonical },
+    ]),
+    faqJsonLd,
+  ]}
+>
+  <main>
+    <ServiceHero {...kompleksnayaOgnezashchitaPage.hero} />
+    <ServiceAdvantages
+      title={kompleksnayaOgnezashchitaPage.service.advantagesTitle}
+      items={kompleksnayaOgnezashchitaPage.advantages}
+      variant="compact"
+      cta={{
+        href: "#service-quiz",
+        label: "Пройти квиз",
+      }}
+    />
+    <ServiceTextBlock title={mainTextSection.title} subtitle={mainTextSection.subtitle}>
+      {mainTextSection.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </ServiceTextBlock>
+    <ServiceQuiz
+      client:load
+      formSource={kompleksnayaOgnezashchitaPage.priceCalc.quizFormSource}
+      questions={serviceQuiz.questions}
+      serviceName={serviceQuiz.serviceName}
+      title={kompleksnayaOgnezashchitaPage.priceCalc.quizTitle}
+    />
+    <ServiceSteps
+      centered
+      title={kompleksnayaOgnezashchitaPage.stages.title}
+      subtitle={kompleksnayaOgnezashchitaPage.stages.subtitle}
+      steps={kompleksnayaOgnezashchitaPage.stages.items}
+      cta={{
+        title: "Обсудим объект и подскажем порядок работ",
+        href: "#contact-request",
+        label: "Оставить заявку",
+      }}
+    />
+    <ContactRequest {...kompleksnayaOgnezashchitaPage.contact} />
+    <FaqSection
+      title="Ответы на частые вопросы"
+      description={kompleksnayaOgnezashchitaPage.faqDescription}
+      items={kompleksnayaOgnezashchitaPage.faq}
+    />
+    <ArticlesCarousel
+      title="Полезные статьи по огнезащите"
+      articles={kompleksnayaOgnezashchitaPage.articles}
+      moreHref="/blog"
+      moreLabel="Посмотреть другие статьи"
+    />
+  </main>
+  <Fragment slot="runtime">
+    <script src="/scripts/core/constants.js" defer></script>
+    <script src="/scripts/features/contact/init-contacts.js" defer></script>
+    <script src="/scripts/core/carousel.js" defer></script>
+    <script type="module" src="/scripts/features/contact/contact-request.js" defer></script>
+    <script type="module" src="/scripts/core/main.js" defer></script>
+  </Fragment>
+</BaseLayout>

@@ -114,6 +114,161 @@ export const serviceQuizzes = {
       },
     ],
   },
+  "ognezashchita-vozduhovodov": {
+    serviceName: "огнезащите воздуховодов",
+    questions: [
+      {
+        key: "area",
+        title: "Какая площадь воздуховодов?",
+        fieldName: "AREA_RANGE",
+        options: ["До 100 м²", "100-300 м²", "300-700 м²", "Больше 700 м²"],
+      },
+      {
+        key: "system",
+        title: "Какая система на объекте?",
+        fieldName: "DUCT_SYSTEM_TYPE",
+        options: [
+          "Вентиляция",
+          "Дымоудаление",
+          "Транзитные участки",
+          "Не знаю — подскажите",
+        ],
+      },
+      {
+        key: "access",
+        title: "Какие условия монтажа?",
+        fieldName: "INSTALLATION_ACCESS",
+        options: [
+          "До 3 м, доступ свободный",
+          "3-6 м, нужны стремянки или вышка",
+          "Выше 6 м или сложный доступ",
+          "Действующий объект",
+        ],
+      },
+    ],
+  },
+  "ognezashchita-metallokonstruktsiy": {
+    serviceName: "огнезащите металлоконструкций",
+    questions: [
+      {
+        key: "area",
+        title: "Какая площадь металлоконструкций?",
+        fieldName: "AREA_RANGE",
+        options: ["До 100 м²", "100-300 м²", "300-700 м²", "Больше 700 м²"],
+      },
+      {
+        key: "construction",
+        title: "Какие конструкции нужно защитить?",
+        fieldName: "METAL_CONSTRUCTION_TYPE",
+        options: ["Колонны и балки", "Фермы и ригели", "Лестницы или перекрытия", "Комплексно"],
+      },
+      {
+        key: "access",
+        title: "Какие условия работ?",
+        fieldName: "INSTALLATION_ACCESS",
+        options: [
+          "До 3 м, доступ свободный",
+          "3-6 м, нужны стремянки или вышка",
+          "Выше 6 м или сложный доступ",
+          "Действующий объект",
+        ],
+      },
+    ],
+  },
+  "fire-protection": {
+    serviceName: "огнезащите конструкций",
+    questions: [
+      {
+        key: "area",
+        title: "Какая площадь конструкций?",
+        fieldName: "AREA_RANGE",
+        options: ["До 100 м²", "100-300 м²", "300-700 м²", "Больше 700 м²"],
+      },
+      {
+        key: "construction",
+        title: "Что нужно защитить?",
+        fieldName: "CONSTRUCTION_TYPE",
+        options: [
+          "Металлоконструкции",
+          "Воздуховоды или дымоудаление",
+          "Деревянные конструкции",
+          "Комплексно",
+        ],
+      },
+      {
+        key: "access",
+        title: "Какие условия работ?",
+        fieldName: "INSTALLATION_ACCESS",
+        options: [
+          "До 3 м, доступ свободный",
+          "3-6 м, нужны стремянки или вышка",
+          "Выше 6 м или сложный доступ",
+          "Действующий объект",
+        ],
+      },
+    ],
+  },
+  "ognezashchita-derevyannyh-konstruktsiy": {
+    serviceName: "огнезащите деревянных конструкций",
+    questions: [
+      {
+        key: "area",
+        title: "Какая площадь обработки?",
+        fieldName: "AREA_RANGE",
+        options: ["До 100 м²", "100-300 м²", "300-700 м²", "Больше 700 м²"],
+      },
+      {
+        key: "construction",
+        title: "Что нужно обработать?",
+        fieldName: "WOOD_CONSTRUCTION_TYPE",
+        options: ["Стропила", "Чердак", "Перекрытия", "Каркас или комплексно"],
+      },
+      {
+        key: "condition",
+        title: "Какие условия на объекте?",
+        fieldName: "WOOD_OBJECT_CONDITION",
+        options: [
+          "Строящийся объект",
+          "Уже эксплуатируется",
+          "Сложный доступ или высота",
+          "Нужна огнебиозащита",
+        ],
+      },
+    ],
+  },
+  "kompleksnaya-ognezashchita": {
+    serviceName: "комплексной огнезащите",
+    questions: [
+      {
+        key: "area",
+        title: "Какая площадь объекта?",
+        fieldName: "AREA_RANGE",
+        options: ["До 300 м²", "300-1000 м²", "1000-3000 м²", "Больше 3000 м²"],
+      },
+      {
+        key: "systems",
+        title: "Что нужно защитить?",
+        fieldName: "FIRE_PROTECTION_SCOPE",
+        options: [
+          "Металлоконструкции",
+          "Воздуховоды и дымоудаление",
+          "Дерево и конструкции",
+          "Несколько направлений",
+        ],
+      },
+      {
+        key: "stage",
+        title: "На какой стадии объект?",
+        fieldName: "OBJECT_STAGE",
+        options: [
+          "Проектирование",
+          "Строительство",
+          "Реконструкция",
+          "Действующий объект",
+        ],
+      },
+    ],
+  },
   "turnkey-repair": {
     serviceName: "ремонту под ключ",
     questions: [

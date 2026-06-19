@@ -1,12 +1,12 @@
 ---
-const { title, subtitle, steps, cta } = Astro.props;
+const { title, subtitle, steps, cta, centered = false } = Astro.props;
 const centerSecondRow = steps.length === 4;
 const gridClass = centerSecondRow
   ? "work-stages-service__grid work-stages-service__grid--center-second-row"
   : "work-stages-service__grid";
 ---
 
-<section class="work-stages-service reveal-on-scroll">
+<section class:list={["work-stages-service reveal-on-scroll", centered && "work-stages-service--centered"]}>
   <div class="work-stages-service__container">
     <div class={gridClass}>
       <div class="work-stages-service__header">
