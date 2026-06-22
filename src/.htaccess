@@ -30,27 +30,45 @@
     # /blog → /blog.html
     RewriteRule ^blog/?$ /blog.html [L]
 
-    # 3. УБИРАЕМ .html из URL (например: /page.html → /page)
+    # 3. СТАРЫЕ URL /pages/... → актуальные canonical
+    RewriteRule ^pages/index\.html$ https://sk-rosa.ru/ [R=301,L]
+    RewriteRule ^pages/index$ https://sk-rosa.ru/ [R=301,L]
+    RewriteRule ^pages/pages/calculator\.html$ https://sk-rosa.ru/calculator [R=301,L]
+    RewriteRule ^pages/pages/calculator$ https://sk-rosa.ru/calculator [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^pages/articles/([^/]+)\.html$ https://sk-rosa.ru/$1 [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^pages/articles/([^/]+)$ https://sk-rosa.ru/$1 [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^pages/([^/]+)\.html$ https://sk-rosa.ru/$1 [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^pages/([^/]+)$ https://sk-rosa.ru/$1 [R=301,L]
+
+    # 4. УБИРАЕМ .html из URL (например: /page.html → /page)
     RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
     RewriteRule ^ https://sk-rosa.ru/%1 [R=301,L]
 
-    # 4. СЛЕШ → без слеша (если файл существует)
+    # 5. СЛЕШ → без слеша (если файл существует)
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteCond %{REQUEST_URI} ^(.+)/$
     RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
     RewriteCond %{DOCUMENT_ROOT}%1.html -f
     RewriteRule ^(.+)/$ https://sk-rosa.ru/$1 [R=301,L]
 
-    # 5. Городские страницы услуг: /service/city → /service-city (301 постоянный)
+    # 6. Городские страницы услуг: /service/city → /service-city (301 постоянный)
     RewriteRule ^(turnkey-repair|plastering|airless-painting|floor-screed)/([^/]+)$ https://sk-rosa.ru/$1-$2 [R=301,L]
 
-    # 6. Если файл/папка НЕ существует → ищем .html
+    # 7. Если файл/папка НЕ существует → ищем .html
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^(.*)$ $1.html [L]
 
-    # 7. Всё остальное → 404
+    # 8. Всё остальное → 404
     RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
