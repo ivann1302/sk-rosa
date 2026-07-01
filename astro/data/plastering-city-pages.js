@@ -41,8 +41,8 @@ function citySeo(city) {
   const canonical = `https://sk-rosa.ru/plastering-${city.slug}`;
 
   return {
-    title: `Штукатурка стен в ${city.nameIn} от 450 ₽/м² | ROSA`,
-    description: `Машинная штукатурка стен в ${city.nameIn}: гипсовая и цементная, по маякам. От 450 ₽/м², гарантия 3 года, бесплатный замер.`,
+    title: `Штукатурка стен в ${city.nameIn} от 600 ₽/м² | ROSA`,
+    description: `Машинная штукатурка стен в ${city.nameIn}: гипсовая и цементная, по маякам. От 600 ₽/м², гарантия 3 года, бесплатный замер.`,
     canonical,
     ogTitle: `Штукатурные работы в ${city.nameIn} | ROSA — Машинная штукатурка под ключ`,
     ogDescription: `Профессиональная штукатурка стен в ${city.nameIn}. Гипсовая и цементная штукатурка по маякам, машинное нанесение. Гарантия 3 года, договор с фиксированной ценой.`,
@@ -64,7 +64,7 @@ function serviceJsonLd(city, seo) {
         name: "Московская область",
       },
     },
-    price: "450",
+    price: "600",
   });
 }
 
