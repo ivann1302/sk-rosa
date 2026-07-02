@@ -7,7 +7,8 @@ const serviceProfiles = {
     questionName: "штукатурка стен",
     result: "ровные стены под покраску, обои или плитку",
     priceFrom: "от 600 ₽/м²",
-    documents: "смету, договор, акт выполненных работ и гарантию 3 года",
+    documents: "смету, договор, акт выполненных работ и гарантию от 2 лет",
+    measurementCostNote: "Если выполняем работы, выезд замерщика — 0 ₽; если работы не запускаем, выезд стоит 5 000 ₽.",
     measureFocus: "проверяем перепады стен, углы, состояние основания и объём маячных работ",
     priceFactors: [
       "площадь стен и потолков",
@@ -591,7 +592,7 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
     faq: [
       {
         question: `Вы выезжаете на замер в ${city.nameIn}?`,
-        answer: `Да, выезжаем на замер в ${city.nameIn} и рядом расположенные населённые пункты. На месте оцениваем объём работ и доступ к объекту, отдельно смотрим: ${priority}; после этого готовим смету.`,
+        answer: `Да, выезжаем на замер в ${city.nameIn} и рядом расположенные населённые пункты. На месте оцениваем объём работ и доступ к объекту, отдельно смотрим: ${priority}; после этого готовим смету.${service.measurementCostNote ? ` ${service.measurementCostNote}` : ""}`,
       },
       {
         question: `Сколько стоит ${service.questionName} в ${city.nameIn}?`,
