@@ -6,6 +6,7 @@ import FaqSection from "../components/service/FaqSection.astro";
 import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
+import PricingSection from "../components/service/PricingSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
@@ -80,26 +81,10 @@ const faqJsonLd = {
       cta={{ href: "#plastering-calculator", label: "Рассчитать штукатурку" }}
     />
     <ServiceTextBlock
-      title="Механизированная штукатурка стен под ключ в Москве и МО"
-      subtitle="Гипсовая и цементная штукатурка - от замера до сдачи под чистовую отделку"
+      title={plasteringPage.textBlock.title}
+      subtitle={plasteringPage.textBlock.subtitle}
     >
-      <p>
-        Основные наши заказчики - владельцы <strong>квартир в новостройках, частных домов и
-        коммерческих объектов</strong>: коттеджей, офисов, магазинов и небольших производств.
-        Машинная подача смеси через штукатурную станцию даёт скорость до <strong>200 м² за
-        смену</strong> - выгодно на крупных объёмах.
-      </p>
-      <p>
-        <strong>Гипсовая штукатурка</strong> - выбор для квартир, офисов и спален: даёт гладкую
-        поверхность под покраску и обои, дышит, не нагружает перекрытия. <strong>Цементная
-        штукатурка</strong> прочнее и не боится влаги - её ставим в ванных, кухнях, подвалах,
-        гаражах и на фасадах.
-      </p>
-      <p>
-        Работаем штукатурными станциями PFT и Kaleta: смесь готовим прямо у объекта и подаём
-        шлангом на этаж - без вёдер и грязи в подъезде. Геометрию выводим <strong>строго по
-        маякам</strong>, а объём, сроки и цену фиксируем в договоре до начала работ.
-      </p>
+      {plasteringPage.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
     </ServiceTextBlock>
     <ServiceSteps
       title={plasteringPage.stages.title}
@@ -117,6 +102,11 @@ const faqJsonLd = {
       image={plasteringPage.hero.image}
     />
     <PlasteringCasesSection {...plasteringPage.workCases} />
+    <PricingSection
+      title={plasteringPage.service.pricingTitle}
+      containerId={plasteringPage.service.pricingContainerId}
+      items={plasteringPage.pricingTable}
+    />
     <PriceCalcSection data={plasteringPage.priceCalc} showPlasteringEstimate={false} />
     <ReviewsSection reviews={plasteringPage.reviews} />
     <ContactRequest {...plasteringPage.contact} />
@@ -137,5 +127,5 @@ const faqJsonLd = {
     title="Связанные разделы"
     groups={getServiceInterlinkGroups("plastering")}
   />
-  <ServiceRuntime slot="runtime" pricingScript={null} />
+  <ServiceRuntime slot="runtime" pricingScript={plasteringPage.runtime.pricingScript} />
 </BaseLayout>

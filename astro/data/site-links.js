@@ -184,8 +184,8 @@ const articleClusterBySlug = {
   "vidy-styazhki-pola": "floor-screed",
   "gidroizolyaciya-pola-pod-styazhku": "floor-screed",
   "styazhka-pod-teply-pol": "floor-screed",
-  "defekty-ognezashchitnogo-pokrytiya-metalla": "biozashchita",
-  "srok-sluzhby-ognezashchitnogo-pokrytiya": "biozashchita",
+  "defekty-ognezashchitnogo-pokrytiya-metalla": "ognezashchita-metallokonstruktsiy",
+  "srok-sluzhby-ognezashchitnogo-pokrytiya": "ognezashchita-metallokonstruktsiy",
 };
 
 const cityByName = new Map(citiesData.cities.map(city => [city.name, city]));

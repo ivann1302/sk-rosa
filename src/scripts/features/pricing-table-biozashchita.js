@@ -7,17 +7,17 @@ import { PricingTable } from "./pricing-table.js";
 const biozashchitaPricingData = [
   {
     service: "Биозащитная обработка деревянных конструкций",
-    price: "от 120",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Огнебиозащитная обработка деревянных конструкций",
-    price: "от 180",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Обработка стропильной системы",
-    price: "от 220",
+    price: "от 200",
     unit: "м²",
   },
   {
@@ -27,22 +27,22 @@ const biozashchitaPricingData = [
   },
   {
     service: "Огнезащитная обработка металлоконструкций",
-    price: "от 450",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Подготовка деревянного основания",
-    price: "от 80",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Подготовка металлического основания",
-    price: "от 180",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Нанесение состава распылением",
-    price: "от 150",
+    price: "от 200",
     unit: "м²",
   },
   {

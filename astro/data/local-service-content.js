@@ -6,6 +6,8 @@ const serviceProfiles = {
     workNameGenitive: "штукатурных работ",
     questionName: "штукатурка стен",
     result: "ровные стены под покраску, обои или плитку",
+    priceFrom: "от 600 ₽/м²",
+    documents: "смету, договор, акт выполненных работ и гарантию 3 года",
     measureFocus: "проверяем перепады стен, углы, состояние основания и объём маячных работ",
     priceFactors: [
       "площадь стен и потолков",
@@ -26,6 +28,8 @@ const serviceProfiles = {
     workNameGenitive: "работ по стяжке пола",
     questionName: "стяжка пола",
     result: "ровное основание под плитку, ламинат, инженерную доску или тёплый пол",
+    priceFrom: "от 900 ₽/м²",
+    documents: "смету, договор, акт выполненных работ и гарантию 3 года",
     measureFocus: "проверяем перепады уровня, толщину слоя, будущие покрытия и трассы тёплого пола",
     priceFactors: [
       "площадь и средняя толщина слоя",
@@ -46,6 +50,8 @@ const serviceProfiles = {
     workNameGenitive: "безвоздушной покраски",
     questionName: "безвоздушная покраска",
     result: "равномерное покрытие стен, потолков или фасада без следов валика",
+    priceFrom: "от 200 ₽/м²",
+    documents: "смету, договор, акт выполненных работ и гарантию на результат",
     measureFocus: "оцениваем готовность шпаклёвки, укрывистость краски, высоту помещений и зоны защиты",
     priceFactors: [
       "площадь окрашивания и количество слоёв",
@@ -66,6 +72,8 @@ const serviceProfiles = {
     workNameGenitive: "работ по мягкой кровле",
     questionName: "монтаж мягкой кровли",
     result: "герметичное кровельное покрытие с аккуратными примыканиями",
+    priceFrom: "от 350 ₽/м²",
+    documents: "смету, договор, акт сдачи работ и гарантийные условия",
     measureFocus: "проверяем уклон, основание, водоотвод, ендовы, примыкания и состояние старого покрытия",
     priceFactors: [
       "площадь и уклон крыши",
@@ -86,6 +94,9 @@ const serviceProfiles = {
     workNameGenitive: "работ по огнебиозащите",
     questionName: "огнебиозащита конструкций",
     result: "защищённые деревянные или металлические конструкции с понятным актом работ",
+    priceFrom: "от 200 ₽/м²",
+    documents:
+      "смету, договор, акт выполненных работ, документы на применяемые составы и рекомендации по эксплуатации",
     measureFocus:
       "оцениваем материал конструкций, площадь обработки, высоту работ, влажность, доступность узлов и состояние поверхности",
     priceFactors: [
@@ -107,6 +118,8 @@ const serviceProfiles = {
     workNameGenitive: "ремонта под ключ",
     questionName: "ремонт под ключ",
     result: "готовое помещение от демонтажа до чистовой отделки",
+    priceFrom: "от 10 000 ₽/м²",
+    documents: "смету, договор, поэтапные акты и гарантийные условия",
     measureFocus:
       "оцениваем планировку, состояние инженерии, объём демонтажа, черновые этапы и желаемый уровень отделки",
     priceFactors: [
@@ -475,7 +488,7 @@ function buildBlocks({
         ...planningFocus.map(item => `учитываем ${item}`),
         `проверяем готовность: ${readiness}`,
       ],
-      note: `После замера фиксируем объём работ по услуге «${service.workName}» и отдельно отмечаем спорные места, если они есть.`,
+      note: `После замера фиксируем объём работ, ориентир по цене — ${service.priceFrom} и отдельно отмечаем спорные места, если они есть.`,
     }),
     price: () => ({
       title: pickOne(
@@ -483,7 +496,7 @@ function buildBlocks({
         `${seed}:price-title`,
       ),
       items: priceFactors,
-      note: `После осмотра в ${city.nameIn} даём смету с понятной разбивкой. Особенно важно: ${risk}.`,
+      note: `Ориентир по цене — ${service.priceFrom}. После осмотра в ${city.nameIn} даём смету с понятной разбивкой и заранее согласуем документы: ${service.documents}. Особенно важно: ${risk}.`,
     }),
     scenarios: () => ({
       title: pickOne(
@@ -543,10 +556,19 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
     risk,
     quality,
   });
+  const answerLead = pickOne(
+    [
+      `Коротко: ${service.questionName} в ${city.nameIn} помогает получить ${service.result}. Ориентир по цене — ${service.priceFrom}; после осмотра фиксируем смету, сроки и документы: ${service.documents}.`,
+      `Для запроса «${service.questionName} в ${city.nameIn}» базовый ориентир — ${service.priceFrom}. Точную сумму считаем после замера, потому что важны ${sentenceList(priceFactors.slice(0, 2))}; по итогам работ передаём ${service.documents}.`,
+      `Если нужен быстрый ответ по цене: ${service.priceFrom}. Для объекта в ${city.nameIn} сначала проверяем ${priority}, затем закрепляем объём, сроки и документы: ${service.documents}.`,
+    ],
+    `${seed}:answer-lead`,
+  );
 
   return {
     title: `Локальная специфика: ${service.workName} в ${city.nameIn}`,
-    lead,
+    subtitle: `Цена — ${service.priceFrom}; точная смета зависит от объекта и фиксируется до начала работ.`,
+    lead: [answerLead, ...lead],
     blocks: buildBlocks({
       city,
       profile,
@@ -565,6 +587,7 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
       quality,
       readiness,
     }),
+    faqDescription: `Ответили на частые вопросы по услуге «${service.questionName}» в ${city.nameIn}: стоимость ${service.priceFrom}, замер, подготовку, документы и порядок работ.`,
     faq: [
       {
         question: `Вы выезжаете на замер в ${city.nameIn}?`,
@@ -572,7 +595,11 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
       },
       {
         question: `Сколько стоит ${service.questionName} в ${city.nameIn}?`,
-        answer: `Цена зависит не только от площади. В смете для объекта в ${city.nameIn} отдельно показываем: ${sentenceList(priceFactors.slice(0, 3))}; дополнительно проверяем, что может повлиять на срок и подготовку. Точную стоимость фиксируем после замера.`,
+        answer: `Ориентир по цене — ${service.priceFrom}. В смете для объекта в ${city.nameIn} отдельно показываем: ${sentenceList(priceFactors.slice(0, 3))}; дополнительно проверяем, что может повлиять на срок и подготовку. Точную стоимость фиксируем после замера.`,
+      },
+      {
+        question: `Какие документы передаёте после ${service.workNameGenitive} в ${city.nameIn}?`,
+        answer: `Передаём ${service.documents}. Если объекту нужен расширенный комплект для управляющей компании, подрядчика или приёмки, согласуем его до начала работ.`,
       },
       {
         question: `Можно ли начать работы в ${city.nameIn} без предварительной подготовки?`,

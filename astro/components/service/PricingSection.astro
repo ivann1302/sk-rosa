@@ -1,10 +1,50 @@
 ---
-const { title, containerId = "pricing-table-container" } = Astro.props;
+const { title, containerId = "pricing-table-container", items = [] } = Astro.props;
+const hasItems = items.length > 0;
 ---
 
 <section class="pricing-section reveal-on-scroll" id="pricing-table">
   <div class="pricing-section__container">
     <h2 class="pricing-section__title">{title}</h2>
-    <div id={containerId}></div>
+    <div id={containerId}>
+      {
+        hasItems && (
+          <div class="pricing-table-wrapper">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Услуга</th>
+                  <th>Цена</th>
+                  <th>Ед. изм.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map(item => {
+                  const isFree = item.price.toLowerCase().includes("бесплатно");
+
+                  return (
+                    <tr
+                      class={`pricing-table__row${isFree ? " pricing-table__row--free" : ""}`}
+                    >
+                      <td>
+                        <span class="pricing-table__service-name">{item.service}</span>
+                      </td>
+                      <td>
+                        {isFree ? (
+                          <span class="pricing-table__free">{item.price}</span>
+                        ) : (
+                          `${item.price} руб`
+                        )}
+                      </td>
+                      <td>{item.unit}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )
+      }
+    </div>
   </div>
 </section>

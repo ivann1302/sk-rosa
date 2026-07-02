@@ -150,6 +150,7 @@ const faqJsonLd = {
             <PricingSection
               title={page.service.pricingTitle}
               containerId={page.service.pricingContainerId}
+              items={page.pricingTable ?? []}
             />
             <PriceCalcSection data={page.priceCalc} />
             <ReviewsSection reviews={page.reviews} />

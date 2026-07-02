@@ -132,7 +132,7 @@ export const blogArticles = [
     categoryLabel: "Ремонт и отделка",
     title: "Сколько стоит ремонт квартиры в Москве в 2026 году: реальные цены и расчёт бюджета",
     excerpt:
-      "Три уровня цен, таблицы бюджета для однушки, двушки и трёшки, расценки по видам работ, на чём сэкономить и на чём нельзя. Опыт 6 лет — сотни объектов в Москве.",
+      "Актуальные ориентиры ROSA: ремонт под ключ от 10 000 ₽/м² за работы, ремонт с материалами от 20 000 ₽/м², таблицы бюджета, смета, договор и акты.",
     date: "2026-03-31",
     dateLabel: "31 марта 2026",
     readTime: "15 мин чтения",
@@ -392,7 +392,21 @@ const relatedCategoryPriority = {
   materials: ["materials", "plastering", "painting", "floor-screed", "remont"],
 };
 
+const relatedArticleSlugsBySlug = {
+  "defekty-ognezashchitnogo-pokrytiya-metalla": ["srok-sluzhby-ognezashchitnogo-pokrytiya"],
+  "srok-sluzhby-ognezashchitnogo-pokrytiya": ["defekty-ognezashchitnogo-pokrytiya-metalla"],
+};
+
 export function getRelatedBlogArticles(article, limit = 6) {
+  const relatedSlugs = relatedArticleSlugsBySlug[article.slug];
+
+  if (relatedSlugs) {
+    return relatedSlugs
+      .map(slug => blogArticles.find(candidate => candidate.slug === slug))
+      .filter(Boolean)
+      .slice(0, limit);
+  }
+
   const priority = relatedCategoryPriority[article.category] ?? [article.category];
   const candidates = blogArticles
     .filter(candidate => candidate.slug !== article.slug)
@@ -556,7 +570,7 @@ const articleSeoTitleOverrides = {
 
 const articleSeoDescriptionOverrides = {
   "stoimost-remonta-kvartiry":
-    "Цены на ремонт квартиры в Москве в 2026 году: от 5 000 до 35 000 ₽/м², таблицы работ и расчет бюджета. Бесплатная смета от ROSA.",
+    "Стоимость ремонта квартиры в Москве в 2026 году: ремонт под ключ от 10 000 ₽/м² за работы, с материалами от 20 000 ₽/м², таблицы бюджета, смета, договор и акты.",
   "vybor-kraski-airless-painting":
     "Как выбрать краску для безвоздушной покраски: типы составов, вязкость, подбор сопла, подготовка основания и частые ошибки.",
 };

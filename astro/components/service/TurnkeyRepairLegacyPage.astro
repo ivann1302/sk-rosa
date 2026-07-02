@@ -10,7 +10,6 @@ import { getServiceQuiz } from "../../data/service-quizzes.js";
 const { page } = Astro.props;
 const city = page.city;
 const serviceQuiz = getServiceQuiz(page.service.slug);
-const heroLocation = city?.nameIn ? `в ${city.nameIn}` : "в Москве";
 const calcComments = city?.name
   ? `Заявка на расчет ремонта в ${city.nameIn}`
   : "Заявка на расчет с формы калькулятора";
@@ -18,6 +17,7 @@ const calcSource = city?.name
   ? `Ремонт под ключ - Калькулятор (${city.name})`
   : "Ремонт под ключ - Калькулятор";
 const textTitle = page.textBlock.title;
+const textSubtitle = page.textBlock.subtitle;
 const choiceReasons = [
   "<strong>Официальный договор</strong> с фиксированными ценами",
   "<strong>Собственная бригада</strong> проверенных мастеров",
@@ -100,10 +100,8 @@ const usefulLinks = [
     </picture>
     <div class="about-turnkey__content">
       <p class="about-turnkey__subtitle-small">Что мы предлагаем</p>
-      <h1 class="about-turnkey__title">
-        Ремонт квартир, домов, офисов,<br />
-        коммерческих помещений под ключ {heroLocation}
-      </h1>
+      <h1 class="about-turnkey__title">{page.hero.title}</h1>
+      <p class="about-turnkey__subtitle">{page.hero.subtitle}</p>
       <div class="about-turnkey__row">
         <a
           href="/portfolio"
@@ -111,9 +109,7 @@ const usefulLinks = [
         >
           Портфолио
         </a>
-        <a href="#contact-request-turnkey" class="about-turnkey__btn">
-          Заказать консультацию
-        </a>
+        <a href="#contact-request-turnkey" class="about-turnkey__btn">{page.hero.ctaLabel}</a>
       </div>
     </div>
   </div>
@@ -267,20 +263,10 @@ const usefulLinks = [
   <section class="service-text-block reveal-on-scroll">
     <div class="service-text-block__container">
       <h2 class="service-text-block__title">{textTitle}</h2>
-      <p class="service-text-block__subtitle">
-        <strong>Полный цикл ремонтных работ</strong> – от демонтажа до чистовой отделки
-      </p>
+      <p class="service-text-block__subtitle">{textSubtitle}</p>
 
       <div class="service-text-block__content">
-        <p>
-          Нужен <strong>качественный ремонт квартиры или дома {heroLocation}</strong> без головной
-          боли? Выполним весь комплекс работ – от проектирования и демонтажа до финишной отделки и
-          уборки.
-        </p>
-        <p>
-          Работаем с <strong>новостройками и вторичным жильём</strong>. Используем проверенные
-          материалы и соблюдаем все строительные нормы.
-        </p>
+        {page.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
       </div>
 
       <h3 class="service-text-block__list-title">Почему выбирают нас</h3>
@@ -353,7 +339,7 @@ const usefulLinks = [
       <div class="company-description-turnkey__content">
         <div class="company-description-turnkey__text">
           <p class="portfolio-description__text">
-            Компания "Роса" более 6 лет занимается комплексным ремонтом квартир и домов под ключ,
+            Компания "Роса" более 7 лет занимается комплексным ремонтом квартир и домов под ключ,
             реализуя проекты различной сложности с индивидуальным подходом к каждому клиенту. В
             команде работают опытные специалисты, преданные своему делу и постоянно развивающие
             профессиональные навыки. Мы ценим доверие и работаем только по официальному договору,

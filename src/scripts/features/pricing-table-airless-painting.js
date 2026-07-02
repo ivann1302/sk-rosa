@@ -6,18 +6,18 @@ import { PricingTable } from "./pricing-table.js";
 
 const airlessPaintingPricingData = [
   {
-    service: "Механизированная покраска стен",
-    price: "от 90",
+    service: "Безвоздушная покраска стен",
+    price: "от 200",
     unit: "м²",
   },
   {
     service: "Безвоздушная покраска потолка",
-    price: "от 130",
+    price: "от 250",
     unit: "м²",
   },
   {
     service: "Покраска фасада",
-    price: "от 120",
+    price: "от 350",
     unit: "м²",
   },
   {
@@ -26,7 +26,7 @@ const airlessPaintingPricingData = [
     unit: "м²",
   },
   {
-    service: "Покраска металлоконструкции",
+    service: "Покраска металлоконструкций",
     price: "от 400",
     unit: "пог.м",
   },
@@ -34,6 +34,11 @@ const airlessPaintingPricingData = [
     service: "Нанесение грунтовки",
     price: "от 50",
     unit: "м²",
+  },
+  {
+    service: "Выезд специалиста и предварительная смета",
+    price: "бесплатно",
+    unit: "шт",
   },
 ];
 
