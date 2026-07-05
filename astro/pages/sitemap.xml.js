@@ -52,6 +52,29 @@ function articleLastmod(article) {
   return datePart(posting?.dateModified) || datePart(posting?.datePublished);
 }
 
+function isIndexableCanonicalUrl(value) {
+  try {
+    const url = new URL(value);
+    const { pathname } = url;
+
+    return (
+      url.protocol === "https:" &&
+      url.hostname === "sk-rosa.ru" &&
+      url.search === "" &&
+      url.hash === "" &&
+      !pathname.endsWith(".html") &&
+      (pathname === "/" || !pathname.endsWith("/")) &&
+      !/^\/(?:404|assets|_astro|scripts|api|pages|articles)(?:\/|$)/.test(pathname) &&
+      !/^\/(?:router\.php|robots\.txt|sitemap\.xml|llms\.txt|bde[^/]*\.txt|yandex_[^/]+\.html)$/.test(
+        pathname,
+      ) &&
+      !/^\/blog\/[^/]+/.test(pathname)
+    );
+  } catch {
+    return false;
+  }
+}
+
 function escapeXml(value) {
   return value
     .replaceAll("&", "&amp;")
@@ -63,7 +86,6 @@ function escapeXml(value) {
 
 function uniqueUrls() {
   const knownLastmods = existingLastmodMap();
-  const today = new Date().toISOString().slice(0, 10);
   const pages = [
     ...staticPages.map(page => ({ loc: page.canonical })),
     ...blogArticlePages.map(article => ({
@@ -76,7 +98,7 @@ function uniqueUrls() {
   const seen = new Set();
 
   return pages
-    .filter(page => page.loc?.startsWith("https://sk-rosa.ru"))
+    .filter(page => isIndexableCanonicalUrl(page.loc))
     .filter(page => {
       if (seen.has(page.loc)) {
         return false;
@@ -87,18 +109,21 @@ function uniqueUrls() {
     })
     .map(page => ({
       loc: page.loc,
-      lastmod: page.lastmod || knownLastmods.get(page.loc) || today,
+      lastmod: page.lastmod || knownLastmods.get(page.loc) || "",
     }));
+}
+
+function urlXml({ loc, lastmod }) {
+  const lastmodXml = lastmod ? `\n    <lastmod>${escapeXml(lastmod)}</lastmod>` : "";
+
+  return `  <url>
+    <loc>${escapeXml(loc)}</loc>${lastmodXml}
+  </url>`;
 }
 
 export function GET() {
   const urls = uniqueUrls()
-    .map(
-      ({ loc, lastmod }) => `  <url>
-    <loc>${escapeXml(loc)}</loc>
-    <lastmod>${escapeXml(lastmod)}</lastmod>
-  </url>`,
-    )
+    .map(urlXml)
     .join("\n");
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

@@ -17,6 +17,7 @@
     "check:astro:services": "node scripts/astro/check-service-output.js",
     "check:astro:blog": "node scripts/astro/check-blog-output.js",
     "check:astro:production": "node scripts/astro/check-production-output.js",
+    "check:astro:sitemap": "node scripts/astro/check-sitemap-output.js",
     "check:astro:aeo": "node scripts/astro/check-aeo-metadata.js",
     "measure:astro:generation": "node scripts/astro/measure-generation.js",
     "build:astro:production": "bash scripts/astro/build-production.sh",
