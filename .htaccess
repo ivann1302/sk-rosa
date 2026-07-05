@@ -4,56 +4,73 @@
     RewriteEngine On
     RewriteBase /
 
-    # Канонический хост и протокол
-    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
+    # 1. Старые URL статей блога и /articles/... ведём сразу на корневой canonical.
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^blog/([A-Za-z0-9-]+)(?:\.html)?/?$ https://sk-rosa.ru/$1? [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^articles/([A-Za-z0-9-]+)(?:\.html)?/?$ https://sk-rosa.ru/$1? [R=301,L]
+
+    # 2. Старые URL /pages/... → актуальные canonical.
+    RewriteRule ^pages/(?:pages/)?index(?:\.html)?/?$ https://sk-rosa.ru/? [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1-$2.html -f
+    RewriteRule ^pages/(turnkey-repair|plastering|airless-painting|floor-screed|biozashchita|soft-roofing)/([A-Za-z0-9-]+)(?:\.html)?/?$ https://sk-rosa.ru/$1-$2? [R=301,L]
+
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^pages/(?:pages/|articles/)?([A-Za-z0-9-]+)(?:\.html)?/?$ https://sk-rosa.ru/$1? [R=301,L]
+
+    # 3. Городские страницы услуг: /service/city → /service-city.
+    RewriteCond %{DOCUMENT_ROOT}/$1-$2.html -f
+    RewriteRule ^(turnkey-repair|plastering|airless-painting|floor-screed|biozashchita|soft-roofing)/([A-Za-z0-9-]+)(?:\.html)?/?$ https://sk-rosa.ru/$1-$2? [R=301,L]
+
+    # 4. Убираем .html из URL страниц, но не трогаем проверочные и служебные файлы.
+    RewriteRule ^index\.html$ https://sk-rosa.ru/? [R=301,L]
+
+    RewriteCond %{REQUEST_URI} !^/(404|yandex_[^/]+)\.html$ [NC]
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
+    RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^(.+)\.html$ https://sk-rosa.ru/$1? [R=301,L]
+
+    # 5. Слеш → без слеша, если существует одноименная HTML-страница.
+    RewriteCond %{REQUEST_URI} ^(.+)/$
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
+    RewriteCond %{DOCUMENT_ROOT}%1.html -f
+    RewriteRule ^(.+)/$ https://sk-rosa.ru/$1? [R=301,L]
+
+    # 6. Убираем параметрические дубли из рекламных систем.
+    RewriteCond %{QUERY_STRING} (^|&)yclid=[^&]*(&|$) [NC]
+    RewriteRule ^ https://sk-rosa.ru%{REQUEST_URI}? [R=301,L]
+
+    # 7. Канонический хост и протокол: все варианты ведём на https://sk-rosa.ru.
+    RewriteCond %{HTTP_HOST} !^sk-rosa\.ru$ [NC]
     RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
 
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
     RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
 
-    # 🔥 1. БЛОГ РЕДИРЕКТЫ (ПРИОРИТЕТ №1)
-    # /blog/article-name → /articles/article-name.html (физически в articles/)
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{DOCUMENT_ROOT}/articles/$1.html -f
-    RewriteRule ^blog/([^/]+)$ /articles/$1.html [L]
-
     # /blog → /blog.html
     RewriteRule ^blog/?$ /blog.html [L]
 
-    # 2. www → non-www (301)
-    RewriteCond %{HTTP_HOST} ^www\.sk-rosa\.ru$ [NC]
-    RewriteRule ^(.*)$ https://sk-rosa.ru/$1 [R=301,L]
-
-    # 3. УБИРАЕМ .html из URL (например: /page.html → /page)
-    RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
-    RewriteRule ^ https://sk-rosa.ru/%1 [R=301,L]
-
-    # 4. СЛЕШ → без слеша (если файл существует)
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteCond %{REQUEST_URI} ^(.+)/$
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
-    RewriteCond %{DOCUMENT_ROOT}%1.html -f
-    RewriteRule ^(.+)/$ https://sk-rosa.ru/$1 [R=301,L]
-
-    # 5. Если файл/папка НЕ существует → ищем .html
+    # 8. Если файл/папка НЕ существует → ищем .html
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^(.*)$ $1.html [L]
 
-    # 6. Всё остальное → 404
-    RewriteCond %{REQUEST_URI} !^/(assets|scripts|articles)/ [NC]
+    # 9. Всё остальное → 404
+    RewriteCond %{REQUEST_URI} !^/(assets|scripts)/ [NC]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.html !-f
-    RewriteRule ^(.*)$ /404.html [L]
+    RewriteRule ^(.*)$ /404.php [L]
 </IfModule>
 
 # Безопасность
 Options -Indexes
-ErrorDocument 404 /404.html
+ErrorDocument 404 /404.php
 
 # Защита файлов
 <Files ".env">
