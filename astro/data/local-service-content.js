@@ -395,6 +395,22 @@ const blockOrderVariants = [
   ["scenarios", "measure", "objects", "price", "nearby"],
 ];
 
+const plasteringBlockOrderVariants = [
+  ["inspection", "geometry", "mix", "price", "handover"],
+  ["geometry", "inspection", "preparation", "mix", "price"],
+  ["price", "inspection", "mix", "geometry", "preparation"],
+  ["inspection", "preparation", "geometry", "handover", "mix"],
+  ["mix", "inspection", "price", "preparation", "handover"],
+];
+
+const floorScreedBlockOrderVariants = [
+  ["inspection", "level", "price", "warmFloor", "handover"],
+  ["level", "inspection", "preparation", "price", "handover"],
+  ["price", "inspection", "warmFloor", "level", "preparation"],
+  ["inspection", "preparation", "level", "handover", "price"],
+  ["warmFloor", "inspection", "price", "preparation", "handover"],
+];
+
 const biozashchitaBlockOrderVariants = [
   ["inspection", "price", "preparation", "documents", "scope"],
   ["preparation", "inspection", "scope", "price", "documents"],
@@ -409,6 +425,59 @@ const softRoofingBlockOrderVariants = [
   ["price", "preparation", "inspection", "repair", "handover"],
   ["inspection", "repair", "preparation", "handover", "price"],
   ["preparation", "inspection", "price", "handover", "repair"],
+];
+
+const turnkeyRepairBlockOrderVariants = [
+  ["inspection", "estimate", "engineering", "materials", "stages"],
+  ["estimate", "inspection", "materials", "engineering", "stages"],
+  ["inspection", "engineering", "estimate", "stages", "materials"],
+  ["materials", "inspection", "estimate", "engineering", "stages"],
+  ["engineering", "estimate", "inspection", "materials", "stages"],
+];
+
+const plasteringGroupNotes = {
+  nearUrban:
+    "обычно важны разгрузка смеси, защита лифта, место для мешков, вода, электричество и график шумных работ",
+  mixedTown:
+    "заранее уточняем тип объекта: новостройка, вторичка, дом, офис, санузел или коммерческое помещение",
+  cottageDirection:
+    "отдельно смотрим подъезд к участку, воду, электричество, высоту стен и готовность кладки к штукатурке",
+  industrialTown:
+    "для коммерческих помещений заранее согласуем график, подачу материала, высоту стен и требования к следующему этапу",
+};
+
+const plasteringWorkZones = [
+  "жилые комнаты и коридоры",
+  "кухни и санузлы",
+  "откосы, углы и зоны под плитку",
+  "частные дома после кладочных работ",
+  "офисы и коммерческие помещения",
+];
+
+const floorScreedGroupNotes = {
+  nearUrban:
+    "обычно важны место для пневмонагнетателя, защита лифта, подача смеси и график шумных работ",
+  mixedTown:
+    "заранее уточняем тип объекта: квартира после демонтажа, дом, офис, гараж или техническое помещение",
+  cottageDirection:
+    "отдельно смотрим подъезд к участку, воду, электричество, перепады по помещениям и тёплый контур",
+  industrialTown:
+    "для коммерческих помещений заранее учитываем нагрузку, толщину слоя, армирование и график работ",
+};
+
+const floorScreedWorkZones = [
+  "жилые комнаты и коридоры",
+  "кухни и санузлы",
+  "лоджии и технические зоны",
+  "гаражи, склады и коммерческие помещения",
+  "частные дома с тёплым полом",
+];
+
+const floorScreedWarmFloorRisks = [
+  "контур должен быть закреплён и проверен давлением до заливки",
+  "над трубой нужен достаточный слой, иначе покрытие может работать неравномерно",
+  "демпферная лента и компенсационные зазоры нужны до подачи смеси",
+  "места прохода труб и коммуникаций лучше показать до начала работ",
 ];
 
 const biozashchitaGroupNotes = {
@@ -441,6 +510,25 @@ const softRoofingGroupNotes = {
     "для складов и коммерческих помещений отдельно согласуем график, водоотвод и работу без остановки соседних зон",
 };
 
+const turnkeyRepairGroupNotes = {
+  nearUrban:
+    "обычно важны регламент ЖК, разгрузка, защита лифта, место под материалы и время шумных работ",
+  mixedTown:
+    "заранее уточняем тип объекта: новостройка, вторичка, дом, офис или помещение под запуск бизнеса",
+  cottageDirection:
+    "отдельно смотрим подъезд к участку, инженерные вводы, место под материалы и готовность дома к отделке",
+  industrialTown:
+    "для офисов и коммерческих помещений заранее согласуем график, чтобы ремонт не мешал соседним зонам",
+};
+
+const turnkeyRepairWorkZones = [
+  "демонтаж и вынос старой отделки",
+  "электрику и сантехнику",
+  "стяжку, штукатурку и шпаклёвку",
+  "плитку, покраску и напольные покрытия",
+  "установку дверей, плинтусов и чистовых элементов",
+];
+
 function hash(value) {
   return [...value].reduce((acc, char) => (acc * 31 + char.charCodeAt(0)) % 9973, 7);
 }
@@ -466,6 +554,145 @@ function sentenceList(items) {
   const joiner = items.some(item => item.includes(" и ")) ? ", а также " : " и ";
 
   return `${items.slice(0, -1).join(", ")}${joiner}${items.at(-1)}`;
+}
+
+function plasteringComplexNote(city, profile, complexes, seed) {
+  const groupNote = plasteringGroupNotes[profile.group] ?? plasteringGroupNotes.mixedTown;
+
+  if (complexes.length === 0) {
+    return pickOne(
+      [
+        `Если объект не привязан к конкретному ЖК, в ${city.nameIn} заранее смотрим подъезд, разгрузку смеси, воду, электричество и место для хранения мешков.`,
+        `Для дома, офиса или отдельного помещения в ${city.nameIn} важно заранее понять, где разгружать материал, как занести смесь и какие зоны нужно защитить.`,
+        `По объектам без привязки к жилому комплексу в ${city.nameIn} отдельно учитываем организацию: ${groupNote}.`,
+      ],
+      `${seed}:plastering-no-complexes`,
+    );
+  }
+
+  const sample = complexes.slice(0, 4);
+
+  return pickOne(
+    [
+      `Если объект находится в одном из комплексов: ${sentenceList(sample)}, заранее проверяем регламент дома, лифт, разгрузку, место для смеси и защиту общих зон.`,
+      `Для квартир в комплексах ${sentenceList(sample)} отдельно учитываем организацию: подъём мешков, воду, электричество, защиту лифта и время шумных работ.`,
+      `В ${city.nameIn} часто встречаются объекты в комплексах ${sentenceList(sample)}. До старта уточняем правила дома, чтобы не задерживаться из-за пропуска, лифта или места под материал.`,
+    ],
+    `${seed}:plastering-complexes`,
+  );
+}
+
+function buildPlasteringBlocks({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = plasteringGroupNotes[profile.group] ?? plasteringGroupNotes.mixedTown;
+  const locationNote = plasteringComplexNote(city, profile, complexes, seed);
+  const workZones = pick(plasteringWorkZones, `${seed}:plastering-work-zones`, 3);
+  const priority = pickOne(vocabulary.priorities, `${seed}:plastering-priority`);
+  const risk = pickOne(vocabulary.risks, `${seed}:plastering-risk`);
+  const quality = pickOne(vocabulary.quality, `${seed}:plastering-quality`);
+  const order = pickOne(plasteringBlockOrderVariants, `${seed}:plastering-order`);
+  const blockFactories = {
+    inspection: () => ({
+      title: pickOne(
+        ["Что проверяем перед расчетом", "С чего начинаем осмотр", "Что важно увидеть на стенах"],
+        `${seed}:plastering-inspection-title`,
+      ),
+      paragraphs: [
+        `Перед сметой по штукатурке стен в ${city.nameIn} смотрим основание, перепады, углы, откосы, трещины, старый слой, влажные зоны и будущую отделку.`,
+        `${locationNote} Отдельно проверяем фактор, который часто меняет объём работ: ${priority}.`,
+      ],
+    }),
+    geometry: () => ({
+      title: pickOne(
+        ["Как проверяем геометрию", "Что показывают маяки", "Почему важны углы и плоскость"],
+        `${seed}:plastering-geometry-title`,
+      ),
+      paragraphs: [
+        "Плоскость проверяем правилом и лазером: смотрим завалы стен, перепады по углам, откосы, примыкания к потолку и места под встроенную мебель.",
+        "Если перепады разные по комнатам, расход смеси и количество маяков лучше считать отдельно. Так понятно, где нужна полноценная штукатурка, а где достаточно локальной подготовки под следующий этап.",
+      ],
+    }),
+    mix: () => ({
+      title: pickOne(
+        ["Как выбираем смесь", "Гипсовая или цементная штукатурка", "Что важно для влажных зон"],
+        `${seed}:plastering-mix-title`,
+      ),
+      paragraphs: [
+        "Гипсовые составы чаще подходят для сухих комнат под шпаклёвку, обои или покраску. Для санузлов, кухонь, фасадных и влажных зон заранее обсуждаем цементные смеси и подготовку основания.",
+        `Перед началом проговариваем риск: ${risk}. Если есть старый слой, пыль, слабые участки или следы сырости, подготовку лучше включить в смету сразу.`,
+      ],
+    }),
+    price: () => ({
+      title: pickOne(
+        ["Что влияет на смету", "Из чего складывается стоимость", "Что считаем отдельно"],
+        `${seed}:plastering-price-title`,
+      ),
+      paragraphs: [
+        `Ориентир по штукатурке стен — ${service.priceFrom}. Итоговая цена зависит от площади, перепадов, толщины слоя, количества маяков, типа смеси, сетки, грунтования и подготовки трещин.`,
+        `Для объекта в ${city.nameIn} отдельно фиксируем откосы, сложные углы, влажные зоны, подачу материала и требования к следующему этапу отделки.`,
+      ],
+    }),
+    preparation: () => ({
+      title: pickOne(
+        ["Что подготовить до работ", "Как подготовить помещение", "Что ускоряет выход бригады"],
+        `${seed}:plastering-preparation-title`,
+      ),
+      paragraphs: [
+        "До штукатурки нужно освободить стены, показать инженерные выводы, снять слабые покрытия и согласовать зоны, где нужна точная геометрия под плитку, мебель или двери.",
+        `Обычно работаем по таким зонам: ${sentenceList(workZones)}. В ${city.nameIn} также учитываем организацию: ${groupNote}.`,
+      ],
+    }),
+    handover: () => ({
+      title: pickOne(
+        ["Что проверяем при сдаче", "Как принимаем штукатурку", "Что будет после работ"],
+        `${seed}:plastering-handover-title`,
+      ),
+      paragraphs: [
+        `После работ проверяем плоскость, углы, откосы, примыкания и зоны под плитку или чистовую отделку. На сдаче ориентируемся на результат: ${quality}.`,
+        `Передаем ${service.documents}. Также объясняем, когда можно переходить к шпаклёвке, плитке или покраске и что нельзя делать до нормального высыхания слоя.`,
+      ],
+    }),
+  };
+
+  return order.map(key => blockFactories[key]());
+}
+
+function buildPlasteringLocalContent({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = plasteringGroupNotes[profile.group] ?? plasteringGroupNotes.mixedTown;
+
+  return {
+    title: `Штукатурка стен в ${city.nameIn}: что важно до сметы`,
+    subtitle: "Коротко об основании, геометрии, смеси, цене, подготовке и приёмке.",
+    lead: [
+      `Штукатурку стен в ${city.nameIn} считаем после осмотра: нужно увидеть перепады, основание, углы, откосы, влажные зоны и требования к будущей отделке. Ориентир — ${service.priceFrom}, точная сумма зависит от толщины слоя и подготовки.`,
+      "Не считаем стены только по площади. Сначала проверяем геометрию и состояние основания, затем выбираем смесь и фиксируем объём работ.",
+    ],
+    blocks: buildPlasteringBlocks({ city, profile, service, vocabulary, complexes, seed }),
+    faqDescription: `Ответили на частые вопросы по штукатурке стен в ${city.nameIn}: замер, цена, смесь, подготовка основания, влажные зоны и приёмка.`,
+    faq: [
+      {
+        question: `Вы делаете замер перед штукатуркой стен в ${city.nameIn}?`,
+        answer: `Да, перед расчетом в ${city.nameIn} проверяем перепады стен, углы, откосы, старый слой, трещины, влажные зоны и будущую отделку. После осмотра даём смету с толщиной слоя и составом работ.`,
+      },
+      {
+        question: `Сколько стоит штукатурка стен в ${city.nameIn}?`,
+        answer: `Базовый ориентир — ${service.priceFrom}. На стоимость влияют площадь, перепады, средняя толщина слоя, количество маяков, тип смеси, сетка, грунтование, ремонт трещин и подача материала.`,
+      },
+      {
+        question: "Какую штукатурку выбрать: гипсовую или цементную?",
+        answer:
+          "Для сухих комнат чаще используют гипсовые составы. Для санузлов, кухонь, фасадных и влажных зон лучше заранее обсудить цементную смесь и подготовку основания.",
+      },
+      {
+        question: "Нужно ли снимать старую штукатурку?",
+        answer:
+          "Если старый слой держится прочно, его можно готовить под новый этап. Если есть отслоения, пустоты, пыль, сырость или трещины, слабые участки лучше снять до начала работ.",
+      },
+      {
+        question: `Что подготовить перед выездом бригады в ${city.nameIn}?`,
+        answer: `Нужно освободить стены, показать инженерные выводы, согласовать зоны под плитку, мебель и двери, обеспечить воду и электричество. Также учитываем организационные условия: ${groupNote}.`,
+      },
+    ],
+  };
 }
 
 function buildBiozashchitaBlocks({ city, profile, service, vocabulary, seed }) {
@@ -567,6 +794,145 @@ function buildBiozashchitaLocalContent({ city, profile, service, vocabulary, see
   };
 }
 
+function floorScreedComplexNote(city, profile, complexes, seed) {
+  const groupNote = floorScreedGroupNotes[profile.group] ?? floorScreedGroupNotes.mixedTown;
+
+  if (complexes.length === 0) {
+    return pickOne(
+      [
+        `Если объект не привязан к конкретному ЖК, в ${city.nameIn} заранее смотрим подъезд, место для оборудования, воду, электричество и путь подачи смеси.`,
+        `Для дома, гаража или отдельного помещения в ${city.nameIn} важно заранее понять, где поставить оборудование, как подать смесь и есть ли ограничения по доступу.`,
+        `По объектам без привязки к жилому комплексу в ${city.nameIn} отдельно учитываем организацию: ${groupNote}.`,
+      ],
+      `${seed}:screed-no-complexes`,
+    );
+  }
+
+  const sample = complexes.slice(0, 4);
+
+  return pickOne(
+    [
+      `Если объект находится в одном из комплексов: ${sentenceList(sample)}, заранее проверяем регламент дома, лифт, место для оборудования, разгрузку и защиту общих зон.`,
+      `Для квартир в комплексах ${sentenceList(sample)} отдельно учитываем организацию: подачу смеси, защиту лифта, проходы по подъезду и время шумных работ.`,
+      `В ${city.nameIn} часто встречаются объекты в комплексах ${sentenceList(sample)}. До старта уточняем правила дома, чтобы не задерживаться из-за пропуска, лифта или места под оборудование.`,
+    ],
+    `${seed}:screed-complexes`,
+  );
+}
+
+function buildFloorScreedBlocks({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = floorScreedGroupNotes[profile.group] ?? floorScreedGroupNotes.mixedTown;
+  const locationNote = floorScreedComplexNote(city, profile, complexes, seed);
+  const workZones = pick(floorScreedWorkZones, `${seed}:screed-work-zones`, 3);
+  const priority = pickOne(vocabulary.priorities, `${seed}:screed-priority`);
+  const warmFloorRisk = pickOne(floorScreedWarmFloorRisks, `${seed}:screed-warm-risk`);
+  const quality = pickOne(vocabulary.quality, `${seed}:screed-quality`);
+  const order = pickOne(floorScreedBlockOrderVariants, `${seed}:screed-order`);
+  const blockFactories = {
+    inspection: () => ({
+      title: pickOne(
+        ["Что проверяем перед расчетом", "С чего начинаем замер", "Что важно увидеть на объекте"],
+        `${seed}:screed-inspection-title`,
+      ),
+      paragraphs: [
+        `Перед сметой по стяжке пола в ${city.nameIn} смотрим основание, перепады уровня, старые покрытия, слабые участки, влажные зоны и будущие финишные покрытия.`,
+        `${locationNote} Отдельно проверяем фактор, который часто меняет технологию: ${priority}.`,
+      ],
+    }),
+    level: () => ({
+      title: pickOne(
+        ["Как считаем уровень пола", "Почему важна толщина слоя", "Что проверяем лазером"],
+        `${seed}:screed-level-title`,
+      ),
+      paragraphs: [
+        "Лазером проверяем перепады по комнатам и коридорам, высоту у входной двери, санузлов, балкона и соседних помещений. Так понятно, какой слой нужен и где нельзя поднимать пол без проверки.",
+        "Толщина влияет не только на расход смеси, но и на вес, сроки высыхания, дверные проёмы и стык с будущим покрытием. Слишком тонкий или слишком толстый слой лучше обсудить до начала работ.",
+      ],
+    }),
+    price: () => ({
+      title: pickOne(
+        ["Что влияет на смету", "Из чего складывается стоимость", "Что считаем отдельно"],
+        `${seed}:screed-price-title`,
+      ),
+      paragraphs: [
+        `Ориентир по стяжке пола — ${service.priceFrom}. Итоговая цена зависит от площади, средней толщины слоя, типа стяжки, армирования, подготовки основания, гидроизоляции и подачи смеси.`,
+        `Для объекта в ${city.nameIn} отдельно фиксируем сложный доступ, тёплый пол, мокрые зоны и требования к прочности. Это лучше согласовать до выхода бригады, а не во время заливки.`,
+      ],
+    }),
+    warmFloor: () => ({
+      title: pickOne(
+        ["Если есть тёплый пол", "Что важно для тёплого пола", "Как не повредить контур"],
+        `${seed}:screed-warm-floor-title`,
+      ),
+      paragraphs: [
+        "Для тёплого пола заранее смотрим схему труб, крепление контура, демпферную ленту, минимальный слой над трубой и готовность системы к проверке давлением.",
+        `Перед работой проговариваем риск: ${warmFloorRisk}. Если трассы уже закрыты или нет схемы, лучше показать фото монтажа и места прохода коммуникаций.`,
+      ],
+    }),
+    preparation: () => ({
+      title: pickOne(
+        ["Что подготовить до работ", "Как подготовить основание", "Что ускоряет выход бригады"],
+        `${seed}:screed-preparation-title`,
+      ),
+      paragraphs: [
+        "До стяжки нужно убрать мусор, слабые и отслаивающиеся участки, показать коммуникации в полу и согласовать уровень чистового покрытия.",
+        `Обычно работаем по таким зонам: ${sentenceList(workZones)}. В ${city.nameIn} также учитываем организацию: ${groupNote}.`,
+      ],
+    }),
+    handover: () => ({
+      title: pickOne(
+        ["Что проверяем при сдаче", "Как принимаем готовую стяжку", "Что будет после работ"],
+        `${seed}:screed-handover-title`,
+      ),
+      paragraphs: [
+        `После работ проверяем плоскость, уровень, примыкания к стенам и инженерным выводам. На сдаче ориентируемся на результат: ${quality}.`,
+        `Передаем ${service.documents}. Также объясняем, когда можно ходить по стяжке, когда запускать следующий этап и что нельзя делать до набора прочности.`,
+      ],
+    }),
+  };
+
+  return order.map(key => blockFactories[key]());
+}
+
+function buildFloorScreedLocalContent({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = floorScreedGroupNotes[profile.group] ?? floorScreedGroupNotes.mixedTown;
+
+  return {
+    title: `Стяжка пола в ${city.nameIn}: что важно до сметы`,
+    subtitle: "Коротко об основании, уровне, толщине слоя, тёплом поле и сдаче работ.",
+    lead: [
+      `Стяжку пола в ${city.nameIn} считаем после замера: нужно увидеть перепады уровня, основание, будущие покрытия, мокрые зоны и коммуникации в полу. Ориентир — ${service.priceFrom}, точная сумма зависит от толщины слоя и подготовки.`,
+      "Не называем один сценарий для всех объектов. Сначала проверяем уровень и ограничения по помещению, затем выбираем технологию и фиксируем объём работ.",
+    ],
+    blocks: buildFloorScreedBlocks({ city, profile, service, vocabulary, complexes, seed }),
+    faqDescription: `Ответили на частые вопросы по стяжке пола в ${city.nameIn}: замер, цена, толщина слоя, тёплый пол, подготовка и сдача основания.`,
+    faq: [
+      {
+        question: `Вы делаете замер перед стяжкой пола в ${city.nameIn}?`,
+        answer: `Да, перед расчетом в ${city.nameIn} проверяем перепады уровня, состояние основания, будущие покрытия, мокрые зоны и коммуникации в полу. После замера даём смету с толщиной слоя и составом работ.`,
+      },
+      {
+        question: "От чего зависит толщина стяжки?",
+        answer:
+          "Толщина зависит от перепадов основания, выбранной технологии, тёплого пола, будущего покрытия, уровня дверей и соседних помещений. Слишком тонкий или слишком толстый слой лучше обсудить до начала работ.",
+      },
+      {
+        question: `Сколько стоит стяжка пола в ${city.nameIn}?`,
+        answer: `Базовый ориентир — ${service.priceFrom}. На стоимость влияют площадь, средняя толщина слоя, тип стяжки, армирование, гидроизоляция, тёплый пол, подача смеси и доступ к объекту.`,
+      },
+      {
+        question: "Можно делать стяжку по тёплому полу?",
+        answer:
+          "Да, если контур закреплён, есть демпферная лента и понятна схема труб. Перед заливкой желательно проверить систему давлением и заранее согласовать минимальный слой над трубой.",
+      },
+      {
+        question: `Что подготовить перед выездом бригады в ${city.nameIn}?`,
+        answer: `Нужно освободить пол, убрать мусор, показать коммуникации, согласовать уровень чистового покрытия и обеспечить доступ для подачи смеси. Также учитываем организационные условия: ${groupNote}.`,
+      },
+    ],
+  };
+}
+
 function buildSoftRoofingBlocks({ city, profile, service, seed }) {
   const groupNote = softRoofingGroupNotes[profile.group] ?? softRoofingGroupNotes.mixedTown;
   const order = pickOne(softRoofingBlockOrderVariants, `${seed}:soft-order`);
@@ -661,6 +1027,134 @@ function buildSoftRoofingLocalContent({ city, profile, service, seed }) {
         question: "Что проверяете после работ?",
         answer:
           "Проверяем примыкания, проходки вокруг труб, водоотвод и участки старых протечек. После сдачи передаём акт и рекомендации по эксплуатации покрытия.",
+      },
+    ],
+  };
+}
+
+function turnkeyRepairComplexNote(city, profile, complexes, seed) {
+  const groupNote = turnkeyRepairGroupNotes[profile.group] ?? turnkeyRepairGroupNotes.mixedTown;
+
+  if (complexes.length === 0) {
+    return pickOne(
+      [
+        `Если объект не привязан к конкретному ЖК, на осмотре в ${city.nameIn} уточняем подъезд, разгрузку, место под материалы и ограничения по шумным работам.`,
+        `Для отдельного дома, офиса или помещения в ${city.nameIn} заранее смотрим доступ к объекту, точки подключения, складирование материалов и порядок вывоза мусора.`,
+        `По объектам без привязки к жилому комплексу в ${city.nameIn} важны не только работы, но и организация: ${groupNote}.`,
+      ],
+      `${seed}:turnkey-no-complexes`,
+    );
+  }
+
+  const sample = complexes.slice(0, 4);
+
+  return pickOne(
+    [
+      `Если объект находится в одном из комплексов: ${sentenceList(sample)}, заранее проверяем регламент дома, пропуск, лифт, разгрузку и время шумных работ.`,
+      `Для квартир в комплексах ${sentenceList(sample)} отдельно учитываем организацию: защиту общих зон, подъём материалов, вынос мусора и согласованный график.`,
+      `В ${city.nameIn} часто встречаются объекты в комплексах ${sentenceList(sample)}. До старта уточняем правила дома, чтобы бригада не теряла день на пропуска, лифт и разгрузку.`,
+    ],
+    `${seed}:turnkey-complexes`,
+  );
+}
+
+function buildTurnkeyRepairBlocks({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = turnkeyRepairGroupNotes[profile.group] ?? turnkeyRepairGroupNotes.mixedTown;
+  const locationNote = turnkeyRepairComplexNote(city, profile, complexes, seed);
+  const workZones = pick(turnkeyRepairWorkZones, `${seed}:turnkey-work-zones`, 4);
+  const priority = pickOne(vocabulary.priorities, `${seed}:turnkey-priority`);
+  const risk = pickOne(vocabulary.risks, `${seed}:turnkey-risk`);
+  const order = pickOne(turnkeyRepairBlockOrderVariants, `${seed}:turnkey-order`);
+  const blockFactories = {
+    inspection: () => ({
+      title: pickOne(
+        ["Что смотрим на первом осмотре", "С чего начинаем расчет", "Что важно увидеть на объекте"],
+        `${seed}:turnkey-inspection-title`,
+      ),
+      paragraphs: [
+        `Перед сметой по ремонту под ключ в ${city.nameIn} смотрим планировку, площадь, состояние стен, пола, потолков, санузлов, электрики и объём демонтажа.`,
+        `${locationNote} Отдельно проверяем фактор, который часто влияет на сроки: ${priority}.`,
+      ],
+    }),
+    estimate: () => ({
+      title: pickOne(
+        ["Как собираем смету", "Что входит в расчет", "Из чего складывается цена"],
+        `${seed}:turnkey-estimate-title`,
+      ),
+      paragraphs: [
+        `Базовый ориентир по работам — ${service.priceFrom}. Итоговая смета зависит от состояния объекта, инженерии, площади, уровня чистовой отделки и того, какие материалы нужно включить в закупку.`,
+        "В смете разделяем демонтаж, черновые работы, инженерию, чистовую отделку и дополнительные позиции. Так видно, какой этап обязателен, а где можно выбрать более простой или более дорогой вариант.",
+      ],
+    }),
+    engineering: () => ({
+      title: pickOne(
+        ["Почему инженерия идет до отделки", "Что проверяем по инженерии", "Где чаще появляются допработы"],
+        `${seed}:turnkey-engineering-title`,
+      ),
+      paragraphs: [
+        "До штукатурки, стяжки и плитки нужно понять состояние электрики, сантехники, канализации, вентиляции и мокрых зон. Если эти работы не учесть сразу, чистовую отделку потом приходится вскрывать.",
+        `Для объекта в ${city.nameIn} заранее проговариваем риск: ${risk}. Спорные места фиксируем до старта, чтобы не переносить решения на середину ремонта.`,
+      ],
+    }),
+    materials: () => ({
+      title: pickOne(
+        ["Как работаем с материалами", "Что согласуем до закупки", "Материалы без лишних замен"],
+        `${seed}:turnkey-materials-title`,
+      ),
+      paragraphs: [
+        `До закупки согласуем основные зоны работ: ${sentenceList(workZones)}. По каждой позиции понятно, что покупает заказчик, что привозит бригада и какие материалы должны быть на объекте к конкретному этапу.`,
+        "Если материалы подбираются постепенно, сначала закрываем черновые решения: смеси, грунтовки, гидроизоляцию, кабель, трубы и закладные. Чистовую отделку можно согласовать отдельным этапом, когда уже понятны размеры и раскладка.",
+      ],
+    }),
+    stages: () => ({
+      title: pickOne(
+        ["Как сдаем работы по этапам", "Как держим порядок ремонта", "Что проверяем перед сдачей"],
+        `${seed}:turnkey-stages-title`,
+      ),
+      paragraphs: [
+        "Ремонт удобнее принимать по этапам: демонтаж, черновые работы, инженерия, подготовка под чистовую отделку, финишные покрытия и уборка. Скрытые работы лучше проверить до того, как они будут закрыты.",
+        `В ${city.nameIn} также учитываем организацию: ${groupNote}. После завершения передаем ${service.documents}, список выполненных этапов и рекомендации по эксплуатации отделки.`,
+      ],
+    }),
+  };
+
+  return order.map(key => blockFactories[key]());
+}
+
+function buildTurnkeyRepairLocalContent({ city, profile, service, vocabulary, complexes, seed }) {
+  const groupNote = turnkeyRepairGroupNotes[profile.group] ?? turnkeyRepairGroupNotes.mixedTown;
+
+  return {
+    title: `Ремонт под ключ в ${city.nameIn}: что уточняем до сметы`,
+    subtitle: "Коротко об объекте, инженерии, материалах, этапах и сдаче работ.",
+    lead: [
+      `Ремонт под ключ в ${city.nameIn} считаем после осмотра объекта: нужно увидеть состояние помещения, инженерные вводы, объём демонтажа и желаемый уровень отделки. Ориентир — ${service.priceFrom}, точная сумма зависит от состава работ.`,
+      "Сразу разделяем черновые, инженерные и чистовые этапы. Так проще понять, где обязательная работа, а где выбор по материалам, срокам или уровню отделки.",
+    ],
+    blocks: buildTurnkeyRepairBlocks({ city, profile, service, vocabulary, complexes, seed }),
+    faqDescription: `Ответили на частые вопросы по ремонту под ключ в ${city.nameIn}: осмотр, смета, инженерия, материалы, сроки и сдача работ.`,
+    faq: [
+      {
+        question: `Вы делаете замер перед ремонтом под ключ в ${city.nameIn}?`,
+        answer: `Да, перед расчетом смотрим объект в ${city.nameIn}: планировку, площадь, состояние стен, пола, потолков, санузлов, электрики и объём демонтажа. После осмотра готовим смету по этапам.`,
+      },
+      {
+        question: "Чем косметический ремонт отличается от капитального?",
+        answer:
+          "Косметический ремонт обычно не затрагивает сложную инженерию и глубокую переделку оснований. Капитальный включает демонтаж, выравнивание, электрику, сантехнику, стяжку, штукатурку и полный цикл подготовки под чистовую отделку.",
+      },
+      {
+        question: `От чего зависит цена ремонта под ключ в ${city.nameIn}?`,
+        answer: `На цену влияют площадь, состояние объекта, объём демонтажа, инженерия, уровень материалов, плиточные работы, сложность чистовой отделки и сроки. Базовый ориентир — ${service.priceFrom}, точную смету фиксируем после осмотра.`,
+      },
+      {
+        question: "Можно ли закупать материалы поэтапно?",
+        answer:
+          "Да, это нормальный вариант. Сначала закрываем черновые материалы и инженерию, затем согласуем чистовую отделку: плитку, краску, напольные покрытия, двери, плинтусы и видимые элементы.",
+      },
+      {
+        question: `Можно ли жить или работать на объекте во время ремонта в ${city.nameIn}?`,
+        answer: `Иногда можно, если ремонт делится на зоны и нет полного демонтажа. Но заранее нужно решить вопрос доступа, пыли, воды, электричества и графика. Для таких объектов отдельно учитываем: ${groupNote}.`,
       },
     ],
   };
@@ -778,6 +1272,39 @@ export function buildLocalServiceContent({ city, serviceSlug, complexes = [] }) 
   }
 
   const seed = `${city.slug}:${serviceSlug}`;
+
+  if (serviceSlug === "plastering") {
+    return buildPlasteringLocalContent({
+      city,
+      profile,
+      service,
+      vocabulary,
+      complexes,
+      seed,
+    });
+  }
+
+  if (serviceSlug === "floor-screed") {
+    return buildFloorScreedLocalContent({
+      city,
+      profile,
+      service,
+      vocabulary,
+      complexes,
+      seed,
+    });
+  }
+
+  if (serviceSlug === "turnkey-repair") {
+    return buildTurnkeyRepairLocalContent({
+      city,
+      profile,
+      service,
+      vocabulary,
+      complexes,
+      seed,
+    });
+  }
 
   if (serviceSlug === "soft-roofing") {
     return buildSoftRoofingLocalContent({
