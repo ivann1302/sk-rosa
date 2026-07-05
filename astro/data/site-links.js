@@ -70,6 +70,30 @@ const cityServiceSlugs = [
   "biozashchita",
 ];
 
+const fireProtectionServiceSlugs = [
+  "fire-protection",
+  "kompleksnaya-ognezashchita",
+  "ognezashchita-derevyannyh-konstruktsiy",
+  "ognezashchita-metallokonstruktsiy",
+  "ognezashchita-vozduhovodov",
+  "biozashchita",
+];
+
+const popularCitySlugs = [
+  "mytishchi",
+  "khimki",
+  "krasnogorsk",
+  "dolgoprudny",
+  "domodedovo",
+  "vidnoe",
+  "lyubertsy",
+  "balashikha",
+  "pushkino",
+  "ramenskoe",
+  "odintsovo",
+  "korolev",
+];
+
 const relatedServicesBySlug = {
   "turnkey-repair": ["plastering", "floor-screed", "airless-painting"],
   plastering: ["floor-screed", "airless-painting", "turnkey-repair"],
@@ -189,9 +213,27 @@ const articleClusterBySlug = {
 };
 
 const cityByName = new Map(citiesData.cities.map(city => [city.name, city]));
+const cityBySlug = new Map(citiesData.cities.map(city => [city.slug, city]));
 
 function cityServiceHref(serviceSlug, city) {
   return city?.slug ? `/${serviceSlug}-${city.slug}` : serviceHubLinks[serviceSlug]?.href;
+}
+
+function popularCityServiceLinks(serviceSlug) {
+  const serviceLink = serviceHubLinks[serviceSlug];
+
+  if (!serviceLink || !cityServiceSlugs.includes(serviceSlug)) {
+    return [];
+  }
+
+  return popularCitySlugs
+    .map(slug => cityBySlug.get(slug))
+    .filter(Boolean)
+    .map(city => ({
+      href: cityServiceHref(serviceSlug, city),
+      label: `${serviceLink.label} в ${city.nameIn}`,
+      description: `Цены, условия и заявка для города ${city.name}.`,
+    }));
 }
 
 function compactGroups(groups) {
@@ -210,6 +252,10 @@ export function getServiceInterlinkGroups(serviceSlug) {
       links: (relatedServicesBySlug[serviceSlug] ?? []).map(slug => serviceHubLinks[slug]),
     },
     {
+      title: "Популярные города",
+      links: popularCityServiceLinks(serviceSlug),
+    },
+    {
       title: "География работ",
       links: [
         {
@@ -218,6 +264,17 @@ export function getServiceInterlinkGroups(serviceSlug) {
           description: "Выберите город и посмотрите страницы услуг по Москве и Подмосковью.",
         },
       ],
+    },
+  ]);
+}
+
+export function getFireProtectionInterlinkGroups(currentServiceSlug) {
+  return compactGroups([
+    {
+      title: "Разделы огнезащиты",
+      links: fireProtectionServiceSlugs
+        .filter(slug => slug !== currentServiceSlug)
+        .map(slug => serviceHubLinks[slug]),
     },
   ]);
 }

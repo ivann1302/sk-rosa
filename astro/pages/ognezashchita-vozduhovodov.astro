@@ -3,6 +3,7 @@ import BaseLayout from "../components/BaseLayout.astro";
 import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
+import InternalLinksSection from "../components/service/InternalLinksSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
 import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
@@ -13,6 +14,7 @@ import {
   ognezashchitaVozduhovodovPage,
 } from "../data/ognezashchita-vozduhovodov.js";
 import { getServiceQuiz } from "../data/service-quizzes.js";
+import { getFireProtectionInterlinkGroups } from "../data/site-links.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
 
 const { seo } = ognezashchitaVozduhovodovPage;
@@ -107,6 +109,11 @@ const faqJsonLd = {
       moreLabel="Посмотреть другие статьи"
     />
   </main>
+  <InternalLinksSection
+    slot="before-footer"
+    title="Связанные разделы"
+    groups={getFireProtectionInterlinkGroups(ognezashchitaVozduhovodovPage.service.slug)}
+  />
   <Fragment slot="runtime">
     <script src="/scripts/core/constants.js" defer></script>
     <script src="/scripts/features/contact/init-contacts.js" defer></script>
