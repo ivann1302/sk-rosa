@@ -1,9 +1,14 @@
 import existingSitemapXml from "../../src/sitemap.xml?raw";
+import { airlessPaintingApartmentsPage } from "../data/airless-painting-apartments.js";
+import { airlessPaintingCeilingPage } from "../data/airless-painting-ceiling.js";
+import { airlessPaintingFacadePage } from "../data/airless-painting-facade.js";
 import { airlessPaintingPage } from "../data/airless-painting.js";
+import { airlessPaintingWallsPage } from "../data/airless-painting-walls.js";
 import { biozashchitaPage } from "../data/biozashchita.js";
 import { blogArticlePages, blogPage } from "../data/blog.js";
 import { fireProtectionPage } from "../data/fire-protection.js";
 import { floorScreedPage } from "../data/floor-screed.js";
+import { industrialAirlessPaintingPage } from "../data/industrial-airless-painting.js";
 import { kompleksnayaOgnezashchitaPage } from "../data/kompleksnaya-ognezashchita.js";
 import { ognezashchitaDerevyannyhKonstruktsiyPage } from "../data/ognezashchita-derevyannyh-konstruktsiy.js";
 import { ognezashchitaMetallokonstruktsiyPage } from "../data/ognezashchita-metallokonstruktsiy.js";
@@ -18,6 +23,11 @@ const staticPages = [
   turnkeyRepairPage.seo,
   plasteringPage.seo,
   airlessPaintingPage.seo,
+  airlessPaintingWallsPage.seo,
+  airlessPaintingCeilingPage.seo,
+  airlessPaintingApartmentsPage.seo,
+  airlessPaintingFacadePage.seo,
+  industrialAirlessPaintingPage.seo,
   floorScreedPage.seo,
   softRoofingPage.seo,
   biozashchitaPage.seo,

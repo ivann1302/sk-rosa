@@ -9,6 +9,7 @@ const websiteId = "https://sk-rosa.ru/#website";
 const skippedHtmlFiles = new Set([
   "404.html",
   "yandex_35e96ef6b3300db1.html",
+  "yandex_409f3d25273b124e.html",
   "yandex_a93fef6adebc72d6.html",
 ]);
 

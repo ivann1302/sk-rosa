@@ -21,6 +21,7 @@ const hasItems = items.length > 0;
               <tbody>
                 {items.map(item => {
                   const isFree = item.price.toLowerCase().includes("бесплатно");
+                  const hasNumericPrice = /\d/.test(item.price);
 
                   return (
                     <tr
@@ -32,8 +33,10 @@ const hasItems = items.length > 0;
                       <td>
                         {isFree ? (
                           <span class="pricing-table__free">{item.price}</span>
-                        ) : (
+                        ) : hasNumericPrice ? (
                           `${item.price} руб`
+                        ) : (
+                          item.price
                         )}
                       </td>
                       <td>{item.unit}</td>

@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+import ContactRequest from "../../components/service/ContactRequest.astro";
+import FaqSection from "../../components/service/FaqSection.astro";
+import PricingSection from "../../components/service/PricingSection.astro";
+import ServiceHero from "../../components/service/ServiceHero.astro";
+import ServiceRuntime from "../../components/service/ServiceRuntime.astro";
+import ServiceTextBlock from "../../components/service/ServiceTextBlock.astro";
+import "../../styles/pages/airless-commercial.scss";
+import {
+  airlessPaintingFacadeJsonLd,
+  airlessPaintingFacadePage,
+} from "../../data/airless-painting-facade.js";
+import { breadcrumbJsonLd } from "../../lib/seo.js";
+
+const { seo } = airlessPaintingFacadePage;
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: airlessPaintingFacadePage.faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const fitIconPaths = {
+  home: [
+    "M4 11l8-7 8 7",
+    "M6 10v10h12V10",
+    "M10 20v-6h4v6",
+    "M9 9h6",
+  ],
+  building: [
+    "M6 20V5h12v15",
+    "M9 8h2",
+    "M13 8h2",
+    "M9 12h2",
+    "M13 12h2",
+    "M9 16h2",
+    "M13 16h2",
+  ],
+  surface: [
+    "M5 5h14v14H5z",
+    "M8 9h8",
+    "M8 13h8",
+    "M8 17h5",
+  ],
+  coverage: [
+    "M4 7h16",
+    "M4 12h16",
+    "M4 17h16",
+    "M7 4v16",
+    "M17 4v16",
+  ],
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  bodyClass="astro-service-page airless-walls-page"
+  metrikaId={109562461}
+  metrikaOptions={{
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
+    accurateTrackBounce: true,
+    trackLinks: true,
+  }}
+  mainEntityId={`${seo.canonical}#service`}
+  jsonLd={[
+    airlessPaintingFacadeJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Безвоздушная покраска", url: "https://sk-rosa.ru/airless-painting" },
+      { name: "Покраска фасада", url: seo.canonical },
+    ]),
+    faqJsonLd,
+  ]}
+>
+  <main>
+    <ServiceHero {...airlessPaintingFacadePage.hero} />
+
+    <ServiceTextBlock
+      title={airlessPaintingFacadePage.intro.title}
+      subtitle={airlessPaintingFacadePage.intro.subtitle}
+    >
+      <p><strong>{airlessPaintingFacadePage.directAnswer}</strong></p>
+      {airlessPaintingFacadePage.intro.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </ServiceTextBlock>
+
+    <section class="airless-walls-fit">
+      <div class="airless-walls-fit__container">
+        <div class="airless-walls-fit__header">
+          <h2>Какие фасады красим</h2>
+          <p>
+            Берём фасады, где можно подготовить основание, обеспечить доступ и спокойно выдержать
+            условия нанесения и высыхания краски.
+          </p>
+        </div>
+        <div class="airless-walls-fit__grid">
+          {
+            airlessPaintingFacadePage.fit.map(item => (
+              <div class="airless-walls-fit__item">
+                {typeof item === "string" ? (
+                  item
+                ) : (
+                  <>
+                    <span class="airless-walls-fit__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        {fitIconPaths[item.icon].map(path => (
+                          <path d={path}></path>
+                        ))}
+                      </svg>
+                    </span>
+                    <span>{item.text}</span>
+                  </>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="airless-walls-detail">
+      <div class="airless-walls-detail__container">
+        <div class="airless-walls-detail__column">
+          <h2>Что проверяем заранее</h2>
+          <ul>
+            {airlessPaintingFacadePage.notFit.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="airless-walls-detail__column">
+          <h2>Что влияет на цену</h2>
+          <ul>
+            {airlessPaintingFacadePage.estimateFactors.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="airless-walls-process">
+      <div class="airless-walls-process__container">
+        <h2>Как работаем с фасадом</h2>
+        <div class="airless-walls-process__list">
+          {
+            airlessPaintingFacadePage.process.map((item, index) => (
+              <article class="airless-walls-process__item">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <PricingSection
+      title="Цена покраски фасада"
+      containerId="pricing-table-airless-painting-facade"
+      items={airlessPaintingFacadePage.pricing}
+    />
+
+    <section class="airless-walls-note">
+      <div class="airless-walls-note__container">
+        <p>{airlessPaintingFacadePage.priceNote}</p>
+      </div>
+    </section>
+
+    <ContactRequest {...airlessPaintingFacadePage.contact} />
+
+    <FaqSection
+      title="Вопросы перед стартом"
+      description={airlessPaintingFacadePage.faqDescription}
+      items={airlessPaintingFacadePage.faq}
+    />
+  </main>
+
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={null}
+    callBannerComments={airlessPaintingFacadePage.runtime.callBannerComments}
+    callBannerSource={airlessPaintingFacadePage.runtime.callBannerSource}
+  />
+</BaseLayout>

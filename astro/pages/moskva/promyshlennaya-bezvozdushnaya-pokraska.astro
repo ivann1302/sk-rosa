@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../../components/BaseLayout.astro";
+import ContactRequest from "../../components/service/ContactRequest.astro";
+import FaqSection from "../../components/service/FaqSection.astro";
+import PricingSection from "../../components/service/PricingSection.astro";
+import ServiceHero from "../../components/service/ServiceHero.astro";
+import ServiceRuntime from "../../components/service/ServiceRuntime.astro";
+import ServiceTextBlock from "../../components/service/ServiceTextBlock.astro";
+import "../../styles/pages/airless-commercial.scss";
+import {
+  industrialAirlessPaintingJsonLd,
+  industrialAirlessPaintingPage,
+} from "../../data/industrial-airless-painting.js";
+import { breadcrumbJsonLd } from "../../lib/seo.js";
+
+const { seo } = industrialAirlessPaintingPage;
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: industrialAirlessPaintingPage.faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const fitIconPaths = {
+  warehouse: [
+    "M4 20V9l8-5 8 5v11",
+    "M7 20v-7h10v7",
+    "M9 16h6",
+    "M9 13h6",
+  ],
+  factory: [
+    "M4 20V9l5 3V9l5 3V8l6 4v8",
+    "M7 20v-4h3v4",
+    "M14 20v-4h3v4",
+    "M4 9V5h3v6",
+  ],
+  store: [
+    "M5 10h14l-1-5H6l-1 5Z",
+    "M6 10v10h12V10",
+    "M9 20v-6h6v6",
+    "M5 10a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0",
+  ],
+  area: [
+    "M4 6h16",
+    "M4 12h16",
+    "M4 18h16",
+    "M7 4v16",
+    "M17 4v16",
+  ],
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={seo.ogTitle}
+  ogDescription={seo.ogDescription}
+  ogImageAlt={seo.ogImageAlt}
+  ogSiteName="ROSA - Ремонт под ключ"
+  bodyClass="astro-service-page airless-walls-page"
+  metrikaId={109562461}
+  metrikaOptions={{
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
+    accurateTrackBounce: true,
+    trackLinks: true,
+  }}
+  mainEntityId={`${seo.canonical}#service`}
+  jsonLd={[
+    industrialAirlessPaintingJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Безвоздушная покраска", url: "https://sk-rosa.ru/airless-painting" },
+      { name: "Промышленная покраска", url: seo.canonical },
+    ]),
+    faqJsonLd,
+  ]}
+>
+  <main>
+    <ServiceHero {...industrialAirlessPaintingPage.hero} />
+
+    <ServiceTextBlock
+      title={industrialAirlessPaintingPage.intro.title}
+      subtitle={industrialAirlessPaintingPage.intro.subtitle}
+    >
+      <p><strong>{industrialAirlessPaintingPage.directAnswer}</strong></p>
+      {industrialAirlessPaintingPage.intro.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </ServiceTextBlock>
+
+    <section class="airless-walls-fit">
+      <div class="airless-walls-fit__container">
+        <div class="airless-walls-fit__header">
+          <h2>Какие объекты красим</h2>
+          <p>
+            Промышленная покраска имеет смысл на больших объектах, где важны скорость, график,
+            организация зон и понятная сдача работ.
+          </p>
+        </div>
+        <div class="airless-walls-fit__grid">
+          {
+            industrialAirlessPaintingPage.fit.map(item => (
+              <div class="airless-walls-fit__item">
+                {typeof item === "string" ? (
+                  item
+                ) : (
+                  <>
+                    <span class="airless-walls-fit__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        {fitIconPaths[item.icon].map(path => (
+                          <path d={path}></path>
+                        ))}
+                      </svg>
+                    </span>
+                    <span>{item.text}</span>
+                  </>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="airless-walls-detail">
+      <div class="airless-walls-detail__container">
+        <div class="airless-walls-detail__column">
+          <h2>Когда нужно сначала подготовиться</h2>
+          <ul>
+            {industrialAirlessPaintingPage.notFit.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="airless-walls-detail__column">
+          <h2>Что влияет на смету</h2>
+          <ul>
+            {industrialAirlessPaintingPage.estimateFactors.map(item => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="airless-walls-process">
+      <div class="airless-walls-process__container">
+        <h2>Как работаем на объекте</h2>
+        <div class="airless-walls-process__list">
+          {
+            industrialAirlessPaintingPage.process.map((item, index) => (
+              <article class="airless-walls-process__item">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <PricingSection
+      title="Ориентиры по цене"
+      containerId="pricing-table-industrial-airless-painting"
+      items={industrialAirlessPaintingPage.pricing}
+    />
+
+    <section class="airless-walls-note">
+      <div class="airless-walls-note__container">
+        <p>{industrialAirlessPaintingPage.priceNote}</p>
+      </div>
+    </section>
+
+    <ContactRequest {...industrialAirlessPaintingPage.contact} />
+
+    <FaqSection
+      title="Вопросы перед стартом"
+      description={industrialAirlessPaintingPage.faqDescription}
+      items={industrialAirlessPaintingPage.faq}
+    />
+  </main>
+
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={null}
+    callBannerComments={industrialAirlessPaintingPage.runtime.callBannerComments}
+    callBannerSource={industrialAirlessPaintingPage.runtime.callBannerSource}
+  />
+</BaseLayout>

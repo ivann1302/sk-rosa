@@ -147,8 +147,8 @@ const articleLinksByCluster = {
     { href: "/priemka-shtukaturnyh-rabot", label: "Приемка штукатурных работ" },
   ],
   "airless-painting": [
-    { href: "/preimushestva-bezvozdushnoj-pokraski", label: "Преимущества airless-покраски" },
-    { href: "/vybor-kraski-airless-painting", label: "Как выбрать краску для airless" },
+    { href: "/preimushestva-bezvozdushnoj-pokraski", label: "Преимущества безвоздушной покраски" },
+    { href: "/vybor-kraski-airless-painting", label: "Как выбрать краску для безвоздушной покраски" },
     { href: "/pokraska-sten-bez-razvodov", label: "Покраска стен без разводов" },
     { href: "/pokraska-sten-dvumya-cvetami", label: "Покраска стен двумя цветами" },
   ],

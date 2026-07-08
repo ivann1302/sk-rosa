@@ -100,7 +100,7 @@
     margin: 0 auto;
     text-align: center;
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       white-space: nowrap;
     }
 
