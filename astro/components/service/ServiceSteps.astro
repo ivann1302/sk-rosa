@@ -1,12 +1,19 @@
 ---
-const { title, subtitle, steps, cta, centered = false } = Astro.props;
+const { id, title, subtitle, steps, cta, centered = false, mobileSlider = false } = Astro.props;
 const centerSecondRow = steps.length === 4;
 const gridClass = centerSecondRow
   ? "work-stages-service__grid work-stages-service__grid--center-second-row"
   : "work-stages-service__grid";
 ---
 
-<section class:list={["work-stages-service reveal-on-scroll", centered && "work-stages-service--centered"]}>
+<section
+  {id}
+  class:list={[
+    "work-stages-service reveal-on-scroll",
+    centered && "work-stages-service--centered",
+    mobileSlider && "work-stages-service--mobile-slider",
+  ]}
+>
   <div class="work-stages-service__container">
     <div class={gridClass}>
       <div class="work-stages-service__header">
@@ -39,5 +46,37 @@ const gridClass = centerSecondRow
         <a class="work-stages-service__cta-btn" href={cta.href}>{cta.label}</a>
       </div>
     </div>
+    {
+      mobileSlider && (
+        <div class="work-stages-service__mobile">
+          <div class="work-stages-service__mobile-header">
+            <h2 class="work-stages-service__mobile-title">{title}</h2>
+            <p class="work-stages-service__mobile-subtitle">{subtitle}</p>
+            <div class="work-stages-service__swipe-hint" aria-hidden="true">
+              <svg viewBox="0 0 42 18" fill="none">
+                <path d="M4 9h34M32 4l6 5-6 5" />
+              </svg>
+              <span>Листайте</span>
+            </div>
+          </div>
+
+          <div
+            class="work-stages-service__mobile-track"
+            aria-label="Этапы штукатурных работ"
+            tabindex="0"
+          >
+            {steps.map((step, index) => (
+              <article class="work-stages-service__mobile-slide">
+                <span class="work-stages-service__mobile-number">0{index + 1}</span>
+                <span class="work-stages-service__mobile-kicker">Этап {index + 1}</span>
+                <h3 class="work-stages-service__mobile-slide-title">{step.title}</h3>
+                <p class="work-stages-service__mobile-description">{step.description}</p>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      )
+    }
   </div>
 </section>

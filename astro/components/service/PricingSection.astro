@@ -1,5 +1,5 @@
 ---
-const { title, containerId = "pricing-table-container", items = [] } = Astro.props;
+const { title, containerId = "pricing-table-container", items = [], note } = Astro.props;
 const hasItems = items.length > 0;
 ---
 
@@ -49,5 +49,12 @@ const hasItems = items.length > 0;
         )
       }
     </div>
+    {
+      note && (
+        <p class="pricing-section__note">
+          {note.text} <a href={note.href}>{note.label}</a>
+        </p>
+      )
+    }
   </div>
 </section>

@@ -4,6 +4,8 @@ import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import InternalLinksSection from "../components/service/InternalLinksSection.astro";
+import PlasteringHeroBenefits from "../components/service/PlasteringHeroBenefits.astro";
+import PlasteringRatings from "../components/service/PlasteringRatings.astro";
 import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
@@ -44,7 +46,7 @@ const faqJsonLd = {
   ogDescription={seo.ogDescription}
   ogImageAlt={seo.ogImageAlt}
   ogSiteName="ROSA - Ремонт под ключ"
-  bodyClass="astro-service-page"
+  bodyClass="astro-service-page plastering-page"
   metrikaId={109562461}
   metrikaOptions={{
     ssr: true,
@@ -67,7 +69,9 @@ const faqJsonLd = {
   ]}
 >
   <main>
-    <ServiceHero {...plasteringPage.hero} />
+    <ServiceHero {...plasteringPage.hero} badges={[]} mobileCover />
+    <PlasteringHeroBenefits items={plasteringPage.hero.badges} />
+    <PlasteringRatings rating={plasteringPage.hero.rating} />
     <ServiceQuiz
       client:load
       formSource={plasteringPage.priceCalc.quizFormSource}
@@ -81,15 +85,41 @@ const faqJsonLd = {
       cta={{ href: "#plastering-calculator", label: "Рассчитать штукатурку" }}
     />
     <ServiceTextBlock
+      id="plastering-service-details"
       title={plasteringPage.textBlock.title}
       subtitle={plasteringPage.textBlock.subtitle}
+      cta={plasteringPage.textBlock.cta}
     >
-      {plasteringPage.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+      <ul class="service-text-block__check-list">
+        {
+          plasteringPage.textBlock.benefits.map(benefit => (
+            <li>
+              <svg
+                class="service-text-block__check-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="m5 12 4 4 10-10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{benefit}</span>
+            </li>
+          ))
+        }
+      </ul>
     </ServiceTextBlock>
     <ServiceSteps
+      id="plastering-stages"
       title={plasteringPage.stages.title}
       subtitle={plasteringPage.stages.subtitle}
       steps={plasteringPage.stages.items}
+      mobileSlider
       cta={{
         title: "Готовы начать? Давайте обсудим ваш ремонт, оставьте заявку",
         href: "#contact-request",
@@ -106,6 +136,11 @@ const faqJsonLd = {
       title={plasteringPage.service.pricingTitle}
       containerId={plasteringPage.service.pricingContainerId}
       items={plasteringPage.pricingTable}
+      note={{
+        text: "Актуальные цены уточняйте у оператора:",
+        label: "+7 (985) 135-49-91",
+        href: "tel:+79851354991",
+      }}
     />
     <PriceCalcSection data={plasteringPage.priceCalc} showPlasteringEstimate={false} />
     <ReviewsSection reviews={plasteringPage.reviews} />

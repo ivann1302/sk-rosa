@@ -1,0 +1,93 @@
+---
+const reasons = [
+  {
+    icon: "contract",
+    title: "Официальный договор",
+    description: "Фиксируем стоимость и состав работ",
+  },
+  {
+    icon: "team",
+    title: "Собственная бригада",
+    description: "Проверенные мастера в штате",
+  },
+  {
+    icon: "payment",
+    title: "Поэтапная оплата",
+    description: "По факту выполненных работ",
+  },
+  {
+    icon: "shield",
+    title: "Гарантия 3 года",
+    description: "На все выполненные работы",
+  },
+  {
+    icon: "clock",
+    title: "Чёткие сроки",
+    description: "Без затягивания ремонта",
+  },
+];
+---
+
+<section class="turnkey-reasons" aria-labelledby="turnkey-reasons-title">
+  <svg class="turnkey-reasons__symbols" aria-hidden="true">
+    <symbol id="reason-contract" viewBox="0 0 24 24">
+      <path d="M7 3.5h7l4 4V20.5H7z" />
+      <path d="M14 3.5v4h4M10 12h5M10 15.5h3" />
+    </symbol>
+    <symbol id="reason-contract-accent" viewBox="0 0 24 24">
+      <path d="m15.5 18 1.4 1.4 2.8-3" />
+    </symbol>
+    <symbol id="reason-team" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19" />
+    </symbol>
+    <symbol id="reason-team-accent" viewBox="0 0 24 24">
+      <path d="M15 5.5a3 3 0 0 1 0 5.5M16.5 13.5a4.5 4.5 0 0 1 4 4.5v1" />
+    </symbol>
+    <symbol id="reason-payment" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="M3 9h18M7 15h3" />
+    </symbol>
+    <symbol id="reason-payment-accent" viewBox="0 0 24 24">
+      <path d="m15 14.5 1.5 1.5 3-3" />
+    </symbol>
+    <symbol id="reason-shield" viewBox="0 0 24 24">
+      <path d="M12 3 19 6v5c0 4.5-2.8 8.1-7 10-4.2-1.9-7-5.5-7-10V6z" />
+    </symbol>
+    <symbol id="reason-shield-accent" viewBox="0 0 24 24">
+      <path d="m8.5 12 2.2 2.2 4.8-4.8" />
+    </symbol>
+    <symbol id="reason-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8 3.8 6.5 2.5M16 3.8l1.5-1.3" />
+    </symbol>
+    <symbol id="reason-clock-accent" viewBox="0 0 24 24">
+      <path d="M12 7v5l3.5 2" />
+    </symbol>
+  </svg>
+
+  <div class="turnkey-reasons__container">
+    <h2 class="turnkey-reasons__heading" id="turnkey-reasons-title">Почему выбирают нас</h2>
+    <ul class="turnkey-reasons__list">
+      {
+        reasons.map(reason => (
+          <li class="turnkey-reasons__item">
+            <span class="turnkey-reasons__icon" aria-hidden="true">
+              <svg class="turnkey-reasons__glyph turnkey-reasons__glyph--base" viewBox="0 0 24 24">
+                <use href={`#reason-${reason.icon}`} />
+              </svg>
+              <svg
+                class="turnkey-reasons__glyph turnkey-reasons__glyph--accent"
+                viewBox="0 0 24 24"
+              >
+                <use href={`#reason-${reason.icon}-accent`} />
+              </svg>
+            </span>
+            <span class="turnkey-reasons__title">{reason.title}</span>
+            <span class="turnkey-reasons__description">{reason.description}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

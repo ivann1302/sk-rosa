@@ -106,6 +106,148 @@
     color: #555;
   }
 
+  &__controls {
+    display: none;
+  }
+
+  &--slider {
+    .city-local-content__container {
+      max-width: 1320px;
+    }
+
+    .city-local-content__header {
+      max-width: 980px;
+    }
+
+    .city-local-content__title-row {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 12px;
+    }
+
+    .city-local-content__title-icon {
+      display: grid;
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      color: #fff;
+      background: #789487;
+      place-items: center;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentcolor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.7;
+      }
+    }
+
+    .city-local-content__title {
+      margin: 0;
+      font-size: 1.85rem;
+      font-weight: 700;
+    }
+
+    .city-local-content__controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: -4px 0 14px;
+    }
+
+    .city-local-content__control {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid #789487;
+      border-radius: 50%;
+      color: #526b60;
+      background: #fff;
+      cursor: pointer;
+      place-items: center;
+      transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        opacity 180ms ease;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentcolor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+
+      &:focus-visible {
+        color: #fff;
+        background: #789487;
+        outline: 2px solid #526b60;
+        outline-offset: 3px;
+      }
+
+      &:hover:not(:disabled) {
+        color: #fff;
+        background: #789487;
+      }
+    }
+
+    .city-local-content__grid {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 18px;
+      scroll-snap-type: inline mandatory;
+      scrollbar-width: none;
+      overscroll-behavior-inline: contain;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .city-local-content__block {
+      flex: 0 0 calc((100% - 36px) / 3);
+      min-width: 0;
+      border: 1px solid rgb(255 255 255 / 16%);
+      border-radius: 14px;
+      background: #789487;
+      box-shadow: 0 10px 24px rgb(44 69 58 / 12%);
+      scroll-snap-align: start;
+
+      &:nth-child(5) {
+        grid-column: auto;
+      }
+    }
+
+    .city-local-content__block-title {
+      color: #fff;
+    }
+
+    .city-local-content__block-text,
+    .city-local-content__note,
+    .city-local-content__list li {
+      color: rgb(255 255 255 / 90%);
+    }
+
+    .city-local-content__list li::before {
+      background: #fff;
+    }
+  }
+
   @media (width <= 768px) {
     padding: 40px 0;
 
@@ -130,6 +272,55 @@
 
       &:nth-child(5) {
         grid-column: auto;
+      }
+    }
+
+    &--slider {
+      .city-local-content__container {
+        padding: 0;
+      }
+
+      .city-local-content__header,
+      .city-local-content__lead {
+        padding-right: var(--container-padding-x);
+        padding-left: var(--container-padding-x);
+      }
+
+      .city-local-content__title-row {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .city-local-content__title-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+
+        svg {
+          width: 21px;
+          height: 21px;
+        }
+      }
+
+      .city-local-content__title {
+        font-size: 1.45rem;
+      }
+
+      .city-local-content__controls {
+        display: none;
+      }
+
+      .city-local-content__grid {
+        gap: 14px;
+        padding: 4px var(--container-padding-x) 18px;
+        scroll-padding-inline: var(--container-padding-x);
+        touch-action: pan-x pan-y;
+      }
+
+      .city-local-content__block {
+        flex: 0 0 min(82vw, 320px);
+        padding: 22px 20px;
       }
     }
   }

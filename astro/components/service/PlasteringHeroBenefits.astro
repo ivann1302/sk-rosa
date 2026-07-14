@@ -1,0 +1,51 @@
+---
+const { items = [] } = Astro.props;
+const benefits = [
+  { label: items[0] ?? "от 600 ₽/м²", icon: "price" },
+  { label: items[1] ?? "гарантия от 2 лет", icon: "shield" },
+  { label: items[2] ?? "договор и акт", icon: "contract" },
+];
+---
+
+<section class="plastering-hero-benefits" aria-label="Преимущества штукатурных работ">
+  <ul class="plastering-hero-benefits__list">
+    {
+      benefits.map(benefit => (
+        <li class="plastering-hero-benefits__item">
+          <span class="plastering-hero-benefits__icon" aria-hidden="true">
+            {benefit.icon === "price" && (
+              <svg viewBox="0 0 32 32">
+                <circle class="plastering-hero-benefits__icon-base" cx="16" cy="16" r="11.5" />
+                <path
+                  class="plastering-hero-benefits__icon-base"
+                  d="M12.5 23V9.5h5a3.8 3.8 0 0 1 0 7.6h-5"
+                />
+                <path class="plastering-hero-benefits__icon-accent" d="M10.5 19h9.5M10.5 21.5h7" />
+              </svg>
+            )}
+            {benefit.icon === "shield" && (
+              <svg viewBox="0 0 32 32">
+                <path
+                  class="plastering-hero-benefits__icon-base"
+                  d="M16 4.5 25 8v7c0 5.7-3.5 9.8-9 12.5C10.5 24.8 7 20.7 7 15V8z"
+                />
+                <path class="plastering-hero-benefits__icon-accent" d="m11.5 15.5 3 3 6-6.5" />
+              </svg>
+            )}
+            {benefit.icon === "contract" && (
+              <svg viewBox="0 0 32 32">
+                <path
+                  class="plastering-hero-benefits__icon-base"
+                  d="M8 4.5h11l5 5V27a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 8 27z"
+                />
+                <path class="plastering-hero-benefits__icon-base" d="M19 4.5v5h5M12 14h8M12 18h5" />
+                <path class="plastering-hero-benefits__icon-accent" d="M12 24c2-2 3.5 1 5.2-1s2.4.5 4.3-.8" />
+              </svg>
+            )}
+          </span>
+          <span class="plastering-hero-benefits__label">{benefit.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

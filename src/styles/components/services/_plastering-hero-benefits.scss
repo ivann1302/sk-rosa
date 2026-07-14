@@ -1,0 +1,257 @@
+.plastering-hero-benefits {
+  position: relative;
+  width: min(calc(100% - 48px), 1200px);
+  margin: 18px auto 0;
+  color: #fff;
+  background: #789487;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(39 58 50 / 10%);
+  overflow: hidden;
+
+  &__list {
+    display: grid;
+    width: min(100%, 1200px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 17px 24px;
+
+    &:not(:last-child)::after {
+      position: absolute;
+      top: 18px;
+      right: 0;
+      bottom: 18px;
+      width: 1px;
+      background: rgb(255 255 255 / 20%);
+      content: "";
+    }
+  }
+
+  &__icon {
+    display: grid;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 13px;
+    background: rgb(255 255 255 / 7%);
+    place-items: center;
+
+    svg {
+      width: 34px;
+      height: 34px;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__icon-base {
+    stroke: rgb(255 255 255 / 94%);
+    stroke-width: 1.45;
+  }
+
+  &__icon-accent {
+    stroke: #ead186;
+    stroke-width: 1.65;
+  }
+
+  &__label {
+    color: rgb(255 255 255 / 94%);
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: lowercase;
+  }
+
+  @media (width <= 768px) {
+    left: 50%;
+    width: 100vw;
+    margin: 0;
+    transform: translateX(-50%);
+    border-radius: 0;
+    box-shadow: none;
+
+    &__list {
+      width: 100%;
+      grid-template-columns: 1fr;
+    }
+
+    &__item {
+      justify-content: flex-start;
+      gap: 13px;
+      padding: 13px 20px;
+
+      &:not(:last-child)::after {
+        top: auto;
+        right: 20px;
+        bottom: 0;
+        left: 20px;
+        width: auto;
+        height: 1px;
+      }
+    }
+
+    &__icon {
+      flex-basis: 44px;
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &__label {
+      font-size: 1.02rem;
+    }
+  }
+}
+
+.plastering-page .about-service {
+  margin-bottom: 0;
+}
+
+.plastering-ratings {
+  width: min(calc(100% - 48px), 1200px);
+  padding: 0;
+  margin: 12px auto 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  &__badge {
+    display: flex;
+    min-width: 0;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 14px;
+    color: #28322d;
+    background: rgb(255 255 255 / 82%);
+    border: 1px solid rgb(68 89 80 / 10%);
+    border-radius: 9px;
+  }
+
+  &__icon,
+  &__yandex-mark {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__icon {
+    object-fit: contain;
+  }
+
+  &__badge--avito &__icon {
+    border-radius: 0;
+  }
+
+  &__yandex-mark {
+    display: grid;
+    color: #fc3f1d;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+    place-items: center;
+  }
+
+  &__brand {
+    overflow: hidden;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__brand--mobile {
+    display: none;
+  }
+
+  &__value {
+    padding-left: 7px;
+    font-size: 0.95rem;
+    line-height: 1;
+    border-left: 1px solid rgb(68 89 80 / 18%);
+  }
+
+  &__star {
+    margin-left: -4px;
+    color: #d9ac42;
+    font-size: 0.82rem;
+    line-height: 1;
+  }
+
+  @media (width <= 768px) {
+    display: none;
+    width: calc(100% - 24px);
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 10px;
+
+    &__row {
+      gap: 5px;
+    }
+
+    &__badge {
+      min-height: 42px;
+      gap: 3px;
+      padding: 6px 4px;
+      border-radius: 8px;
+    }
+
+    &__icon,
+    &__yandex-mark {
+      flex-basis: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &__yandex-mark {
+      font-size: 0.9rem;
+    }
+
+    &__brand {
+      font-size: 0.65rem;
+    }
+
+    &__brand--desktop {
+      display: none;
+    }
+
+    &__brand--mobile {
+      display: inline;
+    }
+
+    &__value {
+      padding-left: 3px;
+      font-size: 0.73rem;
+    }
+
+    &__star {
+      margin-left: -2px;
+      font-size: 0.66rem;
+    }
+  }
+}

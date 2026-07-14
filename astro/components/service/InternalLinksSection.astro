@@ -1,37 +1,79 @@
 ---
-const { title = "Полезные переходы", subtitle, groups = [] } = Astro.props;
+const { title = "Полезные переходы", subtitle, groups = [], collapsed = true } = Astro.props;
 const visibleGroups = groups.filter(group => group.links?.length);
 ---
 
 {
   visibleGroups.length > 0 && (
-    <section class="internal-links reveal-on-scroll" aria-label={title}>
+    <section
+      class:list={["internal-links", "reveal-on-scroll", { "internal-links--collapsible": collapsed }]}
+      aria-label={title}
+    >
       <div class="internal-links__container">
-        <div class="internal-links__header">
-          <h2 class="internal-links__title">{title}</h2>
-          {subtitle && <p class="internal-links__subtitle">{subtitle}</p>}
-        </div>
-        <div class="internal-links__grid">
-          {visibleGroups.map(group => (
-            <article class="internal-links__group">
-              <h3 class="internal-links__group-title">{group.title}</h3>
-              <ul class="internal-links__list">
-                {group.links.map(link => (
-                  <li class="internal-links__item">
-                    <a class="internal-links__link" href={link.href}>
-                      <span class="internal-links__link-label">{link.label}</span>
-                      {link.description && (
-                        <span class="internal-links__link-description">{link.description}</span>
-                      )}
-                    </a>
-                  </li>
+        {
+          collapsed ? (
+            <details class="internal-links__details">
+              <summary class="internal-links__summary">
+                <span class="internal-links__title">{title}</span>
+                <svg
+                  class="internal-links__chevron"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="m6 8 4 4 4-4" />
+                </svg>
+              </summary>
+              {subtitle && <p class="internal-links__subtitle">{subtitle}</p>}
+              <div class="internal-links__grid">
+                {visibleGroups.map(group => (
+                  <article class="internal-links__group">
+                    <h3 class="internal-links__group-title">{group.title}</h3>
+                    <ul class="internal-links__list">
+                      {group.links.map(link => (
+                        <li class="internal-links__item">
+                          <a class="internal-links__link" href={link.href}>
+                            <span class="internal-links__link-label">{link.label}</span>
+                            {link.description && (
+                              <span class="internal-links__link-description">{link.description}</span>
+                            )}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
                 ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+              </div>
+            </details>
+          ) : (
+            <>
+              <div class="internal-links__header">
+                <h2 class="internal-links__title">{title}</h2>
+                {subtitle && <p class="internal-links__subtitle">{subtitle}</p>}
+              </div>
+              <div class="internal-links__grid">
+                {visibleGroups.map(group => (
+                  <article class="internal-links__group">
+                    <h3 class="internal-links__group-title">{group.title}</h3>
+                    <ul class="internal-links__list">
+                      {group.links.map(link => (
+                        <li class="internal-links__item">
+                          <a class="internal-links__link" href={link.href}>
+                            <span class="internal-links__link-label">{link.label}</span>
+                            {link.description && (
+                              <span class="internal-links__link-description">{link.description}</span>
+                            )}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </>
+          )
+        }
       </div>
     </section>
   )
 }
-

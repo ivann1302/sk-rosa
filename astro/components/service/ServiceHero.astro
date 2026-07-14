@@ -1,14 +1,82 @@
 ---
-const { title, subtitle, badges = [], ctaLabel, ctaHref, image, video } = Astro.props;
+const {
+  title,
+  subtitle,
+  mobileSubtitle,
+  mobileTags = [],
+  rating,
+  badges = [],
+  ctaLabel,
+  ctaHref,
+  image,
+  video,
+  mobileCover = false,
+} = Astro.props;
 const hasImage = image && !image.placeholder;
 const hasBadges = badges.length > 0;
+const hasMobileTags = mobileTags.length > 0;
+const mobileImage = image?.mobile ?? image;
 ---
 
-<section class="about-service">
+<section class:list={["about-service", { "about-service--mobile-cover": mobileCover }]}>
   <div class="about-service__container">
     <div class="about-service__info">
+      {rating && <div class="about-service__rating-row">
+        <a
+          class="about-service__rating"
+          href={rating.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Рейтинг ROSA на Яндекс Картах — ${rating.value} из 5`}
+        >
+          <span class="about-service__rating-mark" aria-hidden="true">Y</span>
+          <span class="about-service__rating-label">Яндекс</span>
+          <span class="about-service__rating-value">{rating.value}</span>
+          <span class="about-service__rating-star" aria-hidden="true">★</span>
+        </a>
+        {rating.profi && <span
+          class="about-service__rating about-service__rating--profi"
+          aria-label={`Рейтинг ROSA на Профи.ру — ${rating.profi.value} из 5`}
+        >
+          <img
+            class="about-service__rating-icon"
+            src={rating.profi.icon}
+            alt=""
+            width="60"
+            height="60"
+            aria-hidden="true"
+          />
+          <span class="about-service__rating-label">Профи.ру</span>
+          <span class="about-service__rating-value">{rating.profi.value}</span>
+          <span class="about-service__rating-star" aria-hidden="true">★</span>
+        </span>}
+        {rating.avito && <span
+          class="about-service__rating about-service__rating--avito"
+          aria-label={`Рейтинг ROSA на Авито — ${rating.avito.value} из 5`}
+        >
+          <img
+            class="about-service__rating-icon"
+            src={rating.avito.icon}
+            alt=""
+            width="600"
+            height="600"
+            aria-hidden="true"
+          />
+          <span class="about-service__rating-label">Авито</span>
+          <span class="about-service__rating-value">{rating.avito.value}</span>
+          <span class="about-service__rating-star" aria-hidden="true">★</span>
+        </span>}
+      </div>}
       <h1 class="about-service__title">{title}</h1>
-      <div class="about-service__subtitle">{subtitle}</div>
+      <div class:list={["about-service__subtitle", { "about-service__subtitle--desktop": mobileSubtitle }]}>
+        {subtitle}
+      </div>
+      {mobileSubtitle && <div class="about-service__subtitle about-service__subtitle--mobile">
+        {mobileSubtitle}
+      </div>}
+      {hasMobileTags && <ul class="about-service__mobile-tags" aria-label="Формат работ">
+        {mobileTags.map(tag => <li class="about-service__mobile-tag">{tag}</li>)}
+      </ul>}
       {hasBadges && <ul class="about-service__badges">
         {badges.map(badge => <li class="about-service__badge">{badge}</li>)}
       </ul>}
@@ -18,12 +86,12 @@ const hasBadges = badges.length > 0;
       {
         hasImage ? (
           <picture class="about-service__image-mobile">
-            <source srcset={image.webp} type="image/webp" />
+            <source srcset={mobileImage.webp} type="image/webp" />
             <img
-              src={image.fallback}
-              alt={image.alt}
-              width="500"
-              height="500"
+              src={mobileImage.fallback}
+              alt={mobileImage.alt ?? image.alt}
+              width={mobileImage.width ?? 500}
+              height={mobileImage.height ?? 500}
               loading="eager"
               fetchpriority="high"
               decoding="sync"

@@ -115,3 +115,9 @@
     opacity: 1;
   }
 }
+
+@media (width <= 768px) {
+  .plastering-page .faq__item:nth-last-child(-n + 2) {
+    display: none;
+  }
+}

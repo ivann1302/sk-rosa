@@ -279,7 +279,172 @@
     }
   }
 
-  @media (width <= 768px) {
+  &__mobile {
     display: none;
+  }
+
+  @media (width <= 768px) {
+    display: block;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    padding: 38px 0 34px;
+    overflow: hidden;
+
+    &__container {
+      width: 100%;
+      max-width: none;
+      min-height: 0;
+      padding: 0;
+      overflow: visible;
+    }
+
+    &__row {
+      display: none;
+    }
+
+    &__mobile {
+      display: block;
+    }
+
+    &__mobile-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    &__mobile-title {
+      margin: 0;
+      color: #202421;
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    &__swipe-hint {
+      display: flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--color-dark-green);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+
+      svg {
+        width: 36px;
+        height: 15px;
+        stroke: currentcolor;
+        stroke-width: 1.65;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        animation: turnkey-swipe-hint 1.8s ease-in-out infinite;
+      }
+    }
+
+    &__slider {
+      display: flex;
+      gap: 14px;
+      padding: 4px 20px 18px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-inline: contain;
+      scroll-behavior: smooth;
+      scroll-padding-inline: 20px;
+      scroll-snap-type: inline mandatory;
+      scrollbar-width: none;
+      touch-action: pan-x pan-y;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__slide {
+      position: relative;
+      display: flex;
+      flex: 0 0 min(78vw, 304px);
+      min-height: 220px;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 22px 22px;
+      overflow: hidden;
+      background: #f7f9f8;
+      border: 1px solid rgb(68 89 80 / 12%);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgb(39 58 50 / 9%);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    &__slide-number {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      color: #c79e4c;
+      font-family: "Kumbh Sans", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    &__slide-icon {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      margin-bottom: 20px;
+      place-items: center;
+      background: rgb(120 148 135 / 12%);
+      border-radius: 14px;
+
+      img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        opacity: 0.72;
+      }
+    }
+
+    &__slide-title {
+      margin: 0 0 9px;
+      color: #202421;
+      font-size: 1.08rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    &__slide-desc {
+      max-width: 240px;
+      margin: 0;
+      color: rgb(32 36 33 / 68%);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+@keyframes turnkey-swipe-hint {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: translateX(-5px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-stages-turnkey__swipe-hint svg {
+    animation: none;
   }
 }

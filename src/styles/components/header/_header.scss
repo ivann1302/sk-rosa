@@ -539,6 +539,25 @@
   }
 }
 
+@media (width <= 768px) {
+  body.plastering-page {
+    padding-top: 0;
+
+    .header {
+      background: rgb(255 255 255 / 10%);
+      border: 1px solid rgb(255 255 255 / 30%);
+      box-shadow: 0 8px 28px rgb(9 18 14 / 16%);
+      backdrop-filter: blur(12px);
+    }
+
+    .header__body {
+      background: rgb(248 250 248 / 78%);
+      border: 1px solid rgb(255 255 255 / 48%);
+      backdrop-filter: blur(14px);
+    }
+  }
+}
+
 .header__city-select {
   margin-left: 0;
   margin-right: 0;

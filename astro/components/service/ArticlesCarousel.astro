@@ -5,6 +5,12 @@ const { title, articles, moreHref, moreLabel } = Astro.props;
 <section class="articles-carousel reveal-on-scroll">
   <div class="articles-carousel__container">
     <h2 class="articles-carousel__title">{title}</h2>
+    <div class="articles-carousel__swipe-hint" aria-hidden="true">
+      <svg viewBox="0 0 42 18" fill="none">
+        <path d="M4 9h34M32 4l6 5-6 5" />
+      </svg>
+      <span>Листайте</span>
+    </div>
     <div class="articles-carousel__wrapper">
       <button
         class="articles-carousel__arrow articles-carousel__arrow--prev"

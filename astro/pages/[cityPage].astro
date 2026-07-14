@@ -7,6 +7,9 @@ import CityLocalContent from "../components/service/CityLocalContent.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import InternalLinksSection from "../components/service/InternalLinksSection.astro";
+import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
+import PlasteringHeroBenefits from "../components/service/PlasteringHeroBenefits.astro";
+import PlasteringRatings from "../components/service/PlasteringRatings.astro";
 import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
@@ -20,6 +23,7 @@ import ServiceTextBlock from "../components/service/ServiceTextBlock.astro";
 import TurnkeyRepairLegacyPage from "../components/service/TurnkeyRepairLegacyPage.astro";
 import TurnkeyRepairLegacyRuntime from "../components/service/TurnkeyRepairLegacyRuntime.astro";
 import { blogArticlePages } from "../data/blog.js";
+import { plasteringPage } from "../data/plastering.js";
 import { getServiceQuiz } from "../data/service-quizzes.js";
 import { serviceCityPages } from "../data/service-city-pages.js";
 import { getCityInterlinkGroups } from "../data/site-links.js";
@@ -43,6 +47,24 @@ const isBlogArticle = kind === "blog-article";
 const city = isBlogArticle ? null : page.city;
 const seo = isBlogArticle ? null : page.seo;
 const isTurnkeyRepair = !isBlogArticle && page.service.slug === "turnkey-repair";
+const isPlastering = !isBlogArticle && page.service.slug === "plastering";
+const serviceHero = isBlogArticle
+  ? null
+  : isPlastering
+    ? {
+        ...plasteringPage.hero,
+        ...page.hero,
+        mobileSubtitle: plasteringPage.hero.mobileSubtitle,
+        mobileTags: plasteringPage.hero.mobileTags,
+        rating: plasteringPage.hero.rating,
+        image: {
+          ...plasteringPage.hero.image,
+          ...page.hero.image,
+          mobile: plasteringPage.hero.image.mobile,
+        },
+      }
+    : page.hero;
+const heroRating = serviceHero?.rating;
 const serviceQuiz = isBlogArticle ? null : getServiceQuiz(page.service.slug);
 const cityInterlinkGroups = isBlogArticle ? [] : getCityInterlinkGroups(page.service.slug, city);
 const servicePricingScripts = {
@@ -56,6 +78,11 @@ const pricingScript =
   !isBlogArticle
     ? (page.runtime.pricingScript ?? servicePricingScripts[page.service.slug] ?? null)
     : null;
+const plasteringPricingNote = {
+  text: "Актуальные цены уточняйте у оператора:",
+  label: "+7 (985) 135-49-91",
+  href: "tel:+79851354991",
+};
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -82,7 +109,7 @@ const faqJsonLd = {
       ogDescription={seo.ogDescription}
       ogImageAlt={seo.ogImageAlt}
       ogSiteName="ROSA - Ремонт под ключ"
-      bodyClass="astro-service-page"
+      bodyClass={isPlastering ? "astro-service-page plastering-page" : "astro-service-page"}
       metrikaId={109562461}
       metrikaOptions={{
         ssr: true,
@@ -112,7 +139,13 @@ const faqJsonLd = {
           </>
         ) : (
           <>
-            <ServiceHero {...page.hero} />
+            <ServiceHero
+              {...serviceHero}
+              badges={isPlastering ? [] : serviceHero.badges}
+              mobileCover={isPlastering}
+            />
+            {isPlastering && <PlasteringHeroBenefits items={serviceHero.badges} />}
+            {isPlastering && <PlasteringRatings rating={heroRating} />}
             {serviceQuiz && (
               <ServiceQuiz
                 client:load
@@ -133,9 +166,11 @@ const faqJsonLd = {
             <CityComplexes cityNameIn={city.nameIn} complexes={page.complexes} />
             <CityLocalContent content={page.localContent} />
             <ServiceSteps
+              id={isPlastering ? "plastering-stages" : undefined}
               title={page.stages.title}
               subtitle={page.stages.subtitle}
               steps={page.stages.items}
+              mobileSlider={isPlastering}
               cta={{
                 title: "Готовы начать? Давайте обсудим ваш ремонт, оставьте заявку",
                 href: "#contact-request",
@@ -147,12 +182,17 @@ const faqJsonLd = {
               items={page.taskList}
               image={page.hero.image}
             />
+            {isPlastering && <PlasteringCasesSection {...page.workCases} />}
             <PricingSection
               title={page.service.pricingTitle}
               containerId={page.service.pricingContainerId}
               items={page.pricingTable ?? []}
+              note={isPlastering ? plasteringPricingNote : undefined}
             />
-            <PriceCalcSection data={page.priceCalc} />
+            <PriceCalcSection
+              data={page.priceCalc}
+              showPlasteringEstimate={isPlastering ? false : undefined}
+            />
             <ReviewsSection reviews={page.reviews} />
             <ContactRequest {...page.contact} />
             <FaqSection
@@ -169,6 +209,11 @@ const faqJsonLd = {
           </>
         )}
       </main>
+      {
+        isTurnkeyRepair && (
+          <CityComplexes cityNameIn={city.nameIn} complexes={page.complexes} />
+        )
+      }
       <InternalLinksSection
         slot="before-footer"
         title={`Работы в ${city.nameIn} и рядом`}

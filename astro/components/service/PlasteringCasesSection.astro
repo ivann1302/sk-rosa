@@ -13,7 +13,6 @@ const getCaseImages = item => {
 <section class="plastering-cases reveal-on-scroll" aria-labelledby="plastering-cases-title">
   <div class="plastering-cases__container">
     <div class="plastering-cases__header">
-      <span class="plastering-cases__eyebrow">Кейсы</span>
       <h2 class="plastering-cases__title" id="plastering-cases-title">{title}</h2>
       {subtitle && <p class="plastering-cases__subtitle">{subtitle}</p>}
     </div>
@@ -64,7 +63,9 @@ const getCaseImages = item => {
                             aria-label={`Предыдущее фото: ${item.title}`}
                             data-gallery-prev
                           >
-                            &#8249;
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="m15 5-7 7 7 7" />
+                            </svg>
                           </button>
                           <button
                             class="plastering-cases__gallery-button"
@@ -72,7 +73,9 @@ const getCaseImages = item => {
                             aria-label={`Следующее фото: ${item.title}`}
                             data-gallery-next
                           >
-                            &#8250;
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="m9 5 7 7-7 7" />
+                            </svg>
                           </button>
                         </div>
                       )}

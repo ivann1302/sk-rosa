@@ -1,10 +1,10 @@
 ---
 import ArticlesCarousel from "./ArticlesCarousel.astro";
-import CityComplexes from "./CityComplexes.astro";
 import CityLocalContent from "./CityLocalContent.astro";
 import FaqSection from "./FaqSection.astro";
 import ReviewsSection from "./ReviewsSection.astro";
 import ServiceQuiz from "./ServiceQuiz.jsx";
+import TurnkeyReasons from "./TurnkeyReasons.astro";
 import { getServiceQuiz } from "../../data/service-quizzes.js";
 
 const { page } = Astro.props;
@@ -18,13 +18,6 @@ const calcSource = city?.name
   : "Ремонт под ключ - Калькулятор";
 const textTitle = page.textBlock.title;
 const textSubtitle = page.textBlock.subtitle;
-const choiceReasons = [
-  "<strong>Официальный договор</strong> с фиксированными ценами",
-  "<strong>Собственная бригада</strong> проверенных мастеров",
-  "<strong>Поэтапная оплата</strong> по факту выполненных работ",
-  "<strong>Гарантия 3 года</strong> на все виды работ",
-  "<strong>Чёткие сроки</strong> без затягивания ремонта",
-];
 const stageIcons = [
   {
     name: "salesman",
@@ -52,36 +45,6 @@ const stageIcons = [
     alt: "Сдача проекта",
   },
 ];
-const usefulLinks = [
-  {
-    href: "/calculator",
-    title: "Калькулятор ремонта",
-    image: "/assets/images/common/calculator.jpg",
-    alt: "Калькулятор",
-  },
-  {
-    href: "/blog",
-    title: "Блог о ремонте",
-    image: "/assets/images/common/blog.jpg",
-    alt: "Блог",
-  },
-  {
-    href: "#contact-request-turnkey",
-    title: "Консультация",
-    image: "/assets/images/common/consultation.jpg",
-    alt: "Консультация",
-  },
-  {
-    title: "Сертификаты и лицензии",
-    image: "/assets/images/common/certificates.jpg",
-    alt: "Сертификаты",
-  },
-  {
-    title: "Работа по договору",
-    image: "/assets/images/common/contract.jpg",
-    alt: "Работа по договору",
-  },
-];
 ---
 
 <section class="about-turnkey">
@@ -99,6 +62,18 @@ const usefulLinks = [
       />
     </picture>
     <div class="about-turnkey__content">
+      <a
+        class="about-turnkey__rating"
+        href="https://yandex.ru/maps/org/rosa/244762145159/reviews/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Рейтинг ROSA на Яндекс Картах — 4,9 из 5"
+      >
+        <span class="about-turnkey__rating-mark" aria-hidden="true">Y</span>
+        <span class="about-turnkey__rating-label">Яндекс Карты</span>
+        <span class="about-turnkey__rating-value">4.9</span>
+        <span class="about-turnkey__rating-star" aria-hidden="true">★</span>
+      </a>
       <p class="about-turnkey__subtitle-small">Что мы предлагаем</p>
       <h1 class="about-turnkey__title">{page.hero.title}</h1>
       <p class="about-turnkey__subtitle">{page.hero.subtitle}</p>
@@ -114,6 +89,8 @@ const usefulLinks = [
     </div>
   </div>
 
+  <TurnkeyReasons />
+
   {
     serviceQuiz && (
       <ServiceQuiz
@@ -125,6 +102,54 @@ const usefulLinks = [
       />
     )
   }
+
+  <section class="service-text-block reveal-on-scroll">
+    <div class="service-text-block__container">
+      <h2 class="service-text-block__title">{textTitle}</h2>
+      <p class="service-text-block__subtitle">{textSubtitle}</p>
+
+      <div class="service-text-block__content">
+        {page.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+      </div>
+
+      <h3 class="service-text-block__list-title">Что входит в ремонт под ключ</h3>
+      <ul class="service-text-block__object-list">
+        {
+          page.taskList.map(item => (
+            <li>
+              <svg
+                class="service-text-block__arrow-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 5l7 7-7 7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{item.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="service-text-block__note">
+        Стоимость зависит от площади и объёма работ.
+        <strong>Бесплатный выезд и расчёт сметы.</strong>
+      </p>
+
+      <p class="service-text-block__note">
+        <strong>{textTitle}</strong> – без переделок и скрытых доплат. Оставьте заявку – рассчитаем
+        стоимость и согласуем удобную дату начала работ.
+      </p>
+    </div>
+  </section>
+
+  <CityLocalContent content={page.localContent} slider={Boolean(city)} />
 
   <section class="about-turnkey-2" id="prices">
     <div class="about-turnkey-2__container">
@@ -234,105 +259,6 @@ const usefulLinks = [
     </div>
   </section>
 
-  <section class="advantages-turnkey reveal-on-scroll">
-    <div class="advantages-turnkey__container">
-      <div class="advantages-turnkey__list">
-        {
-          page.advantages.map(item => (
-            <div class="advantages-turnkey__item">
-              <div class="advantages-turnkey__icon">
-                <img src={item.icon} alt={item.alt} width="48" height="48" />
-              </div>
-              <div class="advantages-turnkey__content">
-                <h3 class="advantages-turnkey__title">{item.value}</h3>
-                <div class="advantages-turnkey__desc">{item.description}</div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  {
-    page.complexes && page.complexes.length > 0 && (
-      <CityComplexes cityNameIn={city.nameIn} complexes={page.complexes} />
-    )
-  }
-
-  <section class="service-text-block reveal-on-scroll">
-    <div class="service-text-block__container">
-      <h2 class="service-text-block__title">{textTitle}</h2>
-      <p class="service-text-block__subtitle">{textSubtitle}</p>
-
-      <div class="service-text-block__content">
-        {page.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
-      </div>
-
-      <h3 class="service-text-block__list-title">Почему выбирают нас</h3>
-      <ul class="service-text-block__check-list">
-        {
-          choiceReasons.map(reason => (
-            <li>
-              <svg
-                class="service-text-block__check-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span set:html={reason} />
-            </li>
-          ))
-        }
-      </ul>
-
-      <h3 class="service-text-block__list-title">Что входит в ремонт под ключ</h3>
-      <ul class="service-text-block__object-list">
-        {
-          page.taskList.map(item => (
-            <li>
-              <svg
-                class="service-text-block__arrow-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9 5l7 7-7 7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <span>{item.name}</span>
-            </li>
-          ))
-        }
-      </ul>
-
-      <p class="service-text-block__note">
-        Стоимость зависит от площади и объёма работ.
-        <strong>Бесплатный выезд и расчёт сметы.</strong>
-      </p>
-
-      <p class="service-text-block__note">
-        <strong>{textTitle}</strong> – без переделок и скрытых доплат. Оставьте заявку – рассчитаем
-        стоимость и согласуем удобную дату начала работ.
-      </p>
-    </div>
-  </section>
-
-  <CityLocalContent content={page.localContent} />
-
   <section class="company-description-turnkey reveal-on-scroll">
     <div class="company-description-turnkey__container">
       <h2 class="visually-hidden">О компании</h2>
@@ -384,33 +310,136 @@ const usefulLinks = [
           }
         </div>
       </div>
+
+      <div class="work-stages-turnkey__mobile">
+        <div class="work-stages-turnkey__mobile-head">
+          <h2 class="work-stages-turnkey__mobile-title">Как мы работаем?</h2>
+          <div class="work-stages-turnkey__swipe-hint" aria-hidden="true">
+            <svg viewBox="0 0 40 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h34M8 3 3 8l5 5M32 3l5 5-5 5" />
+            </svg>
+            <span>Листайте</span>
+          </div>
+        </div>
+
+        <div class="work-stages-turnkey__slider" aria-label="Этапы работы">
+          {
+            page.stages.items.map((step, index) => (
+              <article class="work-stages-turnkey__slide">
+                <span class="work-stages-turnkey__slide-number">0{index + 1}</span>
+                <div class="work-stages-turnkey__slide-icon">
+                  <img src={stageIcons[index].icon} alt="" width="64" height="64" />
+                </div>
+                <h3 class="work-stages-turnkey__slide-title">{step.title}</h3>
+                <p class="work-stages-turnkey__slide-desc">{step.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-description reveal-on-scroll">
+    <div class="portfolio-description__container">
+      <h2 class="portfolio-description__title">Наши работы — ваш ориентир</h2>
+      <p class="portfolio-description__text">
+        В портфолио ROSA — реальные интерьеры, которые мы реализовали для клиентов с разными
+        задачами, вкусами и метражом. Это не визуализации, а готовые квартиры, где уже живут люди.
+        Посмотрите, каким может быть ваш будущий интерьер — от планировки до финальной отделки.
+      </p>
+      <p class="portfolio-description__text">
+        Понравился стиль или подход? Узнайте, сколько может стоить ремонт в вашей квартире —
+        воспользуйтесь удобным калькулятором, чтобы прикинуть бюджет и понять, с чего начать.
+        <a href="/calculator" class="portfolio-description__button">
+          Рассчитать стоимость
+          <img
+            src="/assets/icons/common/share-alt-svgrepo-com.svg"
+            alt="Поделиться"
+            width="16"
+            height="16"
+          />
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="portfolio-turnkey" id="portfolio">
+    <div class="portfolio-turnkey__container">
+      <div class="portfolio-turnkey__project">
+        <div class="portfolio-turnkey__project-image">
+          <picture>
+            <source
+              srcset="/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp"
+              type="image/webp"
+            />
+            <img
+              src="/assets/images/portfolio/10.png"
+              alt="Интерьер квартиры"
+              id="project-image"
+            />
+          </picture>
+        </div>
+        <div
+          class="portfolio-turnkey__content-card"
+          style="background: #fff; border-radius: 8px; padding: 24px; box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07)"
+        >
+          <div class="portfolio-turnkey__project-header" id="project-location">
+            г. Москва, ЖК "Московский"
+          </div>
+          <h2 class="portfolio-turnkey__project-title" id="project-title">
+            Дизайн-проект однокомнатной квартиры
+          </h2>
+          <div class="portfolio-turnkey__project-costs-row">
+            <div class="portfolio-turnkey__project-cost">
+              <span class="portfolio-turnkey__cost-label">Площадь объекта</span>
+              <span class="portfolio-turnkey__cost-amount" id="project-area">32.12м²</span>
+            </div>
+            <div class="portfolio-turnkey__project-cost">
+              <span class="portfolio-turnkey__cost-label">Стоимость ремонта</span>
+              <span class="portfolio-turnkey__cost-amount" id="project-price">885 443 ₽</span>
+            </div>
+          </div>
+          <p class="portfolio-turnkey__project-description" id="project-description">
+            Модернизм выделяется утончённым дизайном и оригинальной архитектурой. Гармония базовых
+            тонов с яркими акцентами подчёркивает стиль, а удобная мебель делает пространство
+            комфортным для жизни.
+          </p>
+          <div class="portfolio-turnkey__navigation">
+            <div class="portfolio-turnkey__nav-buttons">
+              <button
+                class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--prev"
+                id="prev-btn"
+              >
+                <img
+                  src="/assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                  alt="Предыдущий"
+                  width="30"
+                  height="30"
+                />
+              </button>
+              <button
+                class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--next"
+                id="next-btn"
+              >
+                <img
+                  src="/assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
+                  alt="Следующий"
+                  width="30"
+                  height="30"
+                />
+              </button>
+            </div>
+            <div class="portfolio-turnkey__nav-counter-card">
+              <span class="portfolio-turnkey__nav-counter" id="project-counter">1 / 10</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <ReviewsSection reviews={page.reviews} />
-
-  <section class="useful-links reveal-on-scroll" style="background: #fff; padding: 40px 0">
-    <div class="useful-links__container" style="max-width: 1200px; margin: 0 auto; padding: 0">
-      <h2 class="useful-links__title">Собрали для вас все самые полезные ссылки</h2>
-      <div class="useful-links__grid">
-        {
-          usefulLinks.map(item => (
-            item.href ? (
-              <a href={item.href} class="useful-links__item">
-                <h3 class="useful-links__item-title">{item.title}</h3>
-                <img src={item.image} alt={item.alt} />
-              </a>
-            ) : (
-              <div class="useful-links__item">
-                <h3 class="useful-links__item-title">{item.title}</h3>
-                <img src={item.image} alt={item.alt} />
-              </div>
-            )
-          ))
-        }
-      </div>
-    </div>
-  </section>
 
   <section id="contact-request-turnkey" class="contact-request-turnkey reveal-on-scroll">
     <div class="contact-request-turnkey__container">
@@ -496,105 +525,6 @@ const usefulLinks = [
   />
 </section>
 
-<section class="portfolio-description reveal-on-scroll">
-  <div class="portfolio-description__container">
-    <h2 class="portfolio-description__title">Наши работы — ваш ориентир</h2>
-    <p class="portfolio-description__text">
-      В портфолио ROSA — реальные интерьеры, которые мы реализовали для клиентов с разными
-      задачами, вкусами и метражом. Это не визуализации, а готовые квартиры, где уже живут люди.
-      Посмотрите, каким может быть ваш будущий интерьер — от планировки до финальной отделки.
-    </p>
-    <p class="portfolio-description__text">
-      Понравился стиль или подход? Узнайте, сколько может стоить ремонт в вашей квартире —
-      воспользуйтесь удобным калькулятором, чтобы прикинуть бюджет и понять, с чего начать.
-      <a href="/calculator" class="portfolio-description__button">
-        Рассчитать стоимость
-        <img
-          src="/assets/icons/common/share-alt-svgrepo-com.svg"
-          alt="Поделиться"
-          width="16"
-          height="16"
-        />
-      </a>
-    </p>
-  </div>
-</section>
-
-<section class="portfolio-turnkey" id="portfolio">
-  <div class="portfolio-turnkey__container">
-    <div class="portfolio-turnkey__project">
-      <div class="portfolio-turnkey__project-image">
-        <picture>
-          <source
-            srcset="/assets/images/turnkey/u2928876119_A_modern_apartment_interior_under_renovation_in_Mos_558d60a4-8854-4bc1-ba21-41732a3926ad.webp"
-            type="image/webp"
-          />
-          <img
-            src="/assets/images/portfolio/10.png"
-            alt="Интерьер квартиры"
-            id="project-image"
-          />
-        </picture>
-      </div>
-      <div
-        class="portfolio-turnkey__content-card"
-        style="background: #fff; border-radius: 8px; padding: 24px; box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07)"
-      >
-        <div class="portfolio-turnkey__project-header" id="project-location">
-          г. Москва, ЖК "Московский"
-        </div>
-        <h2 class="portfolio-turnkey__project-title" id="project-title">
-          Дизайн-проект однокомнатной квартиры
-        </h2>
-        <div class="portfolio-turnkey__project-costs-row">
-          <div class="portfolio-turnkey__project-cost">
-            <span class="portfolio-turnkey__cost-label">Площадь объекта</span>
-            <span class="portfolio-turnkey__cost-amount" id="project-area">32.12м²</span>
-          </div>
-          <div class="portfolio-turnkey__project-cost">
-            <span class="portfolio-turnkey__cost-label">Стоимость ремонта</span>
-            <span class="portfolio-turnkey__cost-amount" id="project-price">885 443 ₽</span>
-          </div>
-        </div>
-        <p class="portfolio-turnkey__project-description" id="project-description">
-          Модернизм выделяется утончённым дизайном и оригинальной архитектурой. Гармония базовых
-          тонов с яркими акцентами подчёркивает стиль, а удобная мебель делает пространство
-          комфортным для жизни.
-        </p>
-        <div class="portfolio-turnkey__navigation">
-          <div class="portfolio-turnkey__nav-buttons">
-            <button
-              class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--prev"
-              id="prev-btn"
-            >
-              <img
-                src="/assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
-                alt="Предыдущий"
-                width="30"
-                height="30"
-              />
-            </button>
-            <button
-              class="portfolio-turnkey__nav-btn portfolio-turnkey__nav-btn--next"
-              id="next-btn"
-            >
-              <img
-                src="/assets/icons/features/turnkey/right-arrow-svgrepo-com.svg"
-                alt="Следующий"
-                width="30"
-                height="30"
-              />
-            </button>
-          </div>
-          <div class="portfolio-turnkey__nav-counter-card">
-            <span class="portfolio-turnkey__nav-counter" id="project-counter">1 / 10</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <ArticlesCarousel
   title="Полезные статьи о ремонте"
   articles={page.articles}
@@ -639,7 +569,6 @@ const usefulLinks = [
     .work-stages-turnkey__title,
     .social-reviews__title,
     .reviews__title,
-    .useful-links__title,
     .contact-request-turnkey__title,
     .faq__title,
     .faq__question,

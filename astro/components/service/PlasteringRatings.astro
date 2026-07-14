@@ -1,0 +1,59 @@
+---
+const { rating = {} } = Astro.props;
+const badges = [
+  rating.avito && {
+    brand: "Авито",
+    value: rating.avito.value,
+    type: "avito",
+    icon: rating.avito.icon,
+  },
+  rating.value && {
+    brand: "Яндекс",
+    value: rating.value,
+    type: "yandex",
+  },
+  rating.profi && {
+    brand: "Профи.ру",
+    mobileBrand: "Профи",
+    value: rating.profi.value,
+    type: "profi",
+    icon: rating.profi.icon,
+  },
+].filter(Boolean);
+---
+
+{
+  badges.length > 0 && (
+    <section class="plastering-ratings" aria-label="Рейтинги ROSA на сервисах отзывов">
+      <div class="plastering-ratings__row">
+        {badges.map(badge => (
+          <div
+            class:list={["plastering-ratings__badge", `plastering-ratings__badge--${badge.type}`]}
+            aria-label={`Рейтинг ROSA на ${badge.brand} — ${badge.value} из 5`}
+          >
+            {badge.icon ? (
+              <img
+                class="plastering-ratings__icon"
+                src={badge.icon}
+                alt=""
+                width="32"
+                height="32"
+                aria-hidden="true"
+              />
+            ) : (
+              <span class="plastering-ratings__yandex-mark" aria-hidden="true">Y</span>
+            )}
+            <span class="plastering-ratings__brand plastering-ratings__brand--desktop">
+              {badge.brand}
+            </span>
+            <span class="plastering-ratings__brand plastering-ratings__brand--mobile">
+              {badge.mobileBrand ?? badge.brand}
+            </span>
+            <strong class="plastering-ratings__value">{badge.value}</strong>
+            <span class="plastering-ratings__star" aria-hidden="true">★</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

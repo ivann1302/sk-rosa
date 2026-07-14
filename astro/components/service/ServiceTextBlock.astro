@@ -1,13 +1,24 @@
 ---
-const { title, subtitle } = Astro.props;
+const { id, title, subtitle, cta } = Astro.props;
 ---
 
-<section class="service-text-block reveal-on-scroll">
+<section {id} class="service-text-block reveal-on-scroll">
   <div class="service-text-block__container">
     <h2 class="service-text-block__title">{title}</h2>
     {subtitle && <p class="service-text-block__subtitle">{subtitle}</p>}
     <div class="service-text-block__content">
       <slot />
     </div>
+    {
+      cta && (
+        <div class="service-text-block__cta">
+          <div class="service-text-block__cta-copy">
+            <h3 class="service-text-block__cta-title">{cta.title}</h3>
+            <p class="service-text-block__cta-text">{cta.text}</p>
+          </div>
+          <a class="service-text-block__cta-button" href={cta.href}>{cta.label}</a>
+        </div>
+      )
+    }
   </div>
 </section>
