@@ -151,6 +151,10 @@ function checkPage(page, service, city = null) {
   );
   if (isTurnkeyRepair) {
     assert(html.includes('class="about-turnkey"'), `${page}: missing turnkey legacy hero`);
+    assert(html.includes('class="about-turnkey__ratings"'), `${page}: missing turnkey ratings`);
+    for (const ratingBrand of ["Яндекс Карты", "Авито", "Профи.ру"]) {
+      assert(html.includes(ratingBrand), `${page}: missing turnkey rating ${ratingBrand}`);
+    }
     assert(html.includes('class="about-turnkey-2"'), `${page}: missing turnkey legacy calculator`);
     assert(
       sources.includes(`Ремонт под ключ - Калькулятор${expectedCitySuffix}`),
@@ -161,6 +165,21 @@ function checkPage(page, service, city = null) {
       sources.includes(`${service.quizPrefix}${expectedCitySuffix}`),
       `${page}: missing plastering calculator form_source`
     );
+    for (const areaOption of ["До 150 м²", "До 250 м²", "Свыше 250 м²"]) {
+      assert(html.includes(areaOption), `${page}: missing plastering area option ${areaOption}`);
+    }
+    assert(
+      html.includes('class="plastering-bundle-offer'),
+      `${page}: missing plastering bundle offer`
+    );
+    for (const [discountedService, discount] of [
+      ["Стяжка пола", "5%"],
+      ["Электромонтажные работы", "10%"],
+      ["Ремонт под ключ", "15%"],
+    ]) {
+      assert(html.includes(discountedService), `${page}: missing ${discountedService}`);
+      assert(html.includes(`скидка ${discount}`), `${page}: missing discount ${discount}`);
+    }
   } else {
     assert(
       sources.includes(`${service.quizPrefix}${expectedCitySuffix}`),

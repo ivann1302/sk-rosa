@@ -4,6 +4,7 @@ const benefits = [
   { label: items[0] ?? "от 600 ₽/м²", icon: "price" },
   { label: items[1] ?? "гарантия от 2 лет", icon: "shield" },
   { label: items[2] ?? "договор и акт", icon: "contract" },
+  { label: items[3] ?? "бесплатный выезд замерщика", icon: "measure" },
 ];
 ---
 
@@ -40,6 +41,18 @@ const benefits = [
                 />
                 <path class="plastering-hero-benefits__icon-base" d="M19 4.5v5h5M12 14h8M12 18h5" />
                 <path class="plastering-hero-benefits__icon-accent" d="M12 24c2-2 3.5 1 5.2-1s2.4.5 4.3-.8" />
+              </svg>
+            )}
+            {benefit.icon === "measure" && (
+              <svg viewBox="0 0 32 32">
+                <path
+                  class="plastering-hero-benefits__icon-base"
+                  d="m22.5 5.5 4 4-17 17-4-4z"
+                />
+                <path
+                  class="plastering-hero-benefits__icon-accent"
+                  d="m21.5 10.5-2-2M18.5 13.5l-2-2M15.5 16.5l-2-2M12.5 19.5l-2-2"
+                />
               </svg>
             )}
           </span>

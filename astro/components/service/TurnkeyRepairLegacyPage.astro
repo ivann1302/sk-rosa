@@ -18,6 +18,27 @@ const calcSource = city?.name
   : "Ремонт под ключ - Калькулятор";
 const textTitle = page.textBlock.title;
 const textSubtitle = page.textBlock.subtitle;
+const rating = page.hero.rating ?? {};
+const ratingBadges = [
+  {
+    brand: "Яндекс Карты",
+    value: rating.value,
+    type: "yandex",
+    href: rating.href,
+  },
+  {
+    brand: "Авито",
+    value: rating.avito?.value,
+    type: "avito",
+    icon: rating.avito?.icon,
+  },
+  {
+    brand: "Профи.ру",
+    value: rating.profi?.value,
+    type: "profi",
+    icon: rating.profi?.icon,
+  },
+].filter(badge => badge.value);
 const stageIcons = [
   {
     name: "salesman",
@@ -62,18 +83,39 @@ const stageIcons = [
       />
     </picture>
     <div class="about-turnkey__content">
-      <a
-        class="about-turnkey__rating"
-        href="https://yandex.ru/maps/org/rosa/244762145159/reviews/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Рейтинг ROSA на Яндекс Картах — 4,9 из 5"
-      >
-        <span class="about-turnkey__rating-mark" aria-hidden="true">Y</span>
-        <span class="about-turnkey__rating-label">Яндекс Карты</span>
-        <span class="about-turnkey__rating-value">4.9</span>
-        <span class="about-turnkey__rating-star" aria-hidden="true">★</span>
-      </a>
+      <div class="about-turnkey__ratings" aria-label="Рейтинги ROSA на сервисах отзывов">
+        {
+          ratingBadges.map(badge => {
+            const Tag = badge.href ? "a" : "span";
+
+            return (
+              <Tag
+                class:list={["about-turnkey__rating", `about-turnkey__rating--${badge.type}`]}
+                href={badge.href}
+                target={badge.href ? "_blank" : undefined}
+                rel={badge.href ? "noopener noreferrer" : undefined}
+                aria-label={`Рейтинг ROSA на ${badge.brand} — ${badge.value} из 5`}
+              >
+                {badge.icon ? (
+                  <img
+                    class="about-turnkey__rating-icon"
+                    src={badge.icon}
+                    alt=""
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span class="about-turnkey__rating-mark" aria-hidden="true">Y</span>
+                )}
+                <span class="about-turnkey__rating-label">{badge.brand}</span>
+                <span class="about-turnkey__rating-value">{badge.value}</span>
+                <span class="about-turnkey__rating-star" aria-hidden="true">★</span>
+              </Tag>
+            );
+          })
+        }
+      </div>
       <p class="about-turnkey__subtitle-small">Что мы предлагаем</p>
       <h1 class="about-turnkey__title">{page.hero.title}</h1>
       <p class="about-turnkey__subtitle">{page.hero.subtitle}</p>

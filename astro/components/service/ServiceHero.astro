@@ -75,7 +75,11 @@ const mobileImage = image?.mobile ?? image;
         {mobileSubtitle}
       </div>}
       {hasMobileTags && <ul class="about-service__mobile-tags" aria-label="Формат работ">
-        {mobileTags.map(tag => <li class="about-service__mobile-tag">{tag}</li>)}
+        {mobileTags.map((tag, index) => (
+          <li class:list={["about-service__mobile-tag", { "about-service__mobile-tag--new-row": index === 2 }]}>
+            <span>{tag}</span>
+          </li>
+        ))}
       </ul>}
       {hasBadges && <ul class="about-service__badges">
         {badges.map(badge => <li class="about-service__badge">{badge}</li>)}

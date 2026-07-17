@@ -4,6 +4,7 @@ import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import InternalLinksSection from "../components/service/InternalLinksSection.astro";
+import PlasteringBundleOffer from "../components/service/PlasteringBundleOffer.astro";
 import PlasteringHeroBenefits from "../components/service/PlasteringHeroBenefits.astro";
 import PlasteringRatings from "../components/service/PlasteringRatings.astro";
 import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
@@ -132,6 +133,7 @@ const faqJsonLd = {
       image={plasteringPage.hero.image}
     />
     <PlasteringCasesSection {...plasteringPage.workCases} />
+    <PlasteringBundleOffer {...plasteringPage.bundleOffer} />
     <PricingSection
       title={plasteringPage.service.pricingTitle}
       containerId={plasteringPage.service.pricingContainerId}

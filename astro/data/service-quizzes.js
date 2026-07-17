@@ -6,7 +6,7 @@ export const serviceQuizzes = {
         key: "area",
         title: "Какая площадь стен?",
         fieldName: "AREA_RANGE",
-        options: ["До 100 м²", "До 200 м²", "Свыше 200 м²", "Нужен расчет"],
+        options: ["До 150 м²", "До 250 м²", "Свыше 250 м²"],
       },
       {
         key: "height",

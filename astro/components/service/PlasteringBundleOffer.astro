@@ -1,0 +1,61 @@
+---
+const { eyebrow, title, description, services = [], note, cta } = Astro.props;
+---
+
+<section
+  class="plastering-bundle-offer reveal-on-scroll"
+  id="plastering-bundle-offer"
+  aria-labelledby="bundle-offer-title"
+>
+  <div class="plastering-bundle-offer__container">
+    <div class="plastering-bundle-offer__panel">
+      <div class="plastering-bundle-offer__content">
+        <div class="plastering-bundle-offer__eyebrow">
+          <span aria-hidden="true"></span>
+          {eyebrow}
+        </div>
+        <h2 class="plastering-bundle-offer__title" id="bundle-offer-title">{title}</h2>
+        <p class="plastering-bundle-offer__description">{description}</p>
+        {cta && (
+          <a class="plastering-bundle-offer__cta" href={cta.href}>
+            {cta.label}
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M14 7l5 5-5 5" />
+            </svg>
+          </a>
+        )}
+        {note && <p class="plastering-bundle-offer__note">{note}</p>}
+      </div>
+
+      <ul class="plastering-bundle-offer__services" aria-label="Услуги со скидкой">
+        {services.map(service => (
+          <li class="plastering-bundle-offer__service">
+            <span class="plastering-bundle-offer__icon" aria-hidden="true">
+              {service.icon === "screed" && (
+                <svg viewBox="0 0 32 32">
+                  <path d="m5 20 11 6 11-6M5 14l11 6 11-6L16 8z" />
+                  <path d="m9 12 7 4 7-4" class="plastering-bundle-offer__icon-accent" />
+                </svg>
+              )}
+              {service.icon === "electric" && (
+                <svg viewBox="0 0 32 32">
+                  <path d="M18.5 3.5 8.5 18h7l-2 10.5L24 13h-7z" />
+                </svg>
+              )}
+              {service.icon === "turnkey" && (
+                <svg viewBox="0 0 32 32">
+                  <path d="M5 15 16 6l11 9M8 13.5V27h16V13.5" />
+                  <path d="M13 27v-7h6v7" class="plastering-bundle-offer__icon-accent" />
+                </svg>
+              )}
+            </span>
+            <span class="plastering-bundle-offer__service-text">
+              <strong>{service.label}</strong>
+              <span>скидка {service.discount}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
