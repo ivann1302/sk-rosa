@@ -15,6 +15,18 @@ export const turnkeyRepairPage = {
   hero: {
     title: "Ремонт квартир, домов и коммерческих помещений под ключ в Москве и области",
     subtitle: "Реализовали более 150 объектов",
+    rating: {
+      value: "4.9",
+      href: "https://yandex.ru/maps/org/rosa/244762145159/reviews/",
+      profi: {
+        value: "5.0",
+        icon: "/assets/icons/brands/profi-ru.svg",
+      },
+      avito: {
+        value: "4.87",
+        icon: "/assets/images/common/avito-icon.png",
+      },
+    },
     badges: ["от 10 000 ₽/м²", "гарантия 3 года", "акты по этапам"],
     ctaLabel: "Узнать цену",
     ctaHref: "#contact-request",
