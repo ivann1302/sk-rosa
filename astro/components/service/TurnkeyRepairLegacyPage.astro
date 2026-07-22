@@ -3,11 +3,14 @@ import ArticlesCarousel from "./ArticlesCarousel.astro";
 import CityLocalContent from "./CityLocalContent.astro";
 import FaqSection from "./FaqSection.astro";
 import ReviewsSection from "./ReviewsSection.astro";
+import ServiceDecisionGuide from "./ServiceDecisionGuide.astro";
+import ServiceEstimateGuide from "./ServiceEstimateGuide.astro";
+import ServiceProjectControl from "./ServiceProjectControl.astro";
 import ServiceQuiz from "./ServiceQuiz.jsx";
 import TurnkeyReasons from "./TurnkeyReasons.astro";
 import { getServiceQuiz } from "../../data/service-quizzes.js";
 
-const { page } = Astro.props;
+const { page, practicalGuide } = Astro.props;
 const city = page.city;
 const serviceQuiz = getServiceQuiz(page.service.slug);
 const calcComments = city?.name
@@ -191,7 +194,11 @@ const stageIcons = [
     </div>
   </section>
 
+  <ServiceDecisionGuide data={practicalGuide?.comparison} />
+
   <CityLocalContent content={page.localContent} slider={Boolean(city)} />
+
+  <ServiceEstimateGuide data={practicalGuide?.estimate} />
 
   <section class="about-turnkey-2" id="prices">
     <div class="about-turnkey-2__container">
@@ -480,6 +487,8 @@ const stageIcons = [
       </div>
     </div>
   </section>
+
+  <ServiceProjectControl data={practicalGuide} />
 
   <ReviewsSection reviews={page.reviews} />
 

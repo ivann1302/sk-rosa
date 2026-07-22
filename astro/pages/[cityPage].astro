@@ -15,7 +15,10 @@ import PriceCalcSection from "../components/service/PriceCalcSection.astro";
 import PricingSection from "../components/service/PricingSection.astro";
 import ReviewsSection from "../components/service/ReviewsSection.astro";
 import ServiceAdvantages from "../components/service/ServiceAdvantages.astro";
+import ServiceDecisionGuide from "../components/service/ServiceDecisionGuide.astro";
+import ServiceEstimateGuide from "../components/service/ServiceEstimateGuide.astro";
 import ServiceHero from "../components/service/ServiceHero.astro";
+import ServiceProjectControl from "../components/service/ServiceProjectControl.astro";
 import ServiceQuiz from "../components/service/ServiceQuiz.jsx";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
 import ServiceSteps from "../components/service/ServiceSteps.astro";
@@ -26,6 +29,7 @@ import TurnkeyRepairLegacyRuntime from "../components/service/TurnkeyRepairLegac
 import { blogArticlePages } from "../data/blog.js";
 import { plasteringPage } from "../data/plastering.js";
 import { getServiceQuiz } from "../data/service-quizzes.js";
+import { getServicePracticalGuide } from "../data/service-practical-guides.js";
 import { serviceCityPages } from "../data/service-city-pages.js";
 import { getCityInterlinkGroups } from "../data/site-links.js";
 import { breadcrumbJsonLd } from "../lib/seo.js";
@@ -67,6 +71,7 @@ const serviceHero = isBlogArticle
     : page.hero;
 const heroRating = serviceHero?.rating;
 const serviceQuiz = isBlogArticle ? null : getServiceQuiz(page.service.slug);
+const practicalGuide = isBlogArticle ? null : getServicePracticalGuide(page.service.slug, city);
 const cityInterlinkGroups = isBlogArticle ? [] : getCityInterlinkGroups(page.service.slug, city);
 const servicePricingScripts = {
   plastering: "/scripts/features/pricing-table.js",
@@ -136,7 +141,7 @@ const faqJsonLd = {
       <main>
         {isTurnkeyRepair ? (
           <>
-            <TurnkeyRepairLegacyPage page={page} />
+            <TurnkeyRepairLegacyPage page={page} practicalGuide={practicalGuide} />
           </>
         ) : (
           <>
@@ -164,8 +169,10 @@ const faqJsonLd = {
             <ServiceTextBlock title={page.textBlock.title} subtitle={page.textBlock.subtitle}>
               {page.textBlock.paragraphs.map(paragraph => <p>{paragraph}</p>)}
             </ServiceTextBlock>
+            <ServiceDecisionGuide data={practicalGuide?.comparison} />
             <CityComplexes cityNameIn={city.nameIn} complexes={page.complexes} />
             <CityLocalContent content={page.localContent} />
+            <ServiceEstimateGuide data={practicalGuide?.estimate} />
             <ServiceSteps
               id={isPlastering ? "plastering-stages" : undefined}
               title={page.stages.title}
@@ -195,6 +202,7 @@ const faqJsonLd = {
               data={page.priceCalc}
               showPlasteringEstimate={isPlastering ? false : undefined}
             />
+            <ServiceProjectControl data={practicalGuide} />
             <ReviewsSection reviews={page.reviews} />
             <ContactRequest {...page.contact} />
             <FaqSection

@@ -1,0 +1,18 @@
+---
+const { data } = Astro.props;
+---
+
+{data && (
+  <section class="project-control reveal-on-scroll" id="project-control">
+    <div class="project-control__container">
+      <header class="project-control__header"><span class="project-control__eyebrow">От заявки до сдачи</span><h2>{data.workflowTitle}</h2><p>{data.workflowDescription}</p></header>
+      <div class="project-control__timeline">
+        {data.workflow.map((step, index) => <article><span class="project-control__step">{index + 1}</span><div><h3>{step[0]}</h3><p>{step[1]}</p><strong>{step[2]}</strong></div></article>)}
+      </div>
+      <div class="project-control__acceptance">
+        <div><span class="project-control__acceptance-kicker">Чек-лист заказчика</span><h3>{data.acceptanceTitle}</h3><p>Проверяем результат по понятным пунктам до подписания итогового акта.</p></div>
+        <ul>{data.acceptance.map(item => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+)}

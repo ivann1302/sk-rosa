@@ -1,0 +1,22 @@
+---
+const { data } = Astro.props;
+---
+
+{data && (
+  <section class="decision-guide reveal-on-scroll" id="service-comparison">
+    <div class="decision-guide__container">
+      <header class="decision-guide__header">
+        <span class="decision-guide__eyebrow">{data.eyebrow}</span>
+        <h2 class="decision-guide__title">{data.title}</h2>
+        <p class="decision-guide__description">{data.description}</p>
+      </header>
+      <div class="decision-guide__table-wrap">
+        <table class="decision-guide__table">
+          <thead><tr><th>Критерий</th>{data.options.map(option => <th>{option}</th>)}</tr></thead>
+          <tbody>{data.rows.map(row => <tr>{row.map((cell, index) => <td class:list={{ "decision-guide__criterion": index === 0 }}>{cell}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+      <p class="decision-guide__note"><span aria-hidden="true">i</span>{data.note}</p>
+    </div>
+  </section>
+)}

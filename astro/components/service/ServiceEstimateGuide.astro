@@ -1,0 +1,23 @@
+---
+const { data } = Astro.props;
+---
+
+{data && (
+  <section class="estimate-guide reveal-on-scroll" id="estimate-breakdown">
+    <div class="estimate-guide__container">
+      <div class="estimate-guide__heading">
+        <div><span class="estimate-guide__eyebrow">Прозрачный расчёт</span><h2>{data.title}</h2></div>
+        <p>{data.intro}</p>
+      </div>
+      <div class="estimate-guide__layout">
+        <ol class="estimate-guide__factors">
+          {data.factors.map((factor, index) => <li><span class="estimate-guide__number">{String(index + 1).padStart(2, "0")}</span><div><h3>{factor[0]}</h3><p>{factor[1]}</p></div></li>)}
+        </ol>
+        <aside class="estimate-guide__aside">
+          <div class="estimate-guide__meter"><span>₽/м²</span><h3>{data.meterTitle}</h3><p>{data.meterText}</p></div>
+          <div class="estimate-guide__readiness"><h3>{data.readinessTitle}</h3><ul>{data.readiness.map(item => <li>{item}</li>)}</ul></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+)}
