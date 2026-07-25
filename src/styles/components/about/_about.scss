@@ -100,10 +100,6 @@
     margin: 0 auto;
     text-align: center;
 
-    @media (width >= 1024px) {
-      white-space: nowrap;
-    }
-
     @media (width <= 768px) {
       font-size: 0.9rem;
 

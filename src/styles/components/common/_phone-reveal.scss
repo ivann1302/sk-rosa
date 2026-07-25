@@ -1,0 +1,60 @@
+.phone-reveal {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+
+.phone-reveal__tail {
+  display: inline-grid;
+  min-width: 2.9em;
+  overflow: hidden;
+  vertical-align: baseline;
+}
+
+.phone-reveal__mask,
+.phone-reveal__value {
+  grid-area: 1 / 1;
+  transition:
+    opacity 0.42s ease,
+    filter 0.42s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.phone-reveal__mask {
+  opacity: 0.72;
+  letter-spacing: 0.04em;
+  transform: translateY(0);
+}
+
+.phone-reveal__value {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(0.35em);
+}
+
+.phone-reveal--revealed {
+  .phone-reveal__mask {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-0.35em);
+  }
+
+  .phone-reveal__value {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.header__mobile-contacts-phone.phone-reveal {
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-reveal__mask,
+  .phone-reveal__value {
+    transition-duration: 0.01ms;
+  }
+}

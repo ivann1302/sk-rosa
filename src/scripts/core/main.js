@@ -5,6 +5,7 @@ import { initMobileMenu } from "../modules/menu.js";
 import { initSubmenu } from "../modules/submenu.js";
 import { createSwipeHandler } from "../modules/swipe.js";
 import { initCarouselPosition } from "../modules/carousel-position.js";
+import { initPhoneReveal } from "../features/contact/phone-reveal.js";
 
 // Запуск задачи когда браузер свободен (фолбэк для Safari < 16)
 const scheduleIdle = cb => {
@@ -267,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarouselPosition();
   initArticlesCarousel();
   initSocialFixed();
+  initPhoneReveal();
 
   // Динамические импорты — калькулятор, портфолио, FAQ
   loadFeatureModules();
