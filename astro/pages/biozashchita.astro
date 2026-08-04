@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
+import ArticlesCarousel from "../components/service/ArticlesCarousel.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import InternalLinksSection from "../components/service/InternalLinksSection.astro";
@@ -117,6 +118,12 @@ const faqJsonLd = {
       title="Ответы на частые вопросы"
       description={biozashchitaPage.faqDescription}
       items={biozashchitaPage.faq}
+    />
+    <ArticlesCarousel
+      title="Полезные статьи по огнебиозащите"
+      articles={biozashchitaPage.articles}
+      moreHref="/blog"
+      moreLabel="Посмотреть другие статьи"
     />
   </main>
   <InternalLinksSection

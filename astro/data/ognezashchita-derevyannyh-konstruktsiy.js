@@ -157,6 +157,14 @@ export const ognezashchitaDerevyannyhKonstruktsiyPage = {
   ],
   articles: [
     {
+      href: "/kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+      title: "Какая огнебиозащита для дерева лучше: выбор состава",
+      image: "/assets/images/common/kakuyu-ognebiozashchitu-vybrat-dlya-dereva.png",
+      alt: "Нанесение огнебиозащитного состава на древесину кистью",
+      width: 1672,
+      height: 941,
+    },
+    {
       href: "/srok-sluzhby-ognezashchitnogo-pokrytiya",
       title: "Срок службы огнезащитного покрытия",
       image: "/assets/images/common/ognezashita-srok-sluzhby.webp",

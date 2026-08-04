@@ -3,6 +3,7 @@ import defektyOgnezashchitnogoPokrytiyaMetallaHtml from "../../src/pages/defekty
 import fasadShtukaturkaHtml from "../../src/pages/fasad-shtukaturka.html?raw";
 import gidroizolyaciyaPolaPodStyazhkuHtml from "../../src/pages/gidroizolyaciya-pola-pod-styazhku.html?raw";
 import kakRasscitatRaskhodShtukaturkiHtml from "../../src/pages/kak-rasscitat-raskhod-shtukaturki.html?raw";
+import kakuyuOgnebiozashchituVybratDlyaDerevaHtml from "../../src/pages/kakuyu-ognebiozashchitu-vybrat-dlya-dereva.html?raw";
 import mashinnayaIliRuchnayaShtukaturkaHtml from "../../src/pages/mashinnaya-ili-ruchnaya-shtukaturka.html?raw";
 import pokraskaStenBezRazvodovHtml from "../../src/pages/pokraska-sten-bez-razvodov.html?raw";
 import pokraskaStenDvumyaCvetamiHtml from "../../src/pages/pokraska-sten-dvumya-cvetami.html?raw";
@@ -19,6 +20,7 @@ import trebovaniyaKVypolneniyuShtukaturnyhRabotHtml from "../../src/pages/trebov
 import vidyStyazhkiPolaHtml from "../../src/pages/vidy-styazhki-pola.html?raw";
 import vyborKraskiAirlessPaintingHtml from "../../src/pages/vybor-kraski-airless-painting.html?raw";
 import vyborShtukaturkiHtml from "../../src/pages/vybor-shtukaturki.html?raw";
+import vidyOgnezashchityMetallokonstruktsiyHtml from "../../src/pages/vidy-ognezashchity-metallokonstruktsiy.html?raw";
 import { businessId } from "../lib/seo.js";
 
 export const blogPage = {
@@ -45,6 +47,38 @@ export const blogCategories = [
 ];
 
 export const blogArticles = [
+  {
+    slug: "kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+    href: "/kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+    category: "materials",
+    categoryLabel: "Материалы и технологии",
+    title: "Какая огнебиозащита для дерева лучше: выбор состава",
+    excerpt:
+      "Как выбрать огнебиозащиту для стропил, дома и улицы: I или II группа, тип состава, расход и ошибки при обработке.",
+    date: "2026-08-04",
+    dateLabel: "4 августа 2026",
+    readTime: "12 мин чтения",
+    image: "/assets/images/common/kakuyu-ognebiozashchitu-vybrat-dlya-dereva.png",
+    imageAlt: "Нанесение огнебиозащитного состава на древесину кистью",
+    width: 1672,
+    height: 941,
+  },
+  {
+    slug: "vidy-ognezashchity-metallokonstruktsiy",
+    href: "/vidy-ognezashchity-metallokonstruktsiy",
+    category: "materials",
+    categoryLabel: "Материалы и технологии",
+    title: "Виды огнезащиты металлоконструкций: сравнение и выбор",
+    excerpt:
+      "Краски, штукатурки, плиты и комбинированные системы: сравниваем способы огнезащиты металлоконструкций и объясняем, как выбрать решение для объекта.",
+    date: "2026-08-04",
+    dateLabel: "4 августа 2026",
+    readTime: "14 мин чтения",
+    image: "/assets/images/common/vidy-ognezashchity-metallokonstruktsiy.png",
+    imageAlt: "Стальной каркас здания: виды огнезащиты металлоконструкций",
+    width: 1448,
+    height: 1086,
+  },
   {
     slug: "defekty-ognezashchitnogo-pokrytiya-metalla",
     href: "/defekty-ognezashchitnogo-pokrytiya-metalla",
@@ -393,6 +427,14 @@ const relatedCategoryPriority = {
 };
 
 const relatedArticleSlugsBySlug = {
+  "kakuyu-ognebiozashchitu-vybrat-dlya-dereva": [
+    "vidy-ognezashchity-metallokonstruktsiy",
+    "defekty-ognezashchitnogo-pokrytiya-metalla",
+  ],
+  "vidy-ognezashchity-metallokonstruktsiy": [
+    "defekty-ognezashchitnogo-pokrytiya-metalla",
+    "srok-sluzhby-ognezashchitnogo-pokrytiya",
+  ],
   "defekty-ognezashchitnogo-pokrytiya-metalla": ["srok-sluzhby-ognezashchitnogo-pokrytiya"],
   "srok-sluzhby-ognezashchitnogo-pokrytiya": ["defekty-ognezashchitnogo-pokrytiya-metalla"],
 };
@@ -430,6 +472,7 @@ const articleSources = {
   "fasad-shtukaturka": fasadShtukaturkaHtml,
   "gidroizolyaciya-pola-pod-styazhku": gidroizolyaciyaPolaPodStyazhkuHtml,
   "kak-rasscitat-raskhod-shtukaturki": kakRasscitatRaskhodShtukaturkiHtml,
+  "kakuyu-ognebiozashchitu-vybrat-dlya-dereva": kakuyuOgnebiozashchituVybratDlyaDerevaHtml,
   "mashinnaya-ili-ruchnaya-shtukaturka": mashinnayaIliRuchnayaShtukaturkaHtml,
   "pokraska-sten-bez-razvodov": pokraskaStenBezRazvodovHtml,
   "pokraska-sten-dvumya-cvetami": pokraskaStenDvumyaCvetamiHtml,
@@ -444,6 +487,7 @@ const articleSources = {
   "styazhka-pod-teply-pol": styazhkaPodTeplyPolHtml,
   "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot": trebovaniyaKVypolneniyuShtukaturnyhRabotHtml,
   "vidy-styazhki-pola": vidyStyazhkiPolaHtml,
+  "vidy-ognezashchity-metallokonstruktsiy": vidyOgnezashchityMetallokonstruktsiyHtml,
   "vybor-kraski-airless-painting": vyborKraskiAirlessPaintingHtml,
   "vybor-shtukaturki": vyborShtukaturkiHtml,
 };

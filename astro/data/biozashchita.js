@@ -171,6 +171,14 @@ export const biozashchitaPage = {
     miniCalcFormSource: "Мини-калькулятор огнебиозащиты",
     articles: [
       {
+        href: "/kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+        label: "Как выбрать огнебиозащиту для дерева",
+      },
+      {
+        href: "/vidy-ognezashchity-metallokonstruktsiy",
+        label: "Виды огнезащиты металлоконструкций",
+      },
+      {
         href: "/defekty-ognezashchitnogo-pokrytiya-metalla",
         label: "Дефекты огнезащитного покрытия",
       },
@@ -276,6 +284,22 @@ export const biozashchitaPage = {
     },
   ],
   articles: [
+    {
+      href: "/kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+      title: "Какая огнебиозащита для дерева лучше: выбор состава",
+      image: "/assets/images/common/kakuyu-ognebiozashchitu-vybrat-dlya-dereva.png",
+      alt: "Нанесение огнебиозащитного состава на древесину кистью",
+      width: 1672,
+      height: 941,
+    },
+    {
+      href: "/vidy-ognezashchity-metallokonstruktsiy",
+      title: "Виды огнезащиты металлоконструкций: сравнение и выбор",
+      image: "/assets/images/common/vidy-ognezashchity-metallokonstruktsiy.png",
+      alt: "Стальной каркас здания: виды огнезащиты металлоконструкций",
+      width: 1448,
+      height: 1086,
+    },
     {
       href: "/srok-sluzhby-ognezashchitnogo-pokrytiya",
       title: "Срок службы огнезащитного покрытия металлоконструкций",

@@ -210,6 +210,8 @@ const articleClusterBySlug = {
   "styazhka-pod-teply-pol": "floor-screed",
   "defekty-ognezashchitnogo-pokrytiya-metalla": "ognezashchita-metallokonstruktsiy",
   "srok-sluzhby-ognezashchitnogo-pokrytiya": "ognezashchita-metallokonstruktsiy",
+  "vidy-ognezashchity-metallokonstruktsiy": "ognezashchita-metallokonstruktsiy",
+  "kakuyu-ognebiozashchitu-vybrat-dlya-dereva": "ognezashchita-derevyannyh-konstruktsiy",
 };
 
 const cityByName = new Map(citiesData.cities.map(city => [city.name, city]));
