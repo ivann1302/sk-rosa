@@ -2,7 +2,9 @@ import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { biozashchitaPage } from "./biozashchita.js";
+import { getBiozashchitaCityTemplate } from "./biozashchita-city-templates.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { getPriorityBiozashchitaCityContent } from "./biozashchita-priority-city-content.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_BIOZASHCHITA_CITY_SLUGS ?? "")
@@ -19,9 +21,7 @@ const selectedCitySlugs = new Set(selectedCities.map(city => city.slug));
 const missingCitySlugs = citySlugsFilter.filter(slug => !selectedCitySlugs.has(slug));
 
 if (missingCitySlugs.length > 0) {
-  throw new Error(
-    `Unknown ASTRO_BIOZASHCHITA_CITY_SLUGS value(s): ${missingCitySlugs.join(", ")}`,
-  );
+  throw new Error(`Unknown ASTRO_BIOZASHCHITA_CITY_SLUGS value(s): ${missingCitySlugs.join(", ")}`);
 }
 
 export const biozashchitaCitySlugs = selectedCities.map(city => city.slug);
@@ -65,6 +65,15 @@ function buildCityPage(city) {
     serviceSlug: "biozashchita",
     complexes,
   });
+  const priorityContent = getPriorityBiozashchitaCityContent(city.slug);
+  const cityTemplate = getBiozashchitaCityTemplate(city.slug);
+
+  if (priorityContent) {
+    localContent.title = priorityContent.guide.title;
+    localContent.subtitle = priorityContent.guide.subtitle;
+    localContent.lead = priorityContent.guide.lead;
+    localContent.blocks = [...priorityContent.guide.blocks, ...localContent.blocks];
+  }
 
   return {
     ...biozashchitaPage,
@@ -73,12 +82,28 @@ function buildCityPage(city) {
     jsonLd: serviceJsonLd(city, seo),
     complexes,
     localContent,
-    faq: [...biozashchitaPage.faq, ...localContent.faq],
+    faq: [...cityTemplate.faq, ...localContent.faq],
     faqDescription: localContent.faqDescription,
+    advantages:
+      (priorityContent?.existingBlocks?.advantages ?? cityTemplate.advantages)
+        ? biozashchitaPage.advantages.map((item, index) => ({
+            ...item,
+            ...(priorityContent?.existingBlocks?.advantages ?? cityTemplate.advantages)[index],
+          }))
+        : biozashchitaPage.advantages,
+    stages:
+      (priorityContent?.existingBlocks?.stages ?? cityTemplate.stages)
+        ? {
+            ...biozashchitaPage.stages,
+            ...(priorityContent?.existingBlocks?.stages ?? cityTemplate.stages),
+          }
+        : biozashchitaPage.stages,
     hero: {
       ...biozashchitaPage.hero,
       title: `Огнебиозащита конструкций в ${city.nameIn}`,
-      subtitle: `Огнебиозащита в ${city.nameIn} — это обработка дерева и металла составами, которые снижают горючесть и помогают защитить деревянные элементы от грибка, плесени и насекомых. Работаем со стропилами, чердаками, металлокаркасами, складами и коммерческими объектами; фиксируем смету до начала работ, после сдачи передаём акты и документы.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Огнебиозащита в ${city.nameIn} — это обработка дерева и металла составами, которые снижают горючесть и помогают защитить деревянные элементы от грибка, плесени и насекомых. Работаем со стропилами, чердаками, металлокаркасами, складами и коммерческими объектами; фиксируем смету до начала работ, после сдачи передаём акты и документы.`,
     },
     contact: {
       ...biozashchitaPage.contact,
@@ -97,8 +122,10 @@ function buildCityPage(city) {
     },
     textBlock: {
       ...biozashchitaPage.textBlock,
-      title: `Огнебиозащитная обработка конструкций в ${city.nameIn}`,
-      paragraphs: [
+      title:
+        priorityContent?.textBlock.title ??
+        `Огнебиозащитная обработка конструкций в ${city.nameIn}`,
+      paragraphs: priorityContent?.textBlock.paragraphs ?? [
         `Нужна огнебиозащита конструкций в ${city.nameIn}? Работаем с частными домами, коттеджами, складами, ангарами и коммерческими объектами, где важно защитить дерево или металл от огня, влаги и биопоражения.`,
         "Перед началом работ осматриваем объект, уточняем материал конструкций, доступность узлов, состояние поверхности и требования к защите. После этого подбираем состав и способ нанесения: кисть, валик или распыление.",
         `Ориентир по огнебиозащите начинается от 200 ₽/м². Итоговая стоимость зависит от площади, высоты работ, типа материала, расхода состава и подготовки поверхности. После выполнения передаём договор, смету, акты и согласованные документы на применяемые составы.`,
