@@ -1,6 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import {
+  getSearchConsolePriorityContent,
+  searchConsolePriorityRoutes,
+} from "../../astro/data/search-console-priority-content.js";
 
 const rootDir = process.cwd();
 const astroDir = path.join(rootDir, "public_html_astro");
@@ -227,5 +231,65 @@ for (const service of services) {
     checked++;
   }
 }
+
+const priorityDescriptions = new Set();
+const priorityHeroSubtitles = new Set();
+const priorityTextBlockTitles = new Set();
+const priorityGuideTitles = new Set();
+
+for (const routeKey of searchConsolePriorityRoutes) {
+  const [serviceSlug, citySlug] = routeKey.split(":");
+  const priorityContent = getSearchConsolePriorityContent(serviceSlug, citySlug);
+  const page = `${serviceSlug}-${citySlug}.html`;
+  const html = readHtml(page);
+
+  priorityDescriptions.add(priorityContent.seoDescription);
+  priorityHeroSubtitles.add(priorityContent.heroSubtitle);
+  priorityTextBlockTitles.add(priorityContent.textBlock.title);
+  priorityGuideTitles.add(priorityContent.guide.title);
+
+  assert(
+    priorityContent.textBlock.paragraphs.length >= 3,
+    `${page}: priority service text needs three paragraphs`,
+  );
+  assert(priorityContent.guide.blocks.length >= 4, `${page}: priority guide needs four blocks`);
+  assert(priorityContent.faq.length >= 3, `${page}: priority content needs three FAQ items`);
+
+  assert(
+    metaValue(html, "description") === priorityContent.seoDescription,
+    `${page}: priority meta description was not rendered`,
+  );
+  assert(html.includes(priorityContent.heroSubtitle), `${page}: priority hero was not rendered`);
+  assert(
+    html.includes(priorityContent.textBlock.title),
+    `${page}: priority service text was not rendered`,
+  );
+  assert(html.includes(priorityContent.guide.title), `${page}: priority guide was not rendered`);
+
+  for (const block of priorityContent.guide.blocks) {
+    assert(html.includes(block.title), `${page}: missing priority guide block "${block.title}"`);
+  }
+
+  for (const item of priorityContent.faq) {
+    assert(html.includes(item.question), `${page}: missing priority FAQ "${item.question}"`);
+  }
+}
+
+assert(
+  priorityDescriptions.size === searchConsolePriorityRoutes.length,
+  "Priority pages must have unique meta descriptions",
+);
+assert(
+  priorityGuideTitles.size === searchConsolePriorityRoutes.length,
+  "Priority pages must have unique editorial guide titles",
+);
+assert(
+  priorityHeroSubtitles.size === searchConsolePriorityRoutes.length,
+  "Priority pages must have unique hero subtitles",
+);
+assert(
+  priorityTextBlockTitles.size === searchConsolePriorityRoutes.length,
+  "Priority pages must have unique service text titles",
+);
 
 process.stdout.write(`Astro service output check passed for ${checked} pages.\n`);

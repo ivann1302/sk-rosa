@@ -2,6 +2,7 @@ import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { getSearchConsolePriorityContent } from "./search-console-priority-content.js";
 import { turnkeyRepairPage } from "./turnkey-repair.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
@@ -59,13 +60,28 @@ function serviceJsonLd(city, seo) {
 }
 
 function buildCityPage(city) {
-  const seo = citySeo(city);
+  const priorityContent = getSearchConsolePriorityContent("turnkey-repair", city.slug);
+  const defaultSeo = citySeo(city);
+  const seo = priorityContent
+    ? {
+        ...defaultSeo,
+        description: priorityContent.seoDescription,
+        ogDescription: priorityContent.seoDescription,
+        lastmod: priorityContent.lastmod,
+      }
+    : defaultSeo;
   const complexes = complexesData.complexes[city.name] ?? [];
   const localContent = buildLocalServiceContent({
     city,
     serviceSlug: "turnkey-repair",
     complexes,
   });
+  const resolvedLocalContent = priorityContent
+    ? {
+        ...localContent,
+        ...priorityContent.guide,
+      }
+    : localContent;
 
   return {
     ...turnkeyRepairPage,
@@ -73,13 +89,15 @@ function buildCityPage(city) {
     seo,
     jsonLd: serviceJsonLd(city, seo),
     complexes,
-    localContent,
-    faq: [...turnkeyRepairPage.faq, ...localContent.faq],
-    faqDescription: localContent.faqDescription,
+    localContent: resolvedLocalContent,
+    faq: [...turnkeyRepairPage.faq, ...(priorityContent?.faq ?? localContent.faq)],
+    faqDescription: priorityContent?.faqDescription ?? localContent.faqDescription,
     hero: {
       ...turnkeyRepairPage.hero,
       title: `Ремонт квартир, домов и коммерческих помещений под ключ в ${city.nameIn}`,
-      subtitle: `Ремонт под ключ в ${city.nameIn} — это полный цикл работ от демонтажа и инженерии до чистовой отделки, уборки и передачи готового объекта. Ориентир по работам — от 10 000 ₽/м²; смету, сроки, этапы оплаты и сдачу фиксируем в договоре и актах.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Ремонт под ключ в ${city.nameIn} — это полный цикл работ от демонтажа и инженерии до чистовой отделки, уборки и передачи готового объекта. Ориентир по работам — от 10 000 ₽/м²; смету, сроки, этапы оплаты и сдачу фиксируем в договоре и актах.`,
     },
     contact: {
       ...turnkeyRepairPage.contact,
@@ -98,13 +116,15 @@ function buildCityPage(city) {
     },
     textBlock: {
       ...turnkeyRepairPage.textBlock,
-      title: `Ремонт под ключ в ${city.nameIn}`,
-      paragraphs: [
-        `Ремонт под ключ в ${city.nameIn} подходит, когда заказчику нужен один подрядчик на весь цикл: демонтаж, черновые работы, электрика, сантехника, стяжка, штукатурка, шпаклёвка, покраска, укладка покрытий, установка дверей и финальная уборка.`,
-        "Работаем с новостройками, вторичным жильём, частными домами, офисами и коммерческими помещениями. По каждому объекту составляем смету с перечнем работ, материалов и этапов, чтобы бюджет был понятен до старта.",
-        "Ориентир по стоимости работ начинается от 10 000 ₽/м² для косметического ремонта, от 15 000 ₽/м² для капитального и от 20 000 ₽/м² для ремонта с материалами. Итог зависит от площади, состояния объекта, инженерии, дизайн-решений и уровня чистовой отделки.",
-        "Сроки, состав работ, порядок оплаты и гарантию фиксируем в договоре. Работы принимаются поэтапно: после каждого этапа можно подписать акт, а финальная сдача закрывается актом выполненных работ.",
-      ],
+      ...(priorityContent?.textBlock ?? {
+        title: `Ремонт под ключ в ${city.nameIn}`,
+        paragraphs: [
+          `Ремонт под ключ в ${city.nameIn} подходит, когда заказчику нужен один подрядчик на весь цикл: демонтаж, черновые работы, электрика, сантехника, стяжка, штукатурка, шпаклёвка, покраска, укладка покрытий, установка дверей и финальная уборка.`,
+          "Работаем с новостройками, вторичным жильём, частными домами, офисами и коммерческими помещениями. По каждому объекту составляем смету с перечнем работ, материалов и этапов, чтобы бюджет был понятен до старта.",
+          "Ориентир по стоимости работ начинается от 10 000 ₽/м² для косметического ремонта, от 15 000 ₽/м² для капитального и от 20 000 ₽/м² для ремонта с материалами. Итог зависит от площади, состояния объекта, инженерии, дизайн-решений и уровня чистовой отделки.",
+          "Сроки, состав работ, порядок оплаты и гарантию фиксируем в договоре. Работы принимаются поэтапно: после каждого этапа можно подписать акт, а финальная сдача закрывается актом выполненных работ.",
+        ],
+      }),
     },
   };
 }

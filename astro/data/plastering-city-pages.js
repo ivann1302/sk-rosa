@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
 import { plasteringPage } from "./plastering.js";
+import { getSearchConsolePriorityContent } from "./search-console-priority-content.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_PLASTERING_CITY_SLUGS ?? "")
@@ -69,13 +70,28 @@ function serviceJsonLd(city, seo) {
 }
 
 function buildCityPage(city) {
-  const seo = citySeo(city);
+  const priorityContent = getSearchConsolePriorityContent("plastering", city.slug);
+  const defaultSeo = citySeo(city);
+  const seo = priorityContent
+    ? {
+        ...defaultSeo,
+        description: priorityContent.seoDescription,
+        ogDescription: priorityContent.seoDescription,
+        lastmod: priorityContent.lastmod,
+      }
+    : defaultSeo;
   const complexes = complexesData.complexes[city.name] ?? [];
   const localContent = buildLocalServiceContent({
     city,
     serviceSlug: "plastering",
     complexes,
   });
+  const resolvedLocalContent = priorityContent
+    ? {
+        ...localContent,
+        ...priorityContent.guide,
+      }
+    : localContent;
 
   return {
     ...plasteringPage,
@@ -83,13 +99,15 @@ function buildCityPage(city) {
     seo,
     jsonLd: serviceJsonLd(city, seo),
     complexes,
-    localContent,
-    faq: [...plasteringPage.faq, ...localContent.faq],
-    faqDescription: localContent.faqDescription,
+    localContent: resolvedLocalContent,
+    faq: [...plasteringPage.faq, ...(priorityContent?.faq ?? localContent.faq)],
+    faqDescription: priorityContent?.faqDescription ?? localContent.faqDescription,
     hero: {
       ...plasteringPage.hero,
       title: `Механизированная штукатурка стен в ${city.nameIn}`,
-      subtitle: `Штукатурка стен в ${city.nameIn} — это выравнивание основания гипсовой или цементной смесью под обои, покраску, плитку или декоративную отделку. Работаем по маякам, фиксируем цену в договоре и сдаём готовые поверхности по акту.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Штукатурка стен в ${city.nameIn} — это выравнивание основания гипсовой или цементной смесью под обои, покраску, плитку или декоративную отделку. Работаем по маякам, фиксируем цену в договоре и сдаём готовые поверхности по акту.`,
     },
     advantages: localizeAdvantages(city),
     contact: {
@@ -107,14 +125,16 @@ function buildCityPage(city) {
       callBannerSource: `Баннер 10 секунд (${city.name})`,
     },
     textBlock: {
-      title: `Механизированная штукатурка стен под ключ в ${city.nameIn}`,
       subtitle: "Гипсовая и цементная штукатурка - от замера до сдачи под чистовую отделку",
-      paragraphs: [
-        `Основные заказчики в ${city.nameIn} — владельцы квартир в новостройках, частных домов и коммерческих объектов: коттеджей, офисов, магазинов и небольших производств. Машинная подача смеси через штукатурную станцию даёт скорость до 200 м² за смену и помогает держать одинаковое качество на большом объёме.`,
-        "Гипсовая штукатурка подходит для сухих помещений и подготовки под обои или покраску. Цементная штукатурка прочнее и устойчивее к влаге, поэтому её используем в санузлах, кухнях, подвалах, гаражах и на фасадах.",
-        `Работаем штукатурными станциями PFT и Kaleta: смесь готовим у объекта и подаём шлангом на этаж без ручного переноса мешков. Геометрию выводим по маякам, а площадь, толщину слоя, материалы, сроки и цену фиксируем в смете и договоре.`,
-        "Ориентир по стоимости — от 600 ₽/м² для гипсовой машинной штукатурки. На итоговую цену влияют площадь, толщина слоя, материал основания, подготовка, армирование, откосы, углы, фасадные зоны и требования к финишной отделке.",
-      ],
+      ...(priorityContent?.textBlock ?? {
+        title: `Механизированная штукатурка стен под ключ в ${city.nameIn}`,
+        paragraphs: [
+          `Основные заказчики в ${city.nameIn} — владельцы квартир в новостройках, частных домов и коммерческих объектов: коттеджей, офисов, магазинов и небольших производств. Машинная подача смеси через штукатурную станцию даёт скорость до 200 м² за смену и помогает держать одинаковое качество на большом объёме.`,
+          "Гипсовая штукатурка подходит для сухих помещений и подготовки под обои или покраску. Цементная штукатурка прочнее и устойчивее к влаге, поэтому её используем в санузлах, кухнях, подвалах, гаражах и на фасадах.",
+          `Работаем штукатурными станциями PFT и Kaleta: смесь готовим у объекта и подаём шлангом на этаж без ручного переноса мешков. Геометрию выводим по маякам, а площадь, толщину слоя, материалы, сроки и цену фиксируем в смете и договоре.`,
+          "Ориентир по стоимости — от 600 ₽/м² для гипсовой машинной штукатурки. На итоговую цену влияют площадь, толщина слоя, материал основания, подготовка, армирование, откосы, углы, фасадные зоны и требования к финишной отделке.",
+        ],
+      }),
     },
     service: {
       slug: "plastering",

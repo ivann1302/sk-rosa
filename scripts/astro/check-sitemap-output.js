@@ -1,6 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import {
+  searchConsolePriorityLastmod,
+  searchConsolePriorityRoutes,
+} from "../../astro/data/search-console-priority-content.js";
 
 const rootDir = process.cwd();
 const outputDir = path.join(rootDir, "public_html_astro");
@@ -90,6 +94,7 @@ if (!sitemap.includes("<urlset") || urlBlocks.length === 0) {
 }
 
 const seen = new Set();
+const lastmodByLoc = new Map();
 const errors = [];
 
 for (const block of urlBlocks) {
@@ -115,6 +120,7 @@ for (const block of urlBlocks) {
   }
 
   seen.add(loc);
+  lastmodByLoc.set(loc, lastmods[0] ?? "");
 
   if (lastmods.length > 1) {
     errors.push(`${loc}: multiple lastmod values`);
@@ -122,6 +128,15 @@ for (const block of urlBlocks) {
 
   if (lastmods[0] && !/^\d{4}-\d{2}-\d{2}$/.test(lastmods[0])) {
     errors.push(`${loc}: lastmod must be YYYY-MM-DD`);
+  }
+}
+
+for (const routeKey of searchConsolePriorityRoutes) {
+  const [serviceSlug, citySlug] = routeKey.split(":");
+  const loc = `https://sk-rosa.ru/${serviceSlug}-${citySlug}`;
+
+  if (lastmodByLoc.get(loc) !== searchConsolePriorityLastmod) {
+    errors.push(`${loc}: priority lastmod must be ${searchConsolePriorityLastmod}`);
   }
 }
 

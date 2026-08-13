@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { floorScreedPage } from "./floor-screed.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { getSearchConsolePriorityContent } from "./search-console-priority-content.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_FLOOR_SCREED_CITY_SLUGS ?? "")
@@ -71,13 +72,28 @@ function serviceJsonLd(city, seo) {
 }
 
 function buildCityPage(city) {
-  const seo = citySeo(city);
+  const priorityContent = getSearchConsolePriorityContent("floor-screed", city.slug);
+  const defaultSeo = citySeo(city);
+  const seo = priorityContent
+    ? {
+        ...defaultSeo,
+        description: priorityContent.seoDescription,
+        ogDescription: priorityContent.seoDescription,
+        lastmod: priorityContent.lastmod,
+      }
+    : defaultSeo;
   const complexes = complexesData.complexes[city.name] ?? [];
   const localContent = buildLocalServiceContent({
     city,
     serviceSlug: "floor-screed",
     complexes,
   });
+  const resolvedLocalContent = priorityContent
+    ? {
+        ...localContent,
+        ...priorityContent.guide,
+      }
+    : localContent;
 
   return {
     ...floorScreedPage,
@@ -85,13 +101,15 @@ function buildCityPage(city) {
     seo,
     jsonLd: serviceJsonLd(city, seo),
     complexes,
-    localContent,
-    faq: [...floorScreedPage.faq, ...localContent.faq],
-    faqDescription: localContent.faqDescription,
+    localContent: resolvedLocalContent,
+    faq: [...floorScreedPage.faq, ...(priorityContent?.faq ?? localContent.faq)],
+    faqDescription: priorityContent?.faqDescription ?? localContent.faqDescription,
     hero: {
       ...floorScreedPage.hero,
       title: `Механизированная стяжка пола в ${city.nameIn}`,
-      subtitle: `Стяжка пола в ${city.nameIn} — это выравнивающий и несущий слой основания под плитку, ламинат, паркет, наливной пол или тёплый пол. Делаем полусухую и цементную стяжку с лазерным контролем уровня, фиксируем смету в договоре и сдаём работы по акту.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Стяжка пола в ${city.nameIn} — это выравнивающий и несущий слой основания под плитку, ламинат, паркет, наливной пол или тёплый пол. Делаем полусухую и цементную стяжку с лазерным контролем уровня, фиксируем смету в договоре и сдаём работы по акту.`,
     },
     advantages: localizeAdvantages(city),
     contact: {
@@ -111,13 +129,15 @@ function buildCityPage(city) {
     },
     textBlock: {
       ...floorScreedPage.textBlock,
-      title: `Механизированная стяжка пола под ключ в ${city.nameIn}`,
-      paragraphs: [
-        `Основные наши заказчики — владельцы частных домов и коммерческих объектов: коттеджей, офисов, магазинов, складов, автосервисов и производственных помещений. Механизированная технология создана именно под такие объёмы — до 150 м² готовой стяжки за смену.`,
-        `Полусухая стяжка — выбор для коттеджей с тёплым полом и коммерческой отделки: сохнет 7 дней, не боится небольших минусовых температур в межсезонье. Цементная стяжка прочнее и выдерживает высокие нагрузки — заливаем её в гаражи, паркинги, склады и цеха. На замере бесплатно подскажем, какая технология подойдёт под ваш объект.`,
-        "Работаем на профессиональном пневмонагнетателе: смесь готовим на улице и подаём по шлангу прямо на этаж — без грязи в подъезде и мусора на площадке. Ровность контролируем лазерным нивелиром, допуск ±2 мм на 2 метра.",
-        "Ориентир по стоимости начинается от 900 ₽/м². В смете отдельно учитываем площадь, толщину слоя, подготовку основания, армирование, демпферную ленту, керамзит, гидроизоляцию и требования будущего покрытия; объём работ, сроки и цену фиксируем в договоре.",
-      ],
+      ...(priorityContent?.textBlock ?? {
+        title: `Механизированная стяжка пола под ключ в ${city.nameIn}`,
+        paragraphs: [
+          `Основные наши заказчики — владельцы частных домов и коммерческих объектов: коттеджей, офисов, магазинов, складов, автосервисов и производственных помещений. Механизированная технология создана именно под такие объёмы — до 150 м² готовой стяжки за смену.`,
+          `Полусухая стяжка — выбор для коттеджей с тёплым полом и коммерческой отделки: сохнет 7 дней, не боится небольших минусовых температур в межсезонье. Цементная стяжка прочнее и выдерживает высокие нагрузки — заливаем её в гаражи, паркинги, склады и цеха. На замере бесплатно подскажем, какая технология подойдёт под ваш объект.`,
+          "Работаем на профессиональном пневмонагнетателе: смесь готовим на улице и подаём по шлангу прямо на этаж — без грязи в подъезде и мусора на площадке. Ровность контролируем лазерным нивелиром, допуск ±2 мм на 2 метра.",
+          "Ориентир по стоимости начинается от 900 ₽/м². В смете отдельно учитываем площадь, толщину слоя, подготовку основания, армирование, демпферную ленту, керамзит, гидроизоляцию и требования будущего покрытия; объём работ, сроки и цену фиксируем в договоре.",
+        ],
+      }),
     },
   };
 }

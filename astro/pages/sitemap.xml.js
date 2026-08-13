@@ -102,7 +102,10 @@ function uniqueUrls() {
       loc: article.seo.canonical,
       lastmod: articleLastmod(article),
     })),
-    ...serviceCityPages.map(({ page }) => ({ loc: page.seo.canonical })),
+    ...serviceCityPages.map(({ page }) => ({
+      loc: page.seo.canonical,
+      lastmod: datePart(page.seo.lastmod),
+    })),
   ];
 
   const seen = new Set();

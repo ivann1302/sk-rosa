@@ -3,6 +3,7 @@ import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { airlessPaintingPage } from "./airless-painting.js";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { getSearchConsolePriorityContent } from "./search-console-priority-content.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
 const citySlugsFilter = (process.env.ASTRO_AIRLESS_PAINTING_CITY_SLUGS ?? "")
@@ -71,13 +72,28 @@ function serviceJsonLd(city, seo) {
 }
 
 function buildCityPage(city) {
-  const seo = citySeo(city);
+  const priorityContent = getSearchConsolePriorityContent("airless-painting", city.slug);
+  const defaultSeo = citySeo(city);
+  const seo = priorityContent
+    ? {
+        ...defaultSeo,
+        description: priorityContent.seoDescription,
+        ogDescription: priorityContent.seoDescription,
+        lastmod: priorityContent.lastmod,
+      }
+    : defaultSeo;
   const complexes = complexesData.complexes[city.name] ?? [];
   const localContent = buildLocalServiceContent({
     city,
     serviceSlug: "airless-painting",
     complexes,
   });
+  const resolvedLocalContent = priorityContent
+    ? {
+        ...localContent,
+        ...priorityContent.guide,
+      }
+    : localContent;
 
   return {
     ...airlessPaintingPage,
@@ -85,13 +101,15 @@ function buildCityPage(city) {
     seo,
     jsonLd: serviceJsonLd(city, seo),
     complexes,
-    localContent,
-    faq: [...airlessPaintingPage.faq, ...localContent.faq],
-    faqDescription: localContent.faqDescription,
+    localContent: resolvedLocalContent,
+    faq: [...airlessPaintingPage.faq, ...(priorityContent?.faq ?? localContent.faq)],
+    faqDescription: priorityContent?.faqDescription ?? localContent.faqDescription,
     hero: {
       ...airlessPaintingPage.hero,
       title: `Безвоздушная покраска стен и потолков в ${city.nameIn}`,
-      subtitle: `Безвоздушная покраска в ${city.nameIn} — это машинное нанесение краски аппаратом высокого давления: покрытие ложится ровным факелом без следов валика, подтёков и полос. Красим стены, потолки, фасады и коммерческие площади, фиксируем цену в договоре и сдаём работу по акту.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Безвоздушная покраска в ${city.nameIn} — это машинное нанесение краски аппаратом высокого давления: покрытие ложится ровным факелом без следов валика, подтёков и полос. Красим стены, потолки, фасады и коммерческие площади, фиксируем цену в договоре и сдаём работу по акту.`,
     },
     advantages: localizeAdvantages(city),
     contact: {
@@ -111,12 +129,14 @@ function buildCityPage(city) {
     },
     textBlock: {
       ...airlessPaintingPage.textBlock,
-      title: `Безвоздушная покраска стен и потолков под ключ в ${city.nameIn}`,
-      paragraphs: [
-        `Для объектов в ${city.nameIn} безвоздушный метод особенно выгоден на больших и ровных поверхностях: в квартирах под чистовую приёмку, офисах, шоурумах, складах, производственных помещениях и на фасадах. Скорость нанесения достигает 200–400 м² за смену, а слой получается равномерным на стыках, углах и сложных переходах.`,
-        "Перед покраской оцениваем основание: если стены ровные и зашпаклёваны, можно сразу планировать нанесение; если есть дефекты, включаем подготовку в смету отдельно. Работаем с матовыми, глубокоматовыми и шёлковистыми красками под условия помещения и требования к износостойкости.",
-        "Ориентир по цене начинается от 200 ₽/м² для стен. Итоговая стоимость зависит от площади, высоты, числа цветов, укрывных работ, подготовки основания, типа краски, количества слоёв и доступа к объекту; сроки, материал и цену фиксируем в договоре.",
-      ],
+      ...(priorityContent?.textBlock ?? {
+        title: `Безвоздушная покраска стен и потолков под ключ в ${city.nameIn}`,
+        paragraphs: [
+          `Для объектов в ${city.nameIn} безвоздушный метод особенно выгоден на больших и ровных поверхностях: в квартирах под чистовую приёмку, офисах, шоурумах, складах, производственных помещениях и на фасадах. Скорость нанесения достигает 200–400 м² за смену, а слой получается равномерным на стыках, углах и сложных переходах.`,
+          "Перед покраской оцениваем основание: если стены ровные и зашпаклёваны, можно сразу планировать нанесение; если есть дефекты, включаем подготовку в смету отдельно. Работаем с матовыми, глубокоматовыми и шёлковистыми красками под условия помещения и требования к износостойкости.",
+          "Ориентир по цене начинается от 200 ₽/м² для стен. Итоговая стоимость зависит от площади, высоты, числа цветов, укрывных работ, подготовки основания, типа краски, количества слоёв и доступа к объекту; сроки, материал и цену фиксируем в договоре.",
+        ],
+      }),
     },
   };
 }

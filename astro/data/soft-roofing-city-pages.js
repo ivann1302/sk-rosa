@@ -2,6 +2,7 @@ import process from "node:process";
 import citiesData from "./directus-cache/cities.json";
 import complexesData from "./directus-cache/residential-complexes.json";
 import { buildLocalServiceContent } from "./local-service-content.js";
+import { getSearchConsolePriorityContent } from "./search-console-priority-content.js";
 import { softRoofingPage } from "./soft-roofing.js";
 import { serviceJsonLd as buildServiceJsonLd } from "../lib/seo.js";
 
@@ -58,13 +59,28 @@ function serviceJsonLd(city, seo) {
 }
 
 function buildCityPage(city) {
-  const seo = citySeo(city);
+  const priorityContent = getSearchConsolePriorityContent("soft-roofing", city.slug);
+  const defaultSeo = citySeo(city);
+  const seo = priorityContent
+    ? {
+        ...defaultSeo,
+        description: priorityContent.seoDescription,
+        ogDescription: priorityContent.seoDescription,
+        lastmod: priorityContent.lastmod,
+      }
+    : defaultSeo;
   const complexes = complexesData.complexes[city.name] ?? [];
   const localContent = buildLocalServiceContent({
     city,
     serviceSlug: "soft-roofing",
     complexes,
   });
+  const resolvedLocalContent = priorityContent
+    ? {
+        ...localContent,
+        ...priorityContent.guide,
+      }
+    : localContent;
 
   return {
     ...softRoofingPage,
@@ -72,13 +88,15 @@ function buildCityPage(city) {
     seo,
     jsonLd: serviceJsonLd(city, seo),
     complexes,
-    localContent,
-    faq: [...softRoofingPage.faq, ...localContent.faq],
-    faqDescription: localContent.faqDescription,
+    localContent: resolvedLocalContent,
+    faq: [...softRoofingPage.faq, ...(priorityContent?.faq ?? localContent.faq)],
+    faqDescription: priorityContent?.faqDescription ?? localContent.faqDescription,
     hero: {
       ...softRoofingPage.hero,
       title: `Монтаж мягкой кровли в ${city.nameIn} под ключ`,
-      subtitle: `Мягкая кровля в ${city.nameIn} — это гибкая черепица, наплавляемые материалы и мембраны для скатных, плоских и малоуклонных крыш. Укладываем новое покрытие, ремонтируем протечки, фиксируем смету до начала работ и передаём договор с актом сдачи.`,
+      subtitle:
+        priorityContent?.heroSubtitle ??
+        `Мягкая кровля в ${city.nameIn} — это гибкая черепица, наплавляемые материалы и мембраны для скатных, плоских и малоуклонных крыш. Укладываем новое покрытие, ремонтируем протечки, фиксируем смету до начала работ и передаём договор с актом сдачи.`,
     },
     contact: {
       ...softRoofingPage.contact,
@@ -97,13 +115,15 @@ function buildCityPage(city) {
     },
     textBlock: {
       ...softRoofingPage.textBlock,
-      title: `Монтаж и ремонт мягкой кровли в ${city.nameIn}`,
-      paragraphs: [
-        `Для объектов в ${city.nameIn} подбираем мягкую кровлю под конструкцию крыши: гибкую черепицу для скатных крыш, наплавляемые материалы и мембраны для плоских и малоуклонных оснований.`,
-        "Выполняем как монтаж новой мягкой кровли, так и ремонт существующего покрытия: устраняем протечки, меняем повреждённые участки, обновляем примыкания и восстанавливаем кровельный пирог.",
-        `Мягкая кровля особенно выгодна для крыш со сложной геометрией, малым уклоном, множеством ендов и примыканий. Бесплатно выезжаем на объект в ${city.nameIn}, делаем замер и готовим смету с разбивкой по работам.`,
-        "Ориентир начинается от 350 ₽/м² для наплавляемой кровли. Итоговая цена зависит от площади, уклона, основания, количества узлов, демонтажа, водостока и выбранного материала; после сдачи передаём акт и гарантию.",
-      ],
+      ...(priorityContent?.textBlock ?? {
+        title: `Монтаж и ремонт мягкой кровли в ${city.nameIn}`,
+        paragraphs: [
+          `Для объектов в ${city.nameIn} подбираем мягкую кровлю под конструкцию крыши: гибкую черепицу для скатных крыш, наплавляемые материалы и мембраны для плоских и малоуклонных оснований.`,
+          "Выполняем как монтаж новой мягкой кровли, так и ремонт существующего покрытия: устраняем протечки, меняем повреждённые участки, обновляем примыкания и восстанавливаем кровельный пирог.",
+          `Мягкая кровля особенно выгодна для крыш со сложной геометрией, малым уклоном, множеством ендов и примыканий. Бесплатно выезжаем на объект в ${city.nameIn}, делаем замер и готовим смету с разбивкой по работам.`,
+          "Ориентир начинается от 350 ₽/м² для наплавляемой кровли. Итоговая цена зависит от площади, уклона, основания, количества узлов, демонтажа, водостока и выбранного материала; после сдачи передаём акт и гарантию.",
+        ],
+      }),
     },
   };
 }
