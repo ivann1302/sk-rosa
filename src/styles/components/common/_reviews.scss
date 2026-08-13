@@ -420,7 +420,8 @@
   }
 
   &__arrow {
-    position: absolute;
+    // Перебиваем более специфичное глобальное правило button[aria-label].
+    position: absolute !important;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
@@ -475,6 +476,16 @@
 
       &--right {
         right: 2px;
+      }
+    }
+
+    @media (width >= 769px) and (width <= 1334px) {
+      &--left {
+        left: 12px;
+      }
+
+      &--right {
+        right: 12px;
       }
     }
   }

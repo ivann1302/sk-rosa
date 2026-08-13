@@ -181,7 +181,7 @@
     margin: 0;
   }
 
-  @media (width <= 768px) {
+  @media (width <= 1199px) {
     padding: 40px 0;
 
     &__container {
@@ -274,12 +274,12 @@
       transform: translateX(0);
     }
 
-    @media (width <= 768px) {
+    @media (width <= 1199px) {
       padding: 20px 12px 0 12px;
     }
   }
 
-  @media (width <= 768px) {
+  @media (width <= 1199px) {
     padding: 0;
   }
 

@@ -18,6 +18,9 @@ function ReviewCard({ review, onOpen }) {
           src={review.screenshot}
           alt={`Отзыв клиента ${review.name}: ${review.text}`}
           loading="lazy"
+          decoding="async"
+          width={review.screenshotWidth ?? 651}
+          height={review.screenshotHeight ?? 282}
         />
       ) : (
         <>
@@ -61,6 +64,8 @@ function ReviewModal({ review, onClose }) {
             className="reviews-modal__image"
             src={review.screenshot}
             alt={`Отзыв клиента ${review.name}: ${review.text}`}
+            width={review.screenshotWidth ?? 651}
+            height={review.screenshotHeight ?? 282}
           />
         ) : (
           <div className="reviews-modal__text-card">

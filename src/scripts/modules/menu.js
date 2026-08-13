@@ -12,6 +12,15 @@ export function initMobileMenu() {
     return;
   }
 
+  const tabletMedia = window.matchMedia("(max-width: 1023px)");
+
+  function closeMenu() {
+    headerMenu.classList.remove("is-active");
+    mobileContacts.classList.remove("is-active");
+    burgerButton.classList.remove("is-active");
+    document.body.style.overflow = "";
+  }
+
   burgerButton.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -19,11 +28,7 @@ export function initMobileMenu() {
     const isActive = headerMenu.classList.contains("is-active");
 
     if (isActive) {
-      // Закрываем обе плашки
-      headerMenu.classList.remove("is-active");
-      mobileContacts.classList.remove("is-active");
-      burgerButton.classList.remove("is-active");
-      document.body.style.overflow = "";
+      closeMenu();
     } else {
       // Открываем обе плашки
       headerMenu.classList.add("is-active");
@@ -43,10 +48,7 @@ export function initMobileMenu() {
         link.getAttribute("href") === "#services";
 
       if (!isSubmenuLink) {
-        headerMenu.classList.remove("is-active");
-        mobileContacts.classList.remove("is-active");
-        burgerButton.classList.remove("is-active");
-        document.body.style.overflow = "";
+        closeMenu();
       }
     });
   });
@@ -54,10 +56,13 @@ export function initMobileMenu() {
   // Закрываем меню при клике вне его
   document.addEventListener("click", function (event) {
     if (!header.contains(event.target)) {
-      headerMenu.classList.remove("is-active");
-      mobileContacts.classList.remove("is-active");
-      burgerButton.classList.remove("is-active");
-      document.body.style.overflow = "";
+      closeMenu();
+    }
+  });
+
+  tabletMedia.addEventListener("change", event => {
+    if (!event.matches) {
+      closeMenu();
     }
   });
 }

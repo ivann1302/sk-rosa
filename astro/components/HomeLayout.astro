@@ -1,0 +1,233 @@
+---
+// Вариант BaseLayout только для главной: синхронизировать общую разметку при изменениях BaseLayout.
+import "../styles/entry-home.scss";
+import Footer from "./layout/Footer.astro";
+import Header from "./layout/Header.astro";
+import { organizationJsonLd, webPageJsonLd, websiteJsonLd } from "../lib/seo.js";
+
+const {
+  title,
+  description,
+  canonical,
+  ogTitle = title,
+  ogDescription = description,
+  ogType = "website",
+  ogImage = "https://sk-rosa.ru/assets/images/common/about-hero.webp",
+  ogImageSecureUrl,
+  ogImageWidth = "1920",
+  ogImageHeight = "645",
+  ogImageType = "image/webp",
+  ogImageAlt = "ROSA - Ремонт под ключ",
+  ogSiteName,
+  extraHeadHtml = "",
+  jsonLd = [],
+  mainEntityId = "",
+  enableMetrika = true,
+  robots = "index, follow",
+  bodyClass = "",
+  metrikaId = 109562461,
+  metrikaOptions = {
+    ssr: true,
+    webvisor: true,
+    clickmap: true,
+    ecommerce: "dataLayer",
+    referrer: "document.referrer",
+    url: "location.href",
+    accurateTrackBounce: true,
+    trackLinks: true,
+  },
+} = Astro.props;
+
+const metrikaOptionsScript = JSON.stringify(metrikaOptions)
+  .replaceAll('"document.referrer"', "document.referrer")
+  .replaceAll('"location.href"', "location.href");
+
+function jsonLdKey(item) {
+  if (!item || typeof item !== "object") {
+    return "";
+  }
+
+  if (item["@id"]) {
+    return `id:${item["@id"]}`;
+  }
+
+  if (item["@type"] && item.url) {
+    return `type-url:${JSON.stringify(item["@type"])}:${item.url}`;
+  }
+
+  return "";
+}
+
+function uniqueJsonLd(items) {
+  const seen = new Set();
+
+  return items.flat().filter(item => {
+    if (!item) {
+      return false;
+    }
+
+    const key = jsonLdKey(item);
+
+    if (!key) {
+      return true;
+    }
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+const baseJsonLd = [
+  organizationJsonLd,
+  websiteJsonLd,
+  webPageJsonLd({ canonical, title, description, mainEntityId }),
+];
+const pageJsonLd = uniqueJsonLd([...baseJsonLd, ...jsonLd]);
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="OOO.ROSA" />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    {
+      (ogImageSecureUrl ?? ogImage) && (
+        <meta property="og:image:secure_url" content={ogImageSecureUrl ?? ogImage} />
+      )
+    }
+    <meta property="og:image:width" content={ogImageWidth} />
+    <meta property="og:image:height" content={ogImageHeight} />
+    <meta property="og:image:type" content={ogImageType} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:locale" content="ru_RU" />
+    {ogSiteName && <meta property="og:site_name" content={ogSiteName} />}
+    <link rel="icon" href="/assets/icons/ui/favIcons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/assets/icons/ui/favIcons/r-32.png" />
+    <link rel="apple-touch-icon" href="/assets/icons/ui/favIcons/r-180.png" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/portfolio/20-mobile.webp"
+      type="image/webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/common/about-hero.webp"
+      type="image/webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+
+    {
+      enableMetrika && (
+        <script
+          type="text/javascript"
+          is:inline
+          set:html={`(function (m, e, t, r, i, k, a) {
+  m.rosaMetrikaId = ${metrikaId};
+  m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+  m[i].l = 1 * new Date();
+  for (var j = 0; j < document.scripts.length; j++) {
+    if (document.scripts[j].src === r) return;
+  }
+  k = e.createElement(t);
+  a = e.getElementsByTagName(t)[0];
+  k.async = 1;
+  k.src = r;
+  a.parentNode.insertBefore(k, a);
+})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=${metrikaId}", "ym");
+
+ym(${metrikaId}, "init", ${metrikaOptionsScript});`}
+        />
+      )
+    }
+
+    {
+      enableMetrika && (
+        <script
+          type="text/javascript"
+          is:inline
+          set:html={`(function (m, d) {
+  var metrikaId = ${metrikaId};
+  var lastTrackedUrl = location.href;
+
+  function trackPageView() {
+    var currentUrl = location.href;
+    if (currentUrl === lastTrackedUrl || typeof m.ym !== "function") return;
+
+    var referer = lastTrackedUrl;
+    lastTrackedUrl = currentUrl;
+    m.ym(metrikaId, "hit", currentUrl, {
+      title: d.title,
+      referer: referer,
+    });
+  }
+
+  function scheduleTrackPageView() {
+    setTimeout(trackPageView, 0);
+  }
+
+  ["pushState", "replaceState"].forEach(function (methodName) {
+    var originalMethod = history[methodName];
+    history[methodName] = function () {
+      var result = originalMethod.apply(this, arguments);
+      scheduleTrackPageView();
+      return result;
+    };
+  });
+
+  addEventListener("popstate", scheduleTrackPageView);
+  addEventListener("hashchange", scheduleTrackPageView);
+  d.addEventListener("astro:page-load", scheduleTrackPageView);
+})(window, document);`}
+        />
+      )
+    }
+
+    {
+      pageJsonLd.map(item => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
+    {extraHeadHtml && <Fragment set:html={extraHeadHtml} />}
+  </head>
+  <body id="top" class={bodyClass}>
+    {
+      enableMetrika && (
+        <noscript>
+          <div>
+            <img
+              src={`https://mc.yandex.ru/watch/${metrikaId}`}
+              style="position: absolute; left: -9999px"
+              alt=""
+            />
+          </div>
+        </noscript>
+      )
+    }
+    <Header />
+    <slot />
+    <slot name="before-footer" />
+    <Footer />
+    <slot name="runtime" />
+  </body>
+</html>

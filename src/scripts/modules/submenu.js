@@ -4,7 +4,7 @@
  */
 
 // Константы
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 1023;
 const RESIZE_DEBOUNCE_DELAY = 150; // Задержка для debounce resize
 
 // Хранилище обработчиков для очистки
@@ -53,8 +53,9 @@ function showSubmenu(item, submenu) {
 function hideSubmenu(item, submenu, toggleButton = null) {
   submenu.classList.remove("is-active");
   item.classList.remove("is-active");
-  if (toggleButton) {
-    toggleButton.setAttribute("aria-expanded", "false");
+  const resolvedToggleButton = toggleButton ?? item.querySelector(".header__menu-toggle");
+  if (resolvedToggleButton) {
+    resolvedToggleButton.setAttribute("aria-expanded", "false");
   }
 }
 

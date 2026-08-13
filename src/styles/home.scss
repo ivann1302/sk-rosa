@@ -1,0 +1,50 @@
+// Стили только для главной страницы.
+// Порядок модулей повторяет main.scss, чтобы сохранить прежний каскад,
+// но исключает компоненты блога, калькулятора, услуг и портфолио,
+// которых нет в DOM главной страницы.
+@use "normalize";
+@use "fonts";
+@use "variables";
+@use "utils";
+@use "globals";
+@use "components/header/header";
+@use "components/footer/footer";
+@use "components/footer/useful-links";
+@use "components/contact/contact-form";
+@use "components/contact/contacts";
+@use "components/forms/form-validation";
+@use "components/about/about";
+@use "components/about/company-description";
+@use "components/services/services";
+@use "components/services/advantages";
+@use "components/services/plastering-cases";
+@use "components/services/services-cards";
+@use "components/common/reviews";
+@use "components/common/social-reviews";
+@use "components/common/social-fixed";
+@use "components/common/success-modal";
+@use "components/common/call-banner";
+@use "components/common/articles-carousel";
+@use "components/common/phone-reveal";
+
+// Сохраняем глобальное правило из main.scss.
+p {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// В общем bundle это определение шло последним из blog-header и задавало
+// фактическую анимацию сообщений об ошибках на главной. Сохраняем каскад
+// прежней версии, не подключая ради одного keyframe весь CSS блога.
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

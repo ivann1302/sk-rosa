@@ -12,6 +12,9 @@ export default defineConfig({
     format: "file",
   },
   integrations: [react()],
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     css: {
       preprocessorOptions: {

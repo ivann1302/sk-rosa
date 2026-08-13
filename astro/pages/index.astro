@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../components/BaseLayout.astro";
+import HomeLayout from "../components/HomeLayout.astro";
 import LegacyRuntime from "../components/LegacyRuntime.astro";
 import PlasteringCasesSection from "../components/service/PlasteringCasesSection.astro";
 import { blogArticles } from "../data/blog.js";
@@ -27,6 +27,8 @@ type ReviewCard = {
   text: string;
   image?: string;
   screenshot?: string;
+  screenshotWidth?: number | string;
+  screenshotHeight?: number | string;
 };
 
 function escapeHtml(value: unknown): string {
@@ -63,6 +65,8 @@ function reviewCardHtml(review: ReviewCard): string {
                       alt="Отзыв клиента ${escapeHtml(review.name)}: ${escapeHtml(review.text)}"
                       loading="lazy"
                       decoding="async"
+                      width="${escapeHtml(review.screenshotWidth ?? 651)}"
+                      height="${escapeHtml(review.screenshotHeight ?? 282)}"
                     />
                   </article>`;
   }
@@ -223,7 +227,7 @@ const homepageWorkCases = {
 };
 ---
 
-<BaseLayout
+<HomeLayout
   title={seo.title}
   description={seo.description}
   canonical={seo.canonical}
@@ -238,9 +242,10 @@ const homepageWorkCases = {
   ogImageAlt={seo.ogImageAlt}
   ogSiteName={seo.ogSiteName}
   jsonLd={jsonLd}
+  enableMetrika={import.meta.env.PROD}
 >
   <Fragment set:html={contentBeforeCases} />
   <PlasteringCasesSection {...homepageWorkCases} />
   <Fragment set:html={contentAfterCases} />
   <LegacyRuntime slot="runtime" sourceHtml={sourceHtmlWithCasesMarker} />
-</BaseLayout>
+</HomeLayout>
