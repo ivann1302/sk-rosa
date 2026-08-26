@@ -1,0 +1,229 @@
+---
+const { kind, variant = "detail" } = Astro.props;
+const isCard = variant === "card";
+---
+
+{
+  isCard && kind === "dehumidifier" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <rect x="73" y="20" width="114" height="132" rx="10" />
+      <path d="M101 20V9h58v11M91 64h78M91 76h78M91 88h78M91 100h78M91 112h78" />
+      <rect x="113" y="35" width="34" height="14" rx="3" />
+      <circle cx="94" cy="157" r="8" />
+      <circle cx="166" cy="157" r="8" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "welder" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <rect x="55" y="31" width="150" height="112" rx="12" />
+      <path d="M92 31V17h76v14M75 62h72M75 76h72M75 90h72" />
+      <rect x="162" y="58" width="25" height="18" rx="3" />
+      <circle cx="80" cy="121" r="9" />
+      <circle cx="112" cy="121" r="9" />
+      <path d="M55 143 33 161M205 143l22 18" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "cutoff-saw" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <circle cx="164" cy="101" r="57" />
+      <circle cx="164" cy="101" r="8" />
+      <path d="M61 100h54l22-34h38M75 100 51 56h72l23 19M74 56 54 33M114 100l-20 42M96 142h28" />
+      <rect x="44" y="74" width="63" height="33" rx="8" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "vacuum" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M92 43h69l13 22v65a17 17 0 0 1-17 17h-61a17 17 0 0 1-17-17V65z" />
+      <path d="M88 65h78M107 43V28h40v15M174 81h23c23 0 30 16 30 34v20M227 135l-17 21M210 156h27" />
+      <circle cx="99" cy="152" r="8" />
+      <circle cx="156" cy="152" r="8" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "wall-chaser" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M63 77h106l27 27-30 38H72L48 118z" />
+      <path d="M87 77 105 45h65l24 25M102 45V29h45v16M196 104h28M72 142l-16 22M166 142l18 22" />
+      <circle cx="95" cy="115" r="28" />
+      <circle cx="95" cy="115" r="8" />
+      <circle cx="144" cy="115" r="28" />
+      <circle cx="144" cy="115" r="8" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "rotary-hammer" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M43 77h126l31 26-23 35H67L43 119z" />
+      <path d="M200 103h27M227 103h24M73 77V52h76l20 25M91 138l14 28h35l8-28" />
+      <rect x="61" y="91" width="56" height="24" rx="6" />
+      <path d="M57 103H31M125 52V33h25" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "gas-nailer" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M49 57h135l27 24-25 39H63L42 97z" />
+      <path d="M211 81h35M95 120l17 47h39l12-47M72 57V39h84l28 18" />
+      <path d="M58 120h111M70 139h97M66 154h97" />
+      <rect x="80" y="75" width="55" height="24" rx="6" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "tile-cutter" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M35 139h190l-17 22H52zM61 139V54h138v85" />
+      <path d="M72 54h116M99 54v56M161 54v56M99 83h62" />
+      <rect x="112" y="70" width="36" height="28" rx="5" />
+      <path d="M130 70V31h53M130 98v26" />
+      <circle cx="130" cy="126" r="7" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "pipe-bender" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M52 153h156M70 153V43h120v110M70 72h120" />
+      <path d="M98 72v31M162 72v31M99 104h62" />
+      <path d="M112 153v-36h36v36M130 117V88" />
+      <path d="M102 51c10-22 46-22 56 0" />
+      <circle cx="130" cy="75" r="10" />
+    </svg>
+  )
+}
+{
+  isCard && kind === "mixer" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M72 33h95l18 35-29 55H69L45 68z" />
+      <path d="M73 33 52 15M162 33l20-17M83 123l-14 27M145 123l16 27" />
+      <circle cx="67" cy="153" r="14" />
+      <circle cx="166" cy="153" r="14" />
+      <path d="M90 52h59M102 52v49M139 52v49M102 101l37-49M139 101l-37-49" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "dehumidifier" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <rect class="machine-fill" x="132" y="58" width="256" height="300" rx="18" />
+      <path d="M196 58V30h128v28M169 153h182M169 175h182M169 197h182M169 219h182M169 241h182M169 263h182" />
+      <rect class="machine-fill" x="221" y="90" width="78" height="34" rx="7" />
+      <circle cx="173" cy="370" r="27" />
+      <circle cx="347" cy="370" r="27" />
+      <path d="M132 318h256" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "welder" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <rect class="machine-fill" x="92" y="98" width="336" height="234" rx="22" />
+      <path d="M176 98V58h168v40M132 160h162M132 190h162M132 220h162" />
+      <rect class="machine-fill" x="329" y="151" width="55" height="38" rx="6" />
+      <circle cx="150" cy="281" r="19" />
+      <circle cx="218" cy="281" r="19" />
+      <path d="M92 332 48 380M428 332l44 48M384 238v42" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "cutoff-saw" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <circle class="machine-fill" cx="330" cy="245" r="118" />
+      <circle cx="330" cy="245" r="18" />
+      <path d="M113 244h104l48-76h91M139 244 88 145h145l50 45M136 145 94 93M215 244l-43 92M172 336h70" />
+      <rect class="machine-fill" x="72" y="187" width="132" height="72" rx="16" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "vacuum" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M164 91h158l30 50v143a39 39 0 0 1-39 39H173a39 39 0 0 1-39-39V141z" />
+      <path d="M151 141h186M198 91V56h92v35M352 175h43c52 0 69 36 69 77v47M464 299l-38 47M426 346h62" />
+      <circle cx="183" cy="338" r="20" />
+      <circle cx="310" cy="338" r="20" />
+      <path d="M186 205h114M186 231h114" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "wall-chaser" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M104 178h241l68 64-72 94H120l-69-60z" />
+      <path d="M155 178 199 94h145l59 66M192 94V52h101v42M413 242h61M120 336l-38 50M341 336l42 50" />
+      <circle cx="175" cy="271" r="68" />
+      <circle cx="175" cy="271" r="18" />
+      <circle cx="291" cy="271" r="68" />
+      <circle cx="291" cy="271" r="18" />
+      <path d="M106 178h240M51 276h362" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "rotary-hammer" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M71 169h279l76 62-57 83H124l-53-46z" />
+      <path d="M426 231h50M476 231h38M136 169v-58h168l46 58M172 314l33 70h79l18-70" />
+      <rect class="machine-fill" x="109" y="205" width="126" height="54" rx="13" />
+      <path d="M105 232H45M251 111V67h58M124 314h245" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "gas-nailer" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M77 123h283l70 60-62 94H112l-61-55z" />
+      <path d="M430 183h79M170 277l40 112h91l29-112M132 123V77h177l51 46" />
+      <path d="M101 277h245M123 322h211M135 361h189" />
+      <rect class="machine-fill" x="151" y="166" width="120" height="55" rx="13" />
+      <path d="M51 222h317" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "tile-cutter" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M57 329h407l-39 53H96zM113 329V122h295v207" />
+      <path d="M137 122h247M198 122v139M323 122v139M198 198h125" />
+      <rect class="machine-fill" x="227" y="165" width="70" height="61" rx="11" />
+      <path d="M262 165V62h123M262 226v68" />
+      <circle cx="262" cy="301" r="16" />
+      <path d="M113 329h295" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "pipe-bender" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path d="M79 379h362M118 379V92h284v287M118 167h284" />
+      <path d="M182 167v79M338 167v79M183 248h154" />
+      <path class="machine-fill" d="M218 379v-91h84v91M260 288v-78" />
+      <path d="M190 113c22-65 118-65 140 0" />
+      <circle class="machine-fill" cx="260" cy="173" r="27" />
+      <path d="M118 92h284M118 379h284" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "mixer" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path class="machine-fill" d="M133 82h238l49 95-65 137H134L75 177z" />
+      <path d="M133 82 93 43M369 82l42-39M151 314l-31 69M329 314l40 69" />
+      <circle cx="113" cy="384" r="31" />
+      <circle cx="378" cy="384" r="31" />
+      <path d="M158 124h175M188 124v133M303 124v133M188 257l115-133M303 257 188 124" />
+      <rect class="machine-fill" x="371" y="197" width="83" height="70" rx="10" />
+      <path d="M135 315h222M76 177h344" />
+    </svg>
+  )
+}

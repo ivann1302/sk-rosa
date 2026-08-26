@@ -1,5 +1,5 @@
 ---
-const { title, subtitle, features, formSource, comments } = Astro.props;
+const { title, subtitle, features, formSource, comments, propertyType = "apartment" } = Astro.props;
 ---
 
 <section class="contact-request reveal-on-scroll" id="contact-request">
@@ -63,7 +63,7 @@ const { title, subtitle, features, formSource, comments } = Astro.props;
             />
           </div>
           <input type="hidden" name="COMMENTS" value={comments} />
-          <input type="hidden" name="property_type" value="apartment" />
+          <input type="hidden" name="property_type" value={propertyType} />
           <input type="hidden" name="form_source" value={formSource} />
           <button type="submit" class="contact-request__submit">Отправить заявку</button>
         </form>

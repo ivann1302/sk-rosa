@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import EquipmentIllustration from "../components/rental/EquipmentIllustration.astro";
+import ContactRequest from "../components/service/ContactRequest.astro";
+import ServiceRuntime from "../components/service/ServiceRuntime.astro";
+import { equipmentRentalPage, rentalEquipment } from "../data/equipment-rental.js";
+import { breadcrumbJsonLd, businessId } from "../lib/seo.js";
+
+const { seo } = equipmentRentalPage;
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${seo.canonical}#catalog`,
+  name: "Строительное оборудование в аренду",
+  itemListElement: rentalEquipment.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: item.seo.canonical,
+    item: {
+      "@type": "Service",
+      name: item.name,
+      provider: { "@id": businessId },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "RUB",
+        price: String(item.priceFrom),
+        availability: "https://schema.org/InStock",
+      },
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle="Аренда строительного оборудования | ROSA"
+  ogDescription="Профессиональное оборудование для стройки и ремонта: посуточно и на длительный срок, с доставкой и договором."
+  ogImageAlt="Аренда строительного оборудования ROSA"
+  bodyClass="rental-page"
+  mainEntityId={`${seo.canonical}#catalog`}
+  jsonLd={[
+    itemListJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Аренда оборудования", url: seo.canonical },
+    ]),
+  ]}
+>
+  <main>
+    <section class="rental-hero">
+      <div class="rental-container rental-hero__grid">
+        <div class="rental-hero__content">
+          <p class="rental-eyebrow">Оборудование для стройки и ремонта</p>
+          <h1>Аренда строительного оборудования</h1>
+          <p class="rental-hero__lead">
+            Берите профессиональную технику на нужный срок без затрат на покупку, хранение и
+            обслуживание. Работаем с частными заказчиками, ИП и организациями.
+          </p>
+          <div class="rental-hero__actions">
+            <a class="rental-button rental-button--primary" href="#catalog">Выбрать оборудование</a>
+            <a class="rental-button rental-button--ghost" href="tel:+79851354991">Позвонить</a>
+          </div>
+          <ul class="rental-hero__facts" aria-label="Условия аренды">
+            <li>от 1 часа</li>
+            <li>доставка</li>
+            <li>договор и акт</li>
+          </ul>
+        </div>
+        <div class="rental-hero__panel" aria-label="Преимущества аренды">
+          <span class="rental-hero__panel-number">01</span>
+          <p>Техника готова к работе</p>
+          <span>Бронирование и продление аренды</span>
+          <span>Самовывоз: Москва и Долгопрудный</span>
+          <span>Ежедневно 09:00–21:00</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--light" id="catalog">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <p class="rental-eyebrow">Каталог</p>
+          <h2>Оборудование в аренду</h2>
+          <p>Выберите позицию, чтобы посмотреть характеристики, комплектацию и тарифы.</p>
+        </div>
+        <div class="rental-catalog">
+          {
+            rentalEquipment.map(item => (
+              <article class="rental-card">
+                <div class="rental-card__visual" aria-hidden="true">
+                  <EquipmentIllustration kind={item.visualKind} variant="card" />
+                  <span>{item.popularName}</span>
+                </div>
+                <div class="rental-card__body">
+                  <p class="rental-card__type">{item.type}</p>
+                  <h3>{item.shortName}</h3>
+                  <p>{item.summary}</p>
+                  <ul class="rental-card__badges">
+                    {item.badges.map(badge => <li>{badge}</li>)}
+                  </ul>
+                  <div class="rental-card__footer">
+                    <strong>{item.priceLabel}</strong>
+                    <a href={`/${item.slug}`}>Подробнее <span aria-hidden="true">→</span></a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section rental-process">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <p class="rental-eyebrow">Как арендовать</p>
+          <h2>От заявки до возврата — четыре шага</h2>
+        </div>
+        <ol class="rental-steps">
+          <li><span>01</span><strong>Заявка</strong><p>Назовите технику, даты, объём работ и район доставки.</p></li>
+          <li><span>02</span><strong>Расчёт</strong><p>Проверим наличие и согласуем срок, доставку и полную стоимость.</p></li>
+          <li><span>03</span><strong>Передача</strong><p>Подпишем договор и акт, проверим комплектность оборудования.</p></li>
+          <li><span>04</span><strong>Возврат</strong><p>Проверим исправность и вернём залог, если он предусмотрен.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <ContactRequest
+      title="Подобрать оборудование под вашу задачу"
+      subtitle="Оставьте номер телефона. Уточним объём и условия работ, проверим свободные даты и рассчитаем аренду с доставкой."
+      features={["Работаем с физлицами, ИП и организациями", "Можно забронировать и продлить аренду", "Ежедневно с 09:00 до 21:00"]}
+      formSource="Аренда строительного оборудования"
+      comments="Заявка со страницы аренды строительного оборудования"
+      propertyType="equipment-rental"
+    />
+  </main>
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={false}
+    callBannerComments="Заявка со страницы аренды строительного оборудования"
+    callBannerSource="Баннер — аренда строительного оборудования"
+  />
+</BaseLayout>

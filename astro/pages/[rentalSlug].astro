@@ -1,0 +1,200 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import EquipmentIllustration from "../components/rental/EquipmentIllustration.astro";
+import ContactRequest from "../components/service/ContactRequest.astro";
+import FaqSection from "../components/service/FaqSection.astro";
+import ServiceRuntime from "../components/service/ServiceRuntime.astro";
+import { rentalEquipment } from "../data/equipment-rental.js";
+import { breadcrumbJsonLd, businessId } from "../lib/seo.js";
+
+export function getStaticPaths() {
+  return rentalEquipment.map(item => ({
+    params: { rentalSlug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { seo } = item;
+const rentalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${seo.canonical}#service`,
+  url: seo.canonical,
+  name: item.name,
+  description: item.summary,
+  serviceType: "Аренда строительного оборудования",
+  provider: { "@id": businessId },
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "AdministrativeArea", name: "Московская область" },
+  ],
+  offers: item.rates.map(([duration, price]) => ({
+    "@type": "Offer",
+    name: `Аренда на ${duration}`,
+    price: price.replace(/\D/g, ""),
+    priceCurrency: "RUB",
+    availability: "https://schema.org/InStock",
+    url: seo.canonical,
+  })),
+};
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: item.faq.map(faq => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  canonical={seo.canonical}
+  ogTitle={`${item.shortName} в аренду | ROSA`}
+  ogDescription={item.summary}
+  ogImageAlt={`${item.shortName} в аренду`}
+  bodyClass="rental-page rental-detail-page"
+  mainEntityId={`${seo.canonical}#service`}
+  jsonLd={[
+    rentalServiceJsonLd,
+    faqJsonLd,
+    breadcrumbJsonLd([
+      { name: "Главная", url: "https://sk-rosa.ru/" },
+      { name: "Аренда оборудования", url: "https://sk-rosa.ru/arenda-stroitelnogo-oborudovaniya" },
+      { name: item.shortName, url: seo.canonical },
+    ]),
+  ]}
+>
+  <main>
+    <section class="rental-product-hero">
+      <div class="rental-container">
+        <nav class="rental-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="/">Главная</a><span>/</span>
+          <a href="/arenda-stroitelnogo-oborudovaniya">Аренда оборудования</a><span>/</span>
+          <span>{item.shortName}</span>
+        </nav>
+        <div class="rental-product-hero__grid">
+          <div class="rental-product-hero__content">
+            <p class="rental-eyebrow">{item.type}</p>
+            <h1>{item.name} в аренду</h1>
+            <p class="rental-product-hero__lead">{item.summary}</p>
+            <ul class="rental-product-hero__badges">
+              {item.badges.map(badge => <li>{badge}</li>)}
+            </ul>
+            <div class="rental-product-hero__price">
+              <span>Стоимость</span>
+              <strong>{item.rates[0][1]}</strong>
+              <small>за первые сутки</small>
+            </div>
+            <div class="rental-hero__actions">
+              <a class="rental-button rental-button--primary" href="#contact-request">Забронировать</a>
+              <a class="rental-button rental-button--ghost" href="tel:+79851354991">Позвонить</a>
+            </div>
+          </div>
+          <div class="rental-machine" aria-label={item.visualAlt}>
+            <div class="rental-machine__label"><span>{item.visualLabel}</span></div>
+            <EquipmentIllustration kind={item.visualKind} />
+            <p>Техническая схема. Фотографии оборудования добавим в галерею отдельно.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--light">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <p class="rental-eyebrow">Преимущества модели</p>
+          <h2>{item.featureHeading}</h2>
+        </div>
+        <div class="rental-feature-grid">
+          {item.features.map((feature, index) => (
+            <article class="rental-feature">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section">
+      <div class="rental-container rental-info-grid">
+        <div>
+          <div class="rental-section__heading rental-section__heading--compact">
+            <p class="rental-eyebrow">Характеристики</p>
+            <h2>{item.specificationHeading}</h2>
+          </div>
+          <dl class="rental-specs">
+            {item.specifications.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}
+          </dl>
+        </div>
+        <aside class="rental-use-cases">
+          <p class="rental-eyebrow">Подходит для</p>
+          <ul>{item.useCases.map(useCase => <li>{useCase}</li>)}</ul>
+          <p>{item.useCasesNote}</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--navy" id="prices">
+      <div class="rental-container rental-price-grid">
+        <div>
+          <div class="rental-section__heading rental-section__heading--compact">
+            <p class="rental-eyebrow">Тарифы</p>
+            <h2>Стоимость аренды</h2>
+            <p>Чем дольше срок, тем ниже стоимость одного дня. Сутки — 24 часа с момента выдачи.</p>
+          </div>
+          <div class="rental-price-table" role="table" aria-label="Тарифы аренды">
+            {item.rates.map(([duration, price]) => (
+              <div role="row"><span role="cell">{duration}</span><strong role="cell">{price}</strong></div>
+            ))}
+          </div>
+        </div>
+        <div class="rental-included">
+          <p class="rental-eyebrow">Комплектация</p>
+          <h3>Всё необходимое для работы</h3>
+          <ul>{item.included.map(part => <li>{part}</li>)}</ul>
+          <p class="rental-note">{item.includedNote}</p>
+          <a class="rental-button rental-button--light" href="#contact-request">Проверить наличие</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--light">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <p class="rental-eyebrow">Условия</p>
+          <h2>Получение, залог и документы</h2>
+        </div>
+        <dl class="rental-conditions">
+          {item.conditions.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}
+        </dl>
+      </div>
+    </section>
+
+    <ContactRequest
+      title={`Забронировать ${item.shortName}`}
+      subtitle={item.contactSubtitle}
+      features={item.contactFeatures}
+      formSource={`Аренда — ${item.shortName}`}
+      comments={`Заявка на аренду: ${item.shortName}`}
+      propertyType="equipment-rental"
+    />
+
+    <FaqSection
+      title="Ответы на частые вопросы"
+      description={item.faqDescription}
+      items={item.faq}
+    />
+  </main>
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={false}
+    callBannerComments={`Заявка на аренду: ${item.shortName}`}
+    callBannerSource={`Баннер — аренда: ${item.shortName}`}
+  />
+</BaseLayout>
