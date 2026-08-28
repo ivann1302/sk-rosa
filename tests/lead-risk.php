@@ -42,4 +42,14 @@ assertRiskScore(70, [
     'landing_page' => '/privacy',
 ], 'подозрительный визит без JS');
 
-echo "lead-risk: 4 scenarios passed\n";
+assertRiskScore(30, [
+    'has_js_context' => true,
+    'has_session_context' => true,
+    'time_to_lead_seconds' => 60,
+    'page_count' => 2,
+    'is_direct' => true,
+    'has_client_id' => true,
+    'landing_page' => '/',
+], 'первый вход с главной');
+
+echo "lead-risk: 5 scenarios passed\n";

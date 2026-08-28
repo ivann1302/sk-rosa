@@ -56,6 +56,9 @@ function calculateLeadRisk($signals) {
     }
 
     $landingPage = (string)($signals['landing_page'] ?? '');
+    if ($landingPage === '/' || preg_match('#^/index\.html/?$#i', $landingPage)) {
+        $add(20, 'Первая страница — главная');
+    }
     if (preg_match('#/(?:privacy|terms|404)(?:[./]|$)#i', $landingPage)) {
         $add(10, 'Вход с технической страницы');
     }
