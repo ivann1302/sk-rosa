@@ -1,0 +1,1040 @@
+{
+  "scrapedAt": "2026-08-27",
+  "source": "https://rent4work.ru/instrument/",
+  "categorySummary": {
+    "Болгарки (УШМ)": {
+      "count": 12,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/bolgarki/"
+    },
+    "Гайковерты": {
+      "count": 7,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/gajkoverty/"
+    },
+    "Дозаторы для хим. анкеров": {
+      "count": 3,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/dozatory-dlja-him-ankerov/"
+    },
+    "Дрели": {
+      "count": 9,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/drel/"
+    },
+    "Заклепочники": {
+      "count": 6,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/zaklepochniki/"
+    },
+    "Измерительный инструмент": {
+      "count": 17,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/izmeritelnyj-instrument/"
+    },
+    "Клуппы электрические резьбонарезные": {
+      "count": 2,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/klupp-elektricheskij-rezbonareznoj/"
+    },
+    "Краскопульты": {
+      "count": 19,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/kraskopulty/"
+    },
+    "Лобзиковые пилы": {
+      "count": 6,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/lobzikovye-pily/"
+    },
+    "Миксеры": {
+      "count": 4,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/miksery/"
+    },
+    "Монтажные пистолеты": {
+      "count": 14,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/montazhnye-pistolety/"
+    },
+    "Монтажный инструмент REHAU": {
+      "count": 5,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/"
+    },
+    "Монтажный инструмент для труб": {
+      "count": 7,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/instrument-dlja-opressovki-trub/"
+    },
+    "Ножницы по металлу": {
+      "count": 1,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/nozhnitsy-po-metallu/"
+    },
+    "Опрессовочные насосы": {
+      "count": 4,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/opressovochnye-nasosy/"
+    },
+    "Паяльник для сварки полипропиленовых труб": {
+      "count": 3,
+      "pages": 1,
+      "url": "https://rent4work.ru/instrument/paaylniki-dlay-svarki-polipropilenovyh-trub/"
+    }
+  },
+  "products": [
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Витязь МШУ-125-950",
+      "priceFrom": 190,
+      "priceLabel": "Цена от 190р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-vityaz-mshu--125-950"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Ingco AG10108-5",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-ingco-ag10108-5"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Bosch GWS 1000",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-bosch-gws-1000"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Hilti AG 125-19SE",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-hilti-ag-125-19-se"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Аккумуляторная болгарка (УШМ) Elitech МШУ 18БЛ",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-akkumulyatornoj-bolgarki-elitech-mshu-18bl"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Аккумуляторная болгарка (УШМ) Toua DBLAG125",
+      "priceFrom": 690,
+      "priceLabel": "Цена от 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-akkumulyatornoj-bolgarki-toua-dblag125"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Аккумуляторная болгарка (УШМ) Makita LXT DGA504RF",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-akkumulyatornoj-bolgarki-makita-lxt-dga504rf"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Аккумуляторная болгарка (УШМ) Hilti AG 4S-A22-125",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-akkumulyatornoj-bolgarki-hilti-ag-4s-a22-125"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Ingco AG30008",
+      "priceFrom": 490,
+      "priceLabel": "Цена от 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-elitech-ingco-ag30008"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Makita 9069",
+      "priceFrom": 490,
+      "priceLabel": "Цена от 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-makita-9069"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Makita GA9040SF",
+      "priceFrom": 690,
+      "priceLabel": "Цена от 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-makita-ga9040sf"
+    },
+    {
+      "category": "Болгарки (УШМ)",
+      "name": "Болгарка (УШМ) Hilti AG 230-27DB",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/bolgarki/arenda-bolgarki-hilti-ag-230-27-db"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Ударный пневматический гайковерт KRAFTOOL PW-1300c",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/udarnyj-pnevmaticheskij-gajkovert-kraftool-pw-1300c"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Аккумуляторный ударный гайковерт Hilti SIW 22-A",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-22-a"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Аккумуляторный ударный гайковерт Hilti SIW 6AT-A22",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw6at-a22"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Аккумуляторный ударный гайковерт Hilti SIW 22T-A",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-22t-a"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Аккумуляторный ударный гайковерт Hilti SIW 9-A22",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-9-a22"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Ударный пневматический гайковерт KRAFTOOL PW-3400",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/udarnyj-pnevmaticheskij-gajkovert-kraftool-pw-3400"
+    },
+    {
+      "category": "Гайковерты",
+      "name": "Ударный гайковерт Makita TW1000",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/gajkoverty/arenda-udarnogo-gajkoverta-makita-tw1000"
+    },
+    {
+      "category": "Дозаторы для хим. анкеров",
+      "name": "Дозатор Hilti MD 1000",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/dozatory-dlja-him-ankerov/arenda-dozatora-hilti-md-1000"
+    },
+    {
+      "category": "Дозаторы для хим. анкеров",
+      "name": "Дозатор Hilti HDM 500 (кроме HIT-ICE)",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/dozatory-dlja-him-ankerov/arenda-dozatora-hilti-hdm-500"
+    },
+    {
+      "category": "Дозаторы для хим. анкеров",
+      "name": "Аккумуляторный дозатор Hilti HDE 500-A22",
+      "priceFrom": 1390,
+      "priceLabel": "Цена от 1 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/dozatory-dlja-him-ankerov/arenda-dozatora-akkumulyatornogo-hilti-hde-500-a22"
+    },
+    {
+      "category": "Дрели",
+      "name": "Дрель Elitech Д400РЭ",
+      "priceFrom": 190,
+      "priceLabel": "Цена от 190р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/drel/arenda-dreli-elitech-d400re"
+    },
+    {
+      "category": "Дрели",
+      "name": "Дрель Hilti UD 4",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/drel/arenda-dreli-hilti-ud-4"
+    },
+    {
+      "category": "Дрели",
+      "name": "Дрель ударная Elitech ДУ 850РЭК",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/drel/arenda-dreli-elitech-du-850rek"
+    },
+    {
+      "category": "Дрели",
+      "name": "Дрель ударная Интерскол ДУ 16/1000ЭР",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/drel/udarnaya-drel-interskol-du-16-1000er"
+    },
+    {
+      "category": "Дрели",
+      "name": "Аккумуляторный шуруповерт DeWalt DCD791",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/shurupoverty/arenda-akkumulyatornogo-shurupovyorta-dewalt-dcd-791"
+    },
+    {
+      "category": "Дрели",
+      "name": "Аккумуляторная ударная дрель-шуруповерт Toua DBLID180",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/shurupoverty/arenda-akkumulyatornogo-udarnogo-drel-toua-dblid180"
+    },
+    {
+      "category": "Дрели",
+      "name": "Аккумуляторный шуруповерт Bosch GSR 180-LI",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/shurupoverty/arenda-akkumulyatornogo-shurupovyorta-bosch-gs%D0%BA-180-li"
+    },
+    {
+      "category": "Дрели",
+      "name": "Аккумуляторный шуруповёрт Hilti SFC 22-A",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/shurupoverty/arenda-akkumulyatornogo-shurupovyorta-hilti-sfc-22-a"
+    },
+    {
+      "category": "Дрели",
+      "name": "Аккумуляторная ударная дрель-шуруповерт Hilti SF 6H-A22",
+      "priceFrom": 490,
+      "priceLabel": "Цена от 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/shurupoverty/arenda-akkumulyatornogo-udarnogo-drel-hilti-sf-6h-a22"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Пневматический заклепочник Kraftool AR-64",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-pnevmaticheskogo-zaklepochnika-kraftool-ar-64"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Электрический заклепочник Messer ERG-743",
+      "priceFrom": 490,
+      "priceLabel": "Цена от 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-elektricheskogo-zaklepochnika-messer-erg-743"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Пневматический заклепочник Kraftool ARC-48 Vacuum-Lock",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-pnevmaticheskogo-zaklepochnika-kraftool-arc-48-acuum-lock"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Аккумуляторный заклепочник Hilti RT 6-A22",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-akkumulyatornogo-zaklepochnika-hilti-rt-6-a22"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Аккумуляторный заклепочник Makita LXT DRV250Z",
+      "priceFrom": 1290,
+      "priceLabel": "Цена от 1 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-akkumulyatornogo-zaklepochnika-makita-lxt-drv250z"
+    },
+    {
+      "category": "Заклепочники",
+      "name": "Аккумуляторный резьбовой заклепочник Messer M2000",
+      "priceFrom": 1290,
+      "priceLabel": "Цена от 1 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/zaklepochniki/arenda-akkumulyatornogo-rezbovogo-zaklepochnika-messer-m2000"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Звуковой детектор Hilti PMA 31G",
+      "priceFrom": 190,
+      "priceLabel": "Цена от 190р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-zvukovogo-detektora-hilti-pma-31g"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Детектор Elitech Д 100",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-detektora-elitech-d-100"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерный уровень (нивелир) Bosch PLL 360",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernogo-urovnya-bosch-pll-360"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерный уровень (нивелир) Elitech ЛН 360/3",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernogo-urovnya-elitech-ln-360-3"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерный уровень (нивелир) Elitech ЛН 360/3-ЗЕЛ",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernogo-urovnya-elitech-ln-360-3-zel"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерная рулетка Hilti PD-E",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernoj-ruletki-hilti-pd-e"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерный уровень (нивелир) Hilti PM 40-MG",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernogo-urovnya-hilti-pm-40-mg"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Лазерный уровень (нивелир) Hilti PM 30-MG",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-lazernogo-urovnya-hilti-pm-30-mg"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Оптический нивелир ADA PROF X32",
+      "priceFrom": 690,
+      "priceLabel": "Цена от 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-opticheskogo-nivelira-ada-prof-x32"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Оптический нивелир Hilti POL 15",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-opticheskogo-nivelira-hilti-pol-15"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Детектор Bosch D-tect 200 C",
+      "priceFrom": 1290,
+      "priceLabel": "Цена от 1 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-detektora-bosch-d-tect-200-c"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Мультидетектор Hilti PS 50",
+      "priceFrom": 1290,
+      "priceLabel": "Цена от 1 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-multidetektora-hilti-ps-50"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Ротационный лазерный нивелир ADA ROTARY 500 HV-G Servo",
+      "priceFrom": 2290,
+      "priceLabel": "Цена от 2 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-rotacionnogo-lazernogo-nivelira-ada-rotary-500-hv-g-servo"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Ротационный лазерный нивелир Hilti PR 30-HVS A12",
+      "priceFrom": 3290,
+      "priceLabel": "Цена от 3 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-rotacionnogo-lazernogo-nivelira-hilti-pr-30-hvs-a12"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Тепловизор ADA TemPro VISION 120",
+      "priceFrom": 1390,
+      "priceLabel": "Цена от 1 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-teplovizor-ada-tempro-vision-120"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Тепловизор ADA TemPro VISION 256 PROFESSIONAL",
+      "priceFrom": 1990,
+      "priceLabel": "Цена от 1 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/arenda-teplovizor-ada-tempro-vision-256"
+    },
+    {
+      "category": "Измерительный инструмент",
+      "name": "Тепловизор Testo 868",
+      "priceFrom": 2790,
+      "priceLabel": "Цена от 2 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/izmeritelnyj-instrument/teplovizor/arenda-teplovizora-testo-868"
+    },
+    {
+      "category": "Клуппы электрические резьбонарезные",
+      "name": "Электрический клупп резьбонарезной Rekon Drive 2 до 2\"",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/klupp-elektricheskij-rezbonareznoj/arenda-elektricheskogo-kluppa-rezbonareznogo-rekon-drive-2-do-2"
+    },
+    {
+      "category": "Клуппы электрические резьбонарезные",
+      "name": "Электрический клупп резьбонарезной Super-Ego Supertronic 2000",
+      "priceFrom": 1290,
+      "priceLabel": "Цена от 1 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/klupp-elektricheskij-rezbonareznoj/arenda-elektricheskogo-kluppa-rezbonareznogo-super-ego-supertronic-2000"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Пневмокраскопульт Fubag EXPERT S1000/1.5 HVLP",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-pnevmokraskopulta-fubag-expert-s1000-15-hvlp"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Краскопульт Ingco SPG5008",
+      "priceFrom": 490,
+      "priceLabel": "Цена от 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-kraskopulta-ingco-spg5008"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Краскопульт Bosch PFS 3000-2",
+      "priceFrom": 690,
+      "priceLabel": "Цена от 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-kraskopulta-bosch-pfs-3000-2"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Краскопульт Bosch PFS 5000E",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-kraskopulta-bosch-pfs-5000e"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Краскораспылитель Wagner Wall Perfect Flexio 687",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-kraskoraspylitelya-wagner-wall-perfect-flexio-687"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Окрасочный аппарат MultiRigo TMR 80+MRI-AS",
+      "priceFrom": 1690,
+      "priceLabel": "Цена от 1 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-okrasochnogo-apparata-multirigo-tmr-80"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Окрасочный аппарат MultiRigo TMR 180E+MRI-AS",
+      "priceFrom": 1790,
+      "priceLabel": "Цена от 1 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-okrasochnogo-apparata-multirigo-tmr-180e-mri-as"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Окрасочный аппарат MultiRigo TMR 180E Kombi",
+      "priceFrom": 1890,
+      "priceLabel": "Цена от 1 890р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-okrasochnogo-apparata-multirigo-tmr-180e-kombi"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат YOKIJI YKJ120",
+      "priceFrom": 1790,
+      "priceLabel": "Цена от 1 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-yokiji-ykj-120"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-1800",
+      "priceFrom": 1790,
+      "priceLabel": "Цена от 1 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-1800"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASTECH ASM-2200",
+      "priceFrom": 1890,
+      "priceLabel": "Цена от 1 890р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-2200"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный краскопульт Wagner Projectpro117",
+      "priceFrom": 2090,
+      "priceLabel": "Цена от 2 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-kraskopulta-wagner-projectpro117"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASTECH ASM-2800",
+      "priceFrom": 2090,
+      "priceLabel": "Цена от 2 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-2800"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-3100",
+      "priceFrom": 2290,
+      "priceLabel": "Цена от 2 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-3100"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASTECH ASM-3200",
+      "priceFrom": 2290,
+      "priceLabel": "Цена от 2 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-3200"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-3900",
+      "priceFrom": 2990,
+      "priceLabel": "Цена от 2 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-3900"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-6000",
+      "priceFrom": 3790,
+      "priceLabel": "Цена от 3 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-6000"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-8100",
+      "priceFrom": 3990,
+      "priceLabel": "Цена от 3 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-8100"
+    },
+    {
+      "category": "Краскопульты",
+      "name": "Безвоздушный окрасочный аппарат ASPRO-9000",
+      "priceFrom": 4190,
+      "priceLabel": "Цена от 4 190р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/kraskopulty/arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-9000"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Лобзиковая пила Elitech ПЛ 0560МЭ",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-lobzikovoj-pily-elitech-pl-0560me"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Лобзиковая пила Elitech ПЛ 0885МЭ",
+      "priceFrom": 290,
+      "priceLabel": "Цена от 290р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-lobzikovoj-pily-elitech-pl-2885me"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Лобзиковая пила DeWalt DW 341",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-lobzikovoj-pily-dewal-dw-341"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Лобзиковая пила Metabo STE 100 Quick",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-lobzikovoj-pily-metabo-ste-100-quick"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Лобзиковая пила Hilti WSJ 850-ET",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-lobzikovoj-pily-hilti-wsj-850-et"
+    },
+    {
+      "category": "Лобзиковые пилы",
+      "name": "Аккумуляторная лобзиковая пила Hilti SJD 6-A22",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/lobzikovye-pily/arenda-akkumulyatornoj-lobzikovoj-pily-hilti-sjd-6-a22"
+    },
+    {
+      "category": "Миксеры",
+      "name": "Миксер строительный Elitech МС 1400/2Э",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/miksery/arenda-miksera-elitech-mc-1400-2ed"
+    },
+    {
+      "category": "Миксеры",
+      "name": "Миксер строительный Elitech МС 1600/2ЭД",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/miksery/arenda-miksera-elitech-mc-1600-2ed"
+    },
+    {
+      "category": "Миксеры",
+      "name": "Миксер строительный Rebir EM2-1500E-2",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/miksery/arenda-miksera-rebir-em2-1500e-2"
+    },
+    {
+      "category": "Миксеры",
+      "name": "Миксер строительный Makita UT1600",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/miksery/arenda-miksera-makita-ut1600"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Аккумуляторный монтажный пистолет Hilti BX 3-L",
+      "priceFrom": 1590,
+      "priceLabel": "Цена от 1 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-akkumulyatornogo-montazhnogo-pistoleta-hilti-bx-3-l"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Аккумуляторный монтажный пистолет Hilti BX 3-ME",
+      "priceFrom": 1590,
+      "priceLabel": "Цена от 1 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-akkumulyatornogo-montazhnogo-pistoleta-hilti-bx-3-me"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Аккумуляторный монтажный пистолет Toua DCCN40",
+      "priceFrom": 1590,
+      "priceLabel": "Цена от 1 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-akkumulyatornogo-montazhnogo-pistoleta-toua-dccn40"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Аккумуляторный монтажный пистолет для теплоизоляции Toua DCIN160",
+      "priceFrom": 1590,
+      "priceLabel": "Цена от 1 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-akkumulyatornogo-montazhnogo-pistoleta-dlya-teploizolyatsii-toua-dcin160"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Аккумуляторный гвоздезабивной пистолет Toua DCFN3490",
+      "priceFrom": 1590,
+      "priceLabel": "Цена от 1 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-akkumulyatornogo-gvozdezabivnogo-pistoleta-toua-dcfn3490"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Газовый монтажный пистолет Hilti GX 3",
+      "priceFrom": 1190,
+      "priceLabel": "Цена от 1 190р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-gazovogo-montazhnogo-pistoleta-hilti-gx3"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Газовый монтажный пистолет Toua GSN40B",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-gazovogo-montazhnogo-pistoleta-toua-gsn40b"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Газовый монтажный пистолет Toua GSN50E",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Газовый монтажный пистолет для теплоизоляции Toua GSN50D",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-gazovogo-montazhnogo-pistoleta-dlya-teploizolyatsii-toua-gsn50d"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Газовый гвоздезабивной пистолет Toua GFN3490CH Li",
+      "priceFrom": 1090,
+      "priceLabel": "Цена от 1 090р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-gazovogo-gvozdezabivnogo-pistoleta-toua-gfn3490ch-li"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Пороховой монтажный пистолет Hilti DX 2",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-2"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Пороховой монтажный пистолет Molot PT-371A",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-porohovogo-montazhnogo-pistoleta-molot-pt-371"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Пороховой монтажный пистолет Hilti DX 5-MX 72",
+      "priceFrom": 1490,
+      "priceLabel": "Цена от 1 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-5-mx72"
+    },
+    {
+      "category": "Монтажные пистолеты",
+      "name": "Пороховой монтажный пистолет Hilti DX 76 MX",
+      "priceFrom": 1990,
+      "priceLabel": "Цена от 1 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnye-pistolety/arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-76-mx"
+    },
+    {
+      "category": "Монтажный инструмент REHAU",
+      "name": "Монтажный механический инструмент Tim FT1240A-18",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-montazhnogo-mekhanicheskogo-instrumenta-tim-ft1240a-18"
+    },
+    {
+      "category": "Монтажный инструмент REHAU",
+      "name": "Монтажный механический инструмент Rehau RAUTOOL M1",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-montazhnogo-mekhanicheskogo-instrumenta-rehau-rautool-m1"
+    },
+    {
+      "category": "Монтажный инструмент REHAU",
+      "name": "Механико-гидравлический инструмент Rehau RAUTOOL H2",
+      "priceFrom": 3590,
+      "priceLabel": "Цена от 3 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h2"
+    },
+    {
+      "category": "Монтажный инструмент REHAU",
+      "name": "Аккумуляторный гидравлический монтажный инструмент Rehau RAUTOOL A3",
+      "priceFrom": 3990,
+      "priceLabel": "Цена от 3 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-akkumulyatornogo-gidravlicheskogo-montazhnogo-instrumenta-rehau-rautool-a3"
+    },
+    {
+      "category": "Монтажный инструмент REHAU",
+      "name": "Механико-гидравлический инструмент Rehau RAUTOOL H/G1",
+      "priceFrom": 4990,
+      "priceLabel": "Цена от 4 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h-g1"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Монтажный механический инструмент Tim FT1240A-18",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-montazhnogo-mekhanicheskogo-instrumenta-tim-ft1240a-18"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Пресс инструмент ручной Valtec",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/instrument-dlja-opressovki-trub/arenda-press-instrumenta-ruchnogo-valtec-16-20-26-32-mm"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Аккумуляторный расширительный инструмент Milwaukee UPONOR® для системы Q&E HD 18 PXP - H10202C",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/instrument-dlja-opressovki-trub/arenda-akkumulyatornogo-rasshiritelnogo-instrumenta-milwaukee-uponor-dlya-sistemy-qe-hd-18-pxp-h10202c"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Монтажный механический инструмент Rehau RAUTOOL M1",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-montazhnogo-mekhanicheskogo-instrumenta-rehau-rautool-m1"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Механико-гидравлический инструмент Rehau RAUTOOL H2",
+      "priceFrom": 3590,
+      "priceLabel": "Цена от 3 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h2"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Аккумуляторный гидравлический монтажный инструмент Rehau RAUTOOL A3",
+      "priceFrom": 3990,
+      "priceLabel": "Цена от 3 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-akkumulyatornogo-gidravlicheskogo-montazhnogo-instrumenta-rehau-rautool-a3"
+    },
+    {
+      "category": "Монтажный инструмент для труб",
+      "name": "Механико-гидравлический инструмент Rehau RAUTOOL H/G1",
+      "priceFrom": 4990,
+      "priceLabel": "Цена от 4 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/montazhnyj-instrument-rehau/arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h-g1"
+    },
+    {
+      "category": "Ножницы по металлу",
+      "name": "Ножницы по металлу аккумуляторные Bosch GSC 12V-13 Professional",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/nozhnitsy-po-metallu/nozhnitsy-po-metallu-akkumulyatornye-bosch-gsc-12v-13-professional"
+    },
+    {
+      "category": "Опрессовочные насосы",
+      "name": "Опрессовочный насос Tim WM-50",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/opressovochnye-nasosy/arenda-opressovochnogo-nasosa-tim-wm-50"
+    },
+    {
+      "category": "Опрессовочные насосы",
+      "name": "Опрессовочный насос Rothenberger TP 25",
+      "priceFrom": 590,
+      "priceLabel": "Цена от 590р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/opressovochnye-nasosy/arenda-opressovochnogo-nasosa-rothenberger-tp-25"
+    },
+    {
+      "category": "Опрессовочные насосы",
+      "name": "Опрессовочный насос Rothenberger RP 50-S",
+      "priceFrom": 790,
+      "priceLabel": "Цена от 790р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/opressovochnye-nasosy/arenda-opressovochnogo-nasosa-rothenberger-rp-50-s"
+    },
+    {
+      "category": "Опрессовочные насосы",
+      "name": "Электрический опрессовочный насос Rothenberger RP PRO III",
+      "priceFrom": 1490,
+      "priceLabel": "Цена от 1 490р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/opressovochnye-nasosy/arenda-elektro-nasosa-rothenberger-pro-iii"
+    },
+    {
+      "category": "Паяльник для сварки полипропиленовых труб",
+      "name": "Паяльник для полипропиленовых труб и фитингов TIM 2000 Вт, 6 насадок (20-63)",
+      "priceFrom": 390,
+      "priceLabel": "Цена от 390р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/paaylniki-dlay-svarki-polipropilenovyh-trub/arenda-paaylnika-dlay-svarki-polipropilenovyh-trub-i-fitingov-tim-2000wt-6-nasadok"
+    },
+    {
+      "category": "Паяльник для сварки полипропиленовых труб",
+      "name": "Паяльник для сварки полипропиленовых труб Dytron Polys P-4a 850W",
+      "priceFrom": 690,
+      "priceLabel": "Цена от 690р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/paaylniki-dlay-svarki-polipropilenovyh-trub/arenda-paaylnika-dlay-svarki-polipropilenovyh-trub-ditron-polys-p-4a-850w"
+    },
+    {
+      "category": "Паяльник для сварки полипропиленовых труб",
+      "name": "Паяльник для сварки полипропиленовых труб Dytron Polys P-4a 1200W",
+      "priceFrom": 990,
+      "priceLabel": "Цена от 990р/сутки",
+      "availability": "В наличии",
+      "sourceUrl": "https://rent4work.ru/instrument/paaylniki-dlay-svarki-polipropilenovyh-trub/dytron-polys-p-4a-1200w"
+    }
+  ]
+}

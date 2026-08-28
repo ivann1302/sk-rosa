@@ -1,10 +1,17 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
 import EquipmentIllustration from "../components/rental/EquipmentIllustration.astro";
+import RentalRatings from "../components/rental/RentalRatings.astro";
+import RentalStepIcon from "../components/rental/RentalStepIcon.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
 import FaqSection from "../components/service/FaqSection.astro";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
-import { rentalEquipment } from "../data/equipment-rental.js";
+import {
+  rentalContentLastModified,
+  rentalEquipment,
+  rentalFaq,
+  rentalFaqDescription,
+} from "../data/equipment-rental.js";
 import { breadcrumbJsonLd, businessId } from "../lib/seo.js";
 
 export function getStaticPaths() {
@@ -16,32 +23,97 @@ export function getStaticPaths() {
 
 const { item } = Astro.props;
 const { seo } = item;
+const equipmentAlternateNames = [
+  ...new Set([item.popularName, ...(item.alternateNames ?? [])].filter(Boolean)),
+];
+const rentalImageUrl = new URL(item.previewImage, seo.canonical).href;
+const [rentalImageWidth, rentalImageHeight] = item.previewImageSize ?? [1536, 1024];
+const rentalImageAlt = item.representativeImage
+  ? item.visualAlt
+  : `${item.shortName} — фото оборудования`;
+const sameCategoryEquipment = rentalEquipment.filter(
+  rentalItem => rentalItem.slug !== item.slug && rentalItem.categorySlug === item.categorySlug,
+);
+const fallbackRelatedEquipment = rentalEquipment.filter(
+  rentalItem => rentalItem.slug !== item.slug && rentalItem.groupSlug === item.groupSlug,
+);
+const allOtherEquipment = rentalEquipment.filter(rentalItem => rentalItem.slug !== item.slug);
+const relatedEquipment = (sameCategoryEquipment.length
+  ? sameCategoryEquipment
+  : fallbackRelatedEquipment.length
+    ? fallbackRelatedEquipment
+    : allOtherEquipment
+).slice(0, 8);
+const pageFaq = item.faq?.length ? item.faq : rentalFaq;
+const schemaAvailability = item.availabilityMode === "on-request"
+  ? "https://schema.org/LimitedAvailability"
+  : "https://schema.org/InStock";
+const getOfferPrice = (price: string) => {
+  const matchedPrice = price.match(/\d[\d\s]*/)?.[0];
+  return matchedPrice ? matchedPrice.replaceAll(" ", "") : String(item.priceFrom);
+};
+const getReferenceQuantity = (duration: string) => {
+  const usesHours = duration.includes("час");
+  const value = Number(duration.match(/\d+/)?.[0] ?? 1);
+
+  return {
+    "@type": "QuantitativeValue",
+    value,
+    unitCode: usesHours ? "HUR" : "DAY",
+    unitText: usesHours ? "час" : "сутки",
+  };
+};
 const rentalServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${seo.canonical}#service`,
   url: seo.canonical,
-  name: item.name,
+  name: `Аренда ${item.rentalName} в Москве и Долгопрудном`,
+  alternateName: equipmentAlternateNames,
   description: item.summary,
-  serviceType: "Аренда строительного оборудования",
+  image: rentalImageUrl,
+  mainEntityOfPage: { "@id": `${seo.canonical}#webpage` },
+  category: item.type,
+  serviceType: `Аренда и прокат: ${item.type}`,
   provider: { "@id": businessId },
   areaServed: [
     { "@type": "City", name: "Москва" },
+    { "@type": "City", name: "Долгопрудный" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: seo.canonical,
+    availableLanguage: "ru",
+    servicePhone: {
+      "@type": "ContactPoint",
+      telephone: "+79851354991",
+      contactType: "rental service",
+      availableLanguage: "ru",
+    },
+  },
   offers: item.rates.map(([duration, price]) => ({
     "@type": "Offer",
-    name: `Аренда на ${duration}`,
-    price: price.replace(/\D/g, ""),
+    name: `Аренда: ${duration}`,
+    description: `${duration}: ${price}`,
+    price: getOfferPrice(price),
     priceCurrency: "RUB",
-    availability: "https://schema.org/InStock",
+    businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
+    itemOffered: { "@id": `${seo.canonical}#service` },
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: getOfferPrice(price),
+      priceCurrency: "RUB",
+      referenceQuantity: getReferenceQuantity(duration),
+    },
+    availability: schemaAvailability,
     url: seo.canonical,
   })),
 };
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: item.faq.map(faq => ({
+  mainEntity: pageFaq.map(faq => ({
     "@type": "Question",
     name: faq.question,
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -53,11 +125,15 @@ const faqJsonLd = {
   title={seo.title}
   description={seo.description}
   canonical={seo.canonical}
-  ogTitle={`${item.shortName} в аренду | ROSA`}
-  ogDescription={item.summary}
-  ogImageAlt={`${item.shortName} в аренду`}
+  ogTitle={`Аренда ${item.rentalName} — Москва и Долгопрудный`}
+  ogDescription={seo.description}
+  ogImage={rentalImageUrl}
+  ogImageWidth={String(rentalImageWidth)}
+  ogImageHeight={String(rentalImageHeight)}
+  ogImageAlt={rentalImageAlt}
   bodyClass="rental-page rental-detail-page"
   mainEntityId={`${seo.canonical}#service`}
+  dateModified={rentalContentLastModified}
   jsonLd={[
     rentalServiceJsonLd,
     faqJsonLd,
@@ -78,8 +154,8 @@ const faqJsonLd = {
         </nav>
         <div class="rental-product-hero__grid">
           <div class="rental-product-hero__content">
-            <p class="rental-eyebrow">{item.type}</p>
-            <h1>{item.name} в аренду</h1>
+            <RentalRatings />
+            <h1>Аренда {item.rentalName} в Москве и Долгопрудном</h1>
             <p class="rental-product-hero__lead">{item.summary}</p>
             <ul class="rental-product-hero__badges">
               {item.badges.map(badge => <li>{badge}</li>)}
@@ -87,17 +163,34 @@ const faqJsonLd = {
             <div class="rental-product-hero__price">
               <span>Стоимость</span>
               <strong>{item.rates[0][1]}</strong>
-              <small>за первые сутки</small>
+              <small>{item.priceCaption ?? "за первые сутки"}</small>
             </div>
             <div class="rental-hero__actions">
-              <a class="rental-button rental-button--primary" href="#contact-request">Забронировать</a>
-              <a class="rental-button rental-button--ghost" href="tel:+79851354991">Позвонить</a>
+              <a class="rental-button rental-button--light" href="#contact-request">Забронировать</a>
+              <a class="rental-button rental-button--phone" href="tel:+79851354991">+7 (985) 135-49-91</a>
             </div>
           </div>
-          <div class="rental-machine" aria-label={item.visualAlt}>
+          <div
+            class:list={["rental-machine", { "rental-machine--photo": item.previewImage }]}
+            aria-label={rentalImageAlt}
+          >
             <div class="rental-machine__label"><span>{item.visualLabel}</span></div>
-            <EquipmentIllustration kind={item.visualKind} />
-            <p>Техническая схема. Фотографии оборудования добавим в галерею отдельно.</p>
+            {
+              item.previewImage ? (
+                <img
+                  class="rental-machine__image"
+                  src={item.previewImage}
+                  alt={rentalImageAlt}
+                  width={rentalImageWidth}
+                  height={rentalImageHeight}
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              ) : (
+                <EquipmentIllustration kind={item.visualKind} />
+              )
+            }
+            {!item.previewImage && <p>Техническая схема оборудования.</p>}
           </div>
         </div>
       </div>
@@ -106,7 +199,6 @@ const faqJsonLd = {
     <section class="rental-section rental-section--light">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <p class="rental-eyebrow">Преимущества модели</p>
           <h2>{item.featureHeading}</h2>
         </div>
         <div class="rental-feature-grid">
@@ -125,15 +217,18 @@ const faqJsonLd = {
       <div class="rental-container rental-info-grid">
         <div>
           <div class="rental-section__heading rental-section__heading--compact">
-            <p class="rental-eyebrow">Характеристики</p>
-            <h2>{item.specificationHeading}</h2>
+            <h2>Характеристики — {item.specificationHeading}</h2>
           </div>
           <dl class="rental-specs">
+            <div><dt>Вид оборудования</dt><dd>{item.type}</dd></div>
+            {equipmentAlternateNames.length > 0 && (
+              <div><dt>Другие названия</dt><dd>{equipmentAlternateNames.join(", ")}</dd></div>
+            )}
             {item.specifications.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}
           </dl>
         </div>
         <aside class="rental-use-cases">
-          <p class="rental-eyebrow">Подходит для</p>
+          <h3>Подходит для</h3>
           <ul>{item.useCases.map(useCase => <li>{useCase}</li>)}</ul>
           <p>{item.useCasesNote}</p>
         </aside>
@@ -144,9 +239,14 @@ const faqJsonLd = {
       <div class="rental-container rental-price-grid">
         <div>
           <div class="rental-section__heading rental-section__heading--compact">
-            <p class="rental-eyebrow">Тарифы</p>
-            <h2>Стоимость аренды</h2>
-            <p>Чем дольше срок, тем ниже стоимость одного дня. Сутки — 24 часа с момента выдачи.</p>
+            <h2>Стоимость аренды и проката</h2>
+            <p>
+              {item.availabilityMode === "on-request"
+                ? "Указана опубликованная цена от за сутки. Наличие, комплектацию и итоговый тариф подтверждаем перед бронированием."
+                : item.priceCaption
+                  ? "Почасовой тариф и смена считаются с момента фактической выдачи оборудования."
+                  : "Чем дольше срок, тем ниже стоимость одного дня. Сутки — 24 часа с момента выдачи."}
+            </p>
           </div>
           <div class="rental-price-table" role="table" aria-label="Тарифы аренды">
             {item.rates.map(([duration, price]) => (
@@ -155,7 +255,6 @@ const faqJsonLd = {
           </div>
         </div>
         <div class="rental-included">
-          <p class="rental-eyebrow">Комплектация</p>
           <h3>Всё необходимое для работы</h3>
           <ul>{item.included.map(part => <li>{part}</li>)}</ul>
           <p class="rental-note">{item.includedNote}</p>
@@ -164,10 +263,43 @@ const faqJsonLd = {
       </div>
     </section>
 
+    <section class="rental-section rental-process">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <h2>Как проходит аренда</h2>
+        </div>
+        <ol class="rental-steps">
+          <li>
+            <RentalStepIcon kind="request" />
+            <span class="rental-step__number">01</span>
+            <strong>Заявка</strong>
+            <p>Сообщите инструмент, даты и адрес, если нужна доставка.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="estimate" />
+            <span class="rental-step__number">02</span>
+            <strong>Договор</strong>
+            <p>Фиксируем срок, стоимость и комплектацию в договоре и акте.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="handover" />
+            <span class="rental-step__number">03</span>
+            <strong>Получение</strong>
+            <p>Проверяем оборудование вместе при самовывозе или передаче курьером.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="return" />
+            <span class="rental-step__number">04</span>
+            <strong>Возврат</strong>
+            <p>Проверяем исправность и комплектность, после чего возвращаем залог, если он предусмотрен.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section class="rental-section rental-section--light">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <p class="rental-eyebrow">Условия</p>
           <h2>Получение, залог и документы</h2>
         </div>
         <dl class="rental-conditions">
@@ -183,14 +315,146 @@ const faqJsonLd = {
       formSource={`Аренда — ${item.shortName}`}
       comments={`Заявка на аренду: ${item.shortName}`}
       propertyType="equipment-rental"
+      variant="rental"
     />
 
+    <section class="rental-section rental-related" aria-labelledby="related-rentals-title" data-rental-related>
+      <div class="rental-container">
+        <div class="rental-related__header">
+          <h2 id="related-rentals-title">Другое оборудование в аренду</h2>
+          <p>Посмотрите остальные инструменты и сравните условия аренды.</p>
+        </div>
+        <div class="rental-related__swipe-hint" aria-hidden="true">
+          <svg viewBox="0 0 42 18" fill="none">
+            <path d="M4 9h34M32 4l6 5-6 5"></path>
+          </svg>
+          <span>Листайте</span>
+        </div>
+        <div class="rental-related__wrapper">
+          <button
+            class="rental-related__arrow rental-related__arrow--prev"
+            type="button"
+            data-rental-related-prev
+            aria-label="Предыдущее оборудование"
+          >
+            &#10094;
+          </button>
+          <div class="rental-related__viewport">
+            <div class="rental-related__track" data-rental-related-track>
+              {relatedEquipment.map((relatedItem, index) => {
+                const position = index === 0
+                  ? "active"
+                  : index === 1
+                    ? "next"
+                    : index === relatedEquipment.length - 1
+                      ? "prev"
+                      : "hidden";
+
+                return (
+                  <a
+                    class="rental-related__card"
+                    href={`/${relatedItem.slug}`}
+                    data-pos={position}
+                    aria-hidden={position === "hidden" ? "true" : undefined}
+                    tabindex={position === "hidden" ? -1 : 0}
+                  >
+                    <div class="rental-related__visual">
+                      {relatedItem.previewImage ? (
+                        <img
+                          src={relatedItem.previewImage}
+                          alt={relatedItem.shortName}
+                          width={relatedItem.previewImageSize?.[0] ?? 1536}
+                          height={relatedItem.previewImageSize?.[1] ?? 1024}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <EquipmentIllustration kind={relatedItem.visualKind} variant="card" />
+                      )}
+                    </div>
+                    <div class="rental-related__body">
+                      <h3>{relatedItem.shortName}</h3>
+                      <span>{relatedItem.priceLabel} <span aria-hidden="true">→</span></span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          <button
+            class="rental-related__arrow rental-related__arrow--next"
+            type="button"
+            data-rental-related-next
+            aria-label="Следующее оборудование"
+          >
+            &#10095;
+          </button>
+        </div>
+        <a class="rental-related__catalog-link" href="/arenda-stroitelnogo-oborudovaniya">
+          Смотреть всё оборудование
+        </a>
+      </div>
+    </section>
+
     <FaqSection
-      title="Ответы на частые вопросы"
-      description={item.faqDescription}
-      items={item.faq}
+      title="Частые вопросы об аренде оборудования"
+      description={item.faqDescription ?? rentalFaqDescription}
+      items={pageFaq}
     />
   </main>
+  <script>
+    document.querySelectorAll("[data-rental-related]").forEach(carousel => {
+      const track = carousel.querySelector("[data-rental-related-track]");
+      const previousButton = carousel.querySelector("[data-rental-related-prev]");
+      const nextButton = carousel.querySelector("[data-rental-related-next]");
+
+      if (!(track instanceof HTMLElement)) return;
+
+      const cards = Array.from(track.querySelectorAll(".rental-related__card"));
+      const desktop = window.matchMedia("(min-width: 769px)");
+      let current = 0;
+      let isAnimating = false;
+
+      const updatePositions = () => {
+        const previous = (current - 1 + cards.length) % cards.length;
+        const next = (current + 1) % cards.length;
+
+        cards.forEach((card, index) => {
+          const position = index === current
+            ? "active"
+            : index === previous
+              ? "prev"
+              : index === next
+                ? "next"
+                : "hidden";
+
+          card.setAttribute("data-pos", position);
+
+          if (desktop.matches) {
+            card.toggleAttribute("aria-hidden", position === "hidden");
+            card.setAttribute("tabindex", position === "hidden" ? "-1" : "0");
+          } else {
+            card.removeAttribute("aria-hidden");
+            card.setAttribute("tabindex", "0");
+          }
+        });
+      };
+
+      const navigate = (direction: number) => {
+        if (!desktop.matches || isAnimating || cards.length < 2) return;
+
+        isAnimating = true;
+        current = (current + direction + cards.length) % cards.length;
+        updatePositions();
+        window.setTimeout(() => { isAnimating = false; }, 600);
+      };
+
+      previousButton?.addEventListener("click", () => navigate(-1));
+      nextButton?.addEventListener("click", () => navigate(1));
+      desktop.addEventListener("change", updatePositions);
+      updatePositions();
+    });
+  </script>
   <ServiceRuntime
     slot="runtime"
     pricingScript={false}

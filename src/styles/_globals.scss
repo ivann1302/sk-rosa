@@ -8,6 +8,7 @@ body {
 html {
   margin: 0;
   padding: 0;
+  background: #111827;
 
   &.is-lock {
     overflow: hidden;
@@ -162,6 +163,7 @@ button {
 }
 
 .section--beige {
+  color: var(--color-light);
   background: var(--color-bg-section-beige);
 }
 

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="404 — Страница не найдена | ROSA"
+  description="Страница не найдена. Перейдите на главную страницу ROSA или выберите одну из услуг."
+  canonical="https://sk-rosa.ru/404"
+  robots="noindex, nofollow"
+  ogTitle="404 — Страница не найдена | ROSA"
+  ogDescription="Страница не найдена на сайте ROSA."
+>
+  <main class="error-404">
+    <div class="container">
+      <div class="error-404__content">
+        <h1 class="error-404__title">404</h1>
+        <h2 class="error-404__subtitle">Страница не найдена</h2>
+        <p class="error-404__text">
+          Возможно, адрес изменился. Перейдите на главную страницу или выберите нужный раздел.
+        </p>
+        <nav class="error-404__actions" aria-label="Основные разделы">
+          <a class="error-404__button button--primary" href="/">На главную</a>
+          <a class="error-404__button button--secondary" href="/arenda-stroitelnogo-oborudovaniya">
+            Аренда инструмента
+          </a>
+        </nav>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

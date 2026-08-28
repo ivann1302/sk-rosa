@@ -17,12 +17,18 @@ const {
   ogImageHeight = "645",
   ogImageType = "image/webp",
   ogImageAlt = "ROSA - Ремонт под ключ",
-  ogSiteName,
+  ogSiteName = "ROSA - Ремонт под ключ",
+  twitterCard = "summary_large_image",
+  twitterTitle = ogTitle,
+  twitterDescription = ogDescription,
+  twitterImage = ogImage,
+  twitterImageAlt = ogImageAlt,
   extraHeadHtml = "",
   jsonLd = [],
   mainEntityId = "",
+  dateModified = "",
   enableMetrika = true,
-  robots = "index, follow",
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   bodyClass = "",
   metrikaId = 109562461,
   metrikaOptions = {
@@ -83,7 +89,19 @@ function uniqueJsonLd(items) {
 const baseJsonLd = [
   organizationJsonLd,
   websiteJsonLd,
-  webPageJsonLd({ canonical, title, description, mainEntityId }),
+  webPageJsonLd({
+    canonical,
+    title,
+    description,
+    mainEntityId,
+    dateModified,
+    primaryImage: {
+      url: ogImage,
+      width: ogImageWidth,
+      height: ogImageHeight,
+      caption: ogImageAlt,
+    },
+  }),
 ];
 const pageJsonLd = uniqueJsonLd([...baseJsonLd, ...jsonLd]);
 ---
@@ -115,6 +133,11 @@ const pageJsonLd = uniqueJsonLd([...baseJsonLd, ...jsonLd]);
     <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content="ru_RU" />
     {ogSiteName && <meta property="og:site_name" content={ogSiteName} />}
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={twitterTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    <meta name="twitter:image" content={twitterImage} />
+    <meta name="twitter:image:alt" content={twitterImageAlt} />
     <link rel="icon" href="/assets/icons/ui/favIcons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/assets/icons/ui/favIcons/r-32.png" />
     <link rel="apple-touch-icon" href="/assets/icons/ui/favIcons/r-180.png" />

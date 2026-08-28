@@ -38,7 +38,6 @@ export default defineConfig({
           { src: "src/scripts", dest: "." },
           { src: "src/.htaccess", dest: "." },
           { src: "src/.nojekyll", dest: "." },
-          { src: "src/404.html", dest: "." },
           { src: "src/404.php", dest: "." },
           { src: "src/robots.txt", dest: "." },
           { src: "src/router.php", dest: "." },

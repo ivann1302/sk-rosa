@@ -1,32 +1,94 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
 import EquipmentIllustration from "../components/rental/EquipmentIllustration.astro";
+import RentalRatings from "../components/rental/RentalRatings.astro";
+import RentalStepIcon from "../components/rental/RentalStepIcon.astro";
 import ContactRequest from "../components/service/ContactRequest.astro";
+import FaqSection from "../components/service/FaqSection.astro";
 import ServiceRuntime from "../components/service/ServiceRuntime.astro";
-import { equipmentRentalPage, rentalEquipment } from "../data/equipment-rental.js";
+import {
+  equipmentRentalPage,
+  rentalFaq,
+  rentalFaqDescription,
+  rentalContentLastModified,
+  rentalEquipment,
+} from "../data/equipment-rental.js";
+import {
+  rentalCatalogStats,
+  rentalGroupPages,
+  russianPlural,
+} from "../data/equipment-rental-catalog.js";
 import { breadcrumbJsonLd, businessId } from "../lib/seo.js";
 
 const { seo } = equipmentRentalPage;
+const catalogPriceFrom = Math.min(...rentalEquipment.map(item => item.priceFrom));
+const rentalCatalogServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${seo.canonical}#service`,
+  url: seo.canonical,
+  name: "Аренда строительного оборудования в Москве и Долгопрудном",
+  description: seo.description,
+  serviceType: "Аренда и прокат строительного оборудования",
+  provider: { "@id": businessId },
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "City", name: "Долгопрудный" },
+    { "@type": "AdministrativeArea", name: "Московская область" },
+  ],
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: seo.canonical,
+    availableLanguage: "ru",
+    servicePhone: {
+      "@type": "ContactPoint",
+      telephone: "+79851354991",
+      contactType: "rental service",
+      availableLanguage: "ru",
+    },
+  },
+  hasOfferCatalog: { "@id": `${seo.canonical}#catalog` },
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: String(catalogPriceFrom),
+    priceCurrency: "RUB",
+    offerCount: rentalEquipment.length,
+    url: seo.canonical,
+  },
+};
 const itemListJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
+  "@type": ["ItemList", "OfferCatalog"],
   "@id": `${seo.canonical}#catalog`,
-  name: "Строительное оборудование в аренду",
+  name: "Строительное оборудование в аренду и напрокат",
+  numberOfItems: rentalEquipment.length,
   itemListElement: rentalEquipment.map((item, index) => ({
     "@type": "ListItem",
     position: index + 1,
     url: item.seo.canonical,
-    item: {
-      "@type": "Service",
-      name: item.name,
-      provider: { "@id": businessId },
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "RUB",
-        price: String(item.priceFrom),
-        availability: "https://schema.org/InStock",
-      },
-    },
+    name: item.name,
+  })),
+};
+const directoryItemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${seo.canonical}#directions`,
+  name: "Разделы каталога оборудования в аренду",
+  numberOfItems: rentalGroupPages.length,
+  itemListElement: rentalGroupPages.map((group, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: group.canonical,
+    name: group.heading,
+  })),
+};
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: rentalFaq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
   })),
 };
 ---
@@ -35,13 +97,20 @@ const itemListJsonLd = {
   title={seo.title}
   description={seo.description}
   canonical={seo.canonical}
-  ogTitle="Аренда строительного оборудования | ROSA"
-  ogDescription="Профессиональное оборудование для стройки и ремонта: посуточно и на длительный срок, с доставкой и договором."
+  ogTitle="Аренда оборудования — Москва и Долгопрудный | ROSA"
+  ogDescription={seo.description}
+  ogImage="https://sk-rosa.ru/assets/images/rental-preview/rental-service-hero.webp"
+  ogImageWidth="1536"
+  ogImageHeight="1024"
   ogImageAlt="Аренда строительного оборудования ROSA"
   bodyClass="rental-page"
-  mainEntityId={`${seo.canonical}#catalog`}
+  mainEntityId={`${seo.canonical}#service`}
+  dateModified={rentalContentLastModified}
   jsonLd={[
+    rentalCatalogServiceJsonLd,
     itemListJsonLd,
+    directoryItemListJsonLd,
+    faqJsonLd,
     breadcrumbJsonLd([
       { name: "Главная", url: "https://sk-rosa.ru/" },
       { name: "Аренда оборудования", url: seo.canonical },
@@ -52,28 +121,87 @@ const itemListJsonLd = {
     <section class="rental-hero">
       <div class="rental-container rental-hero__grid">
         <div class="rental-hero__content">
-          <p class="rental-eyebrow">Оборудование для стройки и ремонта</p>
-          <h1>Аренда строительного оборудования</h1>
+          <RentalRatings />
+          <h1>Аренда строительного оборудования в Москве и Долгопрудном</h1>
           <p class="rental-hero__lead">
             Берите профессиональную технику на нужный срок без затрат на покупку, хранение и
             обслуживание. Работаем с частными заказчиками, ИП и организациями.
           </p>
           <div class="rental-hero__actions">
-            <a class="rental-button rental-button--primary" href="#catalog">Выбрать оборудование</a>
-            <a class="rental-button rental-button--ghost" href="tel:+79851354991">Позвонить</a>
+            <a class="rental-button rental-button--light" href="#directions">Выбрать оборудование</a>
+            <a class="rental-button rental-button--phone" href="tel:+79851354991">+7 (985) 135-49-91</a>
           </div>
           <ul class="rental-hero__facts" aria-label="Условия аренды">
             <li>от 1 часа</li>
-            <li>доставка</li>
+            <li>доставка по Москве и МО</li>
             <li>договор и акт</li>
           </ul>
         </div>
-        <div class="rental-hero__panel" aria-label="Преимущества аренды">
-          <span class="rental-hero__panel-number">01</span>
-          <p>Техника готова к работе</p>
-          <span>Бронирование и продление аренды</span>
-          <span>Самовывоз: Москва и Долгопрудный</span>
-          <span>Ежедневно 09:00–21:00</span>
+        <div class="rental-hero__media">
+          <img
+            src="/assets/images/rental-preview/rental-service-hero.webp"
+            alt="Профессиональный электроинструмент для аренды"
+            width="1536"
+            height="1024"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <div
+            class="rental-hero__media-stat"
+            aria-label={`${rentalCatalogStats.catalogItemCount} позиций в каталоге`}
+          >
+            <strong>{rentalCatalogStats.catalogItemCount}</strong>
+            <span>позиций<br />в каталоге</span>
+          </div>
+          <div class="rental-hero__media-caption">
+            <p>Оборудование в аренду по гибким ценам</p>
+            <span>С доставкой или самовывозом · Москва и Долгопрудный</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section" id="directions">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <h2>Каталог по направлениям</h2>
+          <p>
+            Два раздела, 46 категорий и {rentalCatalogStats.catalogItemCount} позиций: от ручного
+            электроинструмента до оборудования для бетонных и отделочных работ.
+          </p>
+        </div>
+        <div class="rental-catalog">
+          {
+            rentalGroupPages.map(group => (
+              <article class="rental-card" data-rental-card>
+                <div class="rental-card__visual" aria-hidden="true">
+                  <img
+                    class="rental-card__image"
+                    src={group.image}
+                    alt=""
+                    width={group.imageSize[0]}
+                    height={group.imageSize[1]}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="rental-card__body">
+                  <h3><a href={new URL(group.canonical).pathname}>{group.name}</a></h3>
+                  <div class="rental-card__reveal">
+                    <div class="rental-card__reveal-inner">
+                      <p class="rental-card__summary">
+                        {group.description} В разделе {group.categories.length} {russianPlural(group.categories.length, "категория", "категории", "категорий")} и {group.items.length} {russianPlural(group.items.length, "позиция", "позиции", "позиций")}.
+                      </p>
+                      <div class="rental-card__footer">
+                        <strong>{group.priceLabel}</strong>
+                        <span class="rental-card__more">Открыть каталог <span aria-hidden="true">→</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -81,28 +209,43 @@ const itemListJsonLd = {
     <section class="rental-section rental-section--light" id="catalog">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <p class="rental-eyebrow">Каталог</p>
-          <h2>Оборудование в аренду</h2>
-          <p>Выберите позицию, чтобы посмотреть характеристики, комплектацию и тарифы.</p>
+          <h2>Оборудование с подробными карточками</h2>
+          <p>
+            Для этих {rentalEquipment.length} моделей уже опубликованы характеристики,
+            комплектация и тарифы ROSA.
+          </p>
         </div>
         <div class="rental-catalog">
           {
             rentalEquipment.map(item => (
-              <article class="rental-card">
+              <article class="rental-card" data-rental-card>
                 <div class="rental-card__visual" aria-hidden="true">
-                  <EquipmentIllustration kind={item.visualKind} variant="card" />
-                  <span>{item.popularName}</span>
+                  {
+                    item.previewImage ? (
+                      <img
+                        class="rental-card__image"
+                        src={item.previewImage}
+                        alt=""
+                        width={item.previewImageSize?.[0] ?? 1536}
+                        height={item.previewImageSize?.[1] ?? 1024}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <EquipmentIllustration kind={item.visualKind} variant="card" />
+                    )
+                  }
                 </div>
                 <div class="rental-card__body">
-                  <p class="rental-card__type">{item.type}</p>
-                  <h3>{item.shortName}</h3>
-                  <p>{item.summary}</p>
-                  <ul class="rental-card__badges">
-                    {item.badges.map(badge => <li>{badge}</li>)}
-                  </ul>
-                  <div class="rental-card__footer">
-                    <strong>{item.priceLabel}</strong>
-                    <a href={`/${item.slug}`}>Подробнее <span aria-hidden="true">→</span></a>
+                  <h3><a href={`/${item.slug}`}>{item.shortName}</a></h3>
+                  <div class="rental-card__reveal">
+                    <div class="rental-card__reveal-inner">
+                      <p class="rental-card__summary">{item.summary}</p>
+                      <div class="rental-card__footer">
+                        <strong>{item.priceLabel}</strong>
+                        <span class="rental-card__more">Подробнее <span aria-hidden="true">→</span></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -115,14 +258,33 @@ const itemListJsonLd = {
     <section class="rental-section rental-process">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <p class="rental-eyebrow">Как арендовать</p>
           <h2>От заявки до возврата — четыре шага</h2>
         </div>
         <ol class="rental-steps">
-          <li><span>01</span><strong>Заявка</strong><p>Назовите технику, даты, объём работ и район доставки.</p></li>
-          <li><span>02</span><strong>Расчёт</strong><p>Проверим наличие и согласуем срок, доставку и полную стоимость.</p></li>
-          <li><span>03</span><strong>Передача</strong><p>Подпишем договор и акт, проверим комплектность оборудования.</p></li>
-          <li><span>04</span><strong>Возврат</strong><p>Проверим исправность и вернём залог, если он предусмотрен.</p></li>
+          <li>
+            <RentalStepIcon kind="request" />
+            <span class="rental-step__number">01</span>
+            <strong>Заявка</strong>
+            <p>Назовите технику, даты, объём работ и район доставки.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="estimate" />
+            <span class="rental-step__number">02</span>
+            <strong>Расчёт</strong>
+            <p>Проверим наличие и согласуем срок, доставку и полную стоимость.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="handover" />
+            <span class="rental-step__number">03</span>
+            <strong>Передача</strong>
+            <p>Подпишем договор и акт, проверим комплектность оборудования.</p>
+          </li>
+          <li>
+            <RentalStepIcon kind="return" />
+            <span class="rental-step__number">04</span>
+            <strong>Возврат</strong>
+            <p>Проверим исправность и вернём залог, если он предусмотрен.</p>
+          </li>
         </ol>
       </div>
     </section>
@@ -130,12 +292,40 @@ const itemListJsonLd = {
     <ContactRequest
       title="Подобрать оборудование под вашу задачу"
       subtitle="Оставьте номер телефона. Уточним объём и условия работ, проверим свободные даты и рассчитаем аренду с доставкой."
-      features={["Работаем с физлицами, ИП и организациями", "Можно забронировать и продлить аренду", "Ежедневно с 09:00 до 21:00"]}
+      features={["Работаем с физлицами, ИП и организациями", "Можно забронировать и продлить аренду", "Ежедневно с 10:00 до 20:00"]}
       formSource="Аренда строительного оборудования"
       comments="Заявка со страницы аренды строительного оборудования"
       propertyType="equipment-rental"
+      variant="rental"
+    />
+
+    <FaqSection
+      title="Частые вопросы об аренде оборудования"
+      description={rentalFaqDescription}
+      items={rentalFaq}
     />
   </main>
+  <script>
+    const rentalCards = Array.from(document.querySelectorAll("[data-rental-card]"));
+
+    if (!("IntersectionObserver" in window)) {
+      rentalCards.forEach(card => card.classList.add("is-in-view"));
+    } else {
+      const rentalCardObserver = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-in-view");
+              rentalCardObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      rentalCards.forEach(card => rentalCardObserver.observe(card));
+    }
+  </script>
   <ServiceRuntime
     slot="runtime"
     pricingScript={false}

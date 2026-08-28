@@ -1,8 +1,19 @@
 ---
-const { title, subtitle, features, formSource, comments, propertyType = "apartment" } = Astro.props;
+const {
+  title,
+  subtitle,
+  features,
+  formSource,
+  comments,
+  propertyType = "apartment",
+  variant = "default",
+} = Astro.props;
 ---
 
-<section class="contact-request reveal-on-scroll" id="contact-request">
+<section
+  class:list={["contact-request", "reveal-on-scroll", variant !== "default" && `contact-request--${variant}`]}
+  id="contact-request"
+>
   <div class="contact-request__container">
     <div class="contact-request__content">
       <div class="contact-request__info">

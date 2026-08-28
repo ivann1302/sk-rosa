@@ -9,7 +9,15 @@ import { blogArticlePages, blogPage } from "../data/blog.js";
 import { fireProtectionPage } from "../data/fire-protection.js";
 import { floorScreedPage } from "../data/floor-screed.js";
 import { industrialAirlessPaintingPage } from "../data/industrial-airless-painting.js";
-import { equipmentRentalPage, rentalEquipment } from "../data/equipment-rental.js";
+import {
+  equipmentRentalPage,
+  rentalContentLastModified,
+  rentalEquipment,
+} from "../data/equipment-rental.js";
+import {
+  rentalCategoryPages,
+  rentalGroupPages,
+} from "../data/equipment-rental-catalog.js";
 import { kompleksnayaOgnezashchitaPage } from "../data/kompleksnaya-ognezashchita.js";
 import { ognezashchitaDerevyannyhKonstruktsiyPage } from "../data/ognezashchita-derevyannyh-konstruktsiy.js";
 import { ognezashchitaMetallokonstruktsiyPage } from "../data/ognezashchita-metallokonstruktsiy.js";
@@ -37,8 +45,10 @@ const staticPages = [
   ognezashchitaDerevyannyhKonstruktsiyPage.seo,
   ognezashchitaVozduhovodovPage.seo,
   ognezashchitaMetallokonstruktsiyPage.seo,
-  equipmentRentalPage.seo,
-  ...rentalEquipment.map(item => item.seo),
+  { ...equipmentRentalPage.seo, lastmod: rentalContentLastModified },
+  ...rentalGroupPages.map(page => ({ ...page.seo, lastmod: rentalContentLastModified })),
+  ...rentalCategoryPages.map(page => ({ ...page.seo, lastmod: rentalContentLastModified })),
+  ...rentalEquipment.map(item => ({ ...item.seo, lastmod: rentalContentLastModified })),
   { canonical: "https://sk-rosa.ru/portfolio" },
   { canonical: "https://sk-rosa.ru/calculator" },
   blogPage.seo,
@@ -100,7 +110,7 @@ function escapeXml(value) {
 function uniqueUrls() {
   const knownLastmods = existingLastmodMap();
   const pages = [
-    ...staticPages.map(page => ({ loc: page.canonical })),
+    ...staticPages.map(page => ({ loc: page.canonical, lastmod: datePart(page.lastmod) })),
     ...blogArticlePages.map(article => ({
       loc: article.seo.canonical,
       lastmod: articleLastmod(article),

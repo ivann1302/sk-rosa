@@ -112,6 +112,17 @@ const isCard = variant === "card";
   )
 }
 {
+  isCard && kind === "airless-sprayer" && (
+    <svg viewBox="0 0 260 180" aria-hidden="true">
+      <path d="M75 150V39h91v111M61 150h128M89 39V23h62v16" />
+      <rect x="91" y="58" width="59" height="57" rx="8" />
+      <circle cx="88" cy="155" r="9" />
+      <circle cx="166" cy="155" r="9" />
+      <path d="M150 80h27c25 0 31 18 31 35v22M208 137h28M202 109l22-17M224 92l13 4" />
+    </svg>
+  )
+}
+{
   !isCard && kind === "dehumidifier" && (
     <svg viewBox="0 0 520 430" aria-hidden="true">
       <rect class="machine-fill" x="132" y="58" width="256" height="300" rx="18" />
@@ -224,6 +235,18 @@ const isCard = variant === "card";
       <path d="M158 124h175M188 124v133M303 124v133M188 257l115-133M303 257 188 124" />
       <rect class="machine-fill" x="371" y="197" width="83" height="70" rx="10" />
       <path d="M135 315h222M76 177h344" />
+    </svg>
+  )
+}
+{
+  !isCard && kind === "airless-sprayer" && (
+    <svg viewBox="0 0 520 430" aria-hidden="true">
+      <path d="M135 366V91h205v275M103 366h293M167 91V50h141v41" />
+      <rect class="machine-fill" x="176" y="137" width="127" height="132" rx="18" />
+      <circle cx="166" cy="378" r="25" />
+      <circle cx="323" cy="378" r="25" />
+      <path d="M303 183h60c57 0 72 40 72 81v53M435 317h62M423 250l48-40M471 210l30 10" />
+      <path d="M205 173h69M205 198h69M205 223h45" />
     </svg>
   )
 }

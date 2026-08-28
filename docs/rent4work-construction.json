@@ -1,0 +1,946 @@
+[
+  {
+    "category": "Алмазное бурение",
+    "name": "Дрель алмазного сверления Ken 6110b",
+    "priceFrom": 690,
+    "priceLabel": "Цена от 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-dreli-almaznogo-sverlenija-ken-6110b"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Дрель алмазного сверления Crown CT32072DH BMC",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-dreli-almaznogo-sverlenija-crown-st32072dh-bmc"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Дрель алмазного сверления Diam ML-102/2Н",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-dreli-almaznogo-sverlenija-diam-ml-102-2%D0%BD"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Дрель для сухого алмазного сверления Milwaukee DD 2-160 XE",
+    "priceFrom": 1690,
+    "priceLabel": "Цена от 1 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-dreli-dlja-suhogo-almaznogo-sverlenija-milwaukee-dd2-160xe"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Установка алмазного сверления Diam ML-180",
+    "priceFrom": 1990,
+    "priceLabel": "Цена от 1 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-ustanovki-almaznogo-burenija-diam-ml-180n"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Установка алмазного сверления Diam ML-250/2А",
+    "priceFrom": 2390,
+    "priceLabel": "Цена от 2 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-ustanovki-almaznogo-burenija-diam-ml-250-2a"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Установка алмазного бурения Diam ML-350/2NE",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-ustanovki-almaznogo-burenija-diam-ml-350-2n"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Установка алмазного бурения Hilti DD 250 BL",
+    "priceFrom": 4990,
+    "priceLabel": "Цена от 4 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-ustanovki-almaznogo-burenija-hilti-dd-250-bl"
+  },
+  {
+    "category": "Алмазное бурение",
+    "name": "Установка алмазного бурения Hilti DD 350-CA",
+    "priceFrom": 6990,
+    "priceLabel": "Цена от 6 990р/сутки",
+    "availability": "Нет в наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/almaznoe-burenie/arenda-ustanovki-almaznogo-burenija-hilti-dd-350-ca"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Champion CP350",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-champion-cp350"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Patriot DSG 735",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-patriot-dsg-735"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Husqvarna K 770/14",
+    "priceFrom": 3190,
+    "priceLabel": "Цена от 3 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-husqvarna-k770-14"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Stihl TS 420",
+    "priceFrom": 3190,
+    "priceLabel": "Цена от 3 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-stihl-ts-420"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Stihl TS 800",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-stihl-ts-800"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Makita EK 8100 WS",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-makita-ek-8100-ws"
+  },
+  {
+    "category": "Бензорезы",
+    "name": "Бензорез Hilti DSH 900-X",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/benzorezy/arenda-benzoreza-hilti-dsh-900-x"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетономешалка РБГ-120",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonomeshalki-rbg-120"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетоносмеситель Профмаш Б-130Р",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonosmesiteliia-profmash-b-130r"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетономешалка РБГ-150",
+    "priceFrom": 990,
+    "priceLabel": "Цена от 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonomeshalki-rbg-150-s"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетономешалка РБГ-200",
+    "priceFrom": 1190,
+    "priceLabel": "Цена от 1 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonomeshalki-rbg-200"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетономешалка РБГ-250",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonomeshalki-rbg-250"
+  },
+  {
+    "category": "Бетоносмесители",
+    "name": "Бетономешалка РБГ-320",
+    "priceFrom": 1590,
+    "priceLabel": "Цена от 1 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/betonosmesiteli/arenda-betonomeshalki-rbg-320"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита Masalta MS50-2",
+    "priceFrom": 1290,
+    "priceLabel": "Цена от 1 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-masalta-4ms50-2"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита Masalta MSR60-2",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-masalta-msr60-2"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита Masalta MSR90-2",
+    "priceFrom": 1590,
+    "priceLabel": "Цена от 1 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-masalta-msr90-2"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита Cimar CPC-2050",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-cimar-cpc-1550"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-160-H",
+    "priceFrom": 2290,
+    "priceLabel": "Цена от 2 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-160-h"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-240",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-240"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-405",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-405"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Вибротрамбовка Masalta MR68H",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibrotrambovki-masalta-mr68h"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Вибротрамбовка Masalta MR75R",
+    "priceFrom": 1990,
+    "priceLabel": "Цена от 1 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibrotrambovki-masalta-mr75r"
+  },
+  {
+    "category": "Виброплиты и вибротрамбовки",
+    "name": "Вибротрамбовка Masalta EMR85M",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroplity-i-vibrotrambovki/arenda-vibrotrambovki-masalta-emr85m"
+  },
+  {
+    "category": "Виброрейки",
+    "name": "Виброрейка бензиновая Masalta MCD-4 MCB6",
+    "priceFrom": 2090,
+    "priceLabel": "Цена от 2 090р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroreyka/arenda-vibroreiki-masalta-mcd-4-mcb-6"
+  },
+  {
+    "category": "Виброрейки",
+    "name": "Виброрейка бензиновая Masalta MCD-4 MCB10",
+    "priceFrom": 2290,
+    "priceLabel": "Цена от 2 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vibroreyka/arenda-vibroreiki-masalta-mcd-4-mcb-10"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=2.8 м",
+    "priceFrom": 190,
+    "priceLabel": "Цена от 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-28"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=5.2 м",
+    "priceFrom": 290,
+    "priceLabel": "Цена от 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-52"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=7.5 м",
+    "priceFrom": 390,
+    "priceLabel": "Цена от 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-75"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=10 м",
+    "priceFrom": 490,
+    "priceLabel": "Цена от 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-100"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=12.4 м",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-124"
+  },
+  {
+    "category": "Вышки, туры",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=14.8 м",
+    "priceFrom": 690,
+    "priceLabel": "Цена от 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/vyshki-tury/arenda-vyshki-tury-vsp-250-148"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Сплитстоун TS-242E",
+    "priceFrom": 1090,
+    "priceLabel": "Цена от 1 090р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-splitstone-ts-242e"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Сплитстоун TS-244",
+    "priceFrom": 1190,
+    "priceLabel": "Цена от 1 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-splitstone-ts-244"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Cimar CPT-20",
+    "priceFrom": 1190,
+    "priceLabel": "Цена от 1 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-cimar-cpt-20"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Masalta MT24-4",
+    "priceFrom": 1190,
+    "priceLabel": "Цена от 1 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-masalta-mt24-4"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Cimar CPT-436",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-cimar-cpt-436"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Затирочная машина Masalta MT36-4 ST",
+    "priceFrom": 1590,
+    "priceLabel": "Цена от 1 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-zatirochnoj-mashiny-masalta-mt36-4-st"
+  },
+  {
+    "category": "Затирочные машины",
+    "name": "Двухроторная затирочная машина Masalta MRT 73",
+    "priceFrom": 12000,
+    "priceLabel": "Цена от 12 000р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/zatirochnye-mashiny/arenda-dvuhrotornoj-zatirochnoj-mashiny-masalta-mrt-73"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Стремянка Hailo L50 EasyClix 4 ступени",
+    "priceFrom": 390,
+    "priceLabel": "Цена от 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-stremjanki-hailo-l50-easyclix-4-stupenej"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo 3x6",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x6"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Стремянка Krause Solido 8 ступеней",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-stremjanki-krause-solido-8-stupenej"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo 3x9",
+    "priceFrom": 990,
+    "priceLabel": "Цена от 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x9"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo Trigon 3х12",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x12"
+  },
+  {
+    "category": "Лестницы",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo Trigon 3х14",
+    "priceFrom": 1890,
+    "priceLabel": "Цена от 1 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/lestnitsy/arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x14"
+  },
+  {
+    "category": "Магнитные сверлильные станки",
+    "name": "Магнитный сверлильный станок Messer MDMR-35",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/magnitnye-sverlilnye-stanki/magnitnyj-sverlilnyj-stanok-messer-mdmr-35"
+  },
+  {
+    "category": "Мозаично-шлифовальные машины",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122 (2.2)",
+    "priceFrom": 1490,
+    "priceLabel": "Цена от 1 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mozaichno-shlifovalnye-mashiny/arenda-mozaichno-shlifovalnoj-mashiny-splitstoun-gm-122-2-2"
+  },
+  {
+    "category": "Мозаично-шлифовальные машины",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122 (4)",
+    "priceFrom": 1490,
+    "priceLabel": "Цена от 1 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mozaichno-shlifovalnye-mashiny/arenda-mozaichno-shlifovalnoj-mashiny-splitstoun-gm-122-4"
+  },
+  {
+    "category": "Мозаично-шлифовальные машины",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122G",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mozaichno-shlifovalnye-mashiny/arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-122g"
+  },
+  {
+    "category": "Мозаично-шлифовальные машины",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-245 (7.5)",
+    "priceFrom": 1890,
+    "priceLabel": "Цена от 1 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mozaichno-shlifovalnye-mashiny/arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-245-7-5"
+  },
+  {
+    "category": "Мозаично-шлифовальные машины",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-4811 Crab",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mozaichno-shlifovalnye-mashiny/arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-4811-crab"
+  },
+  {
+    "category": "Моющие пылесосы",
+    "name": "Моющий пылесос Karcher Puzzi 8/1 C",
+    "priceFrom": 1290,
+    "priceLabel": "Цена от 1 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mojushchie-pylesosy/arenda-mojushchego-pylesosa-karcher-puzzi-8-1-c"
+  },
+  {
+    "category": "Моющие пылесосы",
+    "name": "Моющий пылесос Karcher Puzzi 10/1",
+    "priceFrom": 1490,
+    "priceLabel": "Цена от 1 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mojushchie-pylesosy/arenda-mojushchego-pylesosa-karcher-puzzi-10-1"
+  },
+  {
+    "category": "Моющие пылесосы",
+    "name": "Моющий пылесос Santoemma Sabrina SW15",
+    "priceFrom": 1690,
+    "priceLabel": "Цена от 1 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mojushchie-pylesosy/arenda-mojushchego-pylesosa-santoemma-sabrina-sw15"
+  },
+  {
+    "category": "Моющие пылесосы",
+    "name": "Моющий пылесос Karcher Puzzi 30/4",
+    "priceFrom": 1990,
+    "priceLabel": "Цена от 1 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/mojushchie-pylesosy/arenda-mojushchego-pylesosa-karcher-puzzi-30-4"
+  },
+  {
+    "category": "Осушители воздуха",
+    "name": "Осушитель воздух Ballu BDI-50L",
+    "priceFrom": 1290,
+    "priceLabel": "Цена от 1 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/osushiteli-vozduha/arenda-osushitelja-vozdukha-ballu-bdi-50l"
+  },
+  {
+    "category": "Осушители воздуха",
+    "name": "Осушитель воздух Ballu BDI-80L",
+    "priceFrom": 1590,
+    "priceLabel": "Цена от 1 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/osushiteli-vozduha/arenda-osushitelja-vozdukha-ballu-bdi-80l"
+  },
+  {
+    "category": "Осушители воздуха",
+    "name": "Осушитель воздух Ballu BDI-100L",
+    "priceFrom": 1890,
+    "priceLabel": "Цена от 1 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/osushiteli-vozduha/arenda-osushitelja-vozdukha-ballu-bdi-100l"
+  },
+  {
+    "category": "Осушители воздуха",
+    "name": "Осушитель воздух Master DH 92",
+    "priceFrom": 2190,
+    "priceLabel": "Цена от 2 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/osushiteli-vozduha/arenda-osushitelja-vozdukha-master-dh-92"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез ручной DeWalt DWC410-QS",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-ruchnogo-dewalt-dwc410-qs"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Sturm! TC9822U",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-sturm-tc9822u"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Diam EX-720/1.1",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-diam-ex-720-1-1"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Diam EX-920/1.5",
+    "priceFrom": 990,
+    "priceLabel": "Цена от 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-diam-ex-920-1-5"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Wandeli QX-ZD-800",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-wandeli-qx-zd-800"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический DeWalt D24000",
+    "priceFrom": 1990,
+    "priceLabel": "Цена от 1 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-dewalt-d24000"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Wandeli QX-ZD-1200",
+    "priceFrom": 2290,
+    "priceLabel": "Цена от 2 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-wandeli-qx-zd-1200"
+  },
+  {
+    "category": "Плиткорезы",
+    "name": "Плиткорез электрический Wandeli QXZ-ZD-2460",
+    "priceFrom": 4790,
+    "priceLabel": "Цена от 4 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/plitkorezy/arenda-plitkoreza-elektricheskogo-wandeli-qxz-zd-2460"
+  },
+  {
+    "category": "Погружные вибраторы",
+    "name": "Глубинный вибратор ТСС ЭП-2.2/220 с УЗО",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/pogruzhnye-vibratory/arenda-glubinnogo-vibratora-tcc-ep-2-2-220-s-uzo"
+  },
+  {
+    "category": "Погружные вибраторы",
+    "name": "Глубинный вибратор ТСС БП-2.7",
+    "priceFrom": 990,
+    "priceLabel": "Цена от 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/pogruzhnye-vibratory/arenda-glubinnogo-vibratora-tcc-bp-2-7"
+  },
+  {
+    "category": "Погружные вибраторы",
+    "name": "Глубинный вибратор Masalta MVDR-4",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/pogruzhnye-vibratory/arenda-glubinnogo-vibratora-masalta-mvdr-4"
+  },
+  {
+    "category": "Погружные вибраторы",
+    "name": "Глубинный вибратор Masalta MBP H",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/pogruzhnye-vibratory/arenda-glubinnogo-vibratora-masalta-mbp-h"
+  },
+  {
+    "category": "Погружные вибраторы",
+    "name": "Погружной вибратор Wacker Neuson IRFU 57",
+    "priceFrom": 1990,
+    "priceLabel": "Цена от 1 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/pogruzhnye-vibratory/arenda-pogruzhnogo-vibratora-wacker-neuson-irfu-57"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный ASPRO-VC2",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-aspro-vc2"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Elitech ПС 1235А",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-elitech-ps-1235a"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Elitech ПС 1260А",
+    "priceFrom": 690,
+    "priceLabel": "Цена от 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-elitech-ps-1260a"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Makita VC2512L",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-makita-vc2512l"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Hammer PIL50A",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-hammer-pil50a"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Hilti VC 20-U",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-hilti-vc-20-u"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Makita VC3011L",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-makita-vc3011l"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Makita VC3012L",
+    "priceFrom": 1090,
+    "priceLabel": "Цена от 1 090р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-makita-vc3012l"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Hilti VC 40-UL",
+    "priceFrom": 1090,
+    "priceLabel": "Цена от 1 090р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-hilti-vc-40-u"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Пылесос строительный Hilti VC 60-U",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/arenda-stroitelnogo-pylesosa-hilti-vc-60-u"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Промышленный строительный пылесос Linolit® 322",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/promyshlennyj-stroitelnyj-pylesos-linolit-322"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Промышленный строительный пылесос Linolit® 742",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/promyshlennyj-stroitelnyj-pylesos-linolit-742"
+  },
+  {
+    "category": "Промышленные пылесосы",
+    "name": "Промышленный строительный пылесос Linolit® 5311",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/promyshlennye-pylesosy/promyshlennyj-stroitelnyj-pylesos-linolit-5311"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Резчик швов Hilti DSH 900-X+DSH-FSC",
+    "priceFrom": 4290,
+    "priceLabel": "Цена от 4 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-rezschika-shvov-hilt-dsh-900-x-dsh-fsc"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Электрический швонарезчик CS-144E",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-elektricheskogo-rezschika-shvov-splitstone-cs-144e"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Резчик швов Сплитстоун CS-146",
+    "priceFrom": 1890,
+    "priceLabel": "Цена от 1 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-rezschika-shvov-splitstone-cs-146"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Резчик швов Сплитстоун CS-1813",
+    "priceFrom": 2390,
+    "priceLabel": "Цена от 2 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-rezschika-shvov-splitstone-cs-1813"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Электрический швонарезчик CS-2415E",
+    "priceFrom": 2790,
+    "priceLabel": "Цена от 2 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-elektricheskogo-rezschika-shvov-splitstone-cs-2415e"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Резчик швов Сплитстоун CS-2413",
+    "priceFrom": 3490,
+    "priceLabel": "Цена от 3 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-rezschika-shvov-splitstone-cs-2413"
+  },
+  {
+    "category": "Резчики швов",
+    "name": "Резчик швов Сплитстоун CS-3213",
+    "priceFrom": 3790,
+    "priceLabel": "Цена от 3 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/rezchiki-shvov/arenda-rezschika-shvov-splitstone-cs-3213"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Электрическая тепловая пушка Ballu BHP-P-3",
+    "priceFrom": 490,
+    "priceLabel": "Цена от 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-elektricheskoj-teplovoj-pushki-ballu-bhp-p-3"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Электрическая тепловая пушка Equation PF02-3300G",
+    "priceFrom": 490,
+    "priceLabel": "Цена от 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-elektricheskoj-teplovoj-pushki-equation-pf02-3300g"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Электрическая тепловая пушка Ballu BHP-P2-5",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-elektricheskoj-teplovoj-pushki-ballu-bhp-p2-5"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Электрическая тепловая пушка Ресанта ТЭП-9000К",
+    "priceFrom": 590,
+    "priceLabel": "Цена от 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-elektricheskoj-teplovoj-pushki-resanta-tep-9000k"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Газовая тепловая пушка Inforce GH 57м",
+    "priceFrom": 690,
+    "priceLabel": "Цена от 690р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-gazovoj-teplovoj-pushki-inforce-gh-57-m"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Дизельная тепловая пушка Ballu BHDP-20",
+    "priceFrom": 790,
+    "priceLabel": "Цена от 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-dizelnoj-teplovoj-pushki-ballu-bhdp-20"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Дизельная тепловая пушка Master B 70 CED",
+    "priceFrom": 890,
+    "priceLabel": "Цена от 890р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-dizelnoj-teplovoj-pushki-master-b-70-ced"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Дизельная тепловая пушка Ballu BHDP-50",
+    "priceFrom": 1090,
+    "priceLabel": "Цена от 1 090р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-dizelnoj-teplovoj-pushki-ballu-bhdp-50"
+  },
+  {
+    "category": "Тепловые пушки",
+    "name": "Дизельная тепловая пушка Master B 100 CED",
+    "priceFrom": 1190,
+    "priceLabel": "Цена от 1 190р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/teplovye-pushki/arenda-dizelnoj-teplovoj-pushki-master-b-100-ced"
+  },
+  {
+    "category": "Шлифовальные машины для паркета",
+    "name": "Паркетошлифовальная машина МИСОМ СО-206.1А",
+    "priceFrom": 1790,
+    "priceLabel": "Цена от 1 790р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/parketoshlifovalnye-mashiny/parketoshlifovalnaja-mashina-misom-o-206-1a"
+  },
+  {
+    "category": "Штукатурные станции",
+    "name": "Штукатурная станция Kaleta-4/230",
+    "priceFrom": 2590,
+    "priceLabel": "Цена от 2 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/shtukaturnye-stantsii/arenda-shtukaturnoj-stantsii-kaleta-4-230"
+  },
+  {
+    "category": "Штукатурные станции",
+    "name": "Штукатурная станция PFT Ritmo XL 230/400 FU",
+    "priceFrom": 2590,
+    "priceLabel": "Цена от 2 590р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/shtukaturnye-stantsii/arenda-shtukaturnoj-stantsii-pft-ritmo-xl-230-400-fu"
+  },
+  {
+    "category": "Штукатурные станции",
+    "name": "Штукатурная станция Kaleta-6S",
+    "priceFrom": 4990,
+    "priceLabel": "Цена от 4 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/shtukaturnye-stantsii/arenda-shtukaturnoj-stantsii-kaleta-6s"
+  },
+  {
+    "category": "Штукатурные станции",
+    "name": "Штукатурная станция Kaleta-6S/230",
+    "priceFrom": 4990,
+    "priceLabel": "Цена от 4 990р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/shtukaturnye-stantsii/arenda-shtukaturnoj-stantsii-kaleta-6s-230"
+  },
+  {
+    "category": "Электрические бетонорезы",
+    "name": "Электрический бетонорез Ingco PC3558",
+    "priceFrom": 1290,
+    "priceLabel": "Цена от 1 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/electricheskie-betonorezy/arenda-electricheskogo-betonoreza-ingco-pc3558"
+  },
+  {
+    "category": "Электрические бетонорезы",
+    "name": "Электрический бетонорез Makita 4112HS",
+    "priceFrom": 1390,
+    "priceLabel": "Цена от 1 390р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/electricheskie-betonorezy/arenda-electricheskogo-betonoreza-makita-4112hs"
+  },
+  {
+    "category": "Электрические бетонорезы",
+    "name": "Электрический бетонорез Makita 4114S",
+    "priceFrom": 1490,
+    "priceLabel": "Цена от 1 490р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/electricheskie-betonorezy/arenda-electricheskogo-betonoreza-makita-4114s"
+  },
+  {
+    "category": "Электрические бетонорезы",
+    "name": "Отрезная машина Hilti DCH 300-X",
+    "priceFrom": 2290,
+    "priceLabel": "Цена от 2 290р/сутки",
+    "availability": "В наличии",
+    "sourceUrl": "https://rent4work.ru/stroitelnoe-oborudovanie/electricheskie-betonorezy/arenda-otreznoj-mashiny-hilti-dch-300-x"
+  }
+]

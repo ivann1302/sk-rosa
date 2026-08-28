@@ -1,0 +1,263 @@
+---
+import BaseLayout from "../BaseLayout.astro";
+import EquipmentIllustration from "./EquipmentIllustration.astro";
+import ContactRequest from "../service/ContactRequest.astro";
+import FaqSection from "../service/FaqSection.astro";
+import ServiceRuntime from "../service/ServiceRuntime.astro";
+import { rentalContentLastModified } from "../../data/equipment-rental.js";
+import { russianPlural } from "../../data/equipment-rental-catalog.js";
+import { breadcrumbJsonLd, businessId } from "../../lib/seo.js";
+
+const { page } = Astro.props;
+const metricLabel = russianPlural(page.entries.length, ...page.metricForms);
+const imageUrl = new URL(page.image, page.canonical).href;
+const entryUrl = entry =>
+  entry.canonical ??
+  (entry.href?.startsWith("/") ? new URL(entry.href, page.canonical).href : `${page.canonical}#${entry.slug}`);
+const rentalAreaServed = [
+  { "@type": "City", name: "Москва" },
+  {
+    "@type": "City",
+    name: "Долгопрудный",
+    containedInPlace: { "@type": "AdministrativeArea", name: "Московская область" },
+  },
+  { "@type": "AdministrativeArea", name: "Московская область" },
+];
+const breadcrumbItems = [
+  { name: "Главная", url: "https://sk-rosa.ru/" },
+  { name: "Аренда оборудования", url: "https://sk-rosa.ru/arenda-stroitelnogo-oborudovaniya" },
+  ...(page.parent ? [{ name: page.parent.name, url: page.parent.canonical }] : []),
+  { name: page.name, url: page.canonical },
+];
+const faq = [
+  {
+    question: `Как подобрать оборудование в категории «${page.name}»?`,
+    answer: page.selectionNote,
+  },
+  {
+    question: `Сколько стоит аренда ${page.rentalName} в Москве и Долгопрудном?`,
+    answer:
+      `На странице указан ориентир ${page.priceLabel}. Итоговая цена зависит от срока, комплектации и дат; подтвердим её до бронирования.`,
+  },
+  {
+    question: `Где получить ${page.name.toLocaleLowerCase("ru-RU")} напрокат?`,
+    answer:
+      "Доступен самовывоз в Долгопрудном или доставка по Москве и Московской области. Стоимость доставки зависит от адреса, габаритов и выбранного оборудования.",
+  },
+];
+const rentalServiceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${page.canonical}#service`,
+  url: page.canonical,
+  name: page.heading,
+  alternateName: `Прокат ${page.rentalName} в Москве и Долгопрудном`,
+  description: page.description,
+  image: imageUrl,
+  category: page.name,
+  serviceType: page.serviceType,
+  provider: { "@id": businessId },
+  areaServed: rentalAreaServed,
+  mainEntityOfPage: { "@id": `${page.canonical}#webpage` },
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: page.canonical,
+    availableLanguage: "ru",
+    servicePhone: {
+      "@type": "ContactPoint",
+      telephone: "+79851354991",
+      contactType: "rental service",
+      availableLanguage: "ru",
+    },
+  },
+};
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${page.canonical}#catalog`,
+  name: page.heading,
+  numberOfItems: page.entries.length,
+  itemListElement: page.entries.map((entry, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: entryUrl(entry),
+    name: entry.name,
+  })),
+};
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  canonical={page.seo.canonical}
+  ogImage={imageUrl}
+  ogImageWidth={String(page.imageSize?.[0] ?? page.previewImageSize?.[0] ?? 1536)}
+  ogImageHeight={String(page.imageSize?.[1] ?? page.previewImageSize?.[1] ?? 1024)}
+  ogImageAlt={page.heading}
+  bodyClass="rental-page rental-detail-page"
+  mainEntityId={`${page.canonical}#service`}
+  dateModified={rentalContentLastModified}
+  jsonLd={[rentalServiceJsonLd, itemListJsonLd, faqJsonLd, breadcrumbJsonLd(breadcrumbItems)]}
+>
+  <main data-rental-directory-page>
+    <section class="rental-product-hero">
+      <div class="rental-container">
+        <nav class="rental-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="/">Главная</a><span>/</span>
+          <a href="/arenda-stroitelnogo-oborudovaniya">Аренда оборудования</a><span>/</span>
+          {page.parent && <><a href={page.parent.href}>{page.parent.name}</a><span>/</span></>}
+          <span>{page.name}</span>
+        </nav>
+        <div class="rental-product-hero__grid">
+          <div class="rental-product-hero__content">
+            <h1>{page.heading}</h1>
+            <p class="rental-product-hero__lead">{page.description}</p>
+            <ul class="rental-product-hero__badges">
+              {page.badges.map(badge => <li>{badge}</li>)}
+            </ul>
+            <div class="rental-product-hero__price">
+              <span>В каталоге</span>
+              <strong>{page.entries.length} {metricLabel}</strong>
+              <small>цена и наличие подтверждаются при бронировании</small>
+            </div>
+            <div class="rental-hero__actions">
+              <a class="rental-button rental-button--primary" href="#models">{page.primaryActionLabel}</a>
+              <a class="rental-button rental-button--ghost" href="#contact-request">Проверить наличие</a>
+            </div>
+          </div>
+          <div class="rental-machine rental-machine--photo" aria-label={page.heading}>
+            <div class="rental-machine__label"><span>{page.name}</span></div>
+            <img
+              class="rental-machine__image"
+              src={page.image}
+              alt={page.imageAlt ?? page.visualAlt ?? `${page.name} — фотография раздела`}
+              width={page.imageSize?.[0] ?? page.previewImageSize?.[0] ?? 1536}
+              height={page.imageSize?.[1] ?? page.previewImageSize?.[1] ?? 1024}
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--light" id="models">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <h2>{page.listHeading}</h2>
+          <p>{page.listDescription}</p>
+        </div>
+        <div class="rental-catalog">
+          {page.entries.map(entry => (
+            <article class="rental-card is-in-view" id={entry.slug}>
+              <div class="rental-card__visual" aria-hidden="true">
+                {entry.previewImage ? (
+                  <img
+                    class="rental-card__image"
+                    src={entry.previewImage}
+                    alt=""
+                    width={entry.previewImageSize?.[0] ?? 1536}
+                    height={entry.previewImageSize?.[1] ?? 1024}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <EquipmentIllustration kind={entry.visualKind} variant="card" />
+                )}
+              </div>
+              <div class="rental-card__body">
+                <h3><a href={entry.href ?? "#contact-request"}>{entry.shortName ?? entry.name}</a></h3>
+                <div class="rental-card__reveal">
+                  <div class="rental-card__reveal-inner">
+                    <p class="rental-card__summary">{entry.summary}</p>
+                    <div class="rental-card__footer">
+                      <strong>{entry.priceLabel}</strong>
+                      <span class="rental-card__more">{entry.actionLabel} <span aria-hidden="true">→</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="rental-section">
+      <div class="rental-container rental-info-grid">
+        <div>
+          <div class="rental-section__heading rental-section__heading--compact">
+            <h2>{page.selectionTitle}</h2>
+            <p>{page.selectionNote}</p>
+          </div>
+        </div>
+        <aside class="rental-use-cases">
+          <h3>Подходит для задач</h3>
+          <ul>{page.selectionPoints.map(point => <li>{point}</li>)}</ul>
+          <p>Перед бронированием уточним условия работы и проверим применимость выбранной позиции.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="rental-section rental-section--light">
+      <div class="rental-container">
+        <div class="rental-section__heading">
+          <h2>Что уточняем перед арендой</h2>
+        </div>
+        <div class="rental-feature-grid">
+          <article class="rental-feature">
+            <span>01</span>
+            <h3>Доступность</h3>
+            <p>Проверяем свободные позиции на требуемые даты и срок аренды.</p>
+          </article>
+          <article class="rental-feature">
+            <span>02</span>
+            <h3>Итоговая цена</h3>
+            <p>Подтверждаем тариф с учётом срока, залога и выбранной комплектации.</p>
+          </article>
+          <article class="rental-feature">
+            <span>03</span>
+            <h3>Комплектация</h3>
+            <p>Согласуем оснастку, расходные материалы и принадлежности до передачи.</p>
+          </article>
+          <article class="rental-feature">
+            <span>04</span>
+            <h3>Получение</h3>
+            <p>Самовывоз в Долгопрудном или доставка по Москве и Московской области.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <ContactRequest
+      title={page.contactTitle}
+      subtitle="Укажите позицию, даты, задачу и адрес в Москве, Долгопрудном или Московской области. Проверим наличие, комплектацию, залог и доставку."
+      features={page.contactFeatures}
+      formSource={page.heading}
+      comments={`Заявка со страницы аренды: ${page.name}`}
+      propertyType="equipment-rental"
+      variant="rental"
+    />
+
+    <FaqSection
+      title={`Частые вопросы об аренде: ${page.name}`}
+      description="Ответы о подборе оборудования, стоимости и получении в Москве и Долгопрудном."
+      items={faq}
+    />
+  </main>
+  <ServiceRuntime
+    slot="runtime"
+    pricingScript={false}
+    callBannerComments={`Заявка со страницы аренды: ${page.name}`}
+    callBannerSource={page.heading}
+  />
+</BaseLayout>

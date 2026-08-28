@@ -16,8 +16,8 @@ body:has(.blog-article) {
 }
 
 @media (width <= 768px) {
-  body:has(.blog-article-mobile-consultation) {
-    padding-bottom: 88px;
+  body:has(.blog-article-mobile-consultation) .footer {
+    padding-bottom: 128px;
   }
 }
 

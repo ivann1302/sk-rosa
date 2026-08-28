@@ -9,6 +9,7 @@ npm run check:astro:services
 npm run check:astro:blog
 npm run check:astro:production
 npm run check:astro:sitemap
+npm run check:astro:aeo
 
 if ! command -v rsync >/dev/null 2>&1; then
   echo "rsync is required to promote public_html_astro to public_html" >&2

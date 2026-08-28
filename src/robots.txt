@@ -4,21 +4,14 @@ Disallow: /scripts/api/
 Disallow: /test-
 
 User-agent: GPTBot
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ClaudeBot
-Allow: /
-
+User-agent: Claude-SearchBot
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Bingbot
-Allow: /
-
 User-agent: anthropic-ai
 Allow: /
+Disallow: /scripts/api/
+Disallow: /test-
 
 Sitemap: https://sk-rosa.ru/sitemap.xml

@@ -48,6 +48,7 @@ export const organizationJsonLd = {
   priceRange: "$$",
   areaServed: [
     { "@type": "City", name: "Москва" },
+    { "@type": "City", name: "Долгопрудный" },
     { "@type": "AdministrativeArea", name: "Московская область" },
   ],
   contactPoint: {
@@ -81,7 +82,14 @@ export const websiteJsonLd = {
   },
 };
 
-export function webPageJsonLd({ canonical, title, description, mainEntityId }) {
+export function webPageJsonLd({
+  canonical,
+  title,
+  description,
+  mainEntityId,
+  dateModified,
+  primaryImage,
+}) {
   const page = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -105,6 +113,26 @@ export function webPageJsonLd({ canonical, title, description, mainEntityId }) {
     page.mainEntity = {
       "@id": mainEntityId,
     };
+  }
+
+  if (dateModified) {
+    page.dateModified = dateModified;
+  }
+
+  if (primaryImage?.url) {
+    const imageId = `${canonical}#primaryimage`;
+    const image = {
+      "@type": "ImageObject",
+      "@id": imageId,
+      url: primaryImage.url,
+      contentUrl: primaryImage.url,
+      caption: primaryImage.caption,
+      width: Number(primaryImage.width),
+      height: Number(primaryImage.height),
+    };
+
+    page.primaryImageOfPage = image;
+    page.image = { "@id": imageId };
   }
 
   return page;
@@ -156,9 +184,13 @@ export function serviceJsonLd({
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: canonical,
-      servicePhone: "+79851354991",
-      serviceSmsNumber: "+79851354991",
-      availableLanguage: "Russian",
+      availableLanguage: "ru",
+      servicePhone: {
+        "@type": "ContactPoint",
+        telephone: "+79851354991",
+        contactType: "customer service",
+        availableLanguage: "ru",
+      },
     },
     offers: {
       "@type": "Offer",

@@ -1,0 +1,59 @@
+---
+import RentalDraftLanding from "../../components/rental/RentalDraftLanding.astro";
+import {
+  rentalCategoryPages,
+  rentalGroupPages,
+  russianPlural,
+} from "../../data/equipment-rental-catalog.js";
+
+export function getStaticPaths() {
+  return rentalCategoryPages.map(category => ({
+    params: { categorySlug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const groupPage = rentalGroupPages.find(page => page.group === category.group);
+const modelLabel = russianPlural(category.items.length, "модель", "модели", "моделей");
+const positionLabel = russianPlural(category.items.length, "позиция", "позиции", "позиций");
+const page = {
+  ...category,
+  heading: `Аренда ${category.rentalName} в Москве и Долгопрудном`,
+  description:
+    `${category.lead} В категории ${category.items.length} ${modelLabel}, ориентир по цене ${category.priceLabel}. ` +
+    "Самовывоз в Долгопрудном или доставка по Москве и Московской области; наличие и тариф подтвердим на выбранные даты.",
+  image: category.previewImage,
+  imageSize: category.previewImageSize,
+  imageAlt: category.visualAlt,
+  badges: [category.group, category.priceLabel, "Москва и Долгопрудный"],
+  catalogItemCount: category.items.length,
+  metricForms: ["модель", "модели", "моделей"],
+  primaryActionLabel: "Выбрать модель",
+  parent: {
+    name: groupPage.name,
+    canonical: groupPage.canonical,
+    href: new URL(groupPage.canonical).pathname,
+  },
+  listHeading: `${category.name} напрокат: модели и цены`,
+  listDescription:
+    "Сравните модели и ориентиры по стоимости. Для точного расчёта сообщите срок, задачу и адрес получения.",
+  entries: category.items.map(item => {
+    const hasDetailedPage = item.importedFrom !== "Rent4Work";
+
+    return {
+      ...item,
+      href: hasDetailedPage ? `/${item.slug}` : "#contact-request",
+      canonical: hasDetailedPage ? item.seo.canonical : undefined,
+      actionLabel: hasDetailedPage ? "Подробнее" : "Проверить наличие",
+    };
+  }),
+  selectionTitle: `Как подобрать модель — ${category.name}`,
+  selectionPoints: category.useCases,
+  selectionNote: category.selectionPrompt,
+  contactTitle: `Аренда ${category.rentalName}`,
+  contactFeatures: [category.priceLabel, `${category.items.length} ${positionLabel}`, "Самовывоз: Долгопрудный"],
+};
+---
+
+<RentalDraftLanding page={page} />

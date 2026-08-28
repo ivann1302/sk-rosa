@@ -1,0 +1,44 @@
+---
+import RentalDraftLanding from "../components/rental/RentalDraftLanding.astro";
+import { rentalGroupPages, russianPlural } from "../data/equipment-rental-catalog.js";
+
+const source = rentalGroupPages.find(item => item.slug === "arenda-instrumenta");
+const page = {
+  ...source,
+  badges: [`${source.categories.length} категорий`, `${source.items.length} позиций`, "Москва и Долгопрудный"],
+  catalogItemCount: source.items.length,
+  metricForms: ["категория", "категории", "категорий"],
+  primaryActionLabel: "Выбрать категорию",
+  listHeading: "Категории инструмента",
+  listDescription: "Выберите категорию, чтобы сравнить модели, стоимость аренды и подобрать комплектацию под задачу.",
+  entries: source.categories.map(category => ({
+    slug: category.slug,
+    name: category.name,
+    shortName: category.name,
+    previewImage: category.previewImage,
+    previewImageSize: category.previewImageSize,
+    visualKind: category.visualKind,
+    summary: `${category.lead} В категории ${category.items.length} ${russianPlural(category.items.length, "модель", "модели", "моделей")}.`,
+    priceFrom: category.priceFrom,
+    priceLabel: category.priceLabel,
+    actionLabel: "Смотреть модели",
+    href: category.href,
+    canonical: category.canonical,
+  })),
+  selectionTitle: "Как подобрать инструмент",
+  selectionPoints: [
+    "сверление и демонтаж",
+    "резка и шлифование",
+    "монтаж и крепёж",
+    "обработка дерева",
+    "трубомонтажные работы",
+    "измерения и разметка",
+  ],
+  selectionNote:
+    "Сообщите материал, объём работ, требуемую производительность и доступное питание — предложим подходящую категорию и модель.",
+  contactTitle: "Подобрать инструмент",
+  contactFeatures: [`${source.categories.length} категорий`, `${source.items.length} позиций`, "Самовывоз: Долгопрудный"],
+};
+---
+
+<RentalDraftLanding page={page} />
