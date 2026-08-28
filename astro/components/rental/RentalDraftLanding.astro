@@ -158,13 +158,20 @@ const faqJsonLd = {
         </div>
         <div class="rental-catalog">
           {page.entries.map(entry => (
-            <article class="rental-card is-in-view" id={entry.slug}>
-              <div class="rental-card__visual" aria-hidden="true">
+            <article
+              class:list={[
+                "rental-card",
+                "is-in-view",
+                { "rental-card--photo": entry.previewImage },
+              ]}
+              id={entry.slug}
+            >
+              <div class="rental-card__visual" aria-hidden={entry.previewImage ? undefined : "true"}>
                 {entry.previewImage ? (
                   <img
                     class="rental-card__image"
                     src={entry.previewImage}
-                    alt=""
+                    alt={entry.visualAlt ?? `${entry.name} — фотография оборудования`}
                     width={entry.previewImageSize?.[0] ?? 1536}
                     height={entry.previewImageSize?.[1] ?? 1024}
                     loading="lazy"
@@ -180,7 +187,11 @@ const faqJsonLd = {
                   <div class="rental-card__reveal-inner">
                     <p class="rental-card__summary">{entry.summary}</p>
                     <div class="rental-card__footer">
-                      <strong>{entry.priceLabel}</strong>
+                      <strong>
+                        {entry.availabilityMode === "unavailable"
+                          ? "Временно нет в наличии"
+                          : entry.priceLabel}
+                      </strong>
                       <span class="rental-card__more">{entry.actionLabel} <span aria-hidden="true">→</span></span>
                     </div>
                   </div>

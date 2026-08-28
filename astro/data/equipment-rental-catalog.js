@@ -1,5 +1,5 @@
 import { rentalEquipment } from "./equipment-rental.js";
-import { importedRentalEquipment, rentalImportStats } from "./equipment-rental-import.js";
+import { rentalCatalogDataStats, rentalCatalogEquipment } from "./equipment-rental-products.js";
 
 const categoryRoot = "/arenda-oborudovaniya";
 const groupOrder = ["Инструмент", "Строительное оборудование"];
@@ -180,7 +180,7 @@ const detailedCatalogItems = rentalEquipment.map(item => ({
   catalogHref: `/${item.slug}`,
 }));
 
-const importedCatalogItems = importedRentalEquipment.map(item => ({
+const importedCatalogItems = rentalCatalogEquipment.map(item => ({
   ...item,
   catalogHref: `${categoryPath(item.categorySlug)}#${item.slug}`,
 }));
@@ -203,7 +203,7 @@ export const rentalCategoryPages = [...categorySeeds.values()]
       item => item.group === seed.group && item.categorySlug === seed.categorySlug,
     );
     const publishedPrices = items
-      .filter(item => item.importedFrom === "Rent4Work")
+      .filter(item => item.catalogEntry && item.availabilityMode !== "unavailable")
       .map(item => item.priceFrom);
     const priceFrom = Math.min(...publishedPrices);
     const pathname = categoryPath(seed.categorySlug);
@@ -296,7 +296,7 @@ export const rentalGroupPages = [
 });
 
 export const rentalCatalogStats = {
-  ...rentalImportStats,
+  ...rentalCatalogDataStats,
   detailedPageCount: rentalEquipment.length,
   categoryPageCount: rentalCategoryPages.length,
   groupPageCount: rentalGroupPages.length,

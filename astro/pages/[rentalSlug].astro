@@ -235,7 +235,7 @@ const faqJsonLd = {
       </div>
     </section>
 
-    <section class="rental-section rental-section--navy" id="prices">
+    <section class="rental-section rental-section--navy rental-price-section" id="prices">
       <div class="rental-container rental-price-grid">
         <div>
           <div class="rental-section__heading rental-section__heading--compact">
@@ -349,22 +349,27 @@ const faqJsonLd = {
                     : index === relatedEquipment.length - 1
                       ? "prev"
                       : "hidden";
+                const carouselImage = relatedItem.carouselImage ?? relatedItem.previewImage;
+                const carouselImageSize = relatedItem.carouselImageSize ?? relatedItem.previewImageSize;
 
                 return (
                   <a
-                    class="rental-related__card"
+                    class:list={[
+                      "rental-related__card",
+                      { "rental-related__card--photo": carouselImage },
+                    ]}
                     href={`/${relatedItem.slug}`}
                     data-pos={position}
                     aria-hidden={position === "hidden" ? "true" : undefined}
                     tabindex={position === "hidden" ? -1 : 0}
                   >
                     <div class="rental-related__visual">
-                      {relatedItem.previewImage ? (
+                      {carouselImage ? (
                         <img
-                          src={relatedItem.previewImage}
+                          src={carouselImage}
                           alt={relatedItem.shortName}
-                          width={relatedItem.previewImageSize?.[0] ?? 1536}
-                          height={relatedItem.previewImageSize?.[1] ?? 1024}
+                          width={carouselImageSize?.[0] ?? 1536}
+                          height={carouselImageSize?.[1] ?? 1024}
                           loading="lazy"
                           decoding="async"
                         />

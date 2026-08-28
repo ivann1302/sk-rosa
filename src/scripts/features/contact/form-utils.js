@@ -1,5 +1,8 @@
 // Общие утилиты для работы с формами
 import { validateFormFields } from "./form-validation.js";
+import { appendLeadContext, captureUtm } from "./utm-tracker.js";
+
+captureUtm();
 
 const isDevelopment = window.location.port === "3000";
 
@@ -38,6 +41,8 @@ export async function submitForm(action, formData) {
 
   console.warn("[form-utils] → Реальный fetch POST на: " + action);
   try {
+    await appendLeadContext(formData);
+
     const response = await fetch(action, {
       method: "POST",
       headers: {

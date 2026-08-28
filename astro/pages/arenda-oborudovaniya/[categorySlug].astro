@@ -39,13 +39,18 @@ const page = {
   listDescription:
     "Сравните модели и ориентиры по стоимости. Для точного расчёта сообщите срок, задачу и адрес получения.",
   entries: category.items.map(item => {
-    const hasDetailedPage = item.importedFrom !== "Rent4Work";
+    const detailedCanonical = item.seo?.canonical;
+    const hasDetailedPage = Boolean(detailedCanonical);
 
     return {
       ...item,
       href: hasDetailedPage ? `/${item.slug}` : "#contact-request",
-      canonical: hasDetailedPage ? item.seo.canonical : undefined,
-      actionLabel: hasDetailedPage ? "Подробнее" : "Проверить наличие",
+      canonical: detailedCanonical,
+      actionLabel: hasDetailedPage
+        ? "Подробнее"
+        : item.availabilityMode === "unavailable"
+          ? "Уточнить поступление"
+          : "Проверить наличие",
     };
   }),
   selectionTitle: `Как подобрать модель — ${category.name}`,

@@ -1,7 +1,10 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { trackFormSubmitAndRedirect } from "../../../src/scripts/features/contact/thank-you-redirect.js";
-import { captureUtm, getUtmData } from "../../../src/scripts/features/contact/utm-tracker.js";
+import {
+  appendLeadContext,
+  captureUtm,
+} from "../../../src/scripts/features/contact/utm-tracker.js";
 
 const ENDPOINT = "/scripts/api/send.php";
 const TOTAL_STEPS = 3;
@@ -400,15 +403,11 @@ export default function PlasteringLeadCalculator({ data, showEstimate = true }) 
     formData.append("form_source", formSource);
     formData.append("company_website", nativeFormData.get("company_website") ?? "");
 
-    Object.entries(getUtmData()).forEach(([key, value]) => {
-      if (value) {
-        formData.append(key, value);
-      }
-    });
-
     setIsSubmitting(true);
 
     try {
+      await appendLeadContext(formData);
+
       const response = await fetch(ENDPOINT, {
         method: "POST",
         body: formData,

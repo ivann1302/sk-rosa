@@ -1,0 +1,2978 @@
+[
+  {
+    "slug": "arenda-bolgarki-vityaz-mshu-125-950",
+    "name": "Болгарка (УШМ) Витязь МШУ-125-950",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-ingco-ag10108-5",
+    "name": "Болгарка (УШМ) Ingco AG10108-5",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-bosch-gws-1000",
+    "name": "Болгарка (УШМ) Bosch GWS 1000",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-hilti-ag-125-19-se",
+    "name": "Болгарка (УШМ) Hilti AG 125-19SE",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-bolgarki-elitech-mshu-18bl",
+    "name": "Аккумуляторная болгарка (УШМ) Elitech МШУ 18БЛ",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-bolgarki-toua-dblag125",
+    "name": "Аккумуляторная болгарка (УШМ) Toua DBLAG125",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-bolgarki-makita-lxt-dga504rf",
+    "name": "Аккумуляторная болгарка (УШМ) Makita LXT DGA504RF",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-bolgarki-hilti-ag-4s-a22-125",
+    "name": "Аккумуляторная болгарка (УШМ) Hilti AG 4S-A22-125",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-elitech-ingco-ag30008",
+    "name": "Болгарка (УШМ) Ingco AG30008",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-makita-9069",
+    "name": "Болгарка (УШМ) Makita 9069",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-makita-ga9040sf",
+    "name": "Болгарка (УШМ) Makita GA9040SF",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bolgarki-hilti-ag-230-27-db",
+    "name": "Болгарка (УШМ) Hilti AG 230-27DB",
+    "group": "Инструмент",
+    "category": "Болгарки (УШМ)",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-udarnyj-pnevmaticheskij-gajkovert-kraftool-pw-1300c",
+    "name": "Ударный пневматический гайковерт KRAFTOOL PW-1300c",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-22-a",
+    "name": "Аккумуляторный ударный гайковерт Hilti SIW 22-A",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw6at-a22",
+    "name": "Аккумуляторный ударный гайковерт Hilti SIW 6AT-A22",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-22t-a",
+    "name": "Аккумуляторный ударный гайковерт Hilti SIW 22T-A",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-gajkoverta-hilti-siw-9-a22",
+    "name": "Аккумуляторный ударный гайковерт Hilti SIW 9-A22",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-udarnyj-pnevmaticheskij-gajkovert-kraftool-pw-3400",
+    "name": "Ударный пневматический гайковерт KRAFTOOL PW-3400",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-udarnogo-gajkoverta-makita-tw1000",
+    "name": "Ударный гайковерт Makita TW1000",
+    "group": "Инструмент",
+    "category": "Гайковерты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dozatora-hilti-md-1000",
+    "name": "Дозатор Hilti MD 1000",
+    "group": "Инструмент",
+    "category": "Дозаторы для хим. анкеров",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dozatora-hilti-hdm-500",
+    "name": "Дозатор Hilti HDM 500 (кроме HIT-ICE)",
+    "group": "Инструмент",
+    "category": "Дозаторы для хим. анкеров",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dozatora-akkumulyatornogo-hilti-hde-500-a22",
+    "name": "Аккумуляторный дозатор Hilti HDE 500-A22",
+    "group": "Инструмент",
+    "category": "Дозаторы для хим. анкеров",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-elitech-d400re",
+    "name": "Дрель Elitech Д400РЭ",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-hilti-ud-4",
+    "name": "Дрель Hilti UD 4",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-elitech-du-850rek",
+    "name": "Дрель ударная Elitech ДУ 850РЭК",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-udarnaya-drel-interskol-du-16-1000er",
+    "name": "Дрель ударная Интерскол ДУ 16/1000ЭР",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-shurupovyorta-dewalt-dcd-791",
+    "name": "Аккумуляторный шуруповерт DeWalt DCD791",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-drel-toua-dblid180",
+    "name": "Аккумуляторная ударная дрель-шуруповерт Toua DBLID180",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-shurupovyorta-bosch-gsk-180-li",
+    "name": "Аккумуляторный шуруповерт Bosch GSR 180-LI",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-shurupovyorta-hilti-sfc-22-a",
+    "name": "Аккумуляторный шуруповёрт Hilti SFC 22-A",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-udarnogo-drel-hilti-sf-6h-a22",
+    "name": "Аккумуляторная ударная дрель-шуруповерт Hilti SF 6H-A22",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pnevmaticheskogo-zaklepochnika-kraftool-ar-64",
+    "name": "Пневматический заклепочник Kraftool AR-64",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskogo-zaklepochnika-messer-erg-743",
+    "name": "Электрический заклепочник Messer ERG-743",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pnevmaticheskogo-zaklepochnika-kraftool-arc-48-acuum-lock",
+    "name": "Пневматический заклепочник Kraftool ARC-48 Vacuum-Lock",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-zaklepochnika-hilti-rt-6-a22",
+    "name": "Аккумуляторный заклепочник Hilti RT 6-A22",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-zaklepochnika-makita-lxt-drv250z",
+    "name": "Аккумуляторный заклепочник Makita LXT DRV250Z",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-rezbovogo-zaklepochnika-messer-m2000",
+    "name": "Аккумуляторный резьбовой заклепочник Messer M2000",
+    "group": "Инструмент",
+    "category": "Заклепочники",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zvukovogo-detektora-hilti-pma-31g",
+    "name": "Звуковой детектор Hilti PMA 31G",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-detektora-elitech-d-100",
+    "name": "Детектор Elitech Д 100",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernogo-urovnya-bosch-pll-360",
+    "name": "Лазерный уровень (нивелир) Bosch PLL 360",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernogo-urovnya-elitech-ln-360-3",
+    "name": "Лазерный уровень (нивелир) Elitech ЛН 360/3",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernogo-urovnya-elitech-ln-360-3-zel",
+    "name": "Лазерный уровень (нивелир) Elitech ЛН 360/3-ЗЕЛ",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernoj-ruletki-hilti-pd-e",
+    "name": "Лазерная рулетка Hilti PD-E",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernogo-urovnya-hilti-pm-40-mg",
+    "name": "Лазерный уровень (нивелир) Hilti PM 40-MG",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lazernogo-urovnya-hilti-pm-30-mg",
+    "name": "Лазерный уровень (нивелир) Hilti PM 30-MG",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-opticheskogo-nivelira-ada-prof-x32",
+    "name": "Оптический нивелир ADA PROF X32",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-opticheskogo-nivelira-hilti-pol-15",
+    "name": "Оптический нивелир Hilti POL 15",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-detektora-bosch-d-tect-200-c",
+    "name": "Детектор Bosch D-tect 200 C",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-multidetektora-hilti-ps-50",
+    "name": "Мультидетектор Hilti PS 50",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rotacionnogo-lazernogo-nivelira-ada-rotary-500-hv-g-servo",
+    "name": "Ротационный лазерный нивелир ADA ROTARY 500 HV-G Servo",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rotacionnogo-lazernogo-nivelira-hilti-pr-30-hvs-a12",
+    "name": "Ротационный лазерный нивелир Hilti PR 30-HVS A12",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 3290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-teplovizor-ada-tempro-vision-120",
+    "name": "Тепловизор ADA TemPro VISION 120",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-teplovizor-ada-tempro-vision-256",
+    "name": "Тепловизор ADA TemPro VISION 256 PROFESSIONAL",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-teplovizora-testo-868",
+    "name": "Тепловизор Testo 868",
+    "group": "Инструмент",
+    "category": "Измерительный инструмент",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskogo-kluppa-rezbonareznogo-rekon-drive-2-do-2",
+    "name": "Электрический клупп резьбонарезной Rekon Drive 2 до 2\"",
+    "group": "Инструмент",
+    "category": "Клуппы электрические резьбонарезные",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskogo-kluppa-rezbonareznogo-super-ego-supertronic-2000",
+    "name": "Электрический клупп резьбонарезной Super-Ego Supertronic 2000",
+    "group": "Инструмент",
+    "category": "Клуппы электрические резьбонарезные",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pnevmokraskopulta-fubag-expert-s1000-15-hvlp",
+    "name": "Пневмокраскопульт Fubag EXPERT S1000/1.5 HVLP",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-kraskopulta-ingco-spg5008",
+    "name": "Краскопульт Ingco SPG5008",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-kraskopulta-bosch-pfs-3000-2",
+    "name": "Краскопульт Bosch PFS 3000-2",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-kraskopulta-bosch-pfs-5000e",
+    "name": "Краскопульт Bosch PFS 5000E",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-kraskoraspylitelya-wagner-wall-perfect-flexio-687",
+    "name": "Краскораспылитель Wagner Wall Perfect Flexio 687",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-okrasochnogo-apparata-multirigo-tmr-80",
+    "name": "Окрасочный аппарат MultiRigo TMR 80+MRI-AS",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-okrasochnogo-apparata-multirigo-tmr-180e-mri-as",
+    "name": "Окрасочный аппарат MultiRigo TMR 180E+MRI-AS",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-okrasochnogo-apparata-multirigo-tmr-180e-kombi",
+    "name": "Окрасочный аппарат MultiRigo TMR 180E Kombi",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-yokiji-ykj-120",
+    "name": "Безвоздушный окрасочный аппарат YOKIJI YKJ120",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-1800",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-1800",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-2200",
+    "name": "Безвоздушный окрасочный аппарат ASTECH ASM-2200",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-kraskopulta-wagner-projectpro117",
+    "name": "Безвоздушный краскопульт Wagner Projectpro117",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-2800",
+    "name": "Безвоздушный окрасочный аппарат ASTECH ASM-2800",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-3100",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-3100",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-astech-asm-3200",
+    "name": "Безвоздушный окрасочный аппарат ASTECH ASM-3200",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-3900",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-3900",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 2990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-6000",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-6000",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-8100",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-8100",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 3990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-bezvozdushnogo-okrasochnogo-apparata-aspro-9000",
+    "name": "Безвоздушный окрасочный аппарат ASPRO-9000",
+    "group": "Инструмент",
+    "category": "Краскопульты",
+    "priceFrom": 4190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lobzikovoj-pily-elitech-pl-0560me",
+    "name": "Лобзиковая пила Elitech ПЛ 0560МЭ",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lobzikovoj-pily-elitech-pl-2885me",
+    "name": "Лобзиковая пила Elitech ПЛ 0885МЭ",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lobzikovoj-pily-dewal-dw-341",
+    "name": "Лобзиковая пила DeWalt DW 341",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lobzikovoj-pily-metabo-ste-100-quick",
+    "name": "Лобзиковая пила Metabo STE 100 Quick",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lobzikovoj-pily-hilti-wsj-850-et",
+    "name": "Лобзиковая пила Hilti WSJ 850-ET",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-lobzikovoj-pily-hilti-sjd-6-a22",
+    "name": "Аккумуляторная лобзиковая пила Hilti SJD 6-A22",
+    "group": "Инструмент",
+    "category": "Лобзиковые пилы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-miksera-elitech-mc-1400-2ed",
+    "name": "Миксер строительный Elitech МС 1400/2Э",
+    "group": "Инструмент",
+    "category": "Миксеры",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-miksera-elitech-mc-1600-2ed",
+    "name": "Миксер строительный Elitech МС 1600/2ЭД",
+    "group": "Инструмент",
+    "category": "Миксеры",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-miksera-rebir-em2-1500e-2",
+    "name": "Миксер строительный Rebir EM2-1500E-2",
+    "group": "Инструмент",
+    "category": "Миксеры",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-miksera-makita-ut1600",
+    "name": "Миксер строительный Makita UT1600",
+    "group": "Инструмент",
+    "category": "Миксеры",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-montazhnogo-pistoleta-hilti-bx-3-l",
+    "name": "Аккумуляторный монтажный пистолет Hilti BX 3-L",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-montazhnogo-pistoleta-hilti-bx-3-me",
+    "name": "Аккумуляторный монтажный пистолет Hilti BX 3-ME",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-montazhnogo-pistoleta-toua-dccn40",
+    "name": "Аккумуляторный монтажный пистолет Toua DCCN40",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-montazhnogo-pistoleta-dlya-teploizolyatsii-toua-dcin160",
+    "name": "Аккумуляторный монтажный пистолет для теплоизоляции Toua DCIN160",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-gvozdezabivnogo-pistoleta-toua-dcfn3490",
+    "name": "Аккумуляторный гвоздезабивной пистолет Toua DCFN3490",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gazovogo-montazhnogo-pistoleta-hilti-gx3",
+    "name": "Газовый монтажный пистолет Hilti GX 3",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn40b",
+    "name": "Газовый монтажный пистолет Toua GSN40B",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gazovogo-montazhnogo-pistoleta-dlya-teploizolyatsii-toua-gsn50d",
+    "name": "Газовый монтажный пистолет для теплоизоляции Toua GSN50D",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gazovogo-gvozdezabivnogo-pistoleta-toua-gfn3490ch-li",
+    "name": "Газовый гвоздезабивной пистолет Toua GFN3490CH Li",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-2",
+    "name": "Пороховой монтажный пистолет Hilti DX 2",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-porohovogo-montazhnogo-pistoleta-molot-pt-371",
+    "name": "Пороховой монтажный пистолет Molot PT-371A",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-5-mx72",
+    "name": "Пороховой монтажный пистолет Hilti DX 5-MX 72",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-porohovogo-montazhnogo-pistoleta-hilti-dx-76-mx",
+    "name": "Пороховой монтажный пистолет Hilti DX 76 MX",
+    "group": "Инструмент",
+    "category": "Монтажные пистолеты",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-montazhnogo-mekhanicheskogo-instrumenta-tim-ft1240a-18",
+    "name": "Монтажный механический инструмент Tim FT1240A-18",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-montazhnogo-mekhanicheskogo-instrumenta-rehau-rautool-m1",
+    "name": "Монтажный механический инструмент Rehau RAUTOOL M1",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h2",
+    "name": "Механико-гидравлический инструмент Rehau RAUTOOL H2",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 3590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-gidravlicheskogo-montazhnogo-instrumenta-rehau-rautool-a3",
+    "name": "Аккумуляторный гидравлический монтажный инструмент Rehau RAUTOOL A3",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 3990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mekhaniko-gidravlicheskogo-instrumenta-rehau-rautool-h-g1",
+    "name": "Механико-гидравлический инструмент Rehau RAUTOOL H/G1",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 4990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-press-instrumenta-ruchnogo-valtec-16-20-26-32-mm",
+    "name": "Пресс инструмент ручной Valtec",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-rasshiritelnogo-instrumenta-milwaukee-uponor-dlya-sistemy-qe-hd-18-pxp-h10202c",
+    "name": "Аккумуляторный расширительный инструмент Milwaukee UPONOR® для системы Q&E HD 18 PXP - H10202C",
+    "group": "Инструмент",
+    "category": "Монтажный инструмент для труб",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-nozhnitsy-po-metallu-akkumulyatornye-bosch-gsc-12v-13-professional",
+    "name": "Ножницы по металлу аккумуляторные Bosch GSC 12V-13 Professional",
+    "group": "Инструмент",
+    "category": "Ножницы по металлу",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-opressovochnogo-nasosa-tim-wm-50",
+    "name": "Опрессовочный насос Tim WM-50",
+    "group": "Инструмент",
+    "category": "Опрессовочные насосы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-opressovochnogo-nasosa-rothenberger-tp-25",
+    "name": "Опрессовочный насос Rothenberger TP 25",
+    "group": "Инструмент",
+    "category": "Опрессовочные насосы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-opressovochnogo-nasosa-rothenberger-rp-50-s",
+    "name": "Опрессовочный насос Rothenberger RP 50-S",
+    "group": "Инструмент",
+    "category": "Опрессовочные насосы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektro-nasosa-rothenberger-pro-iii",
+    "name": "Электрический опрессовочный насос Rothenberger RP PRO III",
+    "group": "Инструмент",
+    "category": "Опрессовочные насосы",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-paaylnika-dlay-svarki-polipropilenovyh-trub-i-fitingov-tim-2000wt-6-nasadok",
+    "name": "Паяльник для полипропиленовых труб и фитингов TIM 2000 Вт, 6 насадок (20-63)",
+    "group": "Инструмент",
+    "category": "Паяльник для сварки полипропиленовых труб",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-paaylnika-dlay-svarki-polipropilenovyh-trub-ditron-polys-p-4a-850w",
+    "name": "Паяльник для сварки полипропиленовых труб Dytron Polys P-4a 850W",
+    "group": "Инструмент",
+    "category": "Паяльник для сварки полипропиленовых труб",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dytron-polys-p-4a-1200w",
+    "name": "Паяльник для сварки полипропиленовых труб Dytron Polys P-4a 1200W",
+    "group": "Инструмент",
+    "category": "Паяльник для сварки полипропиленовых труб",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-elitech-p-0826rem",
+    "name": "Перфоратор Elitech П 0826РЭМ - 2.8 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr2450",
+    "name": "Перфоратор Makita HR2450 - 2.7 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-bosch-gbh-2-26-dfr",
+    "name": "Перфоратор Bosch GBH 2-26 DFR - 2.7 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-elitech-p-1032-rem",
+    "name": "Перфоратор Elitech П 1032РЭМ - 3.4 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-dewalt-d25134k-ks",
+    "name": "Перфоратор DeWalt D25134K-KS - 3 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-dewalt-d25143k",
+    "name": "Перфоратор DeWalt D25143K - 3.2 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-hilti-te-3-cl",
+    "name": "Перфоратор Hilti TE 3-CL - 2.1 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumuluatornogo-perforatora-elitech-pa-18blm",
+    "name": "Аккумуляторный перфоратор Elitech ПА 18БЛМ - 1.7 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-renda-akkumuluatornogo-perforatora-makita-lxt-dhr202rfe",
+    "name": "Аккумуляторный перфоратор Makita LXT DHR202RFE - 1.9 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumuluatornogo-perforatora-hilti-te-4-22-a",
+    "name": "Аккумуляторный перфоратор Hilti TE 4-22A - 2 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-hilti-te-30-avi",
+    "name": "Перфоратор Hilti TE 30-AVR - 3.6 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumuluatornogo-perforatora-makita-lxt-dhr242rfe",
+    "name": "Аккумуляторный перфоратор Makita LXT DHR242RFE - 2.4 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumuluatornogo-perforatora-hilti-te-6-22a",
+    "name": "Аккумуляторный перфоратор Hilti TE 6-22A - 2.5 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-elitecp-1340-em",
+    "name": "Перфоратор Elitech П 1340ЭМ - 7 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-hilti-te-50-avr",
+    "name": "Перфоратор Hilti TE 50-AVR - 6 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-dewalt-d25481k-qs",
+    "name": "Перфоратор DeWalt D25481K-QS - 6.1 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-hilti-te-60-atc-avr",
+    "name": "Перфоратор Hilti TE 60-ATC/AVR - 7.8 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-bosch-gbn-7-46-de",
+    "name": "Перфоратор Bosch GBN 7-46 DE - 9.3 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr4001c",
+    "name": "Перфоратор Makita HR4001C - 9.5 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-zubr-zpm-40-1250-evk",
+    "name": "Перфоратор Зубр ЗПМ-40-1250 ЭВК - 10 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-hilti-te-70-atc-avr",
+    "name": "Перфоратор Hilti TE 70-ATC/AVR - 11.5 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr4501c",
+    "name": "Перфоратор Makita HR4501C - 13 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr4511c",
+    "name": "Перфоратор Makita HR4511C - 13 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr5001c",
+    "name": "Перфоратор Makita HR5001C - 17.5 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-perforatora-makita-hr5211c",
+    "name": "Перфоратор Makita HR5211C - 20 Дж",
+    "group": "Инструмент",
+    "category": "Перфораторы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-termopistolet-elitech-tv-1600",
+    "name": "Термопистолет Elitech ТВ 1600",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-tekhnicheskogo-fena-elitech-tb2000zhk",
+    "name": "Термопистолет Elitech ТВ 2000ЖК",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-tekhnicheskogo-fena-hammer-hg2030-premium",
+    "name": "Технический фен Hammer HG2030 Premium",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-tekhnicheskogo-fena-bosch-ghg-23-66",
+    "name": "Технический фен Bosch GHG 23-66",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-fena-makita-hg-6530vk",
+    "name": "Строительный фен Makita HG 6530VK",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-fena-makita-dhg-181rt1j",
+    "name": "Аккумуляторный строительный фен Makita DHG181RT1J",
+    "group": "Инструмент",
+    "category": "Промышленные фены",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rejsmusovogo-stanka-dewalt-dw735-ks",
+    "name": "Рейсмусовый станок DeWalt DW735-KS",
+    "group": "Инструмент",
+    "category": "Рейсмусы",
+    "priceFrom": 3090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rejsmusovogo-stanka-makita-2012nb",
+    "name": "Рейсмусный станок Makita 2012NB",
+    "group": "Инструмент",
+    "category": "Рейсмусы",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-renovatora-mfu-elitech-mi-500ek",
+    "name": "Реноватор (МФУ) Elitech МИ 500ЭК",
+    "group": "Инструмент",
+    "category": "Реноваторы (МФУ)",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-renovatora-mfu-makita-tm3000c",
+    "name": "Реноватор (МФУ) Makita TM3000C",
+    "group": "Инструмент",
+    "category": "Реноваторы (МФУ)",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumuluatornogo-renovatora-mfu-makita-lxt-dtm52rtjx1",
+    "name": "Аккумуляторный реноватор (МФУ) Makita LXT DTM52RTJX1",
+    "group": "Инструмент",
+    "category": "Реноваторы (МФУ)",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rubanka-elitech-p-110k",
+    "name": "Рубанок Elitech Р 110К",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rubanka-metabo-ho-26-82",
+    "name": "Рубанок Metabo HO 26-82",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rubanka-rebir-ie-5708m",
+    "name": "Рубанок Rebir IE-5708M",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rubanka-makita-kp0810c",
+    "name": "Рубанок Makita KP0810C",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-rubanka-makita-lxt-181zu",
+    "name": "Аккумуляторный рубанок Makita LXT DKP181ZU",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rubanka-makita-kp312s",
+    "name": "Рубанок Makita KP312S",
+    "group": "Инструмент",
+    "category": "Рубанки",
+    "priceFrom": 2590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-sabelnoj-pily-elitech-psa-18sl",
+    "name": "Аккумуляторная сабельная пила Elitech ПСА 18СЛ",
+    "group": "Инструмент",
+    "category": "Сабельные пилы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-sabelnoj-pily-hitachi-cr-13vby",
+    "name": "Сабельная пила Hitachi CR 13VBY",
+    "group": "Инструмент",
+    "category": "Сабельные пилы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-sabelnoj-pily-dewalt-dw311k-qs",
+    "name": "Сабельная пила DeWalt DW311-QS",
+    "group": "Инструмент",
+    "category": "Сабельные пилы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-sabelnoj-pily-hilti-sr6-a22",
+    "name": "Аккумуляторная сабельная пила Hilti SR 6-A22",
+    "group": "Инструмент",
+    "category": "Сабельные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-sabelnoj-pily-makita-xgt-jr002gz",
+    "name": "Аккумуляторная сабельная пила Makita XGT JR002GZ",
+    "group": "Инструмент",
+    "category": "Сабельные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-bosch-pcm-7",
+    "name": "Торцовочная пила Bosch PCM 7",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-elitech-pt-1625",
+    "name": "Торцовочная пила Elitech ПТ 1625",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-makita-ls1040",
+    "name": "Торцовочная пила Makita LS1040",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-bosch-gcm-10-professional",
+    "name": "Торцовочная пила Bosch GCM 10 Professional",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-makita-ls1018ln",
+    "name": "Торцовочная пила Makita LS1018LN",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-metabo-kgs-254-m",
+    "name": "Торцовочная пила Metabo KGS 254 M",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-elitech-pt-2030krc",
+    "name": "Торцовочная пила Elitech ПТ 2030КРС",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-torcovochnoj-pily-dewalt-dws-780-qs",
+    "name": "Торцовочная пила DeWalt DWS 780-QS",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stanok-raspilovochnyj-elitech-cp-1825p",
+    "name": "Станок распиловочный Elitech СР 1825Р",
+    "group": "Инструмент",
+    "category": "Торцовочные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-elitech-f-1800e",
+    "name": "Фрезер Elitech Ф 1800Э",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-ryobi-rrt1600-k",
+    "name": "Фрезер Ryobi RRT1600-K",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-bosch-pof-1400-ace",
+    "name": "Фрезер Bosch POF 1400 ACE",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-kromochnogo-makita-rt0700cx2",
+    "name": "Фрезер кромочный Makita RT0700CX2",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-shponochnyj-makita-pj7000j",
+    "name": "Фрезер шпоночный Makita PJ7000J",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-frezera-makita-rp2303fcx",
+    "name": "Фрезер Makita RP2303FCX",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-kromochnogo-frezera-makita-xgt-rt001gz19",
+    "name": "Аккумуляторный кромочный фрезер Makita XGT RT001GZ19",
+    "group": "Инструмент",
+    "category": "Фрезеры",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-elitech-pd-1600l",
+    "name": "Циркулярная пила Elitech ПД 1600Л",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-dewalt-dwe-560",
+    "name": "Циркулярная пила DeWalt DWE 560",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-makita-hs-7000",
+    "name": "Циркулярная пила Makita HS7000",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-5008mg",
+    "name": "Циркулярная пила Makita 5008MG",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-elitech-pd-2000c",
+    "name": "Циркулярная пила Elitech ПД 2000С",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-hilti-sc-55w",
+    "name": "Циркулярная пила Hilti SC 55W",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-hilti-scw-70",
+    "name": "Циркулярная пила Hilti SCW 70",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-diskovoj-pily-makita-lxt-dss610rfe",
+    "name": "Аккумуляторная дисковая пила Makita LXT DSS610RFE",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-cirkulyarnoj-pily-hilti-scm-22-a",
+    "name": "Аккумуляторная циркулярная пила Hilti SCM-22A",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornoj-cirkulyarnoj-pily-hilti-sc-70w-22a",
+    "name": "Аккумуляторная циркулярная пила Hilti SC 70W-A22",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-elitech-pd1255p",
+    "name": "Циркулярная погружная пила Elitech ПД1255П",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-cirkulyarnoj-pily-makita-sp6000",
+    "name": "Циркулярная погружная пила Makita SP6000",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-sirkuluarnoi-pili-hilti-wsc-85",
+    "name": "Циркулярная пила Hilti WSC 85",
+    "group": "Инструмент",
+    "category": "Циркулярные пилы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibracionnoj-shlifmashiny-elitech-mshv-0211",
+    "name": "Вибрационная шлиф. машина Elitech МШВ 0211",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibracionnoj-shlifmashiny-elitech-mshv-0423e",
+    "name": "Вибрационная шлиф. машина Elitech МШВ 0423Э",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibracionnoj-shlifmashiny-makita-bo-3711",
+    "name": "Вибрационная шлиф. машина Makita BO3711",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lentochnoj-shlifovalnoj-mashiny-elitecmshl-900e",
+    "name": "Ленточная шлифовальная машина Elitech МШЛ 900Э",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-priamoj-shlifmashiny-dewalt-d28885",
+    "name": "Прямая шлифовальная машина DeWalt D28885",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lentochnoj-shlifovalnoj-mashiny-elitech-mshl-1200e",
+    "name": "Ленточная шлифовальная машина Elitech МШЛ 1200Э",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ekscentrikovoj-shlifovalnoj-mashiny-bosch-pex300-ae",
+    "name": "Эксцентриковая шлифовальная машина Bosch PEX 300 AE",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibracionnoj-shlifmashiny-bosch-gss-280-ae",
+    "name": "Вибрационная шлиф. машина Bosch GSS 280 AE",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-polirovalnoj-shlifmashiny-makita-9237cb",
+    "name": "Полировальная шлифовальная машина Makita 9237CB",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lentochnoj-shlifovalnoj-mashiny-makita-9403",
+    "name": "Ленточная шлифовальная машина Makita 9403",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lentochnoj-shlifovalnoj-mashiny-makita-9404",
+    "name": "Ленточная шлифовальная машина Makita 9404",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ekscentrikovoj-shlifovalnoj-mashiny-hilti-wfe-450-e",
+    "name": "Эксцентриковая шлифовальная машина Hilti WFE 450-E",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shlifovalnoj-mashiny-po-betonu-bosch-gbr-15-ca",
+    "name": "Шлифовальная машина по бетону Bosch GBR 15 CA",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shlifovalnoj-mashiny-aspro-s8-skladnaya-zhiraf",
+    "name": "Шлифовальная машина Aspro-C8 складная (жираф)",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shlifovalnoj-mashiny-aspro-s8-zhiraf",
+    "name": "Шлифовальная машина Aspro-C8 (жираф)",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shlifovalnoj-mashiny-dck-ksf04-225-zhiraf",
+    "name": "Шлифовальная машина DCK KSF04-225 (жираф)",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-almaznoj-shlifovalnoj-mashiny-hilti-dgh-130-230v",
+    "name": "Алмазная шлифовальная машина Hilti DGH 130 230V",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-almaznoj-shlifovalnoj-mashiny-hilti-dgh-150-230w",
+    "name": "Алмазная шлифовальная машина Hilti DGH 150 230V",
+    "group": "Инструмент",
+    "category": "Шлифовальные машины",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pistoleta-skobozabivnogo-fubag-s1216",
+    "name": "Пистолет скобозабивной Fubag S1216",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pnevmaticheskogo-steplera-zubr-profi-3190",
+    "name": "Пневматический степлер Зубр Профи 3190",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gvozdeskobozabivnogo-pistoleta-fubag-sn4050",
+    "name": "Гвоздескобозабивной пистолет Fubag SN4050",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shpilkozabivnogo-pnevmopistolet-pegas-pneumatic-p630",
+    "name": "Шпилькозабивной пистолет Pegas pneumatic P630",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shpilkozabivnogo-pnevmopistolet-trusty-tpn-2345s",
+    "name": "Шпилькозабивной пистолет Trusty TPN-2345S",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-shtiftozabivnogo-steplera-makita-lxt-dpt353z",
+    "name": "Аккумуляторный штифтозабивной степлер Makita LXT DPT353Z",
+    "group": "Инструмент",
+    "category": "Шпилькозабиватели и скобозабиватели",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-zubr-zh-p30-1400-pst",
+    "name": "Штроборез Зубр ЗШ-П30-1400 ПСТ",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-zubr-zh-p30-1600-pstk",
+    "name": "Штроборез Зубр ЗШ-П30-1600 ПСТК",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-125-19-se-ex",
+    "name": "Штроборез Hilti AG 125-19SE-EX",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-makita-sg-1250",
+    "name": "Штроборез Makita SG 1250",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dc-se20",
+    "name": "Штроборез Hilti DC-SE 20",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-makita-sg-150",
+    "name": "Штроборез Makita SG 150",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dch-150sl",
+    "name": "Штроборез Hilti DCH 150-SL",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-zubr-zh-p65-2700-pstk",
+    "name": "Штроборез Зубр ЗШ-П65-2700 ПСТК",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hitachi-cm9sr",
+    "name": "Штроборез Hitachi CM9SR",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-bosch-gnf-65-a",
+    "name": "Штроборез Bosch GNF 65 A",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-230-27db",
+    "name": "Штроборез Hilti AG 230-27DB+DC-EX 230/9\"",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-125-19se-ex-i-pylesosa-stroitelnogo-elitech-ps-1235a",
+    "name": "Штроборез Hilti AG 125-19SE-EX и Пылесос строительный Elitech ПС 1235А",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-125-19se-ex-i-pylesosa-stroitelnogo-hilti-vc-20-u",
+    "name": "Штроборез Hilti AG 125-19SE-EX и Пылесос строительный Hilti VC 20-U",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-125-19se-ex-i-pylesosa-stroitelnogo-hilti-vc-40-ul",
+    "name": "Штроборез Hilti AG 125-19SE-EX и Пылесос строительный Hilti VC 40-UL",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-230-27dbdc-ex-2309-i-pylesosa-stroitelnogo-elitech-ps-1260a",
+    "name": "Штроборез Hilti AG 230-27DB+DC-EX 230/9\" и Пылесос строительный Elitech ПС 1260А",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-ag-230-27dbdc-ex-2309-i-pylesosa-stroitelnogo-hilti-vc-60-u",
+    "name": "Штроборез Hilti AG 230-27DB+DC-EX 230/9\" и Пылесос строительный Hilti VC 60-U",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 2390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dc-se-20-i-pylesosa-stroitelnogo-hilti-vc-20-u",
+    "name": "Штроборез Hilti DC-SE 20 и Пылесос строительный Hilti VC 20-U",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dc-se-20-i-pylesosa-stroitelnogo-hilti-vc-40-ul",
+    "name": "Штроборез Hilti DC-SE 20 и Пылесос строительный Hilti VC 40-UL",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dch-150-sl-i-pylesosa-stroitelnogo-hilti-vc-20-u",
+    "name": "Штроборез Hilti DCH 150-SL и Пылесос строительный Hilti VC 20-U",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-hilti-dch-150-sl-i-pylesosa-stroitelnogo-hilti-vc-40-ul",
+    "name": "Штроборез Hilti DCH 150-SL и Пылесос строительный Hilti VC 40-UL",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-makita-sg-1250-i-pylesosa-stroitelnogo-makita-vc2512l",
+    "name": "Штроборез Makita SG 1250 и Пылесос строительный Makita VC2512L",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-makita-sg-150-i-pylesosa-stroitelnogo-makita-vc3011l",
+    "name": "Штроборез Makita SG 150 и Пылесос строительный Makita VC3011L",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtroboreza-makita-sg-150-i-pylesosa-stroitelnogo-makita-vc3012l",
+    "name": "Штроборез Makita SG 150 и Пылесос строительный Makita VC3012L",
+    "group": "Инструмент",
+    "category": "Штроборезы",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-akkumulyatornogo-shurupovyorta-dlya-gipsokartona-hilti-sd-5000-a22",
+    "name": "Аккумуляторный шуруповёрт для гипсокартона Hilti SD 5000-A22 + Магазин Hilti SDM 57",
+    "group": "Инструмент",
+    "category": "Дрели и шуруповерты",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-ingco-pdb13008",
+    "name": "Отбойный молоток Ingco PDB13008 - 20 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-500-avr",
+    "name": "Отбойный молоток Hilti TE 500-AVR - 8.5 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-700-avr",
+    "name": "Отбойный молоток Hilti TE 700-AVR - 11.5 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-800-avr",
+    "name": "Отбойный молоток Hilti TE 800-AVR - 21 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-makita-hm1307c",
+    "name": "Отбойный молоток Makita HM1307C - 25.5 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-zubr-zmm-25-1500-evk",
+    "name": "Отбойный молоток Зубр ЗММ-25-1500 ЭВК - 25 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-1000-avr",
+    "name": "Отбойный молоток Hilti TE 1000-AVR - 26 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-1500-avr",
+    "name": "Отбойный молоток Hilti TE 1500-AVR - 30 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-zubr-zm-35-1600-vk",
+    "name": "Отбойный молоток Зубр ЗМ-35-1600 ВК - 35 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-2000-avr",
+    "name": "Отбойный молоток Hilti TE 2000-AVR - 35 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-zubr-zm-40-1700-k",
+    "name": "Отбойный молоток Зубр ЗМ-40-1700 К - 40 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-ingco-pdb17008",
+    "name": "Отбойный молоток Ingco PDB17008 - 45 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hitachi-h65sb2",
+    "name": "Отбойный молоток Hitachi H65SB2 - 42 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-zubr-zm-50-2000-vk",
+    "name": "Отбойный молоток Зубр ЗМ-50-2000 ВК - 50 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-redverg-rd-dh1700",
+    "name": "Отбойный молоток RedVerg RD-DH1700 - 60 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-makita-hm1802",
+    "name": "Отбойный молоток Makita HM1802 - 62 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-hilti-te-3000-avr",
+    "name": "Отбойный молоток Hilti TE 3000-AVR - 68 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 3290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otbojnogo-molotka-redverg-rd-dh1900",
+    "name": "Отбойный молоток RedVerg RD-DH1900 - 75 Дж",
+    "group": "Инструмент",
+    "category": "Электрические отбойные молотки",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-almaznogo-sverlenija-ken-6110b",
+    "name": "Дрель алмазного сверления Ken 6110b",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-almaznogo-sverlenija-crown-st32072dh-bmc",
+    "name": "Дрель алмазного сверления Crown CT32072DH BMC",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-almaznogo-sverlenija-diam-ml-102-2n",
+    "name": "Дрель алмазного сверления Diam ML-102/2Н",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dreli-dlja-suhogo-almaznogo-sverlenija-milwaukee-dd2-160xe",
+    "name": "Дрель для сухого алмазного сверления Milwaukee DD 2-160 XE",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ustanovki-almaznogo-burenija-diam-ml-180n",
+    "name": "Установка алмазного сверления Diam ML-180",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ustanovki-almaznogo-burenija-diam-ml-250-2a",
+    "name": "Установка алмазного сверления Diam ML-250/2А",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 2390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ustanovki-almaznogo-burenija-diam-ml-350-2n",
+    "name": "Установка алмазного бурения Diam ML-350/2NE",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ustanovki-almaznogo-burenija-hilti-dd-250-bl",
+    "name": "Установка алмазного бурения Hilti DD 250 BL",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 4990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-ustanovki-almaznogo-burenija-hilti-dd-350-ca",
+    "name": "Установка алмазного бурения Hilti DD 350-CA",
+    "group": "Строительное оборудование",
+    "category": "Алмазное бурение",
+    "priceFrom": 6990,
+    "availability": "unavailable"
+  },
+  {
+    "slug": "arenda-benzoreza-champion-cp350",
+    "name": "Бензорез Champion CP350",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-patriot-dsg-735",
+    "name": "Бензорез Patriot DSG 735",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-husqvarna-k770-14",
+    "name": "Бензорез Husqvarna K 770/14",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 3190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-stihl-ts-420",
+    "name": "Бензорез Stihl TS 420",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 3190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-stihl-ts-800",
+    "name": "Бензорез Stihl TS 800",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-makita-ek-8100-ws",
+    "name": "Бензорез Makita EK 8100 WS",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-benzoreza-hilti-dsh-900-x",
+    "name": "Бензорез Hilti DSH 900-X",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonomeshalki-rbg-120",
+    "name": "Бетономешалка РБГ-120",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonosmesiteliia-profmash-b-130r",
+    "name": "Бетоносмеситель Профмаш Б-130Р",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonomeshalki-rbg-150-s",
+    "name": "Бетономешалка РБГ-150",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonomeshalki-rbg-200",
+    "name": "Бетономешалка РБГ-200",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonomeshalki-rbg-250",
+    "name": "Бетономешалка РБГ-250",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-betonomeshalki-rbg-320",
+    "name": "Бетономешалка РБГ-320",
+    "group": "Строительное оборудование",
+    "category": "Бетоносмесители",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-masalta-4ms50-2",
+    "name": "Виброплита Masalta MS50-2",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-masalta-msr60-2",
+    "name": "Виброплита Masalta MSR60-2",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-masalta-msr90-2",
+    "name": "Виброплита Masalta MSR90-2",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-cimar-cpc-1550",
+    "name": "Виброплита Cimar CPC-2050",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-160-h",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-160-H",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-240",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-240",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroplity-reversivhoj-gidravlicheskoj-cimar-cpc-405",
+    "name": "Виброплита реверсивная гидравлическая Cimar CPC-405",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibrotrambovki-masalta-mr68h",
+    "name": "Вибротрамбовка Masalta MR68H",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibrotrambovki-masalta-mr75r",
+    "name": "Вибротрамбовка Masalta MR75R",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibrotrambovki-masalta-emr85m",
+    "name": "Вибротрамбовка Masalta EMR85M",
+    "group": "Строительное оборудование",
+    "category": "Виброплиты и вибротрамбовки",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroreiki-masalta-mcd-4-mcb-6",
+    "name": "Виброрейка бензиновая Masalta MCD-4 MCB6",
+    "group": "Строительное оборудование",
+    "category": "Виброрейки",
+    "priceFrom": 2090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vibroreiki-masalta-mcd-4-mcb-10",
+    "name": "Виброрейка бензиновая Masalta MCD-4 MCB10",
+    "group": "Строительное оборудование",
+    "category": "Виброрейки",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-28",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=2.8 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-52",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=5.2 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-75",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=7.5 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-100",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=10 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-124",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=12.4 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-vyshki-tury-vsp-250-148",
+    "name": "Вышка-тура ВСП 1.2х2.0 H=14.8 м",
+    "group": "Строительное оборудование",
+    "category": "Вышки, туры",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-splitstone-ts-242e",
+    "name": "Затирочная машина Сплитстоун TS-242E",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-splitstone-ts-244",
+    "name": "Затирочная машина Сплитстоун TS-244",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-cimar-cpt-20",
+    "name": "Затирочная машина Cimar CPT-20",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-masalta-mt24-4",
+    "name": "Затирочная машина Masalta MT24-4",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-cimar-cpt-436",
+    "name": "Затирочная машина Cimar CPT-436",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-zatirochnoj-mashiny-masalta-mt36-4-st",
+    "name": "Затирочная машина Masalta MT36-4 ST",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dvuhrotornoj-zatirochnoj-mashiny-masalta-mrt-73",
+    "name": "Двухроторная затирочная машина Masalta MRT 73",
+    "group": "Строительное оборудование",
+    "category": "Затирочные машины",
+    "priceFrom": 12000,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stremjanki-hailo-l50-easyclix-4-stupenej",
+    "name": "Стремянка Hailo L50 EasyClix 4 ступени",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x6",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo 3x6",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stremjanki-krause-solido-8-stupenej",
+    "name": "Стремянка Krause Solido 8 ступеней",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x9",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo 3x9",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x12",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo Trigon 3х12",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-lestnitsy-trehsektsyonnoj-krause-monto-tribilo-trigon-3x14",
+    "name": "Лестница трехсекционная универсальная Krause Monto Tribilo Trigon 3х14",
+    "group": "Строительное оборудование",
+    "category": "Лестницы",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-magnitnyj-sverlilnyj-stanok-messer-mdmr-35",
+    "name": "Магнитный сверлильный станок Messer MDMR-35",
+    "group": "Строительное оборудование",
+    "category": "Магнитные сверлильные станки",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mozaichno-shlifovalnoj-mashiny-splitstoun-gm-122-2-2",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122 (2.2)",
+    "group": "Строительное оборудование",
+    "category": "Мозаично-шлифовальные машины",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mozaichno-shlifovalnoj-mashiny-splitstoun-gm-122-4",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122 (4)",
+    "group": "Строительное оборудование",
+    "category": "Мозаично-шлифовальные машины",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-122g",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-122G",
+    "group": "Строительное оборудование",
+    "category": "Мозаично-шлифовальные машины",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-245-7-5",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-245 (7.5)",
+    "group": "Строительное оборудование",
+    "category": "Мозаично-шлифовальные машины",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mozaichnoj-shlifovalnoj-mashiny-splitstoun-gm-4811-crab",
+    "name": "Машина мозаично-шлифовальная Сплитстоун GM-4811 Crab",
+    "group": "Строительное оборудование",
+    "category": "Мозаично-шлифовальные машины",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mojushchego-pylesosa-karcher-puzzi-8-1-c",
+    "name": "Моющий пылесос Karcher Puzzi 8/1 C",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mojushchego-pylesosa-karcher-puzzi-10-1",
+    "name": "Моющий пылесос Karcher Puzzi 10/1",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mojushchego-pylesosa-santoemma-sabrina-sw15",
+    "name": "Моющий пылесос Santoemma Sabrina SW15",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-mojushchego-pylesosa-karcher-puzzi-30-4",
+    "name": "Моющий пылесос Karcher Puzzi 30/4",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-osushitelja-vozdukha-ballu-bdi-50l",
+    "name": "Осушитель воздух Ballu BDI-50L",
+    "group": "Строительное оборудование",
+    "category": "Осушители воздуха",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-osushitelja-vozdukha-ballu-bdi-80l",
+    "name": "Осушитель воздух Ballu BDI-80L",
+    "group": "Строительное оборудование",
+    "category": "Осушители воздуха",
+    "priceFrom": 1590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-osushitelja-vozdukha-ballu-bdi-100l",
+    "name": "Осушитель воздух Ballu BDI-100L",
+    "group": "Строительное оборудование",
+    "category": "Осушители воздуха",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-ruchnogo-dewalt-dwc410-qs",
+    "name": "Плиткорез ручной DeWalt DWC410-QS",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-sturm-tc9822u",
+    "name": "Плиткорез электрический Sturm! TC9822U",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-diam-ex-720-1-1",
+    "name": "Плиткорез электрический Diam EX-720/1.1",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-diam-ex-920-1-5",
+    "name": "Плиткорез электрический Diam EX-920/1.5",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-wandeli-qx-zd-800",
+    "name": "Плиткорез электрический Wandeli QX-ZD-800",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-dewalt-d24000",
+    "name": "Плиткорез электрический DeWalt D24000",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-wandeli-qx-zd-1200",
+    "name": "Плиткорез электрический Wandeli QX-ZD-1200",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-plitkoreza-elektricheskogo-wandeli-qxz-zd-2460",
+    "name": "Плиткорез электрический Wandeli QXZ-ZD-2460",
+    "group": "Строительное оборудование",
+    "category": "Плиткорезы",
+    "priceFrom": 4790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-glubinnogo-vibratora-tcc-ep-2-2-220-s-uzo",
+    "name": "Глубинный вибратор ТСС ЭП-2.2/220 с УЗО",
+    "group": "Строительное оборудование",
+    "category": "Погружные вибраторы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-glubinnogo-vibratora-tcc-bp-2-7",
+    "name": "Глубинный вибратор ТСС БП-2.7",
+    "group": "Строительное оборудование",
+    "category": "Погружные вибраторы",
+    "priceFrom": 990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-glubinnogo-vibratora-masalta-mvdr-4",
+    "name": "Глубинный вибратор Masalta MVDR-4",
+    "group": "Строительное оборудование",
+    "category": "Погружные вибраторы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-glubinnogo-vibratora-masalta-mbp-h",
+    "name": "Глубинный вибратор Masalta MBP H",
+    "group": "Строительное оборудование",
+    "category": "Погружные вибраторы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-pogruzhnogo-vibratora-wacker-neuson-irfu-57",
+    "name": "Погружной вибратор Wacker Neuson IRFU 57",
+    "group": "Строительное оборудование",
+    "category": "Погружные вибраторы",
+    "priceFrom": 1990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-aspro-vc2",
+    "name": "Пылесос строительный ASPRO-VC2",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-elitech-ps-1235a",
+    "name": "Пылесос строительный Elitech ПС 1235А",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-elitech-ps-1260a",
+    "name": "Пылесос строительный Elitech ПС 1260А",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-makita-vc2512l",
+    "name": "Пылесос строительный Makita VC2512L",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-hammer-pil50a",
+    "name": "Пылесос строительный Hammer PIL50A",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-hilti-vc-20-u",
+    "name": "Пылесос строительный Hilti VC 20-U",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-makita-vc3011l",
+    "name": "Пылесос строительный Makita VC3011L",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-makita-vc3012l",
+    "name": "Пылесос строительный Makita VC3012L",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-hilti-vc-40-u",
+    "name": "Пылесос строительный Hilti VC 40-UL",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-stroitelnogo-pylesosa-hilti-vc-60-u",
+    "name": "Пылесос строительный Hilti VC 60-U",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-promyshlennyj-stroitelnyj-pylesos-linolit-322",
+    "name": "Промышленный строительный пылесос Linolit® 322",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-promyshlennyj-stroitelnyj-pylesos-linolit-742",
+    "name": "Промышленный строительный пылесос Linolit® 742",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-promyshlennyj-stroitelnyj-pylesos-linolit-5311",
+    "name": "Промышленный строительный пылесос Linolit® 5311",
+    "group": "Строительное оборудование",
+    "category": "Строительные и моющие пылесосы",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rezschika-shvov-hilt-dsh-900-x-dsh-fsc",
+    "name": "Резчик швов Hilti DSH 900-X+DSH-FSC",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 4290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskogo-rezschika-shvov-splitstone-cs-144e",
+    "name": "Электрический швонарезчик CS-144E",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rezschika-shvov-splitstone-cs-146",
+    "name": "Резчик швов Сплитстоун CS-146",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 1890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rezschika-shvov-splitstone-cs-1813",
+    "name": "Резчик швов Сплитстоун CS-1813",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 2390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskogo-rezschika-shvov-splitstone-cs-2415e",
+    "name": "Электрический швонарезчик CS-2415E",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 2790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rezschika-shvov-splitstone-cs-2413",
+    "name": "Резчик швов Сплитстоун CS-2413",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 3490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-rezschika-shvov-splitstone-cs-3213",
+    "name": "Резчик швов Сплитстоун CS-3213",
+    "group": "Строительное оборудование",
+    "category": "Резчики швов",
+    "priceFrom": 3790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskoj-teplovoj-pushki-ballu-bhp-p-3",
+    "name": "Электрическая тепловая пушка Ballu BHP-P-3",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskoj-teplovoj-pushki-equation-pf02-3300g",
+    "name": "Электрическая тепловая пушка Equation PF02-3300G",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskoj-teplovoj-pushki-ballu-bhp-p2-5",
+    "name": "Электрическая тепловая пушка Ballu BHP-P2-5",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-elektricheskoj-teplovoj-pushki-resanta-tep-9000k",
+    "name": "Электрическая тепловая пушка Ресанта ТЭП-9000К",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-gazovoj-teplovoj-pushki-inforce-gh-57-m",
+    "name": "Газовая тепловая пушка Inforce GH 57м",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 690,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dizelnoj-teplovoj-pushki-ballu-bhdp-20",
+    "name": "Дизельная тепловая пушка Ballu BHDP-20",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dizelnoj-teplovoj-pushki-master-b-70-ced",
+    "name": "Дизельная тепловая пушка Master B 70 CED",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 890,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dizelnoj-teplovoj-pushki-ballu-bhdp-50",
+    "name": "Дизельная тепловая пушка Ballu BHDP-50",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 1090,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-dizelnoj-teplovoj-pushki-master-b-100-ced",
+    "name": "Дизельная тепловая пушка Master B 100 CED",
+    "group": "Строительное оборудование",
+    "category": "Тепловые пушки",
+    "priceFrom": 1190,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-parketoshlifovalnaja-mashina-misom-o-206-1a",
+    "name": "Паркетошлифовальная машина МИСОМ СО-206.1А",
+    "group": "Строительное оборудование",
+    "category": "Шлифовальные машины для паркета",
+    "priceFrom": 1790,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtukaturnoj-stantsii-kaleta-4-230",
+    "name": "Штукатурная станция Kaleta-4/230",
+    "group": "Строительное оборудование",
+    "category": "Штукатурные станции",
+    "priceFrom": 2590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtukaturnoj-stantsii-pft-ritmo-xl-230-400-fu",
+    "name": "Штукатурная станция PFT Ritmo XL 230/400 FU",
+    "group": "Строительное оборудование",
+    "category": "Штукатурные станции",
+    "priceFrom": 2590,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtukaturnoj-stantsii-kaleta-6s",
+    "name": "Штукатурная станция Kaleta-6S",
+    "group": "Строительное оборудование",
+    "category": "Штукатурные станции",
+    "priceFrom": 4990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-shtukaturnoj-stantsii-kaleta-6s-230",
+    "name": "Штукатурная станция Kaleta-6S/230",
+    "group": "Строительное оборудование",
+    "category": "Штукатурные станции",
+    "priceFrom": 4990,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-electricheskogo-betonoreza-ingco-pc3558",
+    "name": "Электрический бетонорез Ingco PC3558",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 1290,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-electricheskogo-betonoreza-makita-4112hs",
+    "name": "Электрический бетонорез Makita 4112HS",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 1390,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-electricheskogo-betonoreza-makita-4114s",
+    "name": "Электрический бетонорез Makita 4114S",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 1490,
+    "availability": "on-request"
+  },
+  {
+    "slug": "arenda-otreznoj-mashiny-hilti-dch-300-x",
+    "name": "Отрезная машина Hilti DCH 300-X",
+    "group": "Строительное оборудование",
+    "category": "Бензорезы и бетонорезы",
+    "priceFrom": 2290,
+    "availability": "on-request"
+  }
+]

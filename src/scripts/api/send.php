@@ -1,6 +1,7 @@
 <?php
   define('SK_ROSA_INTERNAL_API', true);
   require_once __DIR__ . '/load-env.php';
+  require_once __DIR__ . '/lead-risk.php';
 
   function maskContactForLog($value) {
       $digits = preg_replace('/\D+/', '', (string)$value);
@@ -16,6 +17,34 @@
       $value = trim((string)$value);
 
       return $value === '' ? 'unknown' : substr(hash('sha256', $value), 0, 12);
+  }
+
+  function cleanLeadContextValue($value, $maxLength = 300) {
+      $value = trim((string)$value);
+      if (function_exists('mb_substr')) {
+          $value = mb_substr($value, 0, $maxLength, 'UTF-8');
+      } else {
+          $value = substr($value, 0, $maxLength);
+      }
+
+      return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+  }
+
+  function normalizePhoneForMatch($value) {
+      $digits = preg_replace('/\D+/', '', (string)$value);
+      if (strlen($digits) === 11 && $digits[0] === '8') {
+          $digits = '7' . substr($digits, 1);
+      }
+
+      return $digits;
+  }
+
+  function formatLeadDuration($seconds) {
+      $seconds = max(0, (int)$seconds);
+      $minutes = intdiv($seconds, 60);
+      $remainingSeconds = $seconds % 60;
+
+      return sprintf('%02d:%02d', $minutes, $remainingSeconds);
   }
 
   $leadLogId = 'lead_' . gmdate('YmdHis') . '_' . bin2hex(random_bytes(3));
@@ -65,7 +94,19 @@
   $sUtmMedium   = htmlspecialchars(trim($_POST['utm_medium']   ?? ''), ENT_QUOTES, 'UTF-8');
   $sUtmCampaign = htmlspecialchars(trim($_POST['utm_campaign'] ?? ''), ENT_QUOTES, 'UTF-8');
   $sUtmTerm     = htmlspecialchars(trim($_POST['utm_term']     ?? ''), ENT_QUOTES, 'UTF-8');
+  $sUtmContent  = htmlspecialchars(trim($_POST['utm_content']  ?? ''), ENT_QUOTES, 'UTF-8');
   $sReferrer    = htmlspecialchars(trim($_POST['referrer']     ?? ''), ENT_QUOTES, 'UTF-8');
+  $sYclid       = cleanLeadContextValue($_POST['yclid'] ?? '', 200);
+  $sGclid       = cleanLeadContextValue($_POST['gclid'] ?? '', 200);
+  $sMetrikaClientId = preg_replace('/\D+/', '', (string)($_POST['metrika_client_id'] ?? ''));
+  $sMetrikaClientId = substr($sMetrikaClientId, 0, 32);
+  $sLandingPage = cleanLeadContextValue($_POST['landing_page'] ?? '', 500);
+  $sSessionPageCount = max(0, min(999, (int)($_POST['session_page_count'] ?? 0)));
+  $sTimeToLeadSeconds = max(0, min(604800, (int)($_POST['time_to_lead_seconds'] ?? 0)));
+  $sClientDevice = cleanLeadContextValue($_POST['client_device'] ?? '', 150);
+  $sClientScreen = cleanLeadContextValue($_POST['client_screen'] ?? '', 30);
+  $sClientLanguage = cleanLeadContextValue($_POST['client_language'] ?? '', 30);
+  $sClientTimezone = cleanLeadContextValue($_POST['client_timezone'] ?? '', 80);
 
   if (empty($sPhone) && empty($sContactValue)) {
       error_log('[SEND] event=' . $leadLogId . ' status=validation_failed reason=empty_contact');
@@ -78,6 +119,27 @@
   $telegramChatId  = $_ENV['TELEGRAM_CHAT_ID']    ?? getenv('TELEGRAM_CHAT_ID')    ?: '';
   $telegramChatId2 = $_ENV['TELEGRAM_CHAT_ID_2']  ?? getenv('TELEGRAM_CHAT_ID_2')  ?: '';
   $telegramChatId3 = $_ENV['TELEGRAM_CHAT_ID_3']  ?? getenv('TELEGRAM_CHAT_ID_3')  ?: '';
+  $staffPhonesRaw  = $_ENV['STAFF_PHONES']        ?? getenv('STAFF_PHONES')        ?: '';
+
+  $staffPhones = array_filter(array_map(
+      'normalizePhoneForMatch',
+      preg_split('/[,;\s]+/', $staffPhonesRaw) ?: []
+  ));
+  $submittedPhone = normalizePhoneForMatch(!empty($sPhone) ? $sPhone : $sContactValue);
+  $isStaff = $submittedPhone !== '' && in_array($submittedPhone, $staffPhones, true);
+  $leadRisk = calculateLeadRisk([
+      'is_staff' => $isStaff,
+      'has_js_context' => $sClientDevice !== '',
+      'has_session_context' => $sSessionPageCount > 0,
+      'time_to_lead_seconds' => $sTimeToLeadSeconds,
+      'page_count' => $sSessionPageCount,
+      'is_direct' => $sUtmSource === '' && $sReferrer === '',
+      'has_client_id' => $sMetrikaClientId !== '',
+      'landing_page' => $sLandingPage,
+      'has_click_id' => $sYclid !== '' || $sGclid !== '',
+      'has_attribution' => $sUtmSource !== '' || $sReferrer !== '',
+  ]);
+  error_log('[SEND] event=' . $leadLogId . ' status=risk_assessed score=' . $leadRisk['score'] . ' reasons=' . count($leadRisk['reasons']));
 
   if (empty($telegramToken) || empty($telegramChatId)) {
       error_log('[SEND] event=' . $leadLogId . ' status=config_error service=telegram token_configured=' . (empty($telegramToken) ? 'no' : 'yes') . ' primary_recipient_configured=' . (empty($telegramChatId) ? 'no' : 'yes'));
@@ -98,6 +160,15 @@
           '🔔 <b>Новая заявка с сайта!</b>',
           '',
       ];
+      $tgLines[] = '🆔 ID: <code>' . $leadLogId . '</code>';
+      $tgLines[] = $leadRisk['emoji'] . ' <b>Риск: ' . $leadRisk['score']
+          . '/100 — ' . $leadRisk['label'] . '</b>';
+      if (!empty($leadRisk['reasons'])) {
+          $tgLines[] = '📋 Причины:';
+          foreach ($leadRisk['reasons'] as $riskReason) {
+              $tgLines[] = '• ' . $riskReason;
+          }
+      }
       if (!empty($sName)) {
           $tgLines[] = '👤 Имя: <b>' . $sName . '</b>';
       }
@@ -126,6 +197,9 @@
           if (!empty($sUtmTerm)) {
               $tgLines[] = '🔑 Ключ: ' . $sUtmTerm;
           }
+          if (!empty($sUtmContent)) {
+              $tgLines[] = '🧩 UTM content: ' . $sUtmContent;
+          }
       } elseif (!empty($sReferrer)) {
           // Нет UTM, но есть реферер — значит органика или переход с другого сайта
           $referrerHost = parse_url($sReferrer, PHP_URL_HOST) ?: $sReferrer;
@@ -134,10 +208,38 @@
           $tgLines[] = '📊 Источник: прямой заход';
       }
 
-      $pageUrl = $_SERVER['HTTP_REFERER'] ?? '';
+      $pageUrl = cleanLeadContextValue($_SERVER['HTTP_REFERER'] ?? '', 500);
       if (!empty($pageUrl)) {
           $tgLines[] = '🌐 Страница: ' . $pageUrl;
       }
+      if (!empty($sLandingPage)) {
+          $tgLines[] = '🧭 Первый вход: ' . $sLandingPage;
+      }
+      if ($sSessionPageCount > 0) {
+          $tgLines[] = '📄 Страниц в сессии: ' . $sSessionPageCount
+              . ' • до заявки: ' . formatLeadDuration($sTimeToLeadSeconds);
+      }
+      if (!empty($sClientDevice)) {
+          $tgLines[] = '💻 Устройство: ' . $sClientDevice;
+      } else {
+          $tgLines[] = '⚠️ Данные браузера не получены (JS не выполнился)';
+      }
+      if (!empty($sClientScreen) || !empty($sClientLanguage) || !empty($sClientTimezone)) {
+          $environmentParts = array_filter([$sClientScreen, $sClientLanguage, $sClientTimezone]);
+          $tgLines[] = '⚙️ Среда: ' . implode(' • ', $environmentParts);
+      }
+      if (!empty($sMetrikaClientId)) {
+          $tgLines[] = '🔗 ClientID: <code>' . $sMetrikaClientId . '</code>';
+      }
+      if (!empty($sYclid)) {
+          $tgLines[] = '🎯 yclid: <code>' . $sYclid . '</code>';
+      }
+      if (!empty($sGclid)) {
+          $tgLines[] = '🎯 gclid: <code>' . $sGclid . '</code>';
+      }
+      $tgLines[] = '🔎 IP/UA hash: <code>'
+          . hashForLog($_SERVER['REMOTE_ADDR'] ?? '') . ' / '
+          . hashForLog($_SERVER['HTTP_USER_AGENT'] ?? '') . '</code>';
       $tgLines[]  = '🕐 Время: ' . $moscowTime;
       $tgMessage  = implode("\n", $tgLines);
 

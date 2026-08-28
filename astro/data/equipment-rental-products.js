@@ -1,100 +1,11 @@
-import instrumentSourceA from "../../docs/rent4work-instrument-a.json" with { type: "json" };
-import instrumentSourceB from "../../docs/rent4work-instrument-b.json" with { type: "json" };
-import constructionSource from "../../docs/rent4work-construction.json" with { type: "json" };
+import rentalCatalogImages from "./equipment-rental-images.json" with { type: "json" };
+import rentalCatalogProducts from "./equipment-rental-products.json" with { type: "json" };
 
-const SOURCE_CHECKED_AT = "2026-08-27";
-const GENERIC_PREVIEW_IMAGE = "/assets/images/rental-preview/rental-service-hero.webp";
-const GENERIC_PREVIEW_SIZE = [1536, 1024];
-const categoryPhotoProfiles = {
-  Краскопульты: {
-    src: "/assets/images/rental-preview/aktispray-avs-6001hd-real.webp",
-    size: [1200, 900],
-    alt: "Реальный окрасочный аппарат AktiSpray AvS-6001HD на белом фоне",
-  },
-  "Монтажные пистолеты": {
-    src: "/assets/images/rental-preview/gas-nailer.webp",
-    size: [450, 450],
-    alt: "Реальный газовый монтажный пистолет TOUA на белом фоне",
-  },
-  "Монтажный инструмент для труб": {
-    src: "/assets/images/rental-preview/pipe-bender.webp",
-    size: [1400, 934],
-    alt: "Реальный гидравлический трубогиб Gigant на белом фоне",
-  },
-  Перфораторы: {
-    src: "/assets/images/rental-preview/makita-hr2470-real.webp",
-    size: [1000, 1000],
-    alt: "Реальный перфоратор Makita HR2470 на белом фоне",
-  },
-  Штроборезы: {
-    src: "/assets/images/rental-preview/wall-chaser-photo-v2.webp",
-    size: [1536, 1024],
-    alt: "Реальный штроборез ATLET на нейтральном фоне мастерской",
-  },
-  "Бензорезы и бетонорезы": {
-    src: "/assets/images/rental-preview/cutoff-saw.webp",
-    size: [750, 500],
-    alt: "Реальный бензорез Steviman на белом фоне",
-  },
-  Бетоносмесители: {
-    src: "/assets/images/rental-preview/mixer.webp",
-    size: [1080, 1080],
-    alt: "Реальный бетоносмеситель на производственной площадке",
-  },
-  "Осушители воздуха": {
-    src: "/assets/images/rental-preview/dehumidifier.webp",
-    size: [709, 750],
-    alt: "Реальный промышленный осушитель воздуха Master на белом фоне",
-  },
-  Плиткорезы: {
-    src: "/assets/images/rental-preview/tile-cutter.webp",
-    size: [500, 400],
-    alt: "Реальный ручной плиткорез KRAFTOOL на белом фоне",
-  },
-  "Строительные и моющие пылесосы": {
-    src: "/assets/images/rental-preview/vacuum.webp",
-    size: [1400, 1400],
-    alt: "Реальный строительный пылесос Karcher с комплектом насадок",
-  },
+const genericPreview = {
+  src: "/assets/images/rental-preview/rental-service-hero.webp",
+  size: [1536, 1024],
+  alt: "Профессиональный инструмент на белом фоне",
 };
-
-function photoProfileForCategory(category) {
-  return categoryPhotoProfiles[category] ?? {
-    src: GENERIC_PREVIEW_IMAGE,
-    size: GENERIC_PREVIEW_SIZE,
-    alt: "Реальный набор профессионального инструмента в мастерской",
-  };
-}
-
-const existingModelAliases = [
-  "сбмини80",
-  "masterdh92",
-  "сварогarc200realsmart",
-  "stevimangs940",
-  "karcherwd3pworkshop",
-  "atletpwc180j",
-  "makitahr2470",
-  "touagsn50e",
-  "kraftoolgrand1200",
-  "gigantmhpj16",
-  "messerecf350",
-  "aktisprayavs6001hd",
-];
-
-const existingSlugs = new Set([
-  "arenda-betonosmesitelya-prinuditelnogo-deystviya",
-  "arenda-osushitelya-vozduha-master-dh-92",
-  "arenda-svarochnogo-invertora-svarog-arc-200-real-smart",
-  "arenda-benzoreza-steviman-gs940-16",
-  "arenda-stroitelnogo-pylesosa-karcher-wd3-p-workshop",
-  "arenda-shtroboreza-atlet-pwc180j",
-  "arenda-perforatora-makita-hr2470",
-  "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e",
-  "arenda-ruchnogo-plitkoreza-kraftool-grand-1200",
-  "arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16",
-  "arenda-betonoreza-messer-ecf350",
-  "arenda-okrasochnogo-apparata-aktispray-avs-6001hd",
-]);
 
 const detailedCategoryBySlug = {
   "arenda-betonosmesitelya-prinuditelnogo-deystviya": [
@@ -106,32 +17,20 @@ const detailedCategoryBySlug = {
     "Силовая техника",
     "Сварочное оборудование",
   ],
-  "arenda-benzoreza-steviman-gs940-16": [
-    "Строительное оборудование",
-    "Бензорезы и бетонорезы",
-  ],
+  "arenda-benzoreza-steviman-gs940-16": ["Строительное оборудование", "Бензорезы и бетонорезы"],
   "arenda-stroitelnogo-pylesosa-karcher-wd3-p-workshop": [
     "Строительное оборудование",
     "Строительные и моющие пылесосы",
   ],
   "arenda-shtroboreza-atlet-pwc180j": ["Инструмент", "Штроборезы"],
   "arenda-perforatora-makita-hr2470": ["Инструмент", "Перфораторы"],
-  "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e": [
-    "Инструмент",
-    "Монтажные пистолеты",
-  ],
-  "arenda-ruchnogo-plitkoreza-kraftool-grand-1200": [
-    "Строительное оборудование",
-    "Плиткорезы",
-  ],
+  "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e": ["Инструмент", "Монтажные пистолеты"],
+  "arenda-ruchnogo-plitkoreza-kraftool-grand-1200": ["Строительное оборудование", "Плиткорезы"],
   "arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16": [
     "Инструмент",
     "Монтажный инструмент для труб",
   ],
-  "arenda-betonoreza-messer-ecf350": [
-    "Строительное оборудование",
-    "Бензорезы и бетонорезы",
-  ],
+  "arenda-betonoreza-messer-ecf350": ["Строительное оборудование", "Бензорезы и бетонорезы"],
   "arenda-okrasochnogo-apparata-aktispray-avs-6001hd": ["Инструмент", "Краскопульты"],
 };
 
@@ -146,15 +45,11 @@ const detailedRentalNamesBySlug = {
     "строительного пылесоса Karcher WD3 P Workshop",
   "arenda-shtroboreza-atlet-pwc180j": "штробореза ATLET PWC180J",
   "arenda-perforatora-makita-hr2470": "перфоратора Makita HR2470",
-  "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e":
-    "газового монтажного пистолета TOUA GSN50E",
-  "arenda-ruchnogo-plitkoreza-kraftool-grand-1200":
-    "ручного плиткореза KRAFTOOL Grand-1200",
-  "arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16":
-    "гидравлического трубогиба Gigant MHPJ-16",
+  "arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e": "газового монтажного пистолета TOUA GSN50E",
+  "arenda-ruchnogo-plitkoreza-kraftool-grand-1200": "ручного плиткореза KRAFTOOL Grand-1200",
+  "arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16": "гидравлического трубогиба Gigant MHPJ-16",
   "arenda-betonoreza-messer-ecf350": "бетонореза MESSER ECF350, 350 мм",
-  "arenda-okrasochnogo-apparata-aktispray-avs-6001hd":
-    "окрасочного аппарата AktiSpray AvS-6001HD",
+  "arenda-okrasochnogo-apparata-aktispray-avs-6001hd": "окрасочного аппарата AktiSpray AvS-6001HD",
 };
 
 const detailedSeoRentalNamesBySlug = {
@@ -208,15 +103,8 @@ const transliteration = {
   я: "ya",
 };
 
-function sourceProducts(source) {
-  return Array.isArray(source) ? source : source.products;
-}
-
-function normalizeText(value) {
-  return value
-    .toLocaleLowerCase("ru-RU")
-    .replaceAll("ё", "е")
-    .replace(/[^a-zа-я0-9]+/gu, "");
+function priceLabel(price) {
+  return `от ${price.toLocaleString("ru-RU")} ₽/сутки`;
 }
 
 function slugify(value) {
@@ -226,26 +114,6 @@ function slugify(value) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .replace(/-{2,}/g, "-");
-}
-
-function sourceSlug(product) {
-  try {
-    const pathname = new URL(product.sourceUrl).pathname.replace(/\/$/, "");
-    const sourceSegment = decodeURIComponent(pathname.split("/").at(-1) ?? "");
-    const segment = slugify(sourceSegment);
-
-    return segment.startsWith("arenda-") ? segment : `arenda-${segment}`;
-  } catch {
-    return `arenda-${slugify(product.name)}`;
-  }
-}
-
-function categoryPreference(category) {
-  if (category === "Шуруповерты" || category === "Монтажный инструмент REHAU") {
-    return 2;
-  }
-
-  return 1;
 }
 
 const mergedCategoryBySource = {
@@ -263,35 +131,6 @@ const mergedCategoryBySource = {
 
 function mergedCategoryName(sourceCategory) {
   return mergedCategoryBySource[sourceCategory] ?? sourceCategory;
-}
-
-function deduplicateSourceProducts(products) {
-  const byUrl = new Map();
-
-  for (const product of products) {
-    const existing = byUrl.get(product.sourceUrl);
-
-    if (!existing || categoryPreference(product.category) > categoryPreference(existing.category)) {
-      byUrl.set(product.sourceUrl, { ...product, name: product.name.trim() });
-    }
-  }
-
-  const seenNames = new Set();
-
-  return [...byUrl.values()].filter(product => {
-    const normalizedName = normalizeText(product.name);
-
-    if (existingModelAliases.some(alias => normalizedName.includes(alias))) {
-      return false;
-    }
-
-    if (seenNames.has(normalizedName)) {
-      return false;
-    }
-
-    seenNames.add(normalizedName);
-    return true;
-  });
 }
 
 function profileFor(category) {
@@ -373,7 +212,11 @@ function profileFor(category) {
     return {
       visualKind: "rotary-hammer",
       task: "точного сверления отверстий в металлоконструкциях",
-      useCases: ["сверление металла", "монтаж металлоконструкций", "работы на строительном объекте"],
+      useCases: [
+        "сверление металла",
+        "монтаж металлоконструкций",
+        "работы на строительном объекте",
+      ],
     };
   }
 
@@ -450,78 +293,50 @@ function selectionPromptFor(category) {
   return "Укажите материал, объём работ, условия на объекте и доступное питание — этого достаточно для первичного подбора.";
 }
 
-function createImportedItem(product, group, slug) {
+function createCatalogItem(product) {
   const categoryName = mergedCategoryName(product.category);
   const categorySlug = slugify(categoryName);
   const profile = profileFor(categoryName);
-  const photo = photoProfileForCategory(categoryName);
-  const summary = `${product.name} в аренду для ${profile.task}. ${product.priceLabel}. Наличие и итоговые условия на выбранные даты подтверждает менеджер.`;
+  const photo = rentalCatalogImages[product.slug] ?? genericPreview;
+  const normalizedPriceLabel = priceLabel(product.priceFrom);
+  const unavailable = product.availability === "unavailable";
+  const summary = unavailable
+    ? `${product.name} для ${profile.task}. Позиция временно недоступна — уточните срок поступления у менеджера.`
+    : `${product.name} в аренду для ${profile.task}. Стоимость ${normalizedPriceLabel}. Наличие и итоговые условия на выбранные даты подтверждает менеджер.`;
 
   return {
-    slug,
+    slug: product.slug,
     name: product.name,
     shortName: product.name,
     type: product.category,
     popularName: null,
     alternateNames: [],
-    group,
-    groupSlug: slugify(group),
+    group: product.group,
+    groupSlug: slugify(product.group),
     categoryName,
     categorySlug,
-    sourceCategoryName: product.category,
     visualKind: profile.visualKind,
     visualLabel: product.category,
     visualAlt: photo.alt,
     previewImage: photo.src,
     previewImageSize: photo.size,
-    representativeImage: true,
+    representativeImage: false,
     priceFrom: product.priceFrom,
-    priceLabel: product.priceLabel,
+    priceLabel: normalizedPriceLabel,
     priceCaption: "наличие и итоговый тариф уточняйте",
     summary,
     task: profile.task,
     useCases: profile.useCases,
     selectionPrompt: selectionPromptFor(categoryName),
-    availabilityMode: "on-request",
-    importedFrom: "Rent4Work",
-    sourceCheckedAt: SOURCE_CHECKED_AT,
-    sourceAvailability: product.availability,
-    sourceUrl: product.sourceUrl,
+    availabilityMode: unavailable ? "unavailable" : "on-request",
+    catalogEntry: true,
   };
 }
 
-const rawProducts = [
-  ...sourceProducts(instrumentSourceA).map(product => ({ ...product, group: "Инструмент" })),
-  ...sourceProducts(instrumentSourceB).map(product => ({ ...product, group: "Инструмент" })),
-  ...sourceProducts(constructionSource).map(product => ({
-    ...product,
-    group: "Строительное оборудование",
-  })),
-];
-const deduplicatedProducts = deduplicateSourceProducts(rawProducts);
-const usedSlugs = new Set(existingSlugs);
-const sourceUniqueCount = new Set(rawProducts.map(product => product.sourceUrl)).size;
+export const rentalCatalogEquipment = rentalCatalogProducts.map(createCatalogItem);
 
-export const importedRentalEquipment = deduplicatedProducts.map(product => {
-  const baseSlug = sourceSlug(product);
-  let slug = baseSlug;
-  let suffix = 2;
-
-  while (usedSlugs.has(slug)) {
-    slug = `${baseSlug}-${suffix}`;
-    suffix += 1;
-  }
-
-  usedSlugs.add(slug);
-  return createImportedItem(product, product.group, slug);
-});
-
-export const rentalImportStats = {
-  sourceCount: rawProducts.length,
-  sourceUniqueCount,
-  sourceDuplicateCount: rawProducts.length - sourceUniqueCount,
-  importedCount: importedRentalEquipment.length,
-  existingMatchesExcluded: sourceUniqueCount - deduplicatedProducts.length,
+export const rentalCatalogDataStats = {
+  catalogEntryCount: rentalCatalogEquipment.length,
 };
 
 export function enrichDetailedRentalEquipment(items) {

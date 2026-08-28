@@ -16,7 +16,6 @@ import {
 import {
   rentalCatalogStats,
   rentalGroupPages,
-  russianPlural,
 } from "../data/equipment-rental-catalog.js";
 import { breadcrumbJsonLd, businessId } from "../lib/seo.js";
 
@@ -161,64 +160,67 @@ const faqJsonLd = {
       </div>
     </section>
 
+    <section class="rental-seo-intro" aria-labelledby="rental-seo-intro-title">
+      <div class="rental-container">
+        <div class="rental-seo-intro__content">
+          <div class="rental-seo-intro__heading">
+            <p class="rental-seo-intro__eyebrow">Москва и Долгопрудный</p>
+            <h2 id="rental-seo-intro-title">
+              Аренда и прокат строительного оборудования
+            </h2>
+          </div>
+          <div class="rental-seo-intro__text">
+            <p>
+              ROSA сдаёт оборудование в аренду для ремонта, строительства, монтажа и обслуживания
+              объектов в Москве и Долгопрудном. В каталоге — более 300 позиций: строительное
+              оборудование, электро- и ручной инструмент, сантехнический инструмент и другая
+              техника для бетонных, отделочных, демонтажных и инженерных работ.
+            </p>
+            <p>
+              Подберём оборудование под задачу и срок — от одного часа до длительной аренды,
+              заранее рассчитаем стоимость и комплектацию. Предлагаем гибкие цены, доставку по
+              Москве и Московской области и самовывоз из Долгопрудного. Работаем с частными
+              клиентами, мастерами, ИП и организациями по договору.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="rental-section" id="directions">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <h2>Каталог по направлениям</h2>
-          <p>
-            Два раздела, 46 категорий и {rentalCatalogStats.catalogItemCount} позиций: от ручного
-            электроинструмента до оборудования для бетонных и отделочных работ.
-          </p>
+          <h2>Каталог</h2>
         </div>
-        <div class="rental-catalog">
+        <nav class="rental-directory" aria-label="Разделы каталога аренды">
           {
             rentalGroupPages.map(group => (
-              <article class="rental-card" data-rental-card>
-                <div class="rental-card__visual" aria-hidden="true">
-                  <img
-                    class="rental-card__image"
-                    src={group.image}
-                    alt=""
-                    width={group.imageSize[0]}
-                    height={group.imageSize[1]}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div class="rental-card__body">
-                  <h3><a href={new URL(group.canonical).pathname}>{group.name}</a></h3>
-                  <div class="rental-card__reveal">
-                    <div class="rental-card__reveal-inner">
-                      <p class="rental-card__summary">
-                        {group.description} В разделе {group.categories.length} {russianPlural(group.categories.length, "категория", "категории", "категорий")} и {group.items.length} {russianPlural(group.items.length, "позиция", "позиции", "позиций")}.
-                      </p>
-                      <div class="rental-card__footer">
-                        <strong>{group.priceLabel}</strong>
-                        <span class="rental-card__more">Открыть каталог <span aria-hidden="true">→</span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
+              <a class="rental-directory__link" href={new URL(group.canonical).pathname}>
+                <strong class="rental-directory__title">{group.name}</strong>
+                <span class="rental-directory__arrow" aria-hidden="true">→</span>
+              </a>
             ))
           }
-        </div>
+        </nav>
       </div>
     </section>
 
     <section class="rental-section rental-section--light" id="catalog">
       <div class="rental-container">
         <div class="rental-section__heading">
-          <h2>Оборудование с подробными карточками</h2>
+          <h2>Популярные позиции в аренду</h2>
           <p>
-            Для этих {rentalEquipment.length} моделей уже опубликованы характеристики,
-            комплектация и тарифы ROSA.
+            Оборудование и инструменты, которые чаще всего выбирают для строительных, ремонтных и
+            монтажных работ.
           </p>
         </div>
         <div class="rental-catalog">
           {
             rentalEquipment.map(item => (
-              <article class="rental-card" data-rental-card>
+              <article
+                class:list={["rental-card", { "rental-card--photo": item.previewImage }]}
+                data-rental-card
+              >
                 <div class="rental-card__visual" aria-hidden="true">
                   {
                     item.previewImage ? (
