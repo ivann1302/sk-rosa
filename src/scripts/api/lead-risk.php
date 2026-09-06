@@ -4,12 +4,24 @@ if (!defined('SK_ROSA_INTERNAL_API')) {
     exit;
 }
 
+function isLeadHomepageUrl($url) {
+    $parts = parse_url((string)$url);
+    if ($parts === false || empty($parts['host'])
+        || !in_array(strtolower($parts['host']), ['sk-rosa.ru', 'www.sk-rosa.ru'], true)
+        || !in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true)) {
+        return false;
+    }
+
+    return in_array(strtolower($parts['path'] ?? '/'), ['/', '/index.html', '/index.html/'], true);
+}
+
 function calculateLeadRisk($signals) {
     if (!empty($signals['is_staff'])) {
         return [
             'score' => 100,
             'label' => 'сотрудник',
             'emoji' => '⚠️',
+            'notification_title' => '⚠️ Заявка сотрудника',
             'reasons' => ['Номер совпадает со списком сотрудников: +100'],
         ];
     }
@@ -56,7 +68,10 @@ function calculateLeadRisk($signals) {
     }
 
     $landingPage = (string)($signals['landing_page'] ?? '');
-    if ($landingPage === '/' || preg_match('#^/index\.html/?$#i', $landingPage)) {
+    // Count the homepage once, including submissions without JS landing context.
+    if (isLeadHomepageUrl($signals['submission_url'] ?? '')) {
+        $add(20, 'Заявка отправлена с главной страницы');
+    } elseif ($landingPage === '/' || preg_match('#^/index\.html/?$#i', $landingPage)) {
         $add(20, 'Первая страница — главная');
     }
     if (preg_match('#/(?:privacy|terms|404)(?:[./]|$)#i', $landingPage)) {
@@ -89,6 +104,7 @@ function calculateLeadRisk($signals) {
         'score' => $score,
         'label' => $label,
         'emoji' => $emoji,
+        'notification_title' => $score >= 60 ? '🚫 Фейковая заявка' : '🔔 Новая заявка с сайта!',
         'reasons' => $reasons,
     ];
 }

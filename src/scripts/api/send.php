@@ -136,6 +136,7 @@
       'is_direct' => $sUtmSource === '' && $sReferrer === '',
       'has_client_id' => $sMetrikaClientId !== '',
       'landing_page' => $sLandingPage,
+      'submission_url' => $_SERVER['HTTP_REFERER'] ?? '',
       'has_click_id' => $sYclid !== '' || $sGclid !== '',
       'has_attribution' => $sUtmSource !== '' || $sReferrer !== '',
   ]);
@@ -157,7 +158,7 @@
       $moscowTime = (new DateTime('now', $moscow))->format('d.m.Y H:i');
 
       $tgLines = [
-          '🔔 <b>Новая заявка с сайта!</b>',
+          '<b>' . $leadRisk['notification_title'] . '</b>',
           '',
       ];
       $tgLines[] = '🆔 ID: <code>' . $leadLogId . '</code>';
@@ -222,7 +223,7 @@
       if (!empty($sClientDevice)) {
           $tgLines[] = '💻 Устройство: ' . $sClientDevice;
       } else {
-          $tgLines[] = '⚠️ Данные браузера не получены (JS не выполнился)';
+          $tgLines[] = '⚠️ Данные устройства не получены';
       }
       if (!empty($sClientScreen) || !empty($sClientLanguage) || !empty($sClientTimezone)) {
           $environmentParts = array_filter([$sClientScreen, $sClientLanguage, $sClientTimezone]);
