@@ -611,7 +611,7 @@ export default function PlasteringLeadCalculator({ data, showEstimate = true }) 
                       </label>
                     ) : (
                       <div className="plaster-lead-calc__notice">
-                        Сейчас откроется звонок на номер 8 (985) 135-49-91.
+                        Сейчас откроется звонок на номер +7 (985) 135-49-91.
                       </div>
                     )}
                     {submitError && <div className="plaster-lead-calc__error">{submitError}</div>}

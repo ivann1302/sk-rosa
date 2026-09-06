@@ -1,0 +1,1643 @@
+{
+  "count": 389,
+  "status": {
+    "200": 389
+  },
+  "issue_counts": {},
+  "depth": {
+    "0": 1,
+    "1": 41,
+    "2": 296,
+    "3": 46
+  },
+  "orphans": [
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-sten",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-potolka",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-kvartir",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-fasada",
+    "https://sk-rosa.ru/moskva/promyshlennaya-bezvozdushnaya-pokraska"
+  ],
+  "unreachable": [
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-sten",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-potolka",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-kvartir",
+    "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-fasada",
+    "https://sk-rosa.ru/moskva/promyshlennaya-bezvozdushnaya-pokraska"
+  ],
+  "unknown_links": {},
+  "broken_fragments": [
+    {
+      "source": "https://sk-rosa.ru/",
+      "target": "https://sk-rosa.ru/#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair",
+      "target": "https://sk-rosa.ru/turnkey-repair#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering",
+      "target": "https://sk-rosa.ru/plastering#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting",
+      "target": "https://sk-rosa.ru/airless-painting#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-sten",
+      "target": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-sten#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-potolka",
+      "target": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-potolka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-kvartir",
+      "target": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-kvartir#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-fasada",
+      "target": "https://sk-rosa.ru/moskva/bezvozdushnaya-pokraska-fasada#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/moskva/promyshlennaya-bezvozdushnaya-pokraska",
+      "target": "https://sk-rosa.ru/moskva/promyshlennaya-bezvozdushnaya-pokraska#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed",
+      "target": "https://sk-rosa.ru/floor-screed#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing",
+      "target": "https://sk-rosa.ru/soft-roofing#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita",
+      "target": "https://sk-rosa.ru/biozashchita#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/fire-protection",
+      "target": "https://sk-rosa.ru/fire-protection#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/kompleksnaya-ognezashchita",
+      "target": "https://sk-rosa.ru/kompleksnaya-ognezashchita#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/ognezashchita-derevyannyh-konstruktsiy",
+      "target": "https://sk-rosa.ru/ognezashchita-derevyannyh-konstruktsiy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/ognezashchita-vozduhovodov",
+      "target": "https://sk-rosa.ru/ognezashchita-vozduhovodov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/ognezashchita-metallokonstruktsiy",
+      "target": "https://sk-rosa.ru/ognezashchita-metallokonstruktsiy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-stroitelnogo-oborudovaniya",
+      "target": "https://sk-rosa.ru/arenda-stroitelnogo-oborudovaniya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-instrumenta",
+      "target": "https://sk-rosa.ru/arenda-instrumenta#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-stroitelnoy-tekhniki",
+      "target": "https://sk-rosa.ru/arenda-stroitelnoy-tekhniki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/bolgarki-ushm",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/bolgarki-ushm#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/gajkoverty",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/gajkoverty#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/dozatory-dlya-him-ankerov",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/dozatory-dlya-him-ankerov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/dreli-i-shurupoverty",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/dreli-i-shurupoverty#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/zaklepochniki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/zaklepochniki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/izmeritelnyj-instrument",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/izmeritelnyj-instrument#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/kluppy-elektricheskie-rezbonareznye",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/kluppy-elektricheskie-rezbonareznye#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/kraskopulty",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/kraskopulty#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/lobzikovye-pily",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/lobzikovye-pily#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/miksery",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/miksery#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/montazhnye-pistolety",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/montazhnye-pistolety#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/montazhnyj-instrument-dlya-trub",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/montazhnyj-instrument-dlya-trub#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/nozhnicy-po-metallu",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/nozhnicy-po-metallu#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/opressovochnye-nasosy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/opressovochnye-nasosy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/payalnik-dlya-svarki-polipropilenovyh-trub",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/payalnik-dlya-svarki-polipropilenovyh-trub#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/perforatory",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/perforatory#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/promyshlennye-feny",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/promyshlennye-feny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/rejsmusy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/rejsmusy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/renovatory-mfu",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/renovatory-mfu#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/rubanki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/rubanki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/sabelnye-pily",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/sabelnye-pily#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/torcovochnye-pily",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/torcovochnye-pily#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/frezery",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/frezery#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/cirkulyarnye-pily",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/cirkulyarnye-pily#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/shlifovalnye-mashiny",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/shlifovalnye-mashiny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/shpilkozabivateli-i-skobozabivateli",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/shpilkozabivateli-i-skobozabivateli#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/shtroborezy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/shtroborezy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/elektricheskie-otbojnye-molotki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/elektricheskie-otbojnye-molotki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/almaznoe-burenie",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/almaznoe-burenie#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/benzorezy-i-betonorezy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/benzorezy-i-betonorezy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/betonosmesiteli",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/betonosmesiteli#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/vibroplity-i-vibrotrambovki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/vibroplity-i-vibrotrambovki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/vibrorejki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/vibrorejki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/vyshki-tury",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/vyshki-tury#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/zatirochnye-mashiny",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/zatirochnye-mashiny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/lestnicy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/lestnicy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/magnitnye-sverlilnye-stanki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/magnitnye-sverlilnye-stanki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/mozaichno-shlifovalnye-mashiny",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/mozaichno-shlifovalnye-mashiny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/osushiteli-vozduha",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/osushiteli-vozduha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/plitkorezy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/plitkorezy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/pogruzhnye-vibratory",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/pogruzhnye-vibratory#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/rezchiki-shvov",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/rezchiki-shvov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/stroitelnye-i-moyushchie-pylesosy",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/stroitelnye-i-moyushchie-pylesosy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/teplovye-pushki",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/teplovye-pushki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/shlifovalnye-mashiny-dlya-parketa",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/shlifovalnye-mashiny-dlya-parketa#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-oborudovaniya/shtukaturnye-stancii",
+      "target": "https://sk-rosa.ru/arenda-oborudovaniya/shtukaturnye-stancii#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-betonosmesitelya-prinuditelnogo-deystviya",
+      "target": "https://sk-rosa.ru/arenda-betonosmesitelya-prinuditelnogo-deystviya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-osushitelya-vozduha-master-dh-92",
+      "target": "https://sk-rosa.ru/arenda-osushitelya-vozduha-master-dh-92#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-svarochnogo-invertora-svarog-arc-200-real-smart",
+      "target": "https://sk-rosa.ru/arenda-svarochnogo-invertora-svarog-arc-200-real-smart#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-benzoreza-steviman-gs940-16",
+      "target": "https://sk-rosa.ru/arenda-benzoreza-steviman-gs940-16#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-stroitelnogo-pylesosa-karcher-wd3-p-workshop",
+      "target": "https://sk-rosa.ru/arenda-stroitelnogo-pylesosa-karcher-wd3-p-workshop#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-shtroboreza-atlet-pwc180j",
+      "target": "https://sk-rosa.ru/arenda-shtroboreza-atlet-pwc180j#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-perforatora-makita-hr2470",
+      "target": "https://sk-rosa.ru/arenda-perforatora-makita-hr2470#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e",
+      "target": "https://sk-rosa.ru/arenda-gazovogo-montazhnogo-pistoleta-toua-gsn50e#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-ruchnogo-plitkoreza-kraftool-grand-1200",
+      "target": "https://sk-rosa.ru/arenda-ruchnogo-plitkoreza-kraftool-grand-1200#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16",
+      "target": "https://sk-rosa.ru/arenda-gidravlicheskogo-trubogiba-gigant-mhpj-16#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-betonoreza-messer-ecf350",
+      "target": "https://sk-rosa.ru/arenda-betonoreza-messer-ecf350#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/arenda-okrasochnogo-apparata-aktispray-avs-6001hd",
+      "target": "https://sk-rosa.ru/arenda-okrasochnogo-apparata-aktispray-avs-6001hd#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/portfolio",
+      "target": "https://sk-rosa.ru/portfolio#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/calculator",
+      "target": "https://sk-rosa.ru/calculator#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/blog",
+      "target": "https://sk-rosa.ru/blog#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/where-we-work",
+      "target": "https://sk-rosa.ru/where-we-work#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/privacy",
+      "target": "https://sk-rosa.ru/privacy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/terms",
+      "target": "https://sk-rosa.ru/terms#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/kakuyu-ognebiozashchitu-vybrat-dlya-dereva",
+      "target": "https://sk-rosa.ru/kakuyu-ognebiozashchitu-vybrat-dlya-dereva#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/vidy-ognezashchity-metallokonstruktsiy",
+      "target": "https://sk-rosa.ru/vidy-ognezashchity-metallokonstruktsiy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/defekty-ognezashchitnogo-pokrytiya-metalla",
+      "target": "https://sk-rosa.ru/defekty-ognezashchitnogo-pokrytiya-metalla#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/srok-sluzhby-ognezashchitnogo-pokrytiya",
+      "target": "https://sk-rosa.ru/srok-sluzhby-ognezashchitnogo-pokrytiya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/priemka-shtukaturnyh-rabot",
+      "target": "https://sk-rosa.ru/priemka-shtukaturnyh-rabot#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot",
+      "target": "https://sk-rosa.ru/trebovaniya-k-vypolneniyu-shtukaturnyh-rabot#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/podgotovka-sten-pod-dekorativnuyu-shtukaturku",
+      "target": "https://sk-rosa.ru/podgotovka-sten-pod-dekorativnuyu-shtukaturku#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/stoimost-remonta-kvartiry",
+      "target": "https://sk-rosa.ru/stoimost-remonta-kvartiry#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/kak-rasscitat-raskhod-shtukaturki",
+      "target": "https://sk-rosa.ru/kak-rasscitat-raskhod-shtukaturki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/pokraska-sten-dvumya-cvetami",
+      "target": "https://sk-rosa.ru/pokraska-sten-dvumya-cvetami#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/styazhka-pod-teply-pol",
+      "target": "https://sk-rosa.ru/styazhka-pod-teply-pol#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/shpaklevka-sten-posle-shtukaturki",
+      "target": "https://sk-rosa.ru/shpaklevka-sten-posle-shtukaturki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/pokraska-sten-bez-razvodov",
+      "target": "https://sk-rosa.ru/pokraska-sten-bez-razvodov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/armirovanie-shtukaturki-setkoj",
+      "target": "https://sk-rosa.ru/armirovanie-shtukaturki-setkoj#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/gidroizolyaciya-pola-pod-styazhku",
+      "target": "https://sk-rosa.ru/gidroizolyaciya-pola-pod-styazhku#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/vidy-styazhki-pola",
+      "target": "https://sk-rosa.ru/vidy-styazhki-pola#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/fasad-shtukaturka",
+      "target": "https://sk-rosa.ru/fasad-shtukaturka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/preimushestva-bezvozdushnoj-pokraski",
+      "target": "https://sk-rosa.ru/preimushestva-bezvozdushnoj-pokraski#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/shtukaturka-sten-v-novostrojke",
+      "target": "https://sk-rosa.ru/shtukaturka-sten-v-novostrojke#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/vybor-kraski-airless-painting",
+      "target": "https://sk-rosa.ru/vybor-kraski-airless-painting#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/shtukaturka-guide",
+      "target": "https://sk-rosa.ru/shtukaturka-guide#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/mashinnaya-ili-ruchnaya-shtukaturka",
+      "target": "https://sk-rosa.ru/mashinnaya-ili-ruchnaya-shtukaturka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/vybor-shtukaturki",
+      "target": "https://sk-rosa.ru/vybor-shtukaturki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-balashikha",
+      "target": "https://sk-rosa.ru/plastering-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-khimki",
+      "target": "https://sk-rosa.ru/plastering-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-podolsk",
+      "target": "https://sk-rosa.ru/plastering-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-lyubertsy",
+      "target": "https://sk-rosa.ru/plastering-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-mytishchi",
+      "target": "https://sk-rosa.ru/plastering-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-krasnogorsk",
+      "target": "https://sk-rosa.ru/plastering-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-elektrostal",
+      "target": "https://sk-rosa.ru/plastering-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-vidnoe",
+      "target": "https://sk-rosa.ru/plastering-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-domodedovo",
+      "target": "https://sk-rosa.ru/plastering-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-dolgoprudny",
+      "target": "https://sk-rosa.ru/plastering-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-shchelkovo",
+      "target": "https://sk-rosa.ru/plastering-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-pushkino",
+      "target": "https://sk-rosa.ru/plastering-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-ramenskoe",
+      "target": "https://sk-rosa.ru/plastering-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-noginsk",
+      "target": "https://sk-rosa.ru/plastering-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-istra",
+      "target": "https://sk-rosa.ru/plastering-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-naro-fominsk",
+      "target": "https://sk-rosa.ru/plastering-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-aprelevka",
+      "target": "https://sk-rosa.ru/plastering-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-bronnitsy",
+      "target": "https://sk-rosa.ru/plastering-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-volokolamsk",
+      "target": "https://sk-rosa.ru/plastering-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-voskresensk",
+      "target": "https://sk-rosa.ru/plastering-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-golitsyino",
+      "target": "https://sk-rosa.ru/plastering-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-dmitrov",
+      "target": "https://sk-rosa.ru/plastering-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-egorievsk",
+      "target": "https://sk-rosa.ru/plastering-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/plastering-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-zhukovsky",
+      "target": "https://sk-rosa.ru/plastering-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-zaraysk",
+      "target": "https://sk-rosa.ru/plastering-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-zvenigorod",
+      "target": "https://sk-rosa.ru/plastering-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-ivanteevka",
+      "target": "https://sk-rosa.ru/plastering-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-kashira",
+      "target": "https://sk-rosa.ru/plastering-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-kolomna",
+      "target": "https://sk-rosa.ru/plastering-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-losino-petrovsky",
+      "target": "https://sk-rosa.ru/plastering-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-lukhovitsy",
+      "target": "https://sk-rosa.ru/plastering-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-malakhovka",
+      "target": "https://sk-rosa.ru/plastering-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-monino",
+      "target": "https://sk-rosa.ru/plastering-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/plastering-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-serpukhov",
+      "target": "https://sk-rosa.ru/plastering-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-solnechnogorsk",
+      "target": "https://sk-rosa.ru/plastering-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-staraya-kupavna",
+      "target": "https://sk-rosa.ru/plastering-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-stupino",
+      "target": "https://sk-rosa.ru/plastering-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-troitsk",
+      "target": "https://sk-rosa.ru/plastering-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-fryazino",
+      "target": "https://sk-rosa.ru/plastering-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-chekhov",
+      "target": "https://sk-rosa.ru/plastering-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-korolev",
+      "target": "https://sk-rosa.ru/plastering-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-sergiev-posad",
+      "target": "https://sk-rosa.ru/plastering-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-odintsovo",
+      "target": "https://sk-rosa.ru/plastering-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-reutov",
+      "target": "https://sk-rosa.ru/plastering-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/plastering-lobnya",
+      "target": "https://sk-rosa.ru/plastering-lobnya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-balashikha",
+      "target": "https://sk-rosa.ru/floor-screed-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-khimki",
+      "target": "https://sk-rosa.ru/floor-screed-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-podolsk",
+      "target": "https://sk-rosa.ru/floor-screed-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-lyubertsy",
+      "target": "https://sk-rosa.ru/floor-screed-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-mytishchi",
+      "target": "https://sk-rosa.ru/floor-screed-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-krasnogorsk",
+      "target": "https://sk-rosa.ru/floor-screed-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-elektrostal",
+      "target": "https://sk-rosa.ru/floor-screed-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-vidnoe",
+      "target": "https://sk-rosa.ru/floor-screed-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-domodedovo",
+      "target": "https://sk-rosa.ru/floor-screed-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-dolgoprudny",
+      "target": "https://sk-rosa.ru/floor-screed-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-shchelkovo",
+      "target": "https://sk-rosa.ru/floor-screed-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-pushkino",
+      "target": "https://sk-rosa.ru/floor-screed-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-ramenskoe",
+      "target": "https://sk-rosa.ru/floor-screed-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-noginsk",
+      "target": "https://sk-rosa.ru/floor-screed-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-istra",
+      "target": "https://sk-rosa.ru/floor-screed-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-naro-fominsk",
+      "target": "https://sk-rosa.ru/floor-screed-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-aprelevka",
+      "target": "https://sk-rosa.ru/floor-screed-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-bronnitsy",
+      "target": "https://sk-rosa.ru/floor-screed-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-volokolamsk",
+      "target": "https://sk-rosa.ru/floor-screed-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-voskresensk",
+      "target": "https://sk-rosa.ru/floor-screed-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-golitsyino",
+      "target": "https://sk-rosa.ru/floor-screed-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-dmitrov",
+      "target": "https://sk-rosa.ru/floor-screed-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-egorievsk",
+      "target": "https://sk-rosa.ru/floor-screed-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/floor-screed-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-zhukovsky",
+      "target": "https://sk-rosa.ru/floor-screed-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-zaraysk",
+      "target": "https://sk-rosa.ru/floor-screed-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-zvenigorod",
+      "target": "https://sk-rosa.ru/floor-screed-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-ivanteevka",
+      "target": "https://sk-rosa.ru/floor-screed-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-kashira",
+      "target": "https://sk-rosa.ru/floor-screed-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-kolomna",
+      "target": "https://sk-rosa.ru/floor-screed-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-losino-petrovsky",
+      "target": "https://sk-rosa.ru/floor-screed-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-lukhovitsy",
+      "target": "https://sk-rosa.ru/floor-screed-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-malakhovka",
+      "target": "https://sk-rosa.ru/floor-screed-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-monino",
+      "target": "https://sk-rosa.ru/floor-screed-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/floor-screed-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-serpukhov",
+      "target": "https://sk-rosa.ru/floor-screed-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-solnechnogorsk",
+      "target": "https://sk-rosa.ru/floor-screed-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-staraya-kupavna",
+      "target": "https://sk-rosa.ru/floor-screed-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-stupino",
+      "target": "https://sk-rosa.ru/floor-screed-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-troitsk",
+      "target": "https://sk-rosa.ru/floor-screed-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-fryazino",
+      "target": "https://sk-rosa.ru/floor-screed-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-chekhov",
+      "target": "https://sk-rosa.ru/floor-screed-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-korolev",
+      "target": "https://sk-rosa.ru/floor-screed-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-sergiev-posad",
+      "target": "https://sk-rosa.ru/floor-screed-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-odintsovo",
+      "target": "https://sk-rosa.ru/floor-screed-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-reutov",
+      "target": "https://sk-rosa.ru/floor-screed-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/floor-screed-lobnya",
+      "target": "https://sk-rosa.ru/floor-screed-lobnya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-balashikha",
+      "target": "https://sk-rosa.ru/airless-painting-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-khimki",
+      "target": "https://sk-rosa.ru/airless-painting-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-podolsk",
+      "target": "https://sk-rosa.ru/airless-painting-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-lyubertsy",
+      "target": "https://sk-rosa.ru/airless-painting-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-mytishchi",
+      "target": "https://sk-rosa.ru/airless-painting-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-krasnogorsk",
+      "target": "https://sk-rosa.ru/airless-painting-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-elektrostal",
+      "target": "https://sk-rosa.ru/airless-painting-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-vidnoe",
+      "target": "https://sk-rosa.ru/airless-painting-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-domodedovo",
+      "target": "https://sk-rosa.ru/airless-painting-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-dolgoprudny",
+      "target": "https://sk-rosa.ru/airless-painting-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-shchelkovo",
+      "target": "https://sk-rosa.ru/airless-painting-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-pushkino",
+      "target": "https://sk-rosa.ru/airless-painting-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-ramenskoe",
+      "target": "https://sk-rosa.ru/airless-painting-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-noginsk",
+      "target": "https://sk-rosa.ru/airless-painting-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-istra",
+      "target": "https://sk-rosa.ru/airless-painting-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-naro-fominsk",
+      "target": "https://sk-rosa.ru/airless-painting-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-aprelevka",
+      "target": "https://sk-rosa.ru/airless-painting-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-bronnitsy",
+      "target": "https://sk-rosa.ru/airless-painting-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-volokolamsk",
+      "target": "https://sk-rosa.ru/airless-painting-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-voskresensk",
+      "target": "https://sk-rosa.ru/airless-painting-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-golitsyino",
+      "target": "https://sk-rosa.ru/airless-painting-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-dmitrov",
+      "target": "https://sk-rosa.ru/airless-painting-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-egorievsk",
+      "target": "https://sk-rosa.ru/airless-painting-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/airless-painting-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-zhukovsky",
+      "target": "https://sk-rosa.ru/airless-painting-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-zaraysk",
+      "target": "https://sk-rosa.ru/airless-painting-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-zvenigorod",
+      "target": "https://sk-rosa.ru/airless-painting-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-ivanteevka",
+      "target": "https://sk-rosa.ru/airless-painting-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-kashira",
+      "target": "https://sk-rosa.ru/airless-painting-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-kolomna",
+      "target": "https://sk-rosa.ru/airless-painting-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-losino-petrovsky",
+      "target": "https://sk-rosa.ru/airless-painting-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-lukhovitsy",
+      "target": "https://sk-rosa.ru/airless-painting-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-malakhovka",
+      "target": "https://sk-rosa.ru/airless-painting-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-monino",
+      "target": "https://sk-rosa.ru/airless-painting-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/airless-painting-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-serpukhov",
+      "target": "https://sk-rosa.ru/airless-painting-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-solnechnogorsk",
+      "target": "https://sk-rosa.ru/airless-painting-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-staraya-kupavna",
+      "target": "https://sk-rosa.ru/airless-painting-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-stupino",
+      "target": "https://sk-rosa.ru/airless-painting-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-troitsk",
+      "target": "https://sk-rosa.ru/airless-painting-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-fryazino",
+      "target": "https://sk-rosa.ru/airless-painting-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-chekhov",
+      "target": "https://sk-rosa.ru/airless-painting-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-korolev",
+      "target": "https://sk-rosa.ru/airless-painting-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-sergiev-posad",
+      "target": "https://sk-rosa.ru/airless-painting-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-odintsovo",
+      "target": "https://sk-rosa.ru/airless-painting-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-reutov",
+      "target": "https://sk-rosa.ru/airless-painting-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/airless-painting-lobnya",
+      "target": "https://sk-rosa.ru/airless-painting-lobnya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-balashikha",
+      "target": "https://sk-rosa.ru/soft-roofing-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-khimki",
+      "target": "https://sk-rosa.ru/soft-roofing-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-podolsk",
+      "target": "https://sk-rosa.ru/soft-roofing-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-lyubertsy",
+      "target": "https://sk-rosa.ru/soft-roofing-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-mytishchi",
+      "target": "https://sk-rosa.ru/soft-roofing-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-krasnogorsk",
+      "target": "https://sk-rosa.ru/soft-roofing-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-elektrostal",
+      "target": "https://sk-rosa.ru/soft-roofing-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-vidnoe",
+      "target": "https://sk-rosa.ru/soft-roofing-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-domodedovo",
+      "target": "https://sk-rosa.ru/soft-roofing-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-dolgoprudny",
+      "target": "https://sk-rosa.ru/soft-roofing-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-shchelkovo",
+      "target": "https://sk-rosa.ru/soft-roofing-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-pushkino",
+      "target": "https://sk-rosa.ru/soft-roofing-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-ramenskoe",
+      "target": "https://sk-rosa.ru/soft-roofing-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-noginsk",
+      "target": "https://sk-rosa.ru/soft-roofing-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-istra",
+      "target": "https://sk-rosa.ru/soft-roofing-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-naro-fominsk",
+      "target": "https://sk-rosa.ru/soft-roofing-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-aprelevka",
+      "target": "https://sk-rosa.ru/soft-roofing-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-bronnitsy",
+      "target": "https://sk-rosa.ru/soft-roofing-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-volokolamsk",
+      "target": "https://sk-rosa.ru/soft-roofing-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-voskresensk",
+      "target": "https://sk-rosa.ru/soft-roofing-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-golitsyino",
+      "target": "https://sk-rosa.ru/soft-roofing-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-dmitrov",
+      "target": "https://sk-rosa.ru/soft-roofing-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-egorievsk",
+      "target": "https://sk-rosa.ru/soft-roofing-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/soft-roofing-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-zhukovsky",
+      "target": "https://sk-rosa.ru/soft-roofing-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-zaraysk",
+      "target": "https://sk-rosa.ru/soft-roofing-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-zvenigorod",
+      "target": "https://sk-rosa.ru/soft-roofing-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-ivanteevka",
+      "target": "https://sk-rosa.ru/soft-roofing-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-kashira",
+      "target": "https://sk-rosa.ru/soft-roofing-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-kolomna",
+      "target": "https://sk-rosa.ru/soft-roofing-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-losino-petrovsky",
+      "target": "https://sk-rosa.ru/soft-roofing-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-lukhovitsy",
+      "target": "https://sk-rosa.ru/soft-roofing-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-malakhovka",
+      "target": "https://sk-rosa.ru/soft-roofing-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-monino",
+      "target": "https://sk-rosa.ru/soft-roofing-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/soft-roofing-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-serpukhov",
+      "target": "https://sk-rosa.ru/soft-roofing-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-solnechnogorsk",
+      "target": "https://sk-rosa.ru/soft-roofing-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-staraya-kupavna",
+      "target": "https://sk-rosa.ru/soft-roofing-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-stupino",
+      "target": "https://sk-rosa.ru/soft-roofing-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-troitsk",
+      "target": "https://sk-rosa.ru/soft-roofing-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-fryazino",
+      "target": "https://sk-rosa.ru/soft-roofing-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-chekhov",
+      "target": "https://sk-rosa.ru/soft-roofing-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-korolev",
+      "target": "https://sk-rosa.ru/soft-roofing-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-sergiev-posad",
+      "target": "https://sk-rosa.ru/soft-roofing-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-odintsovo",
+      "target": "https://sk-rosa.ru/soft-roofing-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-reutov",
+      "target": "https://sk-rosa.ru/soft-roofing-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/soft-roofing-lobnya",
+      "target": "https://sk-rosa.ru/soft-roofing-lobnya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-balashikha",
+      "target": "https://sk-rosa.ru/biozashchita-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-khimki",
+      "target": "https://sk-rosa.ru/biozashchita-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-podolsk",
+      "target": "https://sk-rosa.ru/biozashchita-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-lyubertsy",
+      "target": "https://sk-rosa.ru/biozashchita-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-mytishchi",
+      "target": "https://sk-rosa.ru/biozashchita-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-krasnogorsk",
+      "target": "https://sk-rosa.ru/biozashchita-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-elektrostal",
+      "target": "https://sk-rosa.ru/biozashchita-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-vidnoe",
+      "target": "https://sk-rosa.ru/biozashchita-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-domodedovo",
+      "target": "https://sk-rosa.ru/biozashchita-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-dolgoprudny",
+      "target": "https://sk-rosa.ru/biozashchita-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-shchelkovo",
+      "target": "https://sk-rosa.ru/biozashchita-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-pushkino",
+      "target": "https://sk-rosa.ru/biozashchita-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-ramenskoe",
+      "target": "https://sk-rosa.ru/biozashchita-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-noginsk",
+      "target": "https://sk-rosa.ru/biozashchita-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-istra",
+      "target": "https://sk-rosa.ru/biozashchita-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-naro-fominsk",
+      "target": "https://sk-rosa.ru/biozashchita-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-aprelevka",
+      "target": "https://sk-rosa.ru/biozashchita-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-bronnitsy",
+      "target": "https://sk-rosa.ru/biozashchita-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-volokolamsk",
+      "target": "https://sk-rosa.ru/biozashchita-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-voskresensk",
+      "target": "https://sk-rosa.ru/biozashchita-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-golitsyino",
+      "target": "https://sk-rosa.ru/biozashchita-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-dmitrov",
+      "target": "https://sk-rosa.ru/biozashchita-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-egorievsk",
+      "target": "https://sk-rosa.ru/biozashchita-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/biozashchita-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-zhukovsky",
+      "target": "https://sk-rosa.ru/biozashchita-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-zaraysk",
+      "target": "https://sk-rosa.ru/biozashchita-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-zvenigorod",
+      "target": "https://sk-rosa.ru/biozashchita-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-ivanteevka",
+      "target": "https://sk-rosa.ru/biozashchita-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-kashira",
+      "target": "https://sk-rosa.ru/biozashchita-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-kolomna",
+      "target": "https://sk-rosa.ru/biozashchita-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-losino-petrovsky",
+      "target": "https://sk-rosa.ru/biozashchita-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-lukhovitsy",
+      "target": "https://sk-rosa.ru/biozashchita-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-malakhovka",
+      "target": "https://sk-rosa.ru/biozashchita-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-monino",
+      "target": "https://sk-rosa.ru/biozashchita-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/biozashchita-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-serpukhov",
+      "target": "https://sk-rosa.ru/biozashchita-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-solnechnogorsk",
+      "target": "https://sk-rosa.ru/biozashchita-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-staraya-kupavna",
+      "target": "https://sk-rosa.ru/biozashchita-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-stupino",
+      "target": "https://sk-rosa.ru/biozashchita-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-troitsk",
+      "target": "https://sk-rosa.ru/biozashchita-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-fryazino",
+      "target": "https://sk-rosa.ru/biozashchita-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-chekhov",
+      "target": "https://sk-rosa.ru/biozashchita-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-korolev",
+      "target": "https://sk-rosa.ru/biozashchita-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-sergiev-posad",
+      "target": "https://sk-rosa.ru/biozashchita-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-odintsovo",
+      "target": "https://sk-rosa.ru/biozashchita-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-reutov",
+      "target": "https://sk-rosa.ru/biozashchita-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/biozashchita-lobnya",
+      "target": "https://sk-rosa.ru/biozashchita-lobnya#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-balashikha",
+      "target": "https://sk-rosa.ru/turnkey-repair-balashikha#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-khimki",
+      "target": "https://sk-rosa.ru/turnkey-repair-khimki#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-podolsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-podolsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-lyubertsy",
+      "target": "https://sk-rosa.ru/turnkey-repair-lyubertsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-mytishchi",
+      "target": "https://sk-rosa.ru/turnkey-repair-mytishchi#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-krasnogorsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-krasnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-elektrostal",
+      "target": "https://sk-rosa.ru/turnkey-repair-elektrostal#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-vidnoe",
+      "target": "https://sk-rosa.ru/turnkey-repair-vidnoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-domodedovo",
+      "target": "https://sk-rosa.ru/turnkey-repair-domodedovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-dolgoprudny",
+      "target": "https://sk-rosa.ru/turnkey-repair-dolgoprudny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-shchelkovo",
+      "target": "https://sk-rosa.ru/turnkey-repair-shchelkovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-pushkino",
+      "target": "https://sk-rosa.ru/turnkey-repair-pushkino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-ramenskoe",
+      "target": "https://sk-rosa.ru/turnkey-repair-ramenskoe#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-noginsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-noginsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-istra",
+      "target": "https://sk-rosa.ru/turnkey-repair-istra#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-naro-fominsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-naro-fominsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-aprelevka",
+      "target": "https://sk-rosa.ru/turnkey-repair-aprelevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-bronnitsy",
+      "target": "https://sk-rosa.ru/turnkey-repair-bronnitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-volokolamsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-volokolamsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-voskresensk",
+      "target": "https://sk-rosa.ru/turnkey-repair-voskresensk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-golitsyino",
+      "target": "https://sk-rosa.ru/turnkey-repair-golitsyino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-dmitrov",
+      "target": "https://sk-rosa.ru/turnkey-repair-dmitrov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-egorievsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-egorievsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-zheleznodorozhny",
+      "target": "https://sk-rosa.ru/turnkey-repair-zheleznodorozhny#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-zhukovsky",
+      "target": "https://sk-rosa.ru/turnkey-repair-zhukovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-zaraysk",
+      "target": "https://sk-rosa.ru/turnkey-repair-zaraysk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-zvenigorod",
+      "target": "https://sk-rosa.ru/turnkey-repair-zvenigorod#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-ivanteevka",
+      "target": "https://sk-rosa.ru/turnkey-repair-ivanteevka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-kashira",
+      "target": "https://sk-rosa.ru/turnkey-repair-kashira#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-kolomna",
+      "target": "https://sk-rosa.ru/turnkey-repair-kolomna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-losino-petrovsky",
+      "target": "https://sk-rosa.ru/turnkey-repair-losino-petrovsky#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-lukhovitsy",
+      "target": "https://sk-rosa.ru/turnkey-repair-lukhovitsy#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-malakhovka",
+      "target": "https://sk-rosa.ru/turnkey-repair-malakhovka#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-monino",
+      "target": "https://sk-rosa.ru/turnkey-repair-monino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-orekhovo-zuevo",
+      "target": "https://sk-rosa.ru/turnkey-repair-orekhovo-zuevo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-serpukhov",
+      "target": "https://sk-rosa.ru/turnkey-repair-serpukhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-solnechnogorsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-solnechnogorsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-staraya-kupavna",
+      "target": "https://sk-rosa.ru/turnkey-repair-staraya-kupavna#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-stupino",
+      "target": "https://sk-rosa.ru/turnkey-repair-stupino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-troitsk",
+      "target": "https://sk-rosa.ru/turnkey-repair-troitsk#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-fryazino",
+      "target": "https://sk-rosa.ru/turnkey-repair-fryazino#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-chekhov",
+      "target": "https://sk-rosa.ru/turnkey-repair-chekhov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-korolev",
+      "target": "https://sk-rosa.ru/turnkey-repair-korolev#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-sergiev-posad",
+      "target": "https://sk-rosa.ru/turnkey-repair-sergiev-posad#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-odintsovo",
+      "target": "https://sk-rosa.ru/turnkey-repair-odintsovo#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-reutov",
+      "target": "https://sk-rosa.ru/turnkey-repair-reutov#services"
+    },
+    {
+      "source": "https://sk-rosa.ru/turnkey-repair-lobnya",
+      "target": "https://sk-rosa.ru/turnkey-repair-lobnya#services"
+    }
+  ],
+  "types": {
+    "AdministrativeArea": 389,
+    "City": 389,
+    "ContactPoint": 389,
+    "GeoCoordinates": 389,
+    "ImageObject": 389,
+    "OpeningHoursSpecification": 389,
+    "PostalAddress": 389,
+    "WebPage": 389,
+    "WebSite": 389,
+    "['Organization', 'LocalBusiness', 'HomeAndConstructionBusiness']": 389,
+    "Answer": 379,
+    "BreadcrumbList": 388,
+    "FAQPage": 379,
+    "ListItem": 388,
+    "Offer": 311,
+    "Question": 379,
+    "Service": 359,
+    "ServiceChannel": 359,
+    "UnitPriceSpecification": 310,
+    "AggregateOffer": 1,
+    "ItemList": 50,
+    "['ItemList', 'OfferCatalog']": 1,
+    "QuantitativeValue": 12,
+    "CollectionPage": 1,
+    "CreativeWork": 1,
+    "WebApplication": 1,
+    "Blog": 22,
+    "BlogPosting": 23,
+    "Person": 23
+  },
+  "thin_main": [
+    [
+      "https://sk-rosa.ru/portfolio",
+      0
+    ],
+    [
+      "https://sk-rosa.ru/calculator",
+      0
+    ],
+    [
+      "https://sk-rosa.ru/privacy",
+      0
+    ],
+    [
+      "https://sk-rosa.ru/terms",
+      0
+    ]
+  ],
+  "method": "GET sitemap URLs, raw HTML parser; only same-domain anchor href links among sitemap URLs; main word counts blank when main not captured; no field CWV or measured AI visibility",
+  "date": "2026-09-06",
+  "known_limitations": [
+    "PageSpeed HTTP 429",
+    "Headless Chrome screenshot/renderer and later connectivity failures",
+    "No authenticated webmaster or analytics access",
+    "No repeated platform AI answer tests"
+  ]
+}

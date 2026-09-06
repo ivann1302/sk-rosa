@@ -1,6 +1,6 @@
 const PHONE_HREF = "tel:+79851354991";
 const PHONE_DIGITS = "79851354991";
-const PHONE_PREFIX = "+7 (985) 135 ";
+const PHONE_PREFIX = "+7 (985) 135-";
 const PHONE_TAIL = "49-91";
 const PHONE_MASK = "••-••";
 const PHONE_TEXT_PATTERN = /(?:\+7|8)?\s*\(985\)\s*135(?:\s|-)?49-91/g;

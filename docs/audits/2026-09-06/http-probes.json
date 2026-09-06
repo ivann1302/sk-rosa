@@ -1,0 +1,406 @@
+[
+  {
+    "url": "http://sk-rosa.ru/",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:55 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/"
+    }
+  },
+  {
+    "url": "https://www.sk-rosa.ru/",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:55 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/"
+    }
+  },
+  {
+    "url": "http://www.sk-rosa.ru/",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:55 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/index.html",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:55 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering.html",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:55 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/plastering"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering/",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/plastering"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/pages/plastering.html",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/plastering"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/blog/vybor-shtukaturki",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/vybor-shtukaturki"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering/dolgoprudny",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/plastering-dolgoprudny"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/audit-nonexistent-page-20260906",
+    "ua": "Mozilla/5.0",
+    "status": 404,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html; charset=UTF-8",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Vary": "Accept-Encoding",
+      "Status": "404 Not Found",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
+      "Content-Encoding": "gzip"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/thank-you",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:16:42 GMT",
+      "ETag": "W/\"54df-65a2c06f50d62-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/?utm_source=audit",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:56 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:14:46 GMT",
+      "ETag": "W/\"174b6-65a2c001501d5-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/?yclid=audit",
+    "ua": "Mozilla/5.0",
+    "status": 301,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/html; charset=iso-8859-1",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Location": "https://sk-rosa.ru/"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/robots.txt",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/plain",
+      "Content-Length": "163",
+      "Connection": "close",
+      "Last-Modified": "Fri, 28 Aug 2026 07:10:37 GMT",
+      "ETag": "\"143-65a16263b3374-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/sitemap.xml",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/xml",
+      "Content-Length": "3357",
+      "Connection": "close",
+      "Last-Modified": "Fri, 28 Aug 2026 07:10:40 GMT",
+      "ETag": "\"a37b-65a1626673cd4-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/llms.txt",
+    "ua": "Mozilla/5.0",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/plain",
+      "Content-Length": "5158",
+      "Connection": "close",
+      "Last-Modified": "Fri, 28 Aug 2026 07:09:44 GMT",
+      "ETag": "\"40f7-65a162311d957-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "OAI-SearchBot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "PerplexityBot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "Claude-SearchBot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "Googlebot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:57 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "YandexBot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:58 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  },
+  {
+    "url": "https://sk-rosa.ru/plastering",
+    "ua": "Bingbot",
+    "status": 200,
+    "headers": {
+      "Server": "openresty",
+      "Date": "Sun, 06 Sep 2026 10:48:58 GMT",
+      "Content-Type": "text/html",
+      "Transfer-Encoding": "chunked",
+      "Connection": "close",
+      "Last-Modified": "Sat, 29 Aug 2026 09:15:43 GMT",
+      "ETag": "W/\"1b8c3-65a2c03770b8d-gzip\"",
+      "Accept-Ranges": "bytes",
+      "Vary": "Accept-Encoding",
+      "Content-Encoding": "gzip",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "Permissions-Policy": "geolocation=(), microphone=(), camera=()"
+    }
+  }
+]

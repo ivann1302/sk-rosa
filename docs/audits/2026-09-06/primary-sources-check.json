@@ -1,0 +1,153 @@
+{
+  "checked_on": "2026-09-06",
+  "urls": [
+    {
+      "key": "rotband",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shtukaturki/shtukaturki-gipsovye/knauf-rotband/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shtukaturki/shtukaturki-gipsovye/knauf-rotband/"
+    },
+    {
+      "key": "mp75",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shtukaturki/shtukaturki-gipsovye/knauf-mp-75/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shtukaturki/shtukaturki-gipsovye/knauf-mp-75/"
+    },
+    {
+      "key": "rotband-guide",
+      "url": "https://www.knauf.ru/service/blog/knauf-rotband-universal-gypsum-plaster/",
+      "status": 200,
+      "final": "https://www.knauf.ru/service/blog/knauf-rotband-universal-gypsum-plaster/"
+    },
+    {
+      "key": "q4",
+      "url": "https://www.knauf.ru/company/technology/sistema-q1-q4/q4/",
+      "status": 200,
+      "final": "https://www.knauf.ru/company/technology/sistema-q1-q4/q4/"
+    },
+    {
+      "key": "putty",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shpaklyevki/shpaklyevki-polimernye/knauf-rotband-pasta-profi/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/shpaklyevki/shpaklyevki-polimernye/knauf-rotband-pasta-profi/"
+    },
+    {
+      "key": "facade",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/knauf-unterputts/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/knauf-unterputts/"
+    },
+    {
+      "key": "paint",
+      "url": "https://www.wagner-group.com/en/contractor/service-consulting/tips-tricks/tips-tricks-for-airless-sprayers/",
+      "status": 200,
+      "final": "https://www.wagner-group.com/en/contractor/service-consulting/tips-tricks/tips-tricks-for-airless-sprayers/"
+    },
+    {
+      "key": "prep-paint",
+      "url": "https://www.knauf.ru/service/blog/instrukcija-podgotovka-sten-pod-pokrasku/",
+      "status": 200,
+      "final": "https://www.knauf.ru/service/blog/instrukcija-podgotovka-sten-pod-pokrasku/"
+    },
+    {
+      "key": "metal",
+      "url": "https://ogneza.com/catalog/ognezashitnaya-kraska/ognezashchitnye_lkm_dlya_metalla/2521/",
+      "status": 200,
+      "final": "https://ogneza.com/catalog/ognezashitnaya-kraska/ognezashchitnye_lkm_dlya_metalla/2521/"
+    },
+    {
+      "key": "wood",
+      "url": "https://neomid.ru/catalog/ognezashchitnye-sostavy/ognebiozashchita-neomid-450-1/",
+      "status": 200,
+      "final": "https://neomid.ru/catalog/ognezashchitnye-sostavy/ognebiozashchita-neomid-450-1/"
+    },
+    {
+      "key": "floor",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/nalivnoy-pol-i-rovniteli/knauf-tribon/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/nalivnoy-pol-i-rovniteli/knauf-tribon/"
+    },
+    {
+      "key": "waterproof",
+      "url": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/mastika-dlya-gidroizolyatsii/knauf-flekhendikht/",
+      "status": 200,
+      "final": "https://www.knauf.ru/catalog/sukhie-stroitelnye-smesi-i-gotovye-sostavy/mastika-dlya-gidroizolyatsii/knauf-flekhendikht/"
+    }
+  ],
+  "article_source_keys": {
+    "kak-rasscitat-raskhod-shtukaturki": [
+      "rotband",
+      "mp75"
+    ],
+    "vybor-shtukaturki": [
+      "rotband",
+      "facade"
+    ],
+    "mashinnaya-ili-ruchnaya-shtukaturka": [
+      "rotband",
+      "mp75"
+    ],
+    "shtukaturka-guide": [
+      "rotband-guide"
+    ],
+    "shtukaturka-sten-v-novostrojke": [
+      "rotband-guide",
+      "mp75"
+    ],
+    "armirovanie-shtukaturki-setkoj": [
+      "rotband-guide"
+    ],
+    "fasad-shtukaturka": [
+      "facade"
+    ],
+    "shpaklevka-sten-posle-shtukaturki": [
+      "putty",
+      "q4"
+    ],
+    "podgotovka-sten-pod-dekorativnuyu-shtukaturku": [
+      "q4"
+    ],
+    "priemka-shtukaturnyh-rabot": [
+      "q4",
+      "rotband"
+    ],
+    "trebovaniya-k-vypolneniyu-shtukaturnyh-rabot": [
+      "rotband-guide",
+      "q4"
+    ],
+    "preimushestva-bezvozdushnoj-pokraski": [
+      "paint"
+    ],
+    "vybor-kraski-airless-painting": [
+      "paint"
+    ],
+    "pokraska-sten-bez-razvodov": [
+      "prep-paint",
+      "paint"
+    ],
+    "pokraska-sten-dvumya-cvetami": [
+      "prep-paint"
+    ],
+    "vidy-styazhki-pola": [
+      "floor"
+    ],
+    "styazhka-pod-teply-pol": [
+      "floor"
+    ],
+    "gidroizolyaciya-pola-pod-styazhku": [
+      "waterproof"
+    ],
+    "vidy-ognezashchity-metallokonstruktsiy": [
+      "metal"
+    ],
+    "defekty-ognezashchitnogo-pokrytiya-metalla": [
+      "metal"
+    ],
+    "srok-sluzhby-ognezashchitnogo-pokrytiya": [
+      "metal"
+    ],
+    "kakuyu-ognebiozashchitu-vybrat-dlya-dereva": [
+      "wood"
+    ]
+  }
+}
