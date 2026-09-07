@@ -45,6 +45,7 @@ export default defineConfig({
           { src: "src/bde05525-af0e-48de-b161-305c96820afb.txt", dest: "." },
           { src: "src/yandex_35e96ef6b3300db1.html", dest: "." },
           { src: "src/yandex_409f3d25273b124e.html", dest: "." },
+          { src: "src/yandex_54994e6aee0dca92.html", dest: "." },
           { src: "src/yandex_a93fef6adebc72d6.html", dest: "." },
         ],
       }),

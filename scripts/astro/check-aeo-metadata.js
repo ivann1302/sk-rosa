@@ -18,6 +18,7 @@ const skippedHtmlFiles = new Set([
   "404.html",
   "yandex_35e96ef6b3300db1.html",
   "yandex_409f3d25273b124e.html",
+  "yandex_54994e6aee0dca92.html",
   "yandex_a93fef6adebc72d6.html",
 ]);
 const rentalPublishedPages = [...rentalGroupPages, ...rentalCategoryPages];
